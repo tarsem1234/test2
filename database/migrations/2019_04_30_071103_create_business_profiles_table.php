@@ -1,0 +1,40 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+
+class CreateBusinessProfilesTable extends Migration {
+
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('business_profiles', function(Blueprint $table)
+		{
+			$table->integer('id', true);
+			$table->integer('user_id')->unsigned()->index('user_id');
+			$table->integer('industry_id')->unsigned()->index('industry_id');
+			$table->string('company_name', 191);
+			$table->string('company_address', 191)->nullable();
+			$table->string('company_website', 191)->nullable();
+			$table->boolean('area_of_service')->nullable();
+			$table->timestamps();
+			$table->softDeletes();
+		});
+	}
+
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::drop('business_profiles');
+	}
+
+}

@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+
+class AddForeignKeysToAdditionalInformationPropertyTable extends Migration {
+
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::table('additional_information_property', function(Blueprint $table)
+		{
+			$table->foreign('additional_information_id', 'additional_information_property_ibfk_4')->references('id')->on('additional_information')->onUpdate('RESTRICT')->onDelete('CASCADE');
+			$table->foreign('property_id', 'additional_information_property_ibfk_5')->references('id')->on('properties')->onUpdate('RESTRICT')->onDelete('CASCADE');
+		});
+	}
+
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::table('additional_information_property', function(Blueprint $table)
+		{
+			$table->dropForeign('additional_information_property_ibfk_4');
+			$table->dropForeign('additional_information_property_ibfk_5');
+		});
+	}
+
+}

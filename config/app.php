@@ -160,7 +160,6 @@ return [
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-        Laravel\Tinker\TinkerServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
         /*
          * Application Service Providers...

@@ -27,7 +27,7 @@ class SearchController extends Controller
         $results = null;
 
         return view('backend.search.index')
-            ->withSearchTerm($request->get('q'))
-            ->withResults($results);
+            ->with('search_term', $request->get('q'))
+            ->with('results', $results);
     }
 }

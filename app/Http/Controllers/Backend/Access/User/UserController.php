@@ -60,7 +60,7 @@ class UserController extends Controller
     public function create(ManageUserRequest $request)
     {
         return view('backend.access.create')
-            ->withRoles($this->roles->getAll());
+            ->with('roles', $this->roles->getAll());
     }
 
     /**
@@ -110,7 +110,7 @@ class UserController extends Controller
         $user = User::where('id', $user->id)->with('user_profile', 'user_profile.user_interests', 'business_profile.industry.services')->first();
 
         return view('backend.access.show', compact('admin', 'support', 'business'))
-            ->withUser($user);
+            ->with('user', $user);
     }
 
     /**
@@ -151,9 +151,9 @@ class UserController extends Controller
 
         return view('backend.access.edit', ['userWithUser' => $userWithUser, 'industries' => $industries,
             'businessIndustry' => $businessIndustry, 'business' => $business, 'admin' => $admin, 'support' => $support])
-            ->withUser($user)
-            ->withUserRoles($user->roles->pluck('id')->all())
-            ->withRoles($this->roles->getAll());
+            ->with('user', $user)
+            ->with('user_roles', $user->roles->pluck('id')->all())
+            ->with('roles', $this->roles->getAll());
     }
 
     /**

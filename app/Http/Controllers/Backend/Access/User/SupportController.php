@@ -36,7 +36,7 @@ class SupportController extends Controller
         $support = true;
 
         return view('backend.access.support_create', compact('support'))
-            ->withRoles($this->roles->getAll());
+            ->with('roles', $this->roles->getAll());
     }
 
     public function store(StoreUserRequest $request)

@@ -42,7 +42,7 @@ class UserPasswordController extends Controller
 
         return view('backend.access.change-password',
             compact('admin', 'business'))
-            ->withUser($user);
+            ->with('user', $user);
     }
 
     /**

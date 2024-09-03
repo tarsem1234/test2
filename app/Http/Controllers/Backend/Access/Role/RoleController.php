@@ -45,8 +45,8 @@ class RoleController extends Controller
     public function create(ManageRoleRequest $request)
     {
         return view('backend.access.roles.create')
-            ->withPermissions($this->permissions->getAll())
-            ->withRoleCount($this->roles->getCount());
+            ->with('permissions', $this->permissions->getAll())
+            ->with('role_count', $this->roles->getCount());
     }
 
     /**
@@ -65,9 +65,9 @@ class RoleController extends Controller
     public function edit(Role $role, ManageRoleRequest $request)
     {
         return view('backend.access.roles.edit')
-            ->withRole($role)
-            ->withRolePermissions($role->permissions->pluck('id')->all())
-            ->withPermissions($this->permissions->getAll());
+            ->with('role', $role)
+            ->with('role_permissions', $role->permissions->pluck('id')->all())
+            ->with('permissions', $this->permissions->getAll());
     }
 
     /**

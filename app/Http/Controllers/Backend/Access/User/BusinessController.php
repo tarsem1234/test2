@@ -39,7 +39,7 @@ class BusinessController extends Controller
         $business = true;
 
         return view('backend.access.business_create', compact('business'))
-            ->withRoles($this->roles->getAll());
+            ->with('roles', $this->roles->getAll());
     }
 
     public function store(StoreUserRequest $request)

@@ -7,7 +7,6 @@ use Illuminate\Validation\Rule;
 
 class UpdateRegisterRequest extends Request
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -33,7 +32,7 @@ class UpdateRegisterRequest extends Request
             ],
             'email' => 'required',
             'state' => 'required',
-//            'county' => 'required',
+            //            'county' => 'required',
             'city' => 'required',
             'zip_code' => 'required',
             'phone_no' => 'required',
@@ -46,7 +45,7 @@ class UpdateRegisterRequest extends Request
                 'share_profile' => 'required',
                 'loan_status' => 'required',
                 'first_name' => 'required',
-//                'middle_name' => 'required',
+                //                'middle_name' => 'required',
                 'last_name' => 'required',
                 'electronic_signature' => 'required',
             ];
@@ -68,8 +67,8 @@ class UpdateRegisterRequest extends Request
     public function messages()
     {
         return [
-//            'g-recaptcha-response.required_if' => trans('validation.required',
-//                ['attribute' => 'captcha']),
+            //            'g-recaptcha-response.required_if' => trans('validation.required',
+            //                ['attribute' => 'captcha']),
         ];
     }
 }

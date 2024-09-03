@@ -2,21 +2,23 @@
 
 namespace App\Mail;
 
+use App\Models\Access\User\User;
+use App\Models\PropertyAvailability;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Models\Access\User\User;
-use App\Models\PropertyAvailability;
 
-class AvailabilityConfirmation extends Mailable {
-
+class AvailabilityConfirmation extends Mailable
+{
     use Queueable,
         SerializesModels;
 
-    public $availability, $user;
+    public $availability;
 
-    public function __construct(PropertyAvailability $availability, User $user) {
+    public $user;
+
+    public function __construct(PropertyAvailability $availability, User $user)
+    {
         $this->availability = $availability;
         $this->user = $user;
     }
@@ -26,8 +28,8 @@ class AvailabilityConfirmation extends Mailable {
      *
      * @return $this
      */
-    public function build() {
-        return $this->markdown('frontend.mail.availabilty_confirmation'); 
+    public function build()
+    {
+        return $this->markdown('frontend.mail.availabilty_confirmation');
     }
-
 }

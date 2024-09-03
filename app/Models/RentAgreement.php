@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class RentAgreement extends Model
 {
-
     use SoftDeletes;
-    protected $table = "rent_agreement";
+
+    protected $table = 'rent_agreement';
 
     public function offer()
     {
@@ -18,6 +18,6 @@ class RentAgreement extends Model
 
     public function propertyContractUserAddresses()
     {
-        return $this->hasMany('App\Models\PropertyContractUserAddresses','rent_agreement_id');
+        return $this->hasMany('App\Models\PropertyContractUserAddresses', 'rent_agreement_id');
     }
 }

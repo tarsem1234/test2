@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PropertyImage extends Model
 {
-
     use SoftDeletes;
-    protected $table = "property_images";
 
+    protected $table = 'property_images';
 }

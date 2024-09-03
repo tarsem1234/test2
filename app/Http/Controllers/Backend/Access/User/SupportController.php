@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
-use Request;
-use App\Models\Access\User\User;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\Access\User\ManageUserRequest;
+use App\Models\Access\User\User;
 use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Repositories\Backend\Access\User\UserRepository;
-use App\Http\Requests\Backend\Access\User\ManageUserRequest;
+use Request;
 
 class SupportController extends Controller
 {
     protected $users;
+
     protected $roles;
 
     public function __construct(UserRepository $users, RoleRepository $roles)
@@ -23,9 +24,9 @@ class SupportController extends Controller
     public function index(Request $request)
     {
         $supportUsers = User::whereHas('roles',
-                    function($query) {
-                    $query->where('role_id', config('constant.inverse_user_type.Support'));
-                })->where('status',1)->get();
+            function ($query) {
+                $query->where('role_id', config('constant.inverse_user_type.Support'));
+            })->where('status', 1)->get();
 
         return view('backend.access.support_index', compact('supportUsers'));
     }
@@ -35,7 +36,7 @@ class SupportController extends Controller
         $support = true;
 
         return view('backend.access.support_create', compact('support'))
-                ->withRoles($this->roles->getAll());
+            ->withRoles($this->roles->getAll());
     }
 
     public function store(StoreUserRequest $request)
@@ -47,7 +48,7 @@ class SupportController extends Controller
                     'confirmed', 'confirmation_email'
                 ),
                 'roles' => $request->only('assignees_roles'),
-        ]);
+            ]);
 
         return redirect()->route('admin.access.support.index')->withFlashSuccess(trans('alerts.backend.users.created'));
     }

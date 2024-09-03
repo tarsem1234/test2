@@ -3,27 +3,22 @@
 namespace App\Notifications\Frontend\Auth;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Notifications\Notification;
 
 /**
  * Class UserNeedsConfirmation.
  */
 class SenderNeedsConfirmation extends Notification
 {
+    use Notifiable,
+        Queueable;
 
-    use Queueable,
-        Notifiable;
-    /**
-     * @var
-     */
     protected $confirmation_code;
 
     /**
      * UserNeedsConfirmation constructor.
-     *
-     * @param $confirmation_code
      */
     public function __construct($confirmation_code)
     {
@@ -33,8 +28,7 @@ class SenderNeedsConfirmation extends Notification
     /**
      * Get the notification's delivery channels.
      *
-     * @param mixed $notifiable
-     *
+     * @param  mixed  $notifiable
      * @return array
      */
     public function via($notifiable)
@@ -45,18 +39,17 @@ class SenderNeedsConfirmation extends Notification
     /**
      * Get the mail representation of the notification.
      *
-     * @param mixed $notifiable
-     *
+     * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
 
-        return (new MailMessage())
-                    ->subject(app_name().': '.trans('exceptions.frontend.auth.confirmation.confirm'))
-                    ->line(trans('strings.emails.auth.click_to_confirm'))
-                    ->action(trans('buttons.emails.auth.confirm_account'),
-                        route('frontend.account.confirm', $this->confirmation_code))
-                    ->line(trans('strings.emails.auth.thank_you_for_using_app'));
+        return (new MailMessage)
+            ->subject(app_name().': '.trans('exceptions.frontend.auth.confirmation.confirm'))
+            ->line(trans('strings.emails.auth.click_to_confirm'))
+            ->action(trans('buttons.emails.auth.confirm_account'),
+                route('frontend.account.confirm', $this->confirmation_code))
+            ->line(trans('strings.emails.auth.thank_you_for_using_app'));
     }
 }

@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
-use App\Models\Access\User\User;
 use App\Http\Controllers\Controller;
-use App\Repositories\Frontend\Access\User\UserRepository;
+use App\Models\Access\User\User;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
+use App\Repositories\Frontend\Access\User\UserRepository;
 
 /**
  * Class ConfirmAccountController.
  */
 class ConfirmAccountController extends Controller
 {
-
     /**
      * @var UserRepository
      */
@@ -20,8 +19,6 @@ class ConfirmAccountController extends Controller
 
     /**
      * ConfirmAccountController constructor.
-     *
-     * @param UserRepository $user
      */
     public function __construct(UserRepository $user)
     {
@@ -29,8 +26,6 @@ class ConfirmAccountController extends Controller
     }
 
     /**
-     * @param $token
-     *
      * @return mixed
      */
     public function confirm($token)
@@ -41,8 +36,6 @@ class ConfirmAccountController extends Controller
     }
 
     /**
-     * @param $user
-     *
      * @return mixed
      */
     public function sendConfirmationEmail(User $user)
@@ -50,16 +43,15 @@ class ConfirmAccountController extends Controller
         $username = '';
         if ($user->user_profile()->exists()) {
             //firstname and last name not getting directly
-            $userProfile = \App\Models\UserProfile::where('user_id',$user->id)->first();
-           
-            $username = $userProfile->first_name . ' ' .$userProfile->last_name;
-        } else if ($user->business_profile()->exists()) {
-            $businessProfile = \App\Models\BusinessProfile::where('user_id',$user->id)->first();
+            $userProfile = \App\Models\UserProfile::where('user_id', $user->id)->first();
+
+            $username = $userProfile->first_name.' '.$userProfile->last_name;
+        } elseif ($user->business_profile()->exists()) {
+            $businessProfile = \App\Models\BusinessProfile::where('user_id', $user->id)->first();
             $username = $businessProfile->company_name;
         }
         $user->notify(new UserNeedsConfirmation($user->confirmation_code, $username));
 
         return redirect()->route('frontend.auth.login')->withFlashSuccess(trans('exceptions.frontend.auth.confirmation.resent'));
     }
-
 }

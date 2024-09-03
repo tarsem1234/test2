@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class PropertyArchitecture extends Model
 {
     use SoftDeletes;
-    protected $table = "property_architectures";
+
+    protected $table = 'property_architectures';
 
     public function property()
     {

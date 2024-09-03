@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateUpdateSignaturesTable extends Migration
 {
@@ -13,7 +13,7 @@ class CreateUpdateSignaturesTable extends Migration
      */
     public function up()
     {
-         Schema::table('signatures', function (Blueprint $table) {
+        Schema::table('signatures', function (Blueprint $table) {
             $table->smallInteger('signature_type')->nullable()->change();
             $table->string('fullname', 255)->after('signature');
             $table->smallInteger('type')->comment('1 => \'buyer\', 2 => \'seller\', 3 => \'cobuyer\', 4 => \'coseller\'')->after('fullname');
@@ -28,10 +28,10 @@ class CreateUpdateSignaturesTable extends Migration
      */
     public function down()
     {
-         //
-          $table->smallInteger('signature_type')->change();
-          $table->dropColumn('fullname');
-          $table->dropColumn('type');
-          $table->dropColumn('affix_status');
+        //
+        $table->smallInteger('signature_type')->change();
+        $table->dropColumn('fullname');
+        $table->dropColumn('type');
+        $table->dropColumn('affix_status');
     }
 }

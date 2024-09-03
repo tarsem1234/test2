@@ -40,9 +40,9 @@ return [
         ],
 
         'sqlite_testing' => [
-            'driver'   => 'sqlite',
+            'driver' => 'sqlite',
             'database' => ':memory:',
-            'prefix'   => '',
+            'prefix' => '',
         ],
 
         'mysql' => [
@@ -56,7 +56,7 @@ return [
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
-            'strict' => FALSE,
+            'strict' => false,
             'engine' => null,
         ],
 

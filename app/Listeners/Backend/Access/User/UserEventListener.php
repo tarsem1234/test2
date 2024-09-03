@@ -12,9 +12,6 @@ class UserEventListener
      */
     private $history_slug = 'User';
 
-    /**
-     * @param $event
-     */
     public function onCreated($event)
     {
         history()->withType($this->history_slug)
@@ -28,9 +25,6 @@ class UserEventListener
             ->log();
     }
 
-    /**
-     * @param $event
-     */
     public function onUpdated($event)
     {
         history()->withType($this->history_slug)
@@ -44,9 +38,6 @@ class UserEventListener
             ->log();
     }
 
-    /**
-     * @param $event
-     */
     public function onDeleted($event)
     {
         history()->withType($this->history_slug)
@@ -60,9 +51,6 @@ class UserEventListener
             ->log();
     }
 
-    /**
-     * @param $event
-     */
     public function onRestored($event)
     {
         history()->withType($this->history_slug)
@@ -76,9 +64,6 @@ class UserEventListener
             ->log();
     }
 
-    /**
-     * @param $event
-     */
     public function onPermanentlyDeleted($event)
     {
         history()->withType($this->history_slug)
@@ -99,9 +84,6 @@ class UserEventListener
             ->updateUserLinkAssets();
     }
 
-    /**
-     * @param $event
-     */
     public function onPasswordChanged($event)
     {
         history()->withType($this->history_slug)
@@ -115,9 +97,6 @@ class UserEventListener
             ->log();
     }
 
-    /**
-     * @param $event
-     */
     public function onDeactivated($event)
     {
         history()->withType($this->history_slug)
@@ -131,9 +110,6 @@ class UserEventListener
             ->log();
     }
 
-    /**
-     * @param $event
-     */
     public function onReactivated($event)
     {
         history()->withType($this->history_slug)
@@ -147,9 +123,6 @@ class UserEventListener
             ->log();
     }
 
-    /**
-     * @param $event
-     */
     public function onConfirmed($event)
     {
         history()->withType($this->history_slug)
@@ -163,9 +136,6 @@ class UserEventListener
             ->log();
     }
 
-    /**
-     * @param $event
-     */
     public function onUnconfirmed($event)
     {
         history()->withType($this->history_slug)
@@ -179,9 +149,6 @@ class UserEventListener
             ->log();
     }
 
-    /**
-     * @param $event
-     */
     public function onSocialDeleted($event)
     {
         history()->withType($this->history_slug)
@@ -198,7 +165,7 @@ class UserEventListener
     /**
      * Register the listeners for the subscriber.
      *
-     * @param \Illuminate\Events\Dispatcher $events
+     * @param  \Illuminate\Events\Dispatcher  $events
      */
     public function subscribe($events)
     {

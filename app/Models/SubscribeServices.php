@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SubscribeServices extends Model
 {
-
     use SoftDeletes;
-    protected $table = "subscribe_services";
 
+    protected $table = 'subscribe_services';
 }

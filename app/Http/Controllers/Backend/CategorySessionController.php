@@ -2,32 +2,34 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Category;
-use App\Models\Backend\CategorySessionQuestion;
 use App\Models\Backend\CategorySession;
-use App\Models\Backend\UserLearningPoint;
+use App\Models\Backend\CategorySessionQuestion;
 use App\Models\Backend\CategorySessionQuestionOption;
+use App\Models\Backend\UserLearningPoint;
 use Auth;
+use Illuminate\Http\Request;
 
-class CategorySessionController extends Controller {
-
+class CategorySessionController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($categoryId = null) {
-        $sessions = CategorySession::whereHas('category', function($query) {
-                    $query->where('status', 1)->with('category');
-                });
+    public function index($categoryId = null)
+    {
+        $sessions = CategorySession::whereHas('category', function ($query) {
+            $query->where('status', 1)->with('category');
+        });
         $category = null;
         if ($categoryId > 0) {
             $sessions->where('category_id', $categoryId);
             $category = Category::find($categoryId);
         }
         $sessions = $sessions->latest()->get();
+
         return view('backend.learning_center.session_list', ['sessions' => $sessions, 'category' => $category]);
     }
 
@@ -36,18 +38,20 @@ class CategorySessionController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id) {
+    public function create($id)
+    {
         $category = Category::find($id);
+
         return view('backend.learning_center.session_create', ['category' => $category]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $this->validate($request, [
             'name' => 'required|max:150',
             'description' => 'required',
@@ -57,25 +61,25 @@ class CategorySessionController extends Controller {
         $data = $request->all();
         $catIdExist = Category::find($data['category_id']);
         if ($catIdExist) {
-            $session = new CategorySession();
+            $session = new CategorySession;
             $session->category_id = $data['category_id'];
             $session->name = $data['name'];
             $session->description = $data['description'];
             $session->points = $data['points'];
             if ($session->save()) {
-                $sessionPoints = new UserLearningPoint();
+                $sessionPoints = new UserLearningPoint;
                 $sessionPoints->user_id = Auth::id();
                 $sessionPoints->category_session_id = $session->id;
                 $sessionPoints->points = $session->points;
                 $sessionPoints->save();
                 foreach ($data['questions'] as $question) {
-                    $sessionQuestion = new CategorySessionQuestion();
+                    $sessionQuestion = new CategorySessionQuestion;
                     $sessionQuestion->category_session_id = $session->id;
                     $sessionQuestion->question = $question['question'];
-                    $sessionQuestion->type = config('constant.inverse_session_question_type.' . $question['type']);
+                    $sessionQuestion->type = config('constant.inverse_session_question_type.'.$question['type']);
                     if ($sessionQuestion->save()) {
                         foreach ($question['options'] as $option) {
-                            $sessionQuestionOption = new CategorySessionQuestionOption();
+                            $sessionQuestionOption = new CategorySessionQuestionOption;
                             $sessionQuestionOption->category_session_question_id = $sessionQuestion->id;
                             $sessionQuestionOption->title = $option['title'];
                             if (isset($option['correct_answer'])) {
@@ -85,9 +89,11 @@ class CategorySessionController extends Controller {
                         }
                     }
                 }
+
                 return redirect()->route('admin.categories.index')->with('flash_success', 'Session saved successfully.');
             }
         }
+
         return redirect()->route('backend.categories.create')->with('flash_danger', 'Session not saved.');
     }
 
@@ -97,9 +103,7 @@ class CategorySessionController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
-        
-    }
+    public function show($id) {}
 
     /**
      * Show the form for editing the specified resource.
@@ -107,11 +111,13 @@ class CategorySessionController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) {
+    public function edit($id)
+    {
         if ($id) {
-            $categorySession = CategorySession::where('id', $id)->with(['category', 'questions' => function($q) {
-                            $q->whereHas('options')->with('options');
-                        }])->first();
+            $categorySession = CategorySession::where('id', $id)->with(['category', 'questions' => function ($q) {
+                $q->whereHas('options')->with('options');
+            }])->first();
+
             return view('backend.learning_center.session_create', ['categorySession' => $categorySession]);
         }
     }
@@ -119,11 +125,11 @@ class CategorySessionController extends Controller {
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         //
     }
 
@@ -133,7 +139,8 @@ class CategorySessionController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) {
+    public function destroy($id)
+    {
         if (CategorySession::where('id', $id)->delete()) {
 
             return response()->json(['success' => true, 'message' => 'Session deleted successfully'], 200);
@@ -142,7 +149,8 @@ class CategorySessionController extends Controller {
         return response()->json(['success' => true, 'message' => 'Session Deletion Failed'], 500);
     }
 
-    public function deactivate($id) {
+    public function deactivate($id)
+    {
 
         if ($id) {
             $exist = CategorySession::find($id);
@@ -158,11 +166,13 @@ class CategorySessionController extends Controller {
                     }
                 }
             }
+
             return redirect()->back()->with('flash_success', 'Session activation/deactivation Failed.');
         }
     }
 
-    public function saveSession(Request $request) {
+    public function saveSession(Request $request)
+    {
         $this->validate($request, [
             'name' => 'required|max:150',
             'description' => 'required',
@@ -172,7 +182,7 @@ class CategorySessionController extends Controller {
         $data = $request->all();
         $catIdExist = Category::find($data['category_id']);
         if ($catIdExist) {
-            $session = CategorySession::find($data['id'] ?? 0) ?? new CategorySession();
+            $session = CategorySession::find($data['id'] ?? 0) ?? new CategorySession;
             $session->category_id = $data['category_id'];
             $session->name = $data['name'];
             $session->description = $data['description'];
@@ -180,14 +190,14 @@ class CategorySessionController extends Controller {
             if ($session->save()) {
                 $session->questions()->delete();
                 foreach ($data['questions'] as $question) {
-                    $sessionQuestion = new CategorySessionQuestion();
+                    $sessionQuestion = new CategorySessionQuestion;
                     $sessionQuestion->category_session_id = $session->id;
                     $sessionQuestion->question = $question['question'];
                     $sessionQuestion->type = $question['type'];
                     if ($sessionQuestion->save()) {
                         $sessionQuestion->options()->delete();
                         foreach ($question['options'] as $option) {
-                            $sessionQuestionOption = new CategorySessionQuestionOption();
+                            $sessionQuestionOption = new CategorySessionQuestionOption;
                             $sessionQuestionOption->category_session_question_id = $sessionQuestion->id;
                             $sessionQuestionOption->title = $option['title'];
                             if (isset($option['correct_answer'])) {
@@ -197,10 +207,11 @@ class CategorySessionController extends Controller {
                         }
                     }
                 }
+
                 return response()->json(['status' => true, 'message' => 'Session saved successfully.']);
             }
         }
+
         return response('Fail', 500)->json(['status' => false, 'message' => 'Something went wrong. Please try again']);
     }
-
 }

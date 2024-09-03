@@ -7,33 +7,21 @@ namespace App\Listeners\Frontend\Auth;
  */
 class UserEventListener
 {
-    /**
-     * @param $event
-     */
     public function onLoggedIn($event)
     {
         \Log::info('User Logged In: '.$event->user->full_name);
     }
 
-    /**
-     * @param $event
-     */
     public function onLoggedOut($event)
     {
         \Log::info('User Logged Out: '.$event->user->full_name);
     }
 
-    /**
-     * @param $event
-     */
     public function onRegistered($event)
     {
         \Log::info('User Registered: '.$event->user->full_name);
     }
 
-    /**
-     * @param $event
-     */
     public function onConfirmed($event)
     {
         \Log::info('User Confirmed: '.$event->user->full_name);
@@ -42,7 +30,7 @@ class UserEventListener
     /**
      * Register the listeners for the subscriber.
      *
-     * @param \Illuminate\Events\Dispatcher $events
+     * @param  \Illuminate\Events\Dispatcher  $events
      */
     public function subscribe($events)
     {

@@ -2,14 +2,14 @@
 
 namespace App\Repositories\Backend\Access\Role;
 
-use App\Models\Access\Role\Role;
-use Illuminate\Support\Facades\DB;
-use App\Exceptions\GeneralException;
-use App\Repositories\BaseRepository;
-use Illuminate\Database\Eloquent\Model;
 use App\Events\Backend\Access\Role\RoleCreated;
 use App\Events\Backend\Access\Role\RoleDeleted;
 use App\Events\Backend\Access\Role\RoleUpdated;
+use App\Exceptions\GeneralException;
+use App\Models\Access\Role\Role;
+use App\Repositories\BaseRepository;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class RoleRepository.
@@ -22,9 +22,8 @@ class RoleRepository extends BaseRepository
     const MODEL = Role::class;
 
     /**
-     * @param string $order_by
-     * @param string $sort
-     *
+     * @param  string  $order_by
+     * @param  string  $sort
      * @return mixed
      */
     public function getAll($order_by = 'sort', $sort = 'asc')
@@ -51,11 +50,9 @@ class RoleRepository extends BaseRepository
     }
 
     /**
-     * @param array $input
+     * @return bool
      *
      * @throws GeneralException
-     *
-     * @return bool
      */
     public function create(array $input)
     {
@@ -80,7 +77,7 @@ class RoleRepository extends BaseRepository
 
         DB::transaction(function () use ($input, $all) {
             $role = self::MODEL;
-            $role = new $role();
+            $role = new $role;
             $role->name = $input['name'];
             $role->sort = isset($input['sort']) && strlen($input['sort']) > 0 && is_numeric($input['sort']) ? (int) $input['sort'] : 0;
 
@@ -112,12 +109,9 @@ class RoleRepository extends BaseRepository
     }
 
     /**
-     * @param Model $role
-     * @param  $input
+     * @return bool
      *
      * @throws GeneralException
-     *
-     * @return bool
      */
     public function update(Model $role, array $input)
     {
@@ -179,11 +173,9 @@ class RoleRepository extends BaseRepository
     }
 
     /**
-     * @param Model $role
+     * @return bool
      *
      * @throws GeneralException
-     *
-     * @return bool
      */
     public function delete(Model $role)
     {

@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Blog extends Model
 {
     use SoftDeletes;
-    
-    protected $table = "blogs";
-    
-    public function comments() {
+
+    protected $table = 'blogs';
+
+    public function comments()
+    {
         return $this->hasMany('App\Models\Comment');
     }
 }

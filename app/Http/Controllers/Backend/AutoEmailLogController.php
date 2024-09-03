@@ -3,34 +3,36 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\AutoEmailLog;
+use Illuminate\Http\Request;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-class AutoEmailLogController extends Controller {
-
-    public function autoEmailLogs() {
+class AutoEmailLogController extends Controller
+{
+    public function autoEmailLogs()
+    {
         return view('backend.mail.auto_email_logs');
     }
 
-    public function export(Request $request, $type = null) {
+    public function export(Request $request, $type = null)
+    {
         $records = AutoEmailLog::select('*');
         if ($type == null) {
             $records->whereDate('created_at', '>=', $request->get('start_date'));
             $records->whereDate('created_at', '<=', $request->get('end_date'));
         }
-        $spreadsheet = new Spreadsheet();
+        $spreadsheet = new Spreadsheet;
         $sheet = $spreadsheet->getActiveSheet();
-        $sheet->setCellValue("A1", "S. No.");
-        $sheet->setCellValue("B1", "Name");
-        $sheet->setCellValue("C1", "Email");
-        $sheet->setCellValue("D1", "Phone");
-        $sheet->setCellValue("E1", "Date");
-        $sheet->setCellValue("F1", "Time");
-        $sheet->setCellValue("G1", "Subject");
-        $sheet->setCellValue("H1", "Script");
-        $sheet->setCellValue("I1", "Body");
+        $sheet->setCellValue('A1', 'S. No.');
+        $sheet->setCellValue('B1', 'Name');
+        $sheet->setCellValue('C1', 'Email');
+        $sheet->setCellValue('D1', 'Phone');
+        $sheet->setCellValue('E1', 'Date');
+        $sheet->setCellValue('F1', 'Time');
+        $sheet->setCellValue('G1', 'Subject');
+        $sheet->setCellValue('H1', 'Script');
+        $sheet->setCellValue('I1', 'Body');
         $i = 2;
         foreach ($records->get() as $key => $item) {
             $user = $item->user;
@@ -46,11 +48,10 @@ class AutoEmailLogController extends Controller {
             $i++;
         }
         $writer = new Xlsx($spreadsheet);
-        $fileName = "auto_email_logs_".date('Y-m-d').".xls";
+        $fileName = 'auto_email_logs_'.date('Y-m-d').'.xls';
         header('Content-type: application/vnd.ms-excel');
         header('Content-Disposition: attachment; filename="'.$fileName.'"');
-        $writer->save("php://output");
-        die;
+        $writer->save('php://output');
+        exit;
     }
-
 }

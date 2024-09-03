@@ -1,9 +1,9 @@
 <?php
 
 use Carbon\Carbon;
+use Database\DisableForeignKeys;
 use Database\TruncateTable;
 use Illuminate\Database\Seeder;
-use Database\DisableForeignKeys;
 
 /**
  * Class PermissionTableSeeder.
@@ -31,7 +31,7 @@ class PermissionTableSeeder extends Seeder
          * Misc Access Permissions.
          */
         $permission_model = config('access.permission');
-        $viewBackend = new $permission_model();
+        $viewBackend = new $permission_model;
         $viewBackend->name = 'view-backend';
         $viewBackend->display_name = 'View Backend';
         $viewBackend->created_at = Carbon::now();

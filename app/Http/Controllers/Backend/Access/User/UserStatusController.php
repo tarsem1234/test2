@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
-use App\Models\Access\User\User;
 use App\Http\Controllers\Controller;
-use App\Repositories\Backend\Access\User\UserRepository;
 use App\Http\Requests\Backend\Access\User\ManageUserRequest;
-use App\Models\SaleOffer;
+use App\Models\Access\User\User;
+use App\Models\Property;
 use App\Models\RentOffer;
-use App\Models\Property;  
-
+use App\Models\SaleOffer;
+use App\Repositories\Backend\Access\User\UserRepository;
 
 /**
  * Class UserStatusController.
@@ -21,17 +20,12 @@ class UserStatusController extends Controller
      */
     protected $users;
 
-    /**
-     * @param UserRepository $users
-     */
     public function __construct(UserRepository $users)
     {
         $this->users = $users;
     }
 
     /**
-     * @param ManageUserRequest $request
-     *
      * @return mixed
      */
     public function getDeactivated(ManageUserRequest $request)
@@ -40,8 +34,6 @@ class UserStatusController extends Controller
     }
 
     /**
-     * @param ManageUserRequest $request
-     *
      * @return mixed
      */
     public function getDeleted(ManageUserRequest $request)
@@ -50,90 +42,80 @@ class UserStatusController extends Controller
     }
 
     /**
-     * @param User $user
-     * @param $status
-     * @param ManageUserRequest $request
-     *
      * @return mixed
      */
     public function mark(User $user, $status, ManageUserRequest $request)
     {
-       $rentOffer = RentOffer::where('status',config('constant.inverse_rent_offer_status.accepted'))
-        ->whereHas('property',function($query){
-            $query->where('status',config('constant.inverse_property_status.In Progress'));
-        })
-        ->where(function($query) use ($user){
-            $query->where('owner_id',$user->id)
-            ->orWhere('buyer_id',$user->id)
-            ->orWhere(function($query) use ($user){
-                $query->whereHas('landlordQuestionnaire',function($query) use ($user){
-                    $query->whereIn('partners',[$user->id]);
-                })->orWhereHas('tenantQuestionnaire',function($query) use($user){
-                    $query->whereIn('partners',[$user->id]);
-                });
-            });
-        })
-       ->get();
+        $rentOffer = RentOffer::where('status', config('constant.inverse_rent_offer_status.accepted'))
+            ->whereHas('property', function ($query) {
+                $query->where('status', config('constant.inverse_property_status.In Progress'));
+            })
+            ->where(function ($query) use ($user) {
+                $query->where('owner_id', $user->id)
+                    ->orWhere('buyer_id', $user->id)
+                    ->orWhere(function ($query) use ($user) {
+                        $query->whereHas('landlordQuestionnaire', function ($query) use ($user) {
+                            $query->whereIn('partners', [$user->id]);
+                        })->orWhereHas('tenantQuestionnaire', function ($query) use ($user) {
+                            $query->whereIn('partners', [$user->id]);
+                        });
+                    });
+            })
+            ->get();
 
-       $saleOffer = SaleOffer::where('status',config('constant.inverse_offer_status.accepted'))
-       ->whereHas('property',function($query){
-           $query->where('status',config('constant.inverse_property_status.In Progress'));
-       })
-       ->where(function($query) use ($user){
-           $query->where('owner_id',$user->id)
-           ->orWhere('sender_id',$user->id)
-           ->orWhere(function($query) use ($user){
-               $query->whereHas('sellerQuestionnaire',function($query) use ($user){
-                   $query->whereIn('partners',[$user->id]);
-               })->orWhereHas('buyerQuestionnaire',function($query) use($user){
-                   $query->whereIn('partners',[$user->id]);
-               });
-           });
-       })
-      ->get();
+        $saleOffer = SaleOffer::where('status', config('constant.inverse_offer_status.accepted'))
+            ->whereHas('property', function ($query) {
+                $query->where('status', config('constant.inverse_property_status.In Progress'));
+            })
+            ->where(function ($query) use ($user) {
+                $query->where('owner_id', $user->id)
+                    ->orWhere('sender_id', $user->id)
+                    ->orWhere(function ($query) use ($user) {
+                        $query->whereHas('sellerQuestionnaire', function ($query) use ($user) {
+                            $query->whereIn('partners', [$user->id]);
+                        })->orWhereHas('buyerQuestionnaire', function ($query) use ($user) {
+                            $query->whereIn('partners', [$user->id]);
+                        });
+                    });
+            })
+            ->get();
 
-      // Start transaction
-      \DB::beginTransaction();
-      try{
+        // Start transaction
+        \DB::beginTransaction();
+        try {
 
-      if(!empty($saleOffer)){
-        foreach($saleOffer as $soffer){
-                //update property table
-                Property::where('id',$soffer->property_id)->update(['status'=>config('constant.inverse_property_status.Available')]);
-                //update sale offer
-                SaleOffer::where('id',$soffer->id)->update(['status'=>config('constant.inverse_offer_status.user_deleted')]);
+            if (! empty($saleOffer)) {
+                foreach ($saleOffer as $soffer) {
+                    //update property table
+                    Property::where('id', $soffer->property_id)->update(['status' => config('constant.inverse_property_status.Available')]);
+                    //update sale offer
+                    SaleOffer::where('id', $soffer->id)->update(['status' => config('constant.inverse_offer_status.user_deleted')]);
+                }
+
             }
-            
-        }
 
+            if (! empty($rentOffer)) {
+                foreach ($rentOffer as $roffer) {
+                    Property::where('id', $roffer->property_id)->update(['status' => config('constant.inverse_property_status.Available')]);
+                    //update sale offer
+                    RentOffer::where('id', $roffer->id)->update(['status' => config('constant.inverse_rent_offer_status.user_deleted')]);
 
-        if(!empty($rentOffer)){
-            foreach($rentOffer as $roffer){
-                Property::where('id',$roffer->property_id)->update(['status'=>config('constant.inverse_property_status.Available')]);
-                 //update sale offer
-                 RentOffer::where('id',$roffer->id)->update(['status'=>config('constant.inverse_rent_offer_status.user_deleted')]);
-        
-             }
+                }
             }
 
             $this->users->mark($user, $status);
             \DB::commit();
-           
-      }catch(\Exception $e)
-      {
-          \DB::rollback();
-          return redirect()->back()->withFlashSuccess("Oops Something went wrong!!! Please try again later , user can't deleted");
-      }
+
+        } catch (\Exception $e) {
+            \DB::rollback();
+
+            return redirect()->back()->withFlashSuccess("Oops Something went wrong!!! Please try again later , user can't deleted");
+        }
 
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.updated'));
     }
-        
-   
 
     /**
-     * @param User              $deletedUser
-     * @param ManageUserRequest $request
-     *
      * @return mixed
      */
     public function delete(User $deletedUser, ManageUserRequest $request)
@@ -144,9 +126,6 @@ class UserStatusController extends Controller
     }
 
     /**
-     * @param User              $deletedUser
-     * @param ManageUserRequest $request
-     *
      * @return mixed
      */
     public function restore(User $deletedUser, ManageUserRequest $request)

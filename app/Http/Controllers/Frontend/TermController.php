@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class TermController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -18,5 +16,4 @@ class TermController extends Controller
 
         return view('frontend.terms.index');
     }
-
 }

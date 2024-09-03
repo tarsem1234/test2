@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class DocumentListing extends Model
 {
-
     use SoftDeletes;
-    protected $table = "document_lists";
+
+    protected $table = 'document_lists';
 
     public function state()
     {
-        return $this->belongsTo('App\Models\State','state_id');
+        return $this->belongsTo('App\Models\State', 'state_id');
     }
 }

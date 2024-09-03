@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
-use Request;
-use App\Models\Access\User\User;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\Access\User\ManageUserRequest;
+use App\Models\Access\User\User;
 use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Repositories\Backend\Access\User\UserRepository;
-use App\Http\Requests\Backend\Access\User\ManageUserRequest;
+use Request;
 
 class AdminController extends Controller
 {
     protected $users;
+
     protected $roles;
 
     public function __construct(UserRepository $users, RoleRepository $roles)
@@ -23,10 +24,10 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         $adminUsers = User::whereHas('roles',
-                    function($query) {
-                    $query->where('name', 'Administrator');
-                })
-                ->with('business_profile', 'user_profile')->where('status',1)->get();
+            function ($query) {
+                $query->where('name', 'Administrator');
+            })
+            ->with('business_profile', 'user_profile')->where('status', 1)->get();
 
         return view('backend.access.admin_index', compact('adminUsers'));
     }
@@ -36,7 +37,7 @@ class AdminController extends Controller
         $admin = true;
 
         return view('backend.access.admin_create', compact('admin'))
-                ->withRoles($this->roles->getAll());
+            ->withRoles($this->roles->getAll());
     }
 
     public function store(StoreUserRequest $request)
@@ -48,7 +49,7 @@ class AdminController extends Controller
                     'confirmed', 'confirmation_email'
                 ),
                 'roles' => $request->only('assignees_roles'),
-        ]);
+            ]);
 
         return redirect()->route('admin.access.admin.index')->withFlashSuccess(trans('alerts.backend.users.created'));
     }

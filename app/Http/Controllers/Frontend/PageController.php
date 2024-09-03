@@ -3,25 +3,23 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\DocumentListing;
 use App\Models\Page;
 use App\Models\State;
-use App\Models\DocumentListing;
 
 class PageController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-//    public function index()
-//    {
-//        $pages = Page::latest()->get();
-//
-//        return view('backend.pages.index', ['pages' => $pages]);
-//    }
+    //    public function index()
+    //    {
+    //        $pages = Page::latest()->get();
+    //
+    //        return view('backend.pages.index', ['pages' => $pages]);
+    //    }
 
     public function aboutUs()
     {
@@ -68,38 +66,42 @@ class PageController extends Controller
     public function documentPortal()
     {
         $states = State::with('documents')->paginate(12);
-        return view('frontend.pages.document_portal',compact('states'));
+
+        return view('frontend.pages.document_portal', compact('states'));
     }
+
     public function documentsList($stateId)
     {
-        $documents = DocumentListing::where('state_id',$stateId)->paginate(5);
-        return view('frontend.pages.documents_list',compact('documents'));
+        $documents = DocumentListing::where('state_id', $stateId)->paginate(5);
+
+        return view('frontend.pages.documents_list', compact('documents'));
     }
 
     public function getPage($slug = null)
     {
-        if (!$slug) {
+        if (! $slug) {
             return redirect()->back();
         }
 
-        if ($slug == "about-us") {
+        if ($slug == 'about-us') {
             return $this->aboutUs();
         }
-        if ($slug == "corporate") {
+        if ($slug == 'corporate') {
             return $this->corporate();
         }
-        if ($slug == "help") {
+        if ($slug == 'help') {
             return $this->help();
         }
-        if ($slug == "privacy-policy") {
+        if ($slug == 'privacy-policy') {
             return $this->privacyPolicy();
         }
-        if ($slug == "term-of-use-&-limited-liability") {
+        if ($slug == 'term-of-use-&-limited-liability') {
             return $this->termOfUse();
         }
-        if ($slug == "e-sign-act-disclosure") {
+        if ($slug == 'e-sign-act-disclosure') {
             return $this->eSign();
         }
+
         return redirect()->back();
     }
 }

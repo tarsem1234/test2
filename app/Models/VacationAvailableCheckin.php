@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class VacationAvailableCheckin extends Model
 {
-
     use SoftDeletes;
-    protected $table = "vacation_available_checkin";
+
+    protected $table = 'vacation_available_checkin';
 
     public function vacationProperty()
     {

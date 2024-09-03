@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Backend\Search;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 /**
  * Class SearchController.
@@ -11,8 +11,6 @@ use App\Http\Controllers\Controller;
 class SearchController extends Controller
 {
     /**
-     * @param Request $request
-     *
      * @return mixed
      */
     public function index(Request $request)

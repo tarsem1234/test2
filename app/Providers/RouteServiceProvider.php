@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use App\Models\Access\User\User;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 /**
  * Class RouteServiceProvider.
@@ -36,7 +36,7 @@ class RouteServiceProvider extends ServiceProvider
          * On a model by model basis
          */
         $this->bind('deletedUser', function ($value) {
-            $user = new User();
+            $user = new User;
 
             return User::withTrashed()->where($user->getRouteKeyName(), $value)->first();
         });
@@ -68,8 +68,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapWebRoutes()
     {
         Route::middleware('web')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/web.php'));
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web.php'));
     }
 
     /**
@@ -82,8 +82,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes()
     {
         Route::prefix('api')
-             ->middleware('api')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/api.php'));
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
     }
 }

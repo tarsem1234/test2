@@ -7,7 +7,6 @@ use Illuminate\Validation\Rule;
 
 class RegisterRequest extends Request
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -37,16 +36,16 @@ class RegisterRequest extends Request
             'city' => 'required',
             'zip_code' => 'required',
             'phone_no' => 'required',
-            'g-recaptcha-response'=>'required',
-            'captcha_status'=>'required',
+            'g-recaptcha-response' => 'required',
+            'captcha_status' => 'required',
         ];
         if ($this->savedTime && $this->code) {
             $rules += [
-                'email' => 'required|email'
+                'email' => 'required|email',
             ];
         } else {
             $rules += [
-                'email' => 'required|email|unique:users'
+                'email' => 'required|email|unique:users',
             ];
         }
         if ($this->user_type == config('constant.user_type.3')) {
@@ -59,8 +58,8 @@ class RegisterRequest extends Request
                 'first_name' => 'required|max:50',
                 'last_name' => 'required|max:50',
                 'electronic_signature' => 'required',
-                'g-recaptcha-response'=>'required',
-                'captcha_status'=>'required',
+                'g-recaptcha-response' => 'required',
+                'captcha_status' => 'required',
             ];
         }
         if ($this->user_type == config('constant.user_type.2')) {
@@ -71,19 +70,20 @@ class RegisterRequest extends Request
                 'industry' => 'required',
                 'services' => 'required',
                 'area_of_service' => 'required',
-                'g-recaptcha-response'=>'required',
-                'captcha_status'=>'required',
+                'g-recaptcha-response' => 'required',
+                'captcha_status' => 'required',
             ];
         }
-//dd($rules);
+
+        //dd($rules);
         return $rules;
     }
 
     public function messages()
     {
         return [
-//            'g-recaptcha-response.required_if' => trans('validation.required',
-//                ['attribute' => 'captcha']),
+            //            'g-recaptcha-response.required_if' => trans('validation.required',
+            //                ['attribute' => 'captcha']),
         ];
     }
 }

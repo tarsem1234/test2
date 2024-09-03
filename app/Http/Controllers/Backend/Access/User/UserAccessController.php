@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
-use App\Helpers\Auth\Auth;
-use App\Models\Access\User\User;
 use App\Exceptions\GeneralException;
+use App\Helpers\Auth\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Access\User\ManageUserRequest;
+use App\Models\Access\User\User;
 
 /**
  * Class UserAccessController.
@@ -14,12 +14,9 @@ use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 class UserAccessController extends Controller
 {
     /**
-     * @param User              $user
-     * @param ManageUserRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      *
      * @throws GeneralException
-     *
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function loginAs(User $user, ManageUserRequest $request)
     {

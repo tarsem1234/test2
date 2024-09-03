@@ -7,7 +7,6 @@ use App\Models\Blog;
 
 class BlogController extends Controller
 {
-
     public function index()
     {
         $blogs = Blog::latest()->paginate(8);
@@ -18,17 +17,17 @@ class BlogController extends Controller
     public function show($slug)
     {
         if ($slug) {
-            $blog = Blog::where('slug', $slug)->with(['comments' => function($query) {
-                            $query->
-                                    where('status', config('constant.blog_comment.approved'))->latest()->with(['user' => function($subQuery) {
-                                    $subQuery->with('user_profile', 'business_profile');
-                                }]);
-                        }])->first();
+            $blog = Blog::where('slug', $slug)->with(['comments' => function ($query) {
+                $query->
+                        where('status', config('constant.blog_comment.approved'))->latest()->with(['user' => function ($subQuery) {
+                            $subQuery->with('user_profile', 'business_profile');
+                        }]);
+            }])->first();
             if ($blog) {
                 return view('frontend.blog.single', compact('blog'));
             }
+
             return redirect()->back()->withFlashDanger('Invalid Blog');
         }
     }
-
 }

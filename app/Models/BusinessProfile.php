@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class BusinessProfile extends Model
 {
-
     use SoftDeletes;
-    protected $table = "business_profiles";
+
+    protected $table = 'business_profiles';
 
     protected $fillable = ['industry_id', 'company_name', 'user_id'];
 
@@ -20,6 +20,6 @@ class BusinessProfile extends Model
 
     public function industry()
     {
-        return $this->belongsTo('App\Models\Industry','industry_id');
+        return $this->belongsTo('App\Models\Industry', 'industry_id');
     }
 }

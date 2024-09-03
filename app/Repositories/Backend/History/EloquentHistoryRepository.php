@@ -2,23 +2,17 @@
 
 namespace App\Repositories\Backend\History;
 
+use App\Exceptions\GeneralException;
 use App\Models\History\History;
 use App\Models\History\HistoryType;
-use App\Exceptions\GeneralException;
 
 /**
  * Class EloquentHistoryRepository.
  */
 class EloquentHistoryRepository implements HistoryContract
 {
-    /**
-     * @var
-     */
     public $type;
 
-    /**
-     * @var
-     */
     public $text;
 
     /**
@@ -51,9 +45,8 @@ class EloquentHistoryRepository implements HistoryContract
     private $paginationType = 'simplePaginate';
 
     /**
-     * @param $type
-     *
      * @return $this
+     *
      * @throws GeneralException
      */
     public function withType($type)
@@ -73,9 +66,8 @@ class EloquentHistoryRepository implements HistoryContract
     }
 
     /**
-     * @param $text
-     *
      * @return $this
+     *
      * @throws GeneralException
      */
     public function withText($text)
@@ -90,8 +82,6 @@ class EloquentHistoryRepository implements HistoryContract
     }
 
     /**
-     * @param $entity_id
-     *
      * @return $this
      */
     public function withEntity($entity_id)
@@ -102,8 +92,6 @@ class EloquentHistoryRepository implements HistoryContract
     }
 
     /**
-     * @param $icon
-     *
      * @return $this
      */
     public function withIcon($icon)
@@ -114,8 +102,6 @@ class EloquentHistoryRepository implements HistoryContract
     }
 
     /**
-     * @param $class
-     *
      * @return $this
      */
     public function withClass($class)
@@ -126,8 +112,6 @@ class EloquentHistoryRepository implements HistoryContract
     }
 
     /**
-     * @param $assets
-     *
      * @return $this
      */
     public function withAssets($assets)
@@ -143,13 +127,13 @@ class EloquentHistoryRepository implements HistoryContract
     public function log()
     {
         return History::create([
-            'type_id'   => $this->type->id,
-            'user_id'   => access()->id(),
+            'type_id' => $this->type->id,
+            'user_id' => access()->id(),
             'entity_id' => $this->entity_id,
-            'icon'      => $this->icon,
-            'class'     => $this->class,
-            'text'      => $this->text,
-            'assets'    => $this->assets,
+            'icon' => $this->icon,
+            'class' => $this->class,
+            'text' => $this->text,
+            'assets' => $this->assets,
         ]);
     }
 
@@ -166,10 +150,9 @@ class EloquentHistoryRepository implements HistoryContract
     }
 
     /**
-     * @param null $limit
-     * @param bool $paginate
-     * @param int  $pagination
-     *
+     * @param  null  $limit
+     * @param  bool  $paginate
+     * @param  int  $pagination
      * @return string|\Symfony\Component\Translation\TranslatorInterface
      */
     public function render($limit = null, $paginate = true, $pagination = 10)
@@ -184,11 +167,9 @@ class EloquentHistoryRepository implements HistoryContract
     }
 
     /**
-     * @param $type
-     * @param null $limit
-     * @param bool $paginate
-     * @param int  $pagination
-     *
+     * @param  null  $limit
+     * @param  bool  $paginate
+     * @param  int  $pagination
      * @return string|\Symfony\Component\Translation\TranslatorInterface
      */
     public function renderType($type, $limit = null, $paginate = true, $pagination = 10)
@@ -204,12 +185,9 @@ class EloquentHistoryRepository implements HistoryContract
     }
 
     /**
-     * @param $type
-     * @param $entity_id
-     * @param null $limit
-     * @param bool $paginate
-     * @param int  $pagination
-     *
+     * @param  null  $limit
+     * @param  bool  $paginate
+     * @param  int  $pagination
      * @return string|\Symfony\Component\Translation\TranslatorInterface
      */
     public function renderEntity($type, $entity_id, $limit = null, $paginate = true, $pagination = 10)
@@ -225,9 +203,7 @@ class EloquentHistoryRepository implements HistoryContract
     }
 
     /**
-     * @param $text
-     * @param bool $assets
-     *
+     * @param  bool  $assets
      * @return mixed|string
      */
     public function renderDescription($text, $assets = false)
@@ -247,30 +223,30 @@ class EloquentHistoryRepository implements HistoryContract
                             switch (count($values)) {
                                 case 1:
                                     $text = str_replace('{'.$key.'}', link_to_route($values[0], $values[0]), $text);
-                                break;
+                                    break;
 
                                 case 2:
                                     $text = str_replace('{'.$key.'}', link_to_route($values[0], $values[1]), $text);
-                                break;
+                                    break;
 
                                 case 3:
                                     $text = str_replace('{'.$key.'}', link_to_route($values[0], $values[1], $values[2]), $text);
-                                break;
+                                    break;
 
                                 case 4:
                                     $text = str_replace('{'.$key.'}', link_to_route($values[0], $values[1], $values[2], $values[3]), $text);
-                                break;
+                                    break;
                             }
                         } else {
                             //Normal url
                             $text = str_replace('{'.$key.'}', link_to($values, $values), $text);
                         }
 
-                    break;
+                        break;
 
                     case 'string':
                         $text = str_replace('{'.$key.'}', $values, $text);
-                    break;
+                        break;
                 }
 
                 $count++;
@@ -289,9 +265,7 @@ class EloquentHistoryRepository implements HistoryContract
     }
 
     /**
-     * @param $history
-     * @param bool $paginate
-     *
+     * @param  bool  $paginate
      * @return string
      */
     public function buildList($history, $paginate = true)
@@ -301,11 +275,6 @@ class EloquentHistoryRepository implements HistoryContract
     }
 
     /**
-     * @param $query
-     * @param $limit
-     * @param $paginate
-     * @param $pagination
-     *
      * @return mixed
      */
     public function buildPagination($query, $limit, $paginate, $pagination)
@@ -322,9 +291,6 @@ class EloquentHistoryRepository implements HistoryContract
     }
 
     /**
-     * @param $query
-     * @param $type
-     *
      * @return mixed
      */
     private function checkType($query, $type)

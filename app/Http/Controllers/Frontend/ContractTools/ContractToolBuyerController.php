@@ -3,57 +3,54 @@
 namespace App\Http\Controllers\Frontend\ContractTools;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Requests\Frontend\BuyerQuestionnaireRequest;
-use App\Http\Requests\Frontend\QuestionsSellerPostClosingRequest;
-use App\Http\Requests\Frontend\PropertyConditionDisclaimerRequest;
-use App\Models\Signer;
-use App\Models\SellerQuestionnaire;
-use App\Models\LeadBasedPaintHazards;
-use App\Models\Property;
-use App\Models\PropertyConditionDisclaimer;
-use App\Models\SaleOffer;
-use App\Models\RentOffer;
-use App\Models\UpdateSaleAgreementBysellerContract;
-use App\Models\BuyerQuestionnaire;
-use App\Models\QuestionSellerPostClosing;
-use App\Models\Access\User\User;
-use App\Models\Signature;
 use App\Mail\Frontend\SaleAgreementLandlordMailing;
-use App\Services\EmailLogService;
-use Session;
-use Auth;
-use Mail;
-use Carbon\Carbon;
+use App\Models\Access\User\User;
+use App\Models\BuyerQuestionnaire;
+use App\Models\Property;
 use App\Models\PropertyConditionalData;
+use App\Models\QuestionSellerPostClosing;
+use App\Models\SaleOffer;
+use App\Models\SellerQuestionnaire;
+use App\Models\Signature;
+use App\Models\Signer;
+use App\Models\UpdateSaleAgreementBysellerContract;
+use App\Services\EmailLogService;
+use Auth;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Mail;
+use Session;
 
-class ContractToolBuyerController extends Controller {
-
-    public function questionSetForBuyer() {
+class ContractToolBuyerController extends Controller
+{
+    public function questionSetForBuyer()
+    {
         $signers = Signer::where('from_user_id', Auth::id())->whereHas('invited_users')->with('invited_users')->get();
 
         $offerSession = Session::get('OFFER');
 
         $buyerQuestionnaire = BuyerQuestionnaire::where('offer_id', $offerSession['offer_id'])
-                        ->where('user_id', Auth::id())->first();
+            ->where('user_id', Auth::id())->first();
 
         return view('frontend.contract_tools.sale.buyer.question_set_for_buyer', compact('signers', 'buyerQuestionnaire'));
     }
 
-    public function storeQuestionSetForBuyer(BuyerQuestionnaireRequest $request, $id = NULL) {
+    public function storeQuestionSetForBuyer(BuyerQuestionnaireRequest $request, $id = null)
+    {
         $offerArray = Session::get('OFFER');
         $data = $request->all();
         $buyerQuestion = BuyerQuestionnaire::where('offer_id', $offerArray['offer_id'])
-                        ->where('user_id', Auth::id())->first();
+            ->where('user_id', Auth::id())->first();
 
-        if (!empty($buyerQuestion)) {
+        if (! empty($buyerQuestion)) {
             return $this->_updateQuestionSetForBuyer($data, $buyerQuestion->id);
-        } elseif (empty($buyerQuestion) && $id != NULL) {
+        } elseif (empty($buyerQuestion) && $id != null) {
             return redirect()->back()->withFlashDanger('Invalid Offer.');
         }
 
-        $buyerQuestionnaire = new BuyerQuestionnaire();
+        $buyerQuestionnaire = new BuyerQuestionnaire;
 
         $buyerQuestionnaire->offer_id = $offerArray['offer_id'];
         $buyerQuestionnaire->user_id = Auth::id();
@@ -63,25 +60,24 @@ class ContractToolBuyerController extends Controller {
         $buyerQuestionnaire->joint_cowners = $data['add_signer'];
 
         if ($data['addendum'] == config('constant.inverse_common_yes_no.Yes')) {
-            $formattedDate = str_replace("/", "-", $data['close_date']);
+            $formattedDate = str_replace('/', '-', $data['close_date']);
 
             $buyerQuestionnaire->close_date = date('Y-m-d', strtotime($formattedDate));
         }
         if ($data['set_specific_date'] == config('constant.inverse_common_yes_no.Yes')) {
-            $formattedDate = str_replace("/", "-", $data['date_of_expiry']);
+            $formattedDate = str_replace('/', '-', $data['date_of_expiry']);
 
             $buyerQuestionnaire->date_of_expiry = date('Y-m-d', strtotime($formattedDate));
         }
 
         if ($data['add_signer'] == config('constant.inverse_common_yes_no.Yes')) {
             if (isset($data['select-email']) && count($data['select-email']) > 1) {
-                $emailIds = implode(",", $data['select-email']);
+                $emailIds = implode(',', $data['select-email']);
                 $buyerQuestionnaire->partners = $emailIds;
             } else {
                 $buyerQuestionnaire->partners = $data['select-email'][0];
             }
-        }
-        else{
+        } else {
             $buyerQuestionnaire->partners = null;
         }
         if ($buyerQuestionnaire->save()) {
@@ -91,7 +87,8 @@ class ContractToolBuyerController extends Controller {
         return redirect()->back()->withFlashDanger('Failed to update your answers. Please try again.');
     }
 
-    private function _updateQuestionSetForBuyer($data, $id) {
+    private function _updateQuestionSetForBuyer($data, $id)
+    {
         $buyerQuestionnaire['using_VA_or_FHA'] = $data['using_VA_or_FHA'];
         $buyerQuestionnaire['set_specific_date'] = $data['set_specific_date'];
         $buyerQuestionnaire['addendum'] = $data['addendum'];
@@ -105,7 +102,7 @@ class ContractToolBuyerController extends Controller {
         }
         if ($data['add_signer'] == config('constant.inverse_common_yes_no.Yes')) {
             if (isset($data['select-email']) && count($data['select-email']) > 1) {
-                $emailIds = implode(",", $data['select-email']);
+                $emailIds = implode(',', $data['select-email']);
                 $buyerQuestionnaire['partners'] = $emailIds;
             } else {
                 $buyerQuestionnaire['partners'] = $data['select-email'][0];
@@ -120,48 +117,55 @@ class ContractToolBuyerController extends Controller {
         return redirect()->back()->withFlashDanger('Failed to update your answers. Please try again.');
     }
 
-    public function thankYouToBuyerForAnswer() {
+    public function thankYouToBuyerForAnswer()
+    {
         return view('frontend.contract_tools.sale.buyer.thank_you_to_buyer_for_answer');
     }
 
-    public function summaryKeyTermsForBuyer() {
+    public function summaryKeyTermsForBuyer()
+    {
         $offerArray = Session::get('OFFER');
 
         if ($offerArray['type'] == config('constant.inverse_property_type.Sale')) {
             $offer = SaleOffer::where('id', $offerArray['offer_id'])
-                            ->with(['property.architechture', 'property.propertyConditionDisclaimer' => function($propertyCondDis) {
-                                    $propertyCondDis->select('best_knowledge_explain', 'partb_details', 'partc_details');
-                                }, 'sellerQuestionnaire', 'buyerQuestionnaire', 'seller' => function($sellerQuery) {
-                                    $sellerQuery->with('user_profile', 'business_profile');
-                                }, 'buyer' => function($buyerQuery) {
-                                    $buyerQuery->with('user_profile', 'business_profile');
-                                }, 'sale_counter_offers' => function($query) {
-                                    $query->latest();
-                                }, 'saleAgreement'])->first();
+                ->with(['property.architechture', 'property.propertyConditionDisclaimer' => function ($propertyCondDis) {
+                    $propertyCondDis->select('best_knowledge_explain', 'partb_details', 'partc_details');
+                }, 'sellerQuestionnaire', 'buyerQuestionnaire', 'seller' => function ($sellerQuery) {
+                    $sellerQuery->with('user_profile', 'business_profile');
+                }, 'buyer' => function ($buyerQuery) {
+                    $buyerQuery->with('user_profile', 'business_profile');
+                }, 'sale_counter_offers' => function ($query) {
+                    $query->latest();
+                }, 'saleAgreement'])->first();
         }
+
         return view('frontend.contract_tools.sale.buyer.summary_key_terms_for_buyer', compact('offer'));
     }
 
-    public function advisoryToBuyersAndSellers() {
+    public function advisoryToBuyersAndSellers()
+    {
         $offerArray = Session::get('OFFER');
         if ($offerArray['type'] == config('constant.inverse_property_type.Sale')) {
             $offer = SaleOffer::where('id', $offerArray['offer_id'])
-                            ->with(['buyer.user_profile', 'buyer.business_profile', 'seller.user_profile',
-				'seller.business_profile', 'property'=>function($query){
-				 $query->withTrashed();
-				}])->first();
+                ->with(['buyer.user_profile', 'buyer.business_profile', 'seller.user_profile',
+                    'seller.business_profile', 'property' => function ($query) {
+                        $query->withTrashed();
+                    }])->first();
         }
-//        if ($offer->property->architechture->year_built < config('constant.year_built')) {
-//            return view('frontend.contract_tools.lead_based_paint_hazards');
-//        }
+
+        //        if ($offer->property->architechture->year_built < config('constant.year_built')) {
+        //            return view('frontend.contract_tools.lead_based_paint_hazards');
+        //        }
         return view('frontend.contract_tools.sale.buyer.advisory_to_buyers_and_sellers', compact('offer'));
     }
 
-    public function advisoryToBuyersAndSellersThankYouBuyer() {
+    public function advisoryToBuyersAndSellersThankYouBuyer()
+    {
         return view('frontend.contract_tools.sale.buyer.advisory_to_buyers_and_sellers_thank_you_buyer');
     }
 
-    public function vaThankYouForBuyer() {
+    public function vaThankYouForBuyer()
+    {
         $propertyId = Session::get('PROPERTY');
         $property = Property::where('id', $propertyId)->with('architechture')->withTrashed()->first();
         if ($property->architechture['year_built'] < config('constant.year_built')) {
@@ -171,52 +175,62 @@ class ContractToolBuyerController extends Controller {
         return redirect()->route('frontend.checkVaFhaBuyer');
     }
 
-    public function checkVaFhaBuyer() {
+    public function checkVaFhaBuyer()
+    {
         $offerData = Session::get('OFFER');
         $buyerQues = BuyerQuestionnaire::where('offer_id', $offerData['offer_id'])->first();
         if ($buyerQues->using_VA_or_FHA == 1) {
             return view('frontend.contract_tools.sale.buyer.thankyou_pd_buyer');
         }
+
         return redirect()->route('frontend.checkPostClosing');
     }
 
-    public function thankYouLeadBasedBuyer() {
+    public function thankYouLeadBasedBuyer()
+    {
         return view('frontend.contract_tools.thank_you_lead_based_buyer');
     }
 
-    public function checkPostClosing() {
+    public function checkPostClosing()
+    {
         $offerData = Session::get('OFFER');
         $postClosingQuestion = QuestionSellerPostClosing::where('offer_id', $offerData['offer_id'])->first();
-//        dd($postClosingQuestion);
-        if (!empty($postClosingQuestion->show_post_closing) && $postClosingQuestion->show_post_closing == config('constant.show_post_closing_form.No')) {
+        //        dd($postClosingQuestion);
+        if (! empty($postClosingQuestion->show_post_closing) && $postClosingQuestion->show_post_closing == config('constant.show_post_closing_form.No')) {
             return view('frontend.contract_tools.sale.buyer.va_fha_thank_you_for_buyer');
         }
+
         return view('frontend.contract_tools.sale.buyer.va_thank_you_for_buyer');
     }
 
-    public function leadBasedPaintHazardsBuyer($id = null) {
+    public function leadBasedPaintHazardsBuyer($id = null)
+    {
         $offerData = Session::get('OFFER');
-        if($id && Property::where('id', $id)->where('user_id', Auth::id())->where('property_type', 1)->withTrashed()) {
+        if ($id && Property::where('id', $id)->where('user_id', Auth::id())->where('property_type', 1)->withTrashed()) {
             $property = true;
             $offer = Property::where('id', $id)
-                    ->select('id', 'lead_based', 'lead_based_report', 'user_id')
-		    ->withTrashed()
-                    ->first();
+                ->select('id', 'lead_based', 'lead_based_report', 'user_id')
+                ->withTrashed()
+                ->first();
+
             return view('frontend.contract_tools.lead_based_paint_hazards_buyer', compact('offer', 'property'));
         } elseif (Session::get('PROPERTY') && Property::where('id', Session::get('PROPERTY'))
-                        ->where('user_id', Auth::id())
-                        ->where('property_type', 2)->withTrashed()) {
+            ->where('user_id', Auth::id())
+            ->where('property_type', 2)->withTrashed()) {
             $offer = SaleOffer::where('id', $offerData['offer_id'])
-                            ->with(['property' => function($query) {
-                                    $query->select('id', 'lead_based', 'lead_based_report', 'user_id');
-				    $query->withTrashed();
-                                }])->first();
+                ->with(['property' => function ($query) {
+                    $query->select('id', 'lead_based', 'lead_based_report', 'user_id');
+                    $query->withTrashed();
+                }])->first();
+
             return view('frontend.contract_tools.lead_based_paint_hazards_buyer', compact('offer'));
         }
+
         return redirect()->back()->with(['flash_danger' => 'Something went wrong']);
     }
 
-    public function saveLeadBasedPaintHazardsBuyer(Request $request) {
+    public function saveLeadBasedPaintHazardsBuyer(Request $request)
+    {
         $epa = [1, 2];
         $this->validate($request, [
             'opportunity' => [
@@ -237,18 +251,20 @@ class ContractToolBuyerController extends Controller {
 
             return redirect()->route('frontend.thankyouPdBuyer');
         }
+
         return redirect()->back();
     }
 
-    public function postClosingOccupancyAgreementByBuyer() {
+    public function postClosingOccupancyAgreementByBuyer()
+    {
         $offerData = Session::get('OFFER');
         $savedQuestionSellerPostClosing = QuestionSellerPostClosing::where('offer_id', $offerData['offer_id'])
-                        ->with('saleOffer')->first();
+            ->with('saleOffer')->first();
 
         $sellerQuestionnaire = SellerQuestionnaire::where('offer_id', $offerData['offer_id'])
-                        ->with(['saleOffer.seller.user_profile', 'saleOffer.seller.business_profile',
-                            'saleOffer.buyer.user_profile', 'saleOffer.buyer.business_profile',
-                            'saleOffer.property'])->first();
+            ->with(['saleOffer.seller.user_profile', 'saleOffer.seller.business_profile',
+                'saleOffer.buyer.user_profile', 'saleOffer.buyer.business_profile',
+                'saleOffer.property'])->first();
         $currentDate = date('Y-m-d');
         $days = null;
         $currentMortgage = null;
@@ -259,49 +275,55 @@ class ContractToolBuyerController extends Controller {
         if ($savedQuestionSellerPostClosing) {
             $currentMortgage = $savedQuestionSellerPostClosing->current_mortgage / 30;
         }
+
         return view('frontend.contract_tools.sale.buyer.post_closing_occupancy_agreement_by_buyer', compact('savedQuestionSellerPostClosing', 'sellerQuestionnaire', 'days', 'currentMortgage'));
     }
 
-    public function postClosingThankyouByBuyer() {
+    public function postClosingThankyouByBuyer()
+    {
         return view('frontend.contract_tools.sale.buyer.post_closing_thankyou_by_buyer');
     }
 
-    public function updateSaleAgreementBybuyer() {
+    public function updateSaleAgreementBybuyer()
+    {
         Session::forget('leadBased');
         $offerArray = Session::get('OFFER');
 
         if ($offerArray['type'] == config('constant.inverse_property_type.Sale')) {
             $offer = SaleOffer::where('id', $offerArray['offer_id'])
-                            ->with(['property.propertyConditionDisclaimer' => function($propertyCondDis) {
-                                    $propertyCondDis->select('best_knowledge_explain', 'partb_details', 'partc_details');
-                                }, 'sellerQuestionnaire', 'buyerQuestionnaire', 'seller' => function($sellerQuery) {
-                                    $sellerQuery->with('user_profile', 'business_profile');
-                                }, 'buyer' => function($buyerQuery) {
-                                    $buyerQuery->with('user_profile', 'business_profile');
-                                }, 'sale_counter_offers' => function($query) {
-                                    $query->latest();
-                                }, 'saleAgreement'])->first();
+                ->with(['property.propertyConditionDisclaimer' => function ($propertyCondDis) {
+                    $propertyCondDis->select('best_knowledge_explain', 'partb_details', 'partc_details');
+                }, 'sellerQuestionnaire', 'buyerQuestionnaire', 'seller' => function ($sellerQuery) {
+                    $sellerQuery->with('user_profile', 'business_profile');
+                }, 'buyer' => function ($buyerQuery) {
+                    $buyerQuery->with('user_profile', 'business_profile');
+                }, 'sale_counter_offers' => function ($query) {
+                    $query->latest();
+                }, 'saleAgreement'])->first();
+
             return view('frontend.contract_tools.sale.buyer.update_sale_agreement_by_buyer', compact('offer'));
         }
+
         return redirect()->back();
     }
 
-    public function purchaseAgreementByBuyer() {
+    public function purchaseAgreementByBuyer()
+    {
         return view('frontend.contract_tools.sale.buyer.va_thank_you_for_buyer');
     }
 
-    public function thankyouPurchaseAgreementByBuyer() {
+    public function thankyouPurchaseAgreementByBuyer()
+    {
         $input['buyer_contract_tool_status'] = 1;
         UpdateSaleAgreementBysellerContract::where('offer_id', Session::get('OFFER.offer_id'))->update($input);
-
 
         $offerArray = Session::get('OFFER');
         $offer = SaleOffer::where('id', $offerArray['offer_id'])->first();
         $signature = Signature::where('user_id', Auth::id())
-                ->where('offer_id', $offerArray['offer_id'])
-                ->where('affix_status', 1)
-                ->first();
-        if (!empty($signature)) {
+            ->where('offer_id', $offerArray['offer_id'])
+            ->where('affix_status', 1)
+            ->first();
+        if (! empty($signature)) {
             $UserProfile = getOfferPartnerProfile($offer->seller, $offerArray['offer_id']);
             $userName = $UserProfile->signature['fullname'];
 
@@ -313,44 +335,47 @@ class ContractToolBuyerController extends Controller {
         }
 
         $to = $offer->seller->email;
-        $emailSubject = "Freezylist : Submitted the Sale Agreement by buyer";
+        $emailSubject = 'Freezylist : Submitted the Sale Agreement by buyer';
 
-        $emailBody = "Hello" . $userName . ", " . $sender . " submitted the sale agreement. Contracts are completed and ready to sign.";
-        $view = "frontend.offer.buyer_sale_agreement_mail";
+        $emailBody = 'Hello'.$userName.', '.$sender.' submitted the sale agreement. Contracts are completed and ready to sign.';
+        $view = 'frontend.offer.buyer_sale_agreement_mail';
         $emailLinks = $this->_generateEmailLink($offer);
 
         Mail::send(new SaleAgreementLandlordMailing($to, $userName, $sender, $emailSubject, $emailBody, $emailLinks['viewOfferLink'], $emailLinks['propertyLink'], $view));
 
-        $saveLog = new EmailLogService();
-        $saveLog->saveLog($offer->property->id, $offer->sender_id, $offer->owner_id, $emailSubject, $emailBody, config('constant.property_type.' . $offer->property->property_type), url()->previous());
+        $saveLog = new EmailLogService;
+        $saveLog->saveLog($offer->property->id, $offer->sender_id, $offer->owner_id, $emailSubject, $emailBody, config('constant.property_type.'.$offer->property->property_type), url()->previous());
 
         return view('frontend.contract_tools.sale.buyer.thankyou_purchase_agreement_by_buyer');
     }
 
-    private function _generateEmailLink($offer) {
+    private function _generateEmailLink($offer)
+    {
         $viewOfferLink = route('frontend.sent.view.offer', ['offer_id' => $offer->id,
             'type' => $offer->property->property_type,
             'property_id' => $offer->property->id,
             'owner_id' => $offer->owner_id]);
         $propertyLink = route('frontend.propertyDetails', $offer->property->id);
+
         return ['propertyLink' => $propertyLink, 'viewOfferLink' => $viewOfferLink];
     }
 
-    public function disclosureByBuyerUpdate($id = null) {
+    public function disclosureByBuyerUpdate($id = null)
+    {
         $propertyData = Session::get('PROPERTY');
 
-        if (!$propertyData && !$id) {
+        if (! $propertyData && ! $id) {
             return redirect()->route('frontend.sent.offers');
         }
         if (isset($propertyData) && $propertyData) {
             $property = Property::where('id', $propertyData)
-                            ->with('architechture', 'disclosure')->withTrashed()->first();
+                ->with('architechture', 'disclosure')->withTrashed()->first();
         }
 
         if ($id) {
             $property = Property::where('id', $id)
-                            ->where('user_id', Auth::id())
-                            ->with('architechture', 'disclosure')->withTrashed()->first();
+                ->where('user_id', Auth::id())
+                ->with('architechture', 'disclosure')->withTrashed()->first();
         }
         $diffInYears = null;
         if (isset($property)) {
@@ -360,10 +385,12 @@ class ContractToolBuyerController extends Controller {
 
             return view('frontend.contract_tools.sale.buyer.disclosure_by_buyer_update', compact('diffInYears', 'property'));
         }
+
         return view('frontend.contract_tools.sale.buyer.disclosure_by_buyer_update');
     }
 
-    public function thankyouPdBuyer() {
+    public function thankyouPdBuyer()
+    {
         $offerData = Session::get('OFFER');
         $buyerQuestionnaire = BuyerQuestionnaire::where('offer_id', $offerData['offer_id'])->first();
         $postClosingQuestion = QuestionSellerPostClosing::where('offer_id', $offerData['offer_id'])->first();
@@ -371,30 +398,33 @@ class ContractToolBuyerController extends Controller {
         if ($buyerQuestionnaire->using_VA_or_FHA == 1) {
             return view('frontend.contract_tools.sale.buyer.thankyou_pd_buyer');
         }
-        if (!empty($postClosingQuestion->show_post_closing) && $postClosingQuestion->show_post_closing == config('constant.show_post_closing_form.No')) {
+        if (! empty($postClosingQuestion->show_post_closing) && $postClosingQuestion->show_post_closing == config('constant.show_post_closing_form.No')) {
             return view('frontend.contract_tools.sale.buyer.va_fha_thank_you_for_buyer');
         }
+
         return view('frontend.contract_tools.sale.buyer.va_thank_you_for_buyer');
     }
 
-    public function vaFhaloanAddendumByBuyer() {
+    public function vaFhaloanAddendumByBuyer()
+    {
         $offerArray = Session::get('OFFER');
 
         if ($offerArray['type'] == config('constant.inverse_property_type.Sale')) {
             $offer = SaleOffer::where('id', $offerArray['offer_id'])
-                            ->with(['buyer', 'seller', 'buyerQuestionnaire',
-				'property'=>function($query){
-				 $query->withTrashed();
-				}, 'signatures' => function($query) use($offerArray) {
-                                    $query->where('offer_id', $offerArray['offer_id'])
-                                    ->where('signature_type', config('constant.inverse_signature_type.VA FHA loan addendum'));
-                                }])->first();
+                ->with(['buyer', 'seller', 'buyerQuestionnaire',
+                    'property' => function ($query) {
+                        $query->withTrashed();
+                    }, 'signatures' => function ($query) use ($offerArray) {
+                        $query->where('offer_id', $offerArray['offer_id'])
+                            ->where('signature_type', config('constant.inverse_signature_type.VA FHA loan addendum'));
+                    }])->first();
         }
 
         return view('frontend.contract_tools.sale.buyer.VA_FHA_loan_addendum_by_buyer', compact('offer'));
     }
 
-    public function sdThankYouBuyerNecessaryForms() {
+    public function sdThankYouBuyerNecessaryForms()
+    {
         $offerData = Session::get('OFFER');
         $buyerQues = BuyerQuestionnaire::where('offer_id', $offerData['offer_id'])->first();
         if ($buyerQues->using_VA_or_FHA == 1) {
@@ -404,43 +434,49 @@ class ContractToolBuyerController extends Controller {
         return redirect()->route('frontend.sdCheckSignaturePostClosingBuyer');
     }
 
-    public function sdCheckSignaturePostClosingBuyer() {
+    public function sdCheckSignaturePostClosingBuyer()
+    {
         Session::forget('lead');
         $offerData = Session::get('OFFER');
         $postClosingQuestion = QuestionSellerPostClosing::where('offer_id', $offerData['offer_id'])->first();
         if ($postClosingQuestion) {
             return view('frontend.contract_tools.sale.sign_documents.sd_va_fha_thank_you_for_buyer');
         }
+
         return view('frontend.contract_tools.sale.sign_documents.sd_post_closing_thankyou_by_buyer');
     }
 
-    public function sdVaFhaloanAddendumByBuyer() {
+    public function sdVaFhaloanAddendumByBuyer()
+    {
         $offerArray = Session::get('OFFER');
         $signature = Signature::where('user_id', Auth::id())
-                ->where('offer_id', $offerArray['offer_id'])
-                ->where('signature_type', config('constant.inverse_signature_type.VA FHA loan addendum'))
-                ->first();
+            ->where('offer_id', $offerArray['offer_id'])
+            ->where('signature_type', config('constant.inverse_signature_type.VA FHA loan addendum'))
+            ->first();
         $type = config('constant.inverse_signature_type.VA FHA loan addendum');
         if ($offerArray['type'] == config('constant.inverse_property_type.Sale')) {
             $offer = SaleOffer::where('id', $offerArray['offer_id'])
-                            ->with(['buyerQuestionnaire', 'propertyConditional' => function($query) {
-//                                $query->select('id', 'lead_based', 'lead_based_report', 'user_id');
-                                }, 'signatures' => function($query) use($offerArray) {
-                                    $query->where('offer_id', $offerArray['offer_id']);
-//                                ->where('signature_type', config('constant.inverse_signature_type.lead based'));
-                                }])->first();
+                ->with(['buyerQuestionnaire', 'propertyConditional' => function ($query) {
+                    //                                $query->select('id', 'lead_based', 'lead_based_report', 'user_id');
+                }, 'signatures' => function ($query) use ($offerArray) {
+                    $query->where('offer_id', $offerArray['offer_id']);
+                    //                                ->where('signature_type', config('constant.inverse_signature_type.lead based'));
+                }])->first();
         }
         if ($offer->buyerQuestionnaire->using_VA_or_FHA == 1) {
             return view('frontend.contract_tools.sale.sign_documents.sd_VA_FHA_loan_addendum_by_buyer', compact('offer', 'type', 'signature'));
         }
+
         return redirect()->route('frontend.sdPostClosingThankyouBySeller');
     }
 
-    public function thankYouBuyerNecessaryForms() {
+    public function thankYouBuyerNecessaryForms()
+    {
         return view('frontend.contract_tools.sale.buyer.thank_you_buyer_necessary_forms');
     }
 
-    public function sdThankyouPdBuyer() {
+    public function sdThankyouPdBuyer()
+    {
         $offerData = Session::get('OFFER');
         $buyerQuestionnaire = BuyerQuestionnaire::where('offer_id', $offerData['offer_id'])->first();
         if ($buyerQuestionnaire->using_VA_or_FHA == 1) {
@@ -449,25 +485,29 @@ class ContractToolBuyerController extends Controller {
         if (QuestionSellerPostClosing::where('offer_id', $offerData['offer_id'])->exists()) {
             return view('frontend.contract_tools.sale.sign_documents.sd_va_fha_thank_you_for_buyer');
         }
+
         return view('frontend.contract_tools.sale.sign_documents.sd_va_thank_you_for_buyer');
     }
 
-    public function thankYouAcceptOffer() {
+    public function thankYouAcceptOffer()
+    {
         return view('frontend.contract_tools.sale.buyer.thank_you_accept_offer');
     }
 
     // Sign Documents
-    public function sdSaleAgreementReviewByBuyer() {
+    public function sdSaleAgreementReviewByBuyer()
+    {
         $offerData = Session::get('OFFER');
-         $postClosingQuestion = QuestionSellerPostClosing::where('offer_id', $offerData['offer_id'])->first();
-          if (!empty($postClosingQuestion->show_post_closing) && $postClosingQuestion->show_post_closing == config('constant.show_post_closing_form.No')) {
+        $postClosingQuestion = QuestionSellerPostClosing::where('offer_id', $offerData['offer_id'])->first();
+        if (! empty($postClosingQuestion->show_post_closing) && $postClosingQuestion->show_post_closing == config('constant.show_post_closing_form.No')) {
             return view('frontend.contract_tools.sale.sign_documents.sd_va_fha_thank_you_for_buyer');
-          }
+        }
 
         return view('frontend.contract_tools.sale.sign_documents.sd_va_thank_you_for_buyer');
     }
 
-    public function sdThankYouBuyerForPd() {
+    public function sdThankYouBuyerForPd()
+    {
         $offerData = Session::get('OFFER');
         $property = Property::where('id', Session::get('PROPERTY'))->with('architechture')->withTrashed()->first();
         if ($property->architechture['year_built'] < config('constant.year_built')) {
@@ -476,10 +516,11 @@ class ContractToolBuyerController extends Controller {
 
         return redirect()->route('frontend.sdCheckVaFha');
 
-//            return view('frontend.contract_tools.sale.sign_documents.sd-thank_you_buyer_for_pd', compact('property'));
+        //            return view('frontend.contract_tools.sale.sign_documents.sd-thank_you_buyer_for_pd', compact('property'));
     }
 
-    public function sdCheckVaFha() {
+    public function sdCheckVaFha()
+    {
         $offerData = Session::get('OFFER');
         $buyerQues = BuyerQuestionnaire::where('offer_id', $offerData['offer_id'])->first();
         if ($buyerQues->using_VA_or_FHA == 1) {
@@ -489,27 +530,28 @@ class ContractToolBuyerController extends Controller {
         return redirect()->route('frontend.sdCheckSignaturePostClosingBuyer');
     }
 
-    public function sdPostClosingOccupancyAgreementByBuyer() {
+    public function sdPostClosingOccupancyAgreementByBuyer()
+    {
         $offerData = Session::get('OFFER');
         $signature = Signature::where('user_id', Auth::id())
-                ->where('offer_id', $offerData['offer_id'])
-                ->where('signature_type', config('constant.inverse_signature_type.post closing occupancy agreement'))
-                ->first();
+            ->where('offer_id', $offerData['offer_id'])
+            ->where('signature_type', config('constant.inverse_signature_type.post closing occupancy agreement'))
+            ->first();
         $offer = SaleOffer::where('id', $offerData['offer_id'])
-                        ->with(['property' => function($query) {
-                                $query->select('id', 'lead_based', 'lead_based_report', 'user_id');
-				 $query->withTrashed();
-                            }, 'signatures' => function($query) use($offerData) {
-                                $query->where('offer_id', $offerData['offer_id']);
-//                                ->where('signature_type', config('constant.inverse_signature_type.post closing occupancy agreement'));
-                            }
-                            ])->first();
+            ->with(['property' => function ($query) {
+                $query->select('id', 'lead_based', 'lead_based_report', 'user_id');
+                $query->withTrashed();
+            }, 'signatures' => function ($query) use ($offerData) {
+                $query->where('offer_id', $offerData['offer_id']);
+                //                                ->where('signature_type', config('constant.inverse_signature_type.post closing occupancy agreement'));
+            },
+            ])->first();
         $savedQuestionSellerPostClosing = QuestionSellerPostClosing::where('offer_id', $offerData['offer_id'])
-                        ->with('saleOffer')->first();
+            ->with('saleOffer')->first();
         $sellerQuestionnaire = SellerQuestionnaire::where('offer_id', $offerData['offer_id'])
-                        ->with(['saleOffer.seller.user_profile', 'saleOffer.seller.business_profile',
-                            'saleOffer.buyer.user_profile', 'saleOffer.buyer.business_profile',
-                            'saleOffer.property'])->first();
+            ->with(['saleOffer.seller.user_profile', 'saleOffer.seller.business_profile',
+                'saleOffer.buyer.user_profile', 'saleOffer.buyer.business_profile',
+                'saleOffer.property'])->first();
         $currentDate = date('Y-m-d');
         $days = $currentMortgage = null;
         if ($sellerQuestionnaire) {
@@ -519,67 +561,72 @@ class ContractToolBuyerController extends Controller {
         if ($savedQuestionSellerPostClosing) {
             $currentMortgage = $savedQuestionSellerPostClosing->current_mortgage / 30;
         }
-        return view('frontend.contract_tools.sale.sign_documents.sd_post_closing_occupancy_agreement_by_buyer', compact('savedQuestionSellerPostClosing', 'sellerQuestionnaire', 'days', 'currentMortgage', 'offer','signature'));
+
+        return view('frontend.contract_tools.sale.sign_documents.sd_post_closing_occupancy_agreement_by_buyer', compact('savedQuestionSellerPostClosing', 'sellerQuestionnaire', 'days', 'currentMortgage', 'offer', 'signature'));
     }
 
-    public function sdLeadBasedPaintHazardsUpdateByBuyer() {
+    public function sdLeadBasedPaintHazardsUpdateByBuyer()
+    {
         $offerData = Session::get('OFFER');
         $signature = Signature::where('user_id', Auth::id())
-                ->where('offer_id', $offerData['offer_id'])
-                ->where('signature_type', config('constant.inverse_signature_type.lead based'))
-                ->first();
+            ->where('offer_id', $offerData['offer_id'])
+            ->where('signature_type', config('constant.inverse_signature_type.lead based'))
+            ->first();
         $type = config('constant.inverse_signature_type.lead based');
-//            if(!empty($signature)){ 
-//                  $offer = SaleOffer::where('id', $offerData['offer_id'])
-//                        ->with(['propertyConditional' => function($query) {
-//                                $query->select('id', 'lead_based', 'lead_based_report', 'user_id');
-//                            }, 'signatures' => function($query) use($offerData) {
-//                                $query->where('offer_id', $offerData['offer_id'])
-//                                ->where('signature_type', config('constant.inverse_signature_type.lead based'));
-//                            }])->first();
-//            }
-//            else
-//            {
+        //            if(!empty($signature)){
+        //                  $offer = SaleOffer::where('id', $offerData['offer_id'])
+        //                        ->with(['propertyConditional' => function($query) {
+        //                                $query->select('id', 'lead_based', 'lead_based_report', 'user_id');
+        //                            }, 'signatures' => function($query) use($offerData) {
+        //                                $query->where('offer_id', $offerData['offer_id'])
+        //                                ->where('signature_type', config('constant.inverse_signature_type.lead based'));
+        //                            }])->first();
+        //            }
+        //            else
+        //            {
         $offer = SaleOffer::where('id', $offerData['offer_id'])
-                        ->with(['propertyConditional' => function($query) {
-//                                $query->select('id', 'lead_based', 'lead_based_report', 'user_id');
-                            }, 'signatures' => function($query) use($offerData) {
-                                $query->where('offer_id', $offerData['offer_id']);
-//                                ->where('signature_type', config('constant.inverse_signature_type.lead based'));
-                            }])->first();
-//            }
+            ->with(['propertyConditional' => function ($query) {
+                //                                $query->select('id', 'lead_based', 'lead_based_report', 'user_id');
+            }, 'signatures' => function ($query) use ($offerData) {
+                $query->where('offer_id', $offerData['offer_id']);
+                //                                ->where('signature_type', config('constant.inverse_signature_type.lead based'));
+            }])->first();
+
+        //            }
         return view('frontend.contract_tools.sale.sign_documents.sd_lead_based_paint_hazards_update_by_buyer', compact('offer', 'signature', 'type'));
     }
 
-    public function sdPostClosingThankyouByBuyer() {
+    public function sdPostClosingThankyouByBuyer()
+    {
         return view('frontend.contract_tools.sale.sign_documents.sd_post_closing_thankyou_by_buyer');
     }
 
-    public function sdThankyouPurchaseAgreementByBuyer() {
+    public function sdThankyouPurchaseAgreementByBuyer()
+    {
         $offerData = Session::get('OFFER');
 
-//        check any user has done the signature , then pick the fullname from signature table
+        //        check any user has done the signature , then pick the fullname from signature table
 
         $signature = Signature::where('user_id', Auth::id())
-                ->where('offer_id', $offerData['offer_id'])
-                ->where('affix_status', 1)
-                ->first();
+            ->where('offer_id', $offerData['offer_id'])
+            ->where('affix_status', 1)
+            ->first();
 
-	$offer = SaleOffer::where('id', $offerData['offer_id'])->with(['property'=>function($query){
-	     $query->withTrashed();
-	},
-                    'sellerQuestionnaire', 'buyerQuestionnaire', 'seller', 'buyer', 'signatures'])->first();
-//        echo'<pre>';print_R($offer->toArray());die;
-        if (!empty($signature)) {
+        $offer = SaleOffer::where('id', $offerData['offer_id'])->with(['property' => function ($query) {
+            $query->withTrashed();
+        },
+            'sellerQuestionnaire', 'buyerQuestionnaire', 'seller', 'buyer', 'signatures'])->first();
+        //        echo'<pre>';print_R($offer->toArray());die;
+        if (! empty($signature)) {
             $senderProfile = getOfferPartnerProfile(Auth::id(), $offerData['offer_id']);
-//             dd($senderProfile);
+            //             dd($senderProfile);
             $sender = $senderProfile->signature['fullname'];
         } else {
             $sender = getFullName(Auth::user());
         }
 
-        if (!empty($offer->buyerQuestionnaire->partners)) {
-//            $completed   = $incompleted = 0;
+        if (! empty($offer->buyerQuestionnaire->partners)) {
+            //            $completed   = $incompleted = 0;
             $partners = explode(',', $offer->buyerQuestionnaire->partners);
 
             $count = 0;
@@ -590,7 +637,7 @@ class ContractToolBuyerController extends Controller {
                     $partnerProfile = getPartnerProfile($partner);
                 }
 
-//                $incomplete     = false;
+                //                $incomplete     = false;
                 $signed = false;
                 foreach ($offer->signatures as $signature) {
                     if ($signature->user_id == $partner &&
@@ -599,111 +646,116 @@ class ContractToolBuyerController extends Controller {
                         $signed = true;
                     }
                 }
-                if (($partnerProfile->user_profile || $partnerProfile->business_profile) && !$signed) {
+                if (($partnerProfile->user_profile || $partnerProfile->business_profile) && ! $signed) {
                     $to = $partnerProfile->email;
-                    $userName = !empty($partnerProfile->signature['fullname']) ? $partnerProfile->signature['fullname'] : getFullName($partnerProfile);
-                    $emailSubject = "Freezylist : Buyer completed the sign document process";
-                    $emailBody = "Hello " . $userName . ', ' . $sender . " has signed property sale agreement. Please view and sign the documents. Thank You";
-                    $view = "frontend.offer.partner_contract_tool_sale_agreement_mail";
+                    $userName = ! empty($partnerProfile->signature['fullname']) ? $partnerProfile->signature['fullname'] : getFullName($partnerProfile);
+                    $emailSubject = 'Freezylist : Buyer completed the sign document process';
+                    $emailBody = 'Hello '.$userName.', '.$sender.' has signed property sale agreement. Please view and sign the documents. Thank You';
+                    $view = 'frontend.offer.partner_contract_tool_sale_agreement_mail';
                     $emailLinks = $this->_generatePartnersEmailLink($offer);
                     Mail::send(new SaleAgreementLandlordMailing($to, $userName, $sender, $emailSubject, $emailBody, $emailLinks['viewOfferLink'], $emailLinks['propertyLink'], $view));
                 } else {
                     if ($partnerProfile->roles->first()->name == config('constant.user_type.3')) {
-                        $signupLink = route('frontend.userCreate') . '?code=' . $partnerProfile->confirmation_code . '&time=' . $partnerProfile->created_at;
+                        $signupLink = route('frontend.userCreate').'?code='.$partnerProfile->confirmation_code.'&time='.$partnerProfile->created_at;
                     } else {
-                        $signupLink = route('frontend.businessCreate') . '?code=' . $partnerProfile->confirmation_code . '&time=' . $partnerProfile->created_at;
+                        $signupLink = route('frontend.businessCreate').'?code='.$partnerProfile->confirmation_code.'&time='.$partnerProfile->created_at;
                     }
                     $to = $partnerProfile->email;
-                    $userName = !empty($partnerProfile->signature['fullname']) ? $partnerProfile->signature['fullname'] : getFullName($partnerProfile);
-                    $emailSubject = "Freezylist : Buyer completed the sign document process";
-                    $emailBody = "Hello " . $userName . ', ' . $sender . " has signed property sale agreement. Please complete your signup process and proceed with sign document process. Thank You";
-                    $view = "frontend.offer.partner_contract_tool_sale_agreement_mail";
+                    $userName = ! empty($partnerProfile->signature['fullname']) ? $partnerProfile->signature['fullname'] : getFullName($partnerProfile);
+                    $emailSubject = 'Freezylist : Buyer completed the sign document process';
+                    $emailBody = 'Hello '.$userName.', '.$sender.' has signed property sale agreement. Please complete your signup process and proceed with sign document process. Thank You';
+                    $view = 'frontend.offer.partner_contract_tool_sale_agreement_mail';
                     $emailLinks = $this->_generatePartnersEmailLink($offer);
                     Mail::send(new SaleAgreementLandlordMailing($to, $userName, $sender, $emailSubject, $emailBody, $emailLinks['viewOfferLink'], $emailLinks['propertyLink'], $view, $signupLink));
                 }
 
-                $saveLog = new EmailLogService();
-                $saveLog->saveLog($offer->property->id, $offer->sender_id, $offer->owner_id, $emailSubject, $emailBody, config('constant.property_type.' . $offer->property->property_type), url()->previous());
+                $saveLog = new EmailLogService;
+                $saveLog->saveLog($offer->property->id, $offer->sender_id, $offer->owner_id, $emailSubject, $emailBody, config('constant.property_type.'.$offer->property->property_type), url()->previous());
 
                 if ($count == count($partners)) {
                     //mail send to landlord.
                     $userName = $partnerProfile->signature['fullname'];
                     $emailSubject = "Freezylist : Buyer's completed the sign document process";
-                    $emailBody = "Hello " . $userName . ', ' . $sender . " and their partner signed property sale agreement. Thank You";
-                    $view = "frontend.offer.buyer_completed_sale_agreement";
+                    $emailBody = 'Hello '.$userName.', '.$sender.' and their partner signed property sale agreement. Thank You';
+                    $view = 'frontend.offer.buyer_completed_sale_agreement';
                     $emailLinks = $this->_generatePartnersEmailLink($offer);
 
                     $viewOfferLink = route('frontend.recieved.view.offer', ['offer_id' => $offer->id,
-                        'type' => config('constant.property_type.' . $offer->property->property_type),
+                        'type' => config('constant.property_type.'.$offer->property->property_type),
                         'property_id' => $offer->property->id,
                         'owner_id' => $offer->owner_id]);
                     $emailLinks['viewOfferLink'] = $viewOfferLink;
                     $partner = true;
                     Mail::send(new SaleAgreementLandlordMailing($to, $userName, $sender, $emailSubject, $emailBody, $emailLinks['viewOfferLink'], $emailLinks['propertyLink'], $view, $partner));
 
-                    $saveLog = new EmailLogService();
-                    $saveLog->saveLog($offer->property->id, $offer->sender_id, $offer->owner_id, $emailSubject, $emailBody, config('constant.property_type.' . $offer->property->property_type), url()->previous());
+                    $saveLog = new EmailLogService;
+                    $saveLog->saveLog($offer->property->id, $offer->sender_id, $offer->owner_id, $emailSubject, $emailBody, config('constant.property_type.'.$offer->property->property_type), url()->previous());
                 }
             }
+
             return view('frontend.contract_tools.sale.sign_documents.sd-thankyou_purchase_agreement_by_buyer');
         } else {
             // mail to tenant for sign
             $to = $offer->seller->email;
-            $userName = !empty($partnerProfile->signature['fullname']) ? $partnerProfile->signature['fullname'] : getFullName($offer->seller);
+            $userName = ! empty($partnerProfile->signature['fullname']) ? $partnerProfile->signature['fullname'] : getFullName($offer->seller);
 
-//            $userName = getFullName($offer->seller);
-            $emailSubject = "Freezylist : Buyer completed the sign document process";
-            $emailBody = "Hello " . $userName . ', ' . $sender . " has signed property sale agreement. Thank You";
-            $view = "frontend.offer.buyer_completed_sale_agreement";
+            //            $userName = getFullName($offer->seller);
+            $emailSubject = 'Freezylist : Buyer completed the sign document process';
+            $emailBody = 'Hello '.$userName.', '.$sender.' has signed property sale agreement. Thank You';
+            $view = 'frontend.offer.buyer_completed_sale_agreement';
             $emailLinks = $this->_generateEmailLink($offer);
 
             Mail::send(new SaleAgreementLandlordMailing($to, $userName, $sender, $emailSubject, $emailBody, $emailLinks['viewOfferLink'], $emailLinks['propertyLink'], $view));
 
-            $saveLog = new EmailLogService();
-            $saveLog->saveLog($offer->property->id, $offer->sender_id, $offer->owner_id, $emailSubject, $emailBody, config('constant.property_type.' . $offer->property->property_type), url()->previous());
+            $saveLog = new EmailLogService;
+            $saveLog->saveLog($offer->property->id, $offer->sender_id, $offer->owner_id, $emailSubject, $emailBody, config('constant.property_type.'.$offer->property->property_type), url()->previous());
         }
-//        }
-
+        //        }
 
         return view('frontend.contract_tools.sale.sign_documents.sd-thankyou_purchase_agreement_by_buyer');
     }
 
-    private function _generatePartnersEmailLink($offer) {
+    private function _generatePartnersEmailLink($offer)
+    {
         $viewOfferLink = route('frontend.sent.view.offer', ['offer_id' => $offer->id,
             'type' => $offer->property->property_type,
             'property_id' => $offer->property->id,
             'owner_id' => $offer->owner_id]);
         $propertyLink = route('frontend.propertyDetails', $offer->property->id);
+
         return ['propertyLink' => $propertyLink, 'viewOfferLink' => $viewOfferLink];
     }
 
-    public function sdUpdateSaleAgreementBuyer() {
+    public function sdUpdateSaleAgreementBuyer()
+    {
 
         $offerArray = Session::get('OFFER');
         $offer = null;
         $type = config('constant.inverse_signature_type.sale agreement');
         if ($offerArray['type'] == config('constant.inverse_property_type.Sale')) {
             $signature = Signature::where('user_id', Auth::id())
-                    ->where('offer_id', $offerArray['offer_id'])
-                    ->where('signature_type', config('constant.inverse_signature_type.sale agreement'))
-                    ->first();
+                ->where('offer_id', $offerArray['offer_id'])
+                ->where('signature_type', config('constant.inverse_signature_type.sale agreement'))
+                ->first();
             $offer = SaleOffer::where('id', $offerArray['offer_id'])
-                            ->with([
-                                'propertyConditional.disclosure' => function($propertyCondDis) {
-                                    $propertyCondDis->select('best_knowledge_explain', 'partb_details', 'partc_details');
-                                }, 'sellerQuestionnaire',
-                                'buyerQuestionnaire', 'sale_counter_offers' => function($query) {
-                                    $query->latest();
-                                }, 'saleAgreement',
-                                'signatures' => function($query) use($offerArray) {
-                                    $query->where('offer_id', $offerArray['offer_id']);
-                                }
-                            ])->first();
+                ->with([
+                    'propertyConditional.disclosure' => function ($propertyCondDis) {
+                        $propertyCondDis->select('best_knowledge_explain', 'partb_details', 'partc_details');
+                    }, 'sellerQuestionnaire',
+                    'buyerQuestionnaire', 'sale_counter_offers' => function ($query) {
+                        $query->latest();
+                    }, 'saleAgreement',
+                    'signatures' => function ($query) use ($offerArray) {
+                        $query->where('offer_id', $offerArray['offer_id']);
+                    },
+                ])->first();
         }
+
         return view('frontend.contract_tools.sale.sign_documents.sd-update_sale_agreement_by_buyer', compact('offer', 'signature', 'type'));
     }
 
-    public function sdAdvisoryToBuyersAndSellers() {
+    public function sdAdvisoryToBuyersAndSellers()
+    {
         $offerArray = Session::get('OFFER');
         Session::forget('lead');
 
@@ -711,73 +763,78 @@ class ContractToolBuyerController extends Controller {
             $type = config('constant.inverse_signature_type.advisory to buyers and sellers');
             //check signature exist corresponding to type ,then pick the data form backup tables.
             $signature = Signature::where('user_id', Auth::id())
-                    ->where('offer_id', $offerArray['offer_id'])
-                    ->where('signature_type', config('constant.inverse_signature_type.advisory to buyers and sellers'))
-                    ->first();
-//            dd($signature);
-            if (!empty($signature)) {
+                ->where('offer_id', $offerArray['offer_id'])
+                ->where('signature_type', config('constant.inverse_signature_type.advisory to buyers and sellers'))
+                ->first();
+            //            dd($signature);
+            if (! empty($signature)) {
                 $offer = SaleOffer::where('id', $offerArray['offer_id'])
-                                ->with(['propertyConditional',
-                                    'signatures' => function($query) use($offerArray) {
-                                        $query->where('offer_id', $offerArray['offer_id']);
-//                                    $query->groupBy('type');
-                                    }])->first();
+                    ->with(['propertyConditional',
+                        'signatures' => function ($query) use ($offerArray) {
+                            $query->where('offer_id', $offerArray['offer_id']);
+                            //                                    $query->groupBy('type');
+                        }])->first();
             } else {
                 $offer = SaleOffer::where('id', $offerArray['offer_id'])
-                                ->with(['buyer.user_profile', 'buyer.business_profile', 'seller.user_profile',
-				    'seller.business_profile', 'property'=>function($query){
-				    $query->withTrashed();
-				    }, 'signatures' => function($query) use($offerArray) {
-                                        $query->where('offer_id', $offerArray['offer_id']);
-//                                              ->where('user_id', Auth::id());
-//                                            >where('signature_type', config('constant.inverse_signature_type.advisory to buyers and sellers'));
-                                    }])->first();
-//              dd($offer);
+                    ->with(['buyer.user_profile', 'buyer.business_profile', 'seller.user_profile',
+                        'seller.business_profile', 'property' => function ($query) {
+                            $query->withTrashed();
+                        }, 'signatures' => function ($query) use ($offerArray) {
+                            $query->where('offer_id', $offerArray['offer_id']);
+                            //                                              ->where('user_id', Auth::id());
+                            //                                            >where('signature_type', config('constant.inverse_signature_type.advisory to buyers and sellers'));
+                        }])->first();
+                //              dd($offer);
             }
 
-            if (!empty($offer)) {
+            if (! empty($offer)) {
                 return view('frontend.contract_tools.sale.sign_documents.sd_advisory_to_buyers_and_sellers', compact('offer', 'signature', 'type'));
             }
         }
+
         return redirect()->back()->withFlashDanger('Invalid Offer.');
     }
 
-    public function sdVaFhaThankYouForBuyer() {
+    public function sdVaFhaThankYouForBuyer()
+    {
 
         return view('frontend.contract_tools.sale.sign_documents.sd_va_fha_thank_you_for_buyer');
     }
 
-    public function sdAdvisoryToBuyersAndSellersThankYouBuyer() {
+    public function sdAdvisoryToBuyersAndSellersThankYouBuyer()
+    {
         $propertyData = Session::get('PROPERTY');
         $property = Property::where('id', $propertyData)
-                ->where('user_id', Auth::id())
-                ->with('architechture')
-		->withTrashed()
-                ->first();
-//            dd($property->architechture->year_built);
-//        if ($property->architechture->year_built < config('constant.year_built')) {
-//            return redirect()->route('frontend.thankYouLeadBased');
-//        }
+            ->where('user_id', Auth::id())
+            ->with('architechture')
+            ->withTrashed()
+            ->first();
+
+        //            dd($property->architechture->year_built);
+        //        if ($property->architechture->year_built < config('constant.year_built')) {
+        //            return redirect()->route('frontend.thankYouLeadBased');
+        //        }
         return view('frontend.contract_tools.sale.sign_documents.sd_advisory_to_buyers_and_sellers_thank_you_buyer');
     }
 
-    public function sdDisclosureByBuyerUpdate($id = null) {
+    public function sdDisclosureByBuyerUpdate($id = null)
+    {
         if (Session::get('PROPERTY') && Session::get('OFFER')) {
 
             $propertyData = Session::get('PROPERTY');
             $offerArray = Session::get('OFFER');
 
             $signature = Signature::where('user_id', Auth::id())
-                    ->where('offer_id', $offerArray['offer_id'])
-                    ->first();
-//	    dd($signature);
+                ->where('offer_id', $offerArray['offer_id'])
+                ->first();
+            //	    dd($signature);
             $type = config('constant.inverse_signature_type.property disclaimer');
 
-//          get the data from backup tables
-            $property = PropertyConditionalData::where('offer_id', $offerArray['offer_id'])->where('property_id',$propertyData)
-                            ->with('architechture', 'disclosure')->first();
-//                dd($property);
-//            }
+            //          get the data from backup tables
+            $property = PropertyConditionalData::where('offer_id', $offerArray['offer_id'])->where('property_id', $propertyData)
+                ->with('architechture', 'disclosure')->first();
+            //                dd($property);
+            //            }
             $diffInYears = null;
             if (isset($property)) {
                 $now = Carbon::now()->year;
@@ -785,106 +842,111 @@ class ContractToolBuyerController extends Controller {
                 $diffInYears = $now - $from;
 
                 $offer = null;
-                if (!empty($offerArray)) {
+                if (! empty($offerArray)) {
                     $offer = SaleOffer::where('id', $offerArray['offer_id'])
-                                    ->with(['buyer.user_profile', 'buyer.business_profile',
-                                        'seller.user_profile',
-                                        'seller.business_profile', 'propertyConditional', 'signatures' => function($query) use($offerArray) {
-                                            $query->where('offer_id', $offerArray['offer_id']);
-//                                            ->where('signature_type', config('constant.inverse_signature_type.property disclaimer'));
-                                        }])->first();
-//                                        dd($offer);
+                        ->with(['buyer.user_profile', 'buyer.business_profile',
+                            'seller.user_profile',
+                            'seller.business_profile', 'propertyConditional', 'signatures' => function ($query) use ($offerArray) {
+                                $query->where('offer_id', $offerArray['offer_id']);
+                                //                                            ->where('signature_type', config('constant.inverse_signature_type.property disclaimer'));
+                            }])->first();
+                    //                                        dd($offer);
                 }
+
                 return view('frontend.contract_tools.sale.sign_documents.sd_disclosure_by_buyer_update', compact('diffInYears', 'property', 'offer', 'signature', 'type'));
             }
 
             return view('frontend.contract_tools.sale.sign_documents.sd_disclosure_by_buyer_update');
         }
+
         return redirect()->route('frontend.sent.offers');
     }
 
     /*
-     * first check if signature is done on any document then need to show the data from backup table otherwise flow is same 
+     * first check if signature is done on any document then need to show the data from backup table otherwise flow is same
      *
      */
-    
-  public function sdSummaryKeyTermsForBuyer() {
+
+    public function sdSummaryKeyTermsForBuyer()
+    {
         $offerArray = Session::get('OFFER');
         $signature = Signature::where('user_id', Auth::id())
-                ->where('offer_id', $offerArray['offer_id'])
-                ->where('affix_status', 1)
-                ->first();
+            ->where('offer_id', $offerArray['offer_id'])
+            ->where('affix_status', 1)
+            ->first();
         if ($offerArray['type'] == config('constant.inverse_property_type.Sale')) {
-            if (!empty($signature)) {
+            if (! empty($signature)) {
                 $offer = SaleOffer::where('id', $offerArray['offer_id'])
-                                ->with(['propertyConditional.architechture', 'propertyConditional.disclosure' => function($propertyCondDis) {
-                                        $propertyCondDis->select('best_knowledge_explain', 'partb_details', 'partc_details');
-                                    }, 'sellerQuestionnaire', 'signatures' => function($query) use($offerArray) {
-                                        $query->where('offer_id', $offerArray['offer_id']);
-                                    }, 'sale_counter_offers' => function($query) {
-                                        $query->latest();
-                                    }, 'saleAgreement'])->first();
+                    ->with(['propertyConditional.architechture', 'propertyConditional.disclosure' => function ($propertyCondDis) {
+                        $propertyCondDis->select('best_knowledge_explain', 'partb_details', 'partc_details');
+                    }, 'sellerQuestionnaire', 'signatures' => function ($query) use ($offerArray) {
+                        $query->where('offer_id', $offerArray['offer_id']);
+                    }, 'sale_counter_offers' => function ($query) {
+                        $query->latest();
+                    }, 'saleAgreement'])->first();
             } else {
-                     $offer = SaleOffer::where('id', $offerArray['offer_id'])
-                            ->with(['property.architechture', 'property.propertyConditionDisclaimer' => function($propertyCondDis) {
-                                    $propertyCondDis->select('best_knowledge_explain', 'partb_details', 'partc_details');
-                                }, 'sellerQuestionnaire', 'seller' => function($sellerQuery) {
-                                    $sellerQuery->with('user_profile', 'business_profile');
-                                }, 'buyer' => function($buyerQuery) {
-                                    $buyerQuery->with('user_profile', 'business_profile');
-                                }, 'sale_counter_offers' => function($query) {
-                                    $query->latest();
-                                }, 'saleAgreement'])->first();
+                $offer = SaleOffer::where('id', $offerArray['offer_id'])
+                    ->with(['property.architechture', 'property.propertyConditionDisclaimer' => function ($propertyCondDis) {
+                        $propertyCondDis->select('best_knowledge_explain', 'partb_details', 'partc_details');
+                    }, 'sellerQuestionnaire', 'seller' => function ($sellerQuery) {
+                        $sellerQuery->with('user_profile', 'business_profile');
+                    }, 'buyer' => function ($buyerQuery) {
+                        $buyerQuery->with('user_profile', 'business_profile');
+                    }, 'sale_counter_offers' => function ($query) {
+                        $query->latest();
+                    }, 'saleAgreement'])->first();
             }
         }
+
         return view('frontend.contract_tools.sale.sign_documents.sd_summary_key_terms_for_buyer', compact('offer', 'signature'));
     }
 
-    public function signOffersSaleBuyerPartner($id) {
-        $buyerDetails = BuyerQuestionnaire::where('id', $id)->whereHas('saleOffer')->with(['saleOffer' => function($query) {
-			$query->with(['property'=>function($query){
-			    $query->withTrashed();
-			}, 'saleAgreement', 'property_owner_user' => function($subquery) {
-                                $subquery->with(['business_profile', 'user_profile']);
-                            }, 'sale_counter_offers' => function($query) {
-                                $query->latest();
-                            }, 'signatures' => function($signQuery) {
-                                $signQuery->where('signature_type', config('constant.inverse_signature_type.sale agreement'));
-                            }, 'seller' => function($sellerQuery) {
-                                $sellerQuery->select('id', 'email')
-                                        ->with(['user_profile', 'business_profile']);
-                            }]);
-                    }])->first();
+    public function signOffersSaleBuyerPartner($id)
+    {
+        $buyerDetails = BuyerQuestionnaire::where('id', $id)->whereHas('saleOffer')->with(['saleOffer' => function ($query) {
+            $query->with(['property' => function ($query) {
+                $query->withTrashed();
+            }, 'saleAgreement', 'property_owner_user' => function ($subquery) {
+                $subquery->with(['business_profile', 'user_profile']);
+            }, 'sale_counter_offers' => function ($query) {
+                $query->latest();
+            }, 'signatures' => function ($signQuery) {
+                $signQuery->where('signature_type', config('constant.inverse_signature_type.sale agreement'));
+            }, 'seller' => function ($sellerQuery) {
+                $sellerQuery->select('id', 'email')
+                    ->with(['user_profile', 'business_profile']);
+            }]);
+        }])->first();
 
         if (empty($buyerDetails)) {
             return redirect()->back()->withFlashDanger('Invalid Offer.');
         }
-        $partners = explode(",", $buyerDetails->partners);
+        $partners = explode(',', $buyerDetails->partners);
         $partners = array_filter($partners);
-        if (!in_array(Auth::id(), $partners) && $buyerDetails->saleOffer->sender_id != Auth::id() && $buyerDetails->offer_id!=$id) {
+        if (! in_array(Auth::id(), $partners) && $buyerDetails->saleOffer->sender_id != Auth::id() && $buyerDetails->offer_id != $id) {
             return redirect()->back()->withFlashDanger('You are not authorized to perform this action.');
         }
 
-        $signButton = FALSE;
-        $message = NULL;
-        $downloadBtn = FALSE;
+        $signButton = false;
+        $message = null;
+        $downloadBtn = false;
         //if main buyer has signed
         if ($buyerDetails->saleOffer->signatures->contains('user_id', $buyerDetails->user_id)) {
             //if current logged in user has signed
             if ($buyerDetails->saleOffer->signatures->contains('user_id', Auth::id())) {
                 //if contract documents are ready
                 if ($buyerDetails->saleOffer->buyer_signature == config('constant.offer_signature.true') && $buyerDetails->saleOffer->seller_signature == config('constant.offer_signature.true')) {
-                    $downloadBtn = TRUE;
-                } else if ($buyerDetails->saleOffer->buyer_signature == config('constant.offer_signature.true') && $buyerDetails->saleOffer->seller_signature == config('constant.offer_signature.false')) {
+                    $downloadBtn = true;
+                } elseif ($buyerDetails->saleOffer->buyer_signature == config('constant.offer_signature.true') && $buyerDetails->saleOffer->seller_signature == config('constant.offer_signature.false')) {
                     //if all buyers have signed but not seller or his partner
                     $message = "Please wait for property owner's to sign the documents. ";
-                } else if ($buyerDetails->saleOffer->buyer_signature == config('constant.offer_signature.false')) {
+                } elseif ($buyerDetails->saleOffer->buyer_signature == config('constant.offer_signature.false')) {
                     //if current user has signed but not other co-partner of property
                     $message = "Please wait for your co-singer's to sign the documents. ";
                 }
             } else {
                 //if main buyer  signed but not  current user who is a co-buyer.
-                $signButton = TRUE;
+                $signButton = true;
             }
         } else {
             $message = 'Please wait untill your partner to sign the documents.';
@@ -892,7 +954,7 @@ class ContractToolBuyerController extends Controller {
 
         $offerArray = [
             'offer_id' => $buyerDetails->saleOffer->id,
-            'type' => $buyerDetails->saleOffer->property->property_type
+            'type' => $buyerDetails->saleOffer->property->property_type,
         ];
 
         $this->_forgetPropertyOffer();
@@ -901,22 +963,23 @@ class ContractToolBuyerController extends Controller {
         return view('frontend.contract_tools.sale.sign_documents.sign_offers_sale_buyer_partner', compact('signButton', 'message', 'downloadBtn'))->with(['offer' => $buyerDetails->saleOffer]);
     }
 
-    public function saleAgreementSignatureSeller(Request $request) {
+    public function saleAgreementSignatureSeller(Request $request)
+    {
         $offerArray = Session::get('OFFER');
         $ip = \Request::ip();
         $signature = Signature::where('user_id', Auth::id())
-                ->where('offer_id', $offerArray['offer_id'])
-                ->where('signature_type', config('constant.inverse_signature_type.sale agreement'))
-                ->first();
+            ->where('offer_id', $offerArray['offer_id'])
+            ->where('signature_type', config('constant.inverse_signature_type.sale agreement'))
+            ->first();
         if ($signature) {
             return response(['success' => true, 'signature' => $signature], 200);
         }
         $type = config('constant.inverse_signature_type.sale agreement');
 
-        //get data corresponding to type 
+        //get data corresponding to type
         $getData = Signature::where('user_id', Auth::id())
-                ->where('offer_id', $offerArray['offer_id'])
-                ->first();
+            ->where('offer_id', $offerArray['offer_id'])
+            ->first();
 
         //save data in signature table
         $signatureNew = new Signature;
@@ -931,40 +994,40 @@ class ContractToolBuyerController extends Controller {
 
         if ($signatureNew->save()) {
             $offer = SaleOffer::where('id', $offerArray['offer_id'])
-                            ->where('seller_signature', config('constant.offer_signature.false'))
-                            ->whereHas('property', function($query) {
-                                $query->where('property_type', config('constant.inverse_property_type.Sale'));
-				 $query->withTrashed();
-                            })->with(['sellerQuestionnaire' => function($sellerQuestionnaireQuery) {
-                            $sellerQuestionnaireQuery->select('id', 'offer_id', 'joint_cowners', 'partners');
-                        }, 'signatures' => function($signQuery) {
-//                               $signQuery->where('affix_status',1);
-//                            $signQuery->groupBy('type');
-//                            $signQuery->where('signature_type', config('constant.inverse_signature_type.sale agreement'));
-                        }])->first(['id', 'property_id', 'sender_id', 'owner_id', 'seller_signature']);
-//                        
-//                        dump($offer->signatures->groupBy('signature_type')->count());
-//                        dd($offer->toArray());
-            if (!empty($offer)) {
+                ->where('seller_signature', config('constant.offer_signature.false'))
+                ->whereHas('property', function ($query) {
+                    $query->where('property_type', config('constant.inverse_property_type.Sale'));
+                    $query->withTrashed();
+                })->with(['sellerQuestionnaire' => function ($sellerQuestionnaireQuery) {
+                    $sellerQuestionnaireQuery->select('id', 'offer_id', 'joint_cowners', 'partners');
+                }, 'signatures' => function ($signQuery) {
+                    //                               $signQuery->where('affix_status',1);
+                    //                            $signQuery->groupBy('type');
+                    //                            $signQuery->where('signature_type', config('constant.inverse_signature_type.sale agreement'));
+                }])->first(['id', 'property_id', 'sender_id', 'owner_id', 'seller_signature']);
+            //
+            //                        dump($offer->signatures->groupBy('signature_type')->count());
+            //                        dd($offer->toArray());
+            if (! empty($offer)) {
                 $totalBuyers = 1;
                 $totalSellers = 1;
                 if ($offer->sellerQuestionnaire->joint_cowners == config('constant.joint_coowner.No')) {
                     $this->_updateAgrementStatusSeller($offer->id);
                 } else {
-                    if ($offer->sellerQuestionnaire->joint_cowners == config('constant.joint_coowner.Yes') && !empty($offer->sellerQuestionnaire->partners)) {
-                        $partners = explode(",", $offer->sellerQuestionnaire->partners);
+                    if ($offer->sellerQuestionnaire->joint_cowners == config('constant.joint_coowner.Yes') && ! empty($offer->sellerQuestionnaire->partners)) {
+                        $partners = explode(',', $offer->sellerQuestionnaire->partners);
                         $partners = array_filter($partners);
                         $totalSellers = count($partners) + $totalSellers;
                     }
-                    if ($offer->buyerQuestionnaire->joint_cowners == config('constant.joint_coowner.Yes') && !empty($offer->buyerQuestionnaire->partners)) {
-                        $buyerPartners = explode(",", $offer->buyerQuestionnaire->partners);
+                    if ($offer->buyerQuestionnaire->joint_cowners == config('constant.joint_coowner.Yes') && ! empty($offer->buyerQuestionnaire->partners)) {
+                        $buyerPartners = explode(',', $offer->buyerQuestionnaire->partners);
                         $buyerPartners = array_filter($buyerPartners);
                         $totalBuyers = count($buyerPartners) + $totalBuyers;
                     }
-//                    dump($totalSellers + $totalBuyers);
-//                    dump($offer->signatures->groupBy('signature_type')->count());
-//                    dump($offer->signatures->count());
-//                    dd('teest');
+                    //                    dump($totalSellers + $totalBuyers);
+                    //                    dump($offer->signatures->groupBy('signature_type')->count());
+                    //                    dump($offer->signatures->count());
+                    //                    dd('teest');
                     if (($totalSellers + $totalBuyers) * ($offer->signatures->groupBy('signature_type')->count()) == $offer->signatures->count()) {
                         $this->_updateAgrementStatusSeller($offer->id);
                     }
@@ -977,21 +1040,25 @@ class ContractToolBuyerController extends Controller {
         return response(['success' => false], 500);
     }
 
-    private function _updateAgrementStatusSeller($offerId) {
+    private function _updateAgrementStatusSeller($offerId)
+    {
         SaleOffer::where('id', $offerId)->update(['seller_signature' => config('constant.offer_signature.true'), 'closed' => config('constant.offer_open_close.close')]);
 
         $getPropertyId = SaleOffer::select('property_id')->where('id', $offerId)->first();
 
         Property::where('id', $getPropertyId->property_id)->update(['status' => config('constant.inverse_property_status.Sold')]);
+
         return true;
     }
 
-    private function _forgetPropertyOffer() {
+    private function _forgetPropertyOffer()
+    {
         SESSION::forget('PROPERTY');
         SESSION::forget('OFFER');
     }
 
-    private function _setPropertyOffer($offerArray, $propertyId = null) {
+    private function _setPropertyOffer($offerArray, $propertyId = null)
+    {
         Session::put('OFFER', $offerArray);
         Session::put('PROPERTY', $propertyId);
     }
@@ -1000,30 +1067,31 @@ class ContractToolBuyerController extends Controller {
      * Function Name:-_savesignature
      * Desc:- save the signatures
      * Updation:- locks the data once the first signature is discovered.
-     * Updated By:- Charu Anand 20-6-2019    
+     * Updated By:- Charu Anand 20-6-2019
      *  */
 
-    private function _savesignature($request, $offerArray, $ip, $signature, $type1, $agrementSigned = FALSE) {
-        $customArray1 = array();
-        $cosellerArray = array();
-        $cobuyerArray = array();
-        $coseller = array();
-        $cobuyer = array();
-        $customArray2 = array();
+    private function _savesignature($request, $offerArray, $ip, $signature, $type1, $agrementSigned = false)
+    {
+        $customArray1 = [];
+        $cosellerArray = [];
+        $cobuyerArray = [];
+        $coseller = [];
+        $cobuyer = [];
+        $customArray2 = [];
 
         $offer = SaleOffer::where('id', $offerArray['offer_id'])
-                        ->whereHas('property', function($query) {
-                            $query->where('property_type', config('constant.inverse_property_type.Sale'));
-			     $query->withTrashed();
-			})->with(['property'=>function($subquery){
-			     $subquery->withTrashed();
-			}, 'sellerQuestionnaire', 'buyerQuestionnaire',
-                ])->first();
-//                        dd($offer);
+            ->whereHas('property', function ($query) {
+                $query->where('property_type', config('constant.inverse_property_type.Sale'));
+                $query->withTrashed();
+            })->with(['property' => function ($subquery) {
+                $subquery->withTrashed();
+            }, 'sellerQuestionnaire', 'buyerQuestionnaire',
+            ])->first();
+        //                        dd($offer);
         $existSignature = Signature::where('offer_id', '=', $offerArray['offer_id'])->where('user_id', '=', Auth::id())->first();
-//        dd($existSignature);
-        $buyersellerArray = array($offer->sender_id, $offer->owner_id);
-//       create array for buyer and seller
+        //        dd($existSignature);
+        $buyersellerArray = [$offer->sender_id, $offer->owner_id];
+        //       create array for buyer and seller
         foreach ($buyersellerArray as $val) {
             if ($val == $offer->owner_id) {
                 $type = '2';
@@ -1034,67 +1102,66 @@ class ContractToolBuyerController extends Controller {
                 $affix_status = '1';
                 $signature_type = $type1;
             }
-            if (!empty($existSignature)) {
+            if (! empty($existSignature)) {
                 $fullName = $existSignature->fullname;
                 $getsignature = $existSignature->signature;
             } else {
                 $user = User::where('id', $val)
-                                ->with('user_profile')->first();
+                    ->with('user_profile')->first();
                 $fullName = getFullName($user);
                 $getsignature = $user->user_profile['electronic_signature'];
             }
 
-            $customArray1[] = array('id' => (int) $val, 'signature' => $getsignature, 'full_name' => $fullName, 'type' => $type, 'affix_status' => $affix_status, 'signature_type' => $signature_type);
+            $customArray1[] = ['id' => (int) $val, 'signature' => $getsignature, 'full_name' => $fullName, 'type' => $type, 'affix_status' => $affix_status, 'signature_type' => $signature_type];
         }
 
-        if ($offer->sellerQuestionnaire->joint_cowners == config('constant.joint_coowner.Yes') && !empty($offer->sellerQuestionnaire->partners)) {
+        if ($offer->sellerQuestionnaire->joint_cowners == config('constant.joint_coowner.Yes') && ! empty($offer->sellerQuestionnaire->partners)) {
             $coseller = explode(',', $offer->sellerQuestionnaire->partners);
         }
-        if ($offer->buyerQuestionnaire->joint_cowners == config('constant.joint_coowner.Yes') && !empty($offer->buyerQuestionnaire->partners)) {
+        if ($offer->buyerQuestionnaire->joint_cowners == config('constant.joint_coowner.Yes') && ! empty($offer->buyerQuestionnaire->partners)) {
 
             $cobuyer = explode(',', $offer->buyerQuestionnaire->partners);
         }
         // create array for cobuyer and coseller
         $cobuyerseller = array_merge($coseller, $cobuyer);
 
-        if (!empty($cobuyerseller)) {
+        if (! empty($cobuyerseller)) {
             foreach ($cobuyerseller as $seller) {
                 if (in_array($seller, $coseller)) {
-                    $type = "4";
+                    $type = '4';
                     $affix_status = '0';
                     $signature_type = 7; //not exist in any type
                 } elseif (in_array($seller, $cobuyer)) {
-                    $type = "3";
+                    $type = '3';
                     $affix_status = '0';
                     $signature_type = 7;
                 }
-                if (!empty($existSignature)) {
+                if (! empty($existSignature)) {
                     $fullName = $existSignature->fullname;
                     $getsignature = $existSignature->signature;
                 } else {
                     $user = User::where('id', $seller)
-                                    ->with('user_profile')->first();
+                        ->with('user_profile')->first();
                     $fullName = getFullName($user);
                     $getsignature = $user->user_profile['electronic_signature'];
                 }
-                $customArray2[] = array('id' => (int) $seller, 'signature' => $getsignature, 'full_name' => $fullName, 'type' => $type, 'affix_status' => $affix_status, 'signature_type' => $signature_type);
+                $customArray2[] = ['id' => (int) $seller, 'signature' => $getsignature, 'full_name' => $fullName, 'type' => $type, 'affix_status' => $affix_status, 'signature_type' => $signature_type];
             }
         }
         //combine buyer,seller,cobuyer,coseller for saving in users conditional table
         $customSignatureArray = array_merge($customArray1, $customArray2);
 
-//        dd($customSignatureArray);
+        //        dd($customSignatureArray);
         //get architecture data and images using property id for taking the backup
-        $getPropertyData = Property::with(array('disclosure', 'architechture' => function($query) {
-                        $query->select('property_id', 'school_district_id', 'school_id', 'home_type', 'beds', 'baths', 'plot_size', 'home_size', 'describe_your_home', 'year_built', 'HOA_dues', 'total_rooms', 'stories', 'garage_capacity', 'additional_features', 'basement');
-                    }, 'images' => function($query) {
-                        $query->select('property_id', 'image');
-                    }, 'additional_information', 'saleOffer'
-                ))->where(['id' => $offer->property->id])->withTrashed()->first();
-         
+        $getPropertyData = Property::with(['disclosure', 'architechture' => function ($query) {
+            $query->select('property_id', 'school_district_id', 'school_id', 'home_type', 'beds', 'baths', 'plot_size', 'home_size', 'describe_your_home', 'year_built', 'HOA_dues', 'total_rooms', 'stories', 'garage_capacity', 'additional_features', 'basement');
+        }, 'images' => function ($query) {
+            $query->select('property_id', 'image');
+        }, 'additional_information', 'saleOffer',
+        ])->where(['id' => $offer->property->id])->withTrashed()->first();
 
-        if (!empty($existSignature)) {
-//            dd($existSignature);
+        if (! empty($existSignature)) {
+            //            dd($existSignature);
             if ($existSignature->signature_type == 7) {
 
                 $result = Signature::where('offer_id', '=', $offerArray['offer_id'])->where('user_id', '=', $existSignature->user_id)->where('signature_type', 7)->update(['affix_status' => 1, 'signature_type' => $type1]);
@@ -1124,14 +1191,14 @@ class ContractToolBuyerController extends Controller {
                 $result = $customsignature->save();
             }
         }
-//    dd($result);
+        //    dd($result);
 
         if ($result) {
-//        dd($SignatureExist);
+            //        dd($SignatureExist);
             // check if property id already exist in backup tables then no need to take backups.
             if (empty(PropertyConditionalData::where('offer_id', '=', $offerArray['offer_id'])->where(['property_id' => $offer->property->id])->exists())) {
-//                 save data in property conditional data table for backup purpose
-                $propertyData = new \App\Models\PropertyConditionalData();
+                //                 save data in property conditional data table for backup purpose
+                $propertyData = new \App\Models\PropertyConditionalData;
                 $propertyData->user_id = $offer->property->user_id;
                 $propertyData->offer_id = $offerArray['offer_id'];
                 $propertyData->property_id = $offer->property->id;
@@ -1157,12 +1224,12 @@ class ContractToolBuyerController extends Controller {
                 $propertyData->back_to_market_date = $offer->property->back_to_market_date;
                 if ($propertyData->save()) {
                     $getArchitectureData = $getPropertyData->architechture;
-//            dd($getArchitectureData['school_district_id']);
+                    //            dd($getArchitectureData['school_district_id']);
                     $getImagesData = $getPropertyData->images;
                     $getAdditionalData = $getPropertyData->additional_information;
                     $disclosureData = $getPropertyData->disclosure;
                     // save data in property architecture and property images conditional data table for backup purpose
-                    $propertyArchitecture = new \App\Models\PropertyArchitectureConditionalData();
+                    $propertyArchitecture = new \App\Models\PropertyArchitectureConditionalData;
                     $propertyArchitecture->property_conditional_id = $propertyData->id;
                     $propertyArchitecture->school_district_id = $getArchitectureData['school_district_id'];
                     $propertyArchitecture->school_id = $getArchitectureData['school_id'];
@@ -1181,7 +1248,7 @@ class ContractToolBuyerController extends Controller {
                     $propertyArchitecture->garage_capacity = $getArchitectureData['garage_capacity'];
                     $propertyArchitecture->additional_features = $getArchitectureData['additional_features'];
                     if ($propertyArchitecture->save()) {
-                        $propertyConditionDisclaimer = new \App\Models\PropertyDisclaimerConditionalData();
+                        $propertyConditionDisclaimer = new \App\Models\PropertyDisclaimerConditionalData;
 
                         $propertyConditionDisclaimer->property_conditional_id = $propertyData->id;
                         $propertyConditionDisclaimer->user_id = Auth::id();
@@ -1270,7 +1337,7 @@ class ContractToolBuyerController extends Controller {
                             if (isset($getAdditionalData)) {
                                 foreach ($getAdditionalData as $information) {
                                     //Save additional information into property additional conditional table for backup
-                                    $additionalInfo = new \App\Models\PropertyAdditionalConditionalData();
+                                    $additionalInfo = new \App\Models\PropertyAdditionalConditionalData;
                                     $additionalInfo->additional_information_id = $information['pivot']['additional_information_id'];
                                     $additionalInfo->property_id = $propertyData->id;
                                     $additionalInfo->save();
@@ -1280,24 +1347,24 @@ class ContractToolBuyerController extends Controller {
                     }
                 }
             }
-            if ($agrementSigned == TRUE) {
+            if ($agrementSigned == true) {
                 $offer = SaleOffer::where('id', $offerArray['offer_id'])
-                                ->where('buyer_signature', config('constant.offer_signature.false'))
-                                ->whereHas('property', function($query) {
-                                    $query->where('property_type', config('constant.inverse_property_type.Sale'));
-				     $query->withTrashed();
-                                })->with(['buyerQuestionnaire' => function($buyerQuestionnaireQuery) {
-                                $buyerQuestionnaireQuery->select('id', 'offer_id', 'joint_cowners', 'partners');
-                            }, 'signatures' => function($signQuery) {
-                                $signQuery->where('signature_type', config('constant.inverse_signature_type.sale agreement'));
-                            }])->first(['id', 'property_id', 'sender_id', 'owner_id', 'buyer_signature']);
-//dd($offer);
-                if (!empty($offer)) {
+                    ->where('buyer_signature', config('constant.offer_signature.false'))
+                    ->whereHas('property', function ($query) {
+                        $query->where('property_type', config('constant.inverse_property_type.Sale'));
+                        $query->withTrashed();
+                    })->with(['buyerQuestionnaire' => function ($buyerQuestionnaireQuery) {
+                        $buyerQuestionnaireQuery->select('id', 'offer_id', 'joint_cowners', 'partners');
+                    }, 'signatures' => function ($signQuery) {
+                        $signQuery->where('signature_type', config('constant.inverse_signature_type.sale agreement'));
+                    }])->first(['id', 'property_id', 'sender_id', 'owner_id', 'buyer_signature']);
+                //dd($offer);
+                if (! empty($offer)) {
                     if ($offer->buyerQuestionnaire->joint_cowners == config('constant.joint_coowner.No')) {
                         $this->_updateAgrementStatus($offer->id);
-                    } else if ($offer->buyerQuestionnaire->joint_cowners == config('constant.joint_coowner.Yes') && !empty($offer->buyerQuestionnaire->partners)) {
+                    } elseif ($offer->buyerQuestionnaire->joint_cowners == config('constant.joint_coowner.Yes') && ! empty($offer->buyerQuestionnaire->partners)) {
 
-                        $partners = explode(",", $offer->buyerQuestionnaire->partners);
+                        $partners = explode(',', $offer->buyerQuestionnaire->partners);
                         $partners = array_filter($partners);
                         $total = count($partners) + 1;
 
@@ -1307,27 +1374,30 @@ class ContractToolBuyerController extends Controller {
                     }
                 }
             }
-//            get signature data corresponding 
+            //            get signature data corresponding
             $getSignatureData = Signature::where('offer_id', '=', $offerArray['offer_id'])->where('user_id', '=', Auth::id())->where('signature_type', '=', $type1)->first();
-//            dd($getSignatureData);
+
+            //            dd($getSignatureData);
             return response(['success' => true, 'signature' => $getSignatureData], 200);
         } else {
             return response(['success' => false], 500);
         }
     }
 
-    private function _updateAgrementStatus($offerId) {
+    private function _updateAgrementStatus($offerId)
+    {
         return SaleOffer::where('id', $offerId)->update(['buyer_signature' => config('constant.offer_signature.true')]);
     }
 
-    public function advisorySignature(Request $request) {
+    public function advisorySignature(Request $request)
+    {
         $offerArray = Session::get('OFFER');
         $ip = \Request::ip();
         $signature = Signature::where('user_id', Auth::id())
-                ->where('offer_id', $offerArray['offer_id'])
+            ->where('offer_id', $offerArray['offer_id'])
 //                ->where('user_id', Auth::id())
-                ->where('signature_type', config('constant.inverse_signature_type.advisory to buyers and sellers'))
-                ->first();
+            ->where('signature_type', config('constant.inverse_signature_type.advisory to buyers and sellers'))
+            ->first();
 
         if ($signature) {
             return response(['success' => true, 'signature' => $signature], 200);
@@ -1337,13 +1407,14 @@ class ContractToolBuyerController extends Controller {
         return $this->_savesignature($request, $offerArray, $ip, Auth::user()->user_profile->electronic_signature, $type);
     }
 
-    public function disclaimerSignature(Request $request) {
+    public function disclaimerSignature(Request $request)
+    {
         $offerArray = Session::get('OFFER');
         $ip = \Request::ip();
         $signature = Signature::where('user_id', Auth::id())
-                ->where('offer_id', $offerArray['offer_id'])
-                ->where('signature_type', config('constant.inverse_signature_type.property disclaimer'))
-                ->first();
+            ->where('offer_id', $offerArray['offer_id'])
+            ->where('signature_type', config('constant.inverse_signature_type.property disclaimer'))
+            ->first();
         if ($signature) {
             return response(['success' => true, 'signature' => $signature], 200);
         }
@@ -1352,29 +1423,31 @@ class ContractToolBuyerController extends Controller {
         return $this->_savesignature($request, $offerArray, $ip, Auth::user()->user_profile->electronic_signature, $type);
     }
 
-    public function saleAgreementSignature(Request $request) {
+    public function saleAgreementSignature(Request $request)
+    {
         $offerArray = Session::get('OFFER');
         $ip = \Request::ip();
         $signature = Signature::where('user_id', Auth::id())
-                ->where('offer_id', $offerArray['offer_id'])
-                ->where('signature_type', config('constant.inverse_signature_type.sale agreement'))
-                ->first();
+            ->where('offer_id', $offerArray['offer_id'])
+            ->where('signature_type', config('constant.inverse_signature_type.sale agreement'))
+            ->first();
         if ($signature) {
             return response(['success' => true, 'signature' => $signature], 200);
         }
         $type = config('constant.inverse_signature_type.sale agreement');
 
-        return $this->_savesignature($request, $offerArray, $ip, Auth::user()->user_profile->electronic_signature, $type, TRUE);
+        return $this->_savesignature($request, $offerArray, $ip, Auth::user()->user_profile->electronic_signature, $type, true);
     }
 
-    public function leadBasedSignature(Request $request) {
+    public function leadBasedSignature(Request $request)
+    {
         $offerArray = Session::get('OFFER');
         $ip = \Request::ip();
         $signature = Signature::where('user_id', Auth::id())
-                ->where('offer_id', $offerArray['offer_id'])
+            ->where('offer_id', $offerArray['offer_id'])
 //                ->where('affix_status', '1')
-                ->where('signature_type', config('constant.inverse_signature_type.lead based'))
-                ->first();
+            ->where('signature_type', config('constant.inverse_signature_type.lead based'))
+            ->first();
         if ($signature) {
             return response(['success' => true, 'signature' => $signature], 200);
         }
@@ -1383,14 +1456,15 @@ class ContractToolBuyerController extends Controller {
         return $this->_savesignature($request, $offerArray, $ip, Auth::user()->user_profile->electronic_signature, $type);
     }
 
-    public function vaFhaSignature(Request $request) {
+    public function vaFhaSignature(Request $request)
+    {
         $offerArray = Session::get('OFFER');
         $ip = \Request::ip();
         $signature = Signature::where('user_id', Auth::id())
-                ->where('offer_id', $offerArray['offer_id'])
+            ->where('offer_id', $offerArray['offer_id'])
 //                ->where('affix_status', '1')
-                ->where('signature_type', config('constant.inverse_signature_type.VA FHA loan addendum'))
-                ->first();
+            ->where('signature_type', config('constant.inverse_signature_type.VA FHA loan addendum'))
+            ->first();
         if ($signature) {
             return response(['success' => true, 'signature' => $signature], 200);
         }
@@ -1399,13 +1473,14 @@ class ContractToolBuyerController extends Controller {
         return $this->_savesignature($request, $offerArray, $ip, Auth::user()->user_profile->electronic_signature, $type);
     }
 
-    public function postClosingSignature(Request $request) {
+    public function postClosingSignature(Request $request)
+    {
         $offerArray = Session::get('OFFER');
         $ip = \Request::ip();
         $signature = Signature::where('user_id', Auth::id())
-                ->where('offer_id', $offerArray['offer_id'])
-                ->where('signature_type', config('constant.inverse_signature_type.post closing occupancy agreement'))
-                ->first();
+            ->where('offer_id', $offerArray['offer_id'])
+            ->where('signature_type', config('constant.inverse_signature_type.post closing occupancy agreement'))
+            ->first();
         if ($signature) {
             return response(['success' => true, 'signature' => $signature], 200);
         }
@@ -1413,5 +1488,4 @@ class ContractToolBuyerController extends Controller {
 
         return $this->_savesignature($request, $offerArray, $ip, Auth::user()->user_profile->electronic_signature, $type);
     }
-
 }

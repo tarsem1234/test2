@@ -3,37 +3,33 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToCounterRentOffersTable extends Migration {
+class AddForeignKeysToCounterRentOffersTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('counter_rent_offers', function (Blueprint $table) {
+            $table->foreign('property_id', 'counter_rent_offers_ibfk_1')->references('id')->on('properties')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            $table->foreign('rent_offer_id', 'counter_rent_offers_ibfk_5')->references('id')->on('rent_offers')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            $table->foreign('user_id', 'counter_rent_offers_ibfk_6')->references('id')->on('users')->onUpdate('RESTRICT')->onDelete('CASCADE');
+        });
+    }
 
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
-		Schema::table('counter_rent_offers', function(Blueprint $table)
-		{
-			$table->foreign('property_id', 'counter_rent_offers_ibfk_1')->references('id')->on('properties')->onUpdate('RESTRICT')->onDelete('CASCADE');
-			$table->foreign('rent_offer_id', 'counter_rent_offers_ibfk_5')->references('id')->on('rent_offers')->onUpdate('RESTRICT')->onDelete('CASCADE');
-			$table->foreign('user_id', 'counter_rent_offers_ibfk_6')->references('id')->on('users')->onUpdate('RESTRICT')->onDelete('CASCADE');
-		});
-	}
-
-
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		Schema::table('counter_rent_offers', function(Blueprint $table)
-		{
-			$table->dropForeign('counter_rent_offers_ibfk_1');
-			$table->dropForeign('counter_rent_offers_ibfk_5');
-			$table->dropForeign('counter_rent_offers_ibfk_6');
-		});
-	}
-
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('counter_rent_offers', function (Blueprint $table) {
+            $table->dropForeign('counter_rent_offers_ibfk_1');
+            $table->dropForeign('counter_rent_offers_ibfk_5');
+            $table->dropForeign('counter_rent_offers_ibfk_6');
+        });
+    }
 }

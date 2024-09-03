@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class State extends Model
 {
-     protected $table = "states";
+    protected $table = 'states';
 
-     public function documents() {
+    public function documents()
+    {
         return $this->hasMany('App\Models\DocumentListing');
     }
 }

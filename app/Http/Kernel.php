@@ -65,18 +65,18 @@ class Kernel extends HttpKernel
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'throttle'=> \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'timeout' => \App\Http\Middleware\SessionTimeout::class,
         'checkOfferValues' => \App\Http\Middleware\CheckSessionHasOfferValues::class,
-        'checkSignatureValues'    => \App\Http\Middleware\CheckSessionHasOfferSignature::class,
-        'checkDeletedUserOffer'    => \App\Http\Middleware\CheckDeletedUserHasOffer::class,
-        'checkPropertyId'    => \App\Http\Middleware\CheckSessionHasOfferPropertyId::class,
-        'OnlyUsers'    => \App\Http\Middleware\OnlyUsers::class,
+        'checkSignatureValues' => \App\Http\Middleware\CheckSessionHasOfferSignature::class,
+        'checkDeletedUserOffer' => \App\Http\Middleware\CheckDeletedUserHasOffer::class,
+        'checkPropertyId' => \App\Http\Middleware\CheckSessionHasOfferPropertyId::class,
+        'OnlyUsers' => \App\Http\Middleware\OnlyUsers::class,
 
         /*
          * Access Middleware
          */
-        'access.routeNeedsRole'       => \App\Http\Middleware\RouteNeedsRole::class,
+        'access.routeNeedsRole' => \App\Http\Middleware\RouteNeedsRole::class,
         'access.routeNeedsPermission' => \App\Http\Middleware\RouteNeedsPermission::class,
     ];
 }

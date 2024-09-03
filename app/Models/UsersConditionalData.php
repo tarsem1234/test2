@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class UsersConditionalData extends Model
 {
-
     use SoftDeletes;
-    protected $table = "users_conditional_data";
+
+    protected $table = 'users_conditional_data';
 
     public function user()
     {

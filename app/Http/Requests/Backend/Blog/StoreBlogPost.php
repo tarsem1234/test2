@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Backend\Blog;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class StoreBlogPost extends FormRequest
 {
@@ -25,10 +24,10 @@ class StoreBlogPost extends FormRequest
     public function rules()
     {
         return [
-            'blog_title'           => 'required|min:5|max:191',
-            'blog_description'     => 'required',
-            'blog_content'         => 'required',
-            'blog_image'           => 'required',
+            'blog_title' => 'required|min:5|max:191',
+            'blog_description' => 'required',
+            'blog_content' => 'required',
+            'blog_image' => 'required',
         ];
     }
 }

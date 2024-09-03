@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
-use Illuminate\Http\Request;
 use App\Exceptions\GeneralException;
-use App\Http\Controllers\Controller;
-use Laravel\Socialite\Facades\Socialite;
-use App\Repositories\Frontend\Access\User\UserRepository;
 use App\Helpers\Frontend\Auth\Socialite as SocialiteHelper;
+use App\Http\Controllers\Controller;
+use App\Repositories\Frontend\Access\User\UserRepository;
+use Illuminate\Http\Request;
+use Laravel\Socialite\Facades\Socialite;
 
 /**
  * Class SocialLoginController.
@@ -26,9 +26,6 @@ class SocialLoginController extends Controller
 
     /**
      * SocialLoginController constructor.
-     *
-     * @param UserRepository  $user
-     * @param SocialiteHelper $helper
      */
     public function __construct(UserRepository $user, SocialiteHelper $helper)
     {
@@ -37,12 +34,9 @@ class SocialLoginController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @param $provider
+     * @return \Illuminate\Http\RedirectResponse|mixed
      *
      * @throws GeneralException
-     *
-     * @return \Illuminate\Http\RedirectResponse|mixed
      */
     public function login(Request $request, $provider)
     {
@@ -95,8 +89,6 @@ class SocialLoginController extends Controller
     }
 
     /**
-     * @param  $provider
-     *
      * @return mixed
      */
     private function getAuthorizationFirst($provider)
@@ -122,8 +114,6 @@ class SocialLoginController extends Controller
     }
 
     /**
-     * @param $provider
-     *
      * @return mixed
      */
     private function getSocialUser($provider)

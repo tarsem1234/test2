@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class AdditionalInformation extends Model
 {
-
     use SoftDeletes;
-    protected $table = "additional_information";
 
-//    public function parent()
-//    {
-//        return $this->belongsTo('App\Models\AdditionalInformation', 'parent_id');
-//    }
+    protected $table = 'additional_information';
+
+    //    public function parent()
+    //    {
+    //        return $this->belongsTo('App\Models\AdditionalInformation', 'parent_id');
+    //    }
 
     public function children()
     {

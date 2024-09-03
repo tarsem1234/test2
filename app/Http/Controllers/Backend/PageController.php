@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Page;
+use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -34,7 +33,6 @@ class PageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -66,13 +64,13 @@ class PageController extends Controller
 
             return view('backend.pages.create', ['page' => $page]);
         }
+
         return redirect()->back();
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -81,14 +79,15 @@ class PageController extends Controller
         $this->validate($request, [
             'title' => 'required',
         ]);
-//        dd($request->all());
-        $input['title']   = $request->title;
+        //        dd($request->all());
+        $input['title'] = $request->title;
         $input['content'] = $request->content;
         if (Page::where('id', $id)->update($input)) {
 
             return redirect()->route('admin.pages.index')->with('flash_success',
-                    'Page updated successfully.');
+                'Page updated successfully.');
         }
+
         return redirect()->back()->with('flash_success', 'Page Updation Failed.');
     }
 

@@ -10,7 +10,6 @@ use Illuminate\Validation\Rule;
  */
 class StoreUserRequest extends Request
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -34,6 +33,7 @@ class StoreUserRequest extends Request
                 'password' => 'required|min:6|confirmed',
             ];
         }
+
         return [
             'first_name' => 'required|max:191',
             'last_name' => 'required|max:191',

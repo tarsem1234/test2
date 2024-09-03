@@ -7,7 +7,6 @@ use Illuminate\Validation\Rule;
 
 class SellerQuestionnaireRequest extends Request
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -27,7 +26,7 @@ class SellerQuestionnaireRequest extends Request
     {
         $yesNoCount = [1, 2];
         $rules = [
-//            'household_items' => 'required',
+            //            'household_items' => 'required',
             'houseowners_associations' => [
                 'required',
                 Rule::in($yesNoCount),
@@ -82,5 +81,4 @@ class SellerQuestionnaireRequest extends Request
     {
         return [];
     }
-
 }

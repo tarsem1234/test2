@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Backend\Access\Role;
 
 use App\Http\Controllers\Controller;
-use Yajra\Datatables\Facades\Datatables;
-use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Http\Requests\Backend\Access\Role\ManageRoleRequest;
+use App\Repositories\Backend\Access\Role\RoleRepository;
+use Yajra\Datatables\Facades\Datatables;
 
 /**
  * Class RoleTableController.
@@ -17,17 +17,12 @@ class RoleTableController extends Controller
      */
     protected $roles;
 
-    /**
-     * @param RoleRepository $roles
-     */
     public function __construct(RoleRepository $roles)
     {
         $this->roles = $roles;
     }
 
     /**
-     * @param ManageRoleRequest $request
-     *
      * @return mixed
      */
     public function __invoke(ManageRoleRequest $request)

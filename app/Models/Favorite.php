@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Favorite extends Model
 {
-
     use SoftDeletes;
-    protected $table = "favorites";
+
+    protected $table = 'favorites';
 
     public function property()
     {

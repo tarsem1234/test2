@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class ChangeDataTypeQuestionLandlordTable extends Migration
 {
@@ -14,8 +14,8 @@ class ChangeDataTypeQuestionLandlordTable extends Migration
     public function up()
     {
         //
-	Schema::table('questions_landlord', function (Blueprint $table) {
-	    $table->string('partners', 191)->nullable()->change();
+        Schema::table('questions_landlord', function (Blueprint $table) {
+            $table->string('partners', 191)->nullable()->change();
         });
     }
 
@@ -27,8 +27,8 @@ class ChangeDataTypeQuestionLandlordTable extends Migration
     public function down()
     {
         //
-	Schema::table('questions_landlord', function (Blueprint $table) {
-	    $table->integer('partners')->nullable()->change();
+        Schema::table('questions_landlord', function (Blueprint $table) {
+            $table->integer('partners')->nullable()->change();
         });
     }
 }

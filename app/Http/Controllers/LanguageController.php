@@ -8,8 +8,6 @@ namespace App\Http\Controllers;
 class LanguageController extends Controller
 {
     /**
-     * @param $lang
-     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function swap($lang)

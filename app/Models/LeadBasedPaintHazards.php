@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class LeadBasedPaintHazards extends Model
 {
-
     use SoftDeletes;
-    protected $table = "lead_based_paint_hazards";
 
+    protected $table = 'lead_based_paint_hazards';
 }

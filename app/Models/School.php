@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class School extends Model
 {
-    protected $table = "schools";
+    protected $table = 'schools';
 
     public function district()
     {
-        return $this->belongsTo('App\Models\SchoolDistrict','school_district');
+        return $this->belongsTo('App\Models\SchoolDistrict', 'school_district');
     }
 }

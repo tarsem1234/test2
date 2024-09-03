@@ -4,70 +4,85 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Property extends Model {
-
+class Property extends Model
+{
     use SoftDeletes;
 
-    protected $table = "properties";
+    protected $table = 'properties';
 
-    public function architechture() {
+    public function architechture()
+    {
         return $this->hasOne('App\Models\PropertyArchitecture', 'property_id');
     }
 
-    public function images() {
+    public function images()
+    {
         return $this->hasMany('App\Models\PropertyImage', 'property_id');
     }
 
-    public function latestImage() {
+    public function latestImage()
+    {
         return $this->hasOne('App\Models\PropertyImage', 'property_id')->latest();
     }
 
-    public function additional_information() {
+    public function additional_information()
+    {
         return $this->belongsToMany('App\Models\AdditionalInformation')->withPivot('property_id', 'additional_information_id');
     }
 
-    public function additional_property() {
+    public function additional_property()
+    {
         return $this->belongsToMany('App\Models\additionalInformationProperty')->withPivot('property_id', 'additional_information_id');
     }
 
-    public function city() {
+    public function city()
+    {
         return $this->hasOne('App\Models\City');
     }
 
-    public function offers() {
+    public function offers()
+    {
         return $this->hasMany('App\Models\Offer');
     }
-    public function rentOffer() {
+
+    public function rentOffer()
+    {
         return $this->hasMany('App\Models\RentOffer');
     }
-    public function saleOffer() {
+
+    public function saleOffer()
+    {
         return $this->hasMany('App\Models\SaleOffer');
     }
 
-    public function favorites() {
+    public function favorites()
+    {
         return $this->hasMany('App\Models\Favorite');
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo('App\Models\Access\User\User');
     }
 
-    public function disclosure() {
+    public function disclosure()
+    {
         return $this->hasOne('App\Models\PropertyConditionDisclaimer');
     }
 
-    public function leadBasedPaintHazards() {
+    public function leadBasedPaintHazards()
+    {
         return $this->hasOne('App\Models\LeadBasedPaintHazards');
     }
 
-    public function propertyConditionDisclaimer() {
+    public function propertyConditionDisclaimer()
+    {
         return $this->hasOne('App\Models\PropertyConditionDisclaimer', 'property_id');
     }
 
-    public function availability() {
+    public function availability()
+    {
         return $this->hasMany(PropertyAvailability::class);
     }
-
 }

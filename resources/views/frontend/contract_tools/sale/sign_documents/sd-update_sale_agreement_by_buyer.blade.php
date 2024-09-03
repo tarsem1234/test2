@@ -22,13 +22,13 @@
                                 <div class="col-md-12"> 
                                     <!--combine buyer,cobuyer and seller,coselller--> 
                                     <?php
-                                    $buyersArray = array();
-                                    $sellersArray = array();
+                                    $buyersArray = [];
+                                    $sellersArray = [];
                                     if (!empty($offer->signatures)) {
 //                                        echo'<pre>';print_R(array_unique($offer->signatures));die;
                                         foreach ($offer->signatures as $signature) {
 //                                    echo'<pre>';print_r((array_unique($signature->toArray())));
-                                            if (in_array($signature['type'], array(1, 3))) {
+                                            if (in_array($signature['type'], [1, 3])) {
                                                 $buyersArray[] = $signature['fullname'];
                                             } else {
                                                 $sellersArray[] = $signature['fullname'];

@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
-use Request;
-use App\Models\Access\User\User;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\Access\User\ManageUserRequest;
+use App\Http\Requests\Backend\Access\User\StoreUserRequest;
+use App\Models\Access\User\User;
 use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Repositories\Backend\Access\User\UserRepository;
-use App\Http\Requests\Backend\Access\User\StoreUserRequest;
-use App\Http\Requests\Backend\Access\User\ManageUserRequest;
-use Auth;
-
+use Request;
 
 class BusinessController extends Controller
 {
     protected $users;
+
     protected $roles;
 
     public function __construct(UserRepository $users, RoleRepository $roles)
@@ -26,11 +25,12 @@ class BusinessController extends Controller
     public function index(Request $request)
     {
         $businessUsers = User::whereHas('roles',
-                    function($query) {
-                    $query->where('name', 'Business');
-                })
-                ->with('business_profile')->where('status',1)->get();
-//                dd($businessUsers);
+            function ($query) {
+                $query->where('name', 'Business');
+            })
+            ->with('business_profile')->where('status', 1)->get();
+
+        //                dd($businessUsers);
         return view('backend.access.business_index', compact('businessUsers'));
     }
 
@@ -39,7 +39,7 @@ class BusinessController extends Controller
         $business = true;
 
         return view('backend.access.business_create', compact('business'))
-                ->withRoles($this->roles->getAll());
+            ->with('roles', $this->roles->getAll());
     }
 
     public function store(StoreUserRequest $request)
@@ -51,7 +51,7 @@ class BusinessController extends Controller
                     'confirmed', 'confirmation_email'
                 ),
                 'roles' => $request->only('assignees_roles'),
-        ]);
+            ]);
 
         return redirect()->route('admin.access.business.index')->withFlashSuccess(trans('alerts.backend.users.created'));
     }
@@ -59,12 +59,14 @@ class BusinessController extends Controller
     public function deactivated(ManageUserRequest $request)
     {
         $business = true;
+
         return view('backend.access.business_deactivated', compact('business'));
     }
 
     public function deleted(ManageUserRequest $request)
     {
         $business = true;
+
         return view('backend.access.business_deleted', compact('business'));
     }
 }

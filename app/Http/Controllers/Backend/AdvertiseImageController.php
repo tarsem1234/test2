@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Backend\AdvertiseImage;
 use File;
+use Illuminate\Http\Request;
 
 class AdvertiseImageController extends Controller
 {
@@ -17,7 +17,8 @@ class AdvertiseImageController extends Controller
     public function index()
     {
         $advertiseImages = AdvertiseImage::get();
-        return view('backend.advertise-images.index',['advertiseImages'=>$advertiseImages]);
+
+        return view('backend.advertise-images.index', ['advertiseImages' => $advertiseImages]);
     }
 
     /**
@@ -33,7 +34,6 @@ class AdvertiseImageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -43,20 +43,21 @@ class AdvertiseImageController extends Controller
             'advertise_image' => 'required|image|mimes:jpeg,jpg,png|max:1024',
         ]);
 
-// Removing App name
-        $reducedLink = str_replace(asset('/'),"",$request->page_link);
+        // Removing App name
+        $reducedLink = str_replace(asset('/'), '', $request->page_link);
 
         $advImage = store_advertise_image($request->advertise_image);
-        $advertise           = new AdvertiseImage();
+        $advertise = new AdvertiseImage;
         $advertise->page_link = $reducedLink;
         $advertise->image = $advImage;
 
         if ($advertise->save()) {
             return redirect()->route('admin.advertise-images.index')->with('flash_success',
-                    'Advertise saved successfully.');
+                'Advertise saved successfully.');
         }
+
         return redirect()->route('backend.advertise-images.create')->with('flash_danger',
-                'Advertise not saved.');
+            'Advertise not saved.');
     }
 
     /**
@@ -76,15 +77,11 @@ class AdvertiseImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        
-    }
+    public function edit($id) {}
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -110,7 +107,8 @@ class AdvertiseImageController extends Controller
                     200);
             }
         }
+
         return response()->json(['success' => true, 'message' => 'Advertise deletion failed'],
-                500);
+            500);
     }
 }

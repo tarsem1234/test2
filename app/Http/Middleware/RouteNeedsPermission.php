@@ -10,11 +10,7 @@ use Closure;
 class RouteNeedsPermission
 {
     /**
-     * @param $request
-     * @param Closure $next
-     * @param $permission
-     * @param bool $needsAll
-     *
+     * @param  bool  $needsAll
      * @return mixed
      */
     public function handle($request, Closure $next, $permission, $needsAll = false)

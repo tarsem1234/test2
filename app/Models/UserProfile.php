@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class UserProfile extends Model
 {
-
     use SoftDeletes;
-    protected $table = "user_profiles";
-    protected $fillable = ['full_name','user_id'];
+
+    protected $table = 'user_profiles';
+
+    protected $fillable = ['full_name', 'user_id'];
 
     public function user()
     {

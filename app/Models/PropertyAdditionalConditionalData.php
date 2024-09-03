@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class PropertyAdditionalConditionalData extends Model
 {
     //
-     protected $table = "property_additional_conditional_data";
+    protected $table = 'property_additional_conditional_data';
 }

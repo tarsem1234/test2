@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class VacationImage extends Model
 {
     use SoftDeletes;
-    protected $table = "vacation_images";
+
+    protected $table = 'vacation_images';
 
     public function vacation_property()
     {

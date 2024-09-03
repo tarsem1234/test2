@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Industry;
 use App\Models\Service;
+use Illuminate\Http\Request;
 
 class IndustryController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -35,30 +34,30 @@ class IndustryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $this->validate($request,
             [
-            'industry' => 'required',
-        ]);
+                'industry' => 'required',
+            ]);
 
         $checkIfIndustry = Industry::where('industry', $request->industry)->first();
         if (count($checkIfIndustry) > 0) {
             return redirect()->route('admin.industries.create')->with('flash_warning',
-                    'Industry already exists.');
+                'Industry already exists.');
         }
 
-        $industry           = new Industry();
+        $industry = new Industry;
         $industry->industry = $request->industry;
         if ($industry->save()) {
             return redirect()->route('admin.industries.index')->with('flash_success',
-                    'Industry saved successfully.');
+                'Industry saved successfully.');
         }
+
         return redirect()->route('backend.industries.create')->with('flash_danger',
-                'Industry not saved.');
+            'Industry not saved.');
     }
 
     /**
@@ -90,7 +89,6 @@ class IndustryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -98,17 +96,18 @@ class IndustryController extends Controller
     {
         $this->validate($request,
             [
-            'industry' => 'required',
-        ]);
-//        dd($request->all());
+                'industry' => 'required',
+            ]);
+        //        dd($request->all());
         $input['industry'] = $request->industry;
         if (Industry::where('id', $id)->update($input)) {
 
             return redirect()->route('admin.industries.index')->with('flash_success',
-                    'Industry updated successfully.');
+                'Industry updated successfully.');
         }
+
         return redirect()->back()->with('flash_success',
-                'Industry Updation Failed.');
+            'Industry Updation Failed.');
     }
 
     /**
@@ -123,10 +122,10 @@ class IndustryController extends Controller
             Service::where('industry_id', $id)->delete();
 
             return response()->json(['success' => true, 'message' => 'Industry deleted successfully'],
-                    200);
+                200);
         }
 
         return response()->json(['success' => true, 'message' => 'Industry Deletion Failed'],
-                500);
+            500);
     }
 }

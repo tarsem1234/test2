@@ -9,17 +9,16 @@ use Illuminate\Http\Request;
 
 class ForumController extends Controller
 {
-
     public function index()
     {
-        $forums = Forum::latest()->with('totalViews','replies','user')->get();
-//        dd($forums->toArray());
+        $forums = Forum::latest()->with('totalViews', 'replies', 'user')->get();
+
+        //        dd($forums->toArray());
         return view('backend.forum.index', compact('forums'));
     }
 
-    public function details($id)
-    {
-    }
+    public function details($id) {}
+
     public function create()
     {
         //
@@ -32,7 +31,7 @@ class ForumController extends Controller
 
     public function show(Forum $forum)
     {
-        $forumDetails = Forum::where('id', $forum->id)->with('replies','user')->first();
+        $forumDetails = Forum::where('id', $forum->id)->with('replies', 'user')->first();
 
         return view('backend.forum.show', compact('forumDetails'));
     }
@@ -49,19 +48,21 @@ class ForumController extends Controller
 
     public function destroy(Forum $forum)
     {
-        if(Forum::where('id', $forum->id)->delete()) {
-            return response()->json(['success'=>true, 'message'=>'Forum deleted successfully'],200);
+        if (Forum::where('id', $forum->id)->delete()) {
+            return response()->json(['success' => true, 'message' => 'Forum deleted successfully'], 200);
         }
-            return response()->json(['success'=>true, 'message'=>'Forum deletion failed'],500);
+
+        return response()->json(['success' => true, 'message' => 'Forum deletion failed'], 500);
     }
 
     public function deleteReply($id)
     {
         if (ForumReply::where('id', $id)->delete()) {
             return response()->json(['success' => true,
-                    'message' => 'Reply deleted successfully.'
-                    ], 200);
+                'message' => 'Reply deleted successfully.',
+            ], 200);
         }
+
         return response()->json(['success' => false], 500);
     }
 }

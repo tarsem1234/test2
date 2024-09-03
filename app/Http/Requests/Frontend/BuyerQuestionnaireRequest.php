@@ -7,7 +7,6 @@ use Illuminate\Validation\Rule;
 
 class BuyerQuestionnaireRequest extends Request
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -26,7 +25,6 @@ class BuyerQuestionnaireRequest extends Request
     public function rules()
     {
         $sellerAware = [1, 2];
-
 
         $rules = [
             'using_VA_or_FHA' => 'required',
@@ -67,10 +65,10 @@ class BuyerQuestionnaireRequest extends Request
     {
         return [];
     }
-//    public function all()
-//    {
-//        $data = parent::all();
-//
-//        return $data;
-//    }
+    //    public function all()
+    //    {
+    //        $data = parent::all();
+    //
+    //        return $data;
+    //    }
 }

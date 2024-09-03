@@ -1,17 +1,18 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class UsersUpdateConditional extends Migration {
-
+class UsersUpdateConditional extends Migration
+{
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up() {
+    public function up()
+    {
         Schema::table('users_conditional_data', function (Blueprint $table) {
             $table->dropColumn('seller_signature');
             $table->dropColumn('sender_id');
@@ -32,7 +33,8 @@ class UsersUpdateConditional extends Migration {
      *
      * @return void
      */
-    public function down() {
+    public function down()
+    {
         Schema::table('users_conditional_data', function (Blueprint $table) {
             $table->integer('sender_id')->unsigned()->index('sender_id')->after('id');
             $table->integer('owner_id')->unsigned()->index('owner_id')->after('sender_id');
@@ -47,5 +49,4 @@ class UsersUpdateConditional extends Migration {
         });
         //
     }
-
 }

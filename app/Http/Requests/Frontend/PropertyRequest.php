@@ -8,7 +8,6 @@ use App\Models\VacationImage;
 
 class PropertyRequest extends Request
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -42,14 +41,14 @@ class PropertyRequest extends Request
                 'beds' => 'required',
                 'baths' => 'required',
                 'home_size' => 'required',
-//                'plotsize' => 'required',
+                //                'plotsize' => 'required',
                 'description' => 'required',
                 'builtyear' => 'required',
                 'agree' => 'required',
             ];
             if (isset($this->total_rooms) && $this->total_rooms) {
                 $rules += [
-                    'total_rooms' => 'required|numeric'
+                    'total_rooms' => 'required|numeric',
                 ];
             }
         }
@@ -67,9 +66,9 @@ class PropertyRequest extends Request
                 'bathrooms' => 'required',
                 'bedrooms' => 'required',
                 'sleeps' => 'required',
-//                'ownership_type' => 'required',
-//                'annual_maintenance_fees' => 'required',
-//                'property_description' => 'required',
+                //                'ownership_type' => 'required',
+                //                'annual_maintenance_fees' => 'required',
+                //                'property_description' => 'required',
             ];
         }
         if (((count($this->deletedImageIds) - $this->storedImageCount) == 0) && $this->commingImageCount == 0) {
@@ -78,13 +77,13 @@ class PropertyRequest extends Request
             ];
         }
         if ($this->property_submit == 'Update') {
-            if (isset($this->images) && !empty($this->images)) {
+            if (isset($this->images) && ! empty($this->images)) {
                 $rules += [
                     'images.*' => 'image|mimes:jpeg,jpg,png,pjpeg,gif|max:2048',
                 ];
             }
         } else {
-            if (isset($this->images) && !empty($this->images)) {
+            if (isset($this->images) && ! empty($this->images)) {
                 $rules += [
                     'images.*' => 'image|mimes:jpeg,jpg,png,pjpeg,gif|max:2048',
                 ];
@@ -94,6 +93,7 @@ class PropertyRequest extends Request
                 ];
             }
         }
+
         return $rules;
     }
 
@@ -107,7 +107,7 @@ class PropertyRequest extends Request
     public function all()
     {
         $data = parent::all();
-//        echo'<pre>';print_r($data);die;
+        //        echo'<pre>';print_r($data);die;
         $data['limit'] = 0;
         $storedImageCount = 0;
         $commingImageCount = 0;
@@ -118,8 +118,8 @@ class PropertyRequest extends Request
             } else {
                 $storedImageCount = PropertyImage::where('property_id', $data['property_table_id'])->count();
             }
-            $commingImageCount = !empty($data['images'])? count($data['images']):0; 
-//                    count($data['images'] ?? 0);
+            $commingImageCount = ! empty($data['images']) ? count($data['images']) : 0;
+            //                    count($data['images'] ?? 0);
 
             if ($data['image_ids']) {
                 $deletedImageIds = explode(',', $data['image_ids']);
@@ -135,6 +135,7 @@ class PropertyRequest extends Request
             }
             parent::merge(['limit' => $data['limit'], 'storedImageCount' => $storedImageCount,
                 'commingImageCount' => $commingImageCount, 'deletedImageIds' => $deletedImageIds]);
+
             return parent::all();
         }
         $data['limit'] = count($data['images'] ?? 0);
@@ -144,5 +145,4 @@ class PropertyRequest extends Request
 
         return parent::all();
     }
-
 }

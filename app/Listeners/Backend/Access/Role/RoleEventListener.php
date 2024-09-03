@@ -12,9 +12,6 @@ class RoleEventListener
      */
     private $history_slug = 'Role';
 
-    /**
-     * @param $event
-     */
     public function onCreated($event)
     {
         history()->withType($this->history_slug)
@@ -25,9 +22,6 @@ class RoleEventListener
             ->log();
     }
 
-    /**
-     * @param $event
-     */
     public function onUpdated($event)
     {
         history()->withType($this->history_slug)
@@ -38,9 +32,6 @@ class RoleEventListener
             ->log();
     }
 
-    /**
-     * @param $event
-     */
     public function onDeleted($event)
     {
         history()->withType($this->history_slug)
@@ -54,7 +45,7 @@ class RoleEventListener
     /**
      * Register the listeners for the subscriber.
      *
-     * @param \Illuminate\Events\Dispatcher $events
+     * @param  \Illuminate\Events\Dispatcher  $events
      */
     public function subscribe($events)
     {

@@ -7,7 +7,6 @@ use Illuminate\Validation\Rule;
 
 class PropertyConditionDisclaimerRequest extends Request
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -107,7 +106,7 @@ class PropertyConditionDisclaimerRequest extends Request
                 'required',
                 Rule::in($sellerAware),
             ],
-//            'central_air_conditioning' => 'required',      partb_details check if above yes
+            //            'central_air_conditioning' => 'required',      partb_details check if above yes
             'substances' => [
                 'required',
                 Rule::in($sellerAware),
@@ -212,13 +211,13 @@ class PropertyConditionDisclaimerRequest extends Request
                 'required',
                 Rule::in($sellerAware),
             ],
-//            'in_an_historical_district' => 'required',     part c condition check if yes
+            //            'in_an_historical_district' => 'required',     part c condition check if yes
         ];
-//        if ($this->occupy == config('constant.inverse_property_disclaimer_occupy.Seller does not occupy property')) {
-//            $rules += [
-//                'howlong' => 'required',
-//            ];
-//        }
+        //        if ($this->occupy == config('constant.inverse_property_disclaimer_occupy.Seller does not occupy property')) {
+        //            $rules += [
+        //                'howlong' => 'required',
+        //            ];
+        //        }
         if ($this->houseowners_associations == config('constant.inverse_common_yes_no.Yes')) {
             $rules += [
                 'name_address' => 'required',
@@ -227,55 +226,55 @@ class PropertyConditionDisclaimerRequest extends Request
                 'special_assessments' => 'required',
             ];
         }
-        if (isset($this->property_includes['Fireplace']) && !empty($this->property_includes['Fireplace'])) {
+        if (isset($this->property_includes['Fireplace']) && ! empty($this->property_includes['Fireplace'])) {
             $rules += [
                 'howmany' => 'required',
             ];
         }
-        if (isset($this->property_includes['Pool']) && !empty($this->property_includes['Pool'])) {
+        if (isset($this->property_includes['Pool']) && ! empty($this->property_includes['Pool'])) {
             $rules += [
                 'pool' => 'required',
             ];
         }
-        if (isset($this->property_includes['Garage']) && !empty($this->property_includes['Garage'])) {
+        if (isset($this->property_includes['Garage']) && ! empty($this->property_includes['Garage'])) {
             $rules += [
                 'garage' => 'required',
             ];
         }
-        if (isset($this->property_includes['Garage Door Opener']) && !empty($this->property_includes['Garage Door Opener'])) {
+        if (isset($this->property_includes['Garage Door Opener']) && ! empty($this->property_includes['Garage Door Opener'])) {
             $rules += [
                 'how_many_remotes' => 'required',
             ];
         }
-        if (isset($this->property_includes['Heat Pump']) && !empty($this->property_includes['Heat Pump'])) {
+        if (isset($this->property_includes['Heat Pump']) && ! empty($this->property_includes['Heat Pump'])) {
             $rules += [
                 'heat_pump_age' => 'required',
             ];
         }
-        if (isset($this->property_includes['Central Heating']) && !empty($this->property_includes['Central Heating'])) {
+        if (isset($this->property_includes['Central Heating']) && ! empty($this->property_includes['Central Heating'])) {
             $rules += [
                 'central_heating_age' => 'required',
                 'central_heating_type.*' => 'required',
             ];
         }
-        if (isset($this->property_includes['Central Air Conditioning']) && !empty($this->property_includes['Central Air Conditioning'])) {
+        if (isset($this->property_includes['Central Air Conditioning']) && ! empty($this->property_includes['Central Air Conditioning'])) {
             $rules += [
                 'central_air_conditioning_age' => 'required',
                 'central_air_conditioning_type.*' => 'required',
             ];
         }
-        if (isset($this->property_includes['Water Heater']) && !empty($this->property_includes['Water Heater'])) {
+        if (isset($this->property_includes['Water Heater']) && ! empty($this->property_includes['Water Heater'])) {
             $rules += [
                 'water_heater_age' => 'required',
                 'water_heater_type.*' => 'required',
             ];
         }
-        if (isset($this->property_includes['Water Supply']) && !empty($this->property_includes['Water Supply'])) {
+        if (isset($this->property_includes['Water Supply']) && ! empty($this->property_includes['Water Supply'])) {
             $rules += [
                 'water_supply_type.*' => 'required',
             ];
         }
-        if (isset($this->property_includes['Gas Supply']) && !empty($this->property_includes['Gas Supply'])) {
+        if (isset($this->property_includes['Gas Supply']) && ! empty($this->property_includes['Gas Supply'])) {
             $rules += [
                 'gas_supply_type.*' => 'required',
             ];
@@ -286,6 +285,7 @@ class PropertyConditionDisclaimerRequest extends Request
                 'bsknowledge_explain' => 'required',
             ];
         }
+
         return $rules;
     }
 

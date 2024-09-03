@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\XmlfeedUser;
 use Hash;
+use Illuminate\Http\Request;
 
 class XmlFeedController extends Controller
 {
-
     public function index()
     {
         $xmlUsers = XmlfeedUser::latest()->get();
@@ -34,18 +33,18 @@ class XmlFeedController extends Controller
         return redirect()->back()->withFlashDanger('Something went wrong.');
     }
 
-    public function store(Request $request, $id=null)
+    public function store(Request $request, $id = null)
     {
         $this->validate($request,
             [
-            'username' => 'required|unique:xmlfeed_users|max:191',
-            'password' => 'required|max:191',
-        ]);
+                'username' => 'required|unique:xmlfeed_users|max:191',
+                'password' => 'required|max:191',
+            ]);
         $data = $request->all();
         unset($data['_token']);
         $data['password'] = Hash::make($data['password']);
-//        $user->username = $request->username;
-//        $user->password = bcrypt($request->password);
+        //        $user->username = $request->username;
+        //        $user->password = bcrypt($request->password);
 
         if (XmlfeedUser::create($data)) {
 
@@ -57,24 +56,26 @@ class XmlFeedController extends Controller
 
     public function update(Request $request)
     {
-        if($request->xml_user_id){
+        if ($request->xml_user_id) {
             $this->validate($request,
                 [
-                'username' => 'required|max:191',
-                'password' => 'required|max:191',
-            ]);
+                    'username' => 'required|max:191',
+                    'password' => 'required|max:191',
+                ]);
             $xmlUserId = decrypt($request->xml_user_id);
-            $data=[
-                'username'=> $request->username,
-                'password'=> $request->password,
+            $data = [
+                'username' => $request->username,
+                'password' => $request->password,
             ];
-            if(XmlfeedUser::where('id',$xmlUserId)->update($data)){
-                
+            if (XmlfeedUser::where('id', $xmlUserId)->update($data)) {
+
                 return redirect()->route('admin.xmlFeedIndex')->withFlashSuccess('Xml Feed User Updated.');
             }
         }
+
         return redirect()->back()->withFlashDanger('Something went wrong.');
     }
+
     public function activation($id)
     {
         if ($id) {
@@ -84,6 +85,7 @@ class XmlFeedController extends Controller
             } elseif ($xmlUser && $xmlUser->status == 0) {
                 XmlfeedUser::where('id', $xmlUser->id)->Update(['status' => 1]);
             }
+
             return redirect()->route('admin.xmlFeedIndex')->withFlashSuccess('Xml Feed User Updated.');
         }
 

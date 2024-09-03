@@ -1,6 +1,6 @@
 <?php
 
-return[
+return [
     'image_count' => 10,
     'year_built' => 1978,
     'property_image_path' => 'app/public/property_images/',
@@ -249,8 +249,8 @@ return[
         'Vacant Land' => 7,
         'Other' => 8,
     ],
-    'home_type_xmlfeed' => [1 => "SingleFamily", "Condo", "Manufactured", "Townhouse",
-        "MultiFamily", "Coop", "VacantLand", "Other"],
+    'home_type_xmlfeed' => [1 => 'SingleFamily', 'Condo', 'Manufactured', 'Townhouse',
+        'MultiFamily', 'Coop', 'VacantLand', 'Other'],
     'lease_terms_available' => [
         1 => 'Month-To-Month',
         2 => '< 6 Months',
@@ -304,28 +304,28 @@ return[
         1 => 'accepted',
         2 => 'rejected_by_seller',
         3 => 'rejected_by_buyer',
-        5 => 'user_deleted'
+        5 => 'user_deleted',
     ],
     'inverse_offer_status' => [
         'pending' => 0,
         'accepted' => 1,
         'rejected_by_seller' => 2,
         'rejected_by_buyer' => 3,
-        'user_deleted' => 5
+        'user_deleted' => 5,
     ],
     'rent_offer_status' => [
         0 => 'pending',
         1 => 'accepted',
         2 => 'rejected_by_landlord',
         3 => 'rejected_by_buyer',
-        5 => 'user_deleted'
+        5 => 'user_deleted',
     ],
     'inverse_rent_offer_status' => [
         'pending' => 0,
         'accepted' => 1,
         'rejected_by_landlord' => 2,
         'rejected_by_tenant' => 3,
-        'user_deleted' => 5
+        'user_deleted' => 5,
     ],
     'counter_offer_status' => [
         1 => 'Counter',
@@ -339,7 +339,7 @@ return[
     ],
     'offer_open_close' => [
         'open' => 0,
-        'close' => 1
+        'close' => 1,
     ],
     'network_request' => [
         0 => 'pending',
@@ -384,30 +384,30 @@ return[
         11 => '10+',
     ],
     'sleeps' => [
-        1 => "0-2",
-        2 => "2-4",
-        3 => "4-6",
-        4 => "6-8",
-        5 => "8-10",
-        6 => "10-12",
-        7 => "12-14",
-        8 => "14-16",
-        9 => "16-18",
-        10 => "18-20",
-        111 => "20+",
+        1 => '0-2',
+        2 => '2-4',
+        3 => '4-6',
+        4 => '6-8',
+        5 => '8-10',
+        6 => '10-12',
+        7 => '12-14',
+        8 => '14-16',
+        9 => '16-18',
+        10 => '18-20',
+        111 => '20+',
     ],
     'inverse_sleeps' => [
-        "0-2" => 1,
-        "2-4" => 2,
-        "4-6" => 3,
-        "6-8" => 4,
-        "8-10" => 5,
-        "10-12" => 6,
-        "12-14" => 7,
-        "14-16" => 8,
-        "16-18" => 9,
-        "18-20" => 10,
-        "20+" => 11,
+        '0-2' => 1,
+        '2-4' => 2,
+        '4-6' => 3,
+        '6-8' => 4,
+        '8-10' => 5,
+        '10-12' => 6,
+        '12-14' => 7,
+        '14-16' => 8,
+        '16-18' => 9,
+        '18-20' => 10,
+        '20+' => 11,
     ],
     'baths' => [
         1 => 0.5,
@@ -417,7 +417,7 @@ return[
         5 => 2.5,
         6 => 3,
         7 => 3.5,
-        8 => "4+",
+        8 => '4+',
     ],
     'inverse_baths' => [
         0.5 => 1,
@@ -427,50 +427,50 @@ return[
         2.5 => 5,
         3 => 6,
         3.5 => 7,
-        "4+" => 8,
+        '4+' => 8,
     ],
     'home_size' => [
-        250 => "250-500",
-        501 => "501-750",
-        751 => "751-1000",
-        1001 => "1001-1250",
-        1251 => "1251-1500",
-        1501 => "1501-1750",
-        1751 => "1751-2000",
-        2001 => "2001-2250",
+        250 => '250-500',
+        501 => '501-750',
+        751 => '751-1000',
+        1001 => '1001-1250',
+        1251 => '1251-1500',
+        1501 => '1501-1750',
+        1751 => '1751-2000',
+        2001 => '2001-2250',
         2251 => '2251-2500',
-        2501 => "2501-3000",
-        3001 => "3001-3250",
-        3251 => "3251-3500",
-        3501 => "3501-3750",
-        3751 => "3751-4000",
-        4001 => "4001-4250",
+        2501 => '2501-3000',
+        3001 => '3001-3250',
+        3251 => '3251-3500',
+        3501 => '3501-3750',
+        3751 => '3751-4000',
+        4001 => '4001-4250',
         4251 => '4251-4500',
-        4501 => "4501-4750",
+        4501 => '4501-4750',
         4751 => '4751-5000',
-        5001 => "5001-5250+",
+        5001 => '5001-5250+',
     ],
-//    'inverse_baths' => [
-//        250-500=>250,
-//        500-750=>500,
-//        750-1000 =>750,
-//         1000-1250=>1000,
-//        1250-1500=>1250,
-//        1500-1750 =>1500,
-//        1750-2000 => 1750,
-//        2000 => 2000-2250,
-//        2250 => 2250-2500,
-//        2500 => 2500-3000,
-//        3000 => 3000-3250,
-//        3250 => 3250-3500,
-//        3500 => 3500-3750,
-//        3750 => 3750-4000,
-//        4000 => 4000-4250,
-//        4250 => 4250-4500,
-//        4500 => 4500-4750,
-//        4750 => 4750-5000,
-//        5000 => "5000-5250+",
-//    ],
+    //    'inverse_baths' => [
+    //        250-500=>250,
+    //        500-750=>500,
+    //        750-1000 =>750,
+    //         1000-1250=>1000,
+    //        1250-1500=>1250,
+    //        1500-1750 =>1500,
+    //        1750-2000 => 1750,
+    //        2000 => 2000-2250,
+    //        2250 => 2250-2500,
+    //        2500 => 2500-3000,
+    //        3000 => 3000-3250,
+    //        3250 => 3250-3500,
+    //        3500 => 3500-3750,
+    //        3750 => 3750-4000,
+    //        4000 => 4000-4250,
+    //        4250 => 4250-4500,
+    //        4500 => 4500-4750,
+    //        4750 => 4750-5000,
+    //        5000 => "5000-5250+",
+    //    ],
     'pets_type' => [
         1 => 'Dogs',
         2 => 'Cats',
@@ -505,14 +505,14 @@ return[
         true => 1,
         false => 2,
     ],
-//    'lead_opportunity' => [
-//        1 => true,
-//        2 => false,
-//    ],
-//    'inverse_lead_opportunity' => [
-//        true => 1,
-//        false => 2,
-//    ],
+    //    'lead_opportunity' => [
+    //        1 => true,
+    //        2 => false,
+    //    ],
+    //    'inverse_lead_opportunity' => [
+    //        true => 1,
+    //        false => 2,
+    //    ],
     'epa' => [
         1 => 'readepa',
         2 => 'receivedcopies',
@@ -536,7 +536,7 @@ return[
         'sale agreement' => 4,
         'VA FHA loan addendum' => 5,
         'post closing occupancy agreement' => 6,
-        'default'=>7,
+        'default' => 7,
     ],
     'signature_type_rent' => [
         1 => 'lead based',
@@ -550,7 +550,7 @@ return[
     ],
     'offer_signature' => [
         'false' => 0,
-        'true' => 1
+        'true' => 1,
     ],
     'seller_questionnaire' => [
         1 => 'Yes',
@@ -638,23 +638,23 @@ return[
     ],
     'blog_comment' => [
         'unapproved' => 0,
-        'approved' => 1
+        'approved' => 1,
     ],
     'instructions' => 999999,
     'contract_tool_status' => [
         0 => 'False',
-        1 => 'True'
+        1 => 'True',
     ],
     'contract_tool_status_inverse' => [
         'False' => 0,
-        'True' => 1
+        'True' => 1,
     ],
     'joint_coowner' => [
         'Yes' => 1,
-        'No' => 2
+        'No' => 2,
     ],
-     'show_post_closing_form' => [
+    'show_post_closing_form' => [
         'Yes' => 1,
-        'No' => 2
+        'No' => 2,
     ],
 ];

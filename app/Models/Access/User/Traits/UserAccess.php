@@ -10,8 +10,7 @@ trait UserAccess
     /**
      * Checks if the user has a Role by its name or id.
      *
-     * @param string $nameOrId Role name or id.
-     *
+     * @param  string  $nameOrId  Role name or id.
      * @return bool
      */
     public function hasRole($nameOrId)
@@ -43,8 +42,6 @@ trait UserAccess
      *
      * All must return true
      *
-     * @param  $roles
-     * @param  $needsAll
      *
      * @return bool
      */
@@ -82,8 +79,7 @@ trait UserAccess
     /**
      * Check if user has a permission by its name or id.
      *
-     * @param string $nameOrId Permission name or id.
-     *
+     * @param  string  $nameOrId  Permission name or id.
      * @return bool
      */
     public function allow($nameOrId)
@@ -117,8 +113,6 @@ trait UserAccess
     /**
      * Check an array of permissions and whether or not all are required to continue.
      *
-     * @param  $permissions
-     * @param  $needsAll
      *
      * @return bool
      */
@@ -154,8 +148,6 @@ trait UserAccess
     }
 
     /**
-     * @param  $nameOrId
-     *
      * @return bool
      */
     public function hasPermission($nameOrId)
@@ -164,9 +156,7 @@ trait UserAccess
     }
 
     /**
-     * @param  $permissions
-     * @param bool $needsAll
-     *
+     * @param  bool  $needsAll
      * @return bool
      */
     public function hasPermissions($permissions, $needsAll = false)
@@ -177,8 +167,7 @@ trait UserAccess
     /**
      * Alias to eloquent many-to-many relation's attach() method.
      *
-     * @param mixed $role
-     *
+     * @param  mixed  $role
      * @return void
      */
     public function attachRole($role)
@@ -197,8 +186,7 @@ trait UserAccess
     /**
      * Alias to eloquent many-to-many relation's detach() method.
      *
-     * @param mixed $role
-     *
+     * @param  mixed  $role
      * @return void
      */
     public function detachRole($role)
@@ -217,8 +205,7 @@ trait UserAccess
     /**
      * Attach multiple roles to a user.
      *
-     * @param mixed $roles
-     *
+     * @param  mixed  $roles
      * @return void
      */
     public function attachRoles($roles)
@@ -231,8 +218,7 @@ trait UserAccess
     /**
      * Detach multiple roles from a user.
      *
-     * @param mixed $roles
-     *
+     * @param  mixed  $roles
      * @return void
      */
     public function detachRoles($roles)

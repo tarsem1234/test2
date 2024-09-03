@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SaleOffer extends Model
 {
-
     use SoftDeletes;
-    protected $table = "sale_offers";
+
+    protected $table = 'sale_offers';
 
     public function property()
     {
@@ -18,7 +18,7 @@ class SaleOffer extends Model
 
     public function propertyConditional()
     {
-        return $this->hasOne('App\Models\PropertyConditionalData','offer_id','id');
+        return $this->hasOne('App\Models\PropertyConditionalData', 'offer_id', 'id');
     }
 
     public function property_owner_user()
@@ -35,6 +35,7 @@ class SaleOffer extends Model
     {
         return $this->belongsTo('App\Models\Access\User\User', 'sender_id');
     }
+
     public function buyer()
     {
         return $this->belongsTo('App\Models\Access\User\User', 'sender_id');
@@ -44,46 +45,53 @@ class SaleOffer extends Model
     {
         return $this->hasMany('App\Models\CounterSaleOffer');
     }
+
     public function sellerQuestionnaire()
     {
-        return $this->hasOne('App\Models\SellerQuestionnaire','offer_id');
+        return $this->hasOne('App\Models\SellerQuestionnaire', 'offer_id');
     }
+
     public function buyerQuestionnaire()
     {
-        return $this->hasOne('App\Models\BuyerQuestionnaire','offer_id');
+        return $this->hasOne('App\Models\BuyerQuestionnaire', 'offer_id');
     }
+
     public function saleAgreement()
     {
-        return $this->hasOne('App\Models\UpdateSaleAgreementBysellerContract','offer_id');
+        return $this->hasOne('App\Models\UpdateSaleAgreementBysellerContract', 'offer_id');
     }
-//    public function signature()
-//    {
-//        return $this->hasOne('App\Models\Signature','offer_id');
-//    }
+
+    //    public function signature()
+    //    {
+    //        return $this->hasOne('App\Models\Signature','offer_id');
+    //    }
     public function signatures()
     {
-        return $this->hasMany('App\Models\Signature','offer_id');
+        return $this->hasMany('App\Models\Signature', 'offer_id');
     }
-    
+
     public function postClosing()
     {
-        return $this->hasOne('App\Models\QuestionSellerPostClosing','offer_id');
+        return $this->hasOne('App\Models\QuestionSellerPostClosing', 'offer_id');
     }
-     public function Userdata()
+
+    public function Userdata()
     {
-        return $this->hasMany('App\Models\Signature','offer_id');
+        return $this->hasMany('App\Models\Signature', 'offer_id');
     }
-    
-     public function userConditionalData()
+
+    public function userConditionalData()
     {
-        return $this->hasMany('App\Models\UsersConditionalData','offer_id');
+        return $this->hasMany('App\Models\UsersConditionalData', 'offer_id');
     }
-     public function userbuyerConditionalData()
+
+    public function userbuyerConditionalData()
     {
-        return $this->hasMany('App\Models\UsersConditionalData','user_id','sender_id');
+        return $this->hasMany('App\Models\UsersConditionalData', 'user_id', 'sender_id');
     }
-     public function usersenderConditionalData()
+
+    public function usersenderConditionalData()
     {
-        return $this->hasMany('App\Models\UsersConditionalData','user_id','owner_id');
+        return $this->hasMany('App\Models\UsersConditionalData', 'user_id', 'owner_id');
     }
 }

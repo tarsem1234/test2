@@ -3,8 +3,8 @@
 namespace App\Notifications\Frontend\Auth;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
 /**
  * Class UserNeedsPasswordReset.
@@ -12,6 +12,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 class UserNeedsPasswordReset extends Notification
 {
     use Queueable;
+
     /**
      * The password reset token.
      *
@@ -21,8 +22,6 @@ class UserNeedsPasswordReset extends Notification
 
     /**
      * UserNeedsPasswordReset constructor.
-     *
-     * @param $token
      */
     public function __construct($token)
     {
@@ -32,8 +31,7 @@ class UserNeedsPasswordReset extends Notification
     /**
      * Get the notification's channels.
      *
-     * @param mixed $notifiable
-     *
+     * @param  mixed  $notifiable
      * @return array|string
      */
     public function via($notifiable)
@@ -44,13 +42,12 @@ class UserNeedsPasswordReset extends Notification
     /**
      * Build the mail representation of the notification.
      *
-     * @param mixed $notifiable
-     *
+     * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage())
+        return (new MailMessage)
             ->subject(app_name().': '.trans('strings.emails.auth.password_reset_subject'))
             ->line(trans('strings.emails.auth.password_cause_of_email'))
             ->action(trans('buttons.emails.auth.reset_password'), route('frontend.auth.password.reset.form', $this->token))

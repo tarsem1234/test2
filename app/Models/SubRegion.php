@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class SubRegion extends Model
 {
-    protected $table = "sub_regions";
+    protected $table = 'sub_regions';
 }

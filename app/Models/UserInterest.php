@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class UserInterest extends Model
 {
-
     use SoftDeletes;
-    protected $table = "user_interests";
+
+    protected $table = 'user_interests';
 
     public function user()
     {

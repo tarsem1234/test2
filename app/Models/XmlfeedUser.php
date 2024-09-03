@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class XmlfeedUser extends Model
 {
     use SoftDeletes;
-    protected $fillable = ['username', 'password'];
 
+    protected $fillable = ['username', 'password'];
 }

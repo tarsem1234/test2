@@ -21,7 +21,7 @@
                             $buyersArray = [];
                             $sellersArray = [];
                             foreach ($offer->signatures as $sign) {
-                                if(in_array($sign['type'],array(1,3))){
+                                if(in_array($sign['type'],[1,3])){
                                     $buyersArray[] = $sign['fullname'];
                                 }
                                 else{

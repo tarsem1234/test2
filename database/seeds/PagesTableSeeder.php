@@ -14,7 +14,7 @@ class PagesTableSeeder extends Seeder
     {
         \DB::table('pages')->delete();
 
-        \DB::table('pages')->insert(array(
+        \DB::table('pages')->insert([
             [
                 'title' => 'About Us',
                 'slug' => 'about-us',
@@ -413,7 +413,7 @@ class PagesTableSeeder extends Seeder
                             <img src="http://freezylist.lusites.xyz/storage/2018-09-14-08-20-26/mnzvq4HHNaNJIizFl1zGfEiW9y8WWPXaCLNl1rKC.jpeg" /></h3>',
                 'created_at' =>  '2018-09-07 12:44:23',
             ],
-        ));
+        ]);
     }
 
 }

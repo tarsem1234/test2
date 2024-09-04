@@ -124,6 +124,6 @@ class LearningCenterController extends Controller
             return $newSession;
         }
 
-return null;
+        return null;
     }
 }

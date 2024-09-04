@@ -49,7 +49,6 @@ class User extends Authenticatable
     /**
      * @var array
      */
-    protected $dates = ['deleted_at'];
 
     /**
      * The dynamic attributes from mutators that should be returned with the user object.

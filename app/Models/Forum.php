@@ -11,7 +11,6 @@ class Forum extends Model
 
     protected $table = 'forums';
 
-
     public function replies()
     {
         return $this->hasMany('App\Models\ForumReply');

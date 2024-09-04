@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Str;
 use App\Models\Access\Role\Role;
 use App\Models\Access\User\User;
 use Faker\Generator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------

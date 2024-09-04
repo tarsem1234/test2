@@ -9,7 +9,6 @@ class Industry extends Model
 {
     use SoftDeletes;
 
-
     protected $table = 'industries';
 
     public function services()

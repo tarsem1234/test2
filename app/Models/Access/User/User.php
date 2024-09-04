@@ -50,7 +50,6 @@ class User extends Authenticatable
      * @var array
      */
 
-
     /**
      * The dynamic attributes from mutators that should be returned with the user object.
      *

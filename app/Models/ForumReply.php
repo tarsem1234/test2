@@ -11,7 +11,6 @@ class ForumReply extends Model
 
     protected $table = 'forum_replies';
 
-
     public function forum()
     {
         return $this->belongsTo('App\Models\Forum');

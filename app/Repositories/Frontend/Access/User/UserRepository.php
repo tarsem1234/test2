@@ -95,7 +95,7 @@ class UserRepository extends BaseRepository
         $user->email = strtolower($data['email']);
         $user->confirmation_code = md5(uniqid(mt_rand(), true));
         $user->status = 1;
-        $user->password = $provider ? null : bcrypt($data['password']);
+        $user->password = $provider ? null : Hash::make($data['password']);
         $confirm = false; // Whether or not they get an e-mail to confirm their account
         // If users require approval, confirmed is false regardless of account type
         if (config('access.users.requires_approval')) {
@@ -274,7 +274,7 @@ class UserRepository extends BaseRepository
         $user = $this->find(access()->id());
 
         if (Hash::check($input['old_password'], $user->password)) {
-            $user->password = bcrypt($input['password']);
+            $user->password = Hash::make($input['password']);
 
             return $user->save();
         }

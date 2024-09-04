@@ -32,13 +32,13 @@ class MyDocumentsController extends Controller
             ->with(['property' => function ($query) {
                 $query->withTrashed();
             },
-        'property_owner_user' => function ($sellerQuery) {
-            $sellerQuery->with('user_profile', 'business_profile');
-            $sellerQuery->withTrashed();
-        },
-        'sale_counter_offers' => function ($query) {
-            $query->latest();
-        }])
+                'property_owner_user' => function ($sellerQuery) {
+                    $sellerQuery->with('user_profile', 'business_profile');
+                    $sellerQuery->withTrashed();
+                },
+                'sale_counter_offers' => function ($query) {
+                    $query->latest();
+                }])
             ->get();
 
         $rentOffers = RentOffer::where('buyer_id', Auth::id())->whereHas('property', function ($type) {
@@ -49,13 +49,13 @@ class MyDocumentsController extends Controller
             ->with(['property' => function ($query) {
                 $query->withTrashed();
             },
-        'property_owner_user' => function ($sellerQuery) {
-            $sellerQuery->with('user_profile', 'business_profile');
-            $sellerQuery->withTrashed();
-        },
-        'rent_counter_offers' => function ($query) {
-            $query->latest();
-        }])
+                'property_owner_user' => function ($sellerQuery) {
+                    $sellerQuery->with('user_profile', 'business_profile');
+                    $sellerQuery->withTrashed();
+                },
+                'rent_counter_offers' => function ($query) {
+                    $query->latest();
+                }])
             ->get();
 
         return view('frontend.my_documents.my-received-document', compact('saleOffers', 'rentOffers'));
@@ -71,13 +71,13 @@ class MyDocumentsController extends Controller
             ->with(['property' => function ($query) {
                 $query->withTrashed();
             },
-        'property_sender_user' => function ($sellerQuery) {
-            $sellerQuery->with('user_profile', 'business_profile');
-            $sellerQuery->withTrashed();
-        },
-        'sale_counter_offers' => function ($query) {
-            $query->latest();
-        }])
+                'property_sender_user' => function ($sellerQuery) {
+                    $sellerQuery->with('user_profile', 'business_profile');
+                    $sellerQuery->withTrashed();
+                },
+                'sale_counter_offers' => function ($query) {
+                    $query->latest();
+                }])
             ->get();
         $rentOffers = RentOffer::where(function ($query) {
             $query->where('owner_id', Auth::id());
@@ -88,13 +88,13 @@ class MyDocumentsController extends Controller
             ->with(['property' => function ($query) {
                 $query->withTrashed();
             },
-        'sent_offer_user' => function ($query) {
-            $query->with('user_profile', 'business_profile');
-            $query->withTrashed();
-        },
-        'property.architechture', 'rent_counter_offers' => function ($query) {
-            $query->latest();
-        }])
+                'sent_offer_user' => function ($query) {
+                    $query->with('user_profile', 'business_profile');
+                    $query->withTrashed();
+                },
+                'property.architechture', 'rent_counter_offers' => function ($query) {
+                    $query->latest();
+                }])
             ->get();
 
         return view('frontend.my_documents.my-send-document', compact('saleOffers', 'rentOffers'));

@@ -3,6 +3,7 @@
 use App\Models\Access\Role\Role;
 use App\Models\Access\User\User;
 use Faker\Generator;
+use Illuminate\Support\Facades\Hash;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,7 @@ $factory->define(User::class, function (Generator $faker) {
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
         'email' => $faker->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
+        'password' => $password ?: $password = Hash::make('secret'),
         'remember_token' => str_random(10),
         'confirmation_code' => md5(uniqid(mt_rand(), true)),
     ];

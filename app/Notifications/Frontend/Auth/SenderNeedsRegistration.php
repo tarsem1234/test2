@@ -62,6 +62,6 @@ class SenderNeedsRegistration extends Notification
                 'url' => route('frontend.propertyDetails', $this->property_id),
                 'name' => trans('buttons.emails.auth.View'),
                 'property_id' => ! empty($this->property_id) ? $this->property_id : '',
-                ]]);
+            ]]);
     }
 }

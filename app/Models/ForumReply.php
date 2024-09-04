@@ -11,7 +11,6 @@ class ForumReply extends Model
 
     protected $table = 'forum_replies';
 
-    protected $dates = ['deleted_at'];
 
     public function forum()
     {

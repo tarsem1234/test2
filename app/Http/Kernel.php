@@ -81,6 +81,7 @@ class Kernel extends HttpKernel
         'access.routeNeedsRole' => \App\Http\Middleware\RouteNeedsRole::class,
         'access.routeNeedsPermission' => \App\Http\Middleware\RouteNeedsPermission::class,
     ];
+
     /**
      * The priority-sorted list of middleware.
      *

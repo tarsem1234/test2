@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Hash;
 use App\Models\Access\Role\Role;
 use App\Models\Access\User\User;
 use Faker\Generator;
+use Illuminate\Support\Facades\Hash;
 
 /*
 |--------------------------------------------------------------------------

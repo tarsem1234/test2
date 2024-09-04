@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Backend\Access\User;
 
-use Illuminate\Support\Facades\Hash;
 use App\Events\Backend\Access\User\UserConfirmed;
 use App\Events\Backend\Access\User\UserCreated;
 use App\Events\Backend\Access\User\UserDeactivated;
@@ -23,6 +22,7 @@ use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class UserRepository.

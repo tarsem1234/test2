@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\RegisterRequest;
 use App\Http\Requests\Frontend\UpdateRegisterRequest;
@@ -21,6 +20,7 @@ use Auth;
 use File;
 use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class LanguageController.

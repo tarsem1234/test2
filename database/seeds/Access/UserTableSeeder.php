@@ -1,11 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon as Carbon;
 use Database\DisableForeignKeys;
 use Database\TruncateTable;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class UserTableSeeder.

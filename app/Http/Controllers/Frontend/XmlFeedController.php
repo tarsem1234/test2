@@ -3,119 +3,121 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\XmlfeedUser;
 use App\Models\Property;
+use App\Models\XmlfeedUser;
 use Hash;
-use Session;
+use Illuminate\Http\Request;
 
-class XmlFeedController extends Controller {
-
-    public function index(Request $request) {
+class XmlFeedController extends Controller
+{
+    public function index(Request $request)
+    {
         if ($request->isMethod('POST')) {
             $password = $request->get('password', null);
             $username = $request->get('username', null);
-            $existedXmlUser = XmlfeedUser::where(['username'=> $username,'status'=>1])->first();
+            $existedXmlUser = XmlfeedUser::where(['username' => $username, 'status' => 1])->first();
 
-            if (!empty($existedXmlUser) && Hash::check($password, $existedXmlUser->password)) {
-                session()->put('xmlfeed_user', TRUE);
+            if (! empty($existedXmlUser) && Hash::check($password, $existedXmlUser->password)) {
+                session()->put('xmlfeed_user', true);
+
                 return redirect('xmlfeed');
             } else {
                 return view('frontend.xmlfeed.login')->with('error', 'Invalid credential');
             }
         }
-        
-        if (!session()->get('xmlfeed_user')) {
+
+        if (! session()->get('xmlfeed_user')) {
             return view('frontend.xmlfeed.login');
         }
-        
+
         $this->xmlFeed($request);
     }
 
-    protected function xmlFeed($request) {
+    protected function xmlFeed($request)
+    {
         // Creates the Document.
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->preserveWhiteSpace = false;
         $dom->formatOutput = true;
-        $node = $dom->createElementNS(url('/') . 'xml/2.2', 'xml');
+        $node = $dom->createElementNS(url('/').'xml/2.2', 'xml');
         $parNode = $dom->appendChild($node);
         $dnode = $dom->createElement('Listings');
         $docNode = $parNode->appendChild($dnode);
         $properties = Property::where('status', 2)->with(['user', 'favorites', 'architechture',
-                    'images', 'additional_information' => function($q) {
-                        $q->select('additional_information.*', 'a_i_2.name as parent_name')->join('additional_information as a_i_2', 'a_i_2.id', '=', 'additional_information.parent_id');
-                    }])->get();
-        foreach ($properties as $property):
+            'images', 'additional_information' => function ($q) {
+                $q->select('additional_information.*', 'a_i_2.name as parent_name')->join('additional_information as a_i_2', 'a_i_2.id', '=', 'additional_information.parent_id');
+            }])->get();
+        foreach ($properties as $property) {
             $fnode = $dom->createElement('Listing');
             $ListingNode = $dnode->appendChild($fnode);
             $additionalInformation = $property->additional_information->groupBy('parent_name');
 
             $Attic = $Cable_ready = $Ceilingfan = $Fireplace = $Intercom_system = $Jetted_tub = $Security_system = $Skylights = $Vaulted_ceiling = $Wet_bar = $Wired = $Double_pane_windows = $Mother_in_law_apartment = '';
-            if (isset($additionalInformation['Indoor Features']) && !$additionalInformation['Indoor Features']->isEmpty()) {
+            if (isset($additionalInformation['Indoor Features']) && ! $additionalInformation['Indoor Features']->isEmpty()) {
                 foreach ($additionalInformation['Indoor Features']->unique('name') as $indoorFeature) {
-                    if ($indoorFeature->name == "Attic") {
+                    if ($indoorFeature->name == 'Attic') {
                         $Attic = 'Yes';
-                    } else if ($indoorFeature->name == "Cable ready") {
+                    } elseif ($indoorFeature->name == 'Cable ready') {
                         $Cable_ready = 'Yes';
-                    } else if ($indoorFeature->name == "Ceiling fans") {
+                    } elseif ($indoorFeature->name == 'Ceiling fans') {
                         $Ceilingfan = 'Yes';
-                    } else if ($indoorFeature->name == "Fireplace") {
+                    } elseif ($indoorFeature->name == 'Fireplace') {
                         $Fireplace = 'Yes';
-                    } else if ($indoorFeature->name == "Intercom system") {
+                    } elseif ($indoorFeature->name == 'Intercom system') {
                         $Intercom_system = 'Yes';
-                    } else if ($indoorFeature->name == "Jetted tub") {
+                    } elseif ($indoorFeature->name == 'Jetted tub') {
                         $Jetted_tub = 'Yes';
-                    } else if ($indoorFeature->name == "Security system") {
+                    } elseif ($indoorFeature->name == 'Security system') {
                         $Security_system = 'Yes';
-                    } else if ($indoorFeature->name == "Skylights") {
+                    } elseif ($indoorFeature->name == 'Skylights') {
                         $Skylights = 'Yes';
-                    } else if ($indoorFeature->name == "Vaulted ceiling") {
+                    } elseif ($indoorFeature->name == 'Vaulted ceiling') {
                         $Vaulted_ceiling = 'Yes';
-                    } else if ($indoorFeature->name == "Wet bar") {
+                    } elseif ($indoorFeature->name == 'Wet bar') {
                         $Wet_bar = 'Yes';
-                    } else if ($indoorFeature->name == "Wired") {
+                    } elseif ($indoorFeature->name == 'Wired') {
                         $Wired = 'Yes';
-                    } else if ($indoorFeature->name == "Double pane or storm windows") {
+                    } elseif ($indoorFeature->name == 'Double pane or storm windows') {
                         $Double_pane_windows = 'Yes';
-                    } else if ($indoorFeature->name == "Mother in law apartment") {
+                    } elseif ($indoorFeature->name == 'Mother in law apartment') {
                         $Mother_in_law_apartment = 'Yes';
                     }
                 }
             }
             $patio_balcony = $Barbecue_area = $Deck = $Dock = $Fenced_yard = $Garden = $Greenhouse = $Hot_tub_spa = $Lawn = $Pond = $Pool = $Porch = $RV_parking = $Sauna = $Sprinklersystem = $Waterfront = '';
-            if (isset($additionalInformation['Outdoor Amenities']) && !$additionalInformation['Outdoor Amenities']->isEmpty()) {
+            if (isset($additionalInformation['Outdoor Amenities']) && ! $additionalInformation['Outdoor Amenities']->isEmpty()) {
                 foreach ($additionalInformation['Outdoor Amenities']->unique('name') as $outdoorFeature) {
-                    if ($outdoorFeature->name == "Balcony or patio") {
+                    if ($outdoorFeature->name == 'Balcony or patio') {
                         $patio_balcony = 'Yes';
-                    } else if ($outdoorFeature->name == "Barbecue area") {
+                    } elseif ($outdoorFeature->name == 'Barbecue area') {
                         $Barbecue_area = 'Yes';
-                    } else if ($outdoorFeature->name == "Deck") {
+                    } elseif ($outdoorFeature->name == 'Deck') {
                         $Deck = 'Yes';
-                    } else if ($outdoorFeature->name == "Dock") {
+                    } elseif ($outdoorFeature->name == 'Dock') {
                         $Dock = 'Yes';
-                    } else if ($outdoorFeature->name == "Fenced yard") {
+                    } elseif ($outdoorFeature->name == 'Fenced yard') {
                         $Fenced_yard = 'Yes';
-                    } else if ($outdoorFeature->name == "Garden") {
+                    } elseif ($outdoorFeature->name == 'Garden') {
                         $Garden = 'Yes';
-                    } else if ($outdoorFeature->name == "Greenhouse") {
+                    } elseif ($outdoorFeature->name == 'Greenhouse') {
                         $Greenhouse = 'Yes';
-                    } else if ($outdoorFeature->name == "Hot tub or spa") {
+                    } elseif ($outdoorFeature->name == 'Hot tub or spa') {
                         $Hot_tub_spa = 'Yes';
-                    } else if ($outdoorFeature->name == "Lawn") {
+                    } elseif ($outdoorFeature->name == 'Lawn') {
                         $Lawn = 'Yes';
-                    } else if ($outdoorFeature->name == "Pond") {
+                    } elseif ($outdoorFeature->name == 'Pond') {
                         $Pond = 'Yes';
-                    } else if ($outdoorFeature->name == "Pool") {
+                    } elseif ($outdoorFeature->name == 'Pool') {
                         $Pool = 'Yes';
-                    } else if ($outdoorFeature->name == "Porch") {
+                    } elseif ($outdoorFeature->name == 'Porch') {
                         $Porch = 'Yes';
-                    } else if ($outdoorFeature->name == "RV parking") {
+                    } elseif ($outdoorFeature->name == 'RV parking') {
                         $RV_parking = 'Yes';
-                    } else if ($outdoorFeature->name == "Sauna") {
+                    } elseif ($outdoorFeature->name == 'Sauna') {
                         $Sauna = 'Yes';
-                    } else if ($outdoorFeature->name == "Sprinkler system") {
+                    } elseif ($outdoorFeature->name == 'Sprinkler system') {
                         $Sprinklersystem = 'Yes';
-                    } else if ($outdoorFeature->name == "Waterfront") {
+                    } elseif ($outdoorFeature->name == 'Waterfront') {
                         $Waterfront = 'Yes';
                     }
                 }
@@ -124,33 +126,33 @@ class XmlFeedController extends Controller {
             if ($property->property_type == 1) {
                 /* Building/Development Amenities starts */
                 $Basketballcourt = $Controlledaccess = $Disabledaccess = $Doorman = $Elevator = $Fitnesscenter = $Gatedentry = $Sportscourt = $Storage = $Tenniscourt = $Assisted_living_community = $Over_55_plus_active_community = $Near_transportation = '';
-                if (isset($additionalInformation['Building/Development Amenities']) && !$additionalInformation['Building/Development Amenities']->isEmpty()) {
+                if (isset($additionalInformation['Building/Development Amenities']) && ! $additionalInformation['Building/Development Amenities']->isEmpty()) {
                     foreach ($additionalInformation['Building/Development Amenities']->unique('name') as $devFeature) {
-                        if ($devFeature->name == "Basketball court") {
+                        if ($devFeature->name == 'Basketball court') {
                             $Basketballcourt = 'Yes';
-                        } else if ($devFeature->name == "Controlled access") {
+                        } elseif ($devFeature->name == 'Controlled access') {
                             $Controlledaccess = 'Yes';
-                        } else if ($devFeature->name == "Disabled access") {
+                        } elseif ($devFeature->name == 'Disabled access') {
                             $Disabledaccess = 'Yes';
-                        } else if ($devFeature->name == "Doorman") {
+                        } elseif ($devFeature->name == 'Doorman') {
                             $Doorman = 'Yes';
-                        } else if ($devFeature->name == "Elevator") {
+                        } elseif ($devFeature->name == 'Elevator') {
                             $Elevator = 'Yes';
-                        } else if ($devFeature->name == "Fitness center") {
+                        } elseif ($devFeature->name == 'Fitness center') {
                             $Fitnesscenter = 'Yes';
-                        } else if ($devFeature->name == "Gated entry") {
+                        } elseif ($devFeature->name == 'Gated entry') {
                             $Gatedentry = 'Yes';
-                        } else if ($devFeature->name == "Sports court") {
+                        } elseif ($devFeature->name == 'Sports court') {
                             $Sportscourt = 'Yes';
-                        } else if ($devFeature->name == "Storage") {
+                        } elseif ($devFeature->name == 'Storage') {
                             $Storage = 'Yes';
-                        } else if ($devFeature->name == "Tennis court") {
+                        } elseif ($devFeature->name == 'Tennis court') {
                             $Tenniscourt = 'Yes';
-                        } else if ($devFeature->name == "Assisted living community") {
+                        } elseif ($devFeature->name == 'Assisted living community') {
                             $Assisted_living_community = 'Yes';
-                        } else if ($devFeature->name == "Over 55+ active community") {
+                        } elseif ($devFeature->name == 'Over 55+ active community') {
                             $Over_55_plus_active_community = 'Yes';
-                        } else if ($devFeature->name == "Near transportation") {
+                        } elseif ($devFeature->name == 'Near transportation') {
                             $Near_transportation = 'Yes';
                         }
                     }
@@ -199,7 +201,7 @@ class XmlFeedController extends Controller {
             $ListingDetailsNode->appendChild($ListingUrl);
             $MlsId = $dom->createElement('MlsId', $property->id);
             $ListingDetailsNode->appendChild($MlsId);
-            $MlsName = $dom->createElement('MlsName', env('APP_NAME') . ' Listings');
+            $MlsName = $dom->createElement('MlsName', env('APP_NAME').' Listings');
             $ListingDetailsNode->appendChild($MlsName);
             $VirtualTourUrl = $dom->createElement('VirtualTourUrl', $property->virtual_tour_url);
             $ListingDetailsNode->appendChild($VirtualTourUrl);
@@ -213,24 +215,24 @@ class XmlFeedController extends Controller {
                 $RentalDetails = $dom->createElement('RentalDetails');
                 $infolNode = $ListingDetailsNode->appendChild($RentalDetails);
                 //setting availability to current date
-                $now = new \DateTime();
+                $now = new \DateTime;
                 $time = $now->format('Y-m-d');
 
                 $Availability = $dom->createElement('Availability', $time);
                 $infolNode->appendChild($Availability);
-                if (!empty($property['lease_term'])) {
-                    $lease = explode(',',$property['lease_term']);
-//                    if ($property['lease_term'] === config('constant.inverse_lease_terms_available.Month-To-Month')) {
-//                        $leaseTerms = 'Monthly';
-//                    } else if ($property['lease_term'] === config('constant.inverse_lease_terms_available.< 6 Months')) {
-//                        $leaseTerms = 'SixMonths';
-//                    } else if ($property['lease_term'] === config('constant.inverse_lease_terms_available.6 - 12 Months')) {
-//                        $leaseTerms = 'OneYear';
-//                    } else {
-                        $leaseTerms = $lease[0];
-//                    }
+                if (! empty($property['lease_term'])) {
+                    $lease = explode(',', $property['lease_term']);
+                    //                    if ($property['lease_term'] === config('constant.inverse_lease_terms_available.Month-To-Month')) {
+                    //                        $leaseTerms = 'Monthly';
+                    //                    } else if ($property['lease_term'] === config('constant.inverse_lease_terms_available.< 6 Months')) {
+                    //                        $leaseTerms = 'SixMonths';
+                    //                    } else if ($property['lease_term'] === config('constant.inverse_lease_terms_available.6 - 12 Months')) {
+                    //                        $leaseTerms = 'OneYear';
+                    //                    } else {
+                    $leaseTerms = $lease[0];
+                    //                    }
                 } else {
-                    $leaseTerms = "ContactForDetails";
+                    $leaseTerms = 'ContactForDetails';
                 }
 
                 $LeaseTerm = $dom->createElement('LeaseTerm', $leaseTerms);
@@ -253,7 +255,6 @@ class XmlFeedController extends Controller {
                 $PetsAllowedNode->appendChild($LargeDogs);
             }
             /* Rental Deatils ends */
-
 
             $BasicDetails = $dom->createElement('BasicDetails');
             $BasicDetailsNode = $ListingNode->appendChild($BasicDetails);
@@ -280,16 +281,15 @@ class XmlFeedController extends Controller {
             $YearBuilt = $dom->createElement('YearBuilt', $property->architechture->year_built);
             $BasicDetailsNode->appendChild($YearBuilt);
 
-
             $Pictures = $dom->createElement('Pictures');
             $PicturesNode = $ListingNode->appendChild($Pictures);
 
-            foreach ($property->images as $image):
+            foreach ($property->images as $image) {
                 $Picture = $dom->createElement('Picture');
                 $PictureNode = $PicturesNode->appendChild($Picture);
                 $PictureUrl1 = $dom->createElement('PictureUrl', htmlspecialchars(url("storage/{$image->image}")));
                 $PictureNode->appendChild($PictureUrl1);
-            endforeach;
+            }
 
             $Agent = $dom->createElement('Agent');
             $LocationNode = $ListingNode->appendChild($Agent);
@@ -322,7 +322,7 @@ class XmlFeedController extends Controller {
             $LocationNode = $ListingNode->appendChild($Office);
 
             // Create name, and description elements and assigns them the values of the name and address columns from the results.
-            $BrokerageName = $dom->createElement('BrokerageName', 'WWW.' . strtoupper($request->getHost()));
+            $BrokerageName = $dom->createElement('BrokerageName', 'WWW.'.strtoupper($request->getHost()));
             $LocationNode->appendChild($BrokerageName);
             $BrokerPhone = $dom->createElement('BrokerPhone', 'NA');
             $LocationNode->appendChild($BrokerPhone);
@@ -356,10 +356,10 @@ class XmlFeedController extends Controller {
             $AppliancesNode = $RichDetailsNode->appendChild($Appliances);
             $this->makeNode($dom, $AppliancesNode, $additionalInformation, 'Appliances', 'Appliance');
 
-
-            $arch_style = "";
-            if (isset($additionalInformation['Architectural Style']) && !$additionalInformation['Architectural Style']->isEmpty())
+            $arch_style = '';
+            if (isset($additionalInformation['Architectural Style']) && ! $additionalInformation['Architectural Style']->isEmpty()) {
                 $arch_style = $additionalInformation['Architectural Style']->unique('name')->implode('name', ', ');
+            }
 
             $ArchitectureStyle = $dom->createElement('ArchitectureStyle', $arch_style);
             $RichDetailsNode->appendChild($ArchitectureStyle);
@@ -368,12 +368,12 @@ class XmlFeedController extends Controller {
             $RichDetailsNode->appendChild($Attic);
 
             // for basement
-            if (!empty($property['basement'])) {
-                if ($property['basement'] == "Finished") {
+            if (! empty($property['basement'])) {
+                if ($property['basement'] == 'Finished') {
                     $basement = 'Yes';
-                } else if ($property['basement'] == "Partially finished") {
+                } elseif ($property['basement'] == 'Partially finished') {
                     $basement = 'Yes';
-                } else if ($property['basement'] == "Unfinished") {
+                } elseif ($property['basement'] == 'Unfinished') {
                     $basement = 'No';
                 } else {
                     $basement = 'No';
@@ -390,7 +390,7 @@ class XmlFeedController extends Controller {
 
             $CoolingSystems = $dom->createElement('CoolingSystems');
             $CoolingSystemsNode = $RichDetailsNode->appendChild($CoolingSystems);
-            $this->makeNode($dom, $CoolingSystemsNode, $additionalInformation, "Cooling Type", 'CoolingSystem');
+            $this->makeNode($dom, $CoolingSystemsNode, $additionalInformation, 'Cooling Type', 'CoolingSystem');
 
             $Deck = $dom->createElement('Deck', $Deck);
             $RichDetailsNode->appendChild($Deck);
@@ -399,26 +399,25 @@ class XmlFeedController extends Controller {
 
             $ExteriorTypes = $dom->createElement('ExteriorTypes');
             $ExteriorTypesNode = $RichDetailsNode->appendChild($ExteriorTypes);
-            $this->makeNode($dom, $ExteriorTypesNode, $additionalInformation, "Exterior", 'ExteriorType');
+            $this->makeNode($dom, $ExteriorTypesNode, $additionalInformation, 'Exterior', 'ExteriorType');
 
             $Fireplace = $dom->createElement('Fireplace', $Fireplace);
             $RichDetailsNode->appendChild($Fireplace);
 
             $FloorCoverings = $dom->createElement('FloorCoverings');
             $FloorCoveringsNode = $RichDetailsNode->appendChild($FloorCoverings);
-            $this->makeNode($dom, $FloorCoveringsNode, $additionalInformation, "Floor Covering", 'FloorCovering');
+            $this->makeNode($dom, $FloorCoveringsNode, $additionalInformation, 'Floor Covering', 'FloorCovering');
 
             $Garden = $dom->createElement('Garden', $Garden);
             $RichDetailsNode->appendChild($Garden);
 
             $HeatingFuels = $dom->createElement('HeatingFuels');
             $HeatingFuelsNode = $RichDetailsNode->appendChild($HeatingFuels);
-            $this->makeNode($dom, $HeatingFuelsNode, $additionalInformation, "Heating Fuel", 'HeatingFuel');
+            $this->makeNode($dom, $HeatingFuelsNode, $additionalInformation, 'Heating Fuel', 'HeatingFuel');
 
             $HeatingSystems = $dom->createElement('HeatingSystems');
             $HeatingSystemsNode = $RichDetailsNode->appendChild($HeatingSystems);
-            $this->makeNode($dom, $HeatingSystemsNode, $additionalInformation, "Heating Type", 'HeatingSystem');
-
+            $this->makeNode($dom, $HeatingSystemsNode, $additionalInformation, 'Heating Type', 'HeatingSystem');
 
             $JettedBathTub = $dom->createElement('JettedBathTub', $Jetted_tub);
             $RichDetailsNode->appendChild($JettedBathTub);
@@ -427,7 +426,6 @@ class XmlFeedController extends Controller {
             $MotherInLaw = $dom->createElement('MotherInLaw', $Mother_in_law_apartment);
             $RichDetailsNode->appendChild($MotherInLaw);
 
-
             $NumFloors = $dom->createElement('NumFloors', $property->architechture->stories);
             $RichDetailsNode->appendChild($NumFloors);
             $NumParkingSpaces = $dom->createElement('NumParkingSpaces', $property->architechture->garage_capacity);
@@ -435,8 +433,7 @@ class XmlFeedController extends Controller {
 
             $ParkingTypes = $dom->createElement('ParkingTypes');
             $ParkingTypesNode = $RichDetailsNode->appendChild($ParkingTypes);
-            $this->makeNode($dom, $ParkingTypesNode, $additionalInformation, "Parking", 'ParkingType');
-
+            $this->makeNode($dom, $ParkingTypesNode, $additionalInformation, 'Parking', 'ParkingType');
 
             $Patio = $dom->createElement('Patio', $patio_balcony);
             $RichDetailsNode->appendChild($Patio);
@@ -445,14 +442,14 @@ class XmlFeedController extends Controller {
 
             $RoofTypes = $dom->createElement('RoofTypes');
             $RoofTypesNode = $RichDetailsNode->appendChild($RoofTypes);
-            $this->makeNode($dom, $RoofTypesNode, $additionalInformation, "Roof Type", 'RoofType');
+            $this->makeNode($dom, $RoofTypesNode, $additionalInformation, 'Roof Type', 'RoofType');
 
             $RoomCount = $dom->createElement('RoomCount', $property->architechture->total_rooms);
             $RichDetailsNode->appendChild($RoomCount);
 
             $Rooms = $dom->createElement('Rooms');
             $RoomsNode = $RichDetailsNode->appendChild($Rooms);
-            $this->makeNode($dom, $RoomsNode, $additionalInformation, "Rooms", 'Room');
+            $this->makeNode($dom, $RoomsNode, $additionalInformation, 'Rooms', 'Room');
 
             $SecuritySystem = $dom->createElement('SecuritySystem', $Security_system);
             $RichDetailsNode->appendChild($SecuritySystem);
@@ -463,7 +460,7 @@ class XmlFeedController extends Controller {
 
             $ViewTypes = $dom->createElement('ViewTypes');
             $ViewTypesNode = $RichDetailsNode->appendChild($ViewTypes);
-            $this->makeNode($dom, $ViewTypesNode, $additionalInformation, "View", 'ViewType');
+            $this->makeNode($dom, $ViewTypesNode, $additionalInformation, 'View', 'ViewType');
 
             $Waterfront = $dom->createElement('Waterfront', $Waterfront);
             $RichDetailsNode->appendChild($Waterfront);
@@ -471,7 +468,7 @@ class XmlFeedController extends Controller {
             $YearUpdated = $dom->createElement('YearUpdated', $property->architechture->year_updated);
             $RichDetailsNode->appendChild($YearUpdated);
             /* Rich details ends */
-            
+
             /* Rental property extra details */
             if ($property->property_type == 1) {
                 $FitnessCenter = $dom->createElement('FitnessCenter', $Fitnesscenter);
@@ -484,7 +481,6 @@ class XmlFeedController extends Controller {
                 $NearTransportation = $dom->createElement('NearTransportation', $Near_transportation);
                 $RichDetailsNode->appendChild($NearTransportation);
 
-
                 $ControlledAccess = $dom->createElement('ControlledAccess', $Controlledaccess);
                 $RichDetailsNode->appendChild($ControlledAccess);
                 $Over55ActiveCommunity = $dom->createElement('Over55ActiveCommunity', $Over_55_plus_active_community);
@@ -494,23 +490,22 @@ class XmlFeedController extends Controller {
                 $Storage = $dom->createElement('Storage', $Storage);
                 $RichDetailsNode->appendChild($Storage);
 
-
                 $FencedYard = $dom->createElement('FencedYard', $Fenced_yard);
                 $RichDetailsNode->appendChild($FencedYard);
             }
 
-        endforeach;
+        }
         header('Content-Type: text/xml');
-        die($dom->saveXML());
+        exit($dom->saveXML());
     }
 
-    function makeNode(&$dom, &$parentNode, $collection, $key, $nodeName) {
-        if (isset($collection[$key]) && !$collection[$key]->isEmpty()) {
+    public function makeNode(&$dom, &$parentNode, $collection, $key, $nodeName)
+    {
+        if (isset($collection[$key]) && ! $collection[$key]->isEmpty()) {
             foreach ($collection[$key]->unique('name') as $item) {
                 $node = $dom->createElement($nodeName, $item->name);
                 $parentNode->appendChild($node);
             }
         }
     }
-
 }

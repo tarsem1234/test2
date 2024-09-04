@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class PropertyConditionDisclaimer extends Model
 {
     use SoftDeletes;
-    protected $table = "property_condition_disclaimer";
 
+    protected $table = 'property_condition_disclaimer';
 }

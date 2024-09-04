@@ -7,7 +7,6 @@ use Illuminate\Validation\Rule;
 
 class TenantQuestionnaireRequest extends Request
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -26,7 +25,7 @@ class TenantQuestionnaireRequest extends Request
     public function rules()
     {
         $sellerAware = [1, 2];
-        $rules       = [
+        $rules = [
             'joint_cowners' => [
                 'required',
                 Rule::in($sellerAware),
@@ -45,10 +44,10 @@ class TenantQuestionnaireRequest extends Request
     {
         return [];
     }
-//    public function all()
-//    {
-//        $data = parent::all();
-//
-//        return $data;
-//    }
+    //    public function all()
+    //    {
+    //        $data = parent::all();
+    //
+    //        return $data;
+    //    }
 }

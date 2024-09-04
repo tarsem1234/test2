@@ -8,16 +8,17 @@ use Illuminate\Notifications\Notifiable;
 
 class Signer extends Model
 {
+    use Notifiable, SoftDeletes;
 
-    use SoftDeletes, Notifiable;
-    protected $table = "signers";
+    protected $table = 'signers';
 
     public function signer_user()
     {
-        return $this->belongsTo('App\Models\Access\User\User','from_user_id');
+        return $this->belongsTo('App\Models\Access\User\User', 'from_user_id');
     }
+
     public function invited_users()
     {
-        return $this->belongsTo('App\Models\Access\User\User','invited_user_id');
+        return $this->belongsTo('App\Models\Access\User\User', 'invited_user_id');
     }
 }

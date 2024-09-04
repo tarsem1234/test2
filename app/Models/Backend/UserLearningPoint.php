@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class UserLearningPoint extends Model
 {
-
     use SoftDeletes;
-    protected $table = "user_learning_points";
+
+    protected $table = 'user_learning_points';
 
     public function user()
     {

@@ -2,8 +2,8 @@
 
 namespace App\Repositories\Backend\Access\User;
 
-use App\Models\Access\User\User;
 use App\Exceptions\GeneralException;
+use App\Models\Access\User\User;
 
 /**
  * Class UserSessionRepository.
@@ -11,9 +11,8 @@ use App\Exceptions\GeneralException;
 class UserSessionRepository
 {
     /**
-     * @param User $user
-     *
      * @return mixed
+     *
      * @throws GeneralException
      */
     public function clearSession(User $user)

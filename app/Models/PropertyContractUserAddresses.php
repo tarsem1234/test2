@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class PropertyContractUserAddresses extends Model
 {
     use SoftDeletes;
-    protected $table = "property_contract_user_addresses";
+
+    protected $table = 'property_contract_user_addresses';
 }

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Backend\Access\Role;
 
-use App\Models\Access\Role\Role;
 use App\Http\Controllers\Controller;
-use App\Repositories\Backend\Access\Role\RoleRepository;
-use App\Http\Requests\Backend\Access\Role\StoreRoleRequest;
 use App\Http\Requests\Backend\Access\Role\ManageRoleRequest;
+use App\Http\Requests\Backend\Access\Role\StoreRoleRequest;
 use App\Http\Requests\Backend\Access\Role\UpdateRoleRequest;
+use App\Models\Access\Role\Role;
 use App\Repositories\Backend\Access\Permission\PermissionRepository;
+use App\Repositories\Backend\Access\Role\RoleRepository;
 
 /**
  * Class RoleController.
@@ -25,10 +25,6 @@ class RoleController extends Controller
      */
     protected $permissions;
 
-    /**
-     * @param RoleRepository       $roles
-     * @param PermissionRepository $permissions
-     */
     public function __construct(RoleRepository $roles, PermissionRepository $permissions)
     {
         $this->roles = $roles;
@@ -36,8 +32,6 @@ class RoleController extends Controller
     }
 
     /**
-     * @param ManageRoleRequest $request
-     *
      * @return mixed
      */
     public function index(ManageRoleRequest $request)
@@ -46,20 +40,16 @@ class RoleController extends Controller
     }
 
     /**
-     * @param ManageRoleRequest $request
-     *
      * @return mixed
      */
     public function create(ManageRoleRequest $request)
     {
         return view('backend.access.roles.create')
-            ->withPermissions($this->permissions->getAll())
-            ->withRoleCount($this->roles->getCount());
+            ->with('permissions', $this->permissions->getAll())
+            ->with('role_count', $this->roles->getCount());
     }
 
     /**
-     * @param StoreRoleRequest $request
-     *
      * @return mixed
      */
     public function store(StoreRoleRequest $request)
@@ -70,23 +60,17 @@ class RoleController extends Controller
     }
 
     /**
-     * @param Role              $role
-     * @param ManageRoleRequest $request
-     *
      * @return mixed
      */
     public function edit(Role $role, ManageRoleRequest $request)
     {
         return view('backend.access.roles.edit')
-            ->withRole($role)
-            ->withRolePermissions($role->permissions->pluck('id')->all())
-            ->withPermissions($this->permissions->getAll());
+            ->with('role', $role)
+            ->with('role_permissions', $role->permissions->pluck('id')->all())
+            ->with('permissions', $this->permissions->getAll());
     }
 
     /**
-     * @param Role              $role
-     * @param UpdateRoleRequest $request
-     *
      * @return mixed
      */
     public function update(Role $role, UpdateRoleRequest $request)
@@ -97,9 +81,6 @@ class RoleController extends Controller
     }
 
     /**
-     * @param Role              $role
-     * @param ManageRoleRequest $request
-     *
      * @return mixed
      */
     public function destroy(Role $role, ManageRoleRequest $request)

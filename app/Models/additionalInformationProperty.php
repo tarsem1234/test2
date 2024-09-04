@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class additionalInformationProperty extends Model
 {
-
     use SoftDeletes;
-    protected $table = "additional_information_property";
+
+    protected $table = 'additional_information_property';
 
     public function property()
     {

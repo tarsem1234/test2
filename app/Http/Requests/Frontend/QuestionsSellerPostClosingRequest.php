@@ -6,7 +6,6 @@ use App\Http\Requests\Request;
 
 class QuestionsSellerPostClosingRequest extends Request
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -24,10 +23,11 @@ class QuestionsSellerPostClosingRequest extends Request
      */
     public function rules()
     {
-        if(isset($this->additional_provisions) && ($this->additional_provisions==null ||$this->additional_provisions)){
+        if (isset($this->additional_provisions) && ($this->additional_provisions == null || $this->additional_provisions)) {
             $rules = [
-                'additional_provisions'=>'required',
+                'additional_provisions' => 'required',
             ];
+
             return $rules;
         }
         $rules = [
@@ -49,10 +49,10 @@ class QuestionsSellerPostClosingRequest extends Request
         return [];
     }
 
-//    public function all()
-//    {
-//        $data = parent::all();
-//
-//        return $data;
-//    }
+    //    public function all()
+    //    {
+    //        $data = parent::all();
+    //
+    //        return $data;
+    //    }
 }

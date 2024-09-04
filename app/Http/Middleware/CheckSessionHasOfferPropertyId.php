@@ -11,14 +11,14 @@ class CheckSessionHasOfferPropertyId
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
-        if(!Session::get('PROPERTY')){
+        if (! Session::get('PROPERTY')) {
             return redirect()->route('frontend.recieved.offers');
         }
+
         return $next($request);
     }
 }

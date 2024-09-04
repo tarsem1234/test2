@@ -7,7 +7,6 @@ use Illuminate\Validation\Rule;
 
 class LandlordQuestionnaireRequest extends Request
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -32,7 +31,7 @@ class LandlordQuestionnaireRequest extends Request
                 'required',
                 Rule::in($sellerAware),
             ],
-//            'property_vacant_date' => 'required|date',
+            //            'property_vacant_date' => 'required|date',
             'require_cosigner' => [
                 'required',
                 Rule::in($sellerAware),
@@ -42,16 +41,16 @@ class LandlordQuestionnaireRequest extends Request
                 Rule::in($sellerAware),
             ],
         ];
-            if ($this->pets_welcome == config('constant.inve rse_yes_no.Yes')) {
-                $rules += [
-                    'non_refundable_pet_deposit' => 'numeric',
-                ];
-            }
-            if ($this->joint_cowners == config('constant.inverse_yes_no.Yes')) {
-                $rules += [
-                    'select_email.*' => 'required|email',
-                ];
-            }
+        if ($this->pets_welcome == config('constant.inve rse_yes_no.Yes')) {
+            $rules += [
+                'non_refundable_pet_deposit' => 'numeric',
+            ];
+        }
+        if ($this->joint_cowners == config('constant.inverse_yes_no.Yes')) {
+            $rules += [
+                'select_email.*' => 'required|email',
+            ];
+        }
 
         return $rules;
     }
@@ -61,10 +60,10 @@ class LandlordQuestionnaireRequest extends Request
         return [];
     }
 
-//    public function all()
-//    {
-//        $data = parent::all();
-//
-//        return $data;
-//    }
+    //    public function all()
+    //    {
+    //        $data = parent::all();
+    //
+    //        return $data;
+    //    }
 }

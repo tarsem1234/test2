@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
-use App\Http\Requests\Backend\ServiceRequest;
 use App\Http\Controllers\Controller;
-use App\Models\Service;
+use App\Http\Requests\Backend\ServiceRequest;
 use App\Models\Industry;
+use App\Models\Service;
+use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -45,26 +44,26 @@ class ServiceController extends Controller
     {
         $this->validate($request,
             [
-            'industry' => 'required',
-            'service' => 'required|max:191',
-        ]);
+                'industry' => 'required',
+                'service' => 'required|max:191',
+            ]);
         $checkIfService = Service::where('service', $request->service)->where('industry_id',
-                $request->industry)->first();
+            $request->industry)->first();
         if (count($checkIfService) > 0) {
             return redirect()->route('admin.services.create')->with('flash_danger',
-                    'Service already exists.');
+                'Service already exists.');
         }
-        $checkIfIndustry       = Industry::where('id', $request->industry)->first();
-        $industry              = new Service();
+        $checkIfIndustry = Industry::where('id', $request->industry)->first();
+        $industry = new Service;
         $industry->industry_id = $checkIfIndustry->id;
-        $industry->service     = $request->service;
+        $industry->service = $request->service;
         if ($industry->save()) {
             return redirect()->route('admin.services.index')->with('flash_success',
-                    'Service saved successfully.');
+                'Service saved successfully.');
         }
 
         return redirect()->route('backend.services.create')->with('flash_danger',
-                'Service not saved.');
+            'Service not saved.');
     }
 
     /**
@@ -88,7 +87,7 @@ class ServiceController extends Controller
     {
         if ($id) {
             $industries = Industry::get();
-            $service    = Service::where('id', $id)->with('industry')->first();
+            $service = Service::where('id', $id)->with('industry')->first();
 
             return view('backend.service.create',
                 ['service' => $service, 'industries' => $industries]);
@@ -98,7 +97,6 @@ class ServiceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -106,24 +104,24 @@ class ServiceController extends Controller
     {
         $this->validate($request,
             [
-            'service' => 'required',
-        ]);
-//        dd($request->all());
+                'service' => 'required',
+            ]);
+        //        dd($request->all());
         if ($request->industry) {
             $input['industry_id'] = $request->industry;
         }
 
         $input['service'] = $request->service;
-//update fields
+        //update fields
         if (Service::where('id', $id)->exists()) {
             Service::where('id', $id)->update($input);
 
             return redirect()->route('admin.services.index')->with('flash_success',
-                    'Service updated successfully.');
+                'Service updated successfully.');
         }
 
         return redirect()->back()->with('flash_success',
-                'Service Updation Failed.');
+            'Service Updation Failed.');
     }
 
     /**
@@ -137,10 +135,10 @@ class ServiceController extends Controller
         if (Service::where('id', $id)->delete()) {
 
             return response()->json(['success' => true, 'message' => 'Service deleted successfully'],
-                    200);
+                200);
         }
 
         return response()->json(['success' => false, 'message' => 'Service Deletion Failed'],
-                500);
+            500);
     }
 }

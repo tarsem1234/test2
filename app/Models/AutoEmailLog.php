@@ -2,18 +2,18 @@
 
 namespace App\Models;
 
+use App\Models\Access\User\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Access\User\User;
 
-class AutoEmailLog extends Model {
-
+class AutoEmailLog extends Model
+{
     use SoftDeletes;
 
-    protected $table = "auto_email_logs";
+    protected $table = 'auto_email_logs';
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class, 'from_user_id');
     }
-
 }

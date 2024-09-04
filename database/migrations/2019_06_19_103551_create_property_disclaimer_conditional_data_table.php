@@ -1,17 +1,18 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreatePropertyDisclaimerConditionalDataTable extends Migration {
-
+class CreatePropertyDisclaimerConditionalDataTable extends Migration
+{
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up() {
+    public function up()
+    {
         Schema::create('property_disclaimer_conditional_data', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('property_id')->index('property_id');
@@ -107,8 +108,8 @@ class CreatePropertyDisclaimerConditionalDataTable extends Migration {
      *
      * @return void
      */
-    public function down() {
+    public function down()
+    {
         Schema::dropIfExists('property_disclaimer_conditional_data');
     }
-
 }

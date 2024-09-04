@@ -160,7 +160,6 @@ return [
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-        Laravel\Tinker\TinkerServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
         /*
          * Application Service Providers...
@@ -177,10 +176,10 @@ return [
         App\Providers\RouteServiceProvider::class,
         Stevebauman\Location\LocationServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
-//        Way\Generators\GeneratorsServiceProvider::class,
-//        Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
-//        Orangehill\Iseed\IseedServiceProvider::class,
-//        Barryvdh\DomPDF\ServiceProvider::class,
+        //        Way\Generators\GeneratorsServiceProvider::class,
+        //        Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
+        //        Orangehill\Iseed\IseedServiceProvider::class,
+        //        Barryvdh\DomPDF\ServiceProvider::class,
     ],
     /*
       |--------------------------------------------------------------------------
@@ -239,6 +238,6 @@ return [
         'Location' => Stevebauman\Location\Facades\Location::class,
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
-//        'PDF' => Barryvdh\DomPDF\Facade::class,'PDF' => Barryvdh\DomPDF\Facade::class,
+        //        'PDF' => Barryvdh\DomPDF\Facade::class,'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 ];

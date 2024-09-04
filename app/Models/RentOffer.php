@@ -7,10 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class RentOffer extends Model
 {
-
     use SoftDeletes;
 
-    protected $table = "rent_offers";
+    protected $table = 'rent_offers';
 
     public function property()
     {
@@ -21,9 +20,10 @@ class RentOffer extends Model
     {
         return $this->belongsTo('App\Models\Access\User\User', 'owner_id');
     }
-      public function propertyConditional()
+
+    public function propertyConditional()
     {
-        return $this->hasOne('App\Models\PropertyConditionalData','offer_id','id');
+        return $this->hasOne('App\Models\PropertyConditionalData', 'offer_id', 'id');
     }
 
     public function sent_offer_user()
@@ -65,5 +65,4 @@ class RentOffer extends Model
     {
         return $this->hasMany('App\Models\RentSignature', 'offer_id');
     }
-
 }

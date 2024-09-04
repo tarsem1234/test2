@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
-use App\Models\Access\User\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Access\User\ManageUserRequest;
+use App\Models\Access\User\User;
 use App\Repositories\Backend\Access\User\UserSessionRepository;
 
 /**
@@ -13,10 +13,6 @@ use App\Repositories\Backend\Access\User\UserSessionRepository;
 class UserSessionController extends Controller
 {
     /**
-     * @param User                  $user
-     * @param ManageUserRequest     $request
-     * @param UserSessionRepository $userSessionRepository
-     *
      * @return mixed
      */
     public function clearSession(User $user, ManageUserRequest $request, UserSessionRepository $userSessionRepository)

@@ -8,14 +8,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class QuestionSellerPostClosing extends Model
 {
     use SoftDeletes;
-    
-    protected $table = "questions_seller_post_closing";
 
-    public function saleOffer() {
+    protected $table = 'questions_seller_post_closing';
+
+    public function saleOffer()
+    {
         return $this->belongsTo('App\Models\SaleOffer');
     }
-    public function rentOffer() {
+
+    public function rentOffer()
+    {
         return $this->belongsTo('App\Models\RentOffer');
     }
-    
 }

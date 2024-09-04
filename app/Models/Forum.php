@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Forum extends Model
 {
-
     use SoftDeletes;
-    protected $table = "forums";
+
+    protected $table = 'forums';
+
     protected $dates = ['deleted_at'];
 
     public function replies()
@@ -30,7 +31,7 @@ class Forum extends Model
     public function totalViews()
     {
         return $this->hasMany('App\Models\ForumView')
-                ->selectRaw('SUM(views) as total,forum_id')
-                ->groupBy('forum_id');
+            ->selectRaw('SUM(views) as total,forum_id')
+            ->groupBy('forum_id');
     }
 }

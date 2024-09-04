@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ResetsPasswords;
 use App\Repositories\Frontend\Access\User\UserRepository;
+use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\Request;
 
 /**
  * Class ResetPasswordController.
@@ -21,8 +21,6 @@ class ResetPasswordController extends Controller
 
     /**
      * ChangePasswordController constructor.
-     *
-     * @param UserRepository $user
      */
     public function __construct(UserRepository $user)
     {
@@ -34,23 +32,22 @@ class ResetPasswordController extends Controller
      *
      * If no token is present, display the link request form.
      *
-     * @param string|null $token
-     *
+     * @param  string|null  $token
      * @return \Illuminate\Http\Response
      */
     public function showResetForm($token = null)
     {
-       
+
         if (! $token) {
             return redirect()->route('frontend.auth.password.email');
         }
 
         $user = $this->user->findByPasswordResetToken($token);
- 
+
         if ($user && app()->make('auth.password.broker')->tokenExists($user, $token)) {
             return view('frontend.auth.passwords.reset')
-                ->withToken($token)
-                ->withEmail($user->email);
+                ->with('token', $token)
+                ->with('email', $user->email);
         }
 
         return redirect()->route('frontend.auth.password.email')

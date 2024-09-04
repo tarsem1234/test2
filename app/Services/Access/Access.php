@@ -50,8 +50,7 @@ class Access
     }
 
     /**
-     * @param Authenticatable $user
-     * @param bool            $remember
+     * @param  bool  $remember
      */
     public function login(Authenticatable $user, $remember = false)
     {
@@ -62,8 +61,6 @@ class Access
     }
 
     /**
-     * @param $id
-     *
      * @return mixed
      */
     public function loginUsingId($id)
@@ -77,8 +74,7 @@ class Access
     /**
      * Checks if the current user has a Role by its name or id.
      *
-     * @param string $role Role name.
-     *
+     * @param  string  $role  Role name.
      * @return bool
      */
     public function hasRole($role)
@@ -93,9 +89,7 @@ class Access
     /**
      * Checks if the user has either one or more, or all of an array of roles.
      *
-     * @param  $roles
-     * @param bool $needsAll
-     *
+     * @param  bool  $needsAll
      * @return bool
      */
     public function hasRoles($roles, $needsAll = false)
@@ -110,8 +104,7 @@ class Access
     /**
      * Check if the current user has a permission by its name or id.
      *
-     * @param string $permission Permission name or id.
-     *
+     * @param  string  $permission  Permission name or id.
      * @return bool
      */
     public function allow($permission)
@@ -126,8 +119,6 @@ class Access
     /**
      * Check an array of permissions and whether or not all are required to continue.
      *
-     * @param  $permissions
-     * @param  $needsAll
      *
      * @return bool
      */
@@ -141,8 +132,6 @@ class Access
     }
 
     /**
-     * @param  $permission
-     *
      * @return bool
      */
     public function hasPermission($permission)
@@ -151,9 +140,6 @@ class Access
     }
 
     /**
-     * @param  $permissions
-     * @param  $needsAll
-     *
      * @return bool
      */
     public function hasPermissions($permissions, $needsAll = false)

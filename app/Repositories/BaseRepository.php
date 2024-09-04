@@ -24,8 +24,6 @@ class BaseRepository
     }
 
     /**
-     * @param $id
-     *
      * @return mixed
      */
     public function find($id)

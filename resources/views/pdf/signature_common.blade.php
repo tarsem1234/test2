@@ -25,7 +25,7 @@
                     <input class="form-control intro" id="sd-buyer-signature-{{ $offer->sender_id+7 }}" readonly="readonly" value="<?php
                     if (isset($offer->signatures) && count($offer->signatures) > 0 && empty($type)) {
                         $matchedBuyerSignature='';
-                         $have = array();
+                         $have = [];
                         foreach ($offer->signatures as $buyerSignature) {
                             if ($buyerSignature->user_id == $offer->sender_id) {
                                 $test = $buyerSignature->user_id;
@@ -79,7 +79,7 @@
                             <input id="sd-buyer-signature-<?= $partnerProfile->id + 7; ?>" class="form-control intro" readonly="readonly" value=" <?php
                             if (isset($offer->signatures) && count($offer->signatures) > 0 && empty($type)) {
                                  $matchedPartnerSignature ='';
-                                  $have = array();
+                                  $have = [];
                                 foreach ($offer->signatures as $partnerSigns) {
                                      
                                     //                        dump($partnerSigns);
@@ -121,7 +121,7 @@
                     <input class="form-control intro" id="sd-buyer-signature-{{ $offer->owner_id+7 }}" readonly="readonly" value="<?php
                     if (isset($offer->signatures) && count($offer->signatures) > 0 && empty($type)) {
                         $matchedSellerSignature='';
-                        $have = array();
+                        $have = [];
                         foreach ($offer->signatures as $sellerSignature) {
                             if ($sellerSignature->user_id == $offer->owner_id) {
                                 $test = $sellerSignature->user_id;

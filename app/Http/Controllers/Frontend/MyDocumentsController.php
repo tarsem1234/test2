@@ -3,323 +3,337 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Auth;
-use Session;
-use App\Models\SaleOffer;
+use App\Models\Property;
+use App\Models\PropertyConditionalData;
+use App\Models\QuestionSellerPostClosing;
 use App\Models\RentOffer;
 use App\Models\RentSignature;
+use App\Models\SaleOffer;
+use App\Models\SellerQuestionnaire;
 use App\Models\Signature;
-use App\Models\Property;
-use App\Models\{
-    QuestionSellerPostClosing,
-    SellerQuestionnaire
-};
-use App\Models\PropertyConditionalData;
+use Auth;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Session;
 
 /*
- * updated : Remove where condition as per requirement i.e  after contact tool(document creation it should show in listing) 
- * 
+ * updated : Remove where condition as per requirement i.e  after contact tool(document creation it should show in listing)
+ *
  *  */
-class MyDocumentsController extends Controller {
-
-    public function receivedDocuments() {
-        $saleOffers = SaleOffer::where('sender_id', Auth::id())->whereHas('property', function($type) {
-                    $type->where('property_type', config('constant.inverse_property_type.Sale'));
-		    $type->withTrashed();
-                })->latest()->whereHas('saleAgreement')
+class MyDocumentsController extends Controller
+{
+    public function receivedDocuments()
+    {
+        $saleOffers = SaleOffer::where('sender_id', Auth::id())->whereHas('property', function ($type) {
+            $type->where('property_type', config('constant.inverse_property_type.Sale'));
+            $type->withTrashed();
+        })->latest()->whereHas('saleAgreement')
 //                        ->where('buyer_signature', 1)->where('seller_signature', 1)
-		->with(['property'=>function($query){
-		    $query->withTrashed();
-        },
-        'property_owner_user' => function($sellerQuery) {
+            ->with(['property' => function ($query) {
+                $query->withTrashed();
+            },
+        'property_owner_user' => function ($sellerQuery) {
             $sellerQuery->with('user_profile', 'business_profile');
             $sellerQuery->withTrashed();
         },
-        'sale_counter_offers' => function($query) {
-                                $query->latest();
+        'sale_counter_offers' => function ($query) {
+            $query->latest();
         }])
-        ->get();
-                            
-        $rentOffers = RentOffer::where('buyer_id', Auth::id())->whereHas('property', function($type) {
-                    $type->where('property_type', config('constant.inverse_property_type.Rent'));
-		    $type->withTrashed();
-                })->latest()->whereHas('rentAgreement')
+            ->get();
+
+        $rentOffers = RentOffer::where('buyer_id', Auth::id())->whereHas('property', function ($type) {
+            $type->where('property_type', config('constant.inverse_property_type.Rent'));
+            $type->withTrashed();
+        })->latest()->whereHas('rentAgreement')
 //                        ->where('landlord_signature', 1)->where('tenant_signature', 1)
-                ->with(['property'=>function($query){
-		    $query->withTrashed();
-        },
-        'property_owner_user' => function($sellerQuery) {
+            ->with(['property' => function ($query) {
+                $query->withTrashed();
+            },
+        'property_owner_user' => function ($sellerQuery) {
             $sellerQuery->with('user_profile', 'business_profile');
             $sellerQuery->withTrashed();
         },
-        'rent_counter_offers' => function($query) {
-                                $query->latest();
-                            }])
-                ->get();
+        'rent_counter_offers' => function ($query) {
+            $query->latest();
+        }])
+            ->get();
+
         return view('frontend.my_documents.my-received-document', compact('saleOffers', 'rentOffers'));
     }
 
-    public function sentDocuments() {
-        $saleOffers = SaleOffer::where('owner_id', Auth::id())->whereHas('property', function($type) {
-                    $type->where('property_type', config('constant.inverse_property_type.Sale'));
-		    $type->withTrashed();
-                })->latest()->whereHas('saleAgreement')
+    public function sentDocuments()
+    {
+        $saleOffers = SaleOffer::where('owner_id', Auth::id())->whereHas('property', function ($type) {
+            $type->where('property_type', config('constant.inverse_property_type.Sale'));
+            $type->withTrashed();
+        })->latest()->whereHas('saleAgreement')
 //                        ->where('buyer_signature', 1)->where('seller_signature', 1)
-                ->with(['property'=>function($query){
-		    $query->withTrashed();
-        },
-        'property_sender_user' => function($sellerQuery) {
+            ->with(['property' => function ($query) {
+                $query->withTrashed();
+            },
+        'property_sender_user' => function ($sellerQuery) {
             $sellerQuery->with('user_profile', 'business_profile');
             $sellerQuery->withTrashed();
         },
-        'sale_counter_offers' => function($query) {
-                                $query->latest();
-                            }])
-                ->get();
-        $rentOffers = RentOffer::where(function($query) {
-                    $query->where('owner_id', Auth::id());
-                })->latest()->whereHas('rentAgreement')->whereHas('property', function($type) {
-                    $type->where('property_type', config('constant.inverse_property_type.Rent'));
-		       $type->withTrashed();
-                })
-		->with(['property'=>function($query){
-		    $query->withTrashed();
-        },
-        'sent_offer_user'=>function($query){
+        'sale_counter_offers' => function ($query) {
+            $query->latest();
+        }])
+            ->get();
+        $rentOffers = RentOffer::where(function ($query) {
+            $query->where('owner_id', Auth::id());
+        })->latest()->whereHas('rentAgreement')->whereHas('property', function ($type) {
+            $type->where('property_type', config('constant.inverse_property_type.Rent'));
+            $type->withTrashed();
+        })
+            ->with(['property' => function ($query) {
+                $query->withTrashed();
+            },
+        'sent_offer_user' => function ($query) {
             $query->with('user_profile', 'business_profile');
             $query->withTrashed();
         },
-        'property.architechture','rent_counter_offers' => function($query) {
-                                $query->latest();
-                            }])
-                ->get();
+        'property.architechture', 'rent_counter_offers' => function ($query) {
+            $query->latest();
+        }])
+            ->get();
+
         return view('frontend.my_documents.my-send-document', compact('saleOffers', 'rentOffers'));
     }
 
-    public function sentDocumentDetailsSale(Request $request) {
+    public function sentDocumentDetailsSale(Request $request)
+    {
         $page = 'sent';
         if ($request->type && $request->offer_id &&
-                SaleOffer::where('id', $request->offer_id)->where('owner_id', Auth::id())->whereHas('property', function($type) use($request) {
+                SaleOffer::where('id', $request->offer_id)->where('owner_id', Auth::id())->whereHas('property', function ($type) use ($request) {
                     $type->where('property_type', $request->type);
                 })->exists()) {
             $sentDocuments = $this->_getSaleDocuments($request);
             $this->_setSession($sentDocuments);
 
-            return view('frontend.my_documents.sent-documents-for-review-update', compact('sentDocuments','page'));
+            return view('frontend.my_documents.sent-documents-for-review-update', compact('sentDocuments', 'page'));
         }
-        $offer = SaleOffer::where('id', $request->offer_id)->whereHas('property', function($type) use($request) {
-                    $type->where('property_type', $request->type);
-                })->with('sellerQuestionnaire')->first();
-
-
+        $offer = SaleOffer::where('id', $request->offer_id)->whereHas('property', function ($type) use ($request) {
+            $type->where('property_type', $request->type);
+        })->with('sellerQuestionnaire')->first();
 
         if ($offer->sellerQuestionnaire->partners) {
             $partners = explode(',', $offer->sellerQuestionnaire->partners);
             if (in_array(Auth::id(), $partners)) {
                 $sentDocuments = SaleOffer::where('id', $request->offer_id)
-                                ->whereHas('property', function($type) use($request) {
-                                    $type->where('property_type', $request->type);
-				    $type->withTrashed();
-                                })->with(['signatures' => function($saleSignatures) {
-                                $saleSignatures->where('user_id', Auth::id());
-                            }, 'property'=>function($query){
-		    $query->withTrashed();
-		}])->first();
+                    ->whereHas('property', function ($type) use ($request) {
+                        $type->where('property_type', $request->type);
+                        $type->withTrashed();
+                    })->with(['signatures' => function ($saleSignatures) {
+                        $saleSignatures->where('user_id', Auth::id());
+                    }, 'property' => function ($query) {
+                        $query->withTrashed();
+                    }])->first();
                 $this->_setSession($sentDocuments);
-                return view('frontend.my_documents.sent-documents-for-review-update', compact('sentDocuments','page'));
+
+                return view('frontend.my_documents.sent-documents-for-review-update', compact('sentDocuments', 'page'));
             }
         }
+
         return redirect()->back();
-//        dd($sentDocuments->toArray());
-//        return view('frontend.my_documents.documents-for-download-by-owner', compact('sentDocuments'));
+        //        dd($sentDocuments->toArray());
+        //        return view('frontend.my_documents.documents-for-download-by-owner', compact('sentDocuments'));
     }
 
-    public function receivedDocumentDetailsSale(Request $request) {
-         $page = 'received';
+    public function receivedDocumentDetailsSale(Request $request)
+    {
+        $page = 'received';
         if ($request->type && $request->offer_id &&
-                SaleOffer::where('id', $request->offer_id)->where('sender_id', Auth::id())->whereHas('property', function($type) use($request) {
+                SaleOffer::where('id', $request->offer_id)->where('sender_id', Auth::id())->whereHas('property', function ($type) use ($request) {
                     $type->where('property_type', $request->type);
-		    $type->withTrashed();
+                    $type->withTrashed();
                 })->exists()) {
             $sentDocuments = $this->_getSaleDocuments($request);
-//dd($sentDocuments);die;
+            //dd($sentDocuments);die;
             $this->_setSession($sentDocuments);
-//            dd($sentDocuments);
-            return view('frontend.my_documents.sent-documents-for-review-update', compact('sentDocuments','page'));
+
+            //            dd($sentDocuments);
+            return view('frontend.my_documents.sent-documents-for-review-update', compact('sentDocuments', 'page'));
         }
 
-        $offer = SaleOffer::where('id', $request->offer_id)->whereHas('property', function($type) use($request) {
-                    $type->where('property_type', $request->type);
-		    $type->withTrashed();
-                })->with('buyerQuestionnaire')->first();
-
-
+        $offer = SaleOffer::where('id', $request->offer_id)->whereHas('property', function ($type) use ($request) {
+            $type->where('property_type', $request->type);
+            $type->withTrashed();
+        })->with('buyerQuestionnaire')->first();
 
         if ($offer->buyerQuestionnaire->partners) {
             $partners = explode(',', $offer->buyerQuestionnaire->partners);
             if (in_array(Auth::id(), $partners)) {
                 $sentDocuments = SaleOffer::where('id', $request->offer_id)
-                                ->whereHas('property', function($type) use($request) {
-                                    $type->where('property_type', $request->type);
-				    $type->withTrashed();
-                                })->with(['signatures' => function($saleSignatures) {
-                                $saleSignatures->where('user_id', Auth::id());
-                            }, 'property'=>function($query){
-		    $query->withTrashed();
-		}])->first();
+                    ->whereHas('property', function ($type) use ($request) {
+                        $type->where('property_type', $request->type);
+                        $type->withTrashed();
+                    })->with(['signatures' => function ($saleSignatures) {
+                        $saleSignatures->where('user_id', Auth::id());
+                    }, 'property' => function ($query) {
+                        $query->withTrashed();
+                    }])->first();
 
-                return view('frontend.my_documents.sent-documents-for-review-update', compact('sentDocuments','page'));
+                return view('frontend.my_documents.sent-documents-for-review-update', compact('sentDocuments', 'page'));
             }
         }
+
         return redirect()->back();
     }
 
-    public function sentDocumentDetailsRent(Request $request) {
+    public function sentDocumentDetailsRent(Request $request)
+    {
         $page = 'sent';
         if ($request->type && $request->offer_id &&
-                RentOffer::where('id', $request->offer_id)->where('owner_id', Auth::id())->whereHas('property', function($type) use($request) {
+                RentOffer::where('id', $request->offer_id)->where('owner_id', Auth::id())->whereHas('property', function ($type) use ($request) {
                     $type->where('property_type', $request->type);
-		    $type->withTrashed();
+                    $type->withTrashed();
                 })->exists()) {
             $sentDocuments = $this->_getRentDocuments($request);
             $this->_setSession($sentDocuments);
             $rent = true;
 
-            return view('frontend.my_documents.documents-for-review-update-rent', compact('sentDocuments', 'rent','page'));
+            return view('frontend.my_documents.documents-for-review-update-rent', compact('sentDocuments', 'rent', 'page'));
         }
-        $offer = RentOffer::where('id', $request->offer_id)->whereHas('property', function($type) use($request) {
-                    $type->where('property_type', $request->type);
-                })->with('landlordQuestionnaire')->first();
+        $offer = RentOffer::where('id', $request->offer_id)->whereHas('property', function ($type) use ($request) {
+            $type->where('property_type', $request->type);
+        })->with('landlordQuestionnaire')->first();
 
         if ($offer->landlordQuestionnaire->partners) {
             $partners = explode(',', $offer->landlordQuestionnaire->partners);
             if (in_array(Auth::id(), $partners)) {
                 $sentDocuments = RentOffer::where('id', $request->offer_id)
-                                ->whereHas('property', function($type) use($request) {
-                                    $type->where('property_type', $request->type);
-				    $type->withTrashed();
-                                })->with(['rentSignatures' => function($rentSignatures) {
-                                $rentSignatures->where('user_id', Auth::id());
-                            }, 'property'=>function($query){
-		    $query->withTrashed();
-		}])->first();
+                    ->whereHas('property', function ($type) use ($request) {
+                        $type->where('property_type', $request->type);
+                        $type->withTrashed();
+                    })->with(['rentSignatures' => function ($rentSignatures) {
+                        $rentSignatures->where('user_id', Auth::id());
+                    }, 'property' => function ($query) {
+                        $query->withTrashed();
+                    }])->first();
                 $rent = true;
-$this->_setSession($sentDocuments);
-                return view('frontend.my_documents.documents-for-review-update-rent', compact('sentDocuments', 'rent','page'));
+                $this->_setSession($sentDocuments);
+
+                return view('frontend.my_documents.documents-for-review-update-rent', compact('sentDocuments', 'rent', 'page'));
             }
         }
+
         return redirect()->back();
     }
 
-    private function _setSession($sentDocuments) {
+    private function _setSession($sentDocuments)
+    {
         $offerArray = [
             'offer_id' => $sentDocuments->id,
-            'type' => $sentDocuments->property->property_type
+            'type' => $sentDocuments->property->property_type,
         ];
         Session::put('OFFER', $offerArray);
         Session::put('PROPERTY', $sentDocuments->property_id);
     }
 
-    public function receivedDocumentDetailsRent(Request $request) {
-          $page = 'received';
+    public function receivedDocumentDetailsRent(Request $request)
+    {
+        $page = 'received';
         if ($request->type && $request->offer_id &&
-                RentOffer::where('id', $request->offer_id)->where('buyer_id', Auth::id())->whereHas('property', function($type) use($request) {
+                RentOffer::where('id', $request->offer_id)->where('buyer_id', Auth::id())->whereHas('property', function ($type) use ($request) {
                     $type->where('property_type', $request->type);
-		    $type->withTrashed();
+                    $type->withTrashed();
                 })->exists()) {
             $sentDocuments = $this->_getRentDocuments($request);
             $this->_setSession($sentDocuments);
             $rent = true;
-            return view('frontend.my_documents.documents-for-review-update-rent', compact('sentDocuments', 'rent','page'));
+
+            return view('frontend.my_documents.documents-for-review-update-rent', compact('sentDocuments', 'rent', 'page'));
         }
 
-        $offer = RentOffer::where('id', $request->offer_id)->whereHas('property', function($type) use($request) {
-                    $type->where('property_type', $request->type);
-		    $type->withTrashed();
-                })->with('tenantQuestionnaire', 'landlordQuestionnaire')->first();
+        $offer = RentOffer::where('id', $request->offer_id)->whereHas('property', function ($type) use ($request) {
+            $type->where('property_type', $request->type);
+            $type->withTrashed();
+        })->with('tenantQuestionnaire', 'landlordQuestionnaire')->first();
 
         if ($offer->tenantQuestionnaire->partners) {
             $partners = explode(',', $offer->tenantQuestionnaire->partners);
             if (in_array(Auth::id(), $partners)) {
                 $sentDocuments = RentOffer::where('id', $request->offer_id)
-                                ->whereHas('property', function($type) use($request) {
-                                    $type->where('property_type', $request->type);
-				    $type->withTrashed();
-                                })->with(['rentSignatures' => function($rentSignatures) {
-                                $rentSignatures->where('user_id', Auth::id());
-                            }, 'property'=>function($query){
-		    $query->withTrashed();
-		}])->first();
+                    ->whereHas('property', function ($type) use ($request) {
+                        $type->where('property_type', $request->type);
+                        $type->withTrashed();
+                    })->with(['rentSignatures' => function ($rentSignatures) {
+                        $rentSignatures->where('user_id', Auth::id());
+                    }, 'property' => function ($query) {
+                        $query->withTrashed();
+                    }])->first();
                 $rent = true;
 
-                return view('frontend.my_documents.documents-for-review-update-rent', compact('sentDocuments', 'rent','page'));
+                return view('frontend.my_documents.documents-for-review-update-rent', compact('sentDocuments', 'rent', 'page'));
             }
         }
         if ($offer->landlordQuestionnaire->partners) {
             $partners = explode(',', $offer->landlordQuestionnaire->partners);
             if (in_array(Auth::id(), $partners)) {
                 $sentDocuments = RentOffer::where('id', $request->offer_id)
-                                ->whereHas('property', function($type) use($request) {
-                                    $type->where('property_type', $request->type);
-				    $type->withTrashed();
-                                })->with(['rentSignatures' => function($rentSignatures) {
-                                $rentSignatures->where('user_id', Auth::id());
-                            }, 'property'=>function($query){
-		    $query->withTrashed();
-		}])->first();
+                    ->whereHas('property', function ($type) use ($request) {
+                        $type->where('property_type', $request->type);
+                        $type->withTrashed();
+                    })->with(['rentSignatures' => function ($rentSignatures) {
+                        $rentSignatures->where('user_id', Auth::id());
+                    }, 'property' => function ($query) {
+                        $query->withTrashed();
+                    }])->first();
                 $rent = true;
 
                 return view('frontend.my_documents.documents-for-review-update-rent', compact('sentDocuments', 'rent'));
             }
         }
+
         return redirect()->back();
     }
 
-    public function sentDocumentDetails(Request $request) {
+    public function sentDocumentDetails(Request $request)
+    {
         if ($request->type && $request->offer_id &&
-                SaleOffer::where('id', $request->offer_id)->where('owner_id', Auth::id())->whereHas('property', function($type) use($request) {
+                SaleOffer::where('id', $request->offer_id)->where('owner_id', Auth::id())->whereHas('property', function ($type) use ($request) {
                     $type->where('property_type', $request->type);
-		    $type->withTrashed();
+                    $type->withTrashed();
                 })->exists()) {
             $sentDocuments = $this->_getSaleDocuments($request);
 
             return view('frontend.my_documents.documents-for-download-by-owner', compact('sentDocuments'));
         }
+
         return redirect()->back();
     }
 
-    public function downloadDocumentsSale(Request $request) {
+    public function downloadDocumentsSale(Request $request)
+    {
         if ($request->type && $request->offer_id &&
-                SaleOffer::where('id', $request->offer_id)->where(function($query) use($request) {
+                SaleOffer::where('id', $request->offer_id)->where(function ($query) {
                     $query->orWhere('sender_id', Auth::id())->orWhere('owner_id', Auth::id());
-                })->whereHas('property', function($type) use($request) {
+                })->whereHas('property', function ($type) use ($request) {
                     $type->where('property_type', $request->type);
-		    $type->withTrashed();
+                    $type->withTrashed();
                 })->exists()) {
             $sentDocuments = $this->_getSaleDocuments($request);
 
             return view('frontend.my_documents.documents-for-review-update-by-owner', compact('sentDocuments'));
         }
 
-        $offer = SaleOffer::where('id', $request->offer_id)->whereHas('property', function($type) use($request) {
-                    $type->where('property_type', $request->type);
-		    $type->withTrashed();
-                })->with('buyerQuestionnaire', 'sellerQuestionnaire')->first();
+        $offer = SaleOffer::where('id', $request->offer_id)->whereHas('property', function ($type) use ($request) {
+            $type->where('property_type', $request->type);
+            $type->withTrashed();
+        })->with('buyerQuestionnaire', 'sellerQuestionnaire')->first();
 
         if ($offer->sellerQuestionnaire->partners) {
             $partners = explode(',', $offer->sellerQuestionnaire->partners);
             if (in_array(Auth::id(), $partners)) {
                 $sentDocuments = SaleOffer::where('id', $request->offer_id)
-                                ->whereHas('property', function($type) use($request) {
-                                    $type->where('property_type', $request->type);
-				    $type->withTrashed();
-                                })->with(['signatures' => function($saleSignatures) {
-                                $saleSignatures->where('user_id', Auth::id());
-                            }, 'property'=>function($query){
-		    $query->withTrashed();
-		}])->first();
+                    ->whereHas('property', function ($type) use ($request) {
+                        $type->where('property_type', $request->type);
+                        $type->withTrashed();
+                    })->with(['signatures' => function ($saleSignatures) {
+                        $saleSignatures->where('user_id', Auth::id());
+                    }, 'property' => function ($query) {
+                        $query->withTrashed();
+                    }])->first();
 
                 return view('frontend.my_documents.documents-for-review-update-by-owner', compact('sentDocuments'));
             }
@@ -328,14 +342,14 @@ $this->_setSession($sentDocuments);
             $partners = explode(',', $offer->buyerQuestionnaire->partners);
             if (in_array(Auth::id(), $partners)) {
                 $sentDocuments = SaleOffer::where('id', $request->offer_id)
-                                ->whereHas('property', function($type) use($request) {
-                                    $type->where('property_type', $request->type);
-				    $type->withTrashed();
-                                })->with(['signatures' => function($saleSignatures) {
-                                $saleSignatures->where('user_id', Auth::id());
-                            }, 'property'=>function($query){
-		    $query->withTrashed();
-		}])->first();
+                    ->whereHas('property', function ($type) use ($request) {
+                        $type->where('property_type', $request->type);
+                        $type->withTrashed();
+                    })->with(['signatures' => function ($saleSignatures) {
+                        $saleSignatures->where('user_id', Auth::id());
+                    }, 'property' => function ($query) {
+                        $query->withTrashed();
+                    }])->first();
 
                 return view('frontend.my_documents.documents-for-review-update-by-owner', compact('sentDocuments'));
             }
@@ -344,24 +358,25 @@ $this->_setSession($sentDocuments);
         return redirect()->back();
     }
 
-    public function downloadDocumentsRent(Request $request) {
-//        if ($request->type && $request->offer_id &&
-//            RentOffer::where('id', $request->offer_id)->whereHas('property', function($type) use($request) {
-//                $type->where('property_type', $request->type);
-//            })->exists()) {
-//            $sentDocuments = $this->_getRentDocuments($request);
-//            $rent          = true;
-//
-//            return view('frontend.my_documents.c', compact('sentDocuments', 'rent'));
-//        }
-//        return redirect()->back();
+    public function downloadDocumentsRent(Request $request)
+    {
+        //        if ($request->type && $request->offer_id &&
+        //            RentOffer::where('id', $request->offer_id)->whereHas('property', function($type) use($request) {
+        //                $type->where('property_type', $request->type);
+        //            })->exists()) {
+        //            $sentDocuments = $this->_getRentDocuments($request);
+        //            $rent          = true;
+        //
+        //            return view('frontend.my_documents.c', compact('sentDocuments', 'rent'));
+        //        }
+        //        return redirect()->back();
 
         if ($request->type && $request->offer_id &&
-                RentOffer::where('id', $request->offer_id)->where(function($query) use($request) {
+                RentOffer::where('id', $request->offer_id)->where(function ($query) {
                     $query->orWhere('buyer_id', Auth::id())->orWhere('owner_id', Auth::id());
-                })->whereHas('property', function($type) use($request) {
+                })->whereHas('property', function ($type) use ($request) {
                     $type->where('property_type', $request->type);
-		     $type->withTrashed();
+                    $type->withTrashed();
                 })->exists()) {
             $sentDocuments = $this->_getRentDocuments($request);
             $rent = true;
@@ -369,23 +384,23 @@ $this->_setSession($sentDocuments);
             return view('frontend.my_documents.documents-for-review-update-by-owner', compact('sentDocuments', 'rent'));
         }
 
-        $offer = RentOffer::where('id', $request->offer_id)->whereHas('property', function($type) use($request) {
-                    $type->where('property_type', $request->type);
-		     $type->withTrashed();
-                })->with('tenantQuestionnaire', 'landlordQuestionnaire')->first();
+        $offer = RentOffer::where('id', $request->offer_id)->whereHas('property', function ($type) use ($request) {
+            $type->where('property_type', $request->type);
+            $type->withTrashed();
+        })->with('tenantQuestionnaire', 'landlordQuestionnaire')->first();
 
         if ($offer->landlordQuestionnaire->partners) {
             $partners = explode(',', $offer->landlordQuestionnaire->partners);
             if (in_array(Auth::id(), $partners)) {
                 $sentDocuments = RentOffer::where('id', $request->offer_id)
-                                ->whereHas('property', function($type) use($request) {
-                                    $type->where('property_type', $request->type);
-				     $type->withTrashed();
-                                })->with(['rentSignatures' => function($rentSignatures) {
-                                $rentSignatures->where('user_id', Auth::id());
-                            }, 'property'=>function($query){
-		    $query->withTrashed();
-		}])->first();
+                    ->whereHas('property', function ($type) use ($request) {
+                        $type->where('property_type', $request->type);
+                        $type->withTrashed();
+                    })->with(['rentSignatures' => function ($rentSignatures) {
+                        $rentSignatures->where('user_id', Auth::id());
+                    }, 'property' => function ($query) {
+                        $query->withTrashed();
+                    }])->first();
                 $rent = true;
 
                 return view('frontend.my_documents.documents-for-review-update-by-owner', compact('sentDocuments', 'rent'));
@@ -395,14 +410,14 @@ $this->_setSession($sentDocuments);
             $partners = explode(',', $offer->tenantQuestionnaire->partners);
             if (in_array(Auth::id(), $partners)) {
                 $sentDocuments = RentOffer::where('id', $request->offer_id)
-                                ->whereHas('property', function($type) use($request) {
-                                    $type->where('property_type', $request->type);
-				     $type->withTrashed();
-                                })->with(['rentSignatures' => function($rentSignatures) {
-                                $rentSignatures->where('user_id', Auth::id());
-                            }, 'property'=>function($query){
-		    $query->withTrashed();
-		}])->first();
+                    ->whereHas('property', function ($type) use ($request) {
+                        $type->where('property_type', $request->type);
+                        $type->withTrashed();
+                    })->with(['rentSignatures' => function ($rentSignatures) {
+                        $rentSignatures->where('user_id', Auth::id());
+                    }, 'property' => function ($query) {
+                        $query->withTrashed();
+                    }])->first();
                 $rent = true;
 
                 return view('frontend.my_documents.documents-for-review-update-by-owner', compact('sentDocuments', 'rent'));
@@ -412,187 +427,199 @@ $this->_setSession($sentDocuments);
         return redirect()->back();
     }
 
-    public function myDocuments() {
+    public function myDocuments()
+    {
         return view('frontend.my_documents.documents-for-review-update-by-owner');
     }
 
-    private function _getSaleDocuments($request) {
-        $sentDocuments = SaleOffer::where('id', $request->offer_id)->where(function($query) {
-                    $query->orWhere('sender_id', Auth::id())->orWhere('owner_id', Auth::id());
-                })->whereHas('property', function($type) use($request) {
-                    $type->where('property_type', $request->type);
-		     $type->withTrashed();
-                })->with(['signatures' => function($saleSignatures) {
-                        $saleSignatures->where('user_id', Auth::id());
-                    }, 'property'=>function($query){
-		    $query->withTrashed();
-		},'property.architechture','property.disclosure','buyerQuestionnaire','postClosing'])->first();
-    
+    private function _getSaleDocuments($request)
+    {
+        $sentDocuments = SaleOffer::where('id', $request->offer_id)->where(function ($query) {
+            $query->orWhere('sender_id', Auth::id())->orWhere('owner_id', Auth::id());
+        })->whereHas('property', function ($type) use ($request) {
+            $type->where('property_type', $request->type);
+            $type->withTrashed();
+        })->with(['signatures' => function ($saleSignatures) {
+            $saleSignatures->where('user_id', Auth::id());
+        }, 'property' => function ($query) {
+            $query->withTrashed();
+        }, 'property.architechture', 'property.disclosure', 'buyerQuestionnaire', 'postClosing'])->first();
 
         return $sentDocuments;
     }
 
-    private function _getRentDocuments($request) {
-        $sentDocuments = RentOffer::where('id', $request->offer_id)->whereHas('property', function($type) use($request) {
-                    $type->where('property_type', $request->type);
-		     $type->withTrashed();
-                })->with(['rentSignatures' => function($rentSignatures) {
-                        $rentSignatures->where('user_id', Auth::id());
-                    },'property'=>function($query){
-		    $query->withTrashed();
-		},'property.architechture'])->first();
+    private function _getRentDocuments($request)
+    {
+        $sentDocuments = RentOffer::where('id', $request->offer_id)->whereHas('property', function ($type) use ($request) {
+            $type->where('property_type', $request->type);
+            $type->withTrashed();
+        })->with(['rentSignatures' => function ($rentSignatures) {
+            $rentSignatures->where('user_id', Auth::id());
+        }, 'property' => function ($query) {
+            $query->withTrashed();
+        }, 'property.architechture'])->first();
 
         return $sentDocuments;
     }
 
-    public function documentLeadBasedPaintHazards() {
+    public function documentLeadBasedPaintHazards()
+    {
         $offerData = Session::get('OFFER');
         $offer = SaleOffer::where('id', $offerData['offer_id'])
-                        ->with(['property' => function($query) {
-                                $query->select('id', 'lead_based', 'lead_based_report', 'user_id');
-				$query->withTrashed();
-                            }, 'signatures' => function($query) use($offerData) {
-                                $query->where('offer_id', $offerData['offer_id']);
-//                                ->where('signature_type', config('constant.inverse_signature_type.lead based'));
-                            }])->first();
+            ->with(['property' => function ($query) {
+                $query->select('id', 'lead_based', 'lead_based_report', 'user_id');
+                $query->withTrashed();
+            }, 'signatures' => function ($query) use ($offerData) {
+                $query->where('offer_id', $offerData['offer_id']);
+                //                                ->where('signature_type', config('constant.inverse_signature_type.lead based'));
+            }])->first();
 
         return view('frontend.contract_tools.document.document_lead_based_paint_hazards', compact('offer'));
     }
 
-    public function documentSaleAgreement() {
+    public function documentSaleAgreement()
+    {
         Session::forget('leadBased');
         $offerArray = Session::get('OFFER');
 
         if ($offerArray['type'] == config('constant.inverse_property_type.Sale')) {
             $offer = SaleOffer::where('id', $offerArray['offer_id'])
-                            ->with(['propertyConditional.disclosure' => function($propertyCondDis) {
-                                    $propertyCondDis->select('best_knowledge_explain', 'partb_details', 'partc_details');
-                                }, 'sellerQuestionnaire', 'buyerQuestionnaire',
-                                'seller' => function($sellerQuery) {
-                                    $sellerQuery->with('user_profile', 'business_profile')->withTrashed();
-                                },
-                                'buyer' => function($buyerQuery) {
-                                    $buyerQuery->with('user_profile', 'business_profile')->withTrashed();
-                                },
-                                'sale_counter_offers' => function($query) {
-                                    $query->latest();
-                                },
-                                'signatures'=>function($query) use($offerArray){
-                                    $query->where('offer_id', $offerArray['offer_id']);
-                                },
-                                'saleAgreement'])->first();
+                ->with(['propertyConditional.disclosure' => function ($propertyCondDis) {
+                    $propertyCondDis->select('best_knowledge_explain', 'partb_details', 'partc_details');
+                }, 'sellerQuestionnaire', 'buyerQuestionnaire',
+                    'seller' => function ($sellerQuery) {
+                        $sellerQuery->with('user_profile', 'business_profile')->withTrashed();
+                    },
+                    'buyer' => function ($buyerQuery) {
+                        $buyerQuery->with('user_profile', 'business_profile')->withTrashed();
+                    },
+                    'sale_counter_offers' => function ($query) {
+                        $query->latest();
+                    },
+                    'signatures' => function ($query) use ($offerArray) {
+                        $query->where('offer_id', $offerArray['offer_id']);
+                    },
+                    'saleAgreement'])->first();
+
             return view('frontend.contract_tools.document.document_update_sale_agreement_by_buyer', compact('offer'));
         }
+
         return redirect()->back();
     }
 
-    public function documentLeadBasedPaintHazardsRent() {
+    public function documentLeadBasedPaintHazardsRent()
+    {
         $offerData = Session::get('OFFER');
         $offer = RentOffer::where('id', $offerData['offer_id'])
-			->with(['property'=>function($subquery){
-			    $subquery->withTrashed();
-			},'propertyConditional' => function($query) {
-                                $query->select('id', 'lead_based', 'lead_based_report', 'user_id');
-                            }, 'rentSignatures' => function($query) use($offerData) {
-                                $query->where('offer_id', $offerData['offer_id']);
-//                                ->where('signature_type', config('constant.inverse_signature_type.lead based'));
-                            }])->first();
+            ->with(['property' => function ($subquery) {
+                $subquery->withTrashed();
+            }, 'propertyConditional' => function ($query) {
+                $query->select('id', 'lead_based', 'lead_based_report', 'user_id');
+            }, 'rentSignatures' => function ($query) use ($offerData) {
+                $query->where('offer_id', $offerData['offer_id']);
+                //                                ->where('signature_type', config('constant.inverse_signature_type.lead based'));
+            }])->first();
 
         return view('frontend.contract_tools.document.document_lead_based_paint_hazards', compact('offer'));
     }
 
-    public function documentDisclosure() {
+    public function documentDisclosure()
+    {
         $propertyData = Session::get('PROPERTY');
-        $offerArray   = Session::get('OFFER');
-    	//echo'<pre>';print_R($propertyData);die;
-        if(empty($propertyData)){
+        $offerArray = Session::get('OFFER');
+        //echo'<pre>';print_R($propertyData);die;
+        if (empty($propertyData)) {
             return redirect()->back();
         }
-        
-        if(\App\Models\Signature::where('offer_id',$offerArray['offer_id'])->where('affix_status',1)->exists()){
-	
-            $property = PropertyConditionalData::where('offer_id',$offerArray['offer_id'])->where('property_id',$propertyData)->with('architechture', 'disclosure')->first(); 
-        }
-        else{
-        $property = Property::where('id', $propertyData)->with('architechture', 'disclosure')->withTrashed()->first();
+
+        if (\App\Models\Signature::where('offer_id', $offerArray['offer_id'])->where('affix_status', 1)->exists()) {
+
+            $property = PropertyConditionalData::where('offer_id', $offerArray['offer_id'])->where('property_id', $propertyData)->with('architechture', 'disclosure')->first();
+        } else {
+            $property = Property::where('id', $propertyData)->with('architechture', 'disclosure')->withTrashed()->first();
         }
         $diffInYears = null;
-        if(isset($property)) {
+        if (isset($property)) {
             $now = Carbon::now()->year;
             $from = $property->architechture->year_built;
             $diffInYears = $now - $from;
 
             return view('frontend.contract_tools.document.document_disclosure_by_seller_buyer_update', compact('diffInYears', 'property'));
         }
+
         return redirect()->back();
     }
 
-    public function documentAdvisoryToBuyersAndSellers() {
+    public function documentAdvisoryToBuyersAndSellers()
+    {
         $offerArray = Session::get('OFFER');
 
         if ($offerArray['type'] == config('constant.inverse_property_type.Sale')) {
             $offer = SaleOffer::where('id', $offerArray['offer_id'])
-                            ->with(
-                                [
-                                'seller' => function($sellerQuery) {
-                                    $sellerQuery->with('user_profile', 'business_profile')->withTrashed();
-                                },
-                                'buyer' => function($buyerQuery) {
-                                    $buyerQuery->with('user_profile', 'business_profile')->withTrashed();
-                                },
-                                'signatures'=>function($query) use($offerArray){
-                                    $query->where('offer_id', $offerArray['offer_id']);
-                                },
-                                 'propertyConditional'])->first();
+                ->with(
+                    [
+                        'seller' => function ($sellerQuery) {
+                            $sellerQuery->with('user_profile', 'business_profile')->withTrashed();
+                        },
+                        'buyer' => function ($buyerQuery) {
+                            $buyerQuery->with('user_profile', 'business_profile')->withTrashed();
+                        },
+                        'signatures' => function ($query) use ($offerArray) {
+                            $query->where('offer_id', $offerArray['offer_id']);
+                        },
+                        'propertyConditional'])->first();
         }
+
         return view('frontend.contract_tools.document.document_advisory_to_buyers_and_sellers', compact('offer'));
     }
 
-    public function documentVaFhaloanAddendumByBuyer() {
+    public function documentVaFhaloanAddendumByBuyer()
+    {
         $offerArray = Session::get('OFFER');
 
         if ($offerArray['type'] == config('constant.inverse_property_type.Sale')) {
             $offer = SaleOffer::where('id', $offerArray['offer_id'])
-                            ->with([
-                                'buyerQuestionnaire',
-                                'propertyConditional', 'sale_counter_offers' => function($query) {
-                                $query->latest();
-                            },
-                            'seller' => function($sellerQuery) {
-                                $sellerQuery->with('user_profile', 'business_profile');
-                                $sellerQuery->withTrashed();
-                            },
-                            'buyer' => function($buyerQuery) {
-                                $buyerQuery->with('user_profile', 'business_profile');
-                                $buyerQuery->withTrashed();
-                            },
-                            
-                            'signatures' => function($query) use($offerArray) {
-                                    $query->where('offer_id', $offerArray['offer_id']);
-//                                    ->where('signature_type', config('constant.inverse_signature_type.VA FHA loan addendum'));
-                                }])->first();
+                ->with([
+                    'buyerQuestionnaire',
+                    'propertyConditional', 'sale_counter_offers' => function ($query) {
+                        $query->latest();
+                    },
+                    'seller' => function ($sellerQuery) {
+                        $sellerQuery->with('user_profile', 'business_profile');
+                        $sellerQuery->withTrashed();
+                    },
+                    'buyer' => function ($buyerQuery) {
+                        $buyerQuery->with('user_profile', 'business_profile');
+                        $buyerQuery->withTrashed();
+                    },
+
+                    'signatures' => function ($query) use ($offerArray) {
+                        $query->where('offer_id', $offerArray['offer_id']);
+                        //                                    ->where('signature_type', config('constant.inverse_signature_type.VA FHA loan addendum'));
+                    }])->first();
         }
 
         return view('frontend.contract_tools.document.document_VA_FHA_loan_addendum_by_seller_buyer', compact('offer'));
     }
 
-    public function documentPostClosing() {
+    public function documentPostClosing()
+    {
         $offerData = Session::get('OFFER');
         $savedQuestionSellerPostClosing = QuestionSellerPostClosing::where('offer_id', $offerData['offer_id'])
-                        ->with('saleOffer')->first();
+            ->with('saleOffer')->first();
         $sellerQuestionnaire = SellerQuestionnaire::where('offer_id', $offerData['offer_id'])
-                        ->with([
-                        'saleOffer.buyer'=>function($query){
-                            $query->with('user_profile', 'business_profile');
-                            $query->withTrashed();
-                        },
-                        'saleOffer.seller'=>function($query){
-                            $query->with('user_profile', 'business_profile');
-                            $query->withTrashed();
-                        },
-                        
-                            'saleOffer.propertyConditional'])->first();
-                       
+            ->with([
+                'saleOffer.buyer' => function ($query) {
+                    $query->with('user_profile', 'business_profile');
+                    $query->withTrashed();
+                },
+                'saleOffer.seller' => function ($query) {
+                    $query->with('user_profile', 'business_profile');
+                    $query->withTrashed();
+                },
+
+                'saleOffer.propertyConditional'])->first();
+
         $currentDate = date('Y-m-d');
         $days = null;
         $currentMortgage = null;
@@ -603,59 +630,60 @@ $this->_setSession($sentDocuments);
         if ($savedQuestionSellerPostClosing) {
             $currentMortgage = $savedQuestionSellerPostClosing->current_mortgage / 30;
         }
+
         return view('frontend.contract_tools.document.document_post_closing_occupancy_agreement_by_seller_buyer', compact('savedQuestionSellerPostClosing', 'sellerQuestionnaire', 'days', 'currentMortgage'));
     }
 
-    public function documentRentAgreement() {
+    public function documentRentAgreement()
+    {
         $offerArray = Session::get('OFFER');
         if ($offerArray['type'] == config('constant.inverse_property_type.Rent')) {
-            $signature = RentSignature::where('offer_id',$offerArray['offer_id'])->where('affix_status',1)->first();
-            $type =   config('constant.inverse_signature_type_rent.rent agreement');
-             if(!empty($signature)){
+            $signature = RentSignature::where('offer_id', $offerArray['offer_id'])->where('affix_status', 1)->first();
+            $type = config('constant.inverse_signature_type_rent.rent agreement');
+            if (! empty($signature)) {
                 $offer = RentOffer::where('id', $offerArray['offer_id'])
-		    ->with(['property'=>function($subquery){
-			$subquery->withTrashed();
-		    },'propertyConditional.disclosure' => function($propertyCondDis) {
-                            $propertyCondDis->select('best_knowledge_explain', 'partb_details',
-                                'partc_details');
-                        }, 'landlordQuestionnaire','rent_counter_offers' => function($query) {
-                            $query->latest();
-                        }, 
-                        'landlord'=>function($query){
+                    ->with(['property' => function ($subquery) {
+                        $subquery->withTrashed();
+                    }, 'propertyConditional.disclosure' => function ($propertyCondDis) {
+                        $propertyCondDis->select('best_knowledge_explain', 'partb_details',
+                            'partc_details');
+                    }, 'landlordQuestionnaire', 'rent_counter_offers' => function ($query) {
+                        $query->latest();
+                    },
+                        'landlord' => function ($query) {
                             $query->with('user_profile', 'business_profile');
                             $query->withTrashed();
                         },
-                        'rentAgreement', 'rentSignatures'=>function($query){
+                        'rentAgreement', 'rentSignatures' => function ($query) {
                             $query->groupBy('user_id');
-                                    
+
                         }])->first();
+            } else {
+                $offer = RentOffer::where('id', $offerArray['offer_id'])
+                    ->with(['property' => function ($query) {
+                        $query->withTrashed();
+                    }, 'property.disclosure' => function ($propertyCondDis) {
+                        $propertyCondDis->select('best_knowledge_explain', 'partb_details', 'partc_details');
+                    }, 'landlordQuestionnaire', 'landlord' => function ($sellerQuery) {
+                        $sellerQuery->with('user_profile', 'business_profile');
+                    },
+                        'tenant' => function ($buyerQuery) {
+                            $buyerQuery->with('user_profile', 'business_profile');
+                            $buyerQuery->withTrashed();
+                        },
+                        'landlord' => function ($query) {
+                            $query->with('user_profile', 'business_profile');
+                            $query->withTrashed();
+                        },
+                        'rent_counter_offers' => function ($query) {
+                            $query->latest();
+                        }, 'rentAgreement'])->first();
             }
-            else{
-            $offer = RentOffer::where('id', $offerArray['offer_id'])
-			    ->with(['property'=>function($query){
-				$query->withTrashed();
-			    },'property.disclosure' => function($propertyCondDis) {
-                                    $propertyCondDis->select('best_knowledge_explain', 'partb_details', 'partc_details');
-                                }, 'landlordQuestionnaire', 'landlord' => function($sellerQuery) {
-                                    $sellerQuery->with('user_profile', 'business_profile');
-                                },
-                                 'tenant' => function($buyerQuery) {
-                                    $buyerQuery->with('user_profile', 'business_profile');
-                                    $buyerQuery->withTrashed();
-                                }, 
-                                'landlord'=>function($query){
-                                    $query->with('user_profile', 'business_profile');
-                                    $query->withTrashed();
-                                },
-                                'rent_counter_offers' => function($query) {
-                                    $query->latest();
-                                }, 'rentAgreement'])->first();
-            }
-//            dd($offer);
-            return view('frontend.contract_tools.document.document_rent_agreement', compact('offer','signature'));
+
+            //            dd($offer);
+            return view('frontend.contract_tools.document.document_rent_agreement', compact('offer', 'signature'));
         }
 
         return view('frontend.contract_tools.document.document_rent_agreement');
     }
-
 }

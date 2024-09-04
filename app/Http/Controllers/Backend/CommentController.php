@@ -5,26 +5,19 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Comment;
-use Illuminate\Http\Request;
-use App\Http\Requests\Backend\Blog\StoreBlogPost;
-use Carbon\Carbon;
-use Storage;
 
 //use Illuminate\Support\Facades\Storage;
 
-
-
 class CommentController extends Controller
 {
-
-
     public function deleteComment($id)
     {
         if (Comment::where('id', $id)->delete()) {
             return response()->json(['success' => true,
-                    'message' => 'Comment deleted successfully.'
-                    ], 200);
+                'message' => 'Comment deleted successfully.',
+            ], 200);
         }
+
         return response()->json(['success' => false], 500);
     }
 
@@ -32,11 +25,12 @@ class CommentController extends Controller
     {
         if ($id) {
             $blog = Blog::where('id', $id)->with('comments')->latest()->first();
-//            dd($blogs->toArray());
+            //            dd($blogs->toArray());
 
             return view('backend.blog.comment', compact('blog'));
         }
     }
+
     public function approvalComment($id)
     {
 
@@ -46,18 +40,19 @@ class CommentController extends Controller
                 if ($exist->status == 1) {
                     if (Comment::where('id', $id)->update(['status' => 0])) {
                         return redirect()->back()->with('flash_success',
-                                'Comment Unapproved successfully.');
+                            'Comment Unapproved successfully.');
                     }
                 }
                 if ($exist->status == 0) {
                     if (Comment::where('id', $id)->update(['status' => 1])) {
                         return redirect()->back()->with('flash_success',
-                                'Comment Approved successfully.');
+                            'Comment Approved successfully.');
                     }
                 }
             }
+
             return redirect()->back()->with('flash_success',
-                    'Comment approval Failed.');
+                'Comment approval Failed.');
         }
     }
 }

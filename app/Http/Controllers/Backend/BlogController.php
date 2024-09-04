@@ -3,19 +3,19 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Blog;
-use Illuminate\Http\Request;
 use App\Http\Requests\Backend\Blog\StoreBlogPost;
+use App\Models\Blog;
 use Carbon\Carbon;
-use Storage;
 use File;
+use Illuminate\Http\Request;
+use Storage;
 
 class BlogController extends Controller
 {
-
     public function index()
     {
         $blogs = Blog::latest()->get();
+
         return view('backend.blog.index', compact('blogs'));
     }
 
@@ -33,18 +33,18 @@ class BlogController extends Controller
         }
 
         $slug = strtolower($input['blog_title']);
-        $slug =  trim(str_replace(' ', '-', $slug));
+        $slug = trim(str_replace(' ', '-', $slug));
         $slug = preg_replace('/[^A-Za-z0-9\-]/', '', $slug);
 
         if ($slug == '') {
             return back()->withFlashDanger(trans('alerts.blog.createFailed'));
         } else {
             $timestamp = str_replace([' ', ':'], '-', Carbon::now()->toDateTimeString());
-            
+
             if (Blog::where('slug', $slug)->exists()) {
-                $slug = $slug . $timestamp;
+                $slug = $slug.$timestamp;
             }
-            
+
             $document = Storage::disk('public')->put($timestamp, $input['blog_image']);
             $blog = new Blog;
             $blog->title = $input['blog_title'];
@@ -90,6 +90,7 @@ class BlogController extends Controller
 
             return redirect()->route('admin.blogs.index')->with('flash_success', 'Blog updated successfully.');
         }
+
         return redirect()->back()->with('flash_success', 'Blog Updation Failed.');
     }
 
@@ -99,11 +100,13 @@ class BlogController extends Controller
         if ($blog) {
             if (File::deleteDirectory(storage_path('app/public/'.strstr($blog->image, '/', true)))) {
                 Blog::where('id', $id)->forceDelete();
+
                 return response()->json(['success' => true,
-                        'message' => 'Blog deleted successfully.'
-                            ], 200);
+                    'message' => 'Blog deleted successfully.',
+                ], 200);
             }
         }
+
         return response()->json(['success' => false], 500);
     }
 
@@ -111,8 +114,8 @@ class BlogController extends Controller
     {
         if ($id) {
             $blog = Blog::where('id', $id)->with('comments')->latest()->first();
+
             return view('backend.blog.comment', compact('blog'));
         }
     }
-
 }

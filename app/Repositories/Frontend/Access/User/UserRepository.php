@@ -2,21 +2,21 @@
 
 namespace App\Repositories\Frontend\Access\User;
 
-use App\Models\Access\User\User;
-use Illuminate\Support\Facades\DB;
-use App\Exceptions\GeneralException;
-use App\Repositories\BaseRepository;
-use Illuminate\Support\Facades\Hash;
-use App\Models\Access\User\SocialLogin;
 use App\Events\Frontend\Auth\UserConfirmed;
-use App\Repositories\Backend\Access\Role\RoleRepository;
+use App\Exceptions\GeneralException;
+use App\Models\Access\User\SocialLogin;
+use App\Models\Access\User\User;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
+use App\Repositories\Backend\Access\Role\RoleRepository;
+use App\Repositories\BaseRepository;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class UserRepository.
  */
-class UserRepository extends BaseRepository {
-
+class UserRepository extends BaseRepository
+{
     /**
      * Associated Repository Model.
      */
@@ -27,55 +27,50 @@ class UserRepository extends BaseRepository {
      */
     protected $role;
 
-    /**
-     * @param RoleRepository $role
-     */
-    public function __construct(RoleRepository $role) {
+    public function __construct(RoleRepository $role)
+    {
         $this->role = $role;
     }
 
     /**
-     * @param $email
-     *
      * @return mixed
      */
-    public function findByEmail($email) {
+    public function findByEmail($email)
+    {
         return $this->query()->where('email', $email)->where('confirmed', '!=', 0)->first();
     }
 
     /**
-     * @param $token
+     * @return mixed
      *
      * @throws GeneralException
-     *
-     * @return mixed
      */
-    public function findByConfirmationToken($token) {
+    public function findByConfirmationToken($token)
+    {
         return $this->query()->where('confirmation_code', $token)->first();
     }
 
     /**
-     * @param $token
-     *
      * @return mixed
      */
-    public function findByPasswordResetToken($token) {
+    public function findByPasswordResetToken($token)
+    {
         foreach (DB::table(config('auth.passwords.users.table'))->get() as $row) {
             if (password_verify($token, $row->token)) {
                 return $this->findByEmail($row->email);
             }
         }
+
         return false;
     }
 
     /**
-     * @param $token
+     * @return mixed
      *
      * @throws GeneralException
-     *
-     * @return mixed
      */
-    public function getEmailForPasswordToken($token) {
+    public function getEmailForPasswordToken($token)
+    {
         $rows = DB::table(config('auth.passwords.users.table'))->get();
 
         foreach ($rows as $row) {
@@ -88,12 +83,11 @@ class UserRepository extends BaseRepository {
     }
 
     /**
-     * @param array $data
-     * @param bool  $provider
-     *
+     * @param  bool  $provider
      * @return static
      */
-    public function create(array $data, $provider = false) {
+    public function create(array $data, $provider = false)
+    {
         $user = self::MODEL;
         $user = new $user;
         $user->first_name = $data['first_name'];
@@ -139,8 +133,8 @@ class UserRepository extends BaseRepository {
         if ($confirm) {
             $username = '';
             if ($user->user_profile()->exists()) {
-                $username = $user->user_profile()->first_name . ' ' . $user->user_profile()->last_name;
-            } else if ($user->business_profile()->exists()) {
+                $username = $user->user_profile()->first_name.' '.$user->user_profile()->last_name;
+            } elseif ($user->business_profile()->exists()) {
                 $username = $user->business_profile()->company_name;
             }
             // Pretty much only if account approval is off, confirm email is on, and this isn't a social account.
@@ -154,13 +148,12 @@ class UserRepository extends BaseRepository {
     }
 
     /**
-     * @param $data
-     * @param $provider
-     *
      * @return UserRepository|bool
+     *
      * @throws GeneralException
      */
-    public function findOrCreateSocial($data, $provider) {
+    public function findOrCreateSocial($data, $provider)
+    {
         // User email may not provided.
         $user_email = $data->email ?: "{$data->id}@{$provider}.com";
 
@@ -172,9 +165,9 @@ class UserRepository extends BaseRepository {
          * The true flag indicate that it is a social account
          * Which triggers the script to use some default values in the create method
          */
-        if (!$user) {
+        if (! $user) {
             // Registration is not enabled
-            if (!config('access.users.registration')) {
+            if (! config('access.users.registration')) {
                 throw new GeneralException(trans('exceptions.frontend.auth.registration_disabled'));
             }
 
@@ -185,11 +178,11 @@ class UserRepository extends BaseRepository {
                 'first_name' => $nameParts['first_name'],
                 'last_name' => $nameParts['last_name'],
                 'email' => $user_email,
-                    ], true);
+            ], true);
         }
 
         // See if the user has logged in with this social account before
-        if (!$user->hasProvider($provider)) {
+        if (! $user->hasProvider($provider)) {
             // Gather the provider data for saving and associate it with the user
             $user->providers()->save(new SocialLogin([
                 'provider' => $provider,
@@ -210,13 +203,12 @@ class UserRepository extends BaseRepository {
     }
 
     /**
-     * @param $token
+     * @return bool
      *
      * @throws GeneralException
-     *
-     * @return bool
      */
-    public function confirmAccount($token) {
+    public function confirmAccount($token)
+    {
         $user = $this->findByConfirmationToken($token);
 
         if ($user->confirmed == 1) {
@@ -235,14 +227,12 @@ class UserRepository extends BaseRepository {
     }
 
     /**
-     * @param $id
-     * @param $input
+     * @return mixed
      *
      * @throws GeneralException
-     *
-     * @return mixed
      */
-    public function updateProfile($id, $input) {
+    public function updateProfile($id, $input)
+    {
         $user = $this->find($id);
         $user->first_name = $input['first_name'];
         $user->last_name = $input['last_name'];
@@ -275,13 +265,12 @@ class UserRepository extends BaseRepository {
     }
 
     /**
-     * @param $input
+     * @return mixed
      *
      * @throws GeneralException
-     *
-     * @return mixed
      */
-    public function changePassword($input) {
+    public function changePassword($input)
+    {
         $user = $this->find(access()->id());
 
         if (Hash::check($input['old_password'], $user->password)) {
@@ -294,11 +283,10 @@ class UserRepository extends BaseRepository {
     }
 
     /**
-     * @param $fullName
-     *
      * @return array
      */
-    protected function getNameParts($fullName) {
+    protected function getNameParts($fullName)
+    {
         $parts = array_values(array_filter(explode(' ', $fullName)));
 
         $size = count($parts);
@@ -310,17 +298,16 @@ class UserRepository extends BaseRepository {
             $result['last_name'] = null;
         }
 
-        if (!empty($parts) && $size == 1) {
+        if (! empty($parts) && $size == 1) {
             $result['first_name'] = $parts[0];
             $result['last_name'] = null;
         }
 
-        if (!empty($parts) && $size >= 2) {
+        if (! empty($parts) && $size >= 2) {
             $result['first_name'] = $parts[0];
             $result['last_name'] = $parts[1];
         }
 
         return $result;
     }
-
 }

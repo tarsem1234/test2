@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreatePropertyAdditionalConditionalDataTable extends Migration
 {
@@ -16,8 +16,8 @@ class CreatePropertyAdditionalConditionalDataTable extends Migration
         Schema::create('property_additional_conditional_data', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('property_id')->index('property_id');
-	    $table->integer('additional_information_id')->index('additional_information_id');
-	    $table->timestamps();
+            $table->integer('additional_information_id')->index('additional_information_id');
+            $table->timestamps();
         });
     }
 

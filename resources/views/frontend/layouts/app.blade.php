@@ -15,9 +15,8 @@
 
       <!-- Styles -->
       @yield('before-styles')
-      {!! Html::element('link')->attribute('rel', 'stylesheet')->attribute('href', mix('css/common.css')) !!}
-      {!! Html::element('link')->attribute('rel', 'stylesheet')->attribute('href', mix('css/custom.css')) !!}
-      
+      {{ Html::style(mix('css/common.css')) }}
+      {{ Html::style('css/custom.css') }}
 
 
       @yield('after-styles')
@@ -52,18 +51,8 @@
 
       <!-- JavaScripts -->
       @yield('before-scripts')
-      <script src="https://code.jquery.com/jquery-3.3.0.min.js"></script>
-      <!-- Include Select2 JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-    <!-- Include jQuery Validation Plugin -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-      {!! Html::element('link')->attribute('rel', 'text/javascript')->attribute('href', mix('js/frontend.js')) !!}
-      
+      {{ Html::script(mix('js/frontend.js')) }}
       @yield('after-scripts')
-
       <script>
         $(document).ready(function () {
           $(':input[type=number]').on('mousewheel', function (e) {
@@ -72,8 +61,8 @@
         });
         $(window).on('load',function(){
             setTimeout(function () {
-                $('.alert-success, .alert-danger, .alert-warning').fadeOut('slow');
-            }, 5000);
+                $('.alert-success, .alert-danger, .alert-warning').fadeOut('fast');
+            }, 4000);
         });
       </script>
    </body>

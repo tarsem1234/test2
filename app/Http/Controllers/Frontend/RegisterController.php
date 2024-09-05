@@ -18,7 +18,7 @@ use App\Models\UserProfile;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 use Auth;
 use File;
-use Hash;
+//use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 

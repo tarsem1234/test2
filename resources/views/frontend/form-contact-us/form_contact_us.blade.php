@@ -29,7 +29,8 @@
          @if (config('access.captcha.registration'))
                         <div class="form-group contact-captcha col-sm-12 textarea-comment">
                             <div class="col-md-4 col-md-offset-0">
-                                {!! Form::captcha('captcha', ['data-callback'=>'recaptcha_callback']) !!}
+                              {!! NoCaptcha::display() !!}
+                                
                                 {{ Form::hidden('captcha_status', 'true') }}
                             </div><!--col-md-6-->
                             <div id="captchaError"></div>

@@ -119,7 +119,7 @@
                     <div class="form-group">
                         <div class="col-md-12">
                             <div class="select formField">
-                                <input type="hidden" id="custom_county" value="{{!empty($user->county)?$user->county:old('county')?old('county'):''}}">
+                                <input type="hidden" id="custom_county" value="{{!empty($user->county)??$user->county??old('county')??old('county')??''}}">
                                 <select id="county" class="form-control" name="county" data-get_counties="{{route('frontend.getCounties')}}" required="true">
 
                                     @if(!empty(old('county')))
@@ -315,7 +315,7 @@
                     @if (config('access.captcha.registration'))
                     <div class="form-group user-captcha">
                         <div class="col-md-4 col-md-offset-0">
-                            {!! Form::captcha('captcha', ['data-callback'=>'recaptcha_callback']) !!}
+                            {!! NoCaptcha::display() !!}
                             {{ Form::hidden('captcha_status', 'true') }}
                         </div><!--col-md-6-->
                         <div id="captchaError"></div>
@@ -656,7 +656,7 @@ google.maps.event.addDomListener(window, 'load', function () {
 });
 </script>
 @if (config('access.captcha.registration'))
-{!! Captcha::script() !!}
+{!! NoCaptcha::renderJs('fr', true, 'recaptcha_callback') !!}
 <script>
     function recaptcha_callback() {
         $('#captchaError').hide();

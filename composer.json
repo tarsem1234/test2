@@ -29,7 +29,8 @@
         "phpoffice/phpspreadsheet": "^1.6",
         "stevebauman/location": "^4.0",
         "yajra/laravel-datatables-oracle": "^9.6",
-        "fideloper/proxy": "^4.4"
+        "fideloper/proxy": "^4.4",
+        "laravel/ui": "^2.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",

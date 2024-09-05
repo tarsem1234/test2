@@ -408,7 +408,7 @@
     }
 </script>
 @if (config('access.captcha.registration'))
-{!! Captcha::script() !!}
+{!! NoCaptcha::renderJs('fr', true, 'recaptcha_callback') !!}
 <script>
     function recaptcha_callback() {
         $('#captchaError').hide();

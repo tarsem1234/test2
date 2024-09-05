@@ -153,11 +153,12 @@ return [
         /*
          * Package Service Providers...
          */
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
         Arcanedev\NoCaptcha\NoCaptchaServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Creativeorange\Gravatar\GravatarServiceProvider::class,
-        DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
+        // DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
@@ -232,8 +233,10 @@ return [
          * Third Party Aliases
          */
         'Active' => HieuLe\Active\Facades\Active::class,
-        'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
-        'Captcha' => Arcanedev\NoCaptcha\Facades\NoCaptcha::class,
+        // 'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
+        'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
+
+        // 'Captcha' => Arcanedev\NoCaptcha\Facades\NoCaptcha::class,
         'Form' => Collective\Html\FormFacade::class,
         'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
         'Html' => Collective\Html\HtmlFacade::class,

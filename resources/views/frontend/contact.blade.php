@@ -42,7 +42,7 @@
                                 {{ Form::email('email', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
                             </div><!--col-md-4-->
                             <div class="col-md-4">
-                                {{ Form::number('phone', ' ', ['class' => 'form-control',  'min="0"', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.phone')]) }}
+                                {{ Form::number('phone', '', ['class' => 'form-control',  'min="0"', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.phone')]) }}
                             </div><!--col-md-4-->
                         </div><!--form-group-->
                         <div class="form-group address">               
@@ -58,7 +58,7 @@
                         @if (config('access.captcha.registration'))
                         <div class="form-group contact-captcha">
                             <div class="col-md-4 col-md-offset-0">
-                                {!! Form::captcha('captcha', ['data-callback'=>'recaptcha_callback']) !!}
+                                {!! NoCaptcha::display() !!}
                                 {{ Form::hidden('captcha_status', 'true') }}
                             </div><!--col-md-6-->
                             <div id="captchaError"></div>
@@ -154,7 +154,7 @@
     }
 </script>
 @if (config('access.captcha.registration'))
-{!! Captcha::script() !!}
+{!! NoCaptcha::renderJs('fr', true, 'recaptcha_callback') !!}
 <script>
     function recaptcha_callback() {
         $('#captchaError').hide();

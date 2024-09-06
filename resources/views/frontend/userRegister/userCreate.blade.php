@@ -656,7 +656,7 @@ google.maps.event.addDomListener(window, 'load', function () {
 });
 </script>
 @if (config('access.captcha.registration'))
-{!! NoCaptcha::renderJs('fr', true, 'recaptcha_callback') !!}
+{!! NoCaptcha::renderJs('recaptcha_callback') !!}
 <script>
     function recaptcha_callback() {
         $('#captchaError').hide();

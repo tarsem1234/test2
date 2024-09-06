@@ -281,7 +281,7 @@ class LoggedOutFormTest extends BrowserKitTestCase
         config(['access.users.requires_approval' => false]);
 
         // Create default user to test with
-        $unconfirmed = factory(User::class)->states('unconfirmed')->create();
+        $unconfirmed = User::factory()->unconfirmed()->create();
         $unconfirmed->attachRole(3); //User
 
         $this->visit('/login')
@@ -300,7 +300,7 @@ class LoggedOutFormTest extends BrowserKitTestCase
         config(['access.users.requires_approval' => true]);
 
         // Create default user to test with
-        $unconfirmed = factory(User::class)->states('unconfirmed')->create();
+        $unconfirmed = User::factory()->unconfirmed()->create();
         $unconfirmed->attachRole(3); //User
 
         $this->visit('/login')
@@ -317,7 +317,7 @@ class LoggedOutFormTest extends BrowserKitTestCase
     public function testInactiveUserCanNotLogIn()
     {
         // Create default user to test with
-        $inactive = factory(User::class)->states('confirmed', 'inactive')->create();
+        $inactive = User::factory()->confirmed()->inactive()->create();
         $inactive->attachRole(3); //User
 
         $this->visit('/login')

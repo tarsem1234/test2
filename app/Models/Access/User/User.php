@@ -2,6 +2,7 @@
 
 namespace App\Models\Access\User;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\Access\User\Traits\Attribute\UserAttribute;
 use App\Models\Access\User\Traits\Relationship\UserRelationship;
 use App\Models\Access\User\Traits\Scope\UserScope;
@@ -16,6 +17,8 @@ use Illuminate\Notifications\Notifiable;
  */
 class User extends Authenticatable
 {
+    use HasFactory;
+
     use Notifiable,
         SoftDeletes,
         UserAccess,

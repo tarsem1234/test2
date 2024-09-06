@@ -159,7 +159,7 @@ class RoleFormTest extends BrowserKitTestCase
         // Make sure our events are fired
         Event::fake();
 
-        $role = factory(Role::class)->create();
+        $role = Role::factory()->create();
 
         $this->actingAs($this->admin)
              ->seeInDatabase(config('access.roles_table'), ['id' => $role->id])

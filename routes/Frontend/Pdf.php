@@ -1,4 +1,7 @@
 <?php
+
+use App\Http\Controllers\PdfController;
+use Illuminate\Support\Facades\Route;
 //generate pdf's
-Route::get('lead-based-paint-hazards-pdf/{id}','PdfController@leadBasedPaintHazardsPdf')->name('leadBasedPaintHazardsPdf');
-Route::get('property-condition-disclaimerPdf-pdf/{id}','PdfController@propertyDisclaimerPdf')->name('propertyDisclaimerPdf');
+Route::get('lead-based-paint-hazards-pdf/{id}',[PdfController::class, 'leadBasedPaintHazardsPdf'])->name('leadBasedPaintHazardsPdf');
+Route::get('property-condition-disclaimerPdf-pdf/{id}',[PdfController::class, 'propertyDisclaimerPdf'])->name('propertyDisclaimerPdf');

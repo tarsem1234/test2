@@ -1,11 +1,14 @@
 <?php
+
+use App\Http\Controllers\LanguageController;
+use Illuminate\Support\Facades\Route;
 /**
  * Global Routes
  * Routes that are used between both frontend and backend.
  */
 
 // Switch between the included languages
-Route::get('lang/{lang}', 'LanguageController@swap');
+Route::get('lang/{lang}', [LanguageController::class, 'swap']);
 
 /* ----------------------------------------------------------------------- */
 
@@ -13,7 +16,7 @@ Route::get('lang/{lang}', 'LanguageController@swap');
  * Frontend Routes
  * Namespaces indicate folder structure
  */
-Route::namespace('Frontend')->name('frontend.')->group(function () {
+Route::name('frontend.')->group(function () {
     includeRouteFiles(__DIR__.'/Frontend/');
 });
 
@@ -23,7 +26,7 @@ Route::namespace('Frontend')->name('frontend.')->group(function () {
  * Backend Routes
  * Namespaces indicate folder structure
  */
-Route::namespace('Backend')->prefix('admin')->name('admin.')->middleware('admin')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
     /*
      * These routes need view-backend permission
      * (good if you want to allow more than one group in the backend,

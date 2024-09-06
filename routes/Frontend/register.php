@@ -1,15 +1,18 @@
 <?php
+
+use App\Http\Controllers\RegisterController;
+use Illuminate\Support\Facades\Route;
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-Route::get('user/signup', 'RegisterController@userCreate')->name('userCreate');
-Route::post('user/store', 'RegisterController@userstore')->name('userStore');
-Route::get('business/signup', 'RegisterController@businessCreate')->name('businessCreate');
+Route::get('user/signup', [RegisterController::class, 'userCreate'])->name('userCreate');
+Route::post('user/store', [RegisterController::class, 'userstore'])->name('userStore');
+Route::get('business/signup', [RegisterController::class, 'businessCreate'])->name('businessCreate');
 //ajax industries --> services
-Route::get('business/services', 'RegisterController@businessServices')->name('businessServices');
+Route::get('business/services', [RegisterController::class, 'businessServices'])->name('businessServices');
 
 
 //Route::get('rent/create', 'PropertyController@rentCreate')->name('rentCreate');

@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\RateLimiter;
-use Illuminate\Http\Request;
-use Illuminate\Cache\RateLimiting\Limit;
 use App\Models\Access\User\User;
+use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -37,9 +37,9 @@ class RouteServiceProvider extends ServiceProvider
 
             //
         });
-/*
-         * Register route model bindings
-         */
+        /*
+                 * Register route model bindings
+                 */
 
         /*
          * This allows us to use the Route Model Binding with SoftDeletes on
@@ -49,9 +49,8 @@ class RouteServiceProvider extends ServiceProvider
             $user = new User;
 
             return User::withTrashed()->where($user->getRouteKeyName(), $value)->first();
-        });    }
-
-
+        });
+    }
 
     /**
      * Define the "web" routes for the application.

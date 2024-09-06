@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class CountiesTableSeeder extends Seeder
@@ -16,9 +17,9 @@ class CountiesTableSeeder extends Seeder
     {
         
 
-        \DB::table('counties')->delete();
+        DB::table('counties')->delete();
         
-        \DB::table('counties')->insert(array (
+        DB::table('counties')->insert(array (
             0 => 
             array (
                 'id' => 1,
@@ -4020,7 +4021,7 @@ class CountiesTableSeeder extends Seeder
                 'updated_at' => NULL,
             ),
         ));
-        \DB::table('counties')->insert(array (
+        DB::table('counties')->insert(array (
             0 => 
             array (
                 'id' => 501,
@@ -8022,7 +8023,7 @@ class CountiesTableSeeder extends Seeder
                 'updated_at' => NULL,
             ),
         ));
-        \DB::table('counties')->insert(array (
+        DB::table('counties')->insert(array (
             0 => 
             array (
                 'id' => 1001,
@@ -12024,7 +12025,7 @@ class CountiesTableSeeder extends Seeder
                 'updated_at' => NULL,
             ),
         ));
-        \DB::table('counties')->insert(array (
+        DB::table('counties')->insert(array (
             0 => 
             array (
                 'id' => 1501,
@@ -16026,7 +16027,7 @@ class CountiesTableSeeder extends Seeder
                 'updated_at' => NULL,
             ),
         ));
-        \DB::table('counties')->insert(array (
+        DB::table('counties')->insert(array (
             0 => 
             array (
                 'id' => 2001,
@@ -20028,7 +20029,7 @@ class CountiesTableSeeder extends Seeder
                 'updated_at' => NULL,
             ),
         ));
-        \DB::table('counties')->insert(array (
+        DB::table('counties')->insert(array (
             0 => 
             array (
                 'id' => 2501,
@@ -24030,7 +24031,7 @@ class CountiesTableSeeder extends Seeder
                 'updated_at' => NULL,
             ),
         ));
-        \DB::table('counties')->insert(array (
+        DB::table('counties')->insert(array (
             0 => 
             array (
                 'id' => 3001,

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class StatesTableSeeder extends Seeder
@@ -16,9 +17,9 @@ class StatesTableSeeder extends Seeder
     {
         
 
-        \DB::table('states')->delete();
+        DB::table('states')->delete();
         
-        \DB::table('states')->insert(array (
+        DB::table('states')->insert(array (
             0 => 
             array (
                 'id' => 1,

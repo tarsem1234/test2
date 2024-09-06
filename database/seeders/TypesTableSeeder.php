@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class TypesTableSeeder extends Seeder
@@ -16,9 +17,9 @@ class TypesTableSeeder extends Seeder
     {
         
 
-        \DB::table('types')->delete();
+        DB::table('types')->delete();
         
-        \DB::table('types')->insert(array (
+        DB::table('types')->insert(array (
             0 => 
             array (
                 'id' => 1,

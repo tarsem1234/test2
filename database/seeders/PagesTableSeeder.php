@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class PagesTableSeeder extends Seeder
@@ -14,9 +15,9 @@ class PagesTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('pages')->delete();
+        DB::table('pages')->delete();
 
-        \DB::table('pages')->insert([
+        DB::table('pages')->insert([
             [
                 'title' => 'About Us',
                 'slug' => 'about-us',

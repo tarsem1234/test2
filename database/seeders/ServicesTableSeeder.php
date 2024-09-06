@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class ServicesTableSeeder extends Seeder
@@ -16,9 +17,9 @@ class ServicesTableSeeder extends Seeder
     {
         
 
-        \DB::table('services')->delete();
+        DB::table('services')->delete();
         
-        \DB::table('services')->insert(array (
+        DB::table('services')->insert(array (
             0 => 
             array (
                 'id' => 1,

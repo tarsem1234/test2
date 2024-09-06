@@ -3,9 +3,6 @@
 namespace Database\Factories\Access\User;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Access\Role\Role;
-use App\Models\Access\User\User;
-use Faker\Generator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -19,11 +16,6 @@ use Illuminate\Support\Str;
 | database. Just tell the factory how a default model should look.
 |
 */
-
-
-
-
-
 
 /*
  * Roles

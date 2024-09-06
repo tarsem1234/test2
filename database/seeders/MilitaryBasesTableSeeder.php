@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class MilitaryBasesTableSeeder extends Seeder
@@ -16,9 +17,9 @@ class MilitaryBasesTableSeeder extends Seeder
     {
         
 
-        \DB::table('military_bases')->delete();
+        DB::table('military_bases')->delete();
         
-        \DB::table('military_bases')->insert(array (
+        DB::table('military_bases')->insert(array (
             0 => 
             array (
                 'id' => 1,
@@ -5520,7 +5521,7 @@ class MilitaryBasesTableSeeder extends Seeder
                 'zipcode_id' => 50214,
             ),
         ));
-        \DB::table('military_bases')->insert(array (
+        DB::table('military_bases')->insert(array (
             0 => 
             array (
                 'id' => 501,
@@ -11022,7 +11023,7 @@ class MilitaryBasesTableSeeder extends Seeder
                 'zipcode_id' => 50860,
             ),
         ));
-        \DB::table('military_bases')->insert(array (
+        DB::table('military_bases')->insert(array (
             0 => 
             array (
                 'id' => 1001,

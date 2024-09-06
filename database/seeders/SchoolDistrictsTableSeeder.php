@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class SchoolDistrictsTableSeeder extends Seeder
@@ -16,9 +17,9 @@ class SchoolDistrictsTableSeeder extends Seeder
     {
         
 
-        \DB::table('school_districts')->delete();
+        DB::table('school_districts')->delete();
         
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 1,
@@ -3020,7 +3021,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                         'state_id' => 3,
                     ),
                 ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 501,
@@ -6022,7 +6023,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 4,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 1001,
@@ -9024,7 +9025,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 5,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 1501,
@@ -12026,7 +12027,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 5,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 2001,
@@ -15028,7 +15029,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 7,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 2501,
@@ -18030,7 +18031,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 10,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 3001,
@@ -21032,7 +21033,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 13,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 3501,
@@ -24034,7 +24035,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 13,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 4001,
@@ -27036,7 +27037,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 14,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 4501,
@@ -30038,7 +30039,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 16,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 5001,
@@ -33040,7 +33041,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 19,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 5501,
@@ -36042,7 +36043,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                             'state_id' => 21,
                         ),
                     ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 6001,
@@ -39044,7 +39045,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 22,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 6501,
@@ -42046,7 +42047,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 22,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 7001,
@@ -45048,7 +45049,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 23,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 7501,
@@ -48050,7 +48051,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 25,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 8001,
@@ -51052,7 +51053,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 26,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 8501,
@@ -54054,7 +54055,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 27,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 9001,
@@ -57056,7 +57057,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 30,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 9501,
@@ -60058,7 +60059,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 31,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 10001,
@@ -63060,7 +63061,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 32,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 10501,
@@ -66062,7 +66063,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 32,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 11001,
@@ -69064,7 +69065,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 34,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 11501,
@@ -72066,7 +72067,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 35,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 12001,
@@ -75068,7 +75069,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 35,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 12501,
@@ -78070,7 +78071,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 36,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 13001,
@@ -81072,7 +81073,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 38,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 13501,
@@ -84074,7 +84075,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 38,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 14001,
@@ -87076,7 +87077,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 42,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 14501,
@@ -90078,7 +90079,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 43,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 15001,
@@ -93080,7 +93081,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 43,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 15501,
@@ -96082,7 +96083,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 45,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 16001,
@@ -99084,7 +99085,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 47,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 16501,
@@ -102086,7 +102087,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 49,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 17001,
@@ -105088,7 +105089,7 @@ class SchoolDistrictsTableSeeder extends Seeder
                 'state_id' => 46,
             ),
         ));
-        \DB::table('school_districts')->insert(array (
+        DB::table('school_districts')->insert(array (
             0 => 
             array (
                 'id' => 17501,

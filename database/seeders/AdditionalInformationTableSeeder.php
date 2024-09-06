@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class AdditionalInformationTableSeeder extends Seeder
 {
@@ -14,9 +15,9 @@ class AdditionalInformationTableSeeder extends Seeder
     public function run()
     {
 
-        \DB::table('additional_information')->delete();
+        DB::table('additional_information')->delete();
 
-        \DB::table('additional_information')->insert([
+        DB::table('additional_information')->insert([
             0 => [
                 'id' => 2,
                 'name' => 'Appliances',

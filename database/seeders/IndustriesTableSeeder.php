@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class IndustriesTableSeeder extends Seeder
@@ -16,9 +17,9 @@ class IndustriesTableSeeder extends Seeder
     {
         
 
-        \DB::table('industries')->delete();
+        DB::table('industries')->delete();
         
-        \DB::table('industries')->insert(array (
+        DB::table('industries')->insert(array (
             0 => 
             array (
                 'id' => 1,

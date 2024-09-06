@@ -52,14 +52,13 @@ class NetworkController extends Controller
         }
 
         if ($request->zip && $request->radius) {
-            $search->selectRaw("id,city,zip_code,county,state_id,image, {$haversine} AS distance")
-                ->whereRaw("{$haversine} < ?", [$request->radius]);
+            $search->selectRaw("id,city,zip_code,county,state_id,image,'{$haversine}' AS distance")->whereRaw("'{$haversine}' < ?", [$request->radius]);
+            // $search->selectRaw("id,city,zip_code,county,state_id,image, {$haversine} AS distance")->whereRaw("{$haversine} < ?", [$request->radius]);
         } elseif ($request->state && $request->zip && ! $request->radius) {
             $search->where('state_id', $request->state)->where('zip_code', $request->zip);
         } else {
             $search->where('state_id', $request->state);
         }
-
         $states = state::get();
         $searchResult = $search->latest()->paginate($request->limit ? $request->limit : config('constant.common_pagination'));
 

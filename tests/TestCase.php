@@ -68,7 +68,7 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
     /**
      * Set up tests.
      */
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -90,7 +90,7 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
         $this->userRole = Role::find(3);
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         $this->beforeApplicationDestroyed(function () {
             DB::disconnect();

@@ -11,8 +11,6 @@ class Forum extends Model
 
     protected $table = 'forums';
 
-    protected $dates = ['deleted_at'];
-
     public function replies()
     {
         return $this->hasMany('App\Models\ForumReply');

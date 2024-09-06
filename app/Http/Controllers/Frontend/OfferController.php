@@ -328,18 +328,18 @@ class OfferController extends Controller
             }, 'tenantQuestionnaire', 'rentAgreement', 'rent_counter_offers' => function ($query) {
                 $query->latest();
             },
-                    'rentSignatures' => function ($signQuery) {
-                        $signQuery->where('user_id', Auth::id())
-                            ->where('signature_type', config('constant.inverse_signature_type_rent.rent agreement'));
-                    },
-                    'property_owner_user' => function ($sellerQuery) {
-                        $sellerQuery->with('user_profile', 'business_profile');
-                        $sellerQuery->withTrashed();
-                    },
-                    'landlord' => function ($landlordQuery) {
-                        $landlordQuery->select('id', 'email', 'phone_no', 'deleted_at', 'status')->withTrashed()
-                            ->with(['user_profile', 'business_profile']);
-                    }])->first();
+                'rentSignatures' => function ($signQuery) {
+                    $signQuery->where('user_id', Auth::id())
+                        ->where('signature_type', config('constant.inverse_signature_type_rent.rent agreement'));
+                },
+                'property_owner_user' => function ($sellerQuery) {
+                    $sellerQuery->with('user_profile', 'business_profile');
+                    $sellerQuery->withTrashed();
+                },
+                'landlord' => function ($landlordQuery) {
+                    $landlordQuery->select('id', 'email', 'phone_no', 'deleted_at', 'status')->withTrashed()
+                        ->with(['user_profile', 'business_profile']);
+                }])->first();
         if (empty($offer)) {
             return redirect()->back()->withFlashDanger('Invalid Offer.');
         } elseif ($offer->buyer_id != Auth::id() && $offer->owner_id != Auth::id()) {
@@ -446,14 +446,14 @@ class OfferController extends Controller
                 $signQuery->where('user_id', Auth::id())
                     ->where('signature_type', config('constant.inverse_signature_type.sale agreement'));
             },
-                    'property_owner_user' => function ($sellerQuery) {
-                        $sellerQuery->with('user_profile', 'business_profile');
-                        $sellerQuery->withTrashed();
-                    },
-                    'seller' => function ($sellerQuery) {
-                        $sellerQuery->select('id', 'email')
-                            ->with(['user_profile', 'business_profile']);
-                    }])->first();
+                'property_owner_user' => function ($sellerQuery) {
+                    $sellerQuery->with('user_profile', 'business_profile');
+                    $sellerQuery->withTrashed();
+                },
+                'seller' => function ($sellerQuery) {
+                    $sellerQuery->select('id', 'email')
+                        ->with(['user_profile', 'business_profile']);
+                }])->first();
         //		    dd(Auth::id());
         if (empty($offer)) {
             return redirect()->back()->withFlashDanger('Invalid Offer.');
@@ -564,23 +564,23 @@ class OfferController extends Controller
             }, 'buyerQuestionnaire', 'saleAgreement', 'sale_counter_offers' => function ($query) {
                 $query->latest();
             },
-                    'signatures' => function ($signQuery) use ($offer_id) {
-                        $signQuery->where('user_id', Auth::id())
-                            ->where('offer_id', $offer_id);
-                        //                                ->where('affix_status', 1);
-                    },
-                    'property_owner_user' => function ($sellerQuery) {
-                        $sellerQuery->with('user_profile', 'business_profile');
-                        $sellerQuery->withTrashed();
-                    },
-                    'buyer' => function ($buyerQuery) use ($offer_id) {
-                        $buyerQuery->select('id', 'email', 'phone_no', 'deleted_at')->withTrashed()
-                            ->with(['user_profile', 'business_profile'])
-                            ->withCount(['signatures' => function ($buyserSignQuery) use ($offer_id) {
-                                $buyserSignQuery->where('offer_id', $offer_id)->where('affix_status', 1);
-                            }]);
-                    },
-                ])->first();
+                'signatures' => function ($signQuery) use ($offer_id) {
+                    $signQuery->where('user_id', Auth::id())
+                        ->where('offer_id', $offer_id);
+                    //                                ->where('affix_status', 1);
+                },
+                'property_owner_user' => function ($sellerQuery) {
+                    $sellerQuery->with('user_profile', 'business_profile');
+                    $sellerQuery->withTrashed();
+                },
+                'buyer' => function ($buyerQuery) use ($offer_id) {
+                    $buyerQuery->select('id', 'email', 'phone_no', 'deleted_at')->withTrashed()
+                        ->with(['user_profile', 'business_profile'])
+                        ->withCount(['signatures' => function ($buyserSignQuery) use ($offer_id) {
+                            $buyserSignQuery->where('offer_id', $offer_id)->where('affix_status', 1);
+                        }]);
+                },
+            ])->first();
         //		dd($offer);
         if (empty($offer)) {
             return redirect()->back()->withFlashDanger('Invalid Offer.');
@@ -681,18 +681,18 @@ class OfferController extends Controller
                 $signQuery->where('user_id', Auth::id())
                     ->where('offer_id', $offer_id);
             },
-                    'property_owner_user' => function ($sellerQuery) {
-                        $sellerQuery->with('user_profile', 'business_profile');
-                        $sellerQuery->withTrashed();
-                    },
-                    'tenant' => function ($buyerQuery) use ($offer_id) {
-                        $buyerQuery->select('id', 'email', 'phone_no', 'deleted_at')->withTrashed()
-                            ->with(['user_profile', 'business_profile'])
-                            ->withCount(['RentSignature' => function ($buyserSignQuery) use ($offer_id) {
-                                $buyserSignQuery->where('offer_id', $offer_id)->where('affix_status', 1);
-                            }]);
-                    },
-                ])->first();
+                'property_owner_user' => function ($sellerQuery) {
+                    $sellerQuery->with('user_profile', 'business_profile');
+                    $sellerQuery->withTrashed();
+                },
+                'tenant' => function ($buyerQuery) use ($offer_id) {
+                    $buyerQuery->select('id', 'email', 'phone_no', 'deleted_at')->withTrashed()
+                        ->with(['user_profile', 'business_profile'])
+                        ->withCount(['RentSignature' => function ($buyserSignQuery) use ($offer_id) {
+                            $buyserSignQuery->where('offer_id', $offer_id)->where('affix_status', 1);
+                        }]);
+                },
+            ])->first();
         //        $ifTenantPartnerExists = false;
         //        $ifLandlordPartnerExists = false;
         //        $tenantPartners = explode(',',$offer->tenantQuestionnaire->partners);

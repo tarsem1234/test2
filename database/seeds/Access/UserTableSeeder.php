@@ -5,6 +5,7 @@ use Database\DisableForeignKeys;
 use Database\TruncateTable;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class UserTableSeeder.
@@ -29,7 +30,7 @@ class UserTableSeeder extends Seeder
                 'first_name' => 'Administrator',
                 'last_name' => null,
                 'email' => 'admin@freezylist.com',
-                'password' => bcrypt('secret@admin'),
+                'password' => Hash::make('secret@admin'),
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
                 'confirmed' => true,
                 'created_at' => Carbon::now(),
@@ -39,7 +40,7 @@ class UserTableSeeder extends Seeder
                 'first_name' => 'Buisness',
                 'last_name' => 'User',
                 'email' => 'buisness@freezylist.com',
-                'password' => bcrypt('123456'),
+                'password' => Hash::make('123456'),
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
                 'confirmed' => true,
                 'created_at' => Carbon::now(),
@@ -49,7 +50,7 @@ class UserTableSeeder extends Seeder
                 'first_name' => 'Default',
                 'last_name' => 'User',
                 'email' => 'user@freezylist.com',
-                'password' => bcrypt('123456'),
+                'password' => Hash::make('123456'),
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
                 'confirmed' => true,
                 'created_at' => Carbon::now(),

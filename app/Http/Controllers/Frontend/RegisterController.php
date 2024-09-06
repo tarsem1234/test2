@@ -20,6 +20,7 @@ use Auth;
 use File;
 use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class LanguageController.
@@ -109,7 +110,7 @@ class RegisterController extends Controller
             }
             $user = new User;
             $user->email = strtolower($data['email']);
-            $user->password = bcrypt($data['password']);
+            $user->password = Hash::make($data['password']);
             $user->confirmation_code = md5(uniqid(mt_rand(), true));
             $user->state_id = $checkState->id;
             $user->county = $data['county'];
@@ -204,7 +205,7 @@ class RegisterController extends Controller
 
         $gettenant = \App\Models\TenantQuestionnaire::where('partners', $existingUser->id)->get();
         $checkState = $this->_checkState($data);   //find if state exists or not
-        $input['password'] = bcrypt($data['password']);
+        $input['password'] = Hash::make($data['password']);
         $input['state_id'] = $checkState->id;
         $input['confirmation_code'] = $data['code'];
         $input['county'] = $data['county'];
@@ -323,7 +324,7 @@ class RegisterController extends Controller
             $this->validate($request, [
                 'password' => 'required|min:6|confirmed',
             ]);
-            $input['password'] = bcrypt($data['password']);
+            $input['password'] = Hash::make($data['password']);
         }
         $input['state_id'] = $checkState['id'];
         $input['zip_code'] = $data['zip_code'];
@@ -462,7 +463,7 @@ class RegisterController extends Controller
                 'password' => 'required|min:6|confirmed',
             ]);
 
-            $input['password'] = bcrypt($request->password);
+            $input['password'] = Hash::make($request->password);
             if (User::where('id', Auth::id())->update($input)) {
 
                 return redirect()->route('frontend.user.dashboard')->with('flash_success', 'Password updated successfully.');

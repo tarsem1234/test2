@@ -22,6 +22,7 @@ use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class UserRepository.
@@ -204,7 +205,7 @@ class UserRepository extends BaseRepository
      */
     public function updatePassword(Model $user, $input)
     {
-        $user->password = bcrypt($input['password']);
+        $user->password = Hash::make($input['password']);
 
         if ($user->save()) {
             event(new UserPasswordChanged($user));
@@ -413,7 +414,7 @@ class UserRepository extends BaseRepository
         $user->first_name = $input['first_name'];
         $user->last_name = $input['last_name'];
         $user->email = strtolower($input['email']);
-        $user->password = bcrypt($input['password']);
+        $user->password = Hash::make($input['password']);
         $user->status = isset($input['status']) ? 1 : 0;
         $user->confirmation_code = md5(uniqid(mt_rand(), true));
         $user->confirmed = 1;

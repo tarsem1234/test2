@@ -9,7 +9,7 @@
 
 Route::get('cron-back-to-market', 'CronController@checkBackToMarket')->name('checkBackToMarket');
 Route::middleware('auth')->group(function() {
-    Route::group(['middleware' => 'OnlyUsers'], function () {
+    Route::middleware('OnlyUsers')->group(function () {
         /* Learning Center */
         Route::get('learning-center', 'LearningCenterController@index')->name('learning.center');
         Route::get('learning-center/learning_topic/{id}', 'LearningCenterController@learningTopic')->name('learning.topic');

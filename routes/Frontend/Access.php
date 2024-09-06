@@ -4,12 +4,12 @@
  * Frontend Access Controllers
  * All route names are prefixed with 'frontend.auth'.
  */
-Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
+Route::namespace('Auth')->name('auth.')->group(function () {
 
     /*
      * These routes require the user to be logged in
      */
-    Route::group(['middleware' => 'auth'], function () {
+    Route::middleware('auth')->group(function () {
         Route::get('logout', 'LoginController@logout')->name('logout');
 
         //For when admin is logged in as user from backend
@@ -22,7 +22,7 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
     /*
      * These routes require no user to be logged in
      */
-    Route::group(['middleware' => 'guest'], function () {
+    Route::middleware('guest')->group(function () {
         // Authentication Routes
         Route::get('login', 'LoginController@showLoginForm')->name('login');
         Route::post('login', 'LoginController@login')->name('login.post');

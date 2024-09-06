@@ -1,10 +1,6 @@
 <?php
 
-Route::group([
-    'prefix'     => 'search',
-    'as'         => 'search.',
-    'namespace'  => 'Search',
-], function () {
+Route::prefix('search')->name('search.')->namespace('Search')->group(function () {
 
     /*
      * Search Specific Functionality

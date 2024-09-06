@@ -82,8 +82,8 @@ Route::get('property/get-cities', 'PropertyController@getCities')->name('getCiti
  * These frontend controllers require the user to be logged in
  * All route names are prefixed with 'frontend.'
  */
-Route::group(['middleware' => 'auth'], function () {
-    Route::group(['namespace' => 'User', 'as' => 'user.'], function () {
+Route::middleware('auth')->group(function () {
+    Route::namespace('User')->name('user.')->group(function () {
 	/*
 	 * User Dashboard Specific
 	 */
@@ -165,7 +165,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('document-lead-based-paint-hazards', 'MyDocumentsController@documentLeadBasedPaintHazards')->name('documentLeadBasedPaintHazards');
     Route::get('document-lead-based-paint-hazards-rent', 'MyDocumentsController@documentLeadBasedPaintHazardsRent')->name('documentLeadBasedPaintHazardsRent');
-    Route::group(['middleware' => 'checkOfferValues'], function () {
+    Route::middleware('checkOfferValues')->group(function () {
 	// my documents
 	Route::get('document-disclosure', 'MyDocumentsController@documentDisclosure')->name('documentDisclosure');
 	Route::get('document-sale-agreement', 'MyDocumentsController@documentSaleAgreement')->name('documentSaleAgreement');
@@ -174,9 +174,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('document-post-closing', 'MyDocumentsController@documentPostClosing')->name('documentPostClosing');
     });
     Route::get('document-rent-agreement', 'MyDocumentsController@documentRentAgreement')->name('documentRentAgreement');
-    Route::group(['namespace' => 'ContractTools'], function () {
+    Route::namespace('ContractTools')->group(function () {
 	// independent from contract tools
-	Route::group(['middleware' => 'checkSignatureValues'], function () {
+	Route::middleware('checkSignatureValues')->group(function () {
 	    Route::get('lead-based-paint-hazards/{id?}', 'ContractToolSellerController@leadBasedPaintHazards')->name('leadBasedPaintHazards');
 	    Route::get('lead-based-paint-hazards-buyer/{id?}', 'ContractToolBuyerController@leadBasedPaintHazardsBuyer')->name('leadBasedPaintHazardsBuyer');
 	});
@@ -191,21 +191,21 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('save-lead-based-paint-hazards-landlord/{id?}', 'ContractToolLandlordController@saveLeadBasedPaintHazardsLandlord')->name('saveLeadBasedPaintHazardsLandlord');
 	Route::post('save-lead-based-paint-hazards-tenant/{id?}', 'ContractToolTenantController@saveLeadBasedPaintHazardsTenant')->name('saveLeadBasedPaintHazardsTenant');
     });
-    Route::group(['middleware' => 'OnlyUsers'], function () {
-	Route::group(['namespace' => 'ContractTools'], function () {
+    Route::middleware('OnlyUsers')->group(function () {
+	Route::namespace('ContractTools')->group(function () {
 
 	    Route::post('save-seller-property-condition-disclosure/{id?}', 'ContractToolSellerController@saveSellerPropertyConditionDisclosure')->name('saveSellerPropertyConditionDisclosure');
 
 	    // Contract Tools Sale    //Seller
 	    //check Property session through (middleware)
-	    Route::group(['middleware' => 'checkPropertyId'], function () {
+	    Route::middleware('checkPropertyId')->group(function () {
 
 		//Review Offer from Buyer Side
 		//sign document
 		Route::get('sd-thank-you-seller-for-pd', 'ContractToolSellerController@sdThankYouSellerForPd')->name('sdThankYouSellerForPd');
 
 		Route::post('save-seller-questionnaire/{id?}', 'ContractToolSellerController@saveSellerQuestionnaire')->name('saveSellerQuestionnaire');
-		Route::group(['middleware' => 'checkSignatureValues'], function () {
+		Route::middleware('checkSignatureValues')->group(function () {
 		    Route::get('disclosure-by-buyer-update', 'ContractToolBuyerController@disclosureByBuyerUpdate')->name('disclosureByBuyerUpdate');
 
 		    //need
@@ -217,9 +217,9 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::post('sd-thank-you-for-review-summary-key-terms-tenant', 'ContractToolTenantController@sdThankyouForReviewSummaryKeyTermsTenant')->name('sdThankyouForReviewSummaryKeyTermsTenant');
 	    });
 	    //check Offer session through (middleware)
-	    Route::group(['middleware' => 'checkOfferValues'], function () {
-		Route::group(['middleware' => 'checkDeletedUserOffer'], function () {
-		    Route::group(['middleware' => 'checkSignatureValues'], function () {
+	    Route::middleware('checkOfferValues')->group(function () {
+		Route::middleware('checkDeletedUserOffer')->group(function () {
+		    Route::middleware('checkSignatureValues')->group(function () {
 			Route::get('questions-set-for-seller/{id?}', 'ContractToolSellerController@questionsSetForSeller')->name('questionsSetForSeller');
 			Route::get('thank-you-lead-based/{value?}', 'ContractToolSellerController@thankYouLeadBased')->name('thankYouLeadBased');
 			Route::get('seller-property-condition-disclosure', 'ContractToolSellerController@sellerPropertyConditionDisclosure')->name('sellerPropertyConditionDisclosure');
@@ -323,12 +323,12 @@ Route::group(['middleware' => 'auth'], function () {
 
 	    Route::post('save-landlord-property-condition-disclosure/{id?}', 'ContractToolSellerController@saveSellerPropertyConditionDisclosure')->name('saveLandlordPropertyConditionDisclosure');
 
-	    Route::group(['middleware' => 'checkOfferValues'], function () {
-		Route::group(['middleware' => 'checkDeletedUserOffer'], function () {
+	    Route::middleware('checkOfferValues')->group(function () {
+		Route::middleware('checkDeletedUserOffer')->group(function () {
 		    // Rent Contract tool landlord
 		    Route::get('contract-tools-rent', 'ContractToolLandlordController@contractToolsRent')->name('contractToolsRent');
 		    //check Offer session through (middleware)
-		    Route::group(['middleware' => 'checkSignatureValues'], function () {
+		    Route::middleware('checkSignatureValues')->group(function () {
 			//need
 			Route::get('questions-to-landlord', 'ContractToolLandlordController@questionsToLandlord')->name('questionsToLandlord');
 			Route::get('add-signers-contract-rent-landlord', 'ContractToolLandlordController@addSignersContractRentLandlord')->name('addSignersContractRentLandlord');
@@ -422,7 +422,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('network/delete-connection/{id}', 'NetworkController@deleteConnection')->name('delete.connection');
     Route::get('network/profile-rating', 'NetworkController@profileRating')->name('profile.rating');
 
-    Route::group(['middleware' => 'OnlyUsers'], function () {
+    Route::middleware('OnlyUsers')->group(function () {
 	//Signers
 	Route::get('signers', 'SignerController@index')->name('signer.index');
 	Route::get('signer/create', 'SignerController@create')->name('signer.create');

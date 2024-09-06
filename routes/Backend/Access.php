@@ -3,19 +3,13 @@
 /**
  * All route names are prefixed with 'admin.access'.
  */
-Route::group([
-    'prefix'     => 'access',
-    'as'         => 'access.',
-    'namespace'  => 'Access',
-], function () {
+Route::prefix('access')->name('access.')->namespace('Access')->group(function () {
 
     /*
      * User Management
      */
-    Route::group([
-        'middleware' => 'access.routeNeedsRole:1',
-    ], function () {
-        Route::group(['namespace' => 'User'], function () {
+    Route::middleware('access.routeNeedsRole:1')->group(function () {
+        Route::namespace('User')->group(function () {
             /*
              * For DataTables
              */
@@ -58,7 +52,7 @@ Route::group([
             /*
              * Specific User
              */
-            Route::group(['prefix' => 'user/{user}'], function () {
+            Route::prefix('user/{user}')->group(function () {
                 // Account
                 Route::get('account/confirm/resend', 'UserConfirmationController@sendConfirmationEmail')->name('user.account.confirm.resend');
 
@@ -86,7 +80,7 @@ Route::group([
             /*
              * Deleted User
              */
-            Route::group(['prefix' => 'user/{deletedUser}'], function () {
+            Route::prefix('user/{deletedUser}')->group(function () {
                 Route::get('delete', 'UserStatusController@delete')->name('user.delete-permanently');
                 Route::get('restore', 'UserStatusController@restore')->name('user.restore');
             });
@@ -95,8 +89,8 @@ Route::group([
         /*
         * Role Management
         */
-        Route::group(['namespace' => 'Role'], function () {
-            Route::resource('role', 'RoleController', ['except' => ['show']]);
+        Route::namespace('Role')->group(function () {
+            Route::resource('role', 'RoleController')->except('show');
 
             //For DataTables
             Route::post('role/get', 'RoleTableController')->name('role.get');

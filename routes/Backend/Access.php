@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Backend\Access\Role\RoleController;
+use App\Http\Controllers\Backend\Access\Role\RoleTableController;
+use App\Http\Controllers\Backend\Access\User\UserController;
+use App\Http\Controllers\Backend\Access\User\UserTableController;
 use App\Http\Controllers\Access;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +19,7 @@ Route::prefix('access')->name('access.')->group(function () {
         /*
          * For DataTables
          */
-        Route::post('user/get', 'UserTableController')->name('user.get');
+        Route::post('user/get', UserTableController::class)->name('user.get');
         
         /*
          * User Status'
@@ -26,7 +30,7 @@ Route::prefix('access')->name('access.')->group(function () {
         /*
          * User CRUD
          */
-        Route::resource('user', 'UserController');
+        Route::resource('user', UserController::class);
         
         Route::get('business', [Access\User\BusinessController::class, 'index'])->name('business.index');
         Route::get('business/create', [Access\User\BusinessController::class, 'create'])->name('business.create');
@@ -90,9 +94,9 @@ Route::prefix('access')->name('access.')->group(function () {
         /*
         * Role Management
         */
-        Route::resource('role', 'RoleController')->except('show');
+        Route::resource('role', RoleController::class)->except('show');
 
         //For DataTables
-        Route::post('role/get', 'RoleTableController')->name('role.get');
+        Route::post('role/get', RoleTableController::class)->name('role.get');
     });
 });

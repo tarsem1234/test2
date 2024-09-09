@@ -42,7 +42,7 @@ class AccessServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    private function registerAccess()
+    private function registerAccess(): void
     {
         $this->app->bind('access', function ($app) {
             return new Access($app);
@@ -54,7 +54,7 @@ class AccessServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function registerFacade()
+    public function registerFacade(): void
     {
         $this->app->booting(function () {
             $loader = \Illuminate\Foundation\AliasLoader::getInstance();

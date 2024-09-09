@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 
@@ -12,7 +13,7 @@ class AboutUsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         $aboutUs = Page::where('title', 'About Us')->first();
         dd($aboutUs);

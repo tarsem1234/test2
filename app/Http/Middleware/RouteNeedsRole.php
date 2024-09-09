@@ -15,7 +15,7 @@ class RouteNeedsRole
      * @param  bool  $needsAll
      * @return mixed
      */
-    public function handle(Request $request, Closure $next, $role, $needsAll = false): Response
+    public function handle(Request $request, Closure $next, $role, bool $needsAll = false): Response
     {
         /*
          * Roles array

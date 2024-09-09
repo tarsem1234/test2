@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\Access\User\User;
 use App\Models\Property;
@@ -12,7 +13,7 @@ use App\Models\VacationProperty;
  */
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $usersObject = new User;
         //get business users

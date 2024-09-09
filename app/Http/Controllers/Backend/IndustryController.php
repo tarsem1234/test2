@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use App\Models\Industry;
 use App\Models\Service;
@@ -14,7 +17,7 @@ class IndustryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         $industries = Industry::latest()->get();
 
@@ -26,7 +29,7 @@ class IndustryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
         return view('backend.industry.create');
     }
@@ -36,7 +39,7 @@ class IndustryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $this->validate($request,
             [
@@ -66,7 +69,7 @@ class IndustryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         //
     }
@@ -77,7 +80,7 @@ class IndustryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id): View
     {
         if ($id) {
             $industry = Industry::find($id);
@@ -92,7 +95,7 @@ class IndustryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id): RedirectResponse
     {
         $this->validate($request,
             [
@@ -116,7 +119,7 @@ class IndustryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id): JsonResponse
     {
         if (Industry::where('id', $id)->delete()) {
             Service::where('industry_id', $id)->delete();

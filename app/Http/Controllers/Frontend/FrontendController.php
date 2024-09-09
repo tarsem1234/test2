@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 
 /**
@@ -12,7 +13,7 @@ class FrontendController extends Controller
     /**
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(): View
     {
         return view('frontend.index');
     }
@@ -20,12 +21,12 @@ class FrontendController extends Controller
     /**
      * @return \Illuminate\View\View
      */
-    public function macros()
+    public function macros(): View
     {
         return view('frontend.macros');
     }
 
-    public function landingPage()
+    public function landingPage(): View
     {
         return view('frontend.landing-page.landing_home');
     }

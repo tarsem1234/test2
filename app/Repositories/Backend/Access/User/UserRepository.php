@@ -48,7 +48,7 @@ class UserRepository extends BaseRepository
      * @param  string  $by
      * @return mixed
      */
-    public function getByPermission($permissions, $by = 'name')
+    public function getByPermission($permissions, string $by = 'name')
     {
         if (! is_array($permissions)) {
             $permissions = [$permissions];
@@ -64,7 +64,7 @@ class UserRepository extends BaseRepository
      * @param  string  $by
      * @return mixed
      */
-    public function getByRole($roles, $by = 'name')
+    public function getByRole($roles, string $by = 'name')
     {
         if (! is_array($roles)) {
             $roles = [$roles];
@@ -81,7 +81,7 @@ class UserRepository extends BaseRepository
      * @param  bool  $trashed
      * @return mixed
      */
-    public function getForDataTable($status = 1, $trashed = false)
+    public function getForDataTable(int $status = 1, bool $trashed = false)
     {
         /**
          * Note: You must return deleted_at or the User getActionButtonsAttribute won't
@@ -120,7 +120,7 @@ class UserRepository extends BaseRepository
     /**
      * @param  array  $input
      */
-    public function create($input)
+    public function create(array $input)
     {
         $data = $input['data'];
         $roles = $input['roles'];
@@ -170,7 +170,7 @@ class UserRepository extends BaseRepository
      *
      * @throws GeneralException
      */
-    public function update(Model $user, array $input)
+    public function update(Model $user, array $input): bool
     {
         $data = $input['data'];
         $roles = $input['roles'];
@@ -203,7 +203,7 @@ class UserRepository extends BaseRepository
      *
      * @throws GeneralException
      */
-    public function updatePassword(Model $user, $input)
+    public function updatePassword(Model $user, $input): bool
     {
         $user->password = Hash::make($input['password']);
 
@@ -221,7 +221,7 @@ class UserRepository extends BaseRepository
      *
      * @throws GeneralException
      */
-    public function delete(Model $user)
+    public function delete(Model $user): bool
     {
         if (access()->id() == $user->id) {
             throw new GeneralException(trans('exceptions.backend.access.users.cant_delete_self'));
@@ -265,7 +265,7 @@ class UserRepository extends BaseRepository
      *
      * @throws GeneralException
      */
-    public function restore(Model $user)
+    public function restore(Model $user): bool
     {
         if (is_null($user->deleted_at)) {
             throw new GeneralException(trans('exceptions.backend.access.users.cant_restore'));
@@ -285,7 +285,7 @@ class UserRepository extends BaseRepository
      *
      * @throws GeneralException
      */
-    public function mark(Model $user, $status)
+    public function mark(Model $user, $status): bool
     {
         if (access()->id() == $user->id && $status == 0) {
             throw new GeneralException(trans('exceptions.backend.access.users.cant_deactivate_self'));
@@ -315,7 +315,7 @@ class UserRepository extends BaseRepository
      *
      * @throws GeneralException
      */
-    public function confirm(Model $user)
+    public function confirm(Model $user): bool
     {
         if ($user->confirmed == 1) {
             throw new GeneralException(trans('exceptions.backend.access.users.already_confirmed'));
@@ -343,7 +343,7 @@ class UserRepository extends BaseRepository
      *
      * @throws GeneralException
      */
-    public function unconfirm(Model $user)
+    public function unconfirm(Model $user): bool
     {
         if ($user->confirmed == 0) {
             throw new GeneralException(trans('exceptions.backend.access.users.not_confirmed'));

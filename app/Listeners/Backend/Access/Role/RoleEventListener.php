@@ -2,6 +2,8 @@
 
 namespace App\Listeners\Backend\Access\Role;
 
+use Illuminate\Events\Dispatcher;
+
 /**
  * Class RoleEventListener.
  */
@@ -47,7 +49,7 @@ class RoleEventListener
      *
      * @param  \Illuminate\Events\Dispatcher  $events
      */
-    public function subscribe($events)
+    public function subscribe(Dispatcher $events)
     {
         $events->listen(
             \App\Events\Backend\Access\Role\RoleCreated::class,

@@ -2,6 +2,8 @@
 
 namespace App\Listeners\Backend\Access\User;
 
+use Illuminate\Events\Dispatcher;
+
 /**
  * Class UserEventListener.
  */
@@ -167,7 +169,7 @@ class UserEventListener
      *
      * @param  \Illuminate\Events\Dispatcher  $events
      */
-    public function subscribe($events)
+    public function subscribe(Dispatcher $events)
     {
         $events->listen(
             \App\Events\Backend\Access\User\UserCreated::class,

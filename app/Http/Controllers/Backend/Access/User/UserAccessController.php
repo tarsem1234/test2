@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
+use Illuminate\Http\RedirectResponse;
 use App\Exceptions\GeneralException;
 use App\Helpers\Auth\Auth;
 use App\Http\Controllers\Controller;
@@ -18,7 +19,7 @@ class UserAccessController extends Controller
      *
      * @throws GeneralException
      */
-    public function loginAs(User $user, ManageUserRequest $request)
+    public function loginAs(User $user, ManageUserRequest $request): RedirectResponse
     {
         // Overwrite who we're logging in as, if we're already logged in as someone else.
         if (session()->has('admin_user_id') && session()->has('temp_user_id')) {

@@ -11,7 +11,7 @@ trait UserScope
      * @param  bool  $confirmed
      * @return mixed
      */
-    public function scopeConfirmed($query, $confirmed = true)
+    public function scopeConfirmed($query, bool $confirmed = true)
     {
         return $query->where('confirmed', $confirmed);
     }
@@ -20,7 +20,7 @@ trait UserScope
      * @param  bool  $status
      * @return mixed
      */
-    public function scopeActive($query, $status = true)
+    public function scopeActive($query, bool $status = true)
     {
         return $query->where('status', $status);
     }

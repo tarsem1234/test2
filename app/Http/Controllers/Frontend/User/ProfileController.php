@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend\User;
 
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\User\UpdateProfileRequest;
 use App\Repositories\Frontend\Access\User\UserRepository;
@@ -27,7 +28,7 @@ class ProfileController extends Controller
     /**
      * @return mixed
      */
-    public function update(UpdateProfileRequest $request)
+    public function update(UpdateProfileRequest $request): RedirectResponse
     {
         $output = $this->user->updateProfile(access()->id(), $request->only('first_name', 'last_name', 'email'));
 

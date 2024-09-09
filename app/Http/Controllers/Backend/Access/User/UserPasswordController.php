@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserPasswordRequest;
@@ -26,7 +28,7 @@ class UserPasswordController extends Controller
     /**
      * @return mixed
      */
-    public function edit(User $user, ManageUserRequest $request)
+    public function edit(User $user, ManageUserRequest $request): View
     {
         $admin = false;
         $business = false;
@@ -48,7 +50,7 @@ class UserPasswordController extends Controller
     /**
      * @return mixed
      */
-    public function update(User $user, UpdateUserPasswordRequest $request)
+    public function update(User $user, UpdateUserPasswordRequest $request): RedirectResponse
     {
         $this->users->updatePassword($user, $request->only('password'));
 

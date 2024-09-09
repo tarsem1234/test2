@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Illuminate\View\View;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Category;
 use App\Models\Backend\CategorySession;
@@ -18,7 +21,7 @@ class CategorySessionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($categoryId = null)
+    public function index($categoryId = null): View
     {
         $sessions = CategorySession::whereHas('category', function ($query) {
             $query->where('status', 1)->with('category');
@@ -38,7 +41,7 @@ class CategorySessionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create($id): View
     {
         $category = Category::find($id);
 
@@ -50,7 +53,7 @@ class CategorySessionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
             'name' => 'required|max:150',
@@ -103,7 +106,7 @@ class CategorySessionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {}
+    public function show(int $id) {}
 
     /**
      * Show the form for editing the specified resource.
@@ -111,7 +114,7 @@ class CategorySessionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id): View
     {
         if ($id) {
             $categorySession = CategorySession::where('id', $id)->with(['category', 'questions' => function ($q) {
@@ -128,7 +131,7 @@ class CategorySessionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         //
     }
@@ -139,7 +142,7 @@ class CategorySessionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id): JsonResponse
     {
         if (CategorySession::where('id', $id)->delete()) {
 
@@ -149,7 +152,7 @@ class CategorySessionController extends Controller
         return response()->json(['success' => true, 'message' => 'Session Deletion Failed'], 500);
     }
 
-    public function deactivate($id)
+    public function deactivate($id): RedirectResponse
     {
 
         if ($id) {

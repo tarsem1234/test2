@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\JsonResponse;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Blog\StoreBlogPost;
 use App\Models\Blog;
@@ -12,14 +15,14 @@ use Storage;
 
 class BlogController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $blogs = Blog::latest()->get();
 
         return view('backend.blog.index', compact('blogs'));
     }
 
-    public function create()
+    public function create(): View
     {
         return view('backend.blog.create');
     }
@@ -61,17 +64,17 @@ class BlogController extends Controller
         }
     }
 
-    public function show(Blog $blog)
+    public function show(Blog $blog): View
     {
         return view('backend.blog.show', compact('blog'));
     }
 
-    public function edit(Blog $blog)
+    public function edit(Blog $blog): View
     {
         return view('backend.blog.create', compact('blog'));
     }
 
-    public function update(Request $request, Blog $blog)
+    public function update(Request $request, Blog $blog): RedirectResponse
     {
         $this->validate($request, [
             'blog_title' => 'required',
@@ -94,7 +97,7 @@ class BlogController extends Controller
         return redirect()->back()->with('flash_success', 'Blog Updation Failed.');
     }
 
-    public function destroy($id)
+    public function destroy($id): JsonResponse
     {
         $blog = Blog::where('id', $id)->first();
         if ($blog) {
@@ -110,7 +113,7 @@ class BlogController extends Controller
         return response()->json(['success' => false], 500);
     }
 
-    public function blogComment($id)
+    public function blogComment($id): View
     {
         if ($id) {
             $blog = Blog::where('id', $id)->with('comments')->latest()->first();

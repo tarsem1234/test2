@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Models\Access\User\User;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
@@ -28,7 +29,7 @@ class ConfirmAccountController extends Controller
     /**
      * @return mixed
      */
-    public function confirm($token)
+    public function confirm($token): RedirectResponse
     {
         $this->user->confirmAccount($token);
 
@@ -38,7 +39,7 @@ class ConfirmAccountController extends Controller
     /**
      * @return mixed
      */
-    public function sendConfirmationEmail(User $user)
+    public function sendConfirmationEmail(User $user): RedirectResponse
     {
         $username = '';
         if ($user->user_profile()->exists()) {

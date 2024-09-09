@@ -17,7 +17,7 @@ class UserSocialRepository
      *
      * @throws GeneralException
      */
-    public function delete(User $user, SocialLogin $social)
+    public function delete(User $user, SocialLogin $social): bool
     {
         if ($user->providers()->whereId($social->id)->delete()) {
             event(new UserSocialDeleted($user, $social));

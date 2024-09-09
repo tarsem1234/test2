@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 
 class BlogController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $blogs = Blog::latest()->paginate(8);
 

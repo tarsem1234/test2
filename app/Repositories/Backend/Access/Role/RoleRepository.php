@@ -26,7 +26,7 @@ class RoleRepository extends BaseRepository
      * @param  string  $sort
      * @return mixed
      */
-    public function getAll($order_by = 'sort', $sort = 'asc')
+    public function getAll(string $order_by = 'sort', string $sort = 'asc')
     {
         return $this->query()
             ->with('users', 'permissions')
@@ -54,7 +54,7 @@ class RoleRepository extends BaseRepository
      *
      * @throws GeneralException
      */
-    public function create(array $input)
+    public function create(array $input): bool
     {
         if ($this->query()->where('name', $input['name'])->first()) {
             throw new GeneralException(trans('exceptions.backend.access.roles.already_exists'));
@@ -113,7 +113,7 @@ class RoleRepository extends BaseRepository
      *
      * @throws GeneralException
      */
-    public function update(Model $role, array $input)
+    public function update(Model $role, array $input): bool
     {
         //See if the role has all access, administrator always has all access
         if ($role->id == 1) {
@@ -177,7 +177,7 @@ class RoleRepository extends BaseRepository
      *
      * @throws GeneralException
      */
-    public function delete(Model $role)
+    public function delete(Model $role): bool
     {
         //Would be stupid to delete the administrator role
         if ($role->id == 1) { //id is 1 because of the seeder

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 use App\Models\Access\User\User;
@@ -21,7 +23,7 @@ class SupportController extends Controller
         $this->roles = $roles;
     }
 
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $supportUsers = User::whereHas('roles',
             function ($query) {
@@ -31,7 +33,7 @@ class SupportController extends Controller
         return view('backend.access.support_index', compact('supportUsers'));
     }
 
-    public function create()
+    public function create(): View
     {
         $support = true;
 
@@ -39,7 +41,7 @@ class SupportController extends Controller
             ->with('roles', $this->roles->getAll());
     }
 
-    public function store(StoreUserRequest $request)
+    public function store(StoreUserRequest $request): RedirectResponse
     {
         $this->users->create(
             [
@@ -53,14 +55,14 @@ class SupportController extends Controller
         return redirect()->route('admin.access.support.index')->withFlashSuccess(trans('alerts.backend.users.created'));
     }
 
-    public function deactivated(ManageUserRequest $request)
+    public function deactivated(ManageUserRequest $request): View
     {
         $support = true;
 
         return view('backend.access.support_deactivated', compact('support'));
     }
 
-    public function deleted(ManageUserRequest $request)
+    public function deleted(ManageUserRequest $request): View
     {
         $support = true;
 

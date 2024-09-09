@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 use App\Models\Access\User\SocialLogin;
@@ -16,7 +17,7 @@ class UserSocialController extends Controller
     /**
      * @return mixed
      */
-    public function unlink(User $user, SocialLogin $social, ManageUserRequest $request, UserSocialRepository $userSocialRepository)
+    public function unlink(User $user, SocialLogin $social, ManageUserRequest $request, UserSocialRepository $userSocialRepository): RedirectResponse
     {
         $userSocialRepository->delete($user, $social);
 

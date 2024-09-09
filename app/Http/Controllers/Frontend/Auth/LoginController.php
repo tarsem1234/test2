@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserLoggedOut;
 use App\Exceptions\GeneralException;
@@ -34,7 +36,7 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showLoginForm()
+    public function showLoginForm(): View
     {
         return view('frontend.auth.login')
             ->with('socialite_links', (new Socialite)->getSocialLinks());
@@ -45,7 +47,7 @@ class LoginController extends Controller
      *
      * @throws GeneralException
      */
-    protected function authenticated(Request $request, $user)
+    protected function authenticated(Request $request, $user): RedirectResponse
     {
         /*
          * Check to see if the users account is confirmed and active
@@ -81,7 +83,7 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function logout(Request $request)
+    public function logout(Request $request): RedirectResponse
     {
         /*
          * Boilerplate needed logic
@@ -117,7 +119,7 @@ class LoginController extends Controller
     /**
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function logoutAs()
+    public function logoutAs(): RedirectResponse
     {
         //If for some reason route is getting hit without someone already logged in
         if (! access()->user()) {

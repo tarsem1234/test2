@@ -13,7 +13,7 @@ trait UserAccess
      * @param  string  $nameOrId  Role name or id.
      * @return bool
      */
-    public function hasRole($nameOrId)
+    public function hasRole(string $nameOrId): bool
     {
         foreach ($this->roles as $role) {
             //See if role has all permissions
@@ -45,7 +45,7 @@ trait UserAccess
      *
      * @return bool
      */
-    public function hasRoles($roles, $needsAll = false)
+    public function hasRoles($roles, $needsAll = false): bool
     {
         //If not an array, make a one item array
         if (! is_array($roles)) {
@@ -82,7 +82,7 @@ trait UserAccess
      * @param  string  $nameOrId  Permission name or id.
      * @return bool
      */
-    public function allow($nameOrId)
+    public function allow(string $nameOrId): bool
     {
         foreach ($this->roles as $role) {
             // See if role has all permissions
@@ -116,7 +116,7 @@ trait UserAccess
      *
      * @return bool
      */
-    public function allowMultiple($permissions, $needsAll = false)
+    public function allowMultiple($permissions, $needsAll = false): bool
     {
         //If not an array, make a one item array
         if (! is_array($permissions)) {
@@ -150,7 +150,7 @@ trait UserAccess
     /**
      * @return bool
      */
-    public function hasPermission($nameOrId)
+    public function hasPermission($nameOrId): bool
     {
         return $this->allow($nameOrId);
     }
@@ -159,7 +159,7 @@ trait UserAccess
      * @param  bool  $needsAll
      * @return bool
      */
-    public function hasPermissions($permissions, $needsAll = false)
+    public function hasPermissions($permissions, bool $needsAll = false): bool
     {
         return $this->allowMultiple($permissions, $needsAll);
     }
@@ -170,7 +170,7 @@ trait UserAccess
      * @param  mixed  $role
      * @return void
      */
-    public function attachRole($role)
+    public function attachRole($role): void
     {
         if (is_object($role)) {
             $role = $role->getKey();
@@ -189,7 +189,7 @@ trait UserAccess
      * @param  mixed  $role
      * @return void
      */
-    public function detachRole($role)
+    public function detachRole($role): void
     {
         if (is_object($role)) {
             $role = $role->getKey();
@@ -208,7 +208,7 @@ trait UserAccess
      * @param  mixed  $roles
      * @return void
      */
-    public function attachRoles($roles)
+    public function attachRoles($roles): void
     {
         foreach ($roles as $role) {
             $this->attachRole($role);
@@ -221,7 +221,7 @@ trait UserAccess
      * @param  mixed  $roles
      * @return void
      */
-    public function detachRoles($roles)
+    public function detachRoles($roles): void
     {
         foreach ($roles as $role) {
             $this->detachRole($role);

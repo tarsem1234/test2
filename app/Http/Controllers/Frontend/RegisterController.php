@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use Illuminate\Http\Response;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\JsonResponse;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\RegisterRequest;
 use App\Http\Requests\Frontend\UpdateRegisterRequest;
@@ -79,14 +83,14 @@ class RegisterController extends Controller
         }
     }
 
-    public function businessServices(Request $request)
+    public function businessServices(Request $request): Response
     {
         $services = Service::where('industry_id', $request->industry_id)->pluck('service', 'id');
 
         return response(['success' => true, 'services' => $services], 200);
     }
 
-    public function userstore(RegisterRequest $request)
+    public function userstore(RegisterRequest $request): RedirectResponse
     {
 
         $data = $request->all();
@@ -295,7 +299,7 @@ class RegisterController extends Controller
         }
     }
 
-    public function profileEdit($id)
+    public function profileEdit($id): View
     {
         $user = User::where('id', Auth::id())->with(['user_profile' => function ($q) {
             $q->with('user_interests');
@@ -421,7 +425,7 @@ class RegisterController extends Controller
         $userProfile->save();
     }
 
-    public function profileImage(Request $request)
+    public function profileImage(Request $request): JsonResponse
     {
         $this->validate($request, [
             'profile_image' => 'required|mimes:jpeg,jpg,png|max:1000',
@@ -445,7 +449,7 @@ class RegisterController extends Controller
         return response()->json(['success' => false, 'message' => 'Please enter a valid image.'], 500);
     }
 
-    public function editPassword()
+    public function editPassword(): View
     {
         return view('frontend.user.password_change');
     }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Backend\Access\Role;
 
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Access\Role\ManageRoleRequest;
 use App\Http\Requests\Backend\Access\Role\StoreRoleRequest;
@@ -34,7 +36,7 @@ class RoleController extends Controller
     /**
      * @return mixed
      */
-    public function index(ManageRoleRequest $request)
+    public function index(ManageRoleRequest $request): View
     {
         return view('backend.access.roles.index');
     }
@@ -42,7 +44,7 @@ class RoleController extends Controller
     /**
      * @return mixed
      */
-    public function create(ManageRoleRequest $request)
+    public function create(ManageRoleRequest $request): View
     {
         return view('backend.access.roles.create')
             ->with('permissions', $this->permissions->getAll())
@@ -52,7 +54,7 @@ class RoleController extends Controller
     /**
      * @return mixed
      */
-    public function store(StoreRoleRequest $request)
+    public function store(StoreRoleRequest $request): RedirectResponse
     {
         $this->roles->create($request->only('name', 'associated-permissions', 'permissions', 'sort'));
 
@@ -62,7 +64,7 @@ class RoleController extends Controller
     /**
      * @return mixed
      */
-    public function edit(Role $role, ManageRoleRequest $request)
+    public function edit(Role $role, ManageRoleRequest $request): View
     {
         return view('backend.access.roles.edit')
             ->with('role', $role)
@@ -73,7 +75,7 @@ class RoleController extends Controller
     /**
      * @return mixed
      */
-    public function update(Role $role, UpdateRoleRequest $request)
+    public function update(Role $role, UpdateRoleRequest $request): RedirectResponse
     {
         $this->roles->update($role, $request->only('name', 'associated-permissions', 'permissions', 'sort'));
 
@@ -83,7 +85,7 @@ class RoleController extends Controller
     /**
      * @return mixed
      */
-    public function destroy(Role $role, ManageRoleRequest $request)
+    public function destroy(Role $role, ManageRoleRequest $request): RedirectResponse
     {
         $this->roles->delete($role);
 

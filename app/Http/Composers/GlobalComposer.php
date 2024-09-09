@@ -15,7 +15,7 @@ class GlobalComposer
      *
      * @return void
      */
-    public function compose(View $view)
+    public function compose(View $view): void
     {
         $view->with('logged_in_user', access()->user());
     }

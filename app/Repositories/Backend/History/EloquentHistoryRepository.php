@@ -49,7 +49,7 @@ class EloquentHistoryRepository implements HistoryContract
      *
      * @throws GeneralException
      */
-    public function withType($type)
+    public function withType($type): static
     {
         //Type can be id or name
         if (is_numeric($type)) {
@@ -70,7 +70,7 @@ class EloquentHistoryRepository implements HistoryContract
      *
      * @throws GeneralException
      */
-    public function withText($text)
+    public function withText($text): static
     {
         if (strlen($text)) {
             $this->text = $text;
@@ -84,7 +84,7 @@ class EloquentHistoryRepository implements HistoryContract
     /**
      * @return $this
      */
-    public function withEntity($entity_id)
+    public function withEntity($entity_id): static
     {
         $this->entity_id = $entity_id;
 
@@ -94,7 +94,7 @@ class EloquentHistoryRepository implements HistoryContract
     /**
      * @return $this
      */
-    public function withIcon($icon)
+    public function withIcon($icon): static
     {
         $this->icon = $icon;
 
@@ -104,7 +104,7 @@ class EloquentHistoryRepository implements HistoryContract
     /**
      * @return $this
      */
-    public function withClass($class)
+    public function withClass($class): static
     {
         $this->class = $class;
 
@@ -114,7 +114,7 @@ class EloquentHistoryRepository implements HistoryContract
     /**
      * @return $this
      */
-    public function withAssets($assets)
+    public function withAssets($assets): static
     {
         $this->assets = is_array($assets) && count($assets) ? json_encode($assets) : null;
 
@@ -155,7 +155,7 @@ class EloquentHistoryRepository implements HistoryContract
      * @param  int  $pagination
      * @return string|\Symfony\Component\Translation\TranslatorInterface
      */
-    public function render($limit = null, $paginate = true, $pagination = 10)
+    public function render($limit = null, bool $paginate = true, int $pagination = 10)
     {
         $history = History::with('user')->latest();
         $history = $this->buildPagination($history, $limit, $paginate, $pagination);
@@ -172,7 +172,7 @@ class EloquentHistoryRepository implements HistoryContract
      * @param  int  $pagination
      * @return string|\Symfony\Component\Translation\TranslatorInterface
      */
-    public function renderType($type, $limit = null, $paginate = true, $pagination = 10)
+    public function renderType($type, $limit = null, bool $paginate = true, int $pagination = 10)
     {
         $history = History::with('user');
         $history = $this->checkType($history, $type);
@@ -190,7 +190,7 @@ class EloquentHistoryRepository implements HistoryContract
      * @param  int  $pagination
      * @return string|\Symfony\Component\Translation\TranslatorInterface
      */
-    public function renderEntity($type, $entity_id, $limit = null, $paginate = true, $pagination = 10)
+    public function renderEntity($type, $entity_id, $limit = null, bool $paginate = true, int $pagination = 10)
     {
         $history = History::with('user', 'type')->where('entity_id', $entity_id);
         $history = $this->checkType($history, $type);
@@ -206,7 +206,7 @@ class EloquentHistoryRepository implements HistoryContract
      * @param  bool  $assets
      * @return mixed|string
      */
-    public function renderDescription($text, $assets = false)
+    public function renderDescription($text, bool $assets = false)
     {
         $assets = json_decode($assets, true);
         $count = 1;
@@ -268,7 +268,7 @@ class EloquentHistoryRepository implements HistoryContract
      * @param  bool  $paginate
      * @return string
      */
-    public function buildList($history, $paginate = true)
+    public function buildList($history, bool $paginate = true): string
     {
         return view('backend.history.partials.list', ['history' => $history, 'paginate' => $paginate])
             ->render();

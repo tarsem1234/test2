@@ -52,7 +52,7 @@ class Access
     /**
      * @param  bool  $remember
      */
-    public function login(Authenticatable $user, $remember = false)
+    public function login(Authenticatable $user, bool $remember = false)
     {
         $logged_in = auth()->login($user, $remember);
         event(new UserLoggedIn($this->user()));
@@ -77,7 +77,7 @@ class Access
      * @param  string  $role  Role name.
      * @return bool
      */
-    public function hasRole($role)
+    public function hasRole(string $role): bool
     {
         if ($user = $this->user()) {
             return $user->hasRole($role);
@@ -92,7 +92,7 @@ class Access
      * @param  bool  $needsAll
      * @return bool
      */
-    public function hasRoles($roles, $needsAll = false)
+    public function hasRoles($roles, bool $needsAll = false): bool
     {
         if ($user = $this->user()) {
             return $user->hasRoles($roles, $needsAll);
@@ -107,7 +107,7 @@ class Access
      * @param  string  $permission  Permission name or id.
      * @return bool
      */
-    public function allow($permission)
+    public function allow(string $permission): bool
     {
         if ($user = $this->user()) {
             return $user->allow($permission);
@@ -122,7 +122,7 @@ class Access
      *
      * @return bool
      */
-    public function allowMultiple($permissions, $needsAll = false)
+    public function allowMultiple($permissions, $needsAll = false): bool
     {
         if ($user = $this->user()) {
             return $user->allowMultiple($permissions, $needsAll);
@@ -134,7 +134,7 @@ class Access
     /**
      * @return bool
      */
-    public function hasPermission($permission)
+    public function hasPermission($permission): bool
     {
         return $this->allow($permission);
     }
@@ -142,7 +142,7 @@ class Access
     /**
      * @return bool
      */
-    public function hasPermissions($permissions, $needsAll = false)
+    public function hasPermissions($permissions, $needsAll = false): bool
     {
         return $this->allowMultiple($permissions, $needsAll);
     }

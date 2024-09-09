@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 use App\Http\Requests\Backend\Access\User\StoreUserRequest;
@@ -22,7 +24,7 @@ class BusinessController extends Controller
         $this->roles = $roles;
     }
 
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $businessUsers = User::whereHas('roles',
             function ($query) {
@@ -34,7 +36,7 @@ class BusinessController extends Controller
         return view('backend.access.business_index', compact('businessUsers'));
     }
 
-    public function create()
+    public function create(): View
     {
         $business = true;
 
@@ -42,7 +44,7 @@ class BusinessController extends Controller
             ->with('roles', $this->roles->getAll());
     }
 
-    public function store(StoreUserRequest $request)
+    public function store(StoreUserRequest $request): RedirectResponse
     {
         $this->users->create(
             [
@@ -56,14 +58,14 @@ class BusinessController extends Controller
         return redirect()->route('admin.access.business.index')->withFlashSuccess(trans('alerts.backend.users.created'));
     }
 
-    public function deactivated(ManageUserRequest $request)
+    public function deactivated(ManageUserRequest $request): View
     {
         $business = true;
 
         return view('backend.access.business_deactivated', compact('business'));
     }
 
-    public function deleted(ManageUserRequest $request)
+    public function deleted(ManageUserRequest $request): View
     {
         $business = true;
 

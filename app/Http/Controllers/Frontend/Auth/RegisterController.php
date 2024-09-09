@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use App\Events\Frontend\Auth\UserRegistered;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\Auth\RegisterRequest;
@@ -36,7 +38,7 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showRegistrationForm()
+    public function showRegistrationForm(): View
     {
         return view('frontend.auth.register');
     }
@@ -44,7 +46,7 @@ class RegisterController extends Controller
     /**
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function register(RegisterRequest $request)
+    public function register(RegisterRequest $request): RedirectResponse
     {
         if (config('access.users.confirm_email') || config('access.users.requires_approval')) {
             $user = $this->user->create($request->only('first_name', 'last_name', 'email', 'password'));

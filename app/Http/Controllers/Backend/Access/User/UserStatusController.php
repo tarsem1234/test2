@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 use App\Models\Access\User\User;
@@ -28,7 +30,7 @@ class UserStatusController extends Controller
     /**
      * @return mixed
      */
-    public function getDeactivated(ManageUserRequest $request)
+    public function getDeactivated(ManageUserRequest $request): View
     {
         return view('backend.access.deactivated');
     }
@@ -36,7 +38,7 @@ class UserStatusController extends Controller
     /**
      * @return mixed
      */
-    public function getDeleted(ManageUserRequest $request)
+    public function getDeleted(ManageUserRequest $request): View
     {
         return view('backend.access.deleted');
     }
@@ -44,7 +46,7 @@ class UserStatusController extends Controller
     /**
      * @return mixed
      */
-    public function mark(User $user, $status, ManageUserRequest $request)
+    public function mark(User $user, $status, ManageUserRequest $request): RedirectResponse
     {
         $rentOffer = RentOffer::where('status', config('constant.inverse_rent_offer_status.accepted'))
             ->whereHas('property', function ($query) {
@@ -118,7 +120,7 @@ class UserStatusController extends Controller
     /**
      * @return mixed
      */
-    public function delete(User $deletedUser, ManageUserRequest $request)
+    public function delete(User $deletedUser, ManageUserRequest $request): RedirectResponse
     {
         $this->users->forceDelete($deletedUser);
 
@@ -128,7 +130,7 @@ class UserStatusController extends Controller
     /**
      * @return mixed
      */
-    public function restore(User $deletedUser, ManageUserRequest $request)
+    public function restore(User $deletedUser, ManageUserRequest $request): RedirectResponse
     {
         $this->users->restore($deletedUser);
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\OfferRequest;
 use App\Models\Access\User\User;
@@ -28,7 +30,7 @@ class OfferController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         //        $categories = Category::latest()->get();
         //
@@ -67,7 +69,7 @@ class OfferController extends Controller
         return view('frontend.offer.make_rent_offer', compact('id'));
     }
 
-    public function saveOffer(OfferRequest $request)
+    public function saveOffer(OfferRequest $request): RedirectResponse
     {
         $data = $request->all();
         //        dd($data);
@@ -248,7 +250,7 @@ class OfferController extends Controller
         return $offer;
     }
 
-    public function sentOffers()
+    public function sentOffers(): View
     {
         SESSION::forget('PROPERTY');
         SESSION::forget('OFFER');
@@ -279,7 +281,7 @@ class OfferController extends Controller
         return view('frontend.offer.offer_send_details', ['rentOffers' => $rentOffers, 'saleOffers' => $saleOffers]);
     }
 
-    public function recievedOffers()
+    public function recievedOffers(): View
     {
         SESSION::forget('PROPERTY');
         SESSION::forget('OFFER');
@@ -545,7 +547,7 @@ class OfferController extends Controller
      *
      * @return type
      */
-    public function viewRecievedOffer(Request $request)
+    public function viewRecievedOffer(Request $request): type
     {
         $offer_id = $request->offer_id;
         $message = null;
@@ -791,7 +793,7 @@ class OfferController extends Controller
         return view('frontend.offer.recieved_offer_view_rent', compact('offer', 'message', 'downloadButton', 'signButton', 'showContractToolsButton', 'showNegotiationButton', 'showOfferAceeptRejectButton', 'buisnessuserPage'));
     }
 
-    public function viewOffers(Request $request)
+    public function viewOffers(Request $request): View
     {
         $owner = User::where('id', $request->owner_id)->with('user_profile')->with('business_profile')->first();
         $offer = SaleOffer::where('id', $request->offer_id)->with('sale_counter_offers')->first();
@@ -799,7 +801,7 @@ class OfferController extends Controller
         return view('frontend.offer.offer_view', ['offer' => $offer, 'owner' => $owner]);
     }
 
-    public function acceptOffer($id, $propertyType)
+    public function acceptOffer($id, $propertyType): RedirectResponse
     {
         if (! empty($id) && ! empty($propertyType)) {
             if ($propertyType == config('constant.inverse_property_type.Rent')) {
@@ -929,7 +931,7 @@ class OfferController extends Controller
             ->first();
     }
 
-    public function rejectOffer($id, $propertyType)
+    public function rejectOffer($id, $propertyType): RedirectResponse
     {
         if (! empty($id) && ! empty($propertyType)) {
 
@@ -1085,7 +1087,7 @@ class OfferController extends Controller
         return redirect()->back()->withFlashMessage('Failed to send your offer.');
     }
 
-    public function acceptCounterOffer($id, $propertyType)
+    public function acceptCounterOffer($id, $propertyType): RedirectResponse
     {
         if (! empty($id) && ! empty($propertyType)) {
             if ($propertyType == config('constant.inverse_property_type.Rent')) {
@@ -1213,7 +1215,7 @@ class OfferController extends Controller
         return true;
     }
 
-    public function rejectCounterOffer($id, $propertyType)
+    public function rejectCounterOffer($id, $propertyType): RedirectResponse
     {
         if (! empty($id) && ! empty($propertyType)) {
             if ($propertyType == config('constant.inverse_property_type.Rent')) {

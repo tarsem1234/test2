@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\AutoEmailLog;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class AutoEmailLogController extends Controller
 {
-    public function autoEmailLogs()
+    public function autoEmailLogs(): View
     {
         return view('backend.mail.auto_email_logs');
     }

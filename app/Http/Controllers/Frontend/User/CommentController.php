@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend\User;
 
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ use Validator;
 
 class CommentController extends Controller
 {
-    public function storeComment(Request $request)
+    public function storeComment(Request $request): RedirectResponse
     {
         $validator = Validator::make($request->all(), [
             'blog_id' => 'required|exists:blogs,id,deleted_at,NULL',

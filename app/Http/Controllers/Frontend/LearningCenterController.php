@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Category;
 use App\Models\Backend\CategorySession;
@@ -18,7 +19,7 @@ class LearningCenterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         $data['categories'] = Category::where('status', 1)->latest()->get();
         $data['level'] = UserLearningSession::getUserLevel(Auth::user());

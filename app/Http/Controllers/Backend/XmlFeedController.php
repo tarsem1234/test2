@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Models\XmlfeedUser;
 use Hash;
@@ -9,14 +11,14 @@ use Illuminate\Http\Request;
 
 class XmlFeedController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $xmlUsers = XmlfeedUser::latest()->get();
 
         return view('backend.xml_feed.index', ['xmlUsers' => $xmlUsers]);
     }
 
-    public function create()
+    public function create(): View
     {
         return view('backend.xml_feed.create');
     }
@@ -33,7 +35,7 @@ class XmlFeedController extends Controller
         return redirect()->back()->withFlashDanger('Something went wrong.');
     }
 
-    public function store(Request $request, $id = null)
+    public function store(Request $request, $id = null): RedirectResponse
     {
         $this->validate($request,
             [
@@ -54,7 +56,7 @@ class XmlFeedController extends Controller
         return redirect()->back()->withFlashDanger('Something went wrong.');
     }
 
-    public function update(Request $request)
+    public function update(Request $request): RedirectResponse
     {
         if ($request->xml_user_id) {
             $this->validate($request,
@@ -76,7 +78,7 @@ class XmlFeedController extends Controller
         return redirect()->back()->withFlashDanger('Something went wrong.');
     }
 
-    public function activation($id)
+    public function activation($id): RedirectResponse
     {
         if ($id) {
             $xmlUser = XmlfeedUser::find(decrypt($id));
@@ -92,7 +94,7 @@ class XmlFeedController extends Controller
         return redirect()->back()->withFlashDanger('Something went wrong.');
     }
 
-    public function delete($id)
+    public function delete($id): RedirectResponse
     {
         if ($id) {
             if (XmlfeedUser::find($id)) {

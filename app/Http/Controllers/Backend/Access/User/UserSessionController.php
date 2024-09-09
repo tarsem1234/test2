@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 use App\Models\Access\User\User;
@@ -15,7 +16,7 @@ class UserSessionController extends Controller
     /**
      * @return mixed
      */
-    public function clearSession(User $user, ManageUserRequest $request, UserSessionRepository $userSessionRepository)
+    public function clearSession(User $user, ManageUserRequest $request, UserSessionRepository $userSessionRepository): RedirectResponse
     {
         $userSessionRepository->clearSession($user);
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\Contact\SendContactRequest;
 use App\Mail\Frontend\Contact\SendContact;
@@ -15,7 +17,7 @@ class ContactController extends Controller
     /**
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(): View
     {
         return view('frontend.contact');
     }
@@ -23,7 +25,7 @@ class ContactController extends Controller
     /**
      * @return mixed
      */
-    public function send(SendContactRequest $request)
+    public function send(SendContactRequest $request): RedirectResponse
     {
         //        dd($request->all());
         Mail::send(new SendContact($request));

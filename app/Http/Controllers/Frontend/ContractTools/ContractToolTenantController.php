@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Frontend\ContractTools;
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\TenantQuestionnaireRequest;
 use App\Mail\Frontend\SaleAgreementLandlordMailing;
@@ -30,17 +32,17 @@ class ContractToolTenantController extends Controller
         SESSION::forget('OFFER');
     }
 
-    public function thankyouForRentOffer()
+    public function thankyouForRentOffer(): View
     {
         return view('frontend.contract_tools.rent.tenant.thankyou_for_rent_offer');
     }
 
-    public function questionSetForTenant()
+    public function questionSetForTenant(): View
     {
         return view('frontend.contract_tools.rent.buyer.question_set_for_tenant');
     }
 
-    public function addSignersContractRentTenant()
+    public function addSignersContractRentTenant(): View
     {
         $signers = Signer::where('from_user_id', Auth::id())->with(['invited_users' => function ($query) {
             $query->withTrashed();
@@ -106,7 +108,7 @@ class ContractToolTenantController extends Controller
         return redirect()->back();
     }
 
-    public function summaryKeyTermsForTenant()
+    public function summaryKeyTermsForTenant(): View
     {
         $offerSession = Session::get('OFFER');
 
@@ -132,7 +134,7 @@ class ContractToolTenantController extends Controller
             compact('offer'));
     }
 
-    public function thankYouForReviewSummaryKeyTerms(Request $request)
+    public function thankYouForReviewSummaryKeyTerms(Request $request): View
     {
         $this->validate($request, [
             'agree' => 'required',
@@ -178,17 +180,17 @@ class ContractToolTenantController extends Controller
         return view('frontend.contract_tools.rent.buyer.disclosures_rent_contract_tool_review_tenant');
     }
 
-    public function thankyouDiscloserToolTenant()
+    public function thankyouDiscloserToolTenant(): View
     {
         return view('frontend.contract_tools.rent.buyer.thankyou_discloser_tool_tenant');
     }
 
-    public function thankYouLeadBasedDisclosureForRentTenant()
+    public function thankYouLeadBasedDisclosureForRentTenant(): View
     {
         return view('frontend.contract_tools.rent.tenant.thank-you-lead-based-disclosure-for-rent-tenant');
     }
 
-    public function saveLeadBasedPaintHazardsTenant(Request $request)
+    public function saveLeadBasedPaintHazardsTenant(Request $request): RedirectResponse
     {
         $epa = [1, 2];
         $this->validate($request,
@@ -215,7 +217,7 @@ class ContractToolTenantController extends Controller
         return redirect()->back();
     }
 
-    public function leaseAgreementReviewTenant()
+    public function leaseAgreementReviewTenant(): View
     {
         $offerArray = Session::get('OFFER');
 
@@ -306,7 +308,7 @@ class ContractToolTenantController extends Controller
     }
 
     //sign documents
-    public function sdThankyouForReviewSummaryKeyTermsTenant(Request $request)
+    public function sdThankyouForReviewSummaryKeyTermsTenant(Request $request): View
     {
         $this->validate($request, [
             'agree' => 'required',
@@ -323,7 +325,7 @@ class ContractToolTenantController extends Controller
         return view('frontend.contract_tools.rent.sign_documents.tenant.sd_thank_you_for_review_summary_key_terms_tenant');
     }
 
-    public function sdSummaryKeyTermsForTenant(Request $request)
+    public function sdSummaryKeyTermsForTenant(Request $request): View
     {
         $offerSession = Session::get('OFFER');
 
@@ -361,7 +363,7 @@ class ContractToolTenantController extends Controller
         Session::put('PROPERTY', $propertyId);
     }
 
-    public function sdLeadBasedPaintHazardsDisclosureForRentByTenant()
+    public function sdLeadBasedPaintHazardsDisclosureForRentByTenant(): View
     {
         $offerData = Session::get('OFFER');
         $signature = RentSignature::where('offer_id', $offerData['offer_id'])->where('affix_status', 1)->first();
@@ -395,7 +397,7 @@ class ContractToolTenantController extends Controller
         return view('frontend.contract_tools.rent.sign_documents.tenant.sd_lead_based_paint_hazards_update_by_tenant', compact('offer', 'signature', 'type'));
     }
 
-    public function sdThankYouTenantNecessaryForms()
+    public function sdThankYouTenantNecessaryForms(): View
     {
         return view('frontend.contract_tools.rent.sign_documents.tenant.sd_thank_you_tenant_for_necessary_forms');
     }
@@ -468,12 +470,12 @@ class ContractToolTenantController extends Controller
         return view('frontend.contract_tools.rent.sign_documents.tenant.sd_disclosures_rent_tenant');
     }
 
-    public function sdThankYouTenantForPd()
+    public function sdThankYouTenantForPd(): View
     {
         return view('frontend.contract_tools.rent.sign_documents.tenant.sd_thank_you_tenant_for_pd');
     }
 
-    public function sdLeaseAgreementByTenant()
+    public function sdLeaseAgreementByTenant(): View
     {
         $offerArray = Session::get('OFFER');
         $signature = '';
@@ -522,7 +524,7 @@ class ContractToolTenantController extends Controller
         return view('frontend.contract_tools.rent.sign_documents.tenant.sd_lease_agreement_by_tenant');
     }
 
-    public function sdThankyouLeaseAgreementTenant()
+    public function sdThankyouLeaseAgreementTenant(): View
     {
         $offerData = Session::get('OFFER');
 

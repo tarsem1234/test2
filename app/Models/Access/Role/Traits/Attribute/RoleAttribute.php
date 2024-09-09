@@ -10,7 +10,7 @@ trait RoleAttribute
     /**
      * @return string
      */
-    public function getEditButtonAttribute()
+    public function getEditButtonAttribute(): string
     {
         return '<a href="'.route('admin.access.role.edit', $this).'" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.edit').'"></i></a> ';
     }
@@ -18,7 +18,7 @@ trait RoleAttribute
     /**
      * @return string
      */
-    public function getDeleteButtonAttribute()
+    public function getDeleteButtonAttribute(): string
     {
         //Can't delete master admin role
         if ($this->id != 1) {
@@ -36,7 +36,7 @@ trait RoleAttribute
     /**
      * @return string
      */
-    public function getActionButtonsAttribute()
+    public function getActionButtonsAttribute(): string
     {
         return $this->edit_button.$this->delete_button;
     }

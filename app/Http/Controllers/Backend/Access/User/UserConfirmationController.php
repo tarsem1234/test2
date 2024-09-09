@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 use App\Models\Access\User\User;
@@ -26,7 +27,7 @@ class UserConfirmationController extends Controller
     /**
      * @return mixed
      */
-    public function sendConfirmationEmail(User $user, ManageUserRequest $request)
+    public function sendConfirmationEmail(User $user, ManageUserRequest $request): RedirectResponse
     {
 
         // Shouldn't allow users to confirm their own accounts when the application is set to manual confirmation
@@ -47,7 +48,7 @@ class UserConfirmationController extends Controller
     /**
      * @return mixed
      */
-    public function confirm(User $user, ManageUserRequest $request)
+    public function confirm(User $user, ManageUserRequest $request): RedirectResponse
     {
         $this->users->confirm($user);
 
@@ -57,7 +58,7 @@ class UserConfirmationController extends Controller
     /**
      * @return mixed
      */
-    public function unconfirm(User $user, ManageUserRequest $request)
+    public function unconfirm(User $user, ManageUserRequest $request): RedirectResponse
     {
         $this->users->unconfirm($user);
 

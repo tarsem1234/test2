@@ -10,6 +10,6 @@ class ForumView extends Model
 
     public function forum()
     {
-        return $this->belongsTo('App\Models\Forum');
+        return $this->belongsTo(\App\Models\Forum::class);
     }
 }

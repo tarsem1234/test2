@@ -15,17 +15,17 @@ class Message extends Model
 
     public function fromUser()
     {
-        return $this->belongsTo('App\Models\Access\User\User', $this->user_id === Auth::id() ? 'user_id' : 'to_user_id');
+        return $this->belongsTo(\App\Models\Access\User\User::class, $this->user_id === Auth::id() ? 'user_id' : 'to_user_id');
     }
 
     public function fromUserInbox()
     {
-        return $this->belongsTo('App\Models\Access\User\User', 'user_id');
+        return $this->belongsTo(\App\Models\Access\User\User::class, 'user_id');
     }
 
     public function fromUserInboxCheck()
     {
-        return $this->belongsTo('App\Models\Access\User\User', 'to_user_id');
+        return $this->belongsTo(\App\Models\Access\User\User::class, 'to_user_id');
     }
 
     public static function logToDB($toUserId, $messageContent, $fromUserId = null)

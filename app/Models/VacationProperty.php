@@ -13,17 +13,17 @@ class VacationProperty extends Model
 
     public function images()
     {
-        return $this->hasMany('App\Models\VacationImage');
+        return $this->hasMany(\App\Models\VacationImage::class);
     }
 
     public function availableWeeks()
     {
-        return $this->hasMany('App\Models\VacationAvailableCheckin');
+        return $this->hasMany(\App\Models\VacationAvailableCheckin::class);
     }
 
     public function user()
     {
-        return $this->belongsTo('App\Models\Access\User\User');
+        return $this->belongsTo(\App\Models\Access\User\User::class);
     }
 
     public function availabilities()

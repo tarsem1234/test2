@@ -13,11 +13,11 @@ class Favorite extends Model
 
     public function property()
     {
-        return $this->belongsTo('App\Models\Property');
+        return $this->belongsTo(\App\Models\Property::class);
     }
 
     public function user()
     {
-        return $this->belongsTo('App\Models\Access\User\User');
+        return $this->belongsTo(\App\Models\Access\User\User::class);
     }
 }

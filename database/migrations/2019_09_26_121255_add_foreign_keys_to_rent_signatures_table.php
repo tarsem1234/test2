@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToRentSignaturesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -30,4 +30,4 @@ class AddForeignKeysToRentSignaturesTable extends Migration
             $table->dropForeign('rent_signatures_ibfk_2');
         });
     }
-}
+};

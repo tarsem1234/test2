@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToVacationPropertiesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -36,4 +36,4 @@ class AddForeignKeysToVacationPropertiesTable extends Migration
             $table->dropForeign('vacation_properties_ibfk_9');
         });
     }
-}
+};

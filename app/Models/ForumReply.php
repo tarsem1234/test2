@@ -13,11 +13,11 @@ class ForumReply extends Model
 
     public function forum()
     {
-        return $this->belongsTo('App\Models\Forum');
+        return $this->belongsTo(\App\Models\Forum::class);
     }
 
     public function user()
     {
-        return $this->belongsTo('App\Models\Access\User\User');
+        return $this->belongsTo(\App\Models\Access\User\User::class);
     }
 }

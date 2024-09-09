@@ -14,11 +14,11 @@ class Signer extends Model
 
     public function signer_user()
     {
-        return $this->belongsTo('App\Models\Access\User\User', 'from_user_id');
+        return $this->belongsTo(\App\Models\Access\User\User::class, 'from_user_id');
     }
 
     public function invited_users()
     {
-        return $this->belongsTo('App\Models\Access\User\User', 'invited_user_id');
+        return $this->belongsTo(\App\Models\Access\User\User::class, 'invited_user_id');
     }
 }

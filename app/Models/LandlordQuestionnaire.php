@@ -13,16 +13,16 @@ class LandlordQuestionnaire extends Model
 
     public function saleOffer()
     {
-        return $this->belongsTo('App\Models\SaleOffer', 'offer_id');
+        return $this->belongsTo(\App\Models\SaleOffer::class, 'offer_id');
     }
 
     public function rentOffer()
     {
-        return $this->belongsTo('App\Models\RentOffer', 'offer_id');
+        return $this->belongsTo(\App\Models\RentOffer::class, 'offer_id');
     }
 
     public function user()
     {
-        return $this->belongsTo('App\Models\Access\User\User', 'user_id');
+        return $this->belongsTo(\App\Models\Access\User\User::class, 'user_id');
     }
 }

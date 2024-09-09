@@ -14,12 +14,12 @@ class PropertyConditionalData extends Model
     //
     public function architechture()
     {
-        return $this->hasOne('App\Models\PropertyArchitectureConditionalData', 'property_conditional_id');
+        return $this->hasOne(\App\Models\PropertyArchitectureConditionalData::class, 'property_conditional_id');
     }
 
     public function disclosure()
     {
-        return $this->hasOne('App\Models\PropertyDisclaimerConditionalData', 'property_conditional_id');
+        return $this->hasOne(\App\Models\PropertyDisclaimerConditionalData::class, 'property_conditional_id');
     }
     //     public function propertyConditionDisclaimer() {
     //        return $this->hasOne('App\Models\PropertyDisclaimerConditionalData', 'property_id');

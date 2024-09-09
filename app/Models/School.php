@@ -10,6 +10,6 @@ class School extends Model
 
     public function district()
     {
-        return $this->belongsTo('App\Models\SchoolDistrict', 'school_district');
+        return $this->belongsTo(\App\Models\SchoolDistrict::class, 'school_district');
     }
 }

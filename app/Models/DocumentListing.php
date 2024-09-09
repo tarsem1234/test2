@@ -13,6 +13,6 @@ class DocumentListing extends Model
 
     public function state()
     {
-        return $this->belongsTo('App\Models\State', 'state_id');
+        return $this->belongsTo(\App\Models\State::class, 'state_id');
     }
 }

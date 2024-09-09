@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToPropertyArchitectureConditionalDataTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -28,4 +28,4 @@ class AddForeignKeysToPropertyArchitectureConditionalDataTable extends Migration
             $table->dropForeign('property_architecture_conditional_data_ibfk_1');
         });
     }
-}
+};

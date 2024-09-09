@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreatePropertyConditionDisclaimerTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -111,4 +111,4 @@ class CreatePropertyConditionDisclaimerTable extends Migration
     {
         Schema::drop('property_condition_disclaimer');
     }
-}
+};

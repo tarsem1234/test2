@@ -67,32 +67,32 @@ class User extends Authenticatable
 
     public function business_profile()
     {
-        return $this->hasOne('App\Models\BusinessProfile');
+        return $this->hasOne(\App\Models\BusinessProfile::class);
     }
 
     public function user_profile()
     {
-        return $this->hasOne('App\Models\UserProfile');
+        return $this->hasOne(\App\Models\UserProfile::class);
     }
 
     public function signature()
     {
-        return $this->hasOne('App\Models\Signature');
+        return $this->hasOne(\App\Models\Signature::class);
     }
 
     public function signatures()
     {
-        return $this->hasMany('App\Models\Signature');
+        return $this->hasMany(\App\Models\Signature::class);
     }
 
     public function rentSignature()
     {
-        return $this->hasOne('App\Models\RentSignature');
+        return $this->hasOne(\App\Models\RentSignature::class);
     }
 
     public function forums()
     {
-        return $this->hasMany('App\Models\Forum');
+        return $this->hasMany(\App\Models\Forum::class);
     }
 
     public function offer()
@@ -102,17 +102,17 @@ class User extends Authenticatable
 
     public function lerning_points()
     {
-        return $this->hasMany('App\Models\Backend\UserLearningPoint');
+        return $this->hasMany(\App\Models\Backend\UserLearningPoint::class);
     }
 
     public function network()
     {
-        return $this->hasOne('App\Models\Network');
+        return $this->hasOne(\App\Models\Network::class);
     }
 
     public function signer()
     {
-        return $this->hasOne('App\Models\Signer');
+        return $this->hasOne(\App\Models\Signer::class);
     }
 
     public function messages()
@@ -142,6 +142,6 @@ class User extends Authenticatable
 
     public function userConditional()
     {
-        return $this->hasMany('App\Models\UsersConditionalData');
+        return $this->hasMany(\App\Models\UsersConditionalData::class);
     }
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToCategorySessionQuestionOptionsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -28,4 +28,4 @@ class AddForeignKeysToCategorySessionQuestionOptionsTable extends Migration
             $table->dropForeign('category_session_question_options_ibfk_2');
         });
     }
-}
+};

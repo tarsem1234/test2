@@ -25,7 +25,7 @@ class RoleFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
+            'name' => $this->faker->name(),
             'all' => 0,
             'sort' => $this->faker->numberBetween(1, 100),
         ];

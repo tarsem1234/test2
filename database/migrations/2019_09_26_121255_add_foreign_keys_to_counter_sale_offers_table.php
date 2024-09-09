@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToCounterSaleOffersTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -32,4 +32,4 @@ class AddForeignKeysToCounterSaleOffersTable extends Migration
             $table->dropForeign('counter_sale_offers_ibfk_3');
         });
     }
-}
+};

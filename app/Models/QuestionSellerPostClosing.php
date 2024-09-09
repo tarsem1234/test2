@@ -13,11 +13,11 @@ class QuestionSellerPostClosing extends Model
 
     public function saleOffer()
     {
-        return $this->belongsTo('App\Models\SaleOffer');
+        return $this->belongsTo(\App\Models\SaleOffer::class);
     }
 
     public function rentOffer()
     {
-        return $this->belongsTo('App\Models\RentOffer');
+        return $this->belongsTo(\App\Models\RentOffer::class);
     }
 }

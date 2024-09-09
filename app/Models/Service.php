@@ -13,6 +13,6 @@ class Service extends Model
 
     public function industry()
     {
-        return $this->belongsTo('App\Models\Industry');
+        return $this->belongsTo(\App\Models\Industry::class);
     }
 }

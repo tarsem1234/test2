@@ -13,11 +13,11 @@ class RentAgreement extends Model
 
     public function offer()
     {
-        return $this->belongsTo('App\Models\RentOffer', 'rent_offer_id');
+        return $this->belongsTo(\App\Models\RentOffer::class, 'rent_offer_id');
     }
 
     public function propertyContractUserAddresses()
     {
-        return $this->hasMany('App\Models\PropertyContractUserAddresses', 'rent_agreement_id');
+        return $this->hasMany(\App\Models\PropertyContractUserAddresses::class, 'rent_agreement_id');
     }
 }

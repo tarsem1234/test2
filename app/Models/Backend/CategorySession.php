@@ -13,11 +13,11 @@ class CategorySession extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Models\Backend\Category');
+        return $this->belongsTo(\App\Models\Backend\Category::class);
     }
 
     public function questions()
     {
-        return $this->hasMany('App\Models\Backend\CategorySessionQuestion');
+        return $this->hasMany(\App\Models\Backend\CategorySessionQuestion::class);
     }
 }

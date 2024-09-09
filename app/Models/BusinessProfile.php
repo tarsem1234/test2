@@ -15,11 +15,11 @@ class BusinessProfile extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\Access\User\User');
+        return $this->belongsTo(\App\Models\Access\User\User::class);
     }
 
     public function industry()
     {
-        return $this->belongsTo('App\Models\Industry', 'industry_id');
+        return $this->belongsTo(\App\Models\Industry::class, 'industry_id');
     }
 }

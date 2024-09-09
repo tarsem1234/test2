@@ -13,6 +13,6 @@ class PropertyArchitecture extends Model
 
     public function property()
     {
-        return $this->belongsTo('App\Models\Property');
+        return $this->belongsTo(\App\Models\Property::class);
     }
 }

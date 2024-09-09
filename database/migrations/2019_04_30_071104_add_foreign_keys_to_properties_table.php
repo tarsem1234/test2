@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToPropertiesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -38,4 +38,4 @@ class AddForeignKeysToPropertiesTable extends Migration
             $table->dropForeign('properties_ibfk_8');
         });
     }
-}
+};

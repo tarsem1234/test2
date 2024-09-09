@@ -27,8 +27,6 @@ class OfferController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index(): View
     {
@@ -544,8 +542,6 @@ class OfferController extends Controller
 
     /**
      * seller side sale offer
-     *
-     * @return type
      */
     public function viewRecievedOffer(Request $request): type
     {

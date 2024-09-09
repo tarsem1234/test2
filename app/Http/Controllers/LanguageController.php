@@ -9,9 +9,6 @@ use Illuminate\Http\RedirectResponse;
  */
 class LanguageController extends Controller
 {
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function swap($lang): RedirectResponse
     {
         session()->put('locale', $lang);

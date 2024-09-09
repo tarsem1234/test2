@@ -22,8 +22,6 @@ class RoleRepository extends BaseRepository
     const MODEL = Role::class;
 
     /**
-     * @param  string  $order_by
-     * @param  string  $sort
      * @return mixed
      */
     public function getAll(string $order_by = 'sort', string $sort = 'asc')
@@ -50,7 +48,6 @@ class RoleRepository extends BaseRepository
     }
 
     /**
-     * @return bool
      *
      * @throws GeneralException
      */
@@ -109,7 +106,6 @@ class RoleRepository extends BaseRepository
     }
 
     /**
-     * @return bool
      *
      * @throws GeneralException
      */
@@ -173,7 +169,6 @@ class RoleRepository extends BaseRepository
     }
 
     /**
-     * @return bool
      *
      * @throws GeneralException
      */

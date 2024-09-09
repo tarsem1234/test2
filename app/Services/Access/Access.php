@@ -49,9 +49,6 @@ class Access
         return auth()->id();
     }
 
-    /**
-     * @param  bool  $remember
-     */
     public function login(Authenticatable $user, bool $remember = false)
     {
         $logged_in = auth()->login($user, $remember);
@@ -75,7 +72,6 @@ class Access
      * Checks if the current user has a Role by its name or id.
      *
      * @param  string  $role  Role name.
-     * @return bool
      */
     public function hasRole(string $role): bool
     {
@@ -88,9 +84,6 @@ class Access
 
     /**
      * Checks if the user has either one or more, or all of an array of roles.
-     *
-     * @param  bool  $needsAll
-     * @return bool
      */
     public function hasRoles($roles, bool $needsAll = false): bool
     {
@@ -105,7 +98,6 @@ class Access
      * Check if the current user has a permission by its name or id.
      *
      * @param  string  $permission  Permission name or id.
-     * @return bool
      */
     public function allow(string $permission): bool
     {
@@ -118,9 +110,6 @@ class Access
 
     /**
      * Check an array of permissions and whether or not all are required to continue.
-     *
-     *
-     * @return bool
      */
     public function allowMultiple($permissions, $needsAll = false): bool
     {
@@ -131,17 +120,11 @@ class Access
         return false;
     }
 
-    /**
-     * @return bool
-     */
     public function hasPermission($permission): bool
     {
         return $this->allow($permission);
     }
 
-    /**
-     * @return bool
-     */
     public function hasPermissions($permissions, $needsAll = false): bool
     {
         return $this->allowMultiple($permissions, $needsAll);

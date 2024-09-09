@@ -18,8 +18,6 @@ class UserTableSeeder extends Seeder
 
     /**
      * Run the database seed.
-     *
-     * @return void
      */
     public function run(): void
     {

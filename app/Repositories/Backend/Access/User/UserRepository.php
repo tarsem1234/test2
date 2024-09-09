@@ -45,7 +45,6 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     * @param  string  $by
      * @return mixed
      */
     public function getByPermission($permissions, string $by = 'name')
@@ -61,7 +60,6 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     * @param  string  $by
      * @return mixed
      */
     public function getByRole($roles, string $by = 'name')
@@ -77,8 +75,6 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     * @param  int  $status
-     * @param  bool  $trashed
      * @return mixed
      */
     public function getForDataTable(int $status = 1, bool $trashed = false)
@@ -117,9 +113,6 @@ class UserRepository extends BaseRepository
         return $this->query()->where('confirmed', 0)->count();
     }
 
-    /**
-     * @param  array  $input
-     */
     public function create(array $input)
     {
         $data = $input['data'];
@@ -166,7 +159,6 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     * @return bool
      *
      * @throws GeneralException
      */
@@ -199,7 +191,6 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     * @return bool
      *
      * @throws GeneralException
      */
@@ -217,7 +208,6 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     * @return bool
      *
      * @throws GeneralException
      */
@@ -261,7 +251,6 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     * @return bool
      *
      * @throws GeneralException
      */
@@ -281,7 +270,6 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     * @return bool
      *
      * @throws GeneralException
      */
@@ -311,7 +299,6 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     * @return bool
      *
      * @throws GeneralException
      */
@@ -339,7 +326,6 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     * @return bool
      *
      * @throws GeneralException
      */

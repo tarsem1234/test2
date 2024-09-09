@@ -15,17 +15,11 @@ trait UserAttribute
         return config('access.users.change_email');
     }
 
-    /**
-     * @return bool
-     */
     public function canChangePassword(): bool
     {
         return ! app('session')->has(config('access.socialite_session_name'));
     }
 
-    /**
-     * @return string
-     */
     public function getStatusLabelAttribute(): string
     {
         if ($this->isActive()) {
@@ -35,9 +29,6 @@ trait UserAttribute
         return "<label class='label label-danger'>".trans('labels.general.inactive').'</label>';
     }
 
-    /**
-     * @return string
-     */
     public function getConfirmedLabelAttribute(): string
     {
         if ($this->isConfirmed()) {
@@ -60,7 +51,6 @@ trait UserAttribute
     }
 
     /**
-     * @param  bool  $size
      * @return mixed
      */
     public function getPicture(bool $size = false)
@@ -68,9 +58,6 @@ trait UserAttribute
         return $this->image ? url('storage/profile_images/'.$this->id.'/'.$this->image) : url('storage/site-images/no_image_available.jpg');
     }
 
-    /**
-     * @return bool
-     */
     public function hasProvider($provider): bool
     {
         foreach ($this->providers as $p) {
@@ -82,49 +69,31 @@ trait UserAttribute
         return false;
     }
 
-    /**
-     * @return bool
-     */
     public function isActive(): bool
     {
         return $this->status == 1;
     }
 
-    /**
-     * @return bool
-     */
     public function isConfirmed(): bool
     {
         return $this->confirmed == 1;
     }
 
-    /**
-     * @return bool
-     */
     public function isPending(): bool
     {
         return config('access.users.requires_approval') && $this->confirmed == 0;
     }
 
-    /**
-     * @return string
-     */
     public function getFullNameAttribute(): string
     {
         return $this->last_name ? $this->first_name.' '.$this->last_name : $this->first_name;
     }
 
-    /**
-     * @return string
-     */
     public function getNameAttribute(): string
     {
         return $this->full_name;
     }
 
-    /**
-     * @return string
-     */
     public function getShowButtonAttribute(): string
     {
         if ($this->hasRole(2) && ! $this->hasRole(3) && ! $this->hasRole(4)) {
@@ -138,9 +107,6 @@ trait UserAttribute
         return '<a href="'.route('admin.access.user.show', $this).'" class="btn btn-xs btn-info"><i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.view').'"></i></a> ';
     }
 
-    /**
-     * @return string
-     */
     public function getEditButtonAttribute(): string
     {
         if ($this->hasRole(2) && ! $this->hasRole(3) && ! $this->hasRole(4)) {
@@ -154,17 +120,11 @@ trait UserAttribute
         return '<a href="'.route('admin.access.user.edit', $this).'" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.edit').'"></i></a> ';
     }
 
-    /**
-     * @return string
-     */
     public function getChangePasswordButtonAttribute(): string
     {
         return '<a href="'.route('admin.access.user.change-password', $this).'" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.change_password').'"></i></a> ';
     }
 
-    /**
-     * @return string
-     */
     public function getStatusButtonAttribute(): string
     {
         if ($this->id != access()->id()) {
@@ -192,9 +152,6 @@ trait UserAttribute
         return '';
     }
 
-    /**
-     * @return string
-     */
     public function getConfirmedButtonAttribute(): string
     {
         if (! $this->isConfirmed() && ! config('access.users.requires_approval')) {
@@ -204,9 +161,6 @@ trait UserAttribute
         return '';
     }
 
-    /**
-     * @return string
-     */
     public function getDeleteButtonAttribute(): string
     {
         if ($this->id != access()->id() && $this->id != 1) {
@@ -221,25 +175,16 @@ trait UserAttribute
         return '';
     }
 
-    /**
-     * @return string
-     */
     public function getRestoreButtonAttribute(): string
     {
         return '<a href="'.route('admin.access.user.restore', $this).'" name="restore_user" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.restore_user').'"></i></a> ';
     }
 
-    /**
-     * @return string
-     */
     public function getDeletePermanentlyButtonAttribute(): string
     {
         //return '<a href="' . route('admin.access.user.delete-permanently', $this) . '" name="delete_user_perm" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.delete_permanently') . '"></i></a> ';
     }
 
-    /**
-     * @return string
-     */
     public function getLoginAsButtonAttribute(): string
     {
         /*
@@ -255,9 +200,6 @@ trait UserAttribute
         return '';
     }
 
-    /**
-     * @return string
-     */
     public function getClearSessionButtonAttribute(): string
     {
         if ($this->id != access()->id() && config('session.driver') == 'database') {
@@ -271,9 +213,6 @@ trait UserAttribute
         return '';
     }
 
-    /**
-     * @return string
-     */
     public function getActionButtonsAttribute(): string
     {
         if ($this->trashed()) {

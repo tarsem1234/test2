@@ -14,17 +14,11 @@ use Illuminate\Support\Facades\Mail;
  */
 class ContactController extends Controller
 {
-    /**
-     * @return \Illuminate\View\View
-     */
     public function index(): View
     {
         return view('frontend.contact');
     }
 
-    /**
-     * @return mixed
-     */
     public function send(SendContactRequest $request): RedirectResponse
     {
         //        dd($request->all());

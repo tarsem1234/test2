@@ -25,9 +25,6 @@ class UserPasswordController extends Controller
         $this->users = $users;
     }
 
-    /**
-     * @return mixed
-     */
     public function edit(User $user, ManageUserRequest $request): View
     {
         $admin = false;
@@ -47,9 +44,6 @@ class UserPasswordController extends Controller
             ->with('user', $user);
     }
 
-    /**
-     * @return mixed
-     */
     public function update(User $user, UpdateUserPasswordRequest $request): RedirectResponse
     {
         $this->users->updatePassword($user, $request->only('password'));

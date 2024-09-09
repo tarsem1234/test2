@@ -8,7 +8,6 @@ namespace App\Models\Access\User\Traits\Scope;
 trait UserScope
 {
     /**
-     * @param  bool  $confirmed
      * @return mixed
      */
     public function scopeConfirmed($query, bool $confirmed = true)
@@ -17,7 +16,6 @@ trait UserScope
     }
 
     /**
-     * @param  bool  $status
      * @return mixed
      */
     public function scopeActive($query, bool $status = true)

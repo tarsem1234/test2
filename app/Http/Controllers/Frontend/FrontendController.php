@@ -10,17 +10,11 @@ use App\Http\Controllers\Controller;
  */
 class FrontendController extends Controller
 {
-    /**
-     * @return \Illuminate\View\View
-     */
     public function index(): View
     {
         return view('frontend.index');
     }
 
-    /**
-     * @return \Illuminate\View\View
-     */
     public function macros(): View
     {
         return view('frontend.macros');

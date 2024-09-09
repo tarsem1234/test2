@@ -14,9 +14,6 @@ use App\Repositories\Backend\Access\User\UserSocialRepository;
  */
 class UserSocialController extends Controller
 {
-    /**
-     * @return mixed
-     */
     public function unlink(User $user, SocialLogin $social, ManageUserRequest $request, UserSocialRepository $userSocialRepository): RedirectResponse
     {
         $userSocialRepository->delete($user, $social);

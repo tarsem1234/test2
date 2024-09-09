@@ -12,8 +12,6 @@ class MacroServiceProvider extends HtmlServiceProvider
 {
     /**
      * Bootstrap the application services.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -22,8 +20,6 @@ class MacroServiceProvider extends HtmlServiceProvider
 
     /**
      * Register the application services.
-     *
-     * @return void
      */
     public function register(): void
     {

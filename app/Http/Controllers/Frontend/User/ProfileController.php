@@ -25,9 +25,6 @@ class ProfileController extends Controller
         $this->user = $user;
     }
 
-    /**
-     * @return mixed
-     */
     public function update(UpdateProfileRequest $request): RedirectResponse
     {
         $output = $this->user->updateProfile(access()->id(), $request->only('first_name', 'last_name', 'email'));

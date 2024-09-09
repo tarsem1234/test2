@@ -35,8 +35,6 @@ class RegisterController extends Controller
 
     /**
      * Show the application registration form.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function showRegistrationForm(): View
     {

@@ -15,7 +15,6 @@ use App\Models\Access\User\User;
 class UserAccessController extends Controller
 {
     /**
-     * @return \Illuminate\Http\RedirectResponse
      *
      * @throws GeneralException
      */

@@ -24,9 +24,6 @@ class UserConfirmationController extends Controller
         $this->users = $users;
     }
 
-    /**
-     * @return mixed
-     */
     public function sendConfirmationEmail(User $user, ManageUserRequest $request): RedirectResponse
     {
 
@@ -45,9 +42,6 @@ class UserConfirmationController extends Controller
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.confirmation_email'));
     }
 
-    /**
-     * @return mixed
-     */
     public function confirm(User $user, ManageUserRequest $request): RedirectResponse
     {
         $this->users->confirm($user);
@@ -55,9 +49,6 @@ class UserConfirmationController extends Controller
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.confirmed'));
     }
 
-    /**
-     * @return mixed
-     */
     public function unconfirm(User $user, ManageUserRequest $request): RedirectResponse
     {
         $this->users->unconfirm($user);

@@ -11,10 +11,6 @@ use Closure;
  */
 class RouteNeedsPermission
 {
-    /**
-     * @param  bool  $needsAll
-     * @return mixed
-     */
     public function handle(Request $request, Closure $next, $permission, bool $needsAll = false): Response
     {
         /*

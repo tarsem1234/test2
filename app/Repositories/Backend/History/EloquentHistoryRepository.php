@@ -45,7 +45,6 @@ class EloquentHistoryRepository implements HistoryContract
     private $paginationType = 'simplePaginate';
 
     /**
-     * @return $this
      *
      * @throws GeneralException
      */
@@ -66,7 +65,6 @@ class EloquentHistoryRepository implements HistoryContract
     }
 
     /**
-     * @return $this
      *
      * @throws GeneralException
      */
@@ -81,9 +79,6 @@ class EloquentHistoryRepository implements HistoryContract
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function withEntity($entity_id): static
     {
         $this->entity_id = $entity_id;
@@ -91,9 +86,6 @@ class EloquentHistoryRepository implements HistoryContract
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function withIcon($icon): static
     {
         $this->icon = $icon;
@@ -101,9 +93,6 @@ class EloquentHistoryRepository implements HistoryContract
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function withClass($class): static
     {
         $this->class = $class;
@@ -111,9 +100,6 @@ class EloquentHistoryRepository implements HistoryContract
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function withAssets($assets): static
     {
         $this->assets = is_array($assets) && count($assets) ? json_encode($assets) : null;
@@ -151,8 +137,6 @@ class EloquentHistoryRepository implements HistoryContract
 
     /**
      * @param  null  $limit
-     * @param  bool  $paginate
-     * @param  int  $pagination
      * @return string|\Symfony\Component\Translation\TranslatorInterface
      */
     public function render($limit = null, bool $paginate = true, int $pagination = 10)
@@ -168,8 +152,6 @@ class EloquentHistoryRepository implements HistoryContract
 
     /**
      * @param  null  $limit
-     * @param  bool  $paginate
-     * @param  int  $pagination
      * @return string|\Symfony\Component\Translation\TranslatorInterface
      */
     public function renderType($type, $limit = null, bool $paginate = true, int $pagination = 10)
@@ -186,8 +168,6 @@ class EloquentHistoryRepository implements HistoryContract
 
     /**
      * @param  null  $limit
-     * @param  bool  $paginate
-     * @param  int  $pagination
      * @return string|\Symfony\Component\Translation\TranslatorInterface
      */
     public function renderEntity($type, $entity_id, $limit = null, bool $paginate = true, int $pagination = 10)
@@ -203,7 +183,6 @@ class EloquentHistoryRepository implements HistoryContract
     }
 
     /**
-     * @param  bool  $assets
      * @return mixed|string
      */
     public function renderDescription($text, bool $assets = false)
@@ -264,10 +243,6 @@ class EloquentHistoryRepository implements HistoryContract
         return '';
     }
 
-    /**
-     * @param  bool  $paginate
-     * @return string
-     */
     public function buildList($history, bool $paginate = true): string
     {
         return view('backend.history.partials.list', ['history' => $history, 'paginate' => $paginate])

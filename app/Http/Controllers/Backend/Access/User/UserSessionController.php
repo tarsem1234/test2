@@ -13,9 +13,6 @@ use App\Repositories\Backend\Access\User\UserSessionRepository;
  */
 class UserSessionController extends Controller
 {
-    /**
-     * @return mixed
-     */
     public function clearSession(User $user, ManageUserRequest $request, UserSessionRepository $userSessionRepository): RedirectResponse
     {
         $userSessionRepository->clearSession($user);

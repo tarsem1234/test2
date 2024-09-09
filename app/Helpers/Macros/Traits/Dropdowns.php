@@ -11,8 +11,6 @@ trait Dropdowns
      * Use this to set the default country state type for the shorthand method.
      *
      * @param  null  $selected
-     * @param  array  $options
-     * @return string
      */
     public function selectState($name, $selected = null, array $options = []): string
     {
@@ -21,8 +19,6 @@ trait Dropdowns
 
     /**
      * @param  null  $selected
-     * @param  array  $options
-     * @return string
      */
     public function selectStateUS($name, $selected = null, array $options = []): string
     {
@@ -86,7 +82,6 @@ trait Dropdowns
 
     /**
      * @param  null  $selected
-     * @param  array  $options
      * @return mixed
      */
     public function selectStateUSOutlyingTerritories($name, $selected = null, array $options = [])
@@ -106,7 +101,6 @@ trait Dropdowns
 
     /**
      * @param  null  $selected
-     * @param  array  $options
      * @return mixed
      */
     public function selectStateUSArmedForces($name, $selected = null, array $options = [])
@@ -123,7 +117,6 @@ trait Dropdowns
 
     /**
      * @param  null  $selected
-     * @param  array  $options
      * @return mixed
      */
     public function selectCanadaTerritories($name, $selected = null, array $options = [])
@@ -150,7 +143,6 @@ trait Dropdowns
 
     /**
      * @param  null  $selected
-     * @param  array  $options
      * @return mixed
      */
     public function selectStateMexico($name, $selected = null, array $options = [])
@@ -198,8 +190,6 @@ trait Dropdowns
      * Use this to set the default country dropdown type for the shorthand method.
      *
      * @param  null  $selected
-     * @param  array  $options
-     * @return string
      */
     public function selectCountry($name, $selected = null, array $options = []): string
     {
@@ -208,7 +198,6 @@ trait Dropdowns
 
     /**
      * @param  null  $selected
-     * @param  array  $options
      * @return mixed
      */
     public function selectCountryAlpha($name, $selected = null, array $options = [])
@@ -471,8 +460,6 @@ trait Dropdowns
 
     /**
      * @param  null  $selected
-     * @param  array  $options
-     * @return string
      */
     public function selectCountryAlpha2($name, $selected = null, array $options = []): string
     {
@@ -729,8 +716,6 @@ trait Dropdowns
 
     /**
      * @param  null  $selected
-     * @param  array  $options
-     * @return string
      */
     public function selectCountryAlpha3($name, $selected = null, array $options = []): string
     {
@@ -992,8 +977,6 @@ trait Dropdowns
 
     /**
      * @param  null  $selected
-     * @param  array  $options
-     * @return string
      */
     public function selectCountryNumeric($name, $selected = null, array $options = []): string
     {
@@ -1255,7 +1238,6 @@ trait Dropdowns
 
     /**
      * @param  null  $selected
-     * @param  array  $options
      * @return mixed
      */
     public function selectTimezone($name, $selected = null, array $options = [])
@@ -1276,9 +1258,6 @@ trait Dropdowns
         return $this->select($name, $list, $selected, $options);
     }
 
-    /**
-     * @return string
-     */
     private function formatOffset($offset): string
     {
         $hours = $offset / 3600;

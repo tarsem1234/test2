@@ -28,8 +28,6 @@ class AccessServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     public function register(): void
     {
@@ -39,8 +37,6 @@ class AccessServiceProvider extends ServiceProvider
 
     /**
      * Register the application bindings.
-     *
-     * @return void
      */
     private function registerAccess(): void
     {
@@ -51,8 +47,6 @@ class AccessServiceProvider extends ServiceProvider
 
     /**
      * Register the vault facade without the user having to add it to the app.php file.
-     *
-     * @return void
      */
     public function registerFacade(): void
     {

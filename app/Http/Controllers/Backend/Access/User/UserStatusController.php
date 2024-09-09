@@ -27,25 +27,16 @@ class UserStatusController extends Controller
         $this->users = $users;
     }
 
-    /**
-     * @return mixed
-     */
     public function getDeactivated(ManageUserRequest $request): View
     {
         return view('backend.access.deactivated');
     }
 
-    /**
-     * @return mixed
-     */
     public function getDeleted(ManageUserRequest $request): View
     {
         return view('backend.access.deleted');
     }
 
-    /**
-     * @return mixed
-     */
     public function mark(User $user, $status, ManageUserRequest $request): RedirectResponse
     {
         $rentOffer = RentOffer::where('status', config('constant.inverse_rent_offer_status.accepted'))
@@ -117,9 +108,6 @@ class UserStatusController extends Controller
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.updated'));
     }
 
-    /**
-     * @return mixed
-     */
     public function delete(User $deletedUser, ManageUserRequest $request): RedirectResponse
     {
         $this->users->forceDelete($deletedUser);
@@ -127,9 +115,6 @@ class UserStatusController extends Controller
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.deleted_permanently'));
     }
 
-    /**
-     * @return mixed
-     */
     public function restore(User $deletedUser, ManageUserRequest $request): RedirectResponse
     {
         $this->users->restore($deletedUser);

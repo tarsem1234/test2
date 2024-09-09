@@ -33,7 +33,6 @@ class ResetPasswordController extends Controller
      *
      * If no token is present, display the link request form.
      *
-     * @param  string|null  $token
      * @return \Illuminate\Http\Response
      */
     public function showResetForm(?string $token = null)
@@ -57,9 +56,6 @@ class ResetPasswordController extends Controller
 
     /**
      * Get the response for a successful password reset.
-     *
-     * @param  string  $response
-     * @return \Illuminate\Http\RedirectResponse
      */
     protected function sendResetResponse(Request $request, string $response): RedirectResponse
     {

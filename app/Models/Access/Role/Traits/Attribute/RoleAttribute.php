@@ -7,17 +7,11 @@ namespace App\Models\Access\Role\Traits\Attribute;
  */
 trait RoleAttribute
 {
-    /**
-     * @return string
-     */
     public function getEditButtonAttribute(): string
     {
         return '<a href="'.route('admin.access.role.edit', $this).'" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.edit').'"></i></a> ';
     }
 
-    /**
-     * @return string
-     */
     public function getDeleteButtonAttribute(): string
     {
         //Can't delete master admin role
@@ -33,9 +27,6 @@ trait RoleAttribute
         return '';
     }
 
-    /**
-     * @return string
-     */
     public function getActionButtonsAttribute(): string
     {
         return $this->edit_button.$this->delete_button;

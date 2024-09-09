@@ -8,7 +8,6 @@ namespace App\Models\Access\Role\Traits\Scope;
 trait RoleScope
 {
     /**
-     * @param  string  $direction
      * @return mixed
      */
     public function scopeSort($query, string $direction = 'asc')

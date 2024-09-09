@@ -25,9 +25,6 @@ class ChangePasswordController extends Controller
         $this->user = $user;
     }
 
-    /**
-     * @return mixed
-     */
     public function changePassword(ChangePasswordRequest $request): RedirectResponse
     {
         $this->user->changePassword($request->only('old_password', 'password'));

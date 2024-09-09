@@ -26,9 +26,6 @@ class ConfirmAccountController extends Controller
         $this->user = $user;
     }
 
-    /**
-     * @return mixed
-     */
     public function confirm($token): RedirectResponse
     {
         $this->user->confirmAccount($token);
@@ -36,9 +33,6 @@ class ConfirmAccountController extends Controller
         return redirect()->route('frontend.auth.login')->withFlashSuccess(trans('exceptions.frontend.auth.confirmation.success'));
     }
 
-    /**
-     * @return mixed
-     */
     public function sendConfirmationEmail(User $user): RedirectResponse
     {
         $username = '';

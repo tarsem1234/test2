@@ -21,7 +21,6 @@ class PropertyController extends Controller
 {
     /**
      * @param  $lang
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function rentIndex(): View
     {

@@ -13,7 +13,6 @@ use App\Models\Access\User\User;
 class UserSocialRepository
 {
     /**
-     * @return bool
      *
      * @throws GeneralException
      */

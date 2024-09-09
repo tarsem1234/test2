@@ -33,8 +33,6 @@ class LoginController extends Controller
 
     /**
      * Show the application's login form.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function showLoginForm(): View
     {
@@ -43,7 +41,6 @@ class LoginController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\RedirectResponse
      *
      * @throws GeneralException
      */
@@ -79,9 +76,6 @@ class LoginController extends Controller
 
     /**
      * Log the user out of the application.
-     *
-     *
-     * @return \Illuminate\Http\Response
      */
     public function logout(Request $request): RedirectResponse
     {
@@ -116,9 +110,6 @@ class LoginController extends Controller
         return redirect('/');
     }
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function logoutAs(): RedirectResponse
     {
         //If for some reason route is getting hit without someone already logged in

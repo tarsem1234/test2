@@ -15,8 +15,6 @@ class ForgotPasswordController extends Controller
 
     /**
      * Display the form to request a password reset link.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function showLinkRequestForm(): View
     {

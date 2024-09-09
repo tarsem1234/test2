@@ -48,7 +48,6 @@ class PropertyController extends Controller
 {
     /**
      * @param  $lang
-     * @return \Illuminate\Http\RedirectResponser
      */
     private function _forgetOfferSession(): RedirectResponser
     {

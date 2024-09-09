@@ -33,17 +33,11 @@ class RoleController extends Controller
         $this->permissions = $permissions;
     }
 
-    /**
-     * @return mixed
-     */
     public function index(ManageRoleRequest $request): View
     {
         return view('backend.access.roles.index');
     }
 
-    /**
-     * @return mixed
-     */
     public function create(ManageRoleRequest $request): View
     {
         return view('backend.access.roles.create')
@@ -51,9 +45,6 @@ class RoleController extends Controller
             ->with('role_count', $this->roles->getCount());
     }
 
-    /**
-     * @return mixed
-     */
     public function store(StoreRoleRequest $request): RedirectResponse
     {
         $this->roles->create($request->only('name', 'associated-permissions', 'permissions', 'sort'));
@@ -61,9 +52,6 @@ class RoleController extends Controller
         return redirect()->route('admin.access.role.index')->withFlashSuccess(trans('alerts.backend.roles.created'));
     }
 
-    /**
-     * @return mixed
-     */
     public function edit(Role $role, ManageRoleRequest $request): View
     {
         return view('backend.access.roles.edit')
@@ -72,9 +60,6 @@ class RoleController extends Controller
             ->with('permissions', $this->permissions->getAll());
     }
 
-    /**
-     * @return mixed
-     */
     public function update(Role $role, UpdateRoleRequest $request): RedirectResponse
     {
         $this->roles->update($role, $request->only('name', 'associated-permissions', 'permissions', 'sort'));
@@ -82,9 +67,6 @@ class RoleController extends Controller
         return redirect()->route('admin.access.role.index')->withFlashSuccess(trans('alerts.backend.roles.updated'));
     }
 
-    /**
-     * @return mixed
-     */
     public function destroy(Role $role, ManageRoleRequest $request): RedirectResponse
     {
         $this->roles->delete($role);

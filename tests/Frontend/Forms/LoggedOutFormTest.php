@@ -50,9 +50,9 @@ class LoggedOutFormTest extends BrowserKitTestCase
 
         // Create any needed resources
         $faker = Faker\Factory::create();
-        $firstName = $faker->firstName;
-        $lastName = $faker->lastName;
-        $email = $faker->safeEmail;
+        $firstName = $faker->firstName();
+        $lastName = $faker->lastName();
+        $email = $faker->safeEmail();
         $password = $faker->password(8);
 
         $this->visit('/register')
@@ -89,9 +89,9 @@ class LoggedOutFormTest extends BrowserKitTestCase
 
         // Create any needed resources
         $faker = Faker\Factory::create();
-        $firstName = $faker->firstName;
-        $lastName = $faker->lastName;
-        $email = $faker->safeEmail;
+        $firstName = $faker->firstName();
+        $lastName = $faker->lastName();
+        $email = $faker->safeEmail();
         $password = $faker->password(8);
 
         $this->visit('/register')
@@ -134,9 +134,9 @@ class LoggedOutFormTest extends BrowserKitTestCase
 
         // Create any needed resources
         $faker = Faker\Factory::create();
-        $firstName = $faker->firstName;
-        $lastName = $faker->lastName;
-        $email = $faker->safeEmail;
+        $firstName = $faker->firstName();
+        $lastName = $faker->lastName();
+        $email = $faker->safeEmail();
         $password = $faker->password(8);
 
         $this->visit('/register')

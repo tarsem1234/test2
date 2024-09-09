@@ -33,9 +33,9 @@ class UserFactory extends Factory
         static $password;
 
         return [
-            'first_name' => $this->faker->firstName,
-            'last_name' => $this->faker->lastName,
-            'email' => $this->faker->safeEmail,
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            'email' => $this->faker->safeEmail(),
             'password' => $password ?: $password = Hash::make('secret'),
             'remember_token' => Str::random(10),
             'confirmation_code' => md5(uniqid(mt_rand(), true)),

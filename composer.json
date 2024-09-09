@@ -9,7 +9,7 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^8.0",
         "arcanedev/log-viewer": "*",
         "anhskohbo/no-captcha": "*",
         "arcanedev/no-captcha": "*",
@@ -18,30 +18,30 @@
         "creativeorange/gravatar": "~1.0",
         "davejamesmiller/laravel-breadcrumbs": "^5.3",
         "doctrine/dbal": "^2.13",
-        "guzzlehttp/guzzle": "^6.3.1|^7.0.1",
+        "guzzlehttp/guzzle": "^7.2",
         "h4cc/wkhtmltoimage-amd64": "0.12.x",
         "h4cc/wkhtmltoimage-i386": "0.12.x",
         "h4cc/wkhtmltopdf-amd64": "0.12.x",
         "h4cc/wkhtmltopdf-i386": "0.12.x",
-        "hieu-le/active": "^8.0",
-        "laravel/framework": "^8.83",
-        "laravel/socialite": "^5.0",
-        "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.0",
-        "laravelcollective/html": "^6.2",
-        "phpoffice/phpspreadsheet": "^1.6",
-        "stevebauman/location": "^5.2",
-        "yajra/laravel-datatables-oracle": "^9.11"
+        "hieu-le/active": "^9.0",
+        "laravel/framework": "^9.52",
+        "laravel/socialite": "^5.3",
+        "laravel/tinker": "^2.7",
+        "laravel/ui": "^3.3",
+        "laravelcollective/html": "^6.3",
+        "phpoffice/phpspreadsheet": "^1.15",
+        "stevebauman/location": "^6.3",
+        "yajra/laravel-datatables-oracle": "^9.19"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.5",
-        "laravel/browser-kit-testing": "^6.1",
+        "barryvdh/laravel-debugbar": "^3.6",
+        "laravel/browser-kit-testing": "^6.3",
         "mockery/mockery": "^1.4.4",
         "phpunit/phpunit": "^9.5.10",
         "satooshi/php-coveralls": "*",
         "nunomaduro/collision": "*",
         "fakerphp/faker": "^1.9.1",
-        "facade/ignition": "^2.5"
+        "spatie/laravel-ignition": "^1.4"
     },
     "autoload": {
         "psr-4": {

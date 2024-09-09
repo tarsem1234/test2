@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateQuestionsSellerPostClosing extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -30,4 +30,4 @@ class UpdateQuestionsSellerPostClosing extends Migration
             $table->dropColumn('show_post_closing')->after('additional_provisions');
         });
     }
-}
+};

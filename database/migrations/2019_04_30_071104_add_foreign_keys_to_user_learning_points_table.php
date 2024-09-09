@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToUserLearningPointsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -30,4 +30,4 @@ class AddForeignKeysToUserLearningPointsTable extends Migration
             $table->dropForeign('user_learning_points_ibfk_2');
         });
     }
-}
+};

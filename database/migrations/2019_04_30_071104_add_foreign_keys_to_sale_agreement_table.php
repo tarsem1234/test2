@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToSaleAgreementTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -28,4 +28,4 @@ class AddForeignKeysToSaleAgreementTable extends Migration
             $table->dropForeign('sale_agreement_ibfk_1');
         });
     }
-}
+};

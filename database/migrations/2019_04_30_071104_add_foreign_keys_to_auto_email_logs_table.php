@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToAutoEmailLogsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -32,4 +32,4 @@ class AddForeignKeysToAutoEmailLogsTable extends Migration
             $table->dropForeign('auto_email_logs_ibfk_3');
         });
     }
-}
+};

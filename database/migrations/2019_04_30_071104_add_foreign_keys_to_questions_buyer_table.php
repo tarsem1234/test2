@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToQuestionsBuyerTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -30,4 +30,4 @@ class AddForeignKeysToQuestionsBuyerTable extends Migration
             $table->dropForeign('questions_buyer_ibfk_2');
         });
     }
-}
+};

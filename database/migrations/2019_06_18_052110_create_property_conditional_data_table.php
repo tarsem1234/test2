@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePropertyConditionalDataTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -51,4 +51,4 @@ class CreatePropertyConditionalDataTable extends Migration
     {
         Schema::dropIfExists('propeties_conditional_data');
     }
-}
+};

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToMilitaryBasesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -32,4 +32,4 @@ class AddForeignKeysToMilitaryBasesTable extends Migration
             $table->dropForeign('military_bases_ibfk_3');
         });
     }
-}
+};

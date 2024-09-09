@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToPropertyContractUserAddressesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -34,4 +34,4 @@ class AddForeignKeysToPropertyContractUserAddressesTable extends Migration
             $table->dropForeign('property_contract_user_addresses_ibfk_5');
         });
     }
-}
+};

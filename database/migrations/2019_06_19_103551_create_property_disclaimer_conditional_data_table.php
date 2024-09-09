@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePropertyDisclaimerConditionalDataTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -112,4 +112,4 @@ class CreatePropertyDisclaimerConditionalDataTable extends Migration
     {
         Schema::dropIfExists('property_disclaimer_conditional_data');
     }
-}
+};

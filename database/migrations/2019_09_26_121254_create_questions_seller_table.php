@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateQuestionsSellerTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -47,4 +47,4 @@ class CreateQuestionsSellerTable extends Migration
     {
         Schema::drop('questions_seller');
     }
-}
+};

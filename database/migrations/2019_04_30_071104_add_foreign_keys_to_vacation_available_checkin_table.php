@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToVacationAvailableCheckinTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -28,4 +28,4 @@ class AddForeignKeysToVacationAvailableCheckinTable extends Migration
             $table->dropForeign('vacation_available_checkin_ibfk_2');
         });
     }
-}
+};

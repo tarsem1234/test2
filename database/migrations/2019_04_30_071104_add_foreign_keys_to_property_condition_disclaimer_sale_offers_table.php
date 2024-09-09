@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToPropertyConditionDisclaimerSaleOffersTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -32,4 +32,4 @@ class AddForeignKeysToPropertyConditionDisclaimerSaleOffersTable extends Migrati
             $table->dropForeign('property_condition_disclaimer_sale_offers_ibfk_3');
         });
     }
-}
+};

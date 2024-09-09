@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToPropertyDisclaimerConditionalDataTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -28,4 +28,4 @@ class AddForeignKeysToPropertyDisclaimerConditionalDataTable extends Migration
             $table->dropForeign('property_disclaimer_conditional_data_ibfk_1');
         });
     }
-}
+};

@@ -18,7 +18,6 @@
         "creativeorange/gravatar": "~1.0",
         "davejamesmiller/laravel-breadcrumbs": "^5.3",
         "doctrine/dbal": "^2.13",
-        "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3.1|^7.0.1",
         "h4cc/wkhtmltoimage-amd64": "0.12.x",
         "h4cc/wkhtmltoimage-i386": "0.12.x",

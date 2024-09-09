@@ -1,105 +1,98 @@
 <?php
 
+use App\Http\Controllers\Access;
+use Illuminate\Support\Facades\Route;
+
 /**
  * All route names are prefixed with 'admin.access'.
  */
-Route::group([
-    'prefix'     => 'access',
-    'as'         => 'access.',
-    'namespace'  => 'Access',
-], function () {
+Route::prefix('access')->name('access.')->group(function () {
 
     /*
      * User Management
      */
-    Route::group([
-        'middleware' => 'access.routeNeedsRole:1',
-    ], function () {
-        Route::group(['namespace' => 'User'], function () {
-            /*
-             * For DataTables
-             */
-            Route::post('user/get', 'UserTableController')->name('user.get');
-            
-            /*
-             * User Status'
-             */
-            Route::get('user/deactivated', 'UserStatusController@getDeactivated')->name('user.deactivated');
-            Route::get('user/deleted', 'UserStatusController@getDeleted')->name('user.deleted');
+    Route::middleware('access.routeNeedsRole:1')->group(function () {
+        /*
+         * For DataTables
+         */
+        Route::post('user/get', 'UserTableController')->name('user.get');
+        
+        /*
+         * User Status'
+         */
+        Route::get('user/deactivated', [Access\User\UserStatusController::class, 'getDeactivated'])->name('user.deactivated');
+        Route::get('user/deleted', [Access\User\UserStatusController::class, 'getDeleted'])->name('user.deleted');
 
-            /*
-             * User CRUD
-             */
-            Route::resource('user', 'UserController');
-            
-            Route::get('business', 'BusinessController@index')->name('business.index');
-            Route::get('business/create', 'BusinessController@create')->name('business.create');
-            Route::post('business/store', 'BusinessController@store')->name('business.store');
-            Route::get('business/show/{user}', 'UserController@show')->name('business.show');
-            Route::get('business/{user}/edit', 'UserController@edit')->name('business.edit');
-            Route::post('business/update', 'BusinessController@update')->name('business.update');
-            Route::get('business/deactivated', 'BusinessController@deactivated')->name('business.deactivated');
-            Route::get('business/deleted', 'BusinessController@deleted')->name('business.deleted');
+        /*
+         * User CRUD
+         */
+        Route::resource('user', 'UserController');
+        
+        Route::get('business', [Access\User\BusinessController::class, 'index'])->name('business.index');
+        Route::get('business/create', [Access\User\BusinessController::class, 'create'])->name('business.create');
+        Route::post('business/store', [Access\User\BusinessController::class, 'store'])->name('business.store');
+        Route::get('business/show/{user}', [Access\User\UserController::class, 'show'])->name('business.show');
+        Route::get('business/{user}/edit', [Access\User\UserController::class, 'edit'])->name('business.edit');
+        Route::post('business/update', [Access\User\BusinessController::class, 'update'])->name('business.update');
+        Route::get('business/deactivated', [Access\User\BusinessController::class, 'deactivated'])->name('business.deactivated');
+        Route::get('business/deleted', [Access\User\BusinessController::class, 'deleted'])->name('business.deleted');
 
-            Route::get('admin/show/{user}', 'UserController@show')->name('admin.show');
-            Route::get('admin/{user}/edit', 'UserController@edit')->name('admin.edit');
-            Route::get('admin', 'AdminController@index')->name('admin.index');
-            Route::get('admin/create', 'AdminController@create')->name('admin.create');
-            Route::get('admin/deactivated', 'AdminController@deactivated')->name('admin.deactivated');
-            Route::get('admin/deleted', 'AdminController@deleted')->name('admin.deleted');
+        Route::get('admin/show/{user}', [Access\User\UserController::class, 'show'])->name('admin.show');
+        Route::get('admin/{user}/edit', [Access\User\UserController::class, 'edit'])->name('admin.edit');
+        Route::get('admin', [Access\User\AdminController::class, 'index'])->name('admin.index');
+        Route::get('admin/create', [Access\User\AdminController::class, 'create'])->name('admin.create');
+        Route::get('admin/deactivated', [Access\User\AdminController::class, 'deactivated'])->name('admin.deactivated');
+        Route::get('admin/deleted', [Access\User\AdminController::class, 'deleted'])->name('admin.deleted');
 
-            Route::get('support/show/{user}', 'UserController@show')->name('support.show');
-            Route::get('support/{user}/edit', 'UserController@edit')->name('support.edit');
-            Route::get('support', 'SupportController@index')->name('support.index');
-            Route::get('support/create', 'SupportController@create')->name('support.create');
-            Route::get('support/deactivated', 'SupportController@deactivated')->name('support.deactivated');
-            Route::get('support/deleted', 'SupportController@deleted')->name('support.deleted');
+        Route::get('support/show/{user}', [Access\User\UserController::class, 'show'])->name('support.show');
+        Route::get('support/{user}/edit', [Access\User\UserController::class, 'edit'])->name('support.edit');
+        Route::get('support', [Access\User\SupportController::class, 'index'])->name('support.index');
+        Route::get('support/create', [Access\User\SupportController::class, 'create'])->name('support.create');
+        Route::get('support/deactivated', [Access\User\SupportController::class, 'deactivated'])->name('support.deactivated');
+        Route::get('support/deleted', [Access\User\SupportController::class, 'deleted'])->name('support.deleted');
 
-            /*
-             * Specific User
-             */
-            Route::group(['prefix' => 'user/{user}'], function () {
-                // Account
-                Route::get('account/confirm/resend', 'UserConfirmationController@sendConfirmationEmail')->name('user.account.confirm.resend');
+        /*
+         * Specific User
+         */
+        Route::prefix('user/{user}')->group(function () {
+            // Account
+            Route::get('account/confirm/resend', [Access\User\UserConfirmationController::class, 'sendConfirmationEmail'])->name('user.account.confirm.resend');
 
-                // Status
-                Route::get('mark/{status}', 'UserStatusController@mark')->name('user.mark')->where(['status' => '[0,1]']);
+            // Status
+            Route::get('mark/{status}', [Access\User\UserStatusController::class, 'mark'])->name('user.mark')->where(['status' => '[0,1]']);
 
-                // Social
-                Route::delete('social/{social}/unlink', 'UserSocialController@unlink')->name('user.social.unlink');
+            // Social
+            Route::delete('social/{social}/unlink', [Access\User\UserSocialController::class, 'unlink'])->name('user.social.unlink');
 
-                // Confirmation
-                Route::get('confirm', 'UserConfirmationController@confirm')->name('user.confirm');
-                Route::get('unconfirm', 'UserConfirmationController@unconfirm')->name('user.unconfirm');
+            // Confirmation
+            Route::get('confirm', [Access\User\UserConfirmationController::class, 'confirm'])->name('user.confirm');
+            Route::get('unconfirm', [Access\User\UserConfirmationController::class, 'unconfirm'])->name('user.unconfirm');
 
-                // Password
-                Route::get('password/change', 'UserPasswordController@edit')->name('user.change-password');
-                Route::patch('password/change', 'UserPasswordController@update')->name('user.change-password.post');
+            // Password
+            Route::get('password/change', [Access\User\UserPasswordController::class, 'edit'])->name('user.change-password');
+            Route::patch('password/change', [Access\User\UserPasswordController::class, 'update'])->name('user.change-password.post');
 
-                // Access
-                Route::get('login-as', 'UserAccessController@loginAs')->name('user.login-as');
+            // Access
+            Route::get('login-as', [Access\User\UserAccessController::class, 'loginAs'])->name('user.login-as');
 
-                // Session
-                Route::get('clear-session', 'UserSessionController@clearSession')->name('user.clear-session');
-            });
+            // Session
+            Route::get('clear-session', [Access\User\UserSessionController::class, 'clearSession'])->name('user.clear-session');
+        });
 
-            /*
-             * Deleted User
-             */
-            Route::group(['prefix' => 'user/{deletedUser}'], function () {
-                Route::get('delete', 'UserStatusController@delete')->name('user.delete-permanently');
-                Route::get('restore', 'UserStatusController@restore')->name('user.restore');
-            });
+        /*
+         * Deleted User
+         */
+        Route::prefix('user/{deletedUser}')->group(function () {
+            Route::get('delete', [Access\User\UserStatusController::class, 'delete'])->name('user.delete-permanently');
+            Route::get('restore', [Access\User\UserStatusController::class, 'restore'])->name('user.restore');
         });
 
         /*
         * Role Management
         */
-        Route::group(['namespace' => 'Role'], function () {
-            Route::resource('role', 'RoleController', ['except' => ['show']]);
+        Route::resource('role', 'RoleController')->except('show');
 
-            //For DataTables
-            Route::post('role/get', 'RoleTableController')->name('role.get');
-        });
+        //For DataTables
+        Route::post('role/get', 'RoleTableController')->name('role.get');
     });
 });

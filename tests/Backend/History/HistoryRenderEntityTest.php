@@ -12,7 +12,7 @@ class HistoryRenderEntityTest extends BrowserKitTestCase
     {
         $this->actingAs($this->admin);
 
-        $test_user = factory(User::class)->create();
+        $test_user = User::factory()->create();
 
         history()
             ->withType('User')

@@ -6,6 +6,7 @@ use App\Models\Access\Role\Traits\Attribute\RoleAttribute;
 use App\Models\Access\Role\Traits\Relationship\RoleRelationship;
 use App\Models\Access\Role\Traits\RoleAccess;
 use App\Models\Access\Role\Traits\Scope\RoleScope;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -13,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Role extends Model
 {
+    use HasFactory;
     use RoleAccess,
         RoleAttribute,
         RoleRelationship,

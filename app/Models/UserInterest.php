@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -11,7 +12,7 @@ class UserInterest extends Model
 
     protected $table = 'user_interests';
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(\App\Models\UserProfile::class);
     }

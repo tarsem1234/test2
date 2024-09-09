@@ -10,7 +10,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('history', function (Blueprint $table) {
             $table->foreign('type_id')->references('id')->on('history_types')->onUpdate('RESTRICT')->onDelete('CASCADE');
@@ -23,7 +23,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('history', function (Blueprint $table) {
             $table->dropForeign('history_type_id_foreign');

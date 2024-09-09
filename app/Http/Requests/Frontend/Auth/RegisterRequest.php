@@ -15,7 +15,7 @@ class RegisterRequest extends Request
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -25,7 +25,7 @@ class RegisterRequest extends Request
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'first_name' => 'required|string|max:191',
@@ -39,7 +39,7 @@ class RegisterRequest extends Request
     /**
      * @return array
      */
-    public function messages()
+    public function messages(): array
     {
         return [
             'g-recaptcha-response.required_if' => trans('validation.required', ['attribute' => 'captcha']),

@@ -7,21 +7,21 @@ use Tests\BrowserKitTestCase;
  */
 class UserRoleTest extends BrowserKitTestCase
 {
-    public function testAttachRoleToUserById()
+    public function testAttachRoleToUserById(): void
     {
         $this->notSeeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
         $this->user->attachRole($this->adminRole->id);
         $this->seeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
     }
 
-    public function testAttachRoleToUserByObject()
+    public function testAttachRoleToUserByObject(): void
     {
         $this->notSeeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
         $this->user->attachRole($this->adminRole);
         $this->seeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
     }
 
-    public function testDetachRoleByIdFromUser()
+    public function testDetachRoleByIdFromUser(): void
     {
         $this->notSeeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
         $this->user->attachRole($this->adminRole->id);
@@ -30,7 +30,7 @@ class UserRoleTest extends BrowserKitTestCase
         $this->notSeeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
     }
 
-    public function testDetachRoleByObjectFromUser()
+    public function testDetachRoleByObjectFromUser(): void
     {
         $this->notSeeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
         $this->user->attachRole($this->adminRole);
@@ -39,7 +39,7 @@ class UserRoleTest extends BrowserKitTestCase
         $this->notSeeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
     }
 
-    public function testAttachRolesByIdToUser()
+    public function testAttachRolesByIdToUser(): void
     {
         $this->notSeeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
         $this->notSeeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => $this->executiveRole->id]);
@@ -48,7 +48,7 @@ class UserRoleTest extends BrowserKitTestCase
         $this->seeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => $this->executiveRole->id]);
     }
 
-    public function testAttachRolesByObjectToUser()
+    public function testAttachRolesByObjectToUser(): void
     {
         $this->notSeeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
         $this->notSeeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => $this->executiveRole->id]);
@@ -57,7 +57,7 @@ class UserRoleTest extends BrowserKitTestCase
         $this->seeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => $this->executiveRole->id]);
     }
 
-    public function testDetachRolesByIdFromUser()
+    public function testDetachRolesByIdFromUser(): void
     {
         $this->notSeeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
         $this->notSeeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => $this->executiveRole->id]);
@@ -69,7 +69,7 @@ class UserRoleTest extends BrowserKitTestCase
         $this->notSeeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => $this->executiveRole->id]);
     }
 
-    public function testDetachRolesByObjectFromUser()
+    public function testDetachRolesByObjectFromUser(): void
     {
         $this->notSeeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
         $this->notSeeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => $this->executiveRole->id]);

@@ -20,7 +20,7 @@ class BladeServiceProvider extends ServiceProvider
     /**
      * Register any misc. blade extensions.
      */
-    public function register()
+    public function register(): void
     {
         /*
          * The block of code inside this directive indicates

@@ -15,7 +15,7 @@ class MacroServiceProvider extends HtmlServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         //
     }
@@ -25,7 +25,7 @@ class MacroServiceProvider extends HtmlServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         parent::register();
 

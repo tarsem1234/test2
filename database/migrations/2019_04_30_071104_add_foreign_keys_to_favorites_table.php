@@ -10,7 +10,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('favorites', function (Blueprint $table) {
             $table->foreign('property_id', 'favorites_ibfk_7')->references('id')->on('properties')->onUpdate('RESTRICT')->onDelete('CASCADE');
@@ -23,7 +23,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('favorites', function (Blueprint $table) {
             $table->dropForeign('favorites_ibfk_7');

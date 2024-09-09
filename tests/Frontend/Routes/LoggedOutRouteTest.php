@@ -20,7 +20,7 @@ class LoggedOutRouteTest extends BrowserKitTestCase
     /**
      * Test the homepage works.
      */
-    public function testHomePage()
+    public function testHomePage(): void
     {
         $this->visit('/')->assertResponseOk();
     }
@@ -28,12 +28,12 @@ class LoggedOutRouteTest extends BrowserKitTestCase
     /**
      * Test the macro page works.
      */
-    public function testMacroPage()
+    public function testMacroPage(): void
     {
         $this->visit('/macros')->see('Macro Examples');
     }
 
-    public function testContactPage()
+    public function testContactPage(): void
     {
         $this->visit('/contact')->see('Contact Us');
     }
@@ -41,7 +41,7 @@ class LoggedOutRouteTest extends BrowserKitTestCase
     /**
      * Test the login page works.
      */
-    public function testLoginPage()
+    public function testLoginPage(): void
     {
         $this->visit('/login')->see('Login');
     }
@@ -49,7 +49,7 @@ class LoggedOutRouteTest extends BrowserKitTestCase
     /**
      * Test the register page works.
      */
-    public function testRegisterPage()
+    public function testRegisterPage(): void
     {
         $this->visit('/register')->see('Register');
     }
@@ -57,7 +57,7 @@ class LoggedOutRouteTest extends BrowserKitTestCase
     /**
      * Test the forgot password page works.
      */
-    public function testForgotPasswordPage()
+    public function testForgotPasswordPage(): void
     {
         $this->visit('password/reset')->see('Reset Password');
     }
@@ -65,7 +65,7 @@ class LoggedOutRouteTest extends BrowserKitTestCase
     /**
      * Test the dashboard page redirects to login.
      */
-    public function testDashboardPageLoggedOut()
+    public function testDashboardPageLoggedOut(): void
     {
         $this->visit('/dashboard')->seePageIs('/login');
     }
@@ -73,7 +73,7 @@ class LoggedOutRouteTest extends BrowserKitTestCase
     /**
      * Test the account page redirects to login.
      */
-    public function testAccountPageLoggedOut()
+    public function testAccountPageLoggedOut(): void
     {
         $this->visit('/account')->seePageIs('/login');
     }
@@ -82,7 +82,7 @@ class LoggedOutRouteTest extends BrowserKitTestCase
      * Create an unconfirmed user and assure the user gets
      * confirmed when hitting the confirmation route.
      */
-    public function testConfirmAccountRoute()
+    public function testConfirmAccountRoute(): void
     {
         Event::fake();
 
@@ -102,7 +102,7 @@ class LoggedOutRouteTest extends BrowserKitTestCase
      * Assure the user gets resent a confirmation email
      * after hitting the resend confirmation route.
      */
-    public function testResendConfirmAccountRoute()
+    public function testResendConfirmAccountRoute(): void
     {
         Notification::fake();
 
@@ -117,7 +117,7 @@ class LoggedOutRouteTest extends BrowserKitTestCase
     /**
      * Test the language switcher changes the desired language in the session.
      */
-    public function testLanguageSwitcher()
+    public function testLanguageSwitcher(): void
     {
         if (config('locale.status')) {
             $this->visit('lang/es')
@@ -131,7 +131,7 @@ class LoggedOutRouteTest extends BrowserKitTestCase
     /**
      * Test the generic 404 page.
      */
-    public function test404Page()
+    public function test404Page(): void
     {
         $response = $this->call('GET', '7g48hwbfw9eufj');
         $this->assertEquals(404, $response->getStatusCode());

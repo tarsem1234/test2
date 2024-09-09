@@ -14,7 +14,7 @@ class UpdateUserPasswordRequest extends Request
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return access()->hasRole(1);
     }
@@ -24,7 +24,7 @@ class UpdateUserPasswordRequest extends Request
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'password' => 'required|min:6|confirmed',

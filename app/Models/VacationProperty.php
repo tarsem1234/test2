@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -11,22 +13,22 @@ class VacationProperty extends Model
 
     protected $table = 'vacation_properties';
 
-    public function images()
+    public function images(): HasMany
     {
         return $this->hasMany(\App\Models\VacationImage::class);
     }
 
-    public function availableWeeks()
+    public function availableWeeks(): HasMany
     {
         return $this->hasMany(\App\Models\VacationAvailableCheckin::class);
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Access\User\User::class);
     }
 
-    public function availabilities()
+    public function availabilities(): HasMany
     {
         return $this->hasMany(VacationPropertyAvailability::class);
     }

@@ -17,7 +17,7 @@ class AccessTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         $this->disableForeignKeys();
 

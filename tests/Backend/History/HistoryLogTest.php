@@ -7,7 +7,7 @@ use Tests\BrowserKitTestCase;
  */
 class HistoryLogTest extends BrowserKitTestCase
 {
-    public function testHistoryLogByTypeNameFunction()
+    public function testHistoryLogByTypeNameFunction(): void
     {
         $this->actingAs($this->admin);
 
@@ -32,7 +32,7 @@ class HistoryLogTest extends BrowserKitTestCase
             ->see('<strong>'.$this->admin->name.'</strong> '.trans('history.backend.users.created').$this->user->name);
     }
 
-    public function testHistoryLogByTypeIdFunction()
+    public function testHistoryLogByTypeIdFunction(): void
     {
         $this->actingAs($this->admin);
 

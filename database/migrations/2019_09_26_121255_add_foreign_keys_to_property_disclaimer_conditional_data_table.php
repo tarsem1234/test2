@@ -10,7 +10,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('property_disclaimer_conditional_data', function (Blueprint $table) {
             $table->foreign('property_conditional_id', 'property_disclaimer_conditional_data_ibfk_1')->references('id')->on('property_conditional_data')->onUpdate('RESTRICT')->onDelete('CASCADE');
@@ -22,7 +22,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('property_disclaimer_conditional_data', function (Blueprint $table) {
             $table->dropForeign('property_disclaimer_conditional_data_ibfk_1');

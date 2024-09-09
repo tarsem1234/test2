@@ -7,7 +7,7 @@ use Tests\BrowserKitTestCase;
  */
 class UserAccessTest extends BrowserKitTestCase
 {
-    public function testUserCantAccessAdminDashboard()
+    public function testUserCantAccessAdminDashboard(): void
     {
         $this->visit('/')
             ->actingAs($this->user)
@@ -16,7 +16,7 @@ class UserAccessTest extends BrowserKitTestCase
             ->see('You do not have access to do that.');
     }
 
-    public function testExecutiveCanAccessAdminDashboard()
+    public function testExecutiveCanAccessAdminDashboard(): void
     {
         $this->visit('/')
             ->actingAs($this->executive)
@@ -25,7 +25,7 @@ class UserAccessTest extends BrowserKitTestCase
             ->see($this->executive->name);
     }
 
-    public function testExecutiveCantAccessManageRoles()
+    public function testExecutiveCantAccessManageRoles(): void
     {
         $this->visit('/')
             ->actingAs($this->executive)

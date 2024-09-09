@@ -21,7 +21,7 @@ class UserTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         $this->disableForeignKeys();
         $this->truncateMultiple([config('access.users_table'), 'social_logins']);

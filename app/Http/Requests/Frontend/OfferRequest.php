@@ -12,7 +12,7 @@ class OfferRequest extends Request
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -22,7 +22,7 @@ class OfferRequest extends Request
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         $documentArr = ['Pre Qualified', 'Pre Approved', 'Not Approved', 'Cash Buyer'];
         //        $petsArr=[1,2,3];
@@ -93,7 +93,7 @@ class OfferRequest extends Request
         return $rules;
     }
 
-    public function messages()
+    public function messages(): array
     {
         $messages = [];
         if ($this->type == config('constant.property_type.2')) {

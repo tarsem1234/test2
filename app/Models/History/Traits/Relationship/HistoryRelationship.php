@@ -2,6 +2,7 @@
 
 namespace App\Models\History\Traits\Relationship;
 
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use App\Models\Access\User\User;
 use App\Models\History\HistoryType;
 
@@ -13,7 +14,7 @@ trait HistoryRelationship
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function user()
+    public function user(): HasOne
     {
         return $this->hasOne(User::class, 'id', 'user_id');
     }
@@ -21,7 +22,7 @@ trait HistoryRelationship
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function type()
+    public function type(): HasOne
     {
         return $this->hasOne(HistoryType::class, 'id', 'type_id');
     }

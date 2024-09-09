@@ -19,7 +19,7 @@ class PermissionRoleSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         $this->disableForeignKeys();
         $this->truncate(config('access.permission_role_table'));

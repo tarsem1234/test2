@@ -21,7 +21,7 @@ class AccessServiceProvider extends ServiceProvider
     /**
      * Package boot method.
      */
-    public function boot()
+    public function boot(): void
     {
         $this->registerBladeExtensions();
     }
@@ -31,7 +31,7 @@ class AccessServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerAccess();
         $this->registerFacade();

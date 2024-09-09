@@ -15,7 +15,7 @@ class StoreUserRequest extends Request
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return access()->hasRole(1);
     }
@@ -25,7 +25,7 @@ class StoreUserRequest extends Request
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         if ($this->submit == 'Create') {
             return [

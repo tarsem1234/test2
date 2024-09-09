@@ -18,7 +18,7 @@ class UserRoleSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         $this->disableForeignKeys();
         $this->truncate(config('access.role_user_table'));

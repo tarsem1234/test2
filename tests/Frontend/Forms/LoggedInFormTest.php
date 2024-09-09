@@ -10,7 +10,7 @@ class LoggedInFormTest extends BrowserKitTestCase
     /**
      * Test that the errors work if nothing is filled in the update account form.
      */
-    public function testUpdateProfileRequiredFields()
+    public function testUpdateProfileRequiredFields(): void
     {
         if (config('access.users.change_email')) {
             $this->actingAs($this->user)
@@ -39,7 +39,7 @@ class LoggedInFormTest extends BrowserKitTestCase
      * Test that we can target the update profile form and update the profile
      * Based on whether the user is allowed to alter their email address or not.
      */
-    public function testUpdateProfileForm()
+    public function testUpdateProfileForm(): void
     {
         $rand = rand();
 
@@ -79,7 +79,7 @@ class LoggedInFormTest extends BrowserKitTestCase
     /**
      * Test that the errors work if nothing is filled in the change password form.
      */
-    public function testChangePasswordRequiredFields()
+    public function testChangePasswordRequiredFields(): void
     {
         $this->actingAs($this->user)
             ->visit('/account')
@@ -95,7 +95,7 @@ class LoggedInFormTest extends BrowserKitTestCase
     /**
      * Test that the frontend change password form works.
      */
-    public function testChangePasswordForm()
+    public function testChangePasswordForm(): void
     {
         $password = '87654321';
 

@@ -15,27 +15,27 @@ use Tests\BrowserKitTestCase;
  */
 class UserRouteTest extends BrowserKitTestCase
 {
-    public function testActiveUsers()
+    public function testActiveUsers(): void
     {
         $this->actingAs($this->admin)->visit('/admin/access/user')->see('Active Users');
     }
 
-    public function testDeactivatedUsers()
+    public function testDeactivatedUsers(): void
     {
         $this->actingAs($this->admin)->visit('/admin/access/user/deactivated')->see('Deactivated Users');
     }
 
-    public function testDeletedUsers()
+    public function testDeletedUsers(): void
     {
         $this->actingAs($this->admin)->visit('/admin/access/user/deleted')->see('Deleted Users');
     }
 
-    public function testCreateUser()
+    public function testCreateUser(): void
     {
         $this->actingAs($this->admin)->visit('/admin/access/user/create')->see('Create User');
     }
 
-    public function testViewUser()
+    public function testViewUser(): void
     {
         $this->actingAs($this->admin)
             ->visit('/admin/access/user/'.$this->user->id)
@@ -47,7 +47,7 @@ class UserRouteTest extends BrowserKitTestCase
             ->see($this->user->email);
     }
 
-    public function testEditUser()
+    public function testEditUser(): void
     {
         $this->actingAs($this->admin)
             ->visit('/admin/access/user/'.$this->user->id.'/edit')
@@ -57,14 +57,14 @@ class UserRouteTest extends BrowserKitTestCase
             ->see($this->user->email);
     }
 
-    public function testChangeUserPassword()
+    public function testChangeUserPassword(): void
     {
         $this->actingAs($this->admin)
             ->visit('/admin/access/user/'.$this->user->id.'/password/change')
             ->see('Change Password for '.$this->user->full_name);
     }
 
-    public function testResendUserConfirmationEmail()
+    public function testResendUserConfirmationEmail(): void
     {
         config(['access.users.confirm_email' => true]);
         config(['access.users.requires_approval' => false]);
@@ -78,7 +78,7 @@ class UserRouteTest extends BrowserKitTestCase
         Notification::assertSentTo($this->user, UserNeedsConfirmation::class);
     }
 
-    public function testLoginAsUser()
+    public function testLoginAsUser(): void
     {
         $this->actingAs($this->admin)
             ->visit('/admin/access/user/'.$this->user->id.'/login-as')
@@ -88,14 +88,14 @@ class UserRouteTest extends BrowserKitTestCase
             ->assertTrue(access()->id() == $this->user->id);
     }
 
-    public function testCantLoginAsSelf()
+    public function testCantLoginAsSelf(): void
     {
         $this->actingAs($this->admin)
             ->visit('/admin/access/user/'.$this->admin->id.'/login-as')
             ->see('Do not try to login as yourself.');
     }
 
-    public function testLogoutAsUser()
+    public function testLogoutAsUser(): void
     {
         $this->actingAs($this->admin)
             ->visit('/admin/access/user/'.$this->user->id.'/login-as')
@@ -106,7 +106,7 @@ class UserRouteTest extends BrowserKitTestCase
             ->assertTrue(access()->id() == $this->admin->id);
     }
 
-    public function testDeactivateReactivateUser()
+    public function testDeactivateReactivateUser(): void
     {
         // Make sure our events are fired
         Event::fake();
@@ -125,7 +125,7 @@ class UserRouteTest extends BrowserKitTestCase
         Event::assertDispatched(UserReactivated::class);
     }
 
-    public function testRestoreUser()
+    public function testRestoreUser(): void
     {
         // Make sure our events are fired
         Event::fake();
@@ -143,7 +143,7 @@ class UserRouteTest extends BrowserKitTestCase
         Event::assertDispatched(UserRestored::class);
     }
 
-    public function testUserIsDeletedBeforeBeingRestored()
+    public function testUserIsDeletedBeforeBeingRestored(): void
     {
         $this->actingAs($this->admin)
             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null])
@@ -154,7 +154,7 @@ class UserRouteTest extends BrowserKitTestCase
             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null]);
     }
 
-    public function testPermanentlyDeleteUser()
+    public function testPermanentlyDeleteUser(): void
     {
         // Make sure our events are fired
         Event::fake();
@@ -170,7 +170,7 @@ class UserRouteTest extends BrowserKitTestCase
         Event::assertDispatched(UserPermanentlyDeleted::class);
     }
 
-    public function testUserIsDeletedBeforeBeingPermanentlyDeleted()
+    public function testUserIsDeletedBeforeBeingPermanentlyDeleted(): void
     {
         $this->actingAs($this->admin)
             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null])
@@ -181,7 +181,7 @@ class UserRouteTest extends BrowserKitTestCase
             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null]);
     }
 
-    public function testCantNotDeactivateSelf()
+    public function testCantNotDeactivateSelf(): void
     {
         $this->actingAs($this->admin)
             ->visit('/admin/access/user')

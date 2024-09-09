@@ -8,7 +8,7 @@ use Tests\BrowserKitTestCase;
  */
 class HistoryRenderEntityTest extends BrowserKitTestCase
 {
-    public function testViewOnlyHasHistoryOfEntity()
+    public function testViewOnlyHasHistoryOfEntity(): void
     {
         $this->actingAs($this->admin);
 

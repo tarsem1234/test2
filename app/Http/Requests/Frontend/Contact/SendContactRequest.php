@@ -14,7 +14,7 @@ class SendContactRequest extends Request
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -24,7 +24,7 @@ class SendContactRequest extends Request
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'name' => 'required',
@@ -38,7 +38,7 @@ class SendContactRequest extends Request
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'g-recaptcha-response.required_if' => trans('validation.required', ['attribute' => 'captcha']),

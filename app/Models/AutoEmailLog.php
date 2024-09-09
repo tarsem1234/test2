@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\Access\User\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -12,7 +13,7 @@ class AutoEmailLog extends Model
 
     protected $table = 'auto_email_logs';
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'from_user_id');
     }

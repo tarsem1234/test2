@@ -11,7 +11,7 @@ class QuestionsSellerPostClosingRequest extends Request
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -21,7 +21,7 @@ class QuestionsSellerPostClosingRequest extends Request
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         if (isset($this->additional_provisions) && ($this->additional_provisions == null || $this->additional_provisions)) {
             $rules = [
@@ -44,7 +44,7 @@ class QuestionsSellerPostClosingRequest extends Request
         return $rules;
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [];
     }

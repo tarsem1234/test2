@@ -35,7 +35,7 @@ class SenderNeedsRegistration extends Notification
      * @param  mixed  $notifiable
      * @return array
      */
-    public function via($notifiable)
+    public function via($notifiable): array
     {
         return ['mail'];
     }
@@ -46,7 +46,7 @@ class SenderNeedsRegistration extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
+    public function toMail($notifiable): MailMessage
     {
         //        dump($this->property_id);
         //        dd($this->username);

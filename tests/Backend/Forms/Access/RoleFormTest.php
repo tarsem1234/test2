@@ -13,7 +13,7 @@ use Tests\BrowserKitTestCase;
  */
 class RoleFormTest extends BrowserKitTestCase
 {
-    public function testCreateRoleRequiredFieldsAll()
+    public function testCreateRoleRequiredFieldsAll(): void
     {
         // All Permissions
         $this->actingAs($this->admin)
@@ -24,7 +24,7 @@ class RoleFormTest extends BrowserKitTestCase
             ->see('The name field is required.');
     }
 
-    public function testCreateRoleRequiredFieldsSpecificPermissions()
+    public function testCreateRoleRequiredFieldsSpecificPermissions(): void
     {
         if (config('access.roles.role_must_contain_permission')) {
             // Custom Permissions
@@ -38,7 +38,7 @@ class RoleFormTest extends BrowserKitTestCase
         }
     }
 
-    public function testCreateRoleFormAll()
+    public function testCreateRoleFormAll(): void
     {
         // Make sure our events are fired
         Event::fake();
@@ -56,7 +56,7 @@ class RoleFormTest extends BrowserKitTestCase
         Event::assertDispatched(RoleCreated::class);
     }
 
-    public function testCreateRoleFormSpecificPermissions()
+    public function testCreateRoleFormSpecificPermissions(): void
     {
         // Make sure our events are fired
         Event::fake();
@@ -76,7 +76,7 @@ class RoleFormTest extends BrowserKitTestCase
         Event::assertDispatched(RoleCreated::class);
     }
 
-    public function testRoleAlreadyExists()
+    public function testRoleAlreadyExists(): void
     {
         $this->actingAs($this->admin)
             ->visit('/admin/access/role/create')
@@ -86,7 +86,7 @@ class RoleFormTest extends BrowserKitTestCase
             ->see('That role already exists. Please choose a different name.');
     }
 
-    public function testRoleRequiresPermission()
+    public function testRoleRequiresPermission(): void
     {
         if (config('access.roles.role_must_contain_permission')) {
             $this->actingAs($this->admin)
@@ -99,7 +99,7 @@ class RoleFormTest extends BrowserKitTestCase
         }
     }
 
-    public function testUpdateRoleRequiredFields()
+    public function testUpdateRoleRequiredFields(): void
     {
         $this->actingAs($this->admin)
             ->visit('/admin/access/role/1/edit')
@@ -109,7 +109,7 @@ class RoleFormTest extends BrowserKitTestCase
             ->see('The name field is required.');
     }
 
-    public function testUpdateRoleFormAll()
+    public function testUpdateRoleFormAll(): void
     {
         // Make sure our events are fired
         Event::fake();
@@ -126,7 +126,7 @@ class RoleFormTest extends BrowserKitTestCase
         Event::assertDispatched(RoleUpdated::class);
     }
 
-    public function testUpdateRoleFormSpecificPermissions()
+    public function testUpdateRoleFormSpecificPermissions(): void
     {
         // Make sure our events are fired
         Event::fake();
@@ -143,7 +143,7 @@ class RoleFormTest extends BrowserKitTestCase
         Event::assertDispatched(RoleUpdated::class);
     }
 
-    public function testUpdateRoleRequiresPermission()
+    public function testUpdateRoleRequiresPermission(): void
     {
         if (config('access.roles.role_must_contain_permission')) {
             $this->actingAs($this->admin)
@@ -154,7 +154,7 @@ class RoleFormTest extends BrowserKitTestCase
         }
     }
 
-    public function testDeleteRoleForm()
+    public function testDeleteRoleForm(): void
     {
         // Make sure our events are fired
         Event::fake();
@@ -171,7 +171,7 @@ class RoleFormTest extends BrowserKitTestCase
         Event::assertDispatched(RoleDeleted::class);
     }
 
-    public function testDeleteRoleWithPermissions()
+    public function testDeleteRoleWithPermissions(): void
     {
         // Make sure our events are fired
         Event::fake();
@@ -190,7 +190,7 @@ class RoleFormTest extends BrowserKitTestCase
         Event::assertDispatched(RoleDeleted::class);
     }
 
-    public function testCanNotDeleteAdministratorRole()
+    public function testCanNotDeleteAdministratorRole(): void
     {
         $this->actingAs($this->admin)
             ->visit('/admin/access/role')
@@ -200,7 +200,7 @@ class RoleFormTest extends BrowserKitTestCase
             ->seeInSession(['flash_danger' => 'You can not delete the Administrator role.']);
     }
 
-    public function testCanNotDeleteRoleWithUsers()
+    public function testCanNotDeleteRoleWithUsers(): void
     {
         $this->actingAs($this->admin)
             ->visit('/admin/access/role')

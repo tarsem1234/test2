@@ -7,7 +7,7 @@ use Tests\BrowserKitTestCase;
  */
 class DashboardRouteTest extends BrowserKitTestCase
 {
-    public function testAdminDashboard()
+    public function testAdminDashboard(): void
     {
         $this->actingAs($this->admin)->visit('/admin/dashboard')->see('Access Management')->see($this->admin->name);
     }

@@ -12,7 +12,7 @@ class UpdateRegisterRequest extends Request
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -22,7 +22,7 @@ class UpdateRegisterRequest extends Request
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         $userType = ['User', 'Business'];
         $rules = [
@@ -64,7 +64,7 @@ class UpdateRegisterRequest extends Request
         return $rules;
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             //            'g-recaptcha-response.required_if' => trans('validation.required',

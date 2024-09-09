@@ -66,7 +66,7 @@ class SendEmailJob implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
 
         foreach ($this->allUser as $userName => $userEmail) {

@@ -10,7 +10,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('property_contract_user_addresses', function (Blueprint $table) {
             $table->foreign('user_id', 'property_contract_user_addresses_ibfk_1')->references('id')->on('users')->onUpdate('RESTRICT')->onDelete('CASCADE');
@@ -24,7 +24,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('property_contract_user_addresses', function (Blueprint $table) {
             $table->dropForeign('property_contract_user_addresses_ibfk_1');

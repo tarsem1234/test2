@@ -15,7 +15,7 @@ use Tests\BrowserKitTestCase;
  */
 class UserFormTest extends BrowserKitTestCase
 {
-    public function testCreateUserRequiredFields()
+    public function testCreateUserRequiredFields(): void
     {
         $this->actingAs($this->admin)
             ->visit('/admin/access/user/create')
@@ -31,7 +31,7 @@ class UserFormTest extends BrowserKitTestCase
             ->see('The password field is required.');
     }
 
-    public function testCreateUserPasswordsDoNotMatch()
+    public function testCreateUserPasswordsDoNotMatch(): void
     {
         $this->actingAs($this->admin)
             ->visit('/admin/access/user/create')
@@ -44,7 +44,7 @@ class UserFormTest extends BrowserKitTestCase
             ->see('The password confirmation does not match.');
     }
 
-    public function testCreateUserConfirmedForm()
+    public function testCreateUserConfirmedForm(): void
     {
         // Make sure our events are fired
         Event::fake();
@@ -85,7 +85,7 @@ class UserFormTest extends BrowserKitTestCase
         Event::assertDispatched(UserCreated::class);
     }
 
-    public function testCreateUserUnconfirmedForm()
+    public function testCreateUserUnconfirmedForm(): void
     {
         // Make sure our events are fired
         Event::fake();
@@ -136,7 +136,7 @@ class UserFormTest extends BrowserKitTestCase
         Event::assertDispatched(UserCreated::class);
     }
 
-    public function testCreateUserFailsIfEmailExists()
+    public function testCreateUserFailsIfEmailExists(): void
     {
         $this->actingAs($this->admin)
             ->visit('/admin/access/user/create')
@@ -150,7 +150,7 @@ class UserFormTest extends BrowserKitTestCase
             ->see('The email has already been taken.');
     }
 
-    public function testUpdateUserRequiredFields()
+    public function testUpdateUserRequiredFields(): void
     {
         $this->actingAs($this->admin)
             ->visit('/admin/access/user/3/edit')
@@ -163,7 +163,7 @@ class UserFormTest extends BrowserKitTestCase
             ->see('The email field is required.');
     }
 
-    public function testUpdateUserForm()
+    public function testUpdateUserForm(): void
     {
         // Make sure our events are fired
         Event::fake();
@@ -196,7 +196,7 @@ class UserFormTest extends BrowserKitTestCase
         Event::assertDispatched(UserUpdated::class);
     }
 
-    public function testDeleteUserForm()
+    public function testDeleteUserForm(): void
     {
         // Make sure our events are fired
         Event::fake();
@@ -209,7 +209,7 @@ class UserFormTest extends BrowserKitTestCase
         Event::assertDispatched(UserDeleted::class);
     }
 
-    public function testUserCanNotDeleteSelf()
+    public function testUserCanNotDeleteSelf(): void
     {
         $this->actingAs($this->admin)
             ->visit('/admin/access/user')
@@ -219,7 +219,7 @@ class UserFormTest extends BrowserKitTestCase
             ->seeInSession(['flash_danger' => 'You can not delete yourself.']);
     }
 
-    public function testChangeUserPasswordRequiredFields()
+    public function testChangeUserPasswordRequiredFields(): void
     {
         $this->actingAs($this->admin)
             ->visit('/admin/access/user/'.$this->user->id.'/password/change')
@@ -231,7 +231,7 @@ class UserFormTest extends BrowserKitTestCase
             ->see('The password field is required.');
     }
 
-    public function testChangeUserPasswordForm()
+    public function testChangeUserPasswordForm(): void
     {
         // Make sure our events are fired
         Event::fake();
@@ -250,7 +250,7 @@ class UserFormTest extends BrowserKitTestCase
         Event::assertDispatched(UserPasswordChanged::class);
     }
 
-    public function testChangeUserPasswordDoNotMatch()
+    public function testChangeUserPasswordDoNotMatch(): void
     {
         $this->actingAs($this->admin)
             ->visit('/admin/access/user/'.$this->user->id.'/password/change')

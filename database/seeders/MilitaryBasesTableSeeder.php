@@ -12,7 +12,7 @@ class MilitaryBasesTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
 
         DB::table('military_bases')->delete();

@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Request;
 use Closure;
 use Session;
 
@@ -13,7 +15,7 @@ class CheckSessionHasOfferSignature
      * @param  \Illuminate\Http\Request  $request
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
         if (Session::get('OFFER') && Session::get('PROPERTY')) {
             $Signatures = '';

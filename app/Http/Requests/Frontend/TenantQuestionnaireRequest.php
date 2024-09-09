@@ -12,7 +12,7 @@ class TenantQuestionnaireRequest extends Request
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -22,7 +22,7 @@ class TenantQuestionnaireRequest extends Request
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         $sellerAware = [1, 2];
         $rules = [
@@ -40,7 +40,7 @@ class TenantQuestionnaireRequest extends Request
         return $rules;
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [];
     }

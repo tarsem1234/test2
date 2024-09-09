@@ -12,7 +12,7 @@ class LoggedInRouteTest extends BrowserKitTestCase
     /**
      * Test the homepage works and the dashboard button appears.
      */
-    public function testHomePageLoggedIn()
+    public function testHomePageLoggedIn(): void
     {
         $this->actingAs($this->user)->visit('/')->see('Dashboard')->see($this->user->name)->dontSee('Administration');
     }
@@ -20,7 +20,7 @@ class LoggedInRouteTest extends BrowserKitTestCase
     /**
      * Test the dashboard page works and displays the users information.
      */
-    public function testDashboardPage()
+    public function testDashboardPage(): void
     {
         $this->actingAs($this->user)
             ->visit('/dashboard')
@@ -32,7 +32,7 @@ class LoggedInRouteTest extends BrowserKitTestCase
     /**
      * Test the account page works and displays the users information.
      */
-    public function testAccountPage()
+    public function testAccountPage(): void
     {
         $this->actingAs($this->user)
             ->visit('/account')
@@ -46,7 +46,7 @@ class LoggedInRouteTest extends BrowserKitTestCase
     /**
      * Test the account page works and displays the users information.
      */
-    public function testLoggedInAdmin()
+    public function testLoggedInAdmin(): void
     {
         $this->actingAs($this->admin)->visit('/')->see('Administration')->see($this->admin->name);
     }
@@ -54,7 +54,7 @@ class LoggedInRouteTest extends BrowserKitTestCase
     /**
      * Test the logout button redirects the user back to home and the login button is again visible.
      */
-    public function testLogoutRoute()
+    public function testLogoutRoute(): void
     {
         // Make sure our events are fired
         Event::fake();

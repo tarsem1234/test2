@@ -7,7 +7,7 @@ use Tests\BrowserKitTestCase;
  */
 class HistoryRenderTypeTest extends BrowserKitTestCase
 {
-    public function testViewOnlyHasHistoryOfType()
+    public function testViewOnlyHasHistoryOfType(): void
     {
         $this->actingAs($this->admin);
 

@@ -7,7 +7,7 @@ use Tests\BrowserKitTestCase;
  */
 class AccessRepositoryTest extends BrowserKitTestCase
 {
-    public function testGetUsersByPermissionUsingName()
+    public function testGetUsersByPermissionUsingName(): void
     {
         $results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
             ->getByPermission('view-backend')
@@ -17,7 +17,7 @@ class AccessRepositoryTest extends BrowserKitTestCase
         $this->assertArraySubset(['name' => $this->executive->name], $results[0]);
     }
 
-    public function testGetUsersByPermissionsUsingNames()
+    public function testGetUsersByPermissionsUsingNames(): void
     {
         $this->userRole->permissions()->sync([1]);
 
@@ -30,7 +30,7 @@ class AccessRepositoryTest extends BrowserKitTestCase
         $this->assertArraySubset(['name' => $this->user->name], $results[1]);
     }
 
-    public function testGetUsersByPermissionUsingId()
+    public function testGetUsersByPermissionUsingId(): void
     {
         $results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
             ->getByPermission(1, 'id')
@@ -40,7 +40,7 @@ class AccessRepositoryTest extends BrowserKitTestCase
         $this->assertArraySubset(['name' => $this->executive->name], $results[0]);
     }
 
-    public function testGetUsersByPermissionsUsingIds()
+    public function testGetUsersByPermissionsUsingIds(): void
     {
         $this->userRole->permissions()->sync([1]);
 
@@ -53,7 +53,7 @@ class AccessRepositoryTest extends BrowserKitTestCase
         $this->assertArraySubset(['name' => $this->user->name], $results[1]);
     }
 
-    public function testGetUsersByRoleUsingName()
+    public function testGetUsersByRoleUsingName(): void
     {
         $results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
             ->getByRole('User')
@@ -63,7 +63,7 @@ class AccessRepositoryTest extends BrowserKitTestCase
         $this->assertArraySubset(['name' => $this->user->name], $results[0]);
     }
 
-    public function testGetUsersByRolesUsingNames()
+    public function testGetUsersByRolesUsingNames(): void
     {
         $results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
             ->getByRole(['User', 'Executive'])
@@ -74,7 +74,7 @@ class AccessRepositoryTest extends BrowserKitTestCase
         $this->assertArraySubset(['name' => $this->user->name], $results[1]);
     }
 
-    public function testGetUsersByRoleUsingId()
+    public function testGetUsersByRoleUsingId(): void
     {
         $results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
             ->getByRole(1, 'id')
@@ -84,7 +84,7 @@ class AccessRepositoryTest extends BrowserKitTestCase
         $this->assertArraySubset(['name' => $this->admin->name], $results[0]);
     }
 
-    public function testGetUsersByRolesUsingIds()
+    public function testGetUsersByRolesUsingIds(): void
     {
         $results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
             ->getByRole([1, 3], 'id')

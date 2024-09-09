@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\Property;
 use App\Models\PropertyConditionalData;
@@ -15,6 +14,7 @@ use App\Models\Signature;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Session;
 
 /*

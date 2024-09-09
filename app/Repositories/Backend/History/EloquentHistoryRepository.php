@@ -45,7 +45,6 @@ class EloquentHistoryRepository implements HistoryContract
     private $paginationType = 'simplePaginate';
 
     /**
-     *
      * @throws GeneralException
      */
     public function withType($type): static
@@ -65,7 +64,6 @@ class EloquentHistoryRepository implements HistoryContract
     }
 
     /**
-     *
      * @throws GeneralException
      */
     public function withText($text): static

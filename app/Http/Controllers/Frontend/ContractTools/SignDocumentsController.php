@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Frontend\ContractTools;
 
-use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\BuyerQuestionnaire;
 use App\Models\LandlordQuestionnaire;
 use App\Models\SellerQuestionnaire;
 use App\Models\TenantQuestionnaire;
 use Auth;
+use Illuminate\View\View;
 
 class SignDocumentsController extends Controller
 {

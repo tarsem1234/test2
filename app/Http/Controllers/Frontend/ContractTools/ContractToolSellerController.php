@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Frontend\ContractTools;
 
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\PropertyConditionDisclaimerRequest;
 use App\Http\Requests\Frontend\QuestionsSellerPostClosingRequest;
@@ -23,7 +21,9 @@ use App\Models\UpdateSaleAgreementBysellerContract;
 use App\Services\EmailLogService;
 use Auth;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Mail;
 use Session;
 

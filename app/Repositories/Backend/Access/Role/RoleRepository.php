@@ -48,7 +48,6 @@ class RoleRepository extends BaseRepository
     }
 
     /**
-     *
      * @throws GeneralException
      */
     public function create(array $input): bool
@@ -106,7 +105,6 @@ class RoleRepository extends BaseRepository
     }
 
     /**
-     *
      * @throws GeneralException
      */
     public function update(Model $role, array $input): bool
@@ -169,7 +167,6 @@ class RoleRepository extends BaseRepository
     }
 
     /**
-     *
      * @throws GeneralException
      */
     public function delete(Model $role): bool

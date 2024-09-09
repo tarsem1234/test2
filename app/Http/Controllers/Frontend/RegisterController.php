@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\Http\Response;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\JsonResponse;
-use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\RegisterRequest;
 use App\Http\Requests\Frontend\UpdateRegisterRequest;
@@ -22,9 +18,13 @@ use App\Models\UserProfile;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 use Auth;
 use File;
-//use Hash;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+//use Hash;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\View\View;
 
 /**
  * Class LanguageController.

@@ -13,7 +13,6 @@ use App\Models\Access\User\User;
 class UserSocialRepository
 {
     /**
-     *
      * @throws GeneralException
      */
     public function delete(User $user, SocialLogin $social): bool

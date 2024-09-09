@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use Illuminate\View\View;
 
 class BlogController extends Controller
 {

@@ -199,7 +199,6 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     *
      * @throws GeneralException
      */
     public function confirmAccount($token): bool

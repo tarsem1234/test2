@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\DocumentListing;
 use App\Models\Page;
 use App\Models\State;
+use Illuminate\View\View;
 
 class PageController extends Controller
 {

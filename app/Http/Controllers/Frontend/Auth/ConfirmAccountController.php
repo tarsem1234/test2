@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
-use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Models\Access\User\User;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 use App\Repositories\Frontend\Access\User\UserRepository;
+use Illuminate\Http\RedirectResponse;
 
 /**
  * Class ConfirmAccountController.

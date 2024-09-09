@@ -2,9 +2,9 @@
 
 namespace App\Models\History\Traits\Relationship;
 
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use App\Models\Access\User\User;
 use App\Models\History\HistoryType;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * Class HistoryRelationship.

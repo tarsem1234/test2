@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Frontend\User;
 
-use Illuminate\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\View\View;
 
 /**
  * Class AccountController.

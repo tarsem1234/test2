@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Backend\Access\Role;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Access\Role\ManageRoleRequest;
 use App\Http\Requests\Backend\Access\Role\StoreRoleRequest;
@@ -11,6 +9,8 @@ use App\Http\Requests\Backend\Access\Role\UpdateRoleRequest;
 use App\Models\Access\Role\Role;
 use App\Repositories\Backend\Access\Permission\PermissionRepository;
 use App\Repositories\Backend\Access\Role\RoleRepository;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 /**
  * Class RoleController.

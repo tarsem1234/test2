@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
-use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 use App\Models\Access\User\User;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 use App\Repositories\Backend\Access\User\UserRepository;
+use Illuminate\Http\RedirectResponse;
 
 /**
  * Class UserConfirmationController.

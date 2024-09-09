@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Models\Access\User\User;
 use App\Models\Message;
@@ -12,7 +9,10 @@ use App\Models\Network;
 use App\Models\Recommendation;
 use App\Models\State;
 use Auth;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class NetworkController extends Controller
 {

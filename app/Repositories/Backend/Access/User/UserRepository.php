@@ -159,7 +159,6 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     *
      * @throws GeneralException
      */
     public function update(Model $user, array $input): bool
@@ -191,7 +190,6 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     *
      * @throws GeneralException
      */
     public function updatePassword(Model $user, $input): bool
@@ -208,7 +206,6 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     *
      * @throws GeneralException
      */
     public function delete(Model $user): bool
@@ -251,7 +248,6 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     *
      * @throws GeneralException
      */
     public function restore(Model $user): bool
@@ -270,7 +266,6 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     *
      * @throws GeneralException
      */
     public function mark(Model $user, $status): bool
@@ -299,7 +294,6 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     *
      * @throws GeneralException
      */
     public function confirm(Model $user): bool
@@ -326,7 +320,6 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     *
      * @throws GeneralException
      */
     public function unconfirm(Model $user): bool

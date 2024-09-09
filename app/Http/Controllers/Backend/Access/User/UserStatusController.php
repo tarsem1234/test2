@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 use App\Models\Access\User\User;
@@ -11,6 +9,8 @@ use App\Models\Property;
 use App\Models\RentOffer;
 use App\Models\SaleOffer;
 use App\Repositories\Backend\Access\User\UserRepository;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 /**
  * Class UserStatusController.

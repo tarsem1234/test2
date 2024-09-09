@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
-use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\View\View;
 
 /**
  * Class ForgotPasswordController.

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
-use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\User\ChangePasswordRequest;
 use App\Repositories\Frontend\Access\User\UserRepository;
+use Illuminate\Http\RedirectResponse;
 
 /**
  * Class ChangePasswordController.

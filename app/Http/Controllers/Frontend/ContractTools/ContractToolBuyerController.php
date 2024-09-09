@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers\Frontend\ContractTools;
 
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
-use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\BuyerQuestionnaireRequest;
 use App\Mail\Frontend\SaleAgreementLandlordMailing;
@@ -21,8 +18,11 @@ use App\Models\UpdateSaleAgreementBysellerContract;
 use App\Services\EmailLogService;
 use Auth;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Validation\Rule;
+use Illuminate\View\View;
 use Mail;
 use Session;
 

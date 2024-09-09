@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\ForumReply;
 use Auth;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ForumReplyController extends Controller
 {

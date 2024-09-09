@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 use App\Models\Access\User\User;
 use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Repositories\Backend\Access\User\UserRepository;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Request;
 
 class SupportController extends Controller

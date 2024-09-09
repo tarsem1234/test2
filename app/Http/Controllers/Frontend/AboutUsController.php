@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
+use Illuminate\View\View;
 
 class AboutUsController extends Controller
 {

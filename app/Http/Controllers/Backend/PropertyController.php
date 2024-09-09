@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\View\View;
-use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use App\Models\City;
 use App\Models\County;
@@ -13,6 +11,8 @@ use App\Models\School;
 use App\Models\State;
 use App\Models\VacationProperty;
 use App\Models\ZipCode;
+use Illuminate\Http\JsonResponse;
+use Illuminate\View\View;
 
 /**
  * Class LanguageController.

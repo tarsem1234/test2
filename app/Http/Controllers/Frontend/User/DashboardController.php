@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Frontend\User;
 
-use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\Access\User\User;
 use App\Models\Backend\UserLearningPoint;
 use Auth;
+use Illuminate\View\View;
 
 /**
  * Class DashboardController.

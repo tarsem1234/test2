@@ -2,11 +2,6 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\Http\RedirectResponser;
-use Illuminate\View\View;
-use Illuminate\Http\Response;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\PropertyRequest;
 use App\Mail\AvailabilityConfirmation;
@@ -37,8 +32,13 @@ use App\Models\ZipCode;
 use App\Services\EmailLogService;
 use Auth;
 use File;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\RedirectResponser;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\View\View;
 use Session;
 
 /**

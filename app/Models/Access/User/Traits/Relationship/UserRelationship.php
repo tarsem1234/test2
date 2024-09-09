@@ -2,10 +2,10 @@
 
 namespace App\Models\Access\User\Traits\Relationship;
 
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Access\User\SocialLogin;
 use App\Models\System\Session;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class UserRelationship.

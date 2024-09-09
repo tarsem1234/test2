@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserLoggedOut;
 use App\Exceptions\GeneralException;
@@ -12,7 +10,9 @@ use App\Helpers\Frontend\Auth\Socialite;
 use App\Http\Controllers\Controller;
 use App\Repositories\Frontend\Access\User\UserSessionRepository;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 /**
  * Class LoginController.
@@ -41,7 +41,6 @@ class LoginController extends Controller
     }
 
     /**
-     *
      * @throws GeneralException
      */
     protected function authenticated(Request $request, $user): RedirectResponse

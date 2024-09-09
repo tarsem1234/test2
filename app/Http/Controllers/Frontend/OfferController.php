@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\OfferRequest;
 use App\Models\Access\User\User;
@@ -18,7 +16,9 @@ use App\Notifications\Frontend\Auth\OfferShowsAcceptance;
 use App\Services\EmailLogService;
 use Auth;
 use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Log;
 use Mail;
 use Session;

@@ -13,11 +13,11 @@ class Industry extends Model
 
     public function services()
     {
-        return $this->hasMany('App\Models\Service');
+        return $this->hasMany(\App\Models\Service::class);
     }
 
     public function business_profile()
     {
-        return $this->belongsTo('App\Models\BusinessProfile');
+        return $this->belongsTo(\App\Models\BusinessProfile::class);
     }
 }

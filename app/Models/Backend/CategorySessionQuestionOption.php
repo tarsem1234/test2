@@ -10,6 +10,6 @@ class CategorySessionQuestionOption extends Model
 
     public function sessionQuestion()
     {
-        return $this->belongsTo('App\Models\Backend\CategorySessionQuestion');
+        return $this->belongsTo(\App\Models\Backend\CategorySessionQuestion::class);
     }
 }

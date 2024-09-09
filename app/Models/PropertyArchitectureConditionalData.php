@@ -14,6 +14,6 @@ class PropertyArchitectureConditionalData extends Model
 
     public function property()
     {
-        return $this->belongsTo('App\Models\PropertyConditionalData', 'property_id');
+        return $this->belongsTo(\App\Models\PropertyConditionalData::class, 'property_id');
     }
 }

@@ -15,11 +15,11 @@ class UserProfile extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\Access\User\User');
+        return $this->belongsTo(\App\Models\Access\User\User::class);
     }
 
     public function user_interests()
     {
-        return $this->hasMany('App\Models\UserInterest');
+        return $this->hasMany(\App\Models\UserInterest::class);
     }
 }

@@ -10,6 +10,6 @@ class MilitaryLocation extends Model
 
     public function zipCode()
     {
-        return $this->hasOne('App\Models\ZipCode', 'id', 'zipcode_id');
+        return $this->hasOne(\App\Models\ZipCode::class, 'id', 'zipcode_id');
     }
 }

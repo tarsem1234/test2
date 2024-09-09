@@ -13,16 +13,16 @@ class BuyerQuestionnaire extends Model
 
     public function saleOffer()
     {
-        return $this->belongsTo('App\Models\SaleOffer', 'offer_id');
+        return $this->belongsTo(\App\Models\SaleOffer::class, 'offer_id');
     }
 
     public function rentOffer()
     {
-        return $this->belongsTo('App\Models\RentOffer');
+        return $this->belongsTo(\App\Models\RentOffer::class);
     }
 
     public function user()
     {
-        return $this->belongsTo('App\Models\Access\User\User');
+        return $this->belongsTo(\App\Models\Access\User\User::class);
     }
 }

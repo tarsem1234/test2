@@ -8,11 +8,11 @@ class Recommendation extends Model
 {
     public function user()
     {
-        return $this->belongsTo('App\Models\Access\User\User');
+        return $this->belongsTo(\App\Models\Access\User\User::class);
     }
 
     public function recommendedBy()
     {
-        return $this->belongsTo('App\Models\Access\User\User', 'from_user_id');
+        return $this->belongsTo(\App\Models\Access\User\User::class, 'from_user_id');
     }
 }

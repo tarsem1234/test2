@@ -14,16 +14,16 @@ class Network extends Model
 
     public function request_from_user()
     {
-        return $this->belongsTo('App\Models\Access\User\User', 'from_user_id');
+        return $this->belongsTo(\App\Models\Access\User\User::class, 'from_user_id');
     }
 
     public function request_to_user()
     {
-        return $this->belongsTo('App\Models\Access\User\User', 'to_user_id');
+        return $this->belongsTo(\App\Models\Access\User\User::class, 'to_user_id');
     }
 
     public function associate()
     {
-        return $this->belongsTo('App\Models\Access\User\User', $this->from_user_id === Auth::id() ? 'to_user_id' : 'from_user_id');
+        return $this->belongsTo(\App\Models\Access\User\User::class, $this->from_user_id === Auth::id() ? 'to_user_id' : 'from_user_id');
     }
 }

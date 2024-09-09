@@ -10,6 +10,6 @@ class City extends Model
 
     public function zips()
     {
-        return $this->hasMany('App\Models\ZipCode', 'city_id');
+        return $this->hasMany(\App\Models\ZipCode::class, 'city_id');
     }
 }

@@ -13,6 +13,6 @@ class VacationImage extends Model
 
     public function vacation_property()
     {
-        return $this->belongsTo('App\Models\VacationProperty');
+        return $this->belongsTo(\App\Models\VacationProperty::class);
     }
 }

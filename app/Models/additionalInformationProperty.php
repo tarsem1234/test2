@@ -13,6 +13,6 @@ class additionalInformationProperty extends Model
 
     public function property()
     {
-        return $this->belongsToMany('App\Models\Property')->withPivot('property_id');
+        return $this->belongsToMany(\App\Models\Property::class)->withPivot('property_id');
     }
 }

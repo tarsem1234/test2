@@ -13,6 +13,6 @@ class UserInterest extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\UserProfile');
+        return $this->belongsTo(\App\Models\UserProfile::class);
     }
 }

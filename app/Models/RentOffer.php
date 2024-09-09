@@ -13,56 +13,56 @@ class RentOffer extends Model
 
     public function property()
     {
-        return $this->belongsTo('App\Models\Property');
+        return $this->belongsTo(\App\Models\Property::class);
     }
 
     public function property_owner_user()
     {
-        return $this->belongsTo('App\Models\Access\User\User', 'owner_id');
+        return $this->belongsTo(\App\Models\Access\User\User::class, 'owner_id');
     }
 
     public function propertyConditional()
     {
-        return $this->hasOne('App\Models\PropertyConditionalData', 'offer_id', 'id');
+        return $this->hasOne(\App\Models\PropertyConditionalData::class, 'offer_id', 'id');
     }
 
     public function sent_offer_user()
     {
-        return $this->belongsTo('App\Models\Access\User\User', 'buyer_id');
+        return $this->belongsTo(\App\Models\Access\User\User::class, 'buyer_id');
     }
 
     public function landlord()
     {
-        return $this->belongsTo('App\Models\Access\User\User', 'owner_id');
+        return $this->belongsTo(\App\Models\Access\User\User::class, 'owner_id');
     }
 
     public function tenant()
     {
-        return $this->belongsTo('App\Models\Access\User\User', 'buyer_id');
+        return $this->belongsTo(\App\Models\Access\User\User::class, 'buyer_id');
     }
 
     public function rent_counter_offers()
     {
-        return $this->hasMany('App\Models\CounterRentOffer', 'rent_offer_id');
+        return $this->hasMany(\App\Models\CounterRentOffer::class, 'rent_offer_id');
     }
 
     public function landlordQuestionnaire()
     {
-        return $this->hasOne('App\Models\LandlordQuestionnaire', 'offer_id');
+        return $this->hasOne(\App\Models\LandlordQuestionnaire::class, 'offer_id');
     }
 
     public function tenantQuestionnaire()
     {
-        return $this->hasOne('App\Models\TenantQuestionnaire', 'rent_offer_id');
+        return $this->hasOne(\App\Models\TenantQuestionnaire::class, 'rent_offer_id');
     }
 
     public function rentAgreement()
     {
-        return $this->hasOne('App\Models\RentAgreement', 'rent_offer_id');
+        return $this->hasOne(\App\Models\RentAgreement::class, 'rent_offer_id');
     }
 
     public function rentSignatures()
     {
-        return $this->hasMany('App\Models\RentSignature', 'offer_id');
+        return $this->hasMany(\App\Models\RentSignature::class, 'offer_id');
     }
 }

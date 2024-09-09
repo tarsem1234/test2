@@ -18,16 +18,16 @@ class AdditionalInformation extends Model
 
     public function children()
     {
-        return $this->hasMany('App\Models\AdditionalInformation', 'parent_id'); //get all subs. NOT RECURSIVE
+        return $this->hasMany(\App\Models\AdditionalInformation::class, 'parent_id'); //get all subs. NOT RECURSIVE
     }
 
     public function parent()
     {
-        return $this->belongsTo('App\Models\AdditionalInformation', 'parent_id'); //get all subs. NOT RECURSIVE
+        return $this->belongsTo(\App\Models\AdditionalInformation::class, 'parent_id'); //get all subs. NOT RECURSIVE
     }
 
     public function property()
     {
-        return $this->belongsToMany('App\Models\Property')->withPivot('property_id');
+        return $this->belongsToMany(\App\Models\Property::class)->withPivot('property_id');
     }
 }

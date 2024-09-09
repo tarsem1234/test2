@@ -10,6 +10,6 @@ class State extends Model
 
     public function documents()
     {
-        return $this->hasMany('App\Models\DocumentListing');
+        return $this->hasMany(\App\Models\DocumentListing::class);
     }
 }

@@ -13,32 +13,32 @@ class Property extends Model
 
     public function architechture()
     {
-        return $this->hasOne('App\Models\PropertyArchitecture', 'property_id');
+        return $this->hasOne(\App\Models\PropertyArchitecture::class, 'property_id');
     }
 
     public function images()
     {
-        return $this->hasMany('App\Models\PropertyImage', 'property_id');
+        return $this->hasMany(\App\Models\PropertyImage::class, 'property_id');
     }
 
     public function latestImage()
     {
-        return $this->hasOne('App\Models\PropertyImage', 'property_id')->latest();
+        return $this->hasOne(\App\Models\PropertyImage::class, 'property_id')->latest();
     }
 
     public function additional_information()
     {
-        return $this->belongsToMany('App\Models\AdditionalInformation')->withPivot('property_id', 'additional_information_id');
+        return $this->belongsToMany(\App\Models\AdditionalInformation::class)->withPivot('property_id', 'additional_information_id');
     }
 
     public function additional_property()
     {
-        return $this->belongsToMany('App\Models\additionalInformationProperty')->withPivot('property_id', 'additional_information_id');
+        return $this->belongsToMany(\App\Models\additionalInformationProperty::class)->withPivot('property_id', 'additional_information_id');
     }
 
     public function city()
     {
-        return $this->hasOne('App\Models\City');
+        return $this->hasOne(\App\Models\City::class);
     }
 
     public function offers()
@@ -48,37 +48,37 @@ class Property extends Model
 
     public function rentOffer()
     {
-        return $this->hasMany('App\Models\RentOffer');
+        return $this->hasMany(\App\Models\RentOffer::class);
     }
 
     public function saleOffer()
     {
-        return $this->hasMany('App\Models\SaleOffer');
+        return $this->hasMany(\App\Models\SaleOffer::class);
     }
 
     public function favorites()
     {
-        return $this->hasMany('App\Models\Favorite');
+        return $this->hasMany(\App\Models\Favorite::class);
     }
 
     public function user()
     {
-        return $this->belongsTo('App\Models\Access\User\User');
+        return $this->belongsTo(\App\Models\Access\User\User::class);
     }
 
     public function disclosure()
     {
-        return $this->hasOne('App\Models\PropertyConditionDisclaimer');
+        return $this->hasOne(\App\Models\PropertyConditionDisclaimer::class);
     }
 
     public function leadBasedPaintHazards()
     {
-        return $this->hasOne('App\Models\LeadBasedPaintHazards');
+        return $this->hasOne(\App\Models\LeadBasedPaintHazards::class);
     }
 
     public function propertyConditionDisclaimer()
     {
-        return $this->hasOne('App\Models\PropertyConditionDisclaimer', 'property_id');
+        return $this->hasOne(\App\Models\PropertyConditionDisclaimer::class, 'property_id');
     }
 
     public function availability()

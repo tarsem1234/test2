@@ -13,6 +13,6 @@ class Category extends Model
 
     public function sessions()
     {
-        return $this->hasMany('App\Models\Backend\CategorySession');
+        return $this->hasMany(\App\Models\Backend\CategorySession::class);
     }
 }

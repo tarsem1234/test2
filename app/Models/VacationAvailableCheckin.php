@@ -13,6 +13,6 @@ class VacationAvailableCheckin extends Model
 
     public function vacationProperty()
     {
-        return $this->belongsTo('App\Models\VacationProperty');
+        return $this->belongsTo(\App\Models\VacationProperty::class);
     }
 }

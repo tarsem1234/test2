@@ -23,11 +23,11 @@ class CounterRentOffer extends Model
 
     public function owner()
     {
-        return $this->belongsTo('App\Models\Access\User\User');
+        return $this->belongsTo(\App\Models\Access\User\User::class);
     }
 
     public function buyer()
     {
-        return $this->belongsTo('App\Models\Access\User\User');
+        return $this->belongsTo(\App\Models\Access\User\User::class);
     }
 }

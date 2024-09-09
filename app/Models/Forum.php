@@ -13,22 +13,22 @@ class Forum extends Model
 
     public function replies()
     {
-        return $this->hasMany('App\Models\ForumReply');
+        return $this->hasMany(\App\Models\ForumReply::class);
     }
 
     public function user()
     {
-        return $this->belongsTo('App\Models\Access\User\User');
+        return $this->belongsTo(\App\Models\Access\User\User::class);
     }
 
     public function forumViews()
     {
-        return $this->hasMany('App\Models\ForumView');
+        return $this->hasMany(\App\Models\ForumView::class);
     }
 
     public function totalViews()
     {
-        return $this->hasMany('App\Models\ForumView')
+        return $this->hasMany(\App\Models\ForumView::class)
             ->selectRaw('SUM(views) as total,forum_id')
             ->groupBy('forum_id');
     }

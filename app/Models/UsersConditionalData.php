@@ -13,6 +13,6 @@ class UsersConditionalData extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\Access\User\User');
+        return $this->belongsTo(\App\Models\Access\User\User::class);
     }
 }

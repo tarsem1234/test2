@@ -1,14 +1,14 @@
 <?php
 
+use App\Events\Backend\Access\User\UserDeactivated;
+use App\Events\Backend\Access\User\UserPermanentlyDeleted;
+use App\Events\Backend\Access\User\UserReactivated;
+use App\Events\Backend\Access\User\UserRestored;
+use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 use Carbon\Carbon;
-use Tests\BrowserKitTestCase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
-use App\Events\Backend\Access\User\UserRestored;
-use App\Events\Backend\Access\User\UserDeactivated;
-use App\Events\Backend\Access\User\UserReactivated;
-use App\Events\Backend\Access\User\UserPermanentlyDeleted;
-use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
+use Tests\BrowserKitTestCase;
 
 /**
  * Class UserRouteTest.
@@ -38,30 +38,30 @@ class UserRouteTest extends BrowserKitTestCase
     public function testViewUser()
     {
         $this->actingAs($this->admin)
-             ->visit('/admin/access/user/'.$this->user->id)
-             ->see('View User')
-             ->see('Overview')
-             ->see('History')
-             ->see($this->user->first_name)
-             ->see($this->user->last_name)
-             ->see($this->user->email);
+            ->visit('/admin/access/user/'.$this->user->id)
+            ->see('View User')
+            ->see('Overview')
+            ->see('History')
+            ->see($this->user->first_name)
+            ->see($this->user->last_name)
+            ->see($this->user->email);
     }
 
     public function testEditUser()
     {
         $this->actingAs($this->admin)
-             ->visit('/admin/access/user/'.$this->user->id.'/edit')
-             ->see('Edit User')
-             ->see($this->user->first_name)
-             ->see($this->user->last_name)
-             ->see($this->user->email);
+            ->visit('/admin/access/user/'.$this->user->id.'/edit')
+            ->see('Edit User')
+            ->see($this->user->first_name)
+            ->see($this->user->last_name)
+            ->see($this->user->email);
     }
 
     public function testChangeUserPassword()
     {
         $this->actingAs($this->admin)
-             ->visit('/admin/access/user/'.$this->user->id.'/password/change')
-             ->see('Change Password for '.$this->user->full_name);
+            ->visit('/admin/access/user/'.$this->user->id.'/password/change')
+            ->see('Change Password for '.$this->user->full_name);
     }
 
     public function testResendUserConfirmationEmail()
@@ -71,39 +71,39 @@ class UserRouteTest extends BrowserKitTestCase
 
         Notification::fake();
         $this->actingAs($this->admin)
-             ->visit('/admin/access/user')
-             ->visit('/admin/access/user/'.$this->user->id.'/account/confirm/resend')
-             ->seePageIs('/admin/access/user')
-             ->see('A new confirmation e-mail has been sent to the address on file.');
+            ->visit('/admin/access/user')
+            ->visit('/admin/access/user/'.$this->user->id.'/account/confirm/resend')
+            ->seePageIs('/admin/access/user')
+            ->see('A new confirmation e-mail has been sent to the address on file.');
         Notification::assertSentTo($this->user, UserNeedsConfirmation::class);
     }
 
     public function testLoginAsUser()
     {
         $this->actingAs($this->admin)
-             ->visit('/admin/access/user/'.$this->user->id.'/login-as')
-             ->seePageIs('/dashboard')
-             ->see('You are currently logged in as '.$this->user->full_name.'.')
-             ->see($this->admin->full_name)
-             ->assertTrue(access()->id() == $this->user->id);
+            ->visit('/admin/access/user/'.$this->user->id.'/login-as')
+            ->seePageIs('/dashboard')
+            ->see('You are currently logged in as '.$this->user->full_name.'.')
+            ->see($this->admin->full_name)
+            ->assertTrue(access()->id() == $this->user->id);
     }
 
     public function testCantLoginAsSelf()
     {
         $this->actingAs($this->admin)
-             ->visit('/admin/access/user/'.$this->admin->id.'/login-as')
-             ->see('Do not try to login as yourself.');
+            ->visit('/admin/access/user/'.$this->admin->id.'/login-as')
+            ->see('Do not try to login as yourself.');
     }
 
     public function testLogoutAsUser()
     {
         $this->actingAs($this->admin)
-             ->visit('/admin/access/user/'.$this->user->id.'/login-as')
-             ->seePageIs('/dashboard')
-             ->see('You are currently logged in as '.$this->user->full_name.'.')
-             ->click('Re-Login as '.$this->admin->full_name)
-             ->seePageIs('/admin/access/user')
-             ->assertTrue(access()->id() == $this->admin->id);
+            ->visit('/admin/access/user/'.$this->user->id.'/login-as')
+            ->seePageIs('/dashboard')
+            ->see('You are currently logged in as '.$this->user->full_name.'.')
+            ->click('Re-Login as '.$this->admin->full_name)
+            ->seePageIs('/admin/access/user')
+            ->assertTrue(access()->id() == $this->admin->id);
     }
 
     public function testDeactivateReactivateUser()
@@ -112,14 +112,14 @@ class UserRouteTest extends BrowserKitTestCase
         Event::fake();
 
         $this->actingAs($this->admin)
-             ->visit('/admin/access/user/'.$this->user->id.'/mark/0')
-             ->seePageIs('/admin/access/user/deactivated')
-             ->see('The user was successfully updated.')
-             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'status' => 0])
-             ->visit('/admin/access/user/'.$this->user->id.'/mark/1')
-             ->seePageIs('/admin/access/user')
-             ->see('The user was successfully updated.')
-             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'status' => 1]);
+            ->visit('/admin/access/user/'.$this->user->id.'/mark/0')
+            ->seePageIs('/admin/access/user/deactivated')
+            ->see('The user was successfully updated.')
+            ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'status' => 0])
+            ->visit('/admin/access/user/'.$this->user->id.'/mark/1')
+            ->seePageIs('/admin/access/user')
+            ->see('The user was successfully updated.')
+            ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'status' => 1]);
 
         Event::assertDispatched(UserDeactivated::class);
         Event::assertDispatched(UserReactivated::class);
@@ -134,11 +134,11 @@ class UserRouteTest extends BrowserKitTestCase
         $this->user->save();
 
         $this->actingAs($this->admin)
-             ->notSeeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null])
-             ->visit('/admin/access/user/'.$this->user->id.'/restore')
-             ->seePageIs('/admin/access/user')
-             ->see('The user was successfully restored.')
-             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null]);
+            ->notSeeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null])
+            ->visit('/admin/access/user/'.$this->user->id.'/restore')
+            ->seePageIs('/admin/access/user')
+            ->see('The user was successfully restored.')
+            ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null]);
 
         Event::assertDispatched(UserRestored::class);
     }
@@ -146,12 +146,12 @@ class UserRouteTest extends BrowserKitTestCase
     public function testUserIsDeletedBeforeBeingRestored()
     {
         $this->actingAs($this->admin)
-             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null])
-             ->visit('/admin/access/user')
-             ->visit('/admin/access/user/'.$this->user->id.'/restore')
-             ->seePageIs('/admin/access/user')
-             ->see('This user is not deleted so it can not be restored.')
-             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null]);
+            ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null])
+            ->visit('/admin/access/user')
+            ->visit('/admin/access/user/'.$this->user->id.'/restore')
+            ->seePageIs('/admin/access/user')
+            ->see('This user is not deleted so it can not be restored.')
+            ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null]);
     }
 
     public function testPermanentlyDeleteUser()
@@ -160,12 +160,12 @@ class UserRouteTest extends BrowserKitTestCase
         Event::fake();
 
         $this->actingAs($this->admin)
-             ->delete('/admin/access/user/'.$this->user->id)
-             ->notSeeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null])
-             ->visit('/admin/access/user/'.$this->user->id.'/delete')
-             ->seePageIs('/admin/access/user/deleted')
-             ->see('The user was deleted permanently.')
-             ->notSeeInDatabase(config('access.users_table'), ['id' => $this->user->id]);
+            ->delete('/admin/access/user/'.$this->user->id)
+            ->notSeeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null])
+            ->visit('/admin/access/user/'.$this->user->id.'/delete')
+            ->seePageIs('/admin/access/user/deleted')
+            ->see('The user was deleted permanently.')
+            ->notSeeInDatabase(config('access.users_table'), ['id' => $this->user->id]);
 
         Event::assertDispatched(UserPermanentlyDeleted::class);
     }
@@ -173,20 +173,20 @@ class UserRouteTest extends BrowserKitTestCase
     public function testUserIsDeletedBeforeBeingPermanentlyDeleted()
     {
         $this->actingAs($this->admin)
-             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null])
-             ->visit('/admin/access/user')
-             ->visit('/admin/access/user/'.$this->user->id.'/delete')
-             ->seePageIs('/admin/access/user')
-             ->see('This user must be deleted first before it can be destroyed permanently.')
-             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null]);
+            ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null])
+            ->visit('/admin/access/user')
+            ->visit('/admin/access/user/'.$this->user->id.'/delete')
+            ->seePageIs('/admin/access/user')
+            ->see('This user must be deleted first before it can be destroyed permanently.')
+            ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null]);
     }
 
     public function testCantNotDeactivateSelf()
     {
         $this->actingAs($this->admin)
-             ->visit('/admin/access/user')
-             ->visit('/admin/access/user/'.$this->admin->id.'/mark/0')
-             ->seePageIs('/admin/access/user')
-             ->see('You can not do that to yourself.');
+            ->visit('/admin/access/user')
+            ->visit('/admin/access/user/'.$this->admin->id.'/mark/0')
+            ->seePageIs('/admin/access/user')
+            ->see('You can not do that to yourself.');
     }
 }

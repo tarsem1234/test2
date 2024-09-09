@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use Database\TruncateTable;
-use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Seeder;
 
 /**
  * Class DatabaseSeeder.

@@ -21,15 +21,15 @@ class HistoryLogTest extends BrowserKitTestCase
 
         $this->seeInDatabase('history',
             [
-                'type_id'   => 1,
-                'user_id'   => $this->admin->id,
+                'type_id' => 1,
+                'user_id' => $this->admin->id,
                 'entity_id' => $this->user->id,
-                'icon'      => 'plus',
-                'class'     => 'bg-green',
-                'text'      => trans('history.backend.users.created').$this->user->name,
+                'icon' => 'plus',
+                'class' => 'bg-green',
+                'text' => trans('history.backend.users.created').$this->user->name,
             ])
-             ->visit('/admin/dashboard')
-             ->see('<strong>'.$this->admin->name.'</strong> '.trans('history.backend.users.created').$this->user->name);
+            ->visit('/admin/dashboard')
+            ->see('<strong>'.$this->admin->name.'</strong> '.trans('history.backend.users.created').$this->user->name);
     }
 
     public function testHistoryLogByTypeIdFunction()
@@ -46,14 +46,14 @@ class HistoryLogTest extends BrowserKitTestCase
 
         $this->seeInDatabase('history',
             [
-                'type_id'   => 1,
-                'user_id'   => $this->admin->id,
+                'type_id' => 1,
+                'user_id' => $this->admin->id,
                 'entity_id' => $this->user->id,
-                'icon'      => 'plus',
-                'class'     => 'bg-green',
-                'text'      => trans('history.backend.users.created').$this->user->name,
+                'icon' => 'plus',
+                'class' => 'bg-green',
+                'text' => trans('history.backend.users.created').$this->user->name,
             ])
-             ->visit('/admin/dashboard')
-             ->see('<strong>'.$this->admin->name.'</strong> '.trans('history.backend.users.created').$this->user->name);
+            ->visit('/admin/dashboard')
+            ->see('<strong>'.$this->admin->name.'</strong> '.trans('history.backend.users.created').$this->user->name);
     }
 }

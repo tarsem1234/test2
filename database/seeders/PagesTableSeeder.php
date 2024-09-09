@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class PagesTableSeeder extends Seeder
 {
-
     /**
      * Run the database seeds.
      *
@@ -21,14 +20,14 @@ class PagesTableSeeder extends Seeder
             [
                 'title' => 'About Us',
                 'slug' => 'about-us',
-                'content' => NULL,
-                'created_at' =>  '2018-09-07 12:44:23',
+                'content' => null,
+                'created_at' => '2018-09-07 12:44:23',
             ],
             [
                 'title' => 'Advertise',
                 'slug' => 'advertise',
-                'content' => NULL,
-                'created_at' =>  '2018-09-07 12:44:23',
+                'content' => null,
+                'created_at' => '2018-09-07 12:44:23',
             ],
             [
                 'title' => 'Help',
@@ -37,7 +36,7 @@ class PagesTableSeeder extends Seeder
                     <p>The pages must be clear and illustrative.</p>
                     <p>They should have a short, descriptive explanation of each topic that can be read quickly. Users who come to help pages are usually already confused, so they aren&rsquo;t inclined to read long blocks of text.</p>
                     <p>Following good scanning aids (such as bolding keywords) can increase readability.</p>',
-                'created_at' =>  '2018-09-07 12:44:23',
+                'created_at' => '2018-09-07 12:44:23',
             ],
             [
                 'title' => 'Privacy Policy',
@@ -103,7 +102,7 @@ class PagesTableSeeder extends Seeder
                     <p>Last Updated: This Privacy Policy was last updated on June 1, 2016</p>
 
                     <p>&nbsp;</p>',
-                'created_at' =>  '2018-09-07 12:44:23',
+                'created_at' => '2018-09-07 12:44:23',
             ],
             [
                 'title' => 'Term of Use & Limited Liability',
@@ -394,7 +393,7 @@ class PagesTableSeeder extends Seeder
                         <p>(b) Any dispute arising out of or relating to this contract, or the breach thereof, that cannot be resolved by mediation within 30 days shall be finally resolved by arbitration administered by the American Arbitration Association under its Commercial Arbitration Rules, and judgment upon the award rendered by the arbitrators may be entered in any court having jurisdiction. The arbitration will be conducted in the English language in the City of Williamsburg, Virginia, in accordance with the United States Arbitration Act. There shall be [up to] three arbitrator(s), named in accordance with such rules.&nbsp;The award of the arbitrator(s) shall be accompanied by a statement of the reasons upon which the award is based.</p>
 
                         <p>(c) The arbitrator(s) shall decide the dispute in accordance with the substantive law of the state of Delaware [state of incorporation].</p>',
-                'created_at' =>  '2018-09-07 12:44:23',
+                'created_at' => '2018-09-07 12:44:23',
             ],
             [
                 'title' => 'E-Sign Act Disclosure',
@@ -402,7 +401,7 @@ class PagesTableSeeder extends Seeder
                 'content' => '<h3><strong>E-SIGN ACT DISCLOSURE</strong></h3>
 
                         <p>The Electronic Signatures in Global and National Commerce Act (ESIGN, Pub.L. 106-229, 14 Stat. 464, enacted June 30, 2000, 15 U.S.C. ch.96) is a United States federal law passed by the U.S. Congress to facilitate the use of electronic records and signatures in interstate and foreign commerce by ensuring the validity and legal effect of contracts entered into electronically.</p>',
-                'created_at' =>  '2018-09-07 12:44:23',
+                'created_at' => '2018-09-07 12:44:23',
             ],
             [
                 'title' => 'Corporate',
@@ -414,9 +413,8 @@ class PagesTableSeeder extends Seeder
 
                             <h3><br />
                             <img src="http://freezylist.lusites.xyz/storage/2018-09-14-08-20-26/mnzvq4HHNaNJIizFl1zGfEiW9y8WWPXaCLNl1rKC.jpeg" /></h3>',
-                'created_at' =>  '2018-09-07 12:44:23',
+                'created_at' => '2018-09-07 12:44:23',
             ],
         ]);
     }
-
 }

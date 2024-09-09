@@ -1,16 +1,16 @@
 <?php
 
-use Tests\BrowserKitTestCase;
-use App\Models\Access\User\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserLoggedIn;
-use App\Mail\Frontend\Contact\SendContact;
 use App\Events\Frontend\Auth\UserRegistered;
-use Illuminate\Support\Facades\Notification;
+use App\Mail\Frontend\Contact\SendContact;
+use App\Models\Access\User\User;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 use App\Notifications\Frontend\Auth\UserNeedsPasswordReset;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
+use Tests\BrowserKitTestCase;
 
 /**
  * Class LoggedOutFormTest.
@@ -23,16 +23,16 @@ class LoggedOutFormTest extends BrowserKitTestCase
     public function testRegistrationRequiredFields()
     {
         $this->visit('/register')
-             ->type('', 'first_name')
-             ->type('', 'last_name')
-             ->type('', 'email')
-             ->type('', 'password')
-             ->press('Register')
-             ->seePageIs('/register')
-             ->see('The first name field is required.')
-             ->see('The last name field is required.')
-             ->see('The email field is required.')
-             ->see('The password field is required.');
+            ->type('', 'first_name')
+            ->type('', 'last_name')
+            ->type('', 'email')
+            ->type('', 'password')
+            ->press('Register')
+            ->seePageIs('/register')
+            ->see('The first name field is required.')
+            ->see('The last name field is required.')
+            ->see('The email field is required.')
+            ->see('The password field is required.');
     }
 
     /**
@@ -56,21 +56,21 @@ class LoggedOutFormTest extends BrowserKitTestCase
         $password = $faker->password(8);
 
         $this->visit('/register')
-             ->type($firstName, 'first_name')
-             ->type($lastName, 'last_name')
-             ->type($email, 'email')
-             ->type($password, 'password')
-             ->type($password, 'password_confirmation')
-             ->press('Register')
-             ->see('Dashboard')
-             ->seePageIs('/')
-             ->seeInDatabase(config('access.users_table'),
-                 [
-                     'email' => $email,
-                     'first_name' => $firstName,
-                     'last_name' => $lastName,
-                     'confirmed' => 1,
-                 ]);
+            ->type($firstName, 'first_name')
+            ->type($lastName, 'last_name')
+            ->type($email, 'email')
+            ->type($password, 'password')
+            ->type($password, 'password_confirmation')
+            ->press('Register')
+            ->see('Dashboard')
+            ->seePageIs('/')
+            ->seeInDatabase(config('access.users_table'),
+                [
+                    'email' => $email,
+                    'first_name' => $firstName,
+                    'last_name' => $lastName,
+                    'confirmed' => 1,
+                ]);
 
         Event::assertDispatched(UserRegistered::class);
     }
@@ -170,12 +170,12 @@ class LoggedOutFormTest extends BrowserKitTestCase
     public function testLoginRequiredFields()
     {
         $this->visit('/login')
-             ->type('', 'email')
-             ->type('', 'password')
-             ->press('Login')
-             ->seePageIs('/login')
-             ->see('The email field is required.')
-             ->see('The password field is required.');
+            ->type('', 'email')
+            ->type('', 'password')
+            ->press('Login')
+            ->seePageIs('/login')
+            ->see('The email field is required.')
+            ->see('The password field is required.');
     }
 
     /**
@@ -191,22 +191,22 @@ class LoggedOutFormTest extends BrowserKitTestCase
 
         //User Test
         $this->visit('/login')
-             ->type($this->user->email, 'email')
-             ->type('1234', 'password')
-             ->press('Login')
-             ->seePageIs('/dashboard')
-             ->see($this->user->email);
+            ->type($this->user->email, 'email')
+            ->type('1234', 'password')
+            ->press('Login')
+            ->seePageIs('/dashboard')
+            ->see($this->user->email);
 
         Auth::logout();
 
         //Admin Test
         $this->visit('/login')
-             ->type($this->admin->email, 'email')
-             ->type('1234', 'password')
-             ->press('Login')
-             ->seePageIs('/admin/dashboard')
-             ->see($this->admin->name)
-             ->see('Access Management');
+            ->type($this->admin->email, 'email')
+            ->type('1234', 'password')
+            ->press('Login')
+            ->seePageIs('/admin/dashboard')
+            ->see($this->admin->name)
+            ->see('Access Management');
 
         Event::assertDispatched(UserLoggedIn::class);
     }
@@ -217,10 +217,10 @@ class LoggedOutFormTest extends BrowserKitTestCase
     public function testForgotPasswordRequiredFields()
     {
         $this->visit('/password/reset')
-             ->type('', 'email')
-             ->press('Send Password Reset Link')
-             ->seePageIs('/password/reset')
-             ->see('The email field is required.');
+            ->type('', 'email')
+            ->press('Send Password Reset Link')
+            ->seePageIs('/password/reset')
+            ->see('The email field is required.');
     }
 
     /**
@@ -232,11 +232,11 @@ class LoggedOutFormTest extends BrowserKitTestCase
         Notification::fake();
 
         $this->visit('password/reset')
-             ->type($this->user->email, 'email')
-             ->press('Send Password Reset Link')
-             ->seePageIs('password/reset')
-             ->see('We have e-mailed your password reset link!')
-             ->seeInDatabase('password_resets', ['email' => $this->user->email]);
+            ->type($this->user->email, 'email')
+            ->press('Send Password Reset Link')
+            ->seePageIs('password/reset')
+            ->see('We have e-mailed your password reset link!')
+            ->seeInDatabase('password_resets', ['email' => $this->user->email]);
 
         Notification::assertSentTo([$this->user],
             UserNeedsPasswordReset::class);
@@ -250,11 +250,11 @@ class LoggedOutFormTest extends BrowserKitTestCase
         $token = $this->app->make('auth.password.broker')->createToken($this->user);
 
         $this->visit('password/reset/'.$token)
-             ->see($this->user->email)
-             ->type('', 'password')
-             ->type('', 'password_confirmation')
-             ->press('Reset Password')
-             ->see('The password field is required.');
+            ->see($this->user->email)
+            ->type('', 'password')
+            ->type('', 'password_confirmation')
+            ->press('Reset Password')
+            ->see('The password field is required.');
     }
 
     /**
@@ -265,12 +265,12 @@ class LoggedOutFormTest extends BrowserKitTestCase
         $token = $this->app->make('auth.password.broker')->createToken($this->user);
 
         $this->visit('password/reset/'.$token)
-             ->see($this->user->email)
-             ->type('12345678', 'password')
-             ->type('12345678', 'password_confirmation')
-             ->press('Reset Password')
-             ->seePageIs('/dashboard')
-             ->see($this->user->name);
+            ->see($this->user->email)
+            ->type('12345678', 'password')
+            ->type('12345678', 'password_confirmation')
+            ->press('Reset Password')
+            ->seePageIs('/dashboard')
+            ->see($this->user->name);
     }
 
     /**
@@ -285,11 +285,11 @@ class LoggedOutFormTest extends BrowserKitTestCase
         $unconfirmed->attachRole(3); //User
 
         $this->visit('/login')
-             ->type($unconfirmed->email, 'email')
-             ->type('secret', 'password')
-             ->press('Login')
-             ->seePageIs('/login')
-             ->see('Your account is not confirmed.');
+            ->type($unconfirmed->email, 'email')
+            ->type('secret', 'password')
+            ->press('Login')
+            ->seePageIs('/login')
+            ->see('Your account is not confirmed.');
     }
 
     /**
@@ -321,11 +321,11 @@ class LoggedOutFormTest extends BrowserKitTestCase
         $inactive->attachRole(3); //User
 
         $this->visit('/login')
-             ->type($inactive->email, 'email')
-             ->type('secret', 'password')
-             ->press('Login')
-             ->seePageIs('/login')
-             ->see('Your account has been deactivated.');
+            ->type($inactive->email, 'email')
+            ->type('secret', 'password')
+            ->press('Login')
+            ->seePageIs('/login')
+            ->see('Your account has been deactivated.');
     }
 
     /**
@@ -334,11 +334,11 @@ class LoggedOutFormTest extends BrowserKitTestCase
     public function testInvalidLoginCredentials()
     {
         $this->visit('/login')
-             ->type($this->user->email, 'email')
-             ->type('9s8gy8s9diguh4iev', 'password')
-             ->press('Login')
-             ->seePageIs('/login')
-             ->see('These credentials do not match our records.');
+            ->type($this->user->email, 'email')
+            ->type('9s8gy8s9diguh4iev', 'password')
+            ->press('Login')
+            ->seePageIs('/login')
+            ->see('These credentials do not match our records.');
     }
 
     /**

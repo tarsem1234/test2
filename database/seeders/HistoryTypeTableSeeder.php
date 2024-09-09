@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use Database\TruncateTable;
 use Carbon\Carbon as Carbon;
-use Illuminate\Database\Seeder;
 use Database\DisableForeignKeys;
+use Database\TruncateTable;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -27,12 +27,12 @@ class HistoryTypeTableSeeder extends Seeder
 
         $types = [
             [
-                'name'       => 'User',
+                'name' => 'User',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name'       => 'Role',
+                'name' => 'Role',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

@@ -60,11 +60,11 @@ class HistoryRenderTypeTest extends BrowserKitTestCase
             ->log();
 
         $this->visit('/admin/access/user')
-             ->see('<strong>'.$this->admin->name.'</strong> created user '.$this->user->name)
-             ->see('<strong>'.$this->admin->name.'</strong> updated user '.$this->user->name)
-             ->see('<strong>'.$this->admin->name.'</strong> deleted user '.$this->user->name)
-             ->dontSee('<strong>'.$this->admin->name.'</strong> created role '.$this->adminRole->name)
-             ->dontSee('<strong>'.$this->admin->name.'</strong> updated role '.$this->adminRole->name)
-             ->dontSee('<strong>'.$this->admin->name.'</strong> deleted role '.$this->adminRole->name);
+            ->see('<strong>'.$this->admin->name.'</strong> created user '.$this->user->name)
+            ->see('<strong>'.$this->admin->name.'</strong> updated user '.$this->user->name)
+            ->see('<strong>'.$this->admin->name.'</strong> deleted user '.$this->user->name)
+            ->dontSee('<strong>'.$this->admin->name.'</strong> created role '.$this->adminRole->name)
+            ->dontSee('<strong>'.$this->admin->name.'</strong> updated role '.$this->adminRole->name)
+            ->dontSee('<strong>'.$this->admin->name.'</strong> deleted role '.$this->adminRole->name);
     }
 }

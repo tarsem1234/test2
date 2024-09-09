@@ -1,7 +1,7 @@
 <?php
 
-use Tests\BrowserKitTestCase;
 use App\Models\Access\User\User;
+use Tests\BrowserKitTestCase;
 
 /**
  * Class HistoryRenderEntityTest.
@@ -63,11 +63,11 @@ class HistoryRenderEntityTest extends BrowserKitTestCase
             ->log();
 
         $this->visit('/admin/access/user/'.$this->user->id)
-             ->see('<strong>'.$this->admin->name.'</strong> created user '.$this->user->name)
-             ->see('<strong>'.$this->admin->name.'</strong> updated user '.$this->user->name)
-             ->see('<strong>'.$this->admin->name.'</strong> deleted user '.$this->user->name)
-             ->dontSee('<strong>'.$this->admin->name.'</strong> created user '.$test_user->name)
-             ->dontSee('<strong>'.$this->admin->name.'</strong> updated user '.$test_user->name)
-             ->dontSee('<strong>'.$this->admin->name.'</strong> deleted user '.$test_user->name);
+            ->see('<strong>'.$this->admin->name.'</strong> created user '.$this->user->name)
+            ->see('<strong>'.$this->admin->name.'</strong> updated user '.$this->user->name)
+            ->see('<strong>'.$this->admin->name.'</strong> deleted user '.$this->user->name)
+            ->dontSee('<strong>'.$this->admin->name.'</strong> created user '.$test_user->name)
+            ->dontSee('<strong>'.$this->admin->name.'</strong> updated user '.$test_user->name)
+            ->dontSee('<strong>'.$this->admin->name.'</strong> deleted user '.$test_user->name);
     }
 }

@@ -20,8 +20,8 @@ class RoleRouteTest extends BrowserKitTestCase
     public function testEditRole()
     {
         $this->actingAs($this->admin)
-             ->visit('/admin/access/role/'.$this->adminRole->id.'/edit')
-             ->see('Edit Role')
-             ->see($this->adminRole->name);
+            ->visit('/admin/access/role/'.$this->adminRole->id.'/edit')
+            ->see('Edit Role')
+            ->see($this->adminRole->name);
     }
 }

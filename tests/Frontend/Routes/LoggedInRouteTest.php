@@ -1,8 +1,8 @@
 <?php
 
-use Tests\BrowserKitTestCase;
-use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserLoggedOut;
+use Illuminate\Support\Facades\Event;
+use Tests\BrowserKitTestCase;
 
 /**
  * Class LoggedInRouteTest.
@@ -23,10 +23,10 @@ class LoggedInRouteTest extends BrowserKitTestCase
     public function testDashboardPage()
     {
         $this->actingAs($this->user)
-             ->visit('/dashboard')
-             ->see($this->user->email)
-             ->see('Joined')
-             ->dontSee('Administration');
+            ->visit('/dashboard')
+            ->see($this->user->email)
+            ->see('Joined')
+            ->dontSee('Administration');
     }
 
     /**
@@ -35,12 +35,12 @@ class LoggedInRouteTest extends BrowserKitTestCase
     public function testAccountPage()
     {
         $this->actingAs($this->user)
-             ->visit('/account')
-             ->see('My Account')
-             ->see('Profile')
-             ->see('Update Information')
-             ->see('Change Password')
-             ->dontSee('Administration');
+            ->visit('/account')
+            ->see('My Account')
+            ->see('Profile')
+            ->see('Update Information')
+            ->see('Change Password')
+            ->dontSee('Administration');
     }
 
     /**

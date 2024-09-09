@@ -103,26 +103,24 @@ Route::get('property/get-cities', [PropertyController::class, 'getCities'])->nam
  */
 Route::middleware('auth')->group(function () {
     Route::name('user.')->group(function () {
-	/*
-	 * User Dashboard Specific
-	 */
-	Route::get('dashboard', [User\DashboardController::class, 'index'])->name('dashboard');
+        /*
+         * User Dashboard Specific
+         */
+        Route::get('dashboard', [User\DashboardController::class, 'index'])->name('dashboard');
 
+        /*
+         * User Account Specific
+         */
+        Route::get('account', [User\AccountController::class, 'index'])->name('account');
 
-	/*
-	 * User Account Specific
-	 */
-	Route::get('account', [User\AccountController::class, 'index'])->name('account');
+        /*
+         * User Profile Specific
+         */
+        Route::patch('profile/update', [User\ProfileController::class, 'update'])->name('profile.update');
 
-	/*
-	 * User Profile Specific
-	 */
-	Route::patch('profile/update', [User\ProfileController::class, 'update'])->name('profile.update');
+        Route::post('blog-comment', [User\CommentController::class, 'storeComment'])->name('storeComment');
 
-	Route::post('blog-comment', [User\CommentController::class, 'storeComment'])->name('storeComment');
-
-
-	Route::get('forum/loadMore/{count}', [User\ForumController::class, 'loadMoreForums'])->name('forums.loadMore');
+        Route::get('forum/loadMore/{count}', [User\ForumController::class, 'loadMoreForums'])->name('forums.loadMore');
     });
     //sent message from property details page
     Route::post('contact-seller-message', [PropertyController::class, 'contactMessage'])->name('contactMessage');
@@ -154,7 +152,7 @@ Route::middleware('auth')->group(function () {
     Route::get('vacation/edit/{id?}', [PropertyController::class, 'vacationCreate'])->name('vacationEdit');
     Route::post('vacation/store', [PropertyController::class, 'propertyStore'])->name('vacationStore');
 
-//    ajax for storing property image
+    //    ajax for storing property image
     Route::get('property-image', [PropertyController::class, 'propertyImageStore'])->name('propertyImageStore');
 
     //Edit Profile
@@ -185,232 +183,222 @@ Route::middleware('auth')->group(function () {
     Route::get('document-lead-based-paint-hazards', [MyDocumentsController::class, 'documentLeadBasedPaintHazards'])->name('documentLeadBasedPaintHazards');
     Route::get('document-lead-based-paint-hazards-rent', [MyDocumentsController::class, 'documentLeadBasedPaintHazardsRent'])->name('documentLeadBasedPaintHazardsRent');
     Route::middleware('checkOfferValues')->group(function () {
-	// my documents
-	Route::get('document-disclosure', [MyDocumentsController::class, 'documentDisclosure'])->name('documentDisclosure');
-	Route::get('document-sale-agreement', [MyDocumentsController::class, 'documentSaleAgreement'])->name('documentSaleAgreement');
-	Route::get('document-advisory-to-buyers-and-sellers', [MyDocumentsController::class, 'documentAdvisoryToBuyersAndSellers'])->name('documentAdvisoryToBuyersAndSellers');
-	Route::get('document-Va-Fha-loanAddendum-by-buyer', [MyDocumentsController::class, 'documentVaFhaloanAddendumByBuyer'])->name('documentVaFhaloanAddendumByBuyer');
-	Route::get('document-post-closing', [MyDocumentsController::class, 'documentPostClosing'])->name('documentPostClosing');
+        // my documents
+        Route::get('document-disclosure', [MyDocumentsController::class, 'documentDisclosure'])->name('documentDisclosure');
+        Route::get('document-sale-agreement', [MyDocumentsController::class, 'documentSaleAgreement'])->name('documentSaleAgreement');
+        Route::get('document-advisory-to-buyers-and-sellers', [MyDocumentsController::class, 'documentAdvisoryToBuyersAndSellers'])->name('documentAdvisoryToBuyersAndSellers');
+        Route::get('document-Va-Fha-loanAddendum-by-buyer', [MyDocumentsController::class, 'documentVaFhaloanAddendumByBuyer'])->name('documentVaFhaloanAddendumByBuyer');
+        Route::get('document-post-closing', [MyDocumentsController::class, 'documentPostClosing'])->name('documentPostClosing');
     });
     Route::get('document-rent-agreement', [MyDocumentsController::class, 'documentRentAgreement'])->name('documentRentAgreement');
-	// independent from contract tools
-	Route::middleware('checkSignatureValues')->group(function () {
-	    Route::get('lead-based-paint-hazards/{id?}', [ContractTools\ContractToolSellerController::class, 'leadBasedPaintHazards'])->name('leadBasedPaintHazards');
-	    Route::get('lead-based-paint-hazards-buyer/{id?}', [ContractTools\ContractToolBuyerController::class, 'leadBasedPaintHazardsBuyer'])->name('leadBasedPaintHazardsBuyer');
-	});
-	Route::get('disclosure-by-seller-update/{id?}/{page?}', [ContractTools\ContractToolSellerController::class, 'disclosureBySellerUpdate'])->name('disclosureBySellerUpdate');
-	//need
-	Route::get('lead-based-paint-hazards-rent/{id?}', [ContractTools\ContractToolLandlordController::class, 'leadBasedPaintHazardsRent'])->name('leadBasedPaintHazardsRent');
-	Route::post('save-lead-based-paint-hazards/{id?}', [ContractTools\ContractToolSellerController::class, 'saveLeadBasedPaintHazards'])->name('saveLeadBasedPaintHazards');
-	Route::post('save-lead-based-paint-hazards-buyer/{id?}', [ContractTools\ContractToolBuyerController::class, 'saveLeadBasedPaintHazardsBuyer'])->name('saveLeadBasedPaintHazardsBuyer');
+    // independent from contract tools
+    Route::middleware('checkSignatureValues')->group(function () {
+        Route::get('lead-based-paint-hazards/{id?}', [ContractTools\ContractToolSellerController::class, 'leadBasedPaintHazards'])->name('leadBasedPaintHazards');
+        Route::get('lead-based-paint-hazards-buyer/{id?}', [ContractTools\ContractToolBuyerController::class, 'leadBasedPaintHazardsBuyer'])->name('leadBasedPaintHazardsBuyer');
+    });
+    Route::get('disclosure-by-seller-update/{id?}/{page?}', [ContractTools\ContractToolSellerController::class, 'disclosureBySellerUpdate'])->name('disclosureBySellerUpdate');
+    //need
+    Route::get('lead-based-paint-hazards-rent/{id?}', [ContractTools\ContractToolLandlordController::class, 'leadBasedPaintHazardsRent'])->name('leadBasedPaintHazardsRent');
+    Route::post('save-lead-based-paint-hazards/{id?}', [ContractTools\ContractToolSellerController::class, 'saveLeadBasedPaintHazards'])->name('saveLeadBasedPaintHazards');
+    Route::post('save-lead-based-paint-hazards-buyer/{id?}', [ContractTools\ContractToolBuyerController::class, 'saveLeadBasedPaintHazardsBuyer'])->name('saveLeadBasedPaintHazardsBuyer');
 
-
-
-	Route::post('save-lead-based-paint-hazards-landlord/{id?}', [ContractTools\ContractToolLandlordController::class, 'saveLeadBasedPaintHazardsLandlord'])->name('saveLeadBasedPaintHazardsLandlord');
-	Route::post('save-lead-based-paint-hazards-tenant/{id?}', [ContractTools\ContractToolTenantController::class, 'saveLeadBasedPaintHazardsTenant'])->name('saveLeadBasedPaintHazardsTenant');
+    Route::post('save-lead-based-paint-hazards-landlord/{id?}', [ContractTools\ContractToolLandlordController::class, 'saveLeadBasedPaintHazardsLandlord'])->name('saveLeadBasedPaintHazardsLandlord');
+    Route::post('save-lead-based-paint-hazards-tenant/{id?}', [ContractTools\ContractToolTenantController::class, 'saveLeadBasedPaintHazardsTenant'])->name('saveLeadBasedPaintHazardsTenant');
     Route::middleware('OnlyUsers')->group(function () {
-	    Route::post('save-seller-property-condition-disclosure/{id?}', [ContractTools\ContractToolSellerController::class, 'saveSellerPropertyConditionDisclosure'])->name('saveSellerPropertyConditionDisclosure');
+        Route::post('save-seller-property-condition-disclosure/{id?}', [ContractTools\ContractToolSellerController::class, 'saveSellerPropertyConditionDisclosure'])->name('saveSellerPropertyConditionDisclosure');
 
-	    // Contract Tools Sale    //Seller
-	    //check Property session through (middleware)
-	    Route::middleware('checkPropertyId')->group(function () {
+        // Contract Tools Sale    //Seller
+        //check Property session through (middleware)
+        Route::middleware('checkPropertyId')->group(function () {
 
-		//Review Offer from Buyer Side
-		//sign document
-		Route::get('sd-thank-you-seller-for-pd', [ContractTools\ContractToolSellerController::class, 'sdThankYouSellerForPd'])->name('sdThankYouSellerForPd');
+            //Review Offer from Buyer Side
+            //sign document
+            Route::get('sd-thank-you-seller-for-pd', [ContractTools\ContractToolSellerController::class, 'sdThankYouSellerForPd'])->name('sdThankYouSellerForPd');
 
-		Route::post('save-seller-questionnaire/{id?}', [ContractTools\ContractToolSellerController::class, 'saveSellerQuestionnaire'])->name('saveSellerQuestionnaire');
-		Route::middleware('checkSignatureValues')->group(function () {
-		    Route::get('disclosure-by-buyer-update', [ContractTools\ContractToolBuyerController::class, 'disclosureByBuyerUpdate'])->name('disclosureByBuyerUpdate');
+            Route::post('save-seller-questionnaire/{id?}', [ContractTools\ContractToolSellerController::class, 'saveSellerQuestionnaire'])->name('saveSellerQuestionnaire');
+            Route::middleware('checkSignatureValues')->group(function () {
+                Route::get('disclosure-by-buyer-update', [ContractTools\ContractToolBuyerController::class, 'disclosureByBuyerUpdate'])->name('disclosureByBuyerUpdate');
 
-		    //need
-		    Route::get('disclosures-rent-contract-tool-review-tenant', [ContractTools\ContractToolTenantController::class, 'disclosuresRentContractToolReviewTenant'])->name('disclosuresRentContractToolReviewTenant');
-		    //need
-		    Route::post('thank-you-for-review-summary-key-terms', [ContractTools\ContractToolTenantController::class, 'thankYouForReviewSummaryKeyTerms'])->name('thankYouForReviewSummaryKeyTerms');
-		    Route::get('thank-you-to-seller-for-answer', [ContractTools\ContractToolSellerController::class, 'thankYouToSellerForAnswer'])->name('thankYouToSellerForAnswer');
-		});
-		Route::post('sd-thank-you-for-review-summary-key-terms-tenant', [ContractTools\ContractToolTenantController::class, 'sdThankyouForReviewSummaryKeyTermsTenant'])->name('sdThankyouForReviewSummaryKeyTermsTenant');
-	    });
-	    //check Offer session through (middleware)
-	    Route::middleware('checkOfferValues')->group(function () {
-		Route::middleware('checkDeletedUserOffer')->group(function () {
-		    Route::middleware('checkSignatureValues')->group(function () {
-			Route::get('questions-set-for-seller/{id?}', [ContractTools\ContractToolSellerController::class, 'questionsSetForSeller'])->name('questionsSetForSeller');
-			Route::get('thank-you-lead-based/{value?}', [ContractTools\ContractToolSellerController::class, 'thankYouLeadBased'])->name('thankYouLeadBased');
-			Route::get('seller-property-condition-disclosure', [ContractTools\ContractToolSellerController::class, 'sellerPropertyConditionDisclosure'])->name('sellerPropertyConditionDisclosure');
-			Route::get('thankyou-pd', [ContractTools\ContractToolSellerController::class, 'thankyouPd'])->name('thankyouPd');
-			Route::get('update-sale-agreement-byseller-contract', [ContractTools\ContractToolSellerController::class, 'updateSaleAgreementBysellerContract'])->name('updateSaleAgreementBysellerContract');
-			Route::get('question-set-for-buyer', [ContractTools\ContractToolBuyerController::class, 'questionSetForBuyer'])->name('questionSetForBuyer');
-			Route::get('thank-you-to-buyer-for-answer', [ContractTools\ContractToolBuyerController::class, 'thankYouToBuyerForAnswer'])->name('thankYouToBuyerForAnswer');
-			Route::get('thank-you-accept-offer', [ContractTools\ContractToolBuyerController::class, 'thankYouAcceptOffer'])->name('thankYouAcceptOffer');
-			Route::get('advisory-to-buyers-and-sellers', [ContractTools\ContractToolBuyerController::class, 'advisoryToBuyersAndSellers'])->name('advisoryToBuyersAndSellers');
-			Route::get('advisory-to-buyers-and-sellers-thank-you-buyer', [ContractTools\ContractToolBuyerController::class, 'advisoryToBuyersAndSellersThankYouBuyer'])->name('advisoryToBuyersAndSellersThankYouBuyer');
-			Route::get('thank-you-lead-based-buyer', [ContractTools\ContractToolBuyerController::class, 'thankYouLeadBasedBuyer'])->name('thankYouLeadBasedBuyer');
-			Route::get('thankyou-pd-buyer', [ContractTools\ContractToolBuyerController::class, 'thankyouPdBuyer'])->name('thankyouPdBuyer');
-			Route::get('VA-FHA-loan-addendum-by-buyer', [ContractTools\ContractToolBuyerController::class, 'vaFhaloanAddendumByBuyer'])->name('vaFhaloanAddendumByBuyer');
-			Route::get('va-fha-thank-you-for-buyer', [ContractTools\ContractToolBuyerController::class, 'checkPostClosing'])->name('checkPostClosing');
-			Route::get('update-sale-agreement-by-buyer', [ContractTools\ContractToolBuyerController::class, 'updateSaleAgreementByBuyer'])->name('updateSaleAgreementByBuyer');
-			Route::get('thankyou-purchase-agreement-by-buyer', [ContractTools\ContractToolBuyerController::class, 'thankyouPurchaseAgreementByBuyer'])->name('thankyouPurchaseAgreementByBuyer');
-		    });
+                //need
+                Route::get('disclosures-rent-contract-tool-review-tenant', [ContractTools\ContractToolTenantController::class, 'disclosuresRentContractToolReviewTenant'])->name('disclosuresRentContractToolReviewTenant');
+                //need
+                Route::post('thank-you-for-review-summary-key-terms', [ContractTools\ContractToolTenantController::class, 'thankYouForReviewSummaryKeyTerms'])->name('thankYouForReviewSummaryKeyTerms');
+                Route::get('thank-you-to-seller-for-answer', [ContractTools\ContractToolSellerController::class, 'thankYouToSellerForAnswer'])->name('thankYouToSellerForAnswer');
+            });
+            Route::post('sd-thank-you-for-review-summary-key-terms-tenant', [ContractTools\ContractToolTenantController::class, 'sdThankyouForReviewSummaryKeyTermsTenant'])->name('sdThankyouForReviewSummaryKeyTermsTenant');
+        });
+        //check Offer session through (middleware)
+        Route::middleware('checkOfferValues')->group(function () {
+            Route::middleware('checkDeletedUserOffer')->group(function () {
+                Route::middleware('checkSignatureValues')->group(function () {
+                    Route::get('questions-set-for-seller/{id?}', [ContractTools\ContractToolSellerController::class, 'questionsSetForSeller'])->name('questionsSetForSeller');
+                    Route::get('thank-you-lead-based/{value?}', [ContractTools\ContractToolSellerController::class, 'thankYouLeadBased'])->name('thankYouLeadBased');
+                    Route::get('seller-property-condition-disclosure', [ContractTools\ContractToolSellerController::class, 'sellerPropertyConditionDisclosure'])->name('sellerPropertyConditionDisclosure');
+                    Route::get('thankyou-pd', [ContractTools\ContractToolSellerController::class, 'thankyouPd'])->name('thankyouPd');
+                    Route::get('update-sale-agreement-byseller-contract', [ContractTools\ContractToolSellerController::class, 'updateSaleAgreementBysellerContract'])->name('updateSaleAgreementBysellerContract');
+                    Route::get('question-set-for-buyer', [ContractTools\ContractToolBuyerController::class, 'questionSetForBuyer'])->name('questionSetForBuyer');
+                    Route::get('thank-you-to-buyer-for-answer', [ContractTools\ContractToolBuyerController::class, 'thankYouToBuyerForAnswer'])->name('thankYouToBuyerForAnswer');
+                    Route::get('thank-you-accept-offer', [ContractTools\ContractToolBuyerController::class, 'thankYouAcceptOffer'])->name('thankYouAcceptOffer');
+                    Route::get('advisory-to-buyers-and-sellers', [ContractTools\ContractToolBuyerController::class, 'advisoryToBuyersAndSellers'])->name('advisoryToBuyersAndSellers');
+                    Route::get('advisory-to-buyers-and-sellers-thank-you-buyer', [ContractTools\ContractToolBuyerController::class, 'advisoryToBuyersAndSellersThankYouBuyer'])->name('advisoryToBuyersAndSellersThankYouBuyer');
+                    Route::get('thank-you-lead-based-buyer', [ContractTools\ContractToolBuyerController::class, 'thankYouLeadBasedBuyer'])->name('thankYouLeadBasedBuyer');
+                    Route::get('thankyou-pd-buyer', [ContractTools\ContractToolBuyerController::class, 'thankyouPdBuyer'])->name('thankyouPdBuyer');
+                    Route::get('VA-FHA-loan-addendum-by-buyer', [ContractTools\ContractToolBuyerController::class, 'vaFhaloanAddendumByBuyer'])->name('vaFhaloanAddendumByBuyer');
+                    Route::get('va-fha-thank-you-for-buyer', [ContractTools\ContractToolBuyerController::class, 'checkPostClosing'])->name('checkPostClosing');
+                    Route::get('update-sale-agreement-by-buyer', [ContractTools\ContractToolBuyerController::class, 'updateSaleAgreementByBuyer'])->name('updateSaleAgreementByBuyer');
+                    Route::get('thankyou-purchase-agreement-by-buyer', [ContractTools\ContractToolBuyerController::class, 'thankyouPurchaseAgreementByBuyer'])->name('thankyouPurchaseAgreementByBuyer');
+                });
 
-		    // when the seller or buyer is business.
-		    Route::get('business-contract-tools', [ContractTools\ContractToolSellerController::class, 'BusinessContractTools'])->name('BusinessContractTools');
+                // when the seller or buyer is business.
+                Route::get('business-contract-tools', [ContractTools\ContractToolSellerController::class, 'BusinessContractTools'])->name('BusinessContractTools');
 
-		    Route::get('questions-to-seller-property/{value?}', [ContractTools\ContractToolSellerController::class, 'questionsToSellerProperty'])->name('questionsToSellerProperty');
-		    Route::get('post-closing-questions-thankyou', [ContractTools\ContractToolSellerController::class, 'postClosingQuestionsThankyou'])->name('postClosingQuestionsThankyou');
+                Route::get('questions-to-seller-property/{value?}', [ContractTools\ContractToolSellerController::class, 'questionsToSellerProperty'])->name('questionsToSellerProperty');
+                Route::get('post-closing-questions-thankyou', [ContractTools\ContractToolSellerController::class, 'postClosingQuestionsThankyou'])->name('postClosingQuestionsThankyou');
 
-		    Route::get('contract-tools', [ContractTools\ContractToolSellerController::class, 'contractTools'])->name('contractTools');
-		    Route::get('post-closing-occupancy-agreement', [ContractTools\ContractToolSellerController::class, 'postClosingOccupancyAgreement'])->name('postClosingOccupancyAgreement');
+                Route::get('contract-tools', [ContractTools\ContractToolSellerController::class, 'contractTools'])->name('contractTools');
+                Route::get('post-closing-occupancy-agreement', [ContractTools\ContractToolSellerController::class, 'postClosingOccupancyAgreement'])->name('postClosingOccupancyAgreement');
 
-		    Route::get('thankyou-purchase-agreement', [ContractTools\ContractToolSellerController::class, 'thankyouPurchaseAgreement'])->name('thankyouPurchaseAgreement');
+                Route::get('thankyou-purchase-agreement', [ContractTools\ContractToolSellerController::class, 'thankyouPurchaseAgreement'])->name('thankyouPurchaseAgreement');
 
-		    Route::post('save-update-sale-agreement-byseller-contract', [ContractTools\ContractToolSellerController::class, 'saveUpdateSaleAgreementBysellerContract'])->name('saveUpdateSaleAgreementBysellerContract');
-		    Route::post('save-questions-to-seller-post-closing', [ContractTools\ContractToolSellerController::class, 'saveQuestionSellerPostClosing'])->name('saveQuestionSellerPostClosing');
-		    Route::post('save-questions-to-seller-post-additional_closing', [ContractTools\ContractToolSellerController::class, 'saveQuestionSellerPostAdditionalClosing'])->name('saveQuestionSellerPostAdditionalClosing');
+                Route::post('save-update-sale-agreement-byseller-contract', [ContractTools\ContractToolSellerController::class, 'saveUpdateSaleAgreementBysellerContract'])->name('saveUpdateSaleAgreementBysellerContract');
+                Route::post('save-questions-to-seller-post-closing', [ContractTools\ContractToolSellerController::class, 'saveQuestionSellerPostClosing'])->name('saveQuestionSellerPostClosing');
+                Route::post('save-questions-to-seller-post-additional_closing', [ContractTools\ContractToolSellerController::class, 'saveQuestionSellerPostAdditionalClosing'])->name('saveQuestionSellerPostAdditionalClosing');
 
-		    //Review Offer from Buyer Side
-		    Route::get('summary-key-terms-for-buyer', [ContractTools\ContractToolBuyerController::class, 'summaryKeyTermsForBuyer'])->name('summaryKeyTermsForBuyer');
-		    Route::get('purchase-agreement-by-buyer', [ContractTools\ContractToolBuyerController::class, 'purchaseAgreementByBuyer'])->name('purchaseAgreementByBuyer');
-		    Route::get('va-thank-you-for-buyer', [ContractTools\ContractToolBuyerController::class, 'vaThankYouForBuyer'])->name('vaThankYouForBuyer');
-		    Route::get('lead-thank-you-for-buyer', [ContractTools\ContractToolBuyerController::class, 'checkVaFhaBuyer'])->name('checkVaFhaBuyer');
-		    Route::get('post-closing-occupancy-agreement-by-buyer', [ContractTools\ContractToolBuyerController::class, 'postClosingOccupancyAgreementByBuyer'])->name('postClosingOccupancyAgreementByBuyer');
-		    Route::get('post-closing-thankyou-by-buyer', [ContractTools\ContractToolBuyerController::class, 'postClosingThankyouByBuyer'])->name('postClosingThankyouByBuyer');
+                //Review Offer from Buyer Side
+                Route::get('summary-key-terms-for-buyer', [ContractTools\ContractToolBuyerController::class, 'summaryKeyTermsForBuyer'])->name('summaryKeyTermsForBuyer');
+                Route::get('purchase-agreement-by-buyer', [ContractTools\ContractToolBuyerController::class, 'purchaseAgreementByBuyer'])->name('purchaseAgreementByBuyer');
+                Route::get('va-thank-you-for-buyer', [ContractTools\ContractToolBuyerController::class, 'vaThankYouForBuyer'])->name('vaThankYouForBuyer');
+                Route::get('lead-thank-you-for-buyer', [ContractTools\ContractToolBuyerController::class, 'checkVaFhaBuyer'])->name('checkVaFhaBuyer');
+                Route::get('post-closing-occupancy-agreement-by-buyer', [ContractTools\ContractToolBuyerController::class, 'postClosingOccupancyAgreementByBuyer'])->name('postClosingOccupancyAgreementByBuyer');
+                Route::get('post-closing-thankyou-by-buyer', [ContractTools\ContractToolBuyerController::class, 'postClosingThankyouByBuyer'])->name('postClosingThankyouByBuyer');
 
-		    Route::post('store-question-set-for-buyer/{id?}', [ContractTools\ContractToolBuyerController::class, 'storeQuestionSetForBuyer'])->name('storeQuestionSetForBuyer');
-		    //sign documents buyer
-		    Route::get('sd-advisory-to-buyers-and-sellers-thank-you-buyer', [ContractTools\ContractToolBuyerController::class, 'sdAdvisoryToBuyersAndSellersThankYouBuyer'])->name('sdAdvisoryToBuyersAndSellersThankYouBuyer');
-		    Route::get('sd-summary-key-terms-for-buyer', [ContractTools\ContractToolBuyerController::class, 'sdSummaryKeyTermsForBuyer'])->name('sdSummaryKeyTermsForBuyer');
-		    Route::get('sd-thank-you-buyer-for-pd', [ContractTools\ContractToolBuyerController::class, 'sdThankYouBuyerForPd'])->name('sdThankYouBuyerForPd');
-		    Route::get('sd-thank-you-buyer-for-pd-va-fha', [ContractTools\ContractToolBuyerController::class, 'sdThankYouBuyerForPd'])->name('sdThankYouBuyerForPd');
-		    Route::get('sd-advisory-to-buyers-and-sellers', [ContractTools\ContractToolBuyerController::class, 'sdAdvisoryToBuyersAndSellers'])->name('sdAdvisoryToBuyersAndSellers');
-		    Route::get('sd-thankyou-purchase-agreement-by-buyer', [ContractTools\ContractToolBuyerController::class, 'sdThankyouPurchaseAgreementByBuyer'])->name('sdThankyouPurchaseAgreementByBuyer');
-		    Route::get('sd-lead-based-paint-hazards-update-by-buyer', [ContractTools\ContractToolBuyerController::class, 'sdLeadBasedPaintHazardsUpdateByBuyer'])->name('sdLeadBasedPaintHazardsUpdateByBuyer');
-		    Route::get('sd-va-fha-thank-you-buyer', [ContractTools\ContractToolBuyerController::class, 'sdCheckVaFha'])->name('sdCheckVaFha');
-		    Route::get('sd-VA-FHA-loan-addendum-by-buyer', [ContractTools\ContractToolBuyerController::class, 'sdVaFhaloanAddendumByBuyer'])->name('sdVaFhaloanAddendumByBuyer');
-		    Route::get('sd-va-fha-thank-you-for-buyer', [ContractTools\ContractToolBuyerController::class, 'sdVaFhaThankYouForBuyer'])->name('sdVaFhaThankYouForBuyer');
-		    Route::get('sd-post-closing-occupancy-agreement-by-buyer', [ContractTools\ContractToolBuyerController::class, 'sdPostClosingOccupancyAgreementByBuyer'])->name('sdPostClosingOccupancyAgreementByBuyer');
-		    Route::get('sd-post-closing-thankyou-by-buyer', [ContractTools\ContractToolBuyerController::class, 'sdPostClosingThankyouByBuyer'])->name('sdPostClosingThankyouByBuyer');
-		    Route::get('sd-post-closing-thankyou-buyer', [ContractTools\ContractToolBuyerController::class, 'sdCheckSignaturePostClosingBuyer'])->name('sdCheckSignaturePostClosingBuyer');
-		    Route::get('sd-thank-you-buyer-necessary-forms', [ContractTools\ContractToolBuyerController::class, 'sdThankYouBuyerNecessaryForms'])->name('sdThankYouBuyerNecessaryForms');
-		    Route::get('sd-sale-agreement-review-by-buyer', [ContractTools\ContractToolBuyerController::class, 'sdSaleAgreementReviewByBuyer'])->name('sdSaleAgreementReviewByBuyer');
-		    Route::get('sd-update-sale-agreement-buyer', [ContractTools\ContractToolBuyerController::class, 'sdUpdateSaleAgreementBuyer'])->name('sdUpdateSaleAgreementBuyer');
+                Route::post('store-question-set-for-buyer/{id?}', [ContractTools\ContractToolBuyerController::class, 'storeQuestionSetForBuyer'])->name('storeQuestionSetForBuyer');
+                //sign documents buyer
+                Route::get('sd-advisory-to-buyers-and-sellers-thank-you-buyer', [ContractTools\ContractToolBuyerController::class, 'sdAdvisoryToBuyersAndSellersThankYouBuyer'])->name('sdAdvisoryToBuyersAndSellersThankYouBuyer');
+                Route::get('sd-summary-key-terms-for-buyer', [ContractTools\ContractToolBuyerController::class, 'sdSummaryKeyTermsForBuyer'])->name('sdSummaryKeyTermsForBuyer');
+                Route::get('sd-thank-you-buyer-for-pd', [ContractTools\ContractToolBuyerController::class, 'sdThankYouBuyerForPd'])->name('sdThankYouBuyerForPd');
+                Route::get('sd-thank-you-buyer-for-pd-va-fha', [ContractTools\ContractToolBuyerController::class, 'sdThankYouBuyerForPd'])->name('sdThankYouBuyerForPd');
+                Route::get('sd-advisory-to-buyers-and-sellers', [ContractTools\ContractToolBuyerController::class, 'sdAdvisoryToBuyersAndSellers'])->name('sdAdvisoryToBuyersAndSellers');
+                Route::get('sd-thankyou-purchase-agreement-by-buyer', [ContractTools\ContractToolBuyerController::class, 'sdThankyouPurchaseAgreementByBuyer'])->name('sdThankyouPurchaseAgreementByBuyer');
+                Route::get('sd-lead-based-paint-hazards-update-by-buyer', [ContractTools\ContractToolBuyerController::class, 'sdLeadBasedPaintHazardsUpdateByBuyer'])->name('sdLeadBasedPaintHazardsUpdateByBuyer');
+                Route::get('sd-va-fha-thank-you-buyer', [ContractTools\ContractToolBuyerController::class, 'sdCheckVaFha'])->name('sdCheckVaFha');
+                Route::get('sd-VA-FHA-loan-addendum-by-buyer', [ContractTools\ContractToolBuyerController::class, 'sdVaFhaloanAddendumByBuyer'])->name('sdVaFhaloanAddendumByBuyer');
+                Route::get('sd-va-fha-thank-you-for-buyer', [ContractTools\ContractToolBuyerController::class, 'sdVaFhaThankYouForBuyer'])->name('sdVaFhaThankYouForBuyer');
+                Route::get('sd-post-closing-occupancy-agreement-by-buyer', [ContractTools\ContractToolBuyerController::class, 'sdPostClosingOccupancyAgreementByBuyer'])->name('sdPostClosingOccupancyAgreementByBuyer');
+                Route::get('sd-post-closing-thankyou-by-buyer', [ContractTools\ContractToolBuyerController::class, 'sdPostClosingThankyouByBuyer'])->name('sdPostClosingThankyouByBuyer');
+                Route::get('sd-post-closing-thankyou-buyer', [ContractTools\ContractToolBuyerController::class, 'sdCheckSignaturePostClosingBuyer'])->name('sdCheckSignaturePostClosingBuyer');
+                Route::get('sd-thank-you-buyer-necessary-forms', [ContractTools\ContractToolBuyerController::class, 'sdThankYouBuyerNecessaryForms'])->name('sdThankYouBuyerNecessaryForms');
+                Route::get('sd-sale-agreement-review-by-buyer', [ContractTools\ContractToolBuyerController::class, 'sdSaleAgreementReviewByBuyer'])->name('sdSaleAgreementReviewByBuyer');
+                Route::get('sd-update-sale-agreement-buyer', [ContractTools\ContractToolBuyerController::class, 'sdUpdateSaleAgreementBuyer'])->name('sdUpdateSaleAgreementBuyer');
 
+                Route::post('advisory-signature', [ContractTools\ContractToolBuyerController::class, 'advisorySignature'])->name('advisorySignature');
+                Route::post('disclaimer-signature', [ContractTools\ContractToolBuyerController::class, 'disclaimerSignature'])->name('disclaimerSignature');
+                Route::post('sale-agreement-signature', [ContractTools\ContractToolBuyerController::class, 'saleAgreementSignature'])->name('saleAgreementSignature');
+                Route::post('lead-based-signature', [ContractTools\ContractToolBuyerController::class, 'leadBasedSignature'])->name('leadBasedSignature');
+                Route::post('va-fha-addendum-signature', [ContractTools\ContractToolBuyerController::class, 'vaFhaSignature'])->name('vaFhaSignature');
+                Route::post('post-closing-occupancy-agreement-signature', [ContractTools\ContractToolBuyerController::class, 'postClosingSignature'])->name('postClosingSignature');
+                Route::post('sale-agreement-signature-seller', [ContractTools\ContractToolBuyerController::class, 'saleAgreementSignatureSeller'])->name('saleAgreementSignatureSeller');
 
-		    Route::post('advisory-signature', [ContractTools\ContractToolBuyerController::class, 'advisorySignature'])->name('advisorySignature');
-		    Route::post('disclaimer-signature', [ContractTools\ContractToolBuyerController::class, 'disclaimerSignature'])->name('disclaimerSignature');
-		    Route::post('sale-agreement-signature', [ContractTools\ContractToolBuyerController::class, 'saleAgreementSignature'])->name('saleAgreementSignature');
-		    Route::post('lead-based-signature', [ContractTools\ContractToolBuyerController::class, 'leadBasedSignature'])->name('leadBasedSignature');
-		    Route::post('va-fha-addendum-signature', [ContractTools\ContractToolBuyerController::class, 'vaFhaSignature'])->name('vaFhaSignature');
-		    Route::post('post-closing-occupancy-agreement-signature', [ContractTools\ContractToolBuyerController::class, 'postClosingSignature'])->name('postClosingSignature');
-		    Route::post('sale-agreement-signature-seller', [ContractTools\ContractToolBuyerController::class, 'saleAgreementSignatureSeller'])->name('saleAgreementSignatureSeller');
+                //sign documents seller
+                Route::get('sd-summary-key-terms-for-seller', [ContractTools\ContractToolSellerController::class, 'sdSummaryKeyTermsForSeller'])->name('sdSummaryKeyTermsForSeller');
+                Route::get('sd-advisory-to-buyers-and-sellers-sellers', [ContractTools\ContractToolSellerController::class, 'sdAdvisoryToBuyersAndSellersSellers'])->name('sdAdvisoryToBuyersAndSellersSellers');
+                Route::get('sd-advisory-to-buyers-and-sellers-thank-you', [ContractTools\ContractToolSellerController::class, 'sdAdvisoryToBuyersAndSellersThankYou'])->name('sdAdvisoryToBuyersAndSellersThankYou');
+                Route::get('sd-disclosure-by-seller-update', [ContractTools\ContractToolSellerController::class, 'sdDisclosureBySellerUpdate'])->name('sdDisclosureBySellerUpdate');
+                Route::get('sd-lead-based-paint-hazards-update-by-seller', [ContractTools\ContractToolSellerController::class, 'sdLeadBasedPaintHazardsUpdateBySeller'])->name('sdLeadBasedPaintHazardsUpdateBySeller');
+                Route::get('sd-thank-you-seller-necessary-forms', [ContractTools\ContractToolSellerController::class, 'sdThankYouSellerNecessaryForms'])->name('sdThankYouSellerNecessaryForms');
+                Route::get('sd-va-fha-thank-you-for-seller', [ContractTools\ContractToolSellerController::class, 'sdVaFhaThankYouForSeller'])->name('sdVaFhaThankYouForSeller');
+                Route::get('sd-VA-FHA-loan-addendum-by-seller', [ContractTools\ContractToolSellerController::class, 'sdVaFhaloanAddendumBySeller'])->name('sdVaFhaloanAddendumBySeller');
+                Route::get('sd-va-fha-thank-you-seller', [ContractTools\ContractToolSellerController::class, 'sdCheckVaFhaSeller'])->name('sdCheckVaFhaSeller');
+                Route::get('sd-post-closing-thankyou-seller', [ContractTools\ContractToolSellerController::class, 'sdCheckSignaturePostClosingSeller'])->name('sdCheckSignaturePostClosingSeller');
+                Route::get('sd-post-closing-occupancy-agreement-by-seller', [ContractTools\ContractToolSellerController::class, 'sdPostClosingOccupancyAgreementBySeller'])->name('sdPostClosingOccupancyAgreementBySeller');
+                Route::get('sd-post-closing-thankyou-by-seller', [ContractTools\ContractToolSellerController::class, 'sdPostClosingThankyouBySeller'])->name('sdPostClosingThankyouBySeller');
+                Route::get('sd-sale-agreement-review-by-seller', [ContractTools\ContractToolSellerController::class, 'sdSaleAgreementReviewBySeller'])->name('sdSaleAgreementReviewBySeller');
+            });
+        });
+        Route::get('sign-offers-sale-buyer-partner/{id}', [ContractTools\ContractToolBuyerController::class, 'signOffersSaleBuyerPartner'])->name('signOffersSaleBuyerPartner');
+        Route::get('sign-offers-sale-seller-partner/{id}', [ContractTools\ContractToolSellerController::class, 'signOffersSaleSellerPartner'])->name('signOffersSaleSellerPartner');
 
-		    //sign documents seller
-		    Route::get('sd-summary-key-terms-for-seller', [ContractTools\ContractToolSellerController::class, 'sdSummaryKeyTermsForSeller'])->name('sdSummaryKeyTermsForSeller');
-		    Route::get('sd-advisory-to-buyers-and-sellers-sellers', [ContractTools\ContractToolSellerController::class, 'sdAdvisoryToBuyersAndSellersSellers'])->name('sdAdvisoryToBuyersAndSellersSellers');
-		    Route::get('sd-advisory-to-buyers-and-sellers-thank-you', [ContractTools\ContractToolSellerController::class, 'sdAdvisoryToBuyersAndSellersThankYou'])->name('sdAdvisoryToBuyersAndSellersThankYou');
-		    Route::get('sd-disclosure-by-seller-update', [ContractTools\ContractToolSellerController::class, 'sdDisclosureBySellerUpdate'])->name('sdDisclosureBySellerUpdate');
-		    Route::get('sd-lead-based-paint-hazards-update-by-seller', [ContractTools\ContractToolSellerController::class, 'sdLeadBasedPaintHazardsUpdateBySeller'])->name('sdLeadBasedPaintHazardsUpdateBySeller');
-		    Route::get('sd-thank-you-seller-necessary-forms', [ContractTools\ContractToolSellerController::class, 'sdThankYouSellerNecessaryForms'])->name('sdThankYouSellerNecessaryForms');
-		    Route::get('sd-va-fha-thank-you-for-seller', [ContractTools\ContractToolSellerController::class, 'sdVaFhaThankYouForSeller'])->name('sdVaFhaThankYouForSeller');
-		    Route::get('sd-VA-FHA-loan-addendum-by-seller', [ContractTools\ContractToolSellerController::class, 'sdVaFhaloanAddendumBySeller'])->name('sdVaFhaloanAddendumBySeller');
-		    Route::get('sd-va-fha-thank-you-seller', [ContractTools\ContractToolSellerController::class, 'sdCheckVaFhaSeller'])->name('sdCheckVaFhaSeller');
-		    Route::get('sd-post-closing-thankyou-seller', [ContractTools\ContractToolSellerController::class, 'sdCheckSignaturePostClosingSeller'])->name('sdCheckSignaturePostClosingSeller');
-		    Route::get('sd-post-closing-occupancy-agreement-by-seller', [ContractTools\ContractToolSellerController::class, 'sdPostClosingOccupancyAgreementBySeller'])->name('sdPostClosingOccupancyAgreementBySeller');
-		    Route::get('sd-post-closing-thankyou-by-seller', [ContractTools\ContractToolSellerController::class, 'sdPostClosingThankyouBySeller'])->name('sdPostClosingThankyouBySeller');
-		    Route::get('sd-sale-agreement-review-by-seller', [ContractTools\ContractToolSellerController::class, 'sdSaleAgreementReviewBySeller'])->name('sdSaleAgreementReviewBySeller');
-		});
-	    });
-	    Route::get('sign-offers-sale-buyer-partner/{id}', [ContractTools\ContractToolBuyerController::class, 'signOffersSaleBuyerPartner'])->name('signOffersSaleBuyerPartner');
-	    Route::get('sign-offers-sale-seller-partner/{id}', [ContractTools\ContractToolSellerController::class, 'signOffersSaleSellerPartner'])->name('signOffersSaleSellerPartner');
+        Route::get('sign-offers-rent-tenant-partner/{id}', [ContractTools\ContractToolTenantController::class, 'signOffersRentTenantPartner'])->name('signOffersRentTenantPartner');
+        Route::get('sign-offers-rent-landlord-partner/{id}', [ContractTools\ContractToolLandlordController::class, 'signOffersRentLandlordPartner'])->name('signOffersRentLandlordPartner');
 
-	    Route::get('sign-offers-rent-tenant-partner/{id}', [ContractTools\ContractToolTenantController::class, 'signOffersRentTenantPartner'])->name('signOffersRentTenantPartner');
-	    Route::get('sign-offers-rent-landlord-partner/{id}', [ContractTools\ContractToolLandlordController::class, 'signOffersRentLandlordPartner'])->name('signOffersRentLandlordPartner');
+        //sign documents buyer (use both offer and property_id)
+        Route::get('sd-disclosure-by-buyer-update', [ContractTools\ContractToolBuyerController::class, 'sdDisclosureByBuyerUpdate'])->name('sdDisclosureByBuyerUpdate');
 
-	    //sign documents buyer (use both offer and property_id)
-	    Route::get('sd-disclosure-by-buyer-update', [ContractTools\ContractToolBuyerController::class, 'sdDisclosureByBuyerUpdate'])->name('sdDisclosureByBuyerUpdate');
+        //sign documents seller
+        Route::get('sd-update-sale-agreement', [ContractTools\ContractToolSellerController::class, 'sdUpdateSaleAgreement'])->name('sdUpdateSaleAgreement');
+        Route::get('sd-thankyou-purchase-agreement', [ContractTools\ContractToolSellerController::class, 'sdThankyouPurchaseAgreement'])->name('sdThankyouPurchaseAgreement');
+        //    Route::get('va-fha-thank-you-for-buyer', 'ContractToolBuyerController@vaFhaThankYouForBuyer')->name('vaFhaThankYouForBuyer');
 
+        Route::post('save-landlord-property-condition-disclosure/{id?}', [ContractTools\ContractToolSellerController::class, 'saveSellerPropertyConditionDisclosure'])->name('saveLandlordPropertyConditionDisclosure');
 
+        Route::middleware('checkOfferValues')->group(function () {
+            Route::middleware('checkDeletedUserOffer')->group(function () {
+                // Rent Contract tool landlord
+                Route::get('contract-tools-rent', [ContractTools\ContractToolLandlordController::class, 'contractToolsRent'])->name('contractToolsRent');
+                //check Offer session through (middleware)
+                Route::middleware('checkSignatureValues')->group(function () {
+                    //need
+                    Route::get('questions-to-landlord', [ContractTools\ContractToolLandlordController::class, 'questionsToLandlord'])->name('questionsToLandlord');
+                    Route::get('add-signers-contract-rent-landlord', [ContractTools\ContractToolLandlordController::class, 'addSignersContractRentLandlord'])->name('addSignersContractRentLandlord');
+                    //need
+                    Route::get('thankyou-discloser-tool', [ContractTools\ContractToolLandlordController::class, 'thankyouDiscloserTool'])->name('thankyouDiscloserTool');
+                    //need
+                    Route::get('thankyou-lease-agreement-landlord', [ContractTools\ContractToolLandlordController::class, 'thankyouLeaseAgreementLandlord'])->name('thankyouLeaseAgreementLandlord');
+                    //need
+                    Route::get('lease-agreement', [ContractTools\ContractToolLandlordController::class, 'leaseAgreement'])->name('leaseAgreement');
+                    //need
+                    Route::get('thank-you-to-landlord-for-answer', [ContractTools\ContractToolLandlordController::class, 'thankYouToLandlordForAnswer'])->name('thankYouToLandlordForAnswer');
+                    //need
+                    Route::get('disclosures-rent-contract-tool', [ContractTools\ContractToolLandlordController::class, 'disclosuresRentContractTool'])->name('disclosuresRentContractTool');
 
-	    //sign documents seller
-	    Route::get('sd-update-sale-agreement', [ContractTools\ContractToolSellerController::class, 'sdUpdateSaleAgreement'])->name('sdUpdateSaleAgreement');
-	    Route::get('sd-thankyou-purchase-agreement', [ContractTools\ContractToolSellerController::class, 'sdThankyouPurchaseAgreement'])->name('sdThankyouPurchaseAgreement');
-	    //    Route::get('va-fha-thank-you-for-buyer', 'ContractToolBuyerController@vaFhaThankYouForBuyer')->name('vaFhaThankYouForBuyer');
+                    //need
+                    Route::get('question-set-for-tenant', [ContractTools\ContractToolTenantController::class, 'questionSetForTenant'])->name('questionSetForTenant');
+                    //need
+                    Route::get('lease-agreement-review-tenant', [ContractTools\ContractToolTenantController::class, 'leaseAgreementReviewTenant'])->name('leaseAgreementReviewTenant');
+                    //need
+                    Route::get('thank-you-lead-based-disclosure-for-rent-tenant', [ContractTools\ContractToolTenantController::class, 'thankYouLeadBasedDisclosureForRentTenant'])->name('thankYouLeadBasedDisclosureForRentTenant');
+                    //need
+                    Route::get('thankyou-discloser-tool-tenant', [ContractTools\ContractToolTenantController::class, 'thankyouDiscloserToolTenant'])->name('thankyouDiscloserToolTenant');
+                    //need
+                    Route::get('add-signers-contract-rent-tenant', [ContractTools\ContractToolTenantController::class, 'addSignersContractRentTenant'])->name('addSignersContractRentTenant');
+                    //need
+                    Route::get('thankyou-lease-agreement-tenant', [ContractTools\ContractToolTenantController::class, 'thankyouLeaseAgreementTenant'])->name('thankyouLeaseAgreementTenant');
+                });
 
-	    Route::post('save-landlord-property-condition-disclosure/{id?}', [ContractTools\ContractToolSellerController::class, 'saveSellerPropertyConditionDisclosure'])->name('saveLandlordPropertyConditionDisclosure');
+                Route::get('sd-summary-key-terms-for-landlord', [ContractTools\ContractToolLandlordController::class, 'sdSummaryKeyTermsForLandlord'])->name('sdSummaryKeyTermsForLandlord');
+                Route::post('save-lease-agreement', [ContractTools\ContractToolLandlordController::class, 'saveLeaseAgreement'])->name('saveLeaseAgreement');
+                Route::post('save-questions-to-landlord/{id?}', [ContractTools\ContractToolLandlordController::class, 'saveQuestionsToLandlord'])->name('saveQuestionsToLandlord');
+                //Sign documents landlord
+                Route::post('sd-thank-you-for-review-summary-key-terms-landlord', [ContractTools\ContractToolLandlordController::class, 'sdThankyouForReviewSummaryKeyTermsLandlord'])->name('sdThankyouForReviewSummaryKeyTermsLandlord');
+                Route::get('sd-thank-you-landlord-for-pd', [ContractTools\ContractToolLandlordController::class, 'sdThankYouLandlordForPd'])->name('sdThankYouLandlordForPd');
+                Route::get('sd-lease-agreement-by-landlord', [ContractTools\ContractToolLandlordController::class, 'sdLeaseAgreementByLandlord'])->name('sdLeaseAgreementByLandlord');
+                Route::get('sd-thankyou-lease-agreement-landlord', [ContractTools\ContractToolLandlordController::class, 'sdThankyouLeaseAgreementLandlord'])->name('sdThankyouLeaseAgreementLandlord');
+                Route::get('sd-lead-based-paint-hazards-disclosure-for-rent-by-landlord', [ContractTools\ContractToolLandlordController::class, 'sdLeadBasedPaintHazardsDisclosureForRentByLandlord'])->name('sdLeadBasedPaintHazardsDisclosureForRentByLandlord');
+                Route::get('sd-thank-you-landlord-necessary-forms', [ContractTools\ContractToolLandlordController::class, 'sdThankYouLandlordNecessaryForms'])->name('sdThankYouLandlordNecessaryForms');
 
-	    Route::middleware('checkOfferValues')->group(function () {
-		Route::middleware('checkDeletedUserOffer')->group(function () {
-		    // Rent Contract tool landlord
-		    Route::get('contract-tools-rent', [ContractTools\ContractToolLandlordController::class, 'contractToolsRent'])->name('contractToolsRent');
-		    //check Offer session through (middleware)
-		    Route::middleware('checkSignatureValues')->group(function () {
-			//need
-			Route::get('questions-to-landlord', [ContractTools\ContractToolLandlordController::class, 'questionsToLandlord'])->name('questionsToLandlord');
-			Route::get('add-signers-contract-rent-landlord', [ContractTools\ContractToolLandlordController::class, 'addSignersContractRentLandlord'])->name('addSignersContractRentLandlord');
-			//need
-			Route::get('thankyou-discloser-tool', [ContractTools\ContractToolLandlordController::class, 'thankyouDiscloserTool'])->name('thankyouDiscloserTool');
-			//need
-			Route::get('thankyou-lease-agreement-landlord', [ContractTools\ContractToolLandlordController::class, 'thankyouLeaseAgreementLandlord'])->name('thankyouLeaseAgreementLandlord');
-			//need
-			Route::get('lease-agreement', [ContractTools\ContractToolLandlordController::class, 'leaseAgreement'])->name('leaseAgreement');
-			//need
-			Route::get('thank-you-to-landlord-for-answer', [ContractTools\ContractToolLandlordController::class, 'thankYouToLandlordForAnswer'])->name('thankYouToLandlordForAnswer');
-			//need
-			Route::get('disclosures-rent-contract-tool', [ContractTools\ContractToolLandlordController::class, 'disclosuresRentContractTool'])->name('disclosuresRentContractTool');
+                Route::post('save-add-signers-contract-rent-tenant/{id?}', [ContractTools\ContractToolTenantController::class, 'saveAddSignersContractRentTenant'])->name('saveAddSignersContractRentTenant');
 
-			//need
-			Route::get('question-set-for-tenant', [ContractTools\ContractToolTenantController::class, 'questionSetForTenant'])->name('questionSetForTenant');
-			//need
-			Route::get('lease-agreement-review-tenant', [ContractTools\ContractToolTenantController::class, 'leaseAgreementReviewTenant'])->name('leaseAgreementReviewTenant');
-			//need
-			Route::get('thank-you-lead-based-disclosure-for-rent-tenant', [ContractTools\ContractToolTenantController::class, 'thankYouLeadBasedDisclosureForRentTenant'])->name('thankYouLeadBasedDisclosureForRentTenant');
-			//need
-			Route::get('thankyou-discloser-tool-tenant', [ContractTools\ContractToolTenantController::class, 'thankyouDiscloserToolTenant'])->name('thankyouDiscloserToolTenant');
-			//need
-			Route::get('add-signers-contract-rent-tenant', [ContractTools\ContractToolTenantController::class, 'addSignersContractRentTenant'])->name('addSignersContractRentTenant');
-			//need
-			Route::get('thankyou-lease-agreement-tenant', [ContractTools\ContractToolTenantController::class, 'thankyouLeaseAgreementTenant'])->name('thankyouLeaseAgreementTenant');
-		    });
+                Route::get('thankyou-for-rent-offer', [ContractTools\ContractToolTenantController::class, 'thankyouForRentOffer'])->name('thankyouForRentOffer');
 
-		    Route::get('sd-summary-key-terms-for-landlord', [ContractTools\ContractToolLandlordController::class, 'sdSummaryKeyTermsForLandlord'])->name('sdSummaryKeyTermsForLandlord');
-		    Route::post('save-lease-agreement', [ContractTools\ContractToolLandlordController::class, 'saveLeaseAgreement'])->name('saveLeaseAgreement');
-		    Route::post('save-questions-to-landlord/{id?}', [ContractTools\ContractToolLandlordController::class, 'saveQuestionsToLandlord'])->name('saveQuestionsToLandlord');
-		    //Sign documents landlord
-		    Route::post('sd-thank-you-for-review-summary-key-terms-landlord', [ContractTools\ContractToolLandlordController::class, 'sdThankyouForReviewSummaryKeyTermsLandlord'])->name('sdThankyouForReviewSummaryKeyTermsLandlord');
-		    Route::get('sd-thank-you-landlord-for-pd', [ContractTools\ContractToolLandlordController::class, 'sdThankYouLandlordForPd'])->name('sdThankYouLandlordForPd');
-		    Route::get('sd-lease-agreement-by-landlord', [ContractTools\ContractToolLandlordController::class, 'sdLeaseAgreementByLandlord'])->name('sdLeaseAgreementByLandlord');
-		    Route::get('sd-thankyou-lease-agreement-landlord', [ContractTools\ContractToolLandlordController::class, 'sdThankyouLeaseAgreementLandlord'])->name('sdThankyouLeaseAgreementLandlord');
-		    Route::get('sd-lead-based-paint-hazards-disclosure-for-rent-by-landlord', [ContractTools\ContractToolLandlordController::class, 'sdLeadBasedPaintHazardsDisclosureForRentByLandlord'])->name('sdLeadBasedPaintHazardsDisclosureForRentByLandlord');
-		    Route::get('sd-thank-you-landlord-necessary-forms', [ContractTools\ContractToolLandlordController::class, 'sdThankYouLandlordNecessaryForms'])->name('sdThankYouLandlordNecessaryForms');
+                Route::get('summary-key-terms-for-tenant', [ContractTools\ContractToolTenantController::class, 'summaryKeyTermsForTenant'])->name('summaryKeyTermsForTenant');
 
+                //Sign documents tenant
+                Route::get('sd-thank-you-tenant-for-pd', [ContractTools\ContractToolTenantController::class, 'sdThankYouTenantForPd'])->name('sdThankYouTenantForPd');
+                Route::get('sd-lease-agreement-by-tenant', [ContractTools\ContractToolTenantController::class, 'sdLeaseAgreementByTenant'])->name('sdLeaseAgreementByTenant');
+                Route::get('sd-thankyou-lease-agreement-tenant', [ContractTools\ContractToolTenantController::class, 'sdThankyouLeaseAgreementTenant'])->name('sdThankyouLeaseAgreementTenant');
+                Route::get('sd-lead-based-paint-hazards-disclosure-for-rent-by-tenant', [ContractTools\ContractToolTenantController::class, 'sdLeadBasedPaintHazardsDisclosureForRentByTenant'])->name('sdLeadBasedPaintHazardsDisclosureForRentByTenant');
+                Route::get('sd-thank-you-tenant-necessary-forms', [ContractTools\ContractToolTenantController::class, 'sdThankYouTenantNecessaryForms'])->name('sdThankYouTenantNecessaryForms');
 
+                //rent signature
+                Route::post('disclaimer-signature-rent', [ContractTools\ContractToolTenantController::class, 'disclaimerSignatureRent'])->name('disclaimerSignatureRent');
+                Route::post('sale-agreement-signature-rent', [ContractTools\ContractToolTenantController::class, 'saleAgreementSignatureRent'])->name('saleAgreementSignatureRent');
+                Route::post('lead-based-signature-rent', [ContractTools\ContractToolTenantController::class, 'leadBasedSignatureRent'])->name('leadBasedSignatureRent');
+                Route::get('sd-summary-key-terms-for-tenant', [ContractTools\ContractToolTenantController::class, 'sdSummaryKeyTermsForTenant'])->name('sdSummaryKeyTermsForTenant');
 
-		    Route::post('save-add-signers-contract-rent-tenant/{id?}', [ContractTools\ContractToolTenantController::class, 'saveAddSignersContractRentTenant'])->name('saveAddSignersContractRentTenant');
-
-		    Route::get('thankyou-for-rent-offer', [ContractTools\ContractToolTenantController::class, 'thankyouForRentOffer'])->name('thankyouForRentOffer');
-
-
-		    Route::get('summary-key-terms-for-tenant', [ContractTools\ContractToolTenantController::class, 'summaryKeyTermsForTenant'])->name('summaryKeyTermsForTenant');
-
-
-		    //Sign documents tenant
-		    Route::get('sd-thank-you-tenant-for-pd', [ContractTools\ContractToolTenantController::class, 'sdThankYouTenantForPd'])->name('sdThankYouTenantForPd');
-		    Route::get('sd-lease-agreement-by-tenant', [ContractTools\ContractToolTenantController::class, 'sdLeaseAgreementByTenant'])->name('sdLeaseAgreementByTenant');
-		    Route::get('sd-thankyou-lease-agreement-tenant', [ContractTools\ContractToolTenantController::class, 'sdThankyouLeaseAgreementTenant'])->name('sdThankyouLeaseAgreementTenant');
-		    Route::get('sd-lead-based-paint-hazards-disclosure-for-rent-by-tenant', [ContractTools\ContractToolTenantController::class, 'sdLeadBasedPaintHazardsDisclosureForRentByTenant'])->name('sdLeadBasedPaintHazardsDisclosureForRentByTenant');
-		    Route::get('sd-thank-you-tenant-necessary-forms', [ContractTools\ContractToolTenantController::class, 'sdThankYouTenantNecessaryForms'])->name('sdThankYouTenantNecessaryForms');
-
-		    //rent signature
-		    Route::post('disclaimer-signature-rent', [ContractTools\ContractToolTenantController::class, 'disclaimerSignatureRent'])->name('disclaimerSignatureRent');
-		    Route::post('sale-agreement-signature-rent', [ContractTools\ContractToolTenantController::class, 'saleAgreementSignatureRent'])->name('saleAgreementSignatureRent');
-		    Route::post('lead-based-signature-rent', [ContractTools\ContractToolTenantController::class, 'leadBasedSignatureRent'])->name('leadBasedSignatureRent');
-		    Route::get('sd-summary-key-terms-for-tenant', [ContractTools\ContractToolTenantController::class, 'sdSummaryKeyTermsForTenant'])->name('sdSummaryKeyTermsForTenant');
-
-
-		    Route::get('sd-disclosures-rent-tenant', [ContractTools\ContractToolTenantController::class, 'sdDisclosuresRentTenant'])->name('sdDisclosuresRentTenant');
-		    Route::get('sd-disclosures-rent-landlord', [ContractTools\ContractToolLandlordController::class, 'sdDisclosuresRentLandlord'])->name('sdDisclosuresRentLandlord');
-		});
-	    });
+                Route::get('sd-disclosures-rent-tenant', [ContractTools\ContractToolTenantController::class, 'sdDisclosuresRentTenant'])->name('sdDisclosuresRentTenant');
+                Route::get('sd-disclosures-rent-landlord', [ContractTools\ContractToolLandlordController::class, 'sdDisclosuresRentLandlord'])->name('sdDisclosuresRentLandlord');
+            });
+        });
     });
     Route::post('contract-tool-signers', [SignerController::class, 'contractToolSigner'])->name('contractToolSigner');
 
@@ -437,42 +425,40 @@ Route::middleware('auth')->group(function () {
     Route::get('network/profile-rating', [NetworkController::class, 'profileRating'])->name('profile.rating');
 
     Route::middleware('OnlyUsers')->group(function () {
-	//Signers
-	Route::get('signers', [SignerController::class, 'index'])->name('signer.index');
-	Route::get('signer/create', [SignerController::class, 'create'])->name('signer.create');
-	Route::post('signer/store', [SignerController::class, 'signStore'])->name('signer.store');
-	Route::get('signer/resend-activation/{id}', [SignerController::class, 'resendActivation'])->name('resend.activation');
-	Route::get('signer/delete/{id}', [SignerController::class, 'deleteSigner'])->name('delete.signer');
-	Route::get('signer/view/{id}', [SignerController::class, 'signerView'])->name('signer.view');
+        //Signers
+        Route::get('signers', [SignerController::class, 'index'])->name('signer.index');
+        Route::get('signer/create', [SignerController::class, 'create'])->name('signer.create');
+        Route::post('signer/store', [SignerController::class, 'signStore'])->name('signer.store');
+        Route::get('signer/resend-activation/{id}', [SignerController::class, 'resendActivation'])->name('resend.activation');
+        Route::get('signer/delete/{id}', [SignerController::class, 'deleteSigner'])->name('delete.signer');
+        Route::get('signer/view/{id}', [SignerController::class, 'signerView'])->name('signer.view');
 
-	//My documents
-	Route::get('received-documents', [MyDocumentsController::class, 'receivedDocuments'])->name('receivedDocuments');
-	Route::get('sent-documents', [MyDocumentsController::class, 'sentDocuments'])->name('sentDocuments');
-	Route::get('received-document-details-rent', [MyDocumentsController::class, 'receivedDocumentDetailsRent'])->name('receivedDocumentDetailsRent');
-	Route::get('received-document-details-sale', [MyDocumentsController::class, 'receivedDocumentDetailsSale'])->name('receivedDocumentDetailsSale');
-	Route::get('sent-document-details-rent', [MyDocumentsController::class, 'sentDocumentDetailsRent'])->name('sentDocumentDetailsRent');
-	Route::get('sent-document-details-sale', [MyDocumentsController::class, 'sentDocumentDetailsSale'])->name('sentDocumentDetailsSale');
-	Route::get('sent-documents-details', [MyDocumentsController::class, 'sentDocumentDetails'])->name('sentDocumentDetails');
-	Route::get('download-documents-rent', [MyDocumentsController::class, 'downloadDocumentsRent'])->name('downloadDocumentsRent');
-	Route::get('download-documents-sale', [MyDocumentsController::class, 'downloadDocumentsSale'])->name('downloadDocumentsSale');
+        //My documents
+        Route::get('received-documents', [MyDocumentsController::class, 'receivedDocuments'])->name('receivedDocuments');
+        Route::get('sent-documents', [MyDocumentsController::class, 'sentDocuments'])->name('sentDocuments');
+        Route::get('received-document-details-rent', [MyDocumentsController::class, 'receivedDocumentDetailsRent'])->name('receivedDocumentDetailsRent');
+        Route::get('received-document-details-sale', [MyDocumentsController::class, 'receivedDocumentDetailsSale'])->name('receivedDocumentDetailsSale');
+        Route::get('sent-document-details-rent', [MyDocumentsController::class, 'sentDocumentDetailsRent'])->name('sentDocumentDetailsRent');
+        Route::get('sent-document-details-sale', [MyDocumentsController::class, 'sentDocumentDetailsSale'])->name('sentDocumentDetailsSale');
+        Route::get('sent-documents-details', [MyDocumentsController::class, 'sentDocumentDetails'])->name('sentDocumentDetails');
+        Route::get('download-documents-rent', [MyDocumentsController::class, 'downloadDocumentsRent'])->name('downloadDocumentsRent');
+        Route::get('download-documents-sale', [MyDocumentsController::class, 'downloadDocumentsSale'])->name('downloadDocumentsSale');
 
-	//Favorites
-	Route::get('favorites', [FavoriteController::class, 'index'])->name('favorites');
-	Route::get('favorite/store/{id}', [FavoriteController::class, 'favoriteStore'])->name('favorite.store');
-	Route::get('favorite/delete/{id}', [FavoriteController::class, 'favoriteDelete'])->name('favorite.delete');
+        //Favorites
+        Route::get('favorites', [FavoriteController::class, 'index'])->name('favorites');
+        Route::get('favorite/store/{id}', [FavoriteController::class, 'favoriteStore'])->name('favorite.store');
+        Route::get('favorite/delete/{id}', [FavoriteController::class, 'favoriteDelete'])->name('favorite.delete');
 
-	// sign documents for partners or co-signers
-	Route::get('partners-sign-documents', [ContractTools\SignDocumentsController::class, 'partnersSignDocuments'])->name('partnersSignDocuments');
-	Route::get('sign-documents-buyer', [ContractTools\SignDocumentsController::class, 'signDocumentsBuyer'])->name('signDocumentsBuyer');
-	Route::get('sign-documents-seller', [ContractTools\SignDocumentsController::class, 'signDocumentsSeller'])->name('signDocumentsSeller');
-	Route::get('sign-documents-landlord', [ContractTools\SignDocumentsController::class, 'signDocumentsLandlord'])->name('signDocumentsLandlord');
-	Route::get('sign-documents-tenant', [ContractTools\SignDocumentsController::class, 'signDocumentsTenant'])->name('signDocumentsTenant');
+        // sign documents for partners or co-signers
+        Route::get('partners-sign-documents', [ContractTools\SignDocumentsController::class, 'partnersSignDocuments'])->name('partnersSignDocuments');
+        Route::get('sign-documents-buyer', [ContractTools\SignDocumentsController::class, 'signDocumentsBuyer'])->name('signDocumentsBuyer');
+        Route::get('sign-documents-seller', [ContractTools\SignDocumentsController::class, 'signDocumentsSeller'])->name('signDocumentsSeller');
+        Route::get('sign-documents-landlord', [ContractTools\SignDocumentsController::class, 'signDocumentsLandlord'])->name('signDocumentsLandlord');
+        Route::get('sign-documents-tenant', [ContractTools\SignDocumentsController::class, 'signDocumentsTenant'])->name('signDocumentsTenant');
     });
     Route::get('back-to-market/{id}', [PropertyController::class, 'backToMarket'])->name('backToMarket');
     Route::get('change-property-status/{id}', [PropertyController::class, 'changePropertyStatus'])->name('changePropertyStatus');
-    require_once __DIR__ . '/other.php';
+    require_once __DIR__.'/other.php';
 });
 
 Route::get('signer/account-confirm/{token}', [SignerController::class, 'accountConfirm'])->name('account.confirm');
-
-

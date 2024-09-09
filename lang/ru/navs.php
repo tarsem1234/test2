@@ -14,21 +14,21 @@ return [
     |
     */
 
-    'frontend'  => [
+    'frontend' => [
         'dashboard' => 'Панель пользователя',
-        'login'     => 'Вход',
-        'macros'    => 'Макросы',
-        'register'  => 'Регистрация',
-        'user'      => [
-            'account'           => 'Профиль, настройки',
-            'administration'    => 'Управление приложением',
-            'change_password'   => 'Изменить пароль',
-            'my_information'    => 'Моя информация',
-            'profile'           => 'Профиль',
+        'login' => 'Вход',
+        'macros' => 'Макросы',
+        'register' => 'Регистрация',
+        'user' => [
+            'account' => 'Профиль, настройки',
+            'administration' => 'Управление приложением',
+            'change_password' => 'Изменить пароль',
+            'my_information' => 'Моя информация',
+            'profile' => 'Профиль',
         ],
     ],
-    'general'   => [
-        'home'      => 'Home',
-        'logout'    => 'Выход',
+    'general' => [
+        'home' => 'Home',
+        'logout' => 'Выход',
     ],
 ];

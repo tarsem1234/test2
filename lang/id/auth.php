@@ -13,11 +13,11 @@ return [
     |
     */
 
-    'failed'        => 'Identitas tersebut tidak cocok dengan catatan kami.',
+    'failed' => 'Identitas tersebut tidak cocok dengan catatan kami.',
     'general_error' => 'Anda tidak memiliki akses untuk melakukan itu.',
-    'socialite'     => [
+    'socialite' => [
         'unacceptable' => ':provider bukanlah jenis login diterima.',
     ],
     'throttle' => 'Terlalu banyak usaha login. Coba lagi dalam :seconds detik.',
-    'unknown'  => 'Terjadi kesalahan yang tidak diketahui',
+    'unknown' => 'Terjadi kesalahan yang tidak diketahui',
 ];

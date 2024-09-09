@@ -14,9 +14,8 @@ use Illuminate\Support\Facades\Route;
  * and open the template in the editor.
  */
 
-
 Route::get('cron-back-to-market', [CronController::class, 'checkBackToMarket'])->name('checkBackToMarket');
-Route::middleware('auth')->group(function() {
+Route::middleware('auth')->group(function () {
     Route::middleware('OnlyUsers')->group(function () {
         /* Learning Center */
         Route::get('learning-center', [LearningCenterController::class, 'index'])->name('learning.center');

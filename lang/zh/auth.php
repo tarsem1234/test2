@@ -13,11 +13,11 @@ return [
     |
     */
 
-    'failed'        => '用户名或密码错误。',
+    'failed' => '用户名或密码错误。',
     'general_error' => '你没有权限执行此操作。',
-    'socialite'     => [
+    'socialite' => [
         'unacceptable' => ':provider 不是可接受的登录类型。',
     ],
     'throttle' => '尝试登录次数过多. 请 :seconds 秒后再试。',
-    'unknown'  => '未知错误',
+    'unknown' => '未知错误',
 ];

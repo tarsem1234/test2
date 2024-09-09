@@ -31,7 +31,7 @@ class LogViewerRouteTest extends BrowserKitTestCase
     public function testLogViewerSingleType()
     {
         $this->actingAs($this->admin)
-             ->visit('/admin/log-viewer/logs/'.date('Y-m-d').'/error')
-             ->see('Log ['.date('Y-m-d').']');
+            ->visit('/admin/log-viewer/logs/'.date('Y-m-d').'/error')
+            ->see('Log ['.date('Y-m-d').']');
     }
 }

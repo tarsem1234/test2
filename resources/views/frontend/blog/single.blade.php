@@ -67,7 +67,7 @@
                             <div id="form_text_main">                   
                                 <div class="form-group">                                         
                                     <h4 class="chat-text">What's on your mind?</h4>
-                                    {{ Form::open(['route' => ['frontend.user.storeComment'], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
+                                    {{ html()->form('POST', route('frontend.user.storeComment', ))->class('form-horizontal')->attribute('role', 'form')->open() }}
                                     <textarea class="form-control" required="required" placeholder="Comment" name="comment" cols="50" rows="10" data-msg-required="Please leave your comment" value="{{old('comment')}}"></textarea>
                                     <span class="text text-danger">{{$errors->first('comment')}} </span>
                                     
@@ -77,7 +77,7 @@
                                         <input class="btn button btn-green" type="submit" value="Submit"/>
                                         <a class="btn button btn-blue" href="{{ route('frontend.blogs') }}">Back</a>
                                     </div>
-                                    {{ Form::close()}}
+                                    {{ html()->form()->close() }}
                                 </div>                           
                             </div>
                             @endif 

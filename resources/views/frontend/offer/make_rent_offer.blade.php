@@ -16,7 +16,7 @@
                             <h2>Make an Offer ( Rent)</h2>
                         </div>
                         <div class="row para-text">
-                            {{ Form::open(['route' => 'frontend.make.offer.save', 'class' => 'form','enctype'=>'multipart/form-data']) }}
+                            {{ html()->form('POST', route('frontend.make.offer.save'))->class('form')->acceptsFiles()->open() }}
                             <input type="hidden" value="{{$id}}" name="property_id">
                             <input type="hidden" value="Rent" name="type">
                             <div class="form-group first-child">
@@ -149,7 +149,7 @@
                                     <button type="reset"  class="button btn btn-blue reset">Cancel</button>
                                 </div>
                             </div>
-                            {{ Form::close() }}
+                            {{ html()->form()->close() }}
                         </div>
                     </div><!--</nested-div>-->
                 </div><!--</col>-->

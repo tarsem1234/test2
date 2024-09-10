@@ -24,8 +24,8 @@
                 <div class="panel panel-default1">
                 <div class="panel-heading"><span class="black-text">Create Your Account</span></div>
                 <div class="">
-                    {{ Form::open(['route' => 'frontend.userStore', 'class' => 'form-horizontal', 'id'=>'userSignUp']) }}
-                    {{ Form::hidden('user_type', config('constant.user_type.3')) }}
+                    {{ html()->form('POST', route('frontend.userStore'))->class('form-horizontal')->id('userSignUp')->open() }}
+                    {{ html()->hidden('user_type', config('constant.user_type.3')) }}
                     <?php if (isset($user)) { ?>
                         <input type="hidden" name="savedTime" value="{{ !empty($user->created_at)?$user->created_at:'' }}">
                         <input type="hidden" name="code" value="{{ !empty($user->confirmation_code)?$user->confirmation_code:'' }}">
@@ -33,9 +33,9 @@
                     <div class="form-group">
                         <div class="col-md-12">
                             <?php if (!empty($user->name)) { ?>
-                                {{ Form::text('name', !empty($user->name)?$user->name:'', ['class' => 'form-control',  'autofocus' => 'autofocus', 'required'=>true, 'placeholder' => trans('validation.attributes.frontend.name')]) }}
+                                {{ html()->text('name', !empty($user->name) ? $user->name : '')->class('form-control')->autofocus('autofocus')->required()->placeholder(trans('validation.attributes.frontend.name')) }}
                             <?php } else { ?>
-                                {{ Form::text('name', null, ['class' => 'form-control',  'autofocus' => 'autofocus', 'required'=>true, 'placeholder' => trans('validation.attributes.frontend.name')]) }}
+                                {{ html()->text('name')->class('form-control')->autofocus('autofocus')->required()->placeholder(trans('validation.attributes.frontend.name')) }}
                             <?php } ?>
                             @if(count($errors->get('name')) > 0)
                             <span class="text text-danger">{{implode('<br>', $errors->get('name'))}}</span>
@@ -45,9 +45,9 @@
                     <div class="form-group">
                         <div class="col-md-12">
                             <?php if (!empty($user->email)) { ?>
-                                {{ Form::email('email', $user->email, ['class' => 'form-control','readonly', 'placeholder' => trans('validation.attributes.frontend.email'), 'required'=>true ]) }}
+                                {{ html()->email('email', $user->email)->class('form-control')->attribute('readonly', )->attribute('placeholder', trans('validation.attributes.frontend.email'))->attribute('required', true) }}
                             <?php } else { ?>
-                                {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.email'), 'required'=>true ]) }}
+                                {{ html()->email('email')->class('form-control')->attribute('placeholder', trans('validation.attributes.frontend.email'))->attribute('required', true) }}
                             <?php } ?>
                             @if(count($errors->get('email')) > 0)
                             <span class="text text-danger">{{implode('<br>', $errors->get('email'))}}</span>
@@ -56,7 +56,7 @@
                     </div><!--form-group-->               
                     <div class="form-group">
                         <div class="col-md-12">
-                            {{ Form::password('password', ['class' => 'form-control', 'id' => 'user_password' , 'autofocus' => 'autofocus', 'placeholder' => 'Password', 'required'=>true ]) }}
+                            {{ html()->password('password')->class('form-control')->id('user_password')->attribute('autofocus', 'autofocus')->attribute('placeholder', 'Password')->attribute('required', true) }}
                             @if(count($errors->get('password')) > 0)
                             <span class="text text-danger">{{implode('<br>', $errors->get('password'))}}</span>
                             @endif
@@ -64,7 +64,7 @@
                     </div><!--form-group-->               
                     <div class="form-group">
                         <div class="col-md-12">
-                            {{ Form::password('password_confirmation', ['class' => 'form-control',  'autofocus' => 'autofocus', 'placeholder' => 'Verify Password', 'required'=>true]) }}
+                            {{ html()->password('password_confirmation')->class('form-control')->attribute('autofocus', 'autofocus')->attribute('placeholder', 'Verify Password')->attribute('required', true) }}
                             @if(count($errors->get('password_confirmation')) > 0)
                             <span class="text text-danger">{{implode('<br>', $errors->get('password_confirmation'))}}</span>
                             @endif
@@ -72,13 +72,13 @@
                     </div><!--form-group-->  
                     <div class="form-group">
                         <div class="col-md-12">
-                            {{ Form::text('', '', ['id' => 'postal_code', 'class' => 'form-control', 'placeholder' => 'Search Address' ]) }}
+                            {{ html()->text('', '')->id('postal_code')->class('form-control')->placeholder('Search Address') }}
 
                         </div><!--col-md-6-->
                     </div>
                     <div class="form-group old_zipcode">
                         <div class="col-md-12">
-                            {{ Form::text('zip_code', !empty($user->zip_code)?$user->zip_code:'', ['id' => 'zip_code', 'class' => 'form-control', 'placeholder' => 'Zip Code', 'required'=>true,'readonly'=>true]) }}
+                            {{ html()->text('zip_code', !empty($user->zip_code) ? $user->zip_code : '')->id('zip_code')->class('form-control')->placeholder('Zip Code')->required()->isReadonly() }}
                             @if(count($errors->get('zip_code')) > 0)
                             <span class="text text-danger">{{implode('<br>', $errors->get('zip_code'))}}</span>
                             @endif
@@ -109,7 +109,7 @@
                             else
                             $state = ''; 
                             @endphp
-                            {{ Form::text('state_disabled', $state, ['id' => 'state_disabled', 'class' => 'form-control not-allow', 'placeholder' => 'State', 'required'=>true,'disabled']) }}
+                            {{ html()->text('state_disabled', $state)->id('state_disabled')->class('form-control not-allow')->placeholder('State')->required()->disabled() }}
                             <input type="hidden" name="state" value="{{$state}}" id="state">
                             @if(count($errors->get('state')) > 0)
                             <span class="text text-danger">{{implode('<br>', $errors->get('state'))}}</span>
@@ -147,7 +147,7 @@
                     @endphp
                     <div class="form-group old_city">
                         <div class="col-md-12">
-                            {{ Form::text('city_disabled', $city, ['id' => 'city_disabled', 'class' => 'form-control not-allow', 'placeholder' => 'City', 'required'=>true,'disabled']) }}
+                            {{ html()->text('city_disabled', $city)->id('city_disabled')->class('form-control not-allow')->placeholder('City')->required()->disabled() }}
                             <input type="hidden" name="city" id="city" value="{{$city}}">
                             @if(count($errors->get('city')) > 0)
                             <span class="text text-danger">{{implode('<br>', $errors->get('city'))}}</span>
@@ -174,7 +174,7 @@
                     <!--form-group-->
                     <div class="form-group">
                         <div class="col-md-12">
-                            {{ Form::textarea('address',  !empty($user->user_profile->address)?$user->user_profile->address:'', ['id'=>'formatted_address', 'class' => 'form-control text-height', 'rows' => '2', 'placeholder' => 'Address' , 'required'=>true]) }}
+                            {{ html()->textarea('address', !empty($user->user_profile->address) ? $user->user_profile->address : '')->id('formatted_address')->class('form-control text-height')->rows('2')->placeholder('Address')->required() }}
                             @if(count($errors->get('address')) > 0)
                             <span class="text text-danger">{{implode('<br>', $errors->get('address'))}}</span>
                             @endif
@@ -182,7 +182,7 @@
                     </div><!--form-group-->
                     <div class="form-group">
                         <div class="col-md-12">
-                            {{ Form::number('phone_no', !empty($user->phone_no)?$user->phone_no:'',['class' => 'form-control', 'placeholder' => 'Phone No', 'required'=>true]) }}
+                            {{ html()->number('phone_no', !empty($user->phone_no) ? $user->phone_no : '')->class('form-control')->attribute('placeholder', 'Phone No')->attribute('required', true) }}
                             @if(count($errors->get('phone_no')) > 0)
                             <span class="text text-danger">{{implode('<br>', $errors->get('phone_no'))}}</span>
                             @endif
@@ -316,7 +316,7 @@
                     <div class="form-group user-captcha">
                         <div class="col-md-4 col-md-offset-0">
                             {!! NoCaptcha::display() !!}
-                            {{ Form::hidden('captcha_status', 'true') }}
+                            {{ html()->hidden('captcha_status', 'true') }}
                         </div><!--col-md-6-->
                         <div id="captchaError"></div>
                     </div><!--form-group--> 
@@ -326,7 +326,7 @@
                             <input type="submit" class="btn btn-default button btn-blue  mr-top" name="submit" id="inputbutton" value="Create">
                         </div>
                     </div>
-                    {{ Form::close() }}
+                    {{ html()->form()->close() }}
                 </div><!-- panel body -->
 
             </div><!-- panel -->

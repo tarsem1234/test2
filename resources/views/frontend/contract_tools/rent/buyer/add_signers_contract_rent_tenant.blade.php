@@ -23,9 +23,9 @@ select[multiple], select[size] {
          <div class="col-md-9 col-sm-8">
             <div class="nested-div">
                 @if(isset($tenantQuestionnaire))
-                    {{ Form::open(['route' => ['frontend.saveAddSignersContractRentTenant',$tenantQuestionnaire->id],'id'=>'question-signer-action','role' => 'form']) }}
+                    {{ html()->form('POST', route('frontend.saveAddSignersContractRentTenant', [$tenantQuestionnaire->id]))->id('question-signer-action')->attribute('role', 'form')->open() }}
                     @else
-                    {{ Form::open(['route'=>'frontend.saveAddSignersContractRentTenant', 'id'=>'question-signer-action','class'=>'', 'role' => 'form']) }}
+                    {{ html()->form('POST', route('frontend.saveAddSignersContractRentTenant'))->id('question-signer-action')->class('')->attribute('role', 'form')->open() }}
                     @endif
                <div class="heading-text">
                   <h2>Other Property Tenants / Roommates</h2>
@@ -100,7 +100,7 @@ select[multiple], select[size] {
                             <div class="btns-green-blue">                                    
                                 <button id="question-signer-landlord-submit" class="btn btn-blue button btn-nxt-submit">Submit</button>
                             </div>
-                     {{Form::close()}}
+                     {{ html()->form()->close() }}
                 
                      <div class="btns-green-blue add-submit-signers" style="display:none;">
                                     <a class="btn btn-green btn-add-signer button">Add Signer(s)</a>                                   
@@ -111,7 +111,7 @@ select[multiple], select[size] {
                                 <div class="panel-heading"><span class="black-text">Add </span>New Signers</div>
                                 <div class="custom_errors"></div>
                                 <span>Be advised, it is recommended that the 'Co-signers confirm their account & information as soon as possible, to prevent inaccurate contract information.</span>
-                                {{ Form::open(['route' => 'frontend.signer.store','id'=>'addSigner', 'method'=>'post', 'class' => 'form-horizontal']) }}
+                                {{ html()->form('POST', route('frontend.signer.store'))->id('addSigner')->class('form-horizontal')->open() }}
                                 <div id="usersignup-form">
 
                                     <div class="form-group">
@@ -225,7 +225,7 @@ select[multiple], select[size] {
                                     <a class="btn btn-blue btn-cancel button">Cancel</a>
                                 </div>
                             </div>
-                            {{ Form::close() }}
+                            {{ html()->form()->close() }}
                         </div>
                     </div>
                 </div>

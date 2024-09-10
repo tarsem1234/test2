@@ -7,7 +7,7 @@
 @endsection
 @section('content')
 <div class="vacation-rental">
-    {{ Form::open(['route' => 'frontend.vacationSearching', 'class' => 'form-horizontal', 'method'=>'get','id'=>'vacSearch' ]) }}
+    {{ html()->form('GET', route('frontend.vacationSearching'))->class('form-horizontal')->id('vacSearch')->open() }}
     <div class="search-property-row">
         <div class="container nested-div">
             <div class="row bg-white">
@@ -248,7 +248,7 @@
             </div>
         </div>
     </div>
-    {{ Form::close() }}
+    {{ html()->form()->close() }}
 </div>
 <?php if(isset($search)){ ?>
 <div class="container">

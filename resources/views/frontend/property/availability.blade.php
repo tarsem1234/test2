@@ -17,9 +17,9 @@
                                 <h4>My Scheduled Availability</h4>
                             </div>
                             <div class="col-md-12">
-                                {{Form::open(['route'=>'frontend.property.add_availability', "method"=>"Post"])}}
-                                {{Form::hidden('property_id', $property->id)}}
-                                {{Form::hidden('date', null)}}
+                                {{ html()->form("POST", route('frontend.property.add_availability'))->open() }}
+                                {{ html()->hidden('property_id', $property->id) }}
+                                {{ html()->hidden('date') }}
                                 <div class="table-responsive"><div id="calendar"></div></div> 
                                 <div class="row mar-top"> 
                                     <div class="form-group col-md-6">
@@ -110,7 +110,7 @@
                                                 </div>
                                             </div> 
                                         </div>
-                                        {{Form::close()}}
+                                        {{ html()->form()->close() }}
                                     </div>
                                 </div>
                             </div>

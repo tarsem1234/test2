@@ -69,7 +69,7 @@
             <button type="button" id="toggle" class="btn btn-default">Counter Offer</button>
             @endif
             <div id="flip" style="display:none;">
-                {{ Form::open(['route' => 'frontend.counter.offer', 'method'=>'post', 'class' => 'form-horizontal']) }}
+                {{ html()->form('POST', route('frontend.counter.offer'))->class('form-horizontal')->open() }}
                 <div class="form-group">
                     <h4 class="col-sm-6 control-label">Counter Offer Price</h4>
                     <div class="col-sm-6">
@@ -83,7 +83,7 @@
                     <input type="submit" class="btn btn-default" name="submit" id="inputbutton" value="Send">
                     <button type="button" style="margin-top:20px;" id="toggleclose" class="btn btn-default">Cancel</button>
                 </div>
-                {{ Form::close() }}
+                {{ html()->form()->close() }}
             </div>
             @if( $offer->status == config('constant.offer_status.pending') && isset($offer->counter_offers))
             <div class="jumbotron" id="mymessagesviewreply-box">
@@ -135,7 +135,7 @@
                             <div class="row">
                                 <div class="err" id="add_err_fav_con"></div>
                                 <div class="col-md-12 col-sm-12" id="favdiv">
-                                    {{ Form::open(['route' => 'frontend.accept.offer', 'method'=>'post', 'class' => 'form-horizontal']) }}
+                                    {{ html()->form('POST', route('frontend.accept.offer'))->class('form-horizontal')->open() }}
                                     <div id="usersignip-form">
                                         <div class="form-group">
                                             <div class="space">
@@ -167,7 +167,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{ Form::close() }}
+                                    {{ html()->form()->close() }}
                                 </div>
                             </div>
                         </div>

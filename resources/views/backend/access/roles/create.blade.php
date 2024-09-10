@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    {{ Form::open(['route' => 'admin.access.role.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post', 'id' => 'create-role']) }}
+    {{ html()->form('POST', route('admin.access.role.store'))->class('form-horizontal')->attribute('role', 'form')->id('create-role')->open() }}
 
         <div class="box box-success">
             <div class="box-header with-border">
@@ -22,18 +22,18 @@
 
             <div class="box-body">
                 <div class="form-group">
-                    {{ Form::label('name', trans('validation.attributes.backend.access.roles.name'), ['class' => 'col-lg-2 control-label']) }}
+                    {{ html()->label(trans('validation.attributes.backend.access.roles.name'), 'name')->class('col-lg-2 control-label') }}
 
                     <div class="col-lg-10">
-                        {{ Form::text('name', null, ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.access.roles.name')]) }}
+                        {{ html()->text('name')->class('form-control')->maxlength('191')->required()->autofocus('autofocus')->placeholder(trans('validation.attributes.backend.access.roles.name')) }}
                     </div><!--col-lg-10-->
                 </div><!--form control-->
 
                 <div class="form-group">
-                    {{ Form::label('associated-permissions', trans('validation.attributes.backend.access.roles.associated_permissions'), ['class' => 'col-lg-2 control-label']) }}
+                    {{ html()->label(trans('validation.attributes.backend.access.roles.associated_permissions'), 'associated-permissions')->class('col-lg-2 control-label') }}
 
                     <div class="col-lg-10">
-                        {{ Form::select('associated-permissions', array('all' => trans('labels.general.all'), 'custom' => trans('labels.general.custom')), 'all', ['class' => 'form-control']) }}
+                        {{ html()->select('associated-permissions', array('all' => trans('labels.general.all'), 'custom' => trans('labels.general.custom')), 'all')->class('form-control') }}
 
                         <div id="available-permissions" class="hidden mt-20">
                             <div class="row">
@@ -52,10 +52,10 @@
                 </div><!--form control-->
 
                 <div class="form-group">
-                    {{ Form::label('sort', trans('validation.attributes.backend.access.roles.sort'), ['class' => 'col-lg-2 control-label']) }}
+                    {{ html()->label(trans('validation.attributes.backend.access.roles.sort'), 'sort')->class('col-lg-2 control-label') }}
 
                     <div class="col-lg-10">
-                        {{ Form::text('sort', ($role_count+1), ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.roles.sort')]) }}
+                        {{ html()->text('sort', $role_count + 1)->class('form-control')->placeholder(trans('validation.attributes.backend.access.roles.sort')) }}
                     </div><!--col-lg-10-->
                 </div><!--form control-->
             </div><!-- /.box-body -->
@@ -68,14 +68,14 @@
                 </div><!--pull-left-->
 
                 <div class="pull-right">
-                    {{ Form::submit(trans('buttons.general.crud.create'), ['class' => 'btn btn-success btn-xs']) }}
+                    {{ html()->submit(trans('buttons.general.crud.create'))->class('btn btn-success btn-xs') }}
                 </div><!--pull-right-->
 
                 <div class="clearfix"></div>
             </div><!-- /.box-body -->
         </div><!--box-->
 
-    {{ Form::close() }}
+    {{ html()->form()->close() }}
 @endsection
 
 @section('after-scripts')

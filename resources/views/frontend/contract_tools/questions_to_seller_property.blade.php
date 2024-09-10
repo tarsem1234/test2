@@ -15,7 +15,7 @@
                <div class="heading-text">
                   <h2>Step 3(a) of 6 : Post-Closing Occupancy Questionnaire</h2>
                </div>
-               {{ Form::open(['route' => 'frontend.saveQuestionSellerPostClosing','role' => 'form', 'method' => 'post']) }}
+               {{ html()->form('POST', route('frontend.saveQuestionSellerPostClosing'))->attribute('role', 'form')->open() }}
                <div class="form-group para-text">
                   <h5 class="first-child">1. What is your current Mortgage Payment per month on this property?</h5>
                   <input type="number" class="form-control" value="{{$questionSellerPostClosing->current_mortgage??""}}" id="text-form-input" data-rule-required="true" data-rule-digits="true" data-msg-required="Please enter the current mortgage" name="current_mortgage" aria-required="true">
@@ -127,7 +127,7 @@
                <div class="form-group btns-green-blue btns-text-align-right">
                   <input type="submit" class="btn button btn-blue" name="submit" value="Next">
                </div>
-               {{Form::close()}}
+               {{ html()->form()->close() }}
             </div>
          </div>
       </div><!--</col>-->

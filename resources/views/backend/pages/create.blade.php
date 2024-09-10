@@ -20,13 +20,13 @@
    </div>
    <div class="box-body">
       <div class="container">
-         {{ Form::open(['url' => route('admin.pages.update', $page['id']) ,'method' => 'PUT','class' => 'form-horizontal','files' => 'true']) }}
+         {{ html()->form('PUT', route('admin.pages.update', $page['id']))->class('form-horizontal')->acceptsFiles()->open() }}
          <div class="row form-group">
             <div class="col-sm-2">
-               {{ Form::label('title', 'Title:') }}
+               {{ html()->label('Title:', 'title') }}
             </div>
             <div class="col-sm-8">
-               {{ Form::text('title', $page['title'],  ['class' => 'form-control title-input','required'=>'required', 'maxlength' => '191', 'autofocus' => 'autofocus']) }}
+               {{ html()->text('title', $page['title'])->class('form-control title-input')->required()->maxlength('191')->autofocus('autofocus') }}
                @if(count($errors->get('title')) > 0)
                <span class="backend-errors alert-danger">{{ $errors->first('title') }}</span>
                @endif
@@ -34,10 +34,10 @@
          </div>   
          <div class="row form-group">  
             <div class="col-sm-2">
-               {{ Form::label('content', 'Content:') }}
+               {{ html()->label('Content:', 'content') }}
             </div>
             <div class="col-sm-8">
-               {{ Form::textarea('content', $page['content'],['class' => 'form-control edit-blog-content ','required'=>'required','id' => 'ckeditor']) }}
+               {{ html()->textarea('content', $page['content'])->class('form-control edit-blog-content ')->required()->id('ckeditor') }}
                @if(count($errors->get('content')) > 0)
                <span class="backend-errors alert-danger">{{ $errors->first('content') }}</span>
                @endif
@@ -48,10 +48,10 @@
 </div>
 
 <div class="box box-info  create-edit-cancel-btn">
-   {{ Form::submit('Update', ['class' => 'btn btn-primary edit-create-btn']) }} 
+   {{ html()->submit('Update')->class('btn btn-primary edit-create-btn') }} 
    <a href="{{route("admin.pages.index")}}" class="btn btn-primary cancel-btn">Cancel</a>
 </div>
-{{ Form::close() }}    
+{{ html()->form()->close() }}    
 
 @endsection
 

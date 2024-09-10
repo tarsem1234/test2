@@ -23,14 +23,14 @@
                     <div class="panel-body">
                         <!--<div class="panel-heading"></div>-->
                         @if(isset($property))
-                        {{ Form::open(['route' => 'frontend.vacationUpdate', 'class' => 'form-horizontal', 'id'=>'vac_form' ,'enctype'=>"multipart/form-data"]) }}
-                        {{ Form::hidden('property_id', $property->id) }}
-                        {{ Form::hidden('property_submit', 'Update') }}
-                        {{ Form::hidden('property_table_id', $property->id) }}
+                        {{ html()->form('POST', route('frontend.vacationUpdate'))->class('form-horizontal')->id('vac_form')->acceptsFiles()->open() }}
+                        {{ html()->hidden('property_id', $property->id) }}
+                        {{ html()->hidden('property_submit', 'Update') }}
+                        {{ html()->hidden('property_table_id', $property->id) }}
                         @else
-                        {{ Form::open(['route' => 'frontend.vacationStore', 'class' => 'form-horizontal','enctype'=>"multipart/form-data"]) }}
+                        {{ html()->form('POST', route('frontend.vacationStore'))->class('form-horizontal')->acceptsFiles()->open() }}
                         @endif
-                        {{ Form::hidden('property_type', config('constant.property_type.3')) }}
+                        {{ html()->hidden('property_type', config('constant.property_type.3')) }}
 
                         <div class="row">
                             <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
@@ -610,7 +610,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{ Form::close() }}
+                            {{ html()->form()->close() }}
                         </div>
                     </div><!-- panel -->
                 </div><!-- panel -->

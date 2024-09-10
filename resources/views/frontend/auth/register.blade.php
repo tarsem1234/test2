@@ -25,36 +25,34 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><span class="black-text">User</span> Sign-Up</div>
                 <div class="">
-                    {{ Form::open(['route' => 'frontend.auth.register.post', 'class' => 'form-horizontal']) }}
+                    {{ html()->form('POST', route('frontend.auth.register.post'))->class('form-horizontal')->open() }}
                     <div class="form-group">                       
                         <div class="col-md-12">
-                            {{ Form::text('first_name', null,
-                            ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.frontend.first_name')]) }}
+                            {{ html()->text('first_name')->class('form-control')->maxlength('191')->required()->autofocus('autofocus')->placeholder(trans('validation.attributes.frontend.first_name')) }}
                         </div><!--col-md-12-->
                     </div><!--form-group-->
 
                     <div class="form-group">                    
                         <div class="col-md-12">
-                            {{ Form::text('last_name', null,
-                            ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.last_name')]) }}
+                            {{ html()->text('last_name')->class('form-control')->maxlength('191')->required()->placeholder(trans('validation.attributes.frontend.last_name')) }}
                         </div><!--col-md-12-->
                     </div><!--form-group-->
 
                     <div class="form-group">                     
                         <div class="col-md-12">
-                            {{ Form::email('email', null, ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
+                            {{ html()->email('email')->class('form-control')->attribute('maxlength', '191')->attribute('required', 'required')->attribute('placeholder', trans('validation.attributes.frontend.email')) }}
                         </div><!--col-md-12-->
                     </div><!--form-group-->
 
                     <div class="form-group">                       
                         <div class="col-md-12">
-                            {{ Form::password('password', ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.password')]) }}
+                            {{ html()->password('password')->class('form-control')->attribute('required', 'required')->attribute('placeholder', trans('validation.attributes.frontend.password')) }}
                         </div><!--col-md-12-->
                     </div><!--form-group-->
 
                     <div class="form-group">                       
                         <div class="col-md-12">
-                            {{ Form::password('password_confirmation', ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.password_confirmation')]) }}
+                            {{ html()->password('password_confirmation')->class('form-control')->attribute('required', 'required')->attribute('placeholder', trans('validation.attributes.frontend.password_confirmation')) }}
                         </div><!--col-md-12-->
                     </div><!--form-group-->
 
@@ -158,8 +156,8 @@
                     @if (config('access.captcha.registration'))
                     <div class="form-group">
                         <div class="col-md-12">
-                            {!! Form::captcha() !!}
-                            {{ Form::hidden('captcha_status', 'true') }}
+                            {{ html()->captcha() }}
+                            {{ html()->hidden('captcha_status', 'true') }}
                         </div><!--col-md-12-->
                     </div><!--form-group-->
                     @endif
@@ -174,11 +172,11 @@
 
                     <div class="form-group">
                         <div class="col-md-12">
-                            {{ Form::submit('create account', ['class' => 'btn btn-primary']) }}
+                            {{ html()->submit('create account')->class('btn btn-primary') }}
                         </div><!--col-md-12-->
                     </div><!--form-group-->
 
-                    {{ Form::close() }}
+                    {{ html()->form()->close() }}
                 </div><!-- panel body -->
             </div><!-- panel -->
         </div><!-- col-md-12 -->

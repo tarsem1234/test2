@@ -70,7 +70,7 @@
         
             <div class="form-field-input">
                 <div class="col-lg-12">
-                    {{ Form::open(['route' => 'frontend.searched.supportnetwork', 'method'=>'get', 'class' => 'form-horizontal']) }}
+                    {{ html()->form('GET', route('frontend.searched.supportnetwork'))->class('form-horizontal')->open() }}
 
                     <div class="row">  
                         <div class="col-md-3 col-sm-3 col-xs-12">
@@ -148,7 +148,7 @@
                 </div>
             </div>
 
-            {{ Form::close() }} 
+            {{ html()->form()->close() }} 
         </div>
     </div><!-- row -->
 </div><!-- network-portal -->

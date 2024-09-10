@@ -48,9 +48,9 @@
             <div class="box-body">
                 <div class="container">
                     @if( isset($categorySession) )
-                    {{ Form::model($categorySession,['url' => route('admin.sessions.update', $categorySession['id']) ,'method' => 'PUT','class' => 'form-horizontal','files' => 'true']) }}
+                    {{ html()->modelForm($categorySession, 'PUT', route('admin.sessions.update', $categorySession['id']))->class('form-horizontal')->acceptsFiles()->open() }}
                     @else
-                    {{ Form::open(['route' => 'admin.sessions.store' ,'method' => 'POST','class' => 'form-horizontal','files' => 'true']) }}
+                    {{ html()->form('POST', route('admin.sessions.store'))->class('form-horizontal')->acceptsFiles()->open() }}
                     @endif
                 </div>
                 <div v-if="errors.length" class="text-danger error-list">
@@ -60,38 +60,38 @@
                     </ul>
                 </div>
                 @if(isset($category))
-                {{ Form::hidden('category_id', $category->id) }}
+                {{ html()->hidden('category_id', $category->id) }}
                 @endif
                 @if(isset($categorySession))
-                {{ Form::hidden('category_id', $categorySession->category->id) }}
+                {{ html()->hidden('category_id', $categorySession->category->id) }}
                 @endif
                 <div class="row form-group">
                     <div class="col-sm-1">
-                        {{ Form::label('name', 'Name:') }}
+                        {{ html()->label('Name:', 'name') }}
                     </div>
                     <div class="col-sm-4">
-                        {{ Form::text('name', null, ['class' => 'form-control title-input', 'maxlength' => '191', 'placeholder' => 'Name', 'v-model' => 'session.name']) }}
+                        {{ html()->text('name')->class('form-control title-input')->maxlength('191')->placeholder('Name')->attribute('v-model', 'session.name') }}
                     </div>
                     <div class="row form-group">
                         <div class="col-sm-1">
-                            {{ Form::label('points', 'Points:') }}
+                            {{ html()->label('Points:', 'points') }}
                         </div>
                         <div class="col-sm-4">
-                            {{ Form::number('points', null,  ['class' => 'form-control title-input', 'maxlength' => '191', 'required' => 'required', 'placeholder' => 'Points',  'v-model' => 'session.points']) }}
+                            {{ html()->number('points')->class('form-control title-input')->attribute('maxlength', '191')->attribute('required', 'required')->attribute('placeholder', 'Points')->attribute('v-model', 'session.points') }}
                         </div>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-sm-1">
-                        {{ Form::label('description', 'Description:') }}
+                        {{ html()->label('Description:', 'description') }}
                     </div>
                     <div class="col-sm-11">
-                        {{ Form::textarea('description',null,['id' => 'ckeditor' ,'class' => 'form-control textarea', 'maxlength' => '191', 'required' => 'required', 'placeholder' => 'Description',  'v-model' => 'session.description']) }}
+                        {{ html()->textarea('description')->id('ckeditor')->class('form-control textarea')->maxlength('191')->required()->placeholder('Description')->attribute('v-model', 'session.description') }}
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-sm-1">
-                        {{ Form::label('questions', 'Questions:') }}
+                        {{ html()->label('Questions:', 'questions') }}
                     </div>
                     <div class="col-sm-11">
                         <table class="col-sm-12 table table-bordered" id="main_table" border="1" cellpadding="5">
@@ -152,10 +152,10 @@
         </div>
 
         <div class="box box-info  create-edit-cancel-btn">
-            {{ Form::button('Save', ['class' => 'btn btn-primary edit-create-btn', '@click'=>'checkForm()']) }}
+            {{ html()->button('Save', 'button')->class('btn btn-primary edit-create-btn')->attribute('@click', 'checkForm()') }}
             <a href="{{route("admin.sessions.index")}}" class="btn btn-primary cancel-btn">Cancel</a>
         </div>
-        {{ Form::close() }}
+        {{ html()->closeModelForm() }}
     </section>
 </section>
 <style>

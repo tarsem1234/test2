@@ -14,9 +14,9 @@
             <div class="col-md-9 col-sm-8">
                 <div class="nested-div">
                     @if(isset($sellerQuestionnaire))
-                    {{ Form::open(['route' => ['frontend.saveSellerQuestionnaire',$sellerQuestionnaire->id],'id'=>'question-signer-action','class'=>'seller-que-signer-form', 'role' => 'form', 'method' => 'post']) }}
+                    {{ html()->form('POST', route('frontend.saveSellerQuestionnaire', [$sellerQuestionnaire->id]))->id('question-signer-action')->class('seller-que-signer-form')->attribute('role', 'form')->open() }}
                     @else
-                    {{ Form::open(['route' => 'frontend.saveSellerQuestionnaire','id'=>'question-signer-action','class'=>'seller-que-signer-form', 'role' => 'form', 'method' => 'post']) }}
+                    {{ html()->form('POST', route('frontend.saveSellerQuestionnaire'))->id('question-signer-action')->class('seller-que-signer-form')->attribute('role', 'form')->open() }}
                     @endif
                     <div id="question-seller-step1">
                         <div class="heading-text">
@@ -257,14 +257,14 @@
                             </div>
                         </div>
                     </div>
-                    {{Form::close()}}
+                    {{ html()->form()->close() }}
                     <div class="add-signers">
                         <div class="add-signers-form" style="display:none;">
                             <div class="panel panel-default panel-body">
                                 <div class="panel-heading"><span class="black-text">Add </span>New Signers</div>
                                 <div class="custom_errors"></div>
                                 <span>Be advised, it is recommended that the 'Co-signers confirm their account & information as soon as possible, to prevent inaccurate contract information.</span>
-                                {{ Form::open(['route' => 'frontend.signer.store','id'=>'addSigner', 'method'=>'post', 'class' => 'form-horizontal']) }}
+                                {{ html()->form('POST', route('frontend.signer.store'))->id('addSigner')->class('form-horizontal')->open() }}
                                 <div id="usersignup-form">
 
                                     <div class="form-group">
@@ -300,7 +300,7 @@
                                         <a class="btn btn-blue btn-cancel button">Cancel</a>
                                     </div>
                                 </div>
-                                {{ Form::close() }}
+                                {{ html()->form()->close() }}
                             </div>
                         </div>
                     </div>

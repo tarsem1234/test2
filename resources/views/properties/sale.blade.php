@@ -22,14 +22,14 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         @if(isset($property))
-                        {{ Form::open(['route' => 'frontend.propertyUpdate', 'class' => 'form-horizontal','enctype'=>"multipart/form-data"]) }}
-                        {{ Form::hidden('property_submit', 'Update') }}
-                        {{ Form::hidden('property_table_id', $property->id) }}
-                        {{ Form::hidden('property_architecture_table_id', $property->architechture->id) }}
+                        {{ html()->form('POST', route('frontend.propertyUpdate'))->class('form-horizontal')->acceptsFiles()->open() }}
+                        {{ html()->hidden('property_submit', 'Update') }}
+                        {{ html()->hidden('property_table_id', $property->id) }}
+                        {{ html()->hidden('property_architecture_table_id', $property->architechture->id) }}
                         @else
-                        {{ Form::open(['route' => 'frontend.saleStore', 'class' => 'form-horizontal','enctype'=>"multipart/form-data"]) }}
+                        {{ html()->form('POST', route('frontend.saleStore'))->class('form-horizontal')->acceptsFiles()->open() }}
                         @endif
-                        {{ Form::hidden('property_type', config('constant.property_type.2')) }}
+                        {{ html()->hidden('property_type', config('constant.property_type.2')) }}
                         <div class="">
 			    <div class="col-md-12">
 				<div class="row">
@@ -569,7 +569,7 @@
                             </div>
                         </div>
                         <!--------------------------------->
-                        {{ Form::close() }}
+                        {{ html()->form()->close() }}
                     </div><!-- panel body -->
                 </div><!-- panel -->
             </div><!-- col-md-12 -->

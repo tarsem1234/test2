@@ -12,9 +12,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Active' => HieuLe\Active\Facades\Active::class,
-        'Form' => Collective\Html\FormFacade::class,
         'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
-        'Html' => Collective\Html\HtmlFacade::class,
         'Location' => Stevebauman\Location\Facades\Location::class,
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,

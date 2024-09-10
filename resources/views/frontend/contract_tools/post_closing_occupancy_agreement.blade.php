@@ -229,7 +229,7 @@
                      </div>
                   </div>
                 
-                  {{ Form::open(['route' => 'frontend.saveQuestionSellerPostAdditionalClosing','role' => 'form', 'method' => 'post']) }}
+                  {{ html()->form('POST', route('frontend.saveQuestionSellerPostAdditionalClosing'))->attribute('role', 'form')->open() }}
                   <div class="form-group">
                      <div class="col-md-12">
                         <input type="hidden" name="send_provision" value="test">
@@ -248,7 +248,7 @@
                         </div>
                      </div>
                   </div>
-                  {{Form::close()}}
+                  {{ html()->form()->close() }}
                </div>
             </div>
          </div>

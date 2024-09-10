@@ -24,14 +24,14 @@
                     <!--<div class="panel-heading"></div>-->
                     <div class="panel-body">
                         @if(isset($property))
-                        {{ Form::open(['route' => 'frontend.propertyUpdate', 'class' => 'form-horizontal','enctype'=>"multipart/form-data"]) }}
-                        {{ Form::hidden('property_submit', 'Update') }}
-                        {{ Form::hidden('property_table_id', $property->id) }}
-                        {{ Form::hidden('property_architecture_table_id', $property->architechture->id) }}
+                        {{ html()->form('POST', route('frontend.propertyUpdate'))->class('form-horizontal')->acceptsFiles()->open() }}
+                        {{ html()->hidden('property_submit', 'Update') }}
+                        {{ html()->hidden('property_table_id', $property->id) }}
+                        {{ html()->hidden('property_architecture_table_id', $property->architechture->id) }}
                         @else
-                        {{ Form::open(['route' => 'frontend.rentStore', 'class' => 'form-horizontal','enctype'=>"multipart/form-data"]) }}
+                        {{ html()->form('POST', route('frontend.rentStore'))->class('form-horizontal')->acceptsFiles()->open() }}
                         @endif
-                        {{ Form::hidden('property_type', config('constant.property_type.1')) }}
+                        {{ html()->hidden('property_type', config('constant.property_type.1')) }}
                         <div class="col-md-12">
 			    <div class="row">
 				<input type="hidden" class="form-control" data-rule-required="true" data-rule-minlength="1" data-msg-required="Please enter property name or ID" id="property_id" name="property_id" readonly="readonly" value="{{$property->property_name??'127238'}}" aria-required="true">
@@ -599,7 +599,7 @@
 
 			<!--------------------------------->
 
-			{{ Form::close() }}
+			{{ html()->form()->close() }}
 		    </div><!-- panel body -->
 		</div><!-- panel -->
 	    </div><!-- panel-default -->

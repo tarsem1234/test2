@@ -47,7 +47,7 @@
             <div class="col-sm-12 img-filter">
                 <img src="{{asset('/storage/site-images/filter.jpg')}}" alt="filter img" class="img-responsive">
             </div>
-            {{ Form::open(['route' => 'frontend.propertySearch', 'class' => 'form-horizontal', 'method'=>'get','id'=>'searchAction']) }}
+            {{ html()->form('GET', route('frontend.propertySearch'))->class('form-horizontal')->id('searchAction')->open() }}
             <div class="col-sm-12 form-search-property">
                 <div class="col-sm-12 nested-div">
                     <div class="col-sm-2 formItem">
@@ -246,7 +246,7 @@
                     <button type="submit" class="btn btn-search" id="search_loc">Search</button>
                 </div>
             </div>
-            {{ Form::close() }}
+            {{ html()->form()->close() }}
         </div>
         <div class="btn-clear-less-more-filetrs">
             <a class="btn btn-clear-filters">Clear Filters</a>

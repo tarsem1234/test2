@@ -13,9 +13,9 @@
          <div class="col-md-9 col-sm-8">
              @if(isset($offer) && ($offer->owner_id == Auth::id() || (isset($property) && $property)))
              @if(isset($property) && $property)
-            {{ Form::open(['route' => ['frontend.saveLeadBasedPaintHazards',$offer->id],'role' => 'form', 'method' => 'post']) }}
+            {{ html()->form('POST', route('frontend.saveLeadBasedPaintHazards', [$offer->id]))->attribute('role', 'form')->open() }}
             @else
-            {{ Form::open(['route' => 'frontend.saveLeadBasedPaintHazards','role' => 'form', 'method' => 'post']) }}
+            {{ html()->form('POST', route('frontend.saveLeadBasedPaintHazards'))->attribute('role', 'form')->open() }}
             @endif
             @endif
             <div class="nested-div register-page">
@@ -84,7 +84,7 @@
                      </div>
                       @endif
                   </div><!--col-md-12-->
-            {{Form::close()}}
+            {{ html()->form()->close() }}
                   <div class="form-group">
                      <div class="col-md-12">
                         <h5>3.Purchaser's/Lessee's Acknowledgment (initial) </h5>

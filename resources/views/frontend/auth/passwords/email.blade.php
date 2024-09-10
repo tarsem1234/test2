@@ -17,11 +17,11 @@
                     <div class="panel panel-default1">
                         <div class="panel-heading"><span class="black-text"> Reset </span> Password</div> 
                         <div class="">
-                            {{ Form::open(['route' => 'frontend.auth.password.email.post', 'class' => 'form-horizontal']) }}
+                            {{ html()->form('POST', route('frontend.auth.password.email.post'))->class('form-horizontal')->open() }}
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <h4>E-MAIL ADDRESS</h4>
-                                    {{ Form::email('email', null, ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
+                                    {{ html()->email('email')->class('form-control')->attribute('maxlength', '191')->attribute('required', 'required')->attribute('autofocus', 'autofocus')->attribute('placeholder', trans('validation.attributes.frontend.email')) }}
                                     @if(count($errors->get('email')) > 0)
                                     <span class="text text-danger">{{implode('<br>', $errors->get('email'))}}</span>
                                     @endif
@@ -29,10 +29,10 @@
                             </div><!--form-group-->
                             <div class="form-group">
                                 <div class="col-md-12 mr-top">
-                                    {{ Form::submit(trans('labels.frontend.passwords.send_password_reset_link_button'), ['class' => 'btn btn-primary log-in-button']) }}
+                                    {{ html()->submit(trans('labels.frontend.passwords.send_password_reset_link_button'))->class('btn btn-primary log-in-button') }}
                                 </div><!--col-md-6-->
                             </div><!--form-group-->
-                            {{ Form::close() }}
+                            {{ html()->form()->close() }}
                         </div><!-- panel body -->
                     </div><!-- panel -->
                 </div><!-- col-md-8 -->

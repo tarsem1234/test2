@@ -17,10 +17,10 @@
                     </div>
                     <div class="para-text row mar-top">
                         <?php if (isset($property)) { ?>
-                            {{ Form::open(['route' => ['frontend.saveSellerPropertyConditionDisclosure',$property->id],'role' => 'form', 'method' => 'post']) }}
+                            {{ html()->form('POST', route('frontend.saveSellerPropertyConditionDisclosure', [$property->id]))->attribute('role', 'form')->open() }}
                             <input type="hidden" name="property_id" value="{{$property->id}}">
                         <?php } else { ?>
-                            {{ Form::open(['route' => 'frontend.saveSellerPropertyConditionDisclosure','role' => 'form', 'method' => 'post']) }}
+                            {{ html()->form('POST', route('frontend.saveSellerPropertyConditionDisclosure'))->attribute('role', 'form')->open() }}
                         <?php } ?>
                             <input type="hidden" name="previous_url" value="{{ url()->previous()}}">
                         <div class="col-sm-12">
@@ -3331,7 +3331,7 @@ if (isset($property->disclosure)) {
                                 @endif
                             </div>
                         </div>
-                        {{Form::close()}}
+                        {{ html()->form()->close() }}
                     </div>
                 </div>
             </div>

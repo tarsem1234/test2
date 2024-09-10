@@ -111,7 +111,7 @@
 
                         </tbody>
                     </table>
-                    {{ Form::open(['route'=>'frontend.sdThankyouForReviewSummaryKeyTermsTenant','class'=>'', 'role' => 'form']) }}
+                    {{ html()->form('POST', route('frontend.sdThankyouForReviewSummaryKeyTermsTenant'))->class('')->attribute('role', 'form')->open() }}
                     <div class="form-group">
                         <div class="checkbox">
                             <p class="align-left"><strong>I have reviewed the above (summary) terms and agree this information is correct to the best of my knowledge. Further, I understand that Freezyist.com is not providing legal guidance and recommends I consult with an attorney regarding these and other relevant legal matters.</strong>
@@ -126,7 +126,7 @@
                             <button type="submit" class="button btn btn-blue" id="proceed-review">Proceed To Review Documents</button>
                         </div>
                     </div>
-                    {{Form::close()}}
+                    {{ html()->form()->close() }}
                 </div>
             </div>
         </div><!--</row>-->

@@ -25,21 +25,21 @@
    <div class="box-body">     
       <div class="container">
          @if( isset($service) )
-         {{ Form::open(['url' => route('admin.services.update', $service['id']) ,'method' => 'PUT','class' => 'form-horizontal','files' => 'true']) }}
+         {{ html()->form('PUT', route('admin.services.update', $service['id']))->class('form-horizontal')->acceptsFiles()->open() }}
          @else
-         {{ Form::open(['route' => 'admin.services.store' ,'method' => 'POST','class' => 'form-horizontal','files' => 'true']) }}
+         {{ html()->form('POST', route('admin.services.store'))->class('form-horizontal')->acceptsFiles()->open() }}
          @endif
 
          <div class="row form-group">
             <div class="col-sm-2">
                @if( isset($service) )
-               {{ Form::label('service', 'Title:') }}
+               {{ html()->label('Title:', 'service') }}
                @else
-               {{ Form::label('service', 'Service Name:') }}
+               {{ html()->label('Service Name:', 'service') }}
                @endif
             </div> 
             <div class="col-sm-5">
-               {{ Form::text('service', isset($service)? $service['service']:null,  ['class' => 'form-control title-input','required'=>'required', 'maxlength' => '191', 'placeholder' => 'Service Name']) }}
+               {{ html()->text('service', isset($service) ? $service['service'] : null)->class('form-control title-input')->required()->maxlength('191')->placeholder('Service Name') }}
                @if(count($errors->get('service')) > 0)
                <span class="backend-errors alert-danger">{{ $errors->first('service') }}</span>
                @endif
@@ -47,7 +47,7 @@
          </div>     
          <div class="row form-group">                                   
             <div class="col-sm-2">
-               {{ Form::label('industry', 'Industry:') }}
+               {{ html()->label('Industry:', 'industry') }}
             </div>
             <div class="col-sm-5">
                <select name="industry" id="select_industry" class="form-control title-input" required>
@@ -77,13 +77,13 @@
 
 <div class="box box-info  create-edit-cancel-btn">
    @if( isset($service) )
-   {{ Form::submit('Update', ['class' => 'btn btn-primary edit-create-btn']) }}
+   {{ html()->submit('Update')->class('btn btn-primary edit-create-btn') }}
    @else
-   {{ Form::submit('Create', ['class' => 'btn btn-primary edit-create-btn']) }}
+   {{ html()->submit('Create')->class('btn btn-primary edit-create-btn') }}
    @endif
    <a href="{{route("admin.services.index")}}" class="btn btn-primary cancel-btn">Cancel</a>
 </div>
-{{ Form::close() }}    
+{{ html()->form()->close() }}    
 
 @endsection
 

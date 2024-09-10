@@ -25,13 +25,13 @@
     <div class="box-body">
         <div class="container">
             @if( isset($document) )
-            {{ Form::open(['url' => route('admin.document-listing.update', $document['id']) ,'method' => 'PUT','class' => 'form-horizontal update_document','files' => 'true']) }}
+            {{ html()->form('PUT', route('admin.document-listing.update', $document['id']))->class('form-horizontal update_document')->acceptsFiles()->open() }}
             @else
-            {{ Form::open(['route' => 'admin.document-listing.store' ,'method' => 'POST','class' => 'form-horizontal document_create','files' => 'true']) }}
+            {{ html()->form('POST', route('admin.document-listing.store'))->class('form-horizontal document_create')->acceptsFiles()->open() }}
             @endif
             <div class="row form-group">
                 <div class="col-sm-2">
-                    {{ Form::label('state', 'State:') }}
+                    {{ html()->label('State:', 'state') }}
                 </div>
                 <div class="col-sm-5">
                     <select name="state" id="state" class="form-control title-input" required>
@@ -58,16 +58,16 @@
             </div>      
             <div class="row form-group">
                 <div class="col-sm-2">
-                    {{ Form::label('document', 'Document:') }}
+                    {{ html()->label('Document:', 'document') }}
                 </div>        
                 <div class="col-sm-5">
                     @if( isset($document) )
                     <div class="form-control title-input">
                         {{ $document->document }}
                     </div>
-                    {{ Form::file('document',['required'=>'required']) }}
+                    {{ html()->file('document')->required() }}
                     @else
-                    {{ Form::file('document',['required'=>'required']) }}
+                    {{ html()->file('document')->required() }}
                     @endif
                     @if(count($errors->get('document')) > 0)
                     <span class="backend-errors alert-danger">{{ $errors->first('document') }}</span>
@@ -76,10 +76,10 @@
             </div>
             <div class="row form-group" id="timeshareCalender" style="display:none;">
                 <div class="col-sm-2">
-                    {{ Form::label('timeshare calender', 'Timeshare Calender:') }}
+                    {{ html()->label('Timeshare Calender:', 'timeshare calender') }}
                 </div>
                 <div class="col-sm-5">
-                    {{ Form::checkbox('timeshare_calender',1,null, array('id'=>'timeshare_calender')) }}
+                    {{ html()->checkbox('timeshare_calender', false, 1)->id('timeshare_calender') }}
                 </div>
             </div>
         </div>
@@ -87,13 +87,13 @@
 </div>    
 <div class="box box-info  create-edit-cancel-btn">
     @if( isset($document) )
-    {{ Form::submit('Update', ['class' => 'btn btn-primary edit-create-btn']) }}
+    {{ html()->submit('Update')->class('btn btn-primary edit-create-btn') }}
     @else
-    {{ Form::submit('Create', ['class' => 'btn btn-primary edit-create-btn']) }}
+    {{ html()->submit('Create')->class('btn btn-primary edit-create-btn') }}
     @endif
     <a href="{{route("admin.document-listing.index")}}" class="btn btn-primary cancel-btn">Cancel</a>
 </div>
-{{ Form::close() }}
+{{ html()->form()->close() }}
 
 @endsection
 

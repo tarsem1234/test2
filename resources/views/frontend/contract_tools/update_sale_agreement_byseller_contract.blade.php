@@ -15,7 +15,7 @@
                <div class="heading-text">
                   <h2>PURCHASE AND SALE AGREEMENT</h2>
                </div>
-               {{ Form::open(['route' => 'frontend.saveUpdateSaleAgreementBysellerContract','role' => 'form', 'method' => 'post']) }}
+               {{ html()->form('POST', route('frontend.saveUpdateSaleAgreementBysellerContract'))->attribute('role', 'form')->open() }}
                <div class="para-text row">
                   <div class="form-group">
                      <div class="col-md-12">

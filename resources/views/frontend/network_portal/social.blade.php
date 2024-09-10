@@ -63,7 +63,7 @@
                     <hr style="border: 4px solid gray;" />
                     
                     <div class="form-list">
-                        {{ Form::open(['route' => 'frontend.searched.socialNetwork', 'method'=>'get', 'class' => 'form-horizontal']) }}
+                        {{ html()->form('GET', route('frontend.searched.socialNetwork'))->class('form-horizontal')->open() }}
                         <div class="row">
                             
                             <div class="col-md-3 col-sm-3 col-xs-12">
@@ -131,7 +131,7 @@
                             </div>
                             
                         </div>
-                        {{ Form::close() }}
+                        {{ html()->form()->close() }}
                     </div>
 
                 </div><!-- col-md-12 -->

@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-{{ Form::model($user, ['route' => ['admin.access.user.update', $user], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) }}
+{{ html()->modelForm($user, 'PATCH', route('admin.access.user.update', [$user]))->class('form-horizontal')->attribute('role', 'form')->open() }}
 <div class="box box-success">
     <div class="box-header with-border">
         <h3 class="box-title">Edit Business User</h3>
@@ -20,9 +20,9 @@
     </div><!-- /.box-header -->
     <div class="box-body">
         <div class="form-group">
-            {{ Form::label('company_name', 'Company Name', ['class' => 'col-lg-2 control-label']) }}
+            {{ html()->label('Company Name', 'company_name')->class('col-lg-2 control-label') }}
             <div class="col-lg-10">
-                {{ Form::text('company_name', $userWithUser->business_profile->company_name??"", ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => 'Company Name']) }}
+                {{ html()->text('company_name', $userWithUser->business_profile->company_name ?? "")->class('form-control')->maxlength('191')->required()->autofocus('autofocus')->placeholder('Company Name') }}
                 @if(count($errors->get('company_name')) > 0)
                 <span class="backend-errors alert-danger">{{ $errors->first('company_name') }}</span>
                 @endif
@@ -30,10 +30,10 @@
         </div><!--form control-->
 
         <div class="form-group">
-            {{ Form::label('email', trans('validation.attributes.backend.access.users.email'), ['class' => 'col-lg-2 control-label']) }}
+            {{ html()->label(trans('validation.attributes.backend.access.users.email'), 'email')->class('col-lg-2 control-label') }}
 
             <div class="col-lg-10">
-                {{ Form::email('email', null, ['readonly','class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'placeholder' => trans('validation.attributes.backend.access.users.email')]) }}
+                {{ html()->email('email')->attribute('readonly', )->class('form-control')->attribute('maxlength', '191')->attribute('required', 'required')->attribute('placeholder', trans('validation.attributes.backend.access.users.email')) }}
                 @if(count($errors->get('email')) > 0)
                 <span class="backend-errors alert-danger">{{ $errors->first('email') }}</span>
                 @endif
@@ -41,7 +41,7 @@
         </div><!--form control-->
 
         <div class="form-group">
-            {{ Form::label('industry', 'Industry', ['class' => 'col-lg-2 control-label']) }}
+            {{ html()->label('Industry', 'industry')->class('col-lg-2 control-label') }}
             <!--<label for="city" class="col-lg-2 control-label">City</label>-->
             <div class="col-lg-10">
                 <select name="industry" id="select_industry" class="form-control title-input">
@@ -66,11 +66,11 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('city', 'City', ['class' => 'col-lg-2 control-label']) }}
+            {{ html()->label('City', 'city')->class('col-lg-2 control-label') }}
             <!--<label for="city" class="col-lg-2 control-label">City</label>-->
 
             <div class="col-lg-10">
-                {{ Form::text('city', null, ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'placeholder' => 'City']) }}
+                {{ html()->text('city')->class('form-control')->maxlength('191')->required()->placeholder('City') }}
                 @if(count($errors->get('city')) > 0)
                 <span class="backend-errors alert-danger">{{ $errors->first('city') }}</span>
                 @endif
@@ -80,14 +80,14 @@
 
         @if ($user->id != 1)
         <div class="form-group">
-            {{ Form::label('status', trans('validation.attributes.backend.access.users.active'), ['class' => 'col-lg-2 control-label']) }}
+            {{ html()->label(trans('validation.attributes.backend.access.users.active'), 'status')->class('col-lg-2 control-label') }}
 
             <div class="col-lg-1">
-                {{ Form::checkbox('status', '1', $user->status == 1) }}
+                {{ html()->checkbox('status', $user->status == 1, '1') }}
             </div><!--col-lg-1-->
         </div><!--form control-->
         <div class="form-group">
-            {{ Form::label('associated_roles', trans('validation.attributes.backend.access.users.associated_roles'), ['class' => 'col-lg-2 control-label']) }}
+            {{ html()->label(trans('validation.attributes.backend.access.users.associated_roles'), 'associated_roles')->class('col-lg-2 control-label') }}
             <div class="col-lg-3">
                 @if (count($roles) > 0)
                 @foreach($roles as $role)
@@ -189,17 +189,17 @@
         </div><!--pull-left-->
 
         <div class="pull-right">
-            {{ Form::submit(trans('buttons.general.crud.update'), ['class' => 'btn btn-success btn-xs']) }}
+            {{ html()->submit(trans('buttons.general.crud.update'))->class('btn btn-success btn-xs') }}
         </div><!--pull-right-->
         <div class="clearfix"></div>
     </div><!-- /.box-body -->
 </div><!--box-->
 @if ($user->id == 1)
-{{ Form::hidden('status', 1) }}
-{{ Form::hidden('assignees_roles[0]', 1) }}
+{{ html()->hidden('status', 1) }}
+{{ html()->hidden('assignees_roles[0]', 1) }}
 @endif
 
-{{ Form::close() }}
+{{ html()->closeModelForm() }}
 @endsection
 
 @section('after-scripts')

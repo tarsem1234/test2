@@ -9,7 +9,7 @@
 @section('content')
 
 <div class="sale-listings">
-    {{ Form::open(['route' => 'frontend.searchedSale', 'class' => 'form-horizontal', 'method'=>'get','id'=>'searchAction']) }}
+    {{ html()->form('GET', route('frontend.searchedSale'))->class('form-horizontal')->id('searchAction')->open() }}
     <div class="search-property-row">
         <div class="container nested-div">
             <div class="row bg-white">
@@ -316,7 +316,7 @@
             </div>
         </div>
     </div>
-    {{ Form::close() }}
+    {{ html()->form()->close() }}
 </div>
 @if(isset($search))
 <div class="container">

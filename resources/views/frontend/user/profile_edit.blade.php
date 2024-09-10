@@ -67,12 +67,12 @@ if (in_array(config('constant.inverse_user_type.Business'), array_column($user->
                                 </div> 
                                 <div class="hidden" id="image-response"></div>
                             </div>
-                            {{ Form::open(['route' => ['frontend.profileUpdateSave'], 'class' => 'form-horizontal update-form', 'role' => 'form', 'method' => 'post']) }}
+                            {{ html()->form('POST', route('frontend.profileUpdateSave', ))->class('form-horizontal update-form')->attribute('role', 'form')->open() }}
                             @if(isset($isUser) && $isUser)
-                            {{ Form::hidden('user_type', config('constant.user_type.3')) }}
+                            {{ html()->hidden('user_type', config('constant.user_type.3')) }}
                             @endif
                             @if(isset($isBusiness) && $isBusiness)
-                            {{ Form::hidden('user_type', config('constant.user_type.2')) }} 
+                            {{ html()->hidden('user_type', config('constant.user_type.2')) }} 
                             @endif
                             <input type="hidden" name="latitude" id="latitude" value="">
                             <input type="hidden" name="longitude" id="longitude" value="">
@@ -112,14 +112,14 @@ if (in_array(config('constant.inverse_user_type.Business'), array_column($user->
                             </div>
                             <div class="form-group">
                                 <div class="">
-                                    {{ Form::text('', '', ['id' => 'postal_code', 'class' => 'form-control', 'placeholder' => 'Search Address' ]) }}
+                                    {{ html()->text('', '')->id('postal_code')->class('form-control')->placeholder('Search Address') }}
 
                                 </div><!--col-md-6-->
                             </div>
                             <div class="form-group old_zipcode">
                                 <div class="">
 
-                                    {{ Form::text('zip_code', $user->zip_code??"", ['id' => 'zip_code', 'class' => 'form-control', 'placeholder' => 'Zip Code', 'required'=>true,'readonly'=>true]) }}
+                                    {{ html()->text('zip_code', $user->zip_code ?? "")->id('zip_code')->class('form-control')->placeholder('Zip Code')->required()->isReadonly() }}
                                     @if(count($errors->get('zip_code')) > 0)
                                     <span class="text text-danger">{{implode('<br>', $errors->get('zip_code'))}}</span>
                                     @endif
@@ -143,7 +143,7 @@ if (in_array(config('constant.inverse_user_type.Business'), array_column($user->
                             </div>
                             <div class="form-group">
                                 <div class="">
-                                    {{ Form::text('state',$state->state??"", ['id' => 'state_disabled', 'class' => 'form-control not-allow', 'placeholder' => 'State', 'required'=>true]) }}
+                                    {{ html()->text('state', $state->state ?? "")->id('state_disabled')->class('form-control not-allow')->placeholder('State')->required() }}
                                     @if(count($errors->get('state')) > 0)
                                     <span class="text text-danger">{{implode('<br>', $errors->get('state'))}}</span>
                                     @endif
@@ -164,7 +164,7 @@ if (in_array(config('constant.inverse_user_type.Business'), array_column($user->
                             </div>
                             <div class="form-group old_city">
                                 <div class="">
-                                    {{ Form::text('city', $user->city??"", ['id' => 'city', 'class' => 'form-control not-allow', 'placeholder' => 'City', 'required'=>true]) }}
+                                    {{ html()->text('city', $user->city ?? "")->id('city')->class('form-control not-allow')->placeholder('City')->required() }}
                                     @if(count($errors->get('city')) > 0)
                                     <span class="text text-danger">{{implode('<br>', $errors->get('city'))}}</span>
                                     @endif
@@ -191,7 +191,7 @@ if (in_array(config('constant.inverse_user_type.Business'), array_column($user->
                             <div class="form-group">
                                 <h4 class=" control-label">Address</h4>
                                 <div class="">
-                                    {{ Form::textarea('address', $user->user_profile->address??"", ['id'=>'formatted_address','data-msg-required'=>"Please enter your address",'cols'=>'10','style'=>'width: 100%','class' => 'form-control text-height', 'aria-invalid'=>"false", 'required']) }}
+                                    {{ html()->textarea('address', $user->user_profile->address ?? "")->id('formatted_address')->data('msg-required', "Please enter your address")->cols('10')->style('width: 100%')->class('form-control text-height')->attribute('aria-invalid', "false")->required() }}
                                 </div>
                             </div>
                             @endif
@@ -363,7 +363,7 @@ if (in_array(config('constant.inverse_user_type.Business'), array_column($user->
                                     <a href="{{ route('frontend.user.dashboard') }}" class="btn btn-blue">Cancel</a>
                                 </div>
                             </div>
-                            {{ Form::close() }}                            
+                            {{ html()->form()->close() }}                            
                         </div> 
                     </div>
                 </div>

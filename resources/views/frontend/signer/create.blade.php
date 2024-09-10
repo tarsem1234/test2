@@ -16,7 +16,7 @@
                 <div class="panel panel-default1">
                     <div class="panel-heading"><span class="black-text">Add </span>New Signers</div>
                     <div class="">
-                        {{ Form::open(['route' => 'frontend.signer.store', 'method'=>'post', 'class' => 'form-horizontal']) }}
+                        {{ html()->form('POST', route('frontend.signer.store'))->class('form-horizontal')->open() }}
 			<div id="usersignup-form">
 
 			    <div class="form-group">
@@ -131,7 +131,7 @@
 				<a href="{{ route('frontend.signer.index') }}" type="button" class="btn btn-blue btn-cancel button">Cancel</a>
 			    </div>
 			</div>
-                        {{ Form::close() }}
+                        {{ html()->form()->close() }}
 
                     </div>
                 </div>

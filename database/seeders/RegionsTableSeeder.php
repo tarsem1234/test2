@@ -2,61 +2,49 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class RegionsTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
-        
 
         DB::table('regions')->delete();
-        
-        DB::table('regions')->insert(array (
-            0 => 
-            array (
+
+        DB::table('regions')->insert([
+            0 => [
                 'id' => 1,
                 'region' => 'Africa',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 2,
                 'region' => 'Antarctica',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 3,
                 'region' => 'Asia',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 4,
                 'region' => 'Europe',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 5,
                 'region' => 'North America',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 6,
                 'region' => 'Oceania',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 7,
                 'region' => 'South America',
-            ),
-        ));
-        
-        
+            ],
+        ]);
+
     }
 }

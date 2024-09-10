@@ -10,7 +10,9 @@ use App\Helpers\Frontend\Auth\Socialite;
 use App\Http\Controllers\Controller;
 use App\Repositories\Frontend\Access\User\UserSessionRepository;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 /**
  * Class LoginController.
@@ -31,21 +33,17 @@ class LoginController extends Controller
 
     /**
      * Show the application's login form.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function showLoginForm()
+    public function showLoginForm(): View
     {
         return view('frontend.auth.login')
             ->with('socialite_links', (new Socialite)->getSocialLinks());
     }
 
     /**
-     * @return \Illuminate\Http\RedirectResponse
-     *
      * @throws GeneralException
      */
-    protected function authenticated(Request $request, $user)
+    protected function authenticated(Request $request, $user): RedirectResponse
     {
         /*
          * Check to see if the users account is confirmed and active
@@ -77,11 +75,8 @@ class LoginController extends Controller
 
     /**
      * Log the user out of the application.
-     *
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function logout(Request $request)
+    public function logout(Request $request): RedirectResponse
     {
         /*
          * Boilerplate needed logic
@@ -114,10 +109,7 @@ class LoginController extends Controller
         return redirect('/');
     }
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function logoutAs()
+    public function logoutAs(): RedirectResponse
     {
         //If for some reason route is getting hit without someone already logged in
         if (! access()->user()) {

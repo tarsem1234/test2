@@ -13,10 +13,10 @@ return [
     */
 
     'backend' => [
-        'none'            => 'Aucun historique récent.',
-        'none_for_type'   => 'Aucun historique pour ce type.',
+        'none' => 'Aucun historique récent.',
+        'none_for_type' => 'Aucun historique pour ce type.',
         'none_for_entity' => 'Aucun historique pour :entity.',
-        'recent_history'  => 'Historique récent',
+        'recent_history' => 'Historique récent',
 
         'roles' => [
             'created' => 'a créé le rôle',
@@ -24,17 +24,17 @@ return [
             'updated' => 'a mis à jour le rôle',
         ],
         'users' => [
-            'changed_password'    => 'a modifié le mot de passe de l\'utilisateur',
+            'changed_password' => 'a modifié le mot de passe de l\'utilisateur',
             'confirmed' => 'confirmed user',
-            'created'             => 'a créé l\'utilisateur',
-            'deactivated'         => 'a désactivé l\'utilisateur',
-            'deleted'             => 'a effacé l\'utilisateur',
-            'deleted_social'      => 'deleted social account',
+            'created' => 'a créé l\'utilisateur',
+            'deactivated' => 'a désactivé l\'utilisateur',
+            'deleted' => 'a effacé l\'utilisateur',
+            'deleted_social' => 'deleted social account',
             'permanently_deleted' => 'a définitivement effacé l\'utilisateur',
-            'updated'             => 'a mis à jour l\'utilisateur',
+            'updated' => 'a mis à jour l\'utilisateur',
             'unconfirmed' => 'un-confirmed user',
-            'reactivated'         => 'a réactivé l\'utilisateur',
-            'restored'            => 'a restauré l\'utilisateur',
+            'reactivated' => 'a réactivé l\'utilisateur',
+            'restored' => 'a restauré l\'utilisateur',
         ],
     ],
 ];

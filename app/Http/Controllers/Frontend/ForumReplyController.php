@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\ForumReply;
 use Auth;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ForumReplyController extends Controller
 {
-    public function saveForumReply(Request $request)
+    public function saveForumReply(Request $request): RedirectResponse
     {
         $this->validate($request, [
             'forum_reply' => 'required',
@@ -25,7 +27,7 @@ class ForumReplyController extends Controller
         return redirect()->back();
     }
 
-    public function replyCreate(Request $request)
+    public function replyCreate(Request $request): View
     {
         return view('frontend.forum.create');
     }

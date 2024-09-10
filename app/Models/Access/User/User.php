@@ -8,6 +8,8 @@ use App\Models\Access\User\Traits\Scope\UserScope;
 use App\Models\Access\User\Traits\UserAccess;
 use App\Models\Access\User\Traits\UserSendPasswordReset;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -65,67 +67,67 @@ class User extends Authenticatable
         $this->table = config('access.users_table');
     }
 
-    public function business_profile()
+    public function business_profile(): HasOne
     {
         return $this->hasOne(\App\Models\BusinessProfile::class);
     }
 
-    public function user_profile()
+    public function user_profile(): HasOne
     {
         return $this->hasOne(\App\Models\UserProfile::class);
     }
 
-    public function signature()
+    public function signature(): HasOne
     {
         return $this->hasOne(\App\Models\Signature::class);
     }
 
-    public function signatures()
+    public function signatures(): HasMany
     {
         return $this->hasMany(\App\Models\Signature::class);
     }
 
-    public function rentSignature()
+    public function rentSignature(): HasOne
     {
         return $this->hasOne(\App\Models\RentSignature::class);
     }
 
-    public function forums()
+    public function forums(): HasMany
     {
         return $this->hasMany(\App\Models\Forum::class);
     }
 
-    public function offer()
+    public function offer(): HasOne
     {
         return $this->hasOne('App\Models\Offer');
     }
 
-    public function lerning_points()
+    public function lerning_points(): HasMany
     {
         return $this->hasMany(\App\Models\Backend\UserLearningPoint::class);
     }
 
-    public function network()
+    public function network(): HasOne
     {
         return $this->hasOne(\App\Models\Network::class);
     }
 
-    public function signer()
+    public function signer(): HasOne
     {
         return $this->hasOne(\App\Models\Signer::class);
     }
 
-    public function messages()
+    public function messages(): HasMany
     {
         return $this->hasMany(\App\Models\Message::class, 'to_user_id');
     }
 
-    public function sessions()
+    public function sessions(): HasMany
     {
         return $this->hasMany(\App\Models\UserLearningSession::class);
     }
 
-    public function ratings()
+    public function ratings(): HasMany
     {
         return $this->hasMany(\App\Models\ProfileRating::class);
     }
@@ -135,12 +137,12 @@ class User extends Authenticatable
         return ceil($this->ratings->average('rating'));
     }
 
-    public function subscribeServices()
+    public function subscribeServices(): HasMany
     {
         return $this->hasMany(\App\Models\SubscribeServices::class);
     }
 
-    public function userConditional()
+    public function userConditional(): HasMany
     {
         return $this->hasMany(\App\Models\UsersConditionalData::class);
     }

@@ -3,7 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
 use Illuminate\Session\Store;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class SessionTimeout.
@@ -28,11 +30,8 @@ class SessionTimeout
 
     /**
      * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
         if (config('session.timeout_status')) {
             $isLoggedIn = $request->path() != '/logout';

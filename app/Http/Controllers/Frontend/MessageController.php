@@ -9,7 +9,9 @@ use App\Models\Message;
 use App\Models\Network;
 use App\Models\ProfileRating;
 use Auth;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Mail;
 
 class MessageController extends Controller
@@ -131,7 +133,7 @@ class MessageController extends Controller
         return $friends ? true : false;
     }
 
-    public function rateUser(Request $request)
+    public function rateUser(Request $request): Response
     {
         $rating = ProfileRating::where(['from_user_id' => Auth::id(), 'user_id' => $request->get('user_id')])->first() ?? new ProfileRating;
         $rating->review = $request->get('review', null);
@@ -179,7 +181,7 @@ class MessageController extends Controller
         return view('frontend.messages.new', compact('allAssociates'));
     }
 
-    public function delete($id)
+    public function delete($id): RedirectResponse
     {
         $id = decrypt($id);
         if ($id) {

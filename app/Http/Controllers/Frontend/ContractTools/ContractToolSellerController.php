@@ -21,18 +21,20 @@ use App\Models\UpdateSaleAgreementBysellerContract;
 use App\Services\EmailLogService;
 use Auth;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Mail;
 use Session;
 
 class ContractToolSellerController extends Controller
 {
-    public function contractTools()
+    public function contractTools(): View
     {
         return view('frontend.contract_tools.contract_tools');
     }
 
-    public function questionsSetForSeller()
+    public function questionsSetForSeller(): View
     {
         $offerSession = Session::get('OFFER');
         $signers = Signer::where('from_user_id', Auth::id())->whereHas('invited_users')->with('invited_users')->get();
@@ -45,7 +47,7 @@ class ContractToolSellerController extends Controller
         return view('frontend.contract_tools.questions_set_for_seller', compact('signers', 'sellerQuestionnaire', 'getProperty'));
     }
 
-    public function thankYouToSellerForAnswer()
+    public function thankYouToSellerForAnswer(): View
     {
         $propertyData = Session::get('PROPERTY');
         $offerData = Session::get('OFFER');
@@ -110,13 +112,13 @@ class ContractToolSellerController extends Controller
         }
     }
 
-    public function thankyouPd()
+    public function thankyouPd(): View
     {
 
         return view('frontend.contract_tools.thankyou_pd');
     }
 
-    public function questionsToSellerProperty($value = '')
+    public function questionsToSellerProperty($value = ''): View
     {
         $offerData = Session::get('OFFER');
         $questionSellerPostClosing = QuestionSellerPostClosing::where('offer_id', $offerData['offer_id'])
@@ -161,7 +163,7 @@ class ContractToolSellerController extends Controller
         return redirect()->back();
     }
 
-    public function postClosingQuestionsThankyou()
+    public function postClosingQuestionsThankyou(): View
     {
 
         return view('frontend.contract_tools.post_closing_questions_thankyou');
@@ -189,7 +191,7 @@ class ContractToolSellerController extends Controller
         return redirect()->back();
     }
 
-    public function thankyouPurchaseAgreement()
+    public function thankyouPurchaseAgreement(): View
     {
         $offerArray = Session::get('OFFER');
         $offer = SaleOffer::where('id', $offerArray['offer_id'])->first();
@@ -225,7 +227,7 @@ class ContractToolSellerController extends Controller
         return ['propertyLink' => $propertyLink, 'viewOfferLink' => $viewOfferLink];
     }
 
-    public function saveSellerQuestionnaire(SellerQuestionnaireRequest $request, $id = null)
+    public function saveSellerQuestionnaire(SellerQuestionnaireRequest $request, $id = null): RedirectResponse
     {
         $data = $request->all();
         $offerArray = Session::get('OFFER');
@@ -338,7 +340,7 @@ class ContractToolSellerController extends Controller
         return redirect()->back();
     }
 
-    public function saveQuestionSellerPostAdditionalClosing(Request $request)
+    public function saveQuestionSellerPostAdditionalClosing(Request $request): RedirectResponse
     {
         if (! Session::get('PROPERTY') && ! Session::get('OFFER')) {
             return redirect()->route('frontend.recieved.offers');
@@ -689,7 +691,7 @@ class ContractToolSellerController extends Controller
     }
 
     //    update as client want when click on yes button form will not show on buyer end
-    public function thankYouLeadBased($value = '')
+    public function thankYouLeadBased($value = ''): View
     {
         $offerData = Session::get('OFFER');
         $postClosingQuestion = QuestionSellerPostClosing::where('offer_id', $offerData['offer_id'])->first();
@@ -702,7 +704,7 @@ class ContractToolSellerController extends Controller
         return view('frontend.contract_tools.thank_you_lead_based_seller');
     }
 
-    public function thankYouLeadBasedOld()
+    public function thankYouLeadBasedOld(): View
     {
         //        return view('frontend.contract_tools.thank_you_lead_based');
 
@@ -734,7 +736,7 @@ class ContractToolSellerController extends Controller
         return redirect()->back()->with(['flash_danger' => 'Something went wrong']);
     }
 
-    public function saveLeadBasedPaintHazards(Request $request)
+    public function saveLeadBasedPaintHazards(Request $request): RedirectResponse
     {
         $this->validate($request, [
             'lead_based' => 'required',
@@ -805,7 +807,7 @@ class ContractToolSellerController extends Controller
         return redirect()->back();
     }
 
-    public function sdSummaryKeyTermsForSeller()
+    public function sdSummaryKeyTermsForSeller(): View
     {
         $offerArray = Session::get('OFFER');
 
@@ -825,7 +827,7 @@ class ContractToolSellerController extends Controller
         return view('frontend.contract_tools.sale.seller.sd_summary_key_terms_for_seller', compact('offer'));
     }
 
-    public function sdAdvisoryToBuyersAndSellersSellers()
+    public function sdAdvisoryToBuyersAndSellersSellers(): View
     {
         $offerArray = Session::get('OFFER');
         $offer = null;
@@ -848,12 +850,12 @@ class ContractToolSellerController extends Controller
         return view('frontend.contract_tools.sale.seller.sd_advisory_to_buyers_and_sellers_sellers', compact('offer', 'type', 'signature'));
     }
 
-    public function sdAdvisoryToBuyersAndSellersThankYou()
+    public function sdAdvisoryToBuyersAndSellersThankYou(): View
     {
         return view('frontend.contract_tools.sale.seller.sd_advisory_to_buyers_and_sellers_thank_you');
     }
 
-    public function sdDisclosureBySellerUpdate($id = null)
+    public function sdDisclosureBySellerUpdate($id = null): View
     {
         $propertyData = Session::get('PROPERTY');
         $offerArray = Session::get('OFFER');
@@ -907,7 +909,7 @@ class ContractToolSellerController extends Controller
         return redirect()->route('frontend.sdCheckSignaturePostClosingSeller');
     }
 
-    public function sdLeadBasedPaintHazardsUpdateBySeller()
+    public function sdLeadBasedPaintHazardsUpdateBySeller(): View
     {
         $offerData = Session::get('OFFER');
         $type = config('constant.inverse_signature_type.lead based');
@@ -935,7 +937,7 @@ class ContractToolSellerController extends Controller
         return redirect()->route('frontend.sdCheckSignaturePostClosingSeller');
     }
 
-    public function sdVaFhaThankYouForSeller()
+    public function sdVaFhaThankYouForSeller(): View
     {
         $offerData = Session::get('OFFER');
         $postClosingQuestion = QuestionSellerPostClosing::where('offer_id', $offerData['offer_id'])->first();
@@ -948,7 +950,7 @@ class ContractToolSellerController extends Controller
         return view('frontend.contract_tools.sale.seller.sd_post_closing_thankyou_by_seller');
     }
 
-    public function sdCheckSignaturePostClosingSeller()
+    public function sdCheckSignaturePostClosingSeller(): View
     {
         $offerData = Session::get('OFFER');
         $postClosingQuestion = QuestionSellerPostClosing::where('offer_id', $offerData['offer_id'])->first();
@@ -959,7 +961,7 @@ class ContractToolSellerController extends Controller
         return view('frontend.contract_tools.sale.seller.sd_post_closing_thankyou_by_seller');
     }
 
-    public function sdPostClosingOccupancyAgreementBySeller()
+    public function sdPostClosingOccupancyAgreementBySeller(): View
     {
         $offerData = Session::get('OFFER');
         //        type pass in signature common file
@@ -1019,17 +1021,17 @@ class ContractToolSellerController extends Controller
         return redirect()->route('frontend.checkSignaturePostClosingBuyer');
     }
 
-    public function sdPostClosingThankyouBySeller()
+    public function sdPostClosingThankyouBySeller(): View
     {
         return view('frontend.contract_tools.sale.seller.sd_post_closing_thankyou_by_seller');
     }
 
-    public function sdSaleAgreementReviewBySeller()
+    public function sdSaleAgreementReviewBySeller(): View
     {
         return view('frontend.contract_tools.sale.sign_documents.sd_sale_agreement_review');
     }
 
-    public function sdUpdateSaleAgreement()
+    public function sdUpdateSaleAgreement(): View
     {
         $offerArray = Session::get('OFFER');
         $offer = null;
@@ -1056,7 +1058,7 @@ class ContractToolSellerController extends Controller
         return view('frontend.contract_tools.sale.seller.sd_update_sale_agreement', compact('offer', 'signature', 'type'));
     }
 
-    public function sdThankyouPurchaseAgreement()
+    public function sdThankyouPurchaseAgreement(): View
     {
         $offerData = Session::get('OFFER');
 
@@ -1185,7 +1187,7 @@ class ContractToolSellerController extends Controller
         return ['propertyLink' => $propertyLink, 'viewOfferLink' => $viewOfferLink];
     }
 
-    public function BusinessContractTools()
+    public function BusinessContractTools(): View
     {
         $sellerDetails = null;
         if (Session::has('buyerDetails')) {

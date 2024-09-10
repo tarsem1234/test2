@@ -15,6 +15,8 @@ use App\Models\SaleOffer;
 use App\Models\UserProfile;
 use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Repositories\Backend\Access\User\UserRepository;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 /**
  * Class UserController.
@@ -40,7 +42,7 @@ class UserController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(ManageUserRequest $request)
+    public function index(ManageUserRequest $request): View
     {
         $users = User::whereHas('roles', function ($query) {
             $query->where('name', 'User');
@@ -54,19 +56,13 @@ class UserController extends Controller
     //        return view('backend.access.index');
     //    }
 
-    /**
-     * @return mixed
-     */
-    public function create(ManageUserRequest $request)
+    public function create(ManageUserRequest $request): View
     {
         return view('backend.access.create')
             ->with('roles', $this->roles->getAll());
     }
 
-    /**
-     * @return mixed
-     */
-    public function store(StoreUserRequest $request)
+    public function store(StoreUserRequest $request): RedirectResponse
     {
         $this->users->create(
             [
@@ -87,10 +83,7 @@ class UserController extends Controller
         return redirect()->route('admin.access.user.index')->withFlashSuccess(trans('alerts.backend.users.created'));
     }
 
-    /**
-     * @return mixed
-     */
-    public function show(User $user, ManageUserRequest $request)
+    public function show(User $user, ManageUserRequest $request): View
     {
         $admin = false;
         $business = false;
@@ -113,10 +106,7 @@ class UserController extends Controller
             ->with('user', $user);
     }
 
-    /**
-     * @return mixed
-     */
-    public function edit(User $user, ManageUserRequest $request)
+    public function edit(User $user, ManageUserRequest $request): View
     {
         $userFullData = $user->where('id', $user->id)->whereHas('user_profile')->with('user_profile')->first();
         $userWithBusiness = $user->where('id', $user->id)->whereHas('business_profile')->with('business_profile')->first();
@@ -156,10 +146,7 @@ class UserController extends Controller
             ->with('roles', $this->roles->getAll());
     }
 
-    /**
-     * @return mixed
-     */
-    public function update(User $user, UpdateUserRequest $request)
+    public function update(User $user, UpdateUserRequest $request): RedirectResponse
     {
         $userWithBusiness = $user->where('id', $user->id)->with('business_profile')->first();
         $userFullData = $user->where('id', $user->id)->with('user_profile')->first();
@@ -225,10 +212,7 @@ class UserController extends Controller
         return redirect()->route('admin.access.user.index')->withFlashSuccess(trans('alerts.backend.users.updated'));
     }
 
-    /**
-     * @return mixed
-     */
-    public function destroy(User $user, ManageUserRequest $request)
+    public function destroy(User $user, ManageUserRequest $request): RedirectResponse
     {
         $rentOffer = RentOffer::where('status', config('constant.inverse_rent_offer_status.accepted'))
             ->whereHas('property', function ($query) {

@@ -6,25 +6,28 @@ use App\Http\Controllers\Controller;
 use App\Models\DocumentListing;
 use App\Models\State;
 use File;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class DocumentListingController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $documents = DocumentListing::with('state')->latest()->get();
 
         return view('backend.document-listing.index', ['documents' => $documents]);
     }
 
-    public function create()
+    public function create(): View
     {
         $states = State::get();
 
         return view('backend.document-listing.create', ['states' => $states]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
             'state' => 'required',
@@ -78,7 +81,7 @@ class DocumentListingController extends Controller
         //
     }
 
-    public function edit($id)
+    public function edit($id): View
     {
         //        if ($id) {
         //            $states = State::get();
@@ -88,7 +91,7 @@ class DocumentListingController extends Controller
         //        }
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id): RedirectResponse
     {
         //        $this->validate($request, [
         //            'state' => 'required',
@@ -116,7 +119,7 @@ class DocumentListingController extends Controller
         //        return redirect()->back()->with('flash_warning', 'Please enter valid state.');
     }
 
-    public function destroy($id)
+    public function destroy($id): JsonResponse
     {
         $isDocument = DocumentListing::find($id);
         $path = storage_path(config('constant.document_path'));

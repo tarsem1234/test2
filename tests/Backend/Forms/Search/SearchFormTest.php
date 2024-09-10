@@ -7,21 +7,21 @@ use Tests\BrowserKitTestCase;
  */
 class SearchFormTest extends BrowserKitTestCase
 {
-    public function testSearchPageWithNoQuery()
+    public function testSearchPageWithNoQuery(): void
     {
         $this->actingAs($this->admin)
-             ->visit('/admin/search')
-             ->seePageIs('/admin/dashboard')
-             ->see('Please enter a search term.');
+            ->visit('/admin/search')
+            ->seePageIs('/admin/dashboard')
+            ->see('Please enter a search term.');
     }
 
-    public function testSearchFormRedirectsToResults()
+    public function testSearchFormRedirectsToResults(): void
     {
         $this->actingAs($this->admin)
-             ->visit('/admin/dashboard')
-             ->type('Test Query', 'q')
-             ->press('search-btn')
-             ->seePageIs('/admin/search?q=Test%20Query')
-             ->see('Search Results for Test Query');
+            ->visit('/admin/dashboard')
+            ->type('Test Query', 'q')
+            ->press('search-btn')
+            ->seePageIs('/admin/search?q=Test%20Query')
+            ->see('Search Results for Test Query');
     }
 }

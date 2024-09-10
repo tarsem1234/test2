@@ -7,10 +7,8 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('property_architectures', function (Blueprint $table) {
             $table->foreign('property_id', 'property_architectures_ibfk_4')->references('id')->on('properties')->onUpdate('RESTRICT')->onDelete('CASCADE');
@@ -20,10 +18,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('property_architectures', function (Blueprint $table) {
             $table->dropForeign('property_architectures_ibfk_4');

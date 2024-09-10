@@ -11,11 +11,8 @@ trait UserSendPasswordReset
 {
     /**
      * Send the password reset notification.
-     *
-     * @param  string  $token
-     * @return void
      */
-    public function sendPasswordResetNotification($token)
+    public function sendPasswordResetNotification(string $token): void
     {
         $this->notify(new UserNeedsPasswordReset($token));
     }

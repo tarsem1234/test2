@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -10,10 +10,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('regions', function (Blueprint $table) {
-            $table->integer('id', true);
-            $table->string('region', 191);
-        });
+        Schema::rename('password_resets', 'password_reset_tokens');
     }
 
     /**
@@ -21,6 +18,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::drop('regions');
+        Schema::rename('password_reset_tokens', 'password_resets');
     }
 };

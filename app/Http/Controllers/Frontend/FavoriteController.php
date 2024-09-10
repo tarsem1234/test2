@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Favorite;
 use Auth;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class FavoriteController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $favorites = Favorite::where('user_id', Auth::id())
             ->whereHas('property')
@@ -21,7 +23,7 @@ class FavoriteController extends Controller
         return view('frontend.favorite.index', compact('favorites'));
     }
 
-    public function favoriteStore($id)
+    public function favoriteStore($id): RedirectResponse
     {
         if ($id) {
             $favorite = new Favorite;
@@ -39,7 +41,7 @@ class FavoriteController extends Controller
         return redirect()->back()->with(['flash_warning' => 'Something went wrong.']);
     }
 
-    public function favoriteDelete($id)
+    public function favoriteDelete($id): RedirectResponse
     {
         if (Favorite::where('id', $id)->delete()) {
 

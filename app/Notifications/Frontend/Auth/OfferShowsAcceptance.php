@@ -17,12 +17,12 @@ class OfferShowsAcceptance extends Notification
 
     protected $confirmation_code;
 
-    public function via($notifiable)
+    public function via($notifiable): array
     {
         return ['mail'];
     }
 
-    public function toMail($notifiable)
+    public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)
             ->subject(app_name().': '.'Reply For Your Sent Offer')

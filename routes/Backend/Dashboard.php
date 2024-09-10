@@ -1,12 +1,12 @@
 <?php
 
+use App\Http\Controllers\AutoEmailLogController;
 use App\Http\Controllers\Backend\AdvertiseImageController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CategorySessionController;
 use App\Http\Controllers\Backend\DocumentListingController;
 use App\Http\Controllers\Backend\IndustryController;
 use App\Http\Controllers\Backend\ServiceController;
-use App\Http\Controllers\AutoEmailLogController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CategorySessionController;
@@ -45,7 +45,6 @@ Route::get('learning-center/session/activation/{id}', [CategorySessionController
 Route::get('learning-center/sessions/create/{id}', [CategorySessionController::class, 'create'])->name('sessionCreate');
 Route::post('learning-center/saveSession', [CategorySessionController::class, 'saveSession'])->name('sessions.save');
 Route::get('learning-center/catgegory/{id}/sessions/', [CategorySessionController::class, 'index'])->name('category.session');
-
 
 Route::resource('document-listing', DocumentListingController::class);
 Route::resource('advertise-images', AdvertiseImageController::class);

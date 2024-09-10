@@ -11,6 +11,8 @@ use App\Models\School;
 use App\Models\State;
 use App\Models\VacationProperty;
 use App\Models\ZipCode;
+use Illuminate\Http\JsonResponse;
+use Illuminate\View\View;
 
 /**
  * Class LanguageController.
@@ -19,9 +21,8 @@ class PropertyController extends Controller
 {
     /**
      * @param  $lang
-     * @return \Illuminate\Http\RedirectResponse
      */
-    public function rentIndex()
+    public function rentIndex(): View
     {
         $rents = Property::where('property_type',
             config('constant.inverse_property_type.Rent'))
@@ -30,7 +31,7 @@ class PropertyController extends Controller
         return view('backend.rent.index', ['rents' => $rents]);
     }
 
-    public function saleIndex()
+    public function saleIndex(): View
     {
         $sales = Property::where('property_type',
             config('constant.inverse_property_type.Sale'))
@@ -40,7 +41,7 @@ class PropertyController extends Controller
         return view('backend.sale.index', ['sales' => $sales]);
     }
 
-    public function vacationIndex()
+    public function vacationIndex(): View
     {
         $vacations = VacationProperty::with('images', 'availableWeeks')->latest()->get();
 
@@ -123,7 +124,7 @@ class PropertyController extends Controller
                 'county' => $county]);
     }
 
-    public function destroyRent($id)
+    public function destroyRent($id): JsonResponse
     {
         if (Property::where('id', $id)->where('property_type',
             config('constant.inverse_property_type.Rent'))->delete()) {
@@ -136,7 +137,7 @@ class PropertyController extends Controller
             500);
     }
 
-    public function destroySale($id)
+    public function destroySale($id): JsonResponse
     {
         //        dd($id);
         if (Property::where('id', $id)->where('property_type',
@@ -150,7 +151,7 @@ class PropertyController extends Controller
             500);
     }
 
-    public function destroyVacation($id)
+    public function destroyVacation($id): JsonResponse
     {
         if (VacationProperty::where('id', $id)->delete()) {
 

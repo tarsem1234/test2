@@ -14,10 +14,8 @@ class HistoryServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->bind(HistoryContract::class, EloquentHistoryRepository::class);
         $this->app->bind('history', HistoryContract::class);

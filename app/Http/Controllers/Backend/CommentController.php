@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Comment;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 //use Illuminate\Support\Facades\Storage;
 
 class CommentController extends Controller
 {
-    public function deleteComment($id)
+    public function deleteComment($id): JsonResponse
     {
         if (Comment::where('id', $id)->delete()) {
             return response()->json(['success' => true,
@@ -21,7 +24,7 @@ class CommentController extends Controller
         return response()->json(['success' => false], 500);
     }
 
-    public function blogComment($id)
+    public function blogComment($id): View
     {
         if ($id) {
             $blog = Blog::where('id', $id)->with('comments')->latest()->first();
@@ -31,7 +34,7 @@ class CommentController extends Controller
         }
     }
 
-    public function approvalComment($id)
+    public function approvalComment($id): RedirectResponse
     {
 
         if ($id) {

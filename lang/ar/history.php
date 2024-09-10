@@ -13,10 +13,10 @@ return [
     */
 
     'backend' => [
-        'none'            => 'لا يوجد ماضي حديث.',
-        'none_for_type'   => 'لا يوجد أي ماضي لهذاالنوع.',
+        'none' => 'لا يوجد ماضي حديث.',
+        'none_for_type' => 'لا يوجد أي ماضي لهذاالنوع.',
         'none_for_entity' => 'لا يوجد أي ماضي لهذا الـ :entity.',
-        'recent_history'  => 'Recent History',
+        'recent_history' => 'Recent History',
 
         'roles' => [
             'created' => 'قام بإنشاء الدور الجديد',
@@ -24,17 +24,17 @@ return [
             'updated' => 'قام بتحديث الدور',
         ],
         'users' => [
-            'changed_password'    => 'قام بتغيير كلمة مرور المستخدم',
+            'changed_password' => 'قام بتغيير كلمة مرور المستخدم',
             'confirmed' => 'confirmed user',
-            'created'             => 'قام بإنشاء المستخدم',
-            'deactivated'         => 'قام بتعطيل المستخدم',
-            'deleted'             => 'قام بحذف المستخدم',
-            'deleted_social'      => 'deleted social account',
+            'created' => 'قام بإنشاء المستخدم',
+            'deactivated' => 'قام بتعطيل المستخدم',
+            'deleted' => 'قام بحذف المستخدم',
+            'deleted_social' => 'deleted social account',
             'permanently_deleted' => 'قام بالحذف النهائي للمستخدم',
-            'updated'             => 'قام بتحديث المستخدم',
+            'updated' => 'قام بتحديث المستخدم',
             'unconfirmed' => 'un-confirmed user',
-            'reactivated'         => 'قام بإعادة تفعيل المستخدم',
-            'restored'            => 'قام بإستعادة المستخدم',
+            'reactivated' => 'قام بإعادة تفعيل المستخدم',
+            'restored' => 'قام بإستعادة المستخدم',
         ],
     ],
 ];

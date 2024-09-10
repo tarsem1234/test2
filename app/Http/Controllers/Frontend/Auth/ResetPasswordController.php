@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend\Auth;
 use App\Http\Controllers\Controller;
 use App\Repositories\Frontend\Access\User\UserRepository;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 /**
@@ -32,10 +33,9 @@ class ResetPasswordController extends Controller
      *
      * If no token is present, display the link request form.
      *
-     * @param  string|null  $token
      * @return \Illuminate\Http\Response
      */
-    public function showResetForm($token = null)
+    public function showResetForm(?string $token = null)
     {
 
         if (! $token) {
@@ -56,11 +56,8 @@ class ResetPasswordController extends Controller
 
     /**
      * Get the response for a successful password reset.
-     *
-     * @param  string  $response
-     * @return \Illuminate\Http\RedirectResponse
      */
-    protected function sendResetResponse(Request $request, $response)
+    protected function sendResetResponse(Request $request, string $response): RedirectResponse
     {
         return redirect()->route(homeRoute())->withFlashSuccess(trans($response));
     }

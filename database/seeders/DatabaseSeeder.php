@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use Database\TruncateTable;
-use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Seeder;
 
 /**
  * Class DatabaseSeeder.
@@ -15,10 +15,8 @@ class DatabaseSeeder extends Seeder
 
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         Model::unguard();
 

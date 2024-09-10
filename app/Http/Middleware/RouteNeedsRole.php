@@ -3,17 +3,15 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class RouteNeedsRole.
  */
 class RouteNeedsRole
 {
-    /**
-     * @param  bool  $needsAll
-     * @return mixed
-     */
-    public function handle($request, Closure $next, $role, $needsAll = false)
+    public function handle(Request $request, Closure $next, $role, bool $needsAll = false): Response
     {
         /*
          * Roles array

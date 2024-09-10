@@ -13,11 +13,9 @@ use App\Models\Access\User\User;
 class UserSocialRepository
 {
     /**
-     * @return bool
-     *
      * @throws GeneralException
      */
-    public function delete(User $user, SocialLogin $social)
+    public function delete(User $user, SocialLogin $social): bool
     {
         if ($user->providers()->whereId($social->id)->delete()) {
             event(new UserSocialDeleted($user, $social));

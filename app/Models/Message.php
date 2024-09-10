@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Access\User\User;
 use Auth;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Message extends Model
@@ -13,17 +14,17 @@ class Message extends Model
 
     protected $table = 'messages';
 
-    public function fromUser()
+    public function fromUser(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Access\User\User::class, $this->user_id === Auth::id() ? 'user_id' : 'to_user_id');
     }
 
-    public function fromUserInbox()
+    public function fromUserInbox(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Access\User\User::class, 'user_id');
     }
 
-    public function fromUserInboxCheck()
+    public function fromUserInboxCheck(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Access\User\User::class, 'to_user_id');
     }

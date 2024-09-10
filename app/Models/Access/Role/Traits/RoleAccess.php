@@ -11,9 +11,8 @@ trait RoleAccess
      * Save the inputted permissions.
      *
      * @param  mixed  $inputPermissions
-     * @return void
      */
-    public function savePermissions($inputPermissions)
+    public function savePermissions($inputPermissions): void
     {
         if (! empty($inputPermissions)) {
             $this->permissions()->sync($inputPermissions);
@@ -26,9 +25,8 @@ trait RoleAccess
      * Attach permission to current role.
      *
      * @param  object|array  $permission
-     * @return void
      */
-    public function attachPermission($permission)
+    public function attachPermission($permission): void
     {
         if (is_object($permission)) {
             $permission = $permission->getKey();
@@ -45,9 +43,8 @@ trait RoleAccess
      * Detach permission form current role.
      *
      * @param  object|array  $permission
-     * @return void
      */
-    public function detachPermission($permission)
+    public function detachPermission($permission): void
     {
         if (is_object($permission)) {
             $permission = $permission->getKey();
@@ -64,9 +61,8 @@ trait RoleAccess
      * Attach multiple permissions to current role.
      *
      * @param  mixed  $permissions
-     * @return void
      */
-    public function attachPermissions($permissions)
+    public function attachPermissions($permissions): void
     {
         foreach ($permissions as $permission) {
             $this->attachPermission($permission);
@@ -77,9 +73,8 @@ trait RoleAccess
      * Detach multiple permissions from current role.
      *
      * @param  mixed  $permissions
-     * @return void
      */
-    public function detachPermissions($permissions)
+    public function detachPermissions($permissions): void
     {
         foreach ($permissions as $permission) {
             $this->detachPermission($permission);

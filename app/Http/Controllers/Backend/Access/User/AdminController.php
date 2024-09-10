@@ -7,6 +7,8 @@ use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 use App\Models\Access\User\User;
 use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Repositories\Backend\Access\User\UserRepository;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Request;
 
 class AdminController extends Controller
@@ -21,7 +23,7 @@ class AdminController extends Controller
         $this->roles = $roles;
     }
 
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $adminUsers = User::whereHas('roles',
             function ($query) {
@@ -32,7 +34,7 @@ class AdminController extends Controller
         return view('backend.access.admin_index', compact('adminUsers'));
     }
 
-    public function create()
+    public function create(): View
     {
         $admin = true;
 
@@ -40,7 +42,7 @@ class AdminController extends Controller
             ->with('roles', $this->roles->getAll());
     }
 
-    public function store(StoreUserRequest $request)
+    public function store(StoreUserRequest $request): RedirectResponse
     {
         $this->users->create(
             [
@@ -54,14 +56,14 @@ class AdminController extends Controller
         return redirect()->route('admin.access.admin.index')->withFlashSuccess(trans('alerts.backend.users.created'));
     }
 
-    public function deactivated(ManageUserRequest $request)
+    public function deactivated(ManageUserRequest $request): View
     {
         $admin = true;
 
         return view('backend.access.admin_deactivated', compact('admin'));
     }
 
-    public function deleted(ManageUserRequest $request)
+    public function deleted(ManageUserRequest $request): View
     {
         $admin = true;
 

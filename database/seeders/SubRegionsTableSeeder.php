@@ -2,122 +2,101 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SubRegionsTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
-        
 
         DB::table('sub_regions')->delete();
-        
-        DB::table('sub_regions')->insert(array (
-            0 => 
-            array (
+
+        DB::table('sub_regions')->insert([
+            0 => [
                 'id' => 1,
                 'region_id' => 5,
                 'subregion' => 'Caribbean Islands',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 2,
                 'region_id' => 3,
                 'subregion' => 'West & Central Asia',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 3,
                 'region_id' => 1,
                 'subregion' => 'North Africa',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 4,
                 'region_id' => 4,
                 'subregion' => 'Europe',
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 5,
                 'region_id' => 1,
                 'subregion' => 'Sub-Saharan Africa',
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 6,
                 'region_id' => 6,
                 'subregion' => 'Oceania',
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 7,
                 'region_id' => 7,
                 'subregion' => 'South America',
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 8,
                 'region_id' => 2,
                 'subregion' => 'Antarctic',
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 9,
                 'region_id' => 3,
                 'subregion' => 'South & South East Asia',
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 10,
                 'region_id' => 5,
                 'subregion' => 'Central America',
-            ),
-            10 => 
-            array (
+            ],
+            10 => [
                 'id' => 11,
                 'region_id' => 4,
                 'subregion' => 'North Asia',
-            ),
-            11 => 
-            array (
+            ],
+            11 => [
                 'id' => 12,
                 'region_id' => 5,
                 'subregion' => 'North America',
-            ),
-            12 => 
-            array (
+            ],
+            12 => [
                 'id' => 13,
                 'region_id' => 3,
                 'subregion' => 'East Asia',
-            ),
-            13 => 
-            array (
+            ],
+            13 => [
                 'id' => 14,
                 'region_id' => 3,
                 'subregion' => 'Oceania',
-            ),
-            14 => 
-            array (
+            ],
+            14 => [
                 'id' => 15,
                 'region_id' => 5,
                 'subregion' => 'Europe',
-            ),
-            15 => 
-            array (
+            ],
+            15 => [
                 'id' => 16,
                 'region_id' => 4,
                 'subregion' => 'West & Central Asia',
-            ),
-        ));
-        
-        
+            ],
+        ]);
+
     }
 }

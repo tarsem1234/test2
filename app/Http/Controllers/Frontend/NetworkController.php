@@ -9,11 +9,14 @@ use App\Models\Network;
 use App\Models\Recommendation;
 use App\Models\State;
 use Auth;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class NetworkController extends Controller
 {
-    public function socialNetwork()
+    public function socialNetwork(): View
     {
         $states = state::get();
         $request = null;
@@ -21,7 +24,7 @@ class NetworkController extends Controller
         return view('frontend.network_portal.social', compact('states', 'request'));
     }
 
-    public function supportNetwork()
+    public function supportNetwork(): View
     {
         $states = state::get();
         $request = null;
@@ -95,7 +98,7 @@ class NetworkController extends Controller
         return $search;
     }
 
-    public function myNetwork()
+    public function myNetwork(): View
     {
         // \DB::enableQueryLog();
         $allAssociates = Network::where(function ($query) {
@@ -152,7 +155,7 @@ class NetworkController extends Controller
         return redirect()->back();
     }
 
-    public function requestSent($id)
+    public function requestSent($id): RedirectResponse
     {
         if (Auth::id() != $id) {
             $exists = Network::where('from_user_id', Auth::id())->where('to_user_id', $id)->first();
@@ -204,7 +207,7 @@ class NetworkController extends Controller
         return redirect()->back()->withFlashSuccess('Request already sent.');
     }
 
-    public function acceptRequest($id)
+    public function acceptRequest($id): RedirectResponse
     {
         if (Auth::check()) {
             $input['status'] = config('constant.inverse_network_request.accepted');
@@ -221,7 +224,7 @@ class NetworkController extends Controller
         }
     }
 
-    public function rejectRequest($id)
+    public function rejectRequest($id): RedirectResponse
     {
         if (Auth::check()) {
             if (Network::where('to_user_id', Auth::id())
@@ -233,7 +236,7 @@ class NetworkController extends Controller
         }
     }
 
-    public function cancelRequest($id)
+    public function cancelRequest($id): RedirectResponse
     {
         if (Auth::check()) {
             if (Network::where('from_user_id', Auth::id())
@@ -245,7 +248,7 @@ class NetworkController extends Controller
         }
     }
 
-    public function deleteConnection($id)
+    public function deleteConnection($id): RedirectResponse
     {
         if (Auth::check() && $id) {
             if (Network::where(function ($q) {
@@ -259,7 +262,7 @@ class NetworkController extends Controller
         }
     }
 
-    public function profileRating(Request $request)
+    public function profileRating(Request $request): Response
     {
         if (Auth::check()) {
 

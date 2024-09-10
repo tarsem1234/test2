@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Access\User\User;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 use App\Repositories\Frontend\Access\User\UserRepository;
+use Illuminate\Http\RedirectResponse;
 
 /**
  * Class ConfirmAccountController.
@@ -25,20 +26,14 @@ class ConfirmAccountController extends Controller
         $this->user = $user;
     }
 
-    /**
-     * @return mixed
-     */
-    public function confirm($token)
+    public function confirm($token): RedirectResponse
     {
         $this->user->confirmAccount($token);
 
         return redirect()->route('frontend.auth.login')->withFlashSuccess(trans('exceptions.frontend.auth.confirmation.success'));
     }
 
-    /**
-     * @return mixed
-     */
-    public function sendConfirmationEmail(User $user)
+    public function sendConfirmationEmail(User $user): RedirectResponse
     {
         $username = '';
         if ($user->user_profile()->exists()) {

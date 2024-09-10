@@ -8,15 +8,16 @@ use App\Models\LandlordQuestionnaire;
 use App\Models\SellerQuestionnaire;
 use App\Models\TenantQuestionnaire;
 use Auth;
+use Illuminate\View\View;
 
 class SignDocumentsController extends Controller
 {
-    public function partnersSignDocuments()
+    public function partnersSignDocuments(): View
     {
         return view('frontend.partners_sign_documents.choose_role');
     }
 
-    public function signDocumentsBuyer()
+    public function signDocumentsBuyer(): View
     {
         $authId = Auth::id();
         $questions = BuyerQuestionnaire::whereHas('saleOffer', function ($buyer) {
@@ -51,7 +52,7 @@ class SignDocumentsController extends Controller
         return view('frontend.partners_sign_documents.sign_documents_buyer', compact('buyers'));
     }
 
-    public function signDocumentsSeller()
+    public function signDocumentsSeller(): View
     {
         $questions = SellerQuestionnaire::whereHas('saleOffer', function ($buyer) {
             $buyer->where('closed', 0);
@@ -84,7 +85,7 @@ class SignDocumentsController extends Controller
         return view('frontend.partners_sign_documents.sign_documents_seller', compact('sellers'));
     }
 
-    public function signDocumentsLandlord()
+    public function signDocumentsLandlord(): View
     {
         $questions = LandlordQuestionnaire::whereHas('rentOffer', function ($query) {
             $query->where('closed', 0);
@@ -116,7 +117,7 @@ class SignDocumentsController extends Controller
         return view('frontend.partners_sign_documents.sign_documents_landlord', compact('landlords'));
     }
 
-    public function signDocumentsTenant()
+    public function signDocumentsTenant(): View
     {
         $questions = TenantQuestionnaire::whereHas('rentOffer', function ($query) {
             $query->where('closed', 0);

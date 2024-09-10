@@ -3,6 +3,8 @@
 namespace App\Models\Backend;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CategorySession extends Model
@@ -11,12 +13,12 @@ class CategorySession extends Model
 
     protected $table = 'category_sessions';
 
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Backend\Category::class);
     }
 
-    public function questions()
+    public function questions(): HasMany
     {
         return $this->hasMany(\App\Models\Backend\CategorySessionQuestion::class);
     }

@@ -12,11 +12,14 @@ use App\Notifications\Frontend\Auth\RecieverNeedsLogin;
 use App\Notifications\Frontend\Auth\SenderNeedsConfirmation;
 use App\Notifications\Frontend\Auth\SenderNeedsRegistration;
 use Auth;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class SignerController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $signers = Signer::where('from_user_id', Auth::id())->whereHas('invited_users')->with([
             'invited_users' => function ($query) {
@@ -27,13 +30,13 @@ class SignerController extends Controller
         return view('frontend.signer.index', compact('signers'));
     }
 
-    public function create()
+    public function create(): View
     {
 
         return view('frontend.signer.create');
     }
 
-    public function signStore(Request $request)
+    public function signStore(Request $request): RedirectResponse
     {
         $this->validate($request, [
             'first_name' => 'required',
@@ -137,7 +140,7 @@ class SignerController extends Controller
         return $signer;
     }
 
-    public function resendActivation($id)
+    public function resendActivation($id): RedirectResponse
     {
         if (Auth::check() && $id) {
             $ifExists = User::find($id);
@@ -158,7 +161,7 @@ class SignerController extends Controller
         return redirect()->route('frontend.index')->with('flash_success', 'Something went wrong, please try later.');
     }
 
-    public function accountConfirm($token)
+    public function accountConfirm($token): RedirectResponse
     {
         if ($token) {
             $isConfirmed = User::where('confirmation_code', $token)->first();
@@ -216,7 +219,7 @@ class SignerController extends Controller
         //                500);
     }
 
-    public function contractToolSigner(Request $request)
+    public function contractToolSigner(Request $request): JsonResponse
     {
         if (! empty($request->type) && $request->type == 'rent') {
             $this->validate($request, [

@@ -7,6 +7,7 @@ use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 use App\Models\Access\User\User;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 use App\Repositories\Backend\Access\User\UserRepository;
+use Illuminate\Http\RedirectResponse;
 
 /**
  * Class UserConfirmationController.
@@ -23,10 +24,7 @@ class UserConfirmationController extends Controller
         $this->users = $users;
     }
 
-    /**
-     * @return mixed
-     */
-    public function sendConfirmationEmail(User $user, ManageUserRequest $request)
+    public function sendConfirmationEmail(User $user, ManageUserRequest $request): RedirectResponse
     {
 
         // Shouldn't allow users to confirm their own accounts when the application is set to manual confirmation
@@ -44,20 +42,14 @@ class UserConfirmationController extends Controller
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.confirmation_email'));
     }
 
-    /**
-     * @return mixed
-     */
-    public function confirm(User $user, ManageUserRequest $request)
+    public function confirm(User $user, ManageUserRequest $request): RedirectResponse
     {
         $this->users->confirm($user);
 
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.confirmed'));
     }
 
-    /**
-     * @return mixed
-     */
-    public function unconfirm(User $user, ManageUserRequest $request)
+    public function unconfirm(User $user, ManageUserRequest $request): RedirectResponse
     {
         $this->users->unconfirm($user);
 

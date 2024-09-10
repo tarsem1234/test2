@@ -2,6 +2,8 @@
 
 namespace App\Listeners\Frontend\Auth;
 
+use Illuminate\Events\Dispatcher;
+
 /**
  * Class UserEventListener.
  */
@@ -29,10 +31,8 @@ class UserEventListener
 
     /**
      * Register the listeners for the subscriber.
-     *
-     * @param  \Illuminate\Events\Dispatcher  $events
      */
-    public function subscribe($events)
+    public function subscribe(Dispatcher $events)
     {
         $events->listen(
             \App\Events\Frontend\Auth\UserLoggedIn::class,

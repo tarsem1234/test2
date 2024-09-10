@@ -7,24 +7,27 @@ use App\Models\Forum;
 use App\Models\ForumView;
 use Carbon\Carbon;
 use DB;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class ForumController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $forums = Forum::with(['totalViews', 'replies'])->latest()->paginate(config('constant.pagination_count'));
 
         return view('frontend.forum.index', compact('forums'));
     }
 
-    public function create()
+    public function create(): View
     {
         return view('frontend.forum.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $this->validate($request,
             [
@@ -43,7 +46,7 @@ class ForumController extends Controller
         return redirect()->route('frontend.forums.index')->with(['flash_success' => 'Forum saved successfully']);
     }
 
-    public function show($id)
+    public function show($id): View
     {
         $forum = Forum::where('id', $id)->with('replies')->first();
         dump($forum->toArray());
@@ -58,7 +61,7 @@ class ForumController extends Controller
         return view('frontend.forum.show', compact('forumDetails'));
     }
 
-    public function edit(Forum $forum)
+    public function edit(Forum $forum): View
     {
         $forumDetails = Forum::where('id', $forum->id)->first();
         dump($forumDetails->toArray());
@@ -66,7 +69,7 @@ class ForumController extends Controller
         return view('frontend.forum.create', compact('forumDetails'));
     }
 
-    public function update(Request $request, Forum $forum)
+    public function update(Request $request, Forum $forum): RedirectResponse
     {
         $this->validate($request,
             [
@@ -80,14 +83,14 @@ class ForumController extends Controller
         return redirect()->route('forntend.user.forums.index');
     }
 
-    public function destroy(Forum $forum)
+    public function destroy(Forum $forum): RedirectResponse
     {
         Forum::where('id', $forum->id)->delete();
 
         return redirect()->route('forntend.user.forums.index');
     }
 
-    public function loadMoreForums($count)
+    public function loadMoreForums($count): JsonResponse
     {
 
         $count = $count + 10;

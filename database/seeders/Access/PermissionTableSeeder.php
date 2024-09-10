@@ -16,10 +16,8 @@ class PermissionTableSeeder extends Seeder
 
     /**
      * Run the database seed.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         $this->disableForeignKeys();
         $this->truncateMultiple([config('access.permissions_table'), config('access.permission_role_table')]);

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PropertyConditionalData extends Model
@@ -12,12 +13,12 @@ class PropertyConditionalData extends Model
     protected $table = 'property_conditional_data';
 
     //
-    public function architechture()
+    public function architechture(): HasOne
     {
         return $this->hasOne(\App\Models\PropertyArchitectureConditionalData::class, 'property_conditional_id');
     }
 
-    public function disclosure()
+    public function disclosure(): HasOne
     {
         return $this->hasOne(\App\Models\PropertyDisclaimerConditionalData::class, 'property_conditional_id');
     }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CounterSaleOffer extends Model
@@ -11,22 +12,22 @@ class CounterSaleOffer extends Model
 
     protected $table = 'counter_sale_offers';
 
-    public function offer()
+    public function offer(): BelongsTo
     {
         return $this->belongsTo('App\Models\Offer');
     }
 
-    public function property()
+    public function property(): BelongsTo
     {
         return $this->belongsTo('App\Models\Offer');
     }
 
-    public function owner()
+    public function owner(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Access\User\User::class);
     }
 
-    public function buyer()
+    public function buyer(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Access\User\User::class);
     }

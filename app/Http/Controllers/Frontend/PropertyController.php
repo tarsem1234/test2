@@ -32,8 +32,13 @@ use App\Models\ZipCode;
 use App\Services\EmailLogService;
 use Auth;
 use File;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\RedirectResponser;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\View\View;
 use Session;
 
 /**
@@ -43,15 +48,14 @@ class PropertyController extends Controller
 {
     /**
      * @param  $lang
-     * @return \Illuminate\Http\RedirectResponser
      */
-    private function _forgetOfferSession()
+    private function _forgetOfferSession(): RedirectResponser
     {
         Session::forget('OFFER');
         Session::forget('PROPERTY');
     }
 
-    public function rentsList()
+    public function rentsList(): View
     {
         $properties = Property::where('user_id', Auth::id())
             ->where('property_type', config('constant.inverse_property_type.Rent'))
@@ -67,7 +71,7 @@ class PropertyController extends Controller
         return view('frontend.property.rents_list', ['properties' => $properties]);
     }
 
-    public function salesList()
+    public function salesList(): View
     {
         $this->_forgetOfferSession();
         $properties = Property::where('user_id', Auth::id())
@@ -86,7 +90,7 @@ class PropertyController extends Controller
         return view('frontend.property.sales_list', ['properties' => $properties]);
     }
 
-    public function vacationsList()
+    public function vacationsList(): View
     {
         $properties = VacationProperty::where('user_id', Auth::id())
             ->with('images', 'availableWeeks')
@@ -96,7 +100,7 @@ class PropertyController extends Controller
         return view('frontend.property.vacations_list', ['properties' => $properties]);
     }
 
-    public function schoolSearch(Request $request)
+    public function schoolSearch(Request $request): Response
     {
         $schools = School::where('school_district', $request->district_id)->get();
         $school_ids = $request->school_id;
@@ -109,7 +113,7 @@ class PropertyController extends Controller
         return response(['schools' => '', 'success' => false], 500);
     }
 
-    public function countrySearch(Request $request)
+    public function countrySearch(Request $request): Response
     {
         if ($request->region_id || $request->subregion_id || $request->country_id) {
 
@@ -131,7 +135,7 @@ class PropertyController extends Controller
         return response(['message' => 'Something went wrong.', 'success' => false], 500);
     }
 
-    public function stateSearch(Request $request)
+    public function stateSearch(Request $request): Response
     {
         if ($request->state_id) {
             $states = State::get();
@@ -148,7 +152,7 @@ class PropertyController extends Controller
         return response(['message' => 'Something went wrong.', 'success' => false], 500);
     }
 
-    public function citySearch(Request $request)
+    public function citySearch(Request $request): Response
     {
         if ($request->country_id && ! isset($request->search)) {
             $country = Country::where('id', $request->country_id)->first();
@@ -185,7 +189,7 @@ class PropertyController extends Controller
         }
     }
 
-    public function cityCountySearch(Request $request)
+    public function cityCountySearch(Request $request): Response
     {
         if ($request->state_id) {
             $counties = County::where('state_id', $request->state_id)->get();
@@ -203,7 +207,7 @@ class PropertyController extends Controller
         }
     }
 
-    public function zipSearch(Request $request)
+    public function zipSearch(Request $request): Response
     {
         if ($request->city_id) {
             $zipCodes = ZipCode::where('city_id', $request->city_id)->pluck('zipcode', 'id');
@@ -215,7 +219,7 @@ class PropertyController extends Controller
         return response(['message' => 'Something went wrong.', 'success' => false], 500);
     }
 
-    public function militaryLocationSearch(Request $request)
+    public function militaryLocationSearch(Request $request): Response
     {
         if ($request->state_id) {
             $militarylocations = MilitaryLocation::where('state', $request->state)->pluck('base', 'id');
@@ -227,7 +231,7 @@ class PropertyController extends Controller
         return response(['message' => 'Something went wrong.', 'success' => false], 500);
     }
 
-    public function getCounties(Request $request)
+    public function getCounties(Request $request): Response
     {
         if ($request->state) {
             $state = State::where('state', $request->state)->first();
@@ -246,7 +250,7 @@ class PropertyController extends Controller
     }
 
     //get zipcode using state id
-    public function getZipCodes(Request $request)
+    public function getZipCodes(Request $request): Response
     {
         if ($request->state) {
             $state = State::where('state', $request->state)->first();
@@ -265,7 +269,7 @@ class PropertyController extends Controller
     }
 
     //get cities using state id
-    public function getCities(Request $request)
+    public function getCities(Request $request): Response
     {
         if ($request->state) {
             $state = State::where('state', $request->state)->first();
@@ -283,7 +287,7 @@ class PropertyController extends Controller
         return response(['message' => 'Something went wrong.', 'success' => false], 500);
     }
 
-    public function stateRelatedDataSearch(Request $request)
+    public function stateRelatedDataSearch(Request $request): Response
     {
         if ($request->state_id) {
             $findCitiesForZipCode = City::where('state_id', $request->state_id)->pluck('id');
@@ -302,7 +306,7 @@ class PropertyController extends Controller
         return response(['message' => 'Something went wrong.', 'success' => false], 500);
     }
 
-    public function schoolDistrict(Request $request)
+    public function schoolDistrict(Request $request): Response
     {
         if ($request->state) {
             $districtId = isset($request->districtId) ? $request->districtId : null;
@@ -439,7 +443,7 @@ class PropertyController extends Controller
     }
 
     //Store property
-    public function propertyStore(PropertyRequest $request)
+    public function propertyStore(PropertyRequest $request): RedirectResponse
     {
         $data = $request->all();
         //Store Rent and Sale
@@ -663,7 +667,7 @@ class PropertyController extends Controller
     }
 
     // Updating a property sale/rent
-    public function propertyUpdate(PropertyRequest $request)
+    public function propertyUpdate(PropertyRequest $request): RedirectResponse
     {
         $data = $request->all();
         //	dd($data);
@@ -851,7 +855,7 @@ class PropertyController extends Controller
         ];
     }
 
-    public function vacationUpdate(PropertyRequest $request)
+    public function vacationUpdate(PropertyRequest $request): RedirectResponse
     {
         $data = $request->all();
         if ($request->images) {
@@ -975,7 +979,7 @@ class PropertyController extends Controller
         return redirect()->back();
     }
 
-    public function salesHome()
+    public function salesHome(): View
     {
         $saleProperties = Property::where('property_type', config('constant.inverse_property_type.Sale'))
             ->whereIn('user_id', function ($query) {
@@ -1010,7 +1014,7 @@ class PropertyController extends Controller
         return view('frontend.property.sales_home', compact('vacationProperties', 'rentProperties', 'saleProperties'));
     }
 
-    public function rentsHome()
+    public function rentsHome(): View
     {
         $saleProperties = Property::where('property_type', config('constant.inverse_property_type.Sale'))
             ->whereIn('user_id', function ($query) {
@@ -1046,7 +1050,7 @@ class PropertyController extends Controller
         return view('frontend.property.rents_home', compact('vacationProperties', 'rentProperties', 'saleProperties'));
     }
 
-    public function vacationsHome()
+    public function vacationsHome(): View
     {
         $saleProperties = Property::where('property_type', config('constant.inverse_property_type.Sale'))
             ->whereIn('user_id', function ($query) {
@@ -1081,14 +1085,14 @@ class PropertyController extends Controller
         return view('frontend.property.vacations_home', compact('vacationProperties', 'rentProperties', 'saleProperties'));
     }
 
-    public function rentSearch()
+    public function rentSearch(): View
     {
         $states = State::get();
 
         return view('frontend.property.rent_search_view', compact('states'));
     }
 
-    public function saleSearch()
+    public function saleSearch(): View
     {
         $states = State::get();
 
@@ -1347,7 +1351,7 @@ class PropertyController extends Controller
         return view('frontend.property.sale_search_view', compact('states', 'data', 'latitude', 'longitude'))->with(['search' => $searchResult]);
     }
 
-    public function vacationSearch()
+    public function vacationSearch(): View
     {
         $regions = Region::get();
         $subRegions = SubRegion::get();
@@ -1355,7 +1359,7 @@ class PropertyController extends Controller
         return view('frontend.property.vacation_search', compact('regions', 'subRegions'));
     }
 
-    public function vacationSearching(Request $request)
+    public function vacationSearching(Request $request): View
     {
         //        dd( $request->all());
         $regions = Region::get();
@@ -1496,7 +1500,7 @@ class PropertyController extends Controller
         }
     }
 
-    public function propertyDelete($id = null)
+    public function propertyDelete($id = null): RedirectResponse
     {
         if ($id) {
             $property = Property::where('id', $id)->where('user_id', Auth::id())->first();
@@ -1514,7 +1518,7 @@ class PropertyController extends Controller
         }
     }
 
-    public function vacationPropertyDelete($id = null)
+    public function vacationPropertyDelete($id = null): RedirectResponse
     {
         if ($id) {
             if (VacationProperty::where('id', $id)->where('user_id', Auth::id())->exists()) {
@@ -1537,7 +1541,7 @@ class PropertyController extends Controller
         return view('frontend.property.availability')->with('property', $property);
     }
 
-    public function addAvailability(Request $request)
+    public function addAvailability(Request $request): RedirectResponse
     {
         $data = $request->all();
         $property = Property::where(['id' => $data['property_id'], 'user_id' => Auth::id()])->get()->first();
@@ -1572,7 +1576,7 @@ class PropertyController extends Controller
         return $this->searchAvailability($request->get('id'), $request->get('search'));
     }
 
-    public function destroyAvailability($id)
+    public function destroyAvailability($id): RedirectResponse
     {
         $property = PropertyAvailability::find($id);
         if (! $property) {
@@ -1601,7 +1605,7 @@ class PropertyController extends Controller
         return $property->availabilities->pluck('start_date');
     }
 
-    public function updateVacationDates(Request $request, $id)
+    public function updateVacationDates(Request $request, $id): Response
     {
         $month = date('m', strtotime($request->date));
         $year = date('Y', strtotime($request->date));
@@ -1637,7 +1641,7 @@ class PropertyController extends Controller
         }
     }
 
-    public function confirmAvailability(Request $reqeust, $id)
+    public function confirmAvailability(Request $reqeust, $id): RedirectResponse
     {
         $event = PropertyAvailability::find($id);
         if ($event) {
@@ -1651,7 +1655,7 @@ class PropertyController extends Controller
         }
     }
 
-    public function propertyImageDelete($id)
+    public function propertyImageDelete($id): JsonResponse
     {
         if (PropertyImage::find($id)) {
             if (PropertyImage::where('id', $id)->delete()) {
@@ -1665,7 +1669,7 @@ class PropertyController extends Controller
         return response()->json(['success' => false, 'message' => 'Please enter a valid image.'], 500);
     }
 
-    public function contactMessage(Request $request)
+    public function contactMessage(Request $request): RedirectResponse
     {
         // dd($request->all());
         $userId = decrypt($request->user_id);
@@ -1697,7 +1701,7 @@ class PropertyController extends Controller
         return redirect()->back();
     }
 
-    public function backToMarket($id)
+    public function backToMarket($id): RedirectResponse
     {
         if (! empty($id) && Property::where('id', $id)->where('user_id', Auth::id())->exists()) {
             $property = Property::where('id', $id)->with(['saleOffer' => function ($saleQuery) {
@@ -1727,7 +1731,7 @@ class PropertyController extends Controller
      * Desc: Change the property status to available and not available
      */
 
-    public function changePropertyStatus($id)
+    public function changePropertyStatus($id): RedirectResponse
     {
         $propertyData = Property::where('id', $id)->where('user_id', Auth::id())->first();
         if (! empty($id) && ! empty($propertyData)) {

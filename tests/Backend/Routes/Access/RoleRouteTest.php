@@ -7,21 +7,21 @@ use Tests\BrowserKitTestCase;
  */
 class RoleRouteTest extends BrowserKitTestCase
 {
-    public function testRolesIndex()
+    public function testRolesIndex(): void
     {
         $this->actingAs($this->admin)->visit('/admin/access/role')->see('Role Management');
     }
 
-    public function testCreateRole()
+    public function testCreateRole(): void
     {
         $this->actingAs($this->admin)->visit('/admin/access/role/create')->see('Create Role');
     }
 
-    public function testEditRole()
+    public function testEditRole(): void
     {
         $this->actingAs($this->admin)
-             ->visit('/admin/access/role/'.$this->adminRole->id.'/edit')
-             ->see('Edit Role')
-             ->see($this->adminRole->name);
+            ->visit('/admin/access/role/'.$this->adminRole->id.'/edit')
+            ->see('Edit Role')
+            ->see($this->adminRole->name);
     }
 }

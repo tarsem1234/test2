@@ -9,16 +9,17 @@ use App\Models\Backend\CategorySessionQuestion;
 use App\Models\Backend\CategorySessionQuestionOption;
 use App\Models\Backend\UserLearningPoint;
 use Auth;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class CategorySessionController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function index($categoryId = null)
+    public function index($categoryId = null): View
     {
         $sessions = CategorySession::whereHas('category', function ($query) {
             $query->where('status', 1)->with('category');
@@ -35,10 +36,8 @@ class CategorySessionController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create($id): View
     {
         $category = Category::find($id);
 
@@ -47,10 +46,8 @@ class CategorySessionController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
             'name' => 'required|max:150',
@@ -100,18 +97,14 @@ class CategorySessionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {}
+    public function show(int $id) {}
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id): View
     {
         if ($id) {
             $categorySession = CategorySession::where('id', $id)->with(['category', 'questions' => function ($q) {
@@ -125,21 +118,17 @@ class CategorySessionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         //
     }
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id): JsonResponse
     {
         if (CategorySession::where('id', $id)->delete()) {
 
@@ -149,7 +138,7 @@ class CategorySessionController extends Controller
         return response()->json(['success' => true, 'message' => 'Session Deletion Failed'], 500);
     }
 
-    public function deactivate($id)
+    public function deactivate($id): RedirectResponse
     {
 
         if ($id) {

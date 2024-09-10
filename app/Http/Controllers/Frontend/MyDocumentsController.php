@@ -14,6 +14,7 @@ use App\Models\Signature;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Session;
 
 /*
@@ -22,7 +23,7 @@ use Session;
  *  */
 class MyDocumentsController extends Controller
 {
-    public function receivedDocuments()
+    public function receivedDocuments(): View
     {
         $saleOffers = SaleOffer::where('sender_id', Auth::id())->whereHas('property', function ($type) {
             $type->where('property_type', config('constant.inverse_property_type.Sale'));
@@ -61,7 +62,7 @@ class MyDocumentsController extends Controller
         return view('frontend.my_documents.my-received-document', compact('saleOffers', 'rentOffers'));
     }
 
-    public function sentDocuments()
+    public function sentDocuments(): View
     {
         $saleOffers = SaleOffer::where('owner_id', Auth::id())->whereHas('property', function ($type) {
             $type->where('property_type', config('constant.inverse_property_type.Sale'));
@@ -427,7 +428,7 @@ class MyDocumentsController extends Controller
         return redirect()->back();
     }
 
-    public function myDocuments()
+    public function myDocuments(): View
     {
         return view('frontend.my_documents.documents-for-review-update-by-owner');
     }
@@ -462,7 +463,7 @@ class MyDocumentsController extends Controller
         return $sentDocuments;
     }
 
-    public function documentLeadBasedPaintHazards()
+    public function documentLeadBasedPaintHazards(): View
     {
         $offerData = Session::get('OFFER');
         $offer = SaleOffer::where('id', $offerData['offer_id'])
@@ -507,7 +508,7 @@ class MyDocumentsController extends Controller
         return redirect()->back();
     }
 
-    public function documentLeadBasedPaintHazardsRent()
+    public function documentLeadBasedPaintHazardsRent(): View
     {
         $offerData = Session::get('OFFER');
         $offer = RentOffer::where('id', $offerData['offer_id'])
@@ -550,7 +551,7 @@ class MyDocumentsController extends Controller
         return redirect()->back();
     }
 
-    public function documentAdvisoryToBuyersAndSellers()
+    public function documentAdvisoryToBuyersAndSellers(): View
     {
         $offerArray = Session::get('OFFER');
 
@@ -573,7 +574,7 @@ class MyDocumentsController extends Controller
         return view('frontend.contract_tools.document.document_advisory_to_buyers_and_sellers', compact('offer'));
     }
 
-    public function documentVaFhaloanAddendumByBuyer()
+    public function documentVaFhaloanAddendumByBuyer(): View
     {
         $offerArray = Session::get('OFFER');
 
@@ -602,7 +603,7 @@ class MyDocumentsController extends Controller
         return view('frontend.contract_tools.document.document_VA_FHA_loan_addendum_by_seller_buyer', compact('offer'));
     }
 
-    public function documentPostClosing()
+    public function documentPostClosing(): View
     {
         $offerData = Session::get('OFFER');
         $savedQuestionSellerPostClosing = QuestionSellerPostClosing::where('offer_id', $offerData['offer_id'])
@@ -634,7 +635,7 @@ class MyDocumentsController extends Controller
         return view('frontend.contract_tools.document.document_post_closing_occupancy_agreement_by_seller_buyer', compact('savedQuestionSellerPostClosing', 'sellerQuestionnaire', 'days', 'currentMortgage'));
     }
 
-    public function documentRentAgreement()
+    public function documentRentAgreement(): View
     {
         $offerArray = Session::get('OFFER');
         if ($offerArray['type'] == config('constant.inverse_property_type.Rent')) {

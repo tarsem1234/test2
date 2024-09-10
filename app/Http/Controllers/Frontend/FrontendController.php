@@ -3,29 +3,24 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use Illuminate\View\View;
 
 /**
  * Class FrontendController.
  */
 class FrontendController extends Controller
 {
-    /**
-     * @return \Illuminate\View\View
-     */
-    public function index()
+    public function index(): View
     {
         return view('frontend.index');
     }
 
-    /**
-     * @return \Illuminate\View\View
-     */
-    public function macros()
+    public function macros(): View
     {
         return view('frontend.macros');
     }
 
-    public function landingPage()
+    public function landingPage(): View
     {
         return view('frontend.landing-page.landing_home');
     }

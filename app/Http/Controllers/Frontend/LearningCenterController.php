@@ -10,15 +10,14 @@ use App\Models\UserLearningSession;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class LearningCenterController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         $data['categories'] = Category::where('status', 1)->latest()->get();
         $data['level'] = UserLearningSession::getUserLevel(Auth::user());

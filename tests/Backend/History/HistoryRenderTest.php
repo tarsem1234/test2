@@ -7,7 +7,7 @@ use Tests\BrowserKitTestCase;
  */
 class HistoryRenderTest extends BrowserKitTestCase
 {
-    public function testDashboardDisplaysHistory()
+    public function testDashboardDisplaysHistory(): void
     {
         $this->actingAs($this->admin);
 
@@ -20,10 +20,10 @@ class HistoryRenderTest extends BrowserKitTestCase
             ->log();
 
         $this->visit('/admin/dashboard')
-             ->see('<strong>'.$this->admin->name.'</strong> '.trans('history.backend.users.created').$this->user->name);
+            ->see('<strong>'.$this->admin->name.'</strong> '.trans('history.backend.users.created').$this->user->name);
     }
 
-    public function testTypeDisplaysHistory()
+    public function testTypeDisplaysHistory(): void
     {
         $this->actingAs($this->admin);
 
@@ -36,10 +36,10 @@ class HistoryRenderTest extends BrowserKitTestCase
             ->log();
 
         $this->visit('/admin/access/user')
-             ->see('<strong>'.$this->admin->name.'</strong> '.trans('history.backend.users.created').$this->user->name);
+            ->see('<strong>'.$this->admin->name.'</strong> '.trans('history.backend.users.created').$this->user->name);
     }
 
-    public function testEntityDisplaysHistory()
+    public function testEntityDisplaysHistory(): void
     {
         $this->actingAs($this->admin);
 
@@ -52,6 +52,6 @@ class HistoryRenderTest extends BrowserKitTestCase
             ->log();
 
         $this->visit('/admin/access/user/3')
-             ->see('<strong>'.$this->admin->name.'</strong> '.trans('history.backend.users.created').$this->user->name);
+            ->see('<strong>'.$this->admin->name.'</strong> '.trans('history.backend.users.created').$this->user->name);
     }
 }

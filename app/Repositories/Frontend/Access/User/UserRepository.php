@@ -82,11 +82,7 @@ class UserRepository extends BaseRepository
         throw new GeneralException(trans('auth.unknown'));
     }
 
-    /**
-     * @param  bool  $provider
-     * @return static
-     */
-    public function create(array $data, $provider = false)
+    public function create(array $data, bool $provider = false): static
     {
         $user = self::MODEL;
         $user = new $user;
@@ -203,11 +199,9 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     * @return bool
-     *
      * @throws GeneralException
      */
-    public function confirmAccount($token)
+    public function confirmAccount($token): bool
     {
         $user = $this->findByConfirmationToken($token);
 
@@ -282,10 +276,7 @@ class UserRepository extends BaseRepository
         throw new GeneralException(trans('exceptions.frontend.auth.password.change_mismatch'));
     }
 
-    /**
-     * @return array
-     */
-    protected function getNameParts($fullName)
+    protected function getNameParts($fullName): array
     {
         $parts = array_values(array_filter(explode(' ', $fullName)));
 

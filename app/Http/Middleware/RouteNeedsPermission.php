@@ -3,17 +3,15 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class RouteNeedsRole.
  */
 class RouteNeedsPermission
 {
-    /**
-     * @param  bool  $needsAll
-     * @return mixed
-     */
-    public function handle($request, Closure $next, $permission, $needsAll = false)
+    public function handle(Request $request, Closure $next, $permission, bool $needsAll = false): Response
     {
         /*
          * Permission array

@@ -9,20 +9,16 @@ class OfferRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         $documentArr = ['Pre Qualified', 'Pre Approved', 'Not Approved', 'Cash Buyer'];
         //        $petsArr=[1,2,3];
@@ -93,7 +89,7 @@ class OfferRequest extends Request
         return $rules;
     }
 
-    public function messages()
+    public function messages(): array
     {
         $messages = [];
         if ($this->type == config('constant.property_type.2')) {

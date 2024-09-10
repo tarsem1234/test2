@@ -21,17 +21,15 @@ class AccessServiceProvider extends ServiceProvider
     /**
      * Package boot method.
      */
-    public function boot()
+    public function boot(): void
     {
         $this->registerBladeExtensions();
     }
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerAccess();
         $this->registerFacade();
@@ -39,10 +37,8 @@ class AccessServiceProvider extends ServiceProvider
 
     /**
      * Register the application bindings.
-     *
-     * @return void
      */
-    private function registerAccess()
+    private function registerAccess(): void
     {
         $this->app->bind('access', function ($app) {
             return new Access($app);
@@ -51,10 +47,8 @@ class AccessServiceProvider extends ServiceProvider
 
     /**
      * Register the vault facade without the user having to add it to the app.php file.
-     *
-     * @return void
      */
-    public function registerFacade()
+    public function registerFacade(): void
     {
         $this->app->booting(function () {
             $loader = \Illuminate\Foundation\AliasLoader::getInstance();

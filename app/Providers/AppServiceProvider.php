@@ -10,10 +10,8 @@ class AppServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         /*
          * Application locale defaults for various components
@@ -53,10 +51,8 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Register any application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         /*
          * Sets third party service providers that are only needed on local/testing environments

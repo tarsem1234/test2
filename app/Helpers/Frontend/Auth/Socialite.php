@@ -9,10 +9,8 @@ class Socialite
 {
     /**
      * Generates social login links based on what is enabled.
-     *
-     * @return string
      */
-    public function getSocialLinks()
+    public function getSocialLinks(): string
     {
         $socialite_enable = [];
         $socialite_links = '';
@@ -50,10 +48,8 @@ class Socialite
 
     /**
      * List of the accepted third party provider types to login with.
-     *
-     * @return array
      */
-    public function getAcceptedProviders()
+    public function getAcceptedProviders(): array
     {
         return [
             'bitbucket',

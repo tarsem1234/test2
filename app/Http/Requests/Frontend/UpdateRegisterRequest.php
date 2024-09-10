@@ -9,20 +9,16 @@ class UpdateRegisterRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         $userType = ['User', 'Business'];
         $rules = [
@@ -64,7 +60,7 @@ class UpdateRegisterRequest extends Request
         return $rules;
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             //            'g-recaptcha-response.required_if' => trans('validation.required',

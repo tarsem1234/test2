@@ -7,10 +7,8 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('category_sessions', function (Blueprint $table) {
             $table->foreign('category_id', 'category_sessions_ibfk_1')->references('id')->on('categories')->onUpdate('RESTRICT')->onDelete('CASCADE');
@@ -19,10 +17,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('category_sessions', function (Blueprint $table) {
             $table->dropForeign('category_sessions_ibfk_1');

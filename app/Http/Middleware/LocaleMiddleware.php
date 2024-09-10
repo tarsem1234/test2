@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Carbon\Carbon;
 use Closure;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class LocaleMiddleware.
@@ -12,11 +14,8 @@ class LocaleMiddleware
 {
     /**
      * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
         /*
          * Locale is enabled and allowed to be changed

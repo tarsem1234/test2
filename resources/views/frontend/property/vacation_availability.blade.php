@@ -1,8 +1,8 @@
 @extends('frontend.layouts.app')
 @section('title', app_name() . ' | Rent-Listings')
 @section('after-styles')
-{{ Html::style(mix('css/dashboard.css')) }}
-{{ Html::style(mix('css/common.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/dashboard.css')) }}" media="all">
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/common.css')) }}" media="all">
 <style>#rent-pages{ font-weight: bold;color: #000;}</style>
 @endsection 
 @section('content')

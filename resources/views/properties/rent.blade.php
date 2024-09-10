@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section ('title', ('Rent'))
 @section('after-styles')
-{{ Html::style(mix('css/property.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/property.css')) }}" media="all">
 @section('content')
 <style>
 </style>
@@ -624,7 +624,7 @@
 <script>
 var imagesLimit = parseInt("{{config('constant.image_count')}}");
 </script>
-{{ Html::script('js/property.js') }}
+<script src="{{ asset('js/property.js') }}"></script>
 <style>
     img.testtmp {
         display: none;

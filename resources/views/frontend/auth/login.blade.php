@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('title', app_name() . ' | Login')
 @section('after-styles')
-{{ Html::style(mix('css/login.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/login.css')) }}" media="all">
 @endsection 
 @section('content')
 <div class="login-page">
@@ -45,7 +45,7 @@
                         <div class="form-group">
                             <div class="col-md-12">
                                 <div class="forget">
-                                    {{ link_to_route('frontend.auth.password.reset', trans('labels.frontend.passwords.forgot_password')) }}
+                                    {{ html()->a(route('frontend.auth.password.reset'), trans('labels.frontend.passwords.forgot_password')) }}
                                 </div>
                             </div><!--col-md-12-->
                         </div><!--form-group-->

@@ -15,8 +15,8 @@ if (in_array(config('constant.inverse_user_type.Business'), array_column($user->
 @section ('title', ('Business-Profile'))
 @endif
 @section('after-styles')
-{{ Html::style(mix('css/dashboard.css')) }}
-{{ Html::style(mix('css/profile-edit.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/dashboard.css')) }}" media="all">
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/profile-edit.css')) }}" media="all">
 <style>
     #editprofile{ font-weight: bold;color: #000; }
 

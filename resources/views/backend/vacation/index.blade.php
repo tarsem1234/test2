@@ -1,7 +1,7 @@
 @extends ('backend.layouts.app')
 @section ('title', ('Vacation List'))
 @section('after-styles')
-{{ Html::style("https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css") }}
+<link type="text/css" rel="stylesheet" href="{{ asset("https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css") }}" media="all">
 @endsection
 
 @section('page-header')
@@ -73,8 +73,8 @@
 @endsection
 
 @section('after-scripts')
-{{ Html::script("https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js") }}
-<!--{{ Html::script("js/backend/plugin/datatables/dataTables-extend.js") }}-->
+<script src="{{ asset("https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js") }}"></script>
+<!--<script src="{{ asset("js/backend/plugin/datatables/dataTables-extend.js") }}"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 <script>
     $('.money').mask('000,000,000,000,000', {reverse: true});

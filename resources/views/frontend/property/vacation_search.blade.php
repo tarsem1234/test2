@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Vacation Rental'))
 @section('after-styles')
-{{ Html::style(mix('css/vacation-search.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/vacation-search.css')) }}" media="all">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" />
 @endsection

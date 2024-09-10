@@ -33,9 +33,9 @@
 @endsection
 
 @section('after-scripts') 
-{{ Html::style("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css") }}  
-{{ Html::script("https://cdn.jsdelivr.net/momentjs/latest/moment.min.js") }}
-{{ Html::script("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js") }}
+<link type="text/css" rel="stylesheet" href="{{ asset("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css") }}" media="all">  
+<script src="{{ asset("https://cdn.jsdelivr.net/momentjs/latest/moment.min.js") }}"></script>
+<script src="{{ asset("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js") }}"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('#datetimepicker').datepicker({

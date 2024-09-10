@@ -96,7 +96,7 @@
 @endsection
 
 @section('after-scripts')
-{{ Html::script("ckeditor/ckeditor.js") }}
+<script src="{{ asset("ckeditor/ckeditor.js") }}"></script>
 
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>-->
 <script>

@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section ('title', ('Change-Password'))
 @section('after-styles')
-{{ Html::style(mix('css/login.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/login.css')) }}" media="all">
 @endsection 
 @section('content')
 <div class="login-page password dashboard-page register-page">

@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('title', app_name() . ' | User Details')
 @section('after-styles')
-{{ Html::style(mix('css/dashboard.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/dashboard.css')) }}" media="all">
 @endsection 
 @section('content')
 <div class="dashboard-page profile-view">
@@ -191,7 +191,7 @@
 </div><!--dashboard-->
 @endsection
 @section('after-scripts')
-{{HTML::script('js/starr.min.js')}}
+<script src="{{ asset('js/starr.min.js') }}"></script>
 @if(isset($user->business_profile))
 <script>
     new Vue({

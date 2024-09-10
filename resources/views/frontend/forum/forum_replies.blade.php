@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section ('title', ('Replies'))
 @section('after-styles')
-{{ Html::style(mix('css/forum.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/forum.css')) }}" media="all">
 @section('content')
 <div class="register-page comment-page contract-tools-seller-common nested-div">
     <div class="container"> 

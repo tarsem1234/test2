@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Network-Portal'))
 @section('after-styles') 
-{{ Html::style(mix('css/forum.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/forum.css')) }}" media="all">
 @endsection 
 @section('content') 
 <div class="contact-page body-color search network-portal social-network-forum">

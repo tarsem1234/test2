@@ -15,8 +15,8 @@
 
       <!-- Styles -->
       @yield('before-styles')
-      {{ Html::style(mix('css/common.css')) }}
-      {{ Html::style('css/custom.css') }}
+      <link type="text/css" rel="stylesheet" href="{{ asset(mix('css/common.css')) }}" media="all">
+      <link type="text/css" rel="stylesheet" href="{{ asset('css/custom.css') }}" media="all">
 
 
       @yield('after-styles')
@@ -51,7 +51,7 @@
 
       <!-- JavaScripts -->
       @yield('before-scripts')
-      {{ Html::script(mix('js/frontend.js')) }}
+      <script src="{{ asset(mix('js/frontend.js')) }}"></script>
       @yield('after-scripts')
       <script>
         $(document).ready(function () {

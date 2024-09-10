@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('title', app_name() . ' | Business User')
 @section('after-styles')
-{{ Html::style(mix('css/profile-edit.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/profile-edit.css')) }}" media="all">
 @endsection 
 @section('content')
 @if (count($errors->get('user_type')) > 0)

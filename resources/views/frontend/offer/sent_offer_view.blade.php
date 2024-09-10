@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Sent Offers'))
 @section('after-styles')
-{{ Html::style(mix('css/dashboard.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/dashboard.css')) }}" media="all">
 <style>
     .child_spacing {
         padding-left: 28px !important;

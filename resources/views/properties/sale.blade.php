@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section ('title', ('Sale'))
 @section('after-styles')
-{{ Html::style(mix('css/property.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/property.css')) }}" media="all">
 @section('content')
 <div class="register-page rent-page add-property">
     <div class="content-wrapper">
@@ -594,7 +594,7 @@
 <script>
 var imagesLimit = parseInt("{{config('constant.image_count')}}");
 </script>
-{{ Html::script('js/property.js') }}
+<script src="{{ asset('js/property.js') }}"></script>
 <script>
     $(document).ready(function () {
         $("#total_rooms").keypress(function (e) {

@@ -2,8 +2,8 @@
 
 @section ('title', ('Send Requests'))
 @section('after-styles')
-{{ Html::style(mix('css/dashboard.css')) }}
-{{ Html::style(mix('css/forum.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/dashboard.css')) }}" media="all">
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/forum.css')) }}" media="all">
 <style>#myassociates{ font-weight: bold;color: #000;}</style>
 @endsection 
 @section('content')

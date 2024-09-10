@@ -8,7 +8,7 @@
                             Closing, Settlement, Owner, Craigslist, Zillow, HotPads, Trulia, FSBO, FRBO, VRBO, Narwhal'))
 
 @section('after-styles')
-{{ Html::style(mix('css/landing-page.css')) }} 
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/landing-page.css')) }}" media="all"> 
 @endsection 
 @section('content')
 

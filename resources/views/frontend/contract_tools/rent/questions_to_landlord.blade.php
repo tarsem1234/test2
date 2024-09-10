@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Questions To Landlord'))
 @section('after-styles')
-{{ Html::style(mix('css/contract_tools.css')) }} 
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/contract_tools.css')) }}" media="all"> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
 @endsection
 @section('content')

@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('title', app_name() . ' | Reset Password')
 @section('after-styles')
-{{ Html::style(mix('css/login.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/login.css')) }}" media="all">
 @endsection
 @section('content')
 <div class="login-page reset-pswd">

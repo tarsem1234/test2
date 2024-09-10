@@ -4,7 +4,7 @@
 @section ('title', ('Search Map-List View'))
 
 @section('after-styles')
-{{ Html::style(mix('css/sale-rent-search.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/sale-rent-search.css')) }}" media="all">
 @endsection
 
 @section('content')

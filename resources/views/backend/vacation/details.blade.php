@@ -2,7 +2,7 @@
 @section ('title', ('Vacation Details'))
 
 @section('after-styles')
-{{ Html::style("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}
+<link type="text/css" rel="stylesheet" href="{{ asset("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}" media="all">
 @endsection
 <?php // dd($sales->toArray()); ?>
 @section('page-header')
@@ -271,8 +271,8 @@
 @endsection
 
 @section('after-scripts')
-{{ Html::script("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js") }}
-{{ Html::script("js/backend/plugin/datatables/dataTables-extend.js") }}
+<script src="{{ asset("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js") }}"></script>
+<script src="{{ asset("js/backend/plugin/datatables/dataTables-extend.js") }}"></script>
 <script>
      $('.money').mask('000,000,000,000,000', {reverse: true});
 </script>

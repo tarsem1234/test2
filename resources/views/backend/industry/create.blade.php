@@ -7,7 +7,7 @@
 @endif
 
 @section('after-styles')
-{{ Html::style("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}
+<link type="text/css" rel="stylesheet" href="{{ asset("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}" media="all">
 @endsection
 
 @section('page-header')

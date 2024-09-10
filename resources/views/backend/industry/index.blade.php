@@ -3,7 +3,7 @@
 @section ('title', ('Industry'))
 
 @section('after-styles')   
-{{ Html::style("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}
+<link type="text/css" rel="stylesheet" href="{{ asset("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}" media="all">
 @endsection
 
 @section('page-header')
@@ -54,9 +54,9 @@
 @endsection
 
 @section('after-scripts')
-{{ Html::script("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js") }}
-{{ Html::script("https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.9.2/adapters/jquery.js") }}
-{{ Html::script("js/backend/plugin/datatables/dataTables-extend.js") }}
+<script src="{{ asset("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js") }}"></script>
+<script src="{{ asset("https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.9.2/adapters/jquery.js") }}"></script>
+<script src="{{ asset("js/backend/plugin/datatables/dataTables-extend.js") }}"></script>
 
 <script>
     $(function () {

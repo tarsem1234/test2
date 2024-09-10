@@ -114,7 +114,7 @@
 <div class="box box-info">
    <div class="box-body">
       <div class="pull-left">
-         {{ link_to_route('admin.access.user.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger btn-xs']) }}
+         {{ html()->a(route('admin.access.user.index', []), trans('buttons.general.cancel'))->class('btn btn-danger btn-xs') }}
       </div><!--pull-left-->
 
       <div class="pull-right">
@@ -129,5 +129,5 @@
 @endsection
 
 @section('after-scripts')
-{{ Html::script('js/backend/access/users/script.js') }}
+<script src="{{ asset('js/backend/access/users/script.js') }}"></script>
 @endsection

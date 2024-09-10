@@ -316,7 +316,7 @@
 @endsection
 
 @section('after-scripts')
-{{ Html::script('js/backend/access/users/script.js') }}
+<script src="{{ asset('js/backend/access/users/script.js') }}"></script>
 
 <script>
     $(document).ready(function () {

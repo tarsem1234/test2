@@ -3,7 +3,7 @@
 @section ('title', ('Document Portal'))
 
 @section('after-styles')
-{{ Html::style(mix('css/terms-conditions.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/terms-conditions.css')) }}" media="all">
 @endsection
 
 @section('content')

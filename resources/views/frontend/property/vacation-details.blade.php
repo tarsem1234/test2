@@ -14,9 +14,9 @@ $fbAppVersion = env('FB_APP_VERSION');
 <meta property="og:image:height" content="<?php echo $height; ?>">
 <meta property="fb:app_id" content="{{ $fbAppId }}" />
 @section('after-styles')
-{{ Html::style(mix('css/vacation-search.css')) }}
-{{ Html::style("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}
-{{ Html::style(mix('css/sale-rent-search.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/vacation-search.css')) }}" media="all">
+<link type="text/css" rel="stylesheet" href="{{ asset("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}" media="all">
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/sale-rent-search.css')) }}" media="all">
 @endsection
 @section('content')
 <div id="fb-root"></div>
@@ -315,8 +315,8 @@ $fbAppVersion = env('FB_APP_VERSION');
 @endsection
 
 @section('after-scripts')
-{{ Html::script("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js") }}
-{{ Html::script("js/backend/plugin/datatables/dataTables-extend.js") }}
+<script src="{{ asset("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js") }}"></script>
+<script src="{{ asset("js/backend/plugin/datatables/dataTables-extend.js") }}"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" rel="stylesheet" type="text/css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>

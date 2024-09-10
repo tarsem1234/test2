@@ -2,7 +2,7 @@
 @section ('title', ('Register'))
 
 @section('after-styles')
-{{ Html::style(mix('css/register.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/register.css')) }}" media="all">
 @endsection 
 
 @section('content')

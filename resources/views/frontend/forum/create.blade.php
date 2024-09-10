@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section ('title', ('Topic'))
 @section('after-styles')
-{{ Html::style(mix('css/login.css')) }} 
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/login.css')) }}" media="all"> 
 @section('content') 
 {{-- dd($user->toArray()) --}} 
 <div class="login-page create-topic">

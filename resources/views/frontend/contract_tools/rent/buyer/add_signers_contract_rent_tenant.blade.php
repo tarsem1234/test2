@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Thankyou Lease Agreement Tenant'))
 @section('after-styles')
-{{ Html::style(mix('css/contract-tools-buyer.css')) }} 
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/contract-tools-buyer.css')) }}" media="all"> 
 @endsection
 @section('content')
 <style>

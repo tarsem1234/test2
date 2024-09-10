@@ -79,5 +79,5 @@
 @endsection
 
 @section('after-scripts')
-    {{ Html::script('js/backend/access/roles/script.js') }}
+    <script src="{{ asset('js/backend/access/roles/script.js') }}"></script>
 @endsection

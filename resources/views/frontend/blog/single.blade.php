@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section ('title', ('Blog-Single'))
 @section('after-styles')
-{{ Html::style(mix('css/blog-single.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/blog-single.css')) }}" media="all">
 @endsection 
 @section('content')
 <div class="contact-page blog-page blog-single-page blog-bg"> 

@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Lead-Based Paint Hazards'))
 @section('after-styles')
-{{ Html::style(mix('css/contract-tools-buyer.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/contract-tools-buyer.css')) }}" media="all">
 @endsection
 @section('content')
 <div class="container purchase-sale-agreement-review contract-tools-seller-common register-page ">
@@ -13,9 +13,9 @@
          <div class="col-md-9 col-sm-8">
              @if(isset($offer) && ($offer->owner_id == Auth::id() || (isset($property) && $property)))
              @if(isset($property) && $property)
-            {{ Form::open(['route' => ['frontend.saveLeadBasedPaintHazardsLandlord',$offer->id],'role' => 'form', 'method' => 'post' ,'class'=>'owner_form']) }}
+            {{ html()->form('POST', route('frontend.saveLeadBasedPaintHazardsLandlord', [$offer->id]))->attribute('role', 'form')->class('owner_form')->open() }}
             @else
-            {{ Form::open(['route' => 'frontend.saveLeadBasedPaintHazardsLandlord','role' => 'form', 'method' => 'post' ,'class'=>'owner_form']) }}
+            {{ html()->form('POST', route('frontend.saveLeadBasedPaintHazardsLandlord'))->attribute('role', 'form')->class('owner_form')->open() }}
             @endif
             @endif
             <div class="nested-div register-page">
@@ -81,10 +81,10 @@
                       @endif
                   </div><!--col-md-12-->
             @if(isset($offer) && ($offer->owner_id == Auth::id() || $offer->user_id == Auth::id()))
-            {{Form::close()}}
+            {{ html()->form()->close() }}
             @endif
              @if(isset($offer) && $offer->buyer_id == Auth::id())
-            {{ Form::open(['route' => 'frontend.saveLeadBasedPaintHazardsTenant','role' => 'form', 'method' => 'post','class'=>'buyer_form']) }}
+            {{ html()->form('POST', route('frontend.saveLeadBasedPaintHazardsTenant'))->attribute('role', 'form')->class('buyer_form')->open() }}
             @endif
                   <div class="form-group custom_message">
                      <div class="col-md-12">
@@ -153,7 +153,7 @@
                </div>
             </div>
             @if(isset($offer) && $offer->buyer_id == Auth::id())
-            {{Form::close()}}
+            {{ html()->form()->close() }}
             @endif
          </div><!--</col>-->
       </div><!--</col>-->

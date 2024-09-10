@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Make Rent Offer'))
 @section('after-styles')
-{{ Html::style(mix('css/contract-tools-buyer.css')) }} 
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/contract-tools-buyer.css')) }}" media="all"> 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 @endsection
 @section('content')
@@ -16,7 +16,7 @@
                             <h2>Make an Offer ( Rent)</h2>
                         </div>
                         <div class="row para-text">
-                            {{ Form::open(['route' => 'frontend.make.offer.save', 'class' => 'form','enctype'=>'multipart/form-data']) }}
+                            {{ html()->form('POST', route('frontend.make.offer.save'))->class('form')->acceptsFiles()->open() }}
                             <input type="hidden" value="{{$id}}" name="property_id">
                             <input type="hidden" value="Rent" name="type">
                             <div class="form-group first-child">
@@ -149,7 +149,7 @@
                                     <button type="reset"  class="button btn btn-blue reset">Cancel</button>
                                 </div>
                             </div>
-                            {{ Form::close() }}
+                            {{ html()->form()->close() }}
                         </div>
                     </div><!--</nested-div>-->
                 </div><!--</col>-->

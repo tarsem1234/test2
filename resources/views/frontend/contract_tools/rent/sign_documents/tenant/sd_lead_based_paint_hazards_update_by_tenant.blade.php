@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Lead-Based Paint Hazards'))
 @section('after-styles')
-{{ Html::style(mix('css/contract-tools-buyer.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/contract-tools-buyer.css')) }}" media="all">
 @endsection
 @section('content')
 <div class="container purchase-sale-agreement-review contract-tools-seller-common register-page ">
@@ -143,7 +143,7 @@
 </div><!--</contract-tools-seller-common>-->
 @endsection
 @section('after-scripts')
-{{ Html::script(asset('js/moment.min.js')) }}
+<script src="{{ asset(asset('js/moment.min.js')) }}"></script>
 <script>
        $(document).ready(function(){
          $("#ad_buyer_update").click(function(e){

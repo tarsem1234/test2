@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Sd Disclosures Rent Landlord'))
 @section('after-styles')
-{{ Html::style(mix('css/contract_tools.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/contract_tools.css')) }}" media="all">
 @endsection
 @section('content')
 <div class="container purchase-sale-agreement-review contract-tools-seller-common dis-que register-page dis-que"> 
@@ -41,7 +41,7 @@
 </div>
 @endsection
 @section('after-scripts')
-{{ Html::script(asset('js/moment.min.js')) }}
+<script src="{{ asset(asset('js/moment.min.js')) }}"></script>
 <script>
         $("#ad_seller_update").click(function(e){
               if($(".signature-button").parent().parent().find('.seller-frst-sign').val() === ''){

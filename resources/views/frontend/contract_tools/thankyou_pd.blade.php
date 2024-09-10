@@ -3,7 +3,7 @@
 @section ('title', ('Purchase and Sale Agreement Review (Draft)'))
 
 @section('after-styles')
-{{ Html::style(mix('css/contract_tools.css')) }} 
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/contract_tools.css')) }}" media="all"> 
 @endsection
 
 @section('content')

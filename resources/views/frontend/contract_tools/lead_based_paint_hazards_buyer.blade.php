@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Lead-Based Paint Hazards'))
 @section('after-styles')
-{{ Html::style(mix('css/contract-tools-buyer.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/contract-tools-buyer.css')) }}" media="all">
 @endsection
 @section('content')
 <div class="container purchase-sale-agreement-review contract-tools-seller-common register-page ">
@@ -70,7 +70,7 @@
                       @endif
                   </div><!--col-md-12-->
              @if(isset($offer) && $offer->sender_id == Auth::id())
-            {{ Form::open(['route' => 'frontend.saveLeadBasedPaintHazardsBuyer','role' => 'form', 'method' => 'post']) }}
+            {{ html()->form('POST', route('frontend.saveLeadBasedPaintHazardsBuyer'))->attribute('role', 'form')->open() }}
             @endif
             <div class="form-group" style="width: 100%;float: left">
                      <div class="col-md-12">
@@ -140,7 +140,7 @@
                </div>
             </div>
             @if(isset($offer) && $offer->sender_id == Auth::id())
-            {{Form::close()}}
+            {{ html()->form()->close() }}
             @endif
          </div><!--</col>-->
       </div><!--</col>-->

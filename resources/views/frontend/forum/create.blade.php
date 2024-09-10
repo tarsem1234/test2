@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section ('title', ('Topic'))
 @section('after-styles')
-{{ Html::style(mix('css/login.css')) }} 
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/login.css')) }}" media="all"> 
 @section('content') 
 {{-- dd($user->toArray()) --}} 
 <div class="login-page create-topic">
@@ -11,7 +11,7 @@
                 <div class="panel"> 
                     <div class="panel-heading"><span class="black-text">Create  </span>New Topic</div>
                     <div class="panel-default1">
-                        {{ Form::open(['route' => ['frontend.forum.topic.store'], 'class' => 'form-group', 'role' => 'form', 'method' => 'post']) }}
+                        {{ html()->form('POST', route('frontend.forum.topic.store', ))->class('form-group')->attribute('role', 'form')->open() }}
                         <div class="form-group">
                             <h4 for="" class=" control-label">Topic</h4>
                             <div class="">
@@ -33,7 +33,7 @@
                                 </div><!--col-md-12-->
                             </div><!--form-group-->
                                                                      
-                        {{ Form::close() }}
+                        {{ html()->form()->close() }}
                     </div>
                 </div>
             </div>

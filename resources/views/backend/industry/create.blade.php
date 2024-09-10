@@ -7,7 +7,7 @@
 @endif
 
 @section('after-styles')
-{{ Html::style("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}
+<link type="text/css" rel="stylesheet" href="{{ asset("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}" media="all">
 @endsection
 
 @section('page-header')
@@ -29,20 +29,20 @@
    <div class="box-body">
       <div class="container">
          @if( isset($industry) )
-         {{ Form::open(['url' => route('admin.industries.update', $industry['id']) ,'method' => 'PUT','class' => 'form-horizontal','files' => 'true']) }}
+         {{ html()->form('PUT', route('admin.industries.update', $industry['id']))->class('form-horizontal')->acceptsFiles()->open() }}
          @else
-         {{ Form::open(['route' => 'admin.industries.store' ,'method' => 'POST','class' => 'form-horizontal','files' => 'true']) }}
+         {{ html()->form('POST', route('admin.industries.store'))->class('form-horizontal')->acceptsFiles()->open() }}
          @endif
          <div class="row form-group">
             <div class="col-sm-2">
                @if( isset($industry) )
-               {{ Form::label('industry', 'Title:') }}
+               {{ html()->label('Title:', 'industry') }}
                @else
-               {{ Form::label('industry', 'Industry Name:') }}
+               {{ html()->label('Industry Name:', 'industry') }}
                @endif
             </div>
             <div class="col-sm-5">
-               {{ Form::text('industry', isset($industry)? $industry['industry']:null,  ['class' => 'form-control title-input','required'=>'required',    'maxlength' => '191', 'placeholder' => 'Industry Name']) }}
+               {{ html()->text('industry', isset($industry) ? $industry['industry'] : null)->class('form-control title-input')->required()->maxlength('191')->placeholder('Industry Name') }}
                @if(count($errors->get('industry')) > 0)
                <span class="backend-errors alert-danger">{{ $errors->first('industry') }}</span>
                @endif
@@ -53,13 +53,13 @@
 </div>
 <div class="box box-info  create-edit-cancel-btn">
    @if( isset($industry) )
-   {{ Form::submit('Update', ['class' => 'btn btn-primary edit-create-btn']) }}
+   {{ html()->submit('Update')->class('btn btn-primary edit-create-btn') }}
    @else
-   {{ Form::submit('Create', ['class' => 'btn btn-primary edit-create-btn']) }}
+   {{ html()->submit('Create')->class('btn btn-primary edit-create-btn') }}
    @endif
    <a href="{{route("admin.industries.index")}}" class="btn btn-primary cancel-btn">Cancel</a>
 </div>
-{{ Form::close() }}    
+{{ html()->form()->close() }}    
 
 @endsection
 

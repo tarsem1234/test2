@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Sent Offers'))
 @section('after-styles')
-{{ Html::style(mix('css/dashboard.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/dashboard.css')) }}" media="all">
 <style>
     .child_spacing {
         padding-left: 28px !important;
@@ -152,7 +152,7 @@
                                         </div>
 
                                         <div id="buyer_counter-offer" style="display:none">
-                                            {{ Form::open(['url'=>route('frontend.counter.offer'), 'id'=>"make-an-offer-form", 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
+                                            {{ html()->form('POST', route('frontend.counter.offer'))->id("make-an-offer-form")->class('form-horizontal')->attribute('role', 'form')->open() }}
                                             <input type="hidden" class="form-control" name="property_type" value="{{ $offer->property->property_type??"" }}">
                                             <input type="hidden" class="form-control" name="offer_id" value="{{ $offer->id??"" }}">
                                             <div class="form-group">

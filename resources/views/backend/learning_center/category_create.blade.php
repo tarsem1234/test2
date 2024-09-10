@@ -7,7 +7,7 @@
 @endif
 
 @section('after-styles')
-{{ Html::style("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}
+<link type="text/css" rel="stylesheet" href="{{ asset("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}" media="all">
 @endsection
 
 
@@ -31,16 +31,16 @@
    <div class="box-body">
       <div class="container">
          @if( isset($category) )
-         {{ Form::model($category,['url' => route('admin.categories.update', $category['id']) ,'method' => 'PUT','class' => 'form-horizontal','files' => 'true']) }}
+         {{ html()->modelForm($category, 'PUT', route('admin.categories.update', $category['id']))->class('form-horizontal')->acceptsFiles()->open() }}
          @else
-         {{ Form::open(['route' => 'admin.categories.store' ,'method' => 'POST','class' => 'form-horizontal','files' => 'true']) }}
+         {{ html()->form('POST', route('admin.categories.store'))->class('form-horizontal')->acceptsFiles()->open() }}
          @endif
          <div class="row form-group">
             <div class="col-sm-2">
-               {{ Form::label('Category', 'Category Name:') }}
+               {{ html()->label('Category Name:', 'Category') }}
             </div>
             <div class="col-sm-8">
-               {{ Form::text('category', null,  ['class' => 'form-control title-input','required'=>'required', 'maxlength' => '191', 'placeholder' => 'Category Name']) }}
+               {{ html()->text('category')->class('form-control title-input')->required()->maxlength('191')->placeholder('Category Name') }}
                @if(count($errors->get('category')) > 0)
                <span class="backend-errors alert-danger">{{ $errors->first('category') }}</span>
                @endif
@@ -48,10 +48,10 @@
          </div>
          <div class="row form-group">
             <div class="col-sm-2">
-               {{ Form::label('description', 'Category Description:') }}
+               {{ html()->label('Category Description:', 'description') }}
             </div>
             <div class="col-sm-8">
-               {{ Form::textarea('description',null,['id' => 'ckeditor' ,'class' => 'form-control textarea','required'=>'required', 'maxlength' => '191', 'placeholder' => 'Category Description']) }}
+               {{ html()->textarea('description')->id('ckeditor')->class('form-control textarea')->required()->maxlength('191')->placeholder('Category Description') }}
                @if(count($errors->get('description')) > 0)
                <span class="backend-errors alert-danger">{{ $errors->first('description') }}</span>
                @endif
@@ -63,18 +63,18 @@
 
 <div class="box box-info  create-edit-cancel-btn">
    @if( isset($category) )
-   {{ Form::submit('Update', ['class' => 'btn btn-primary edit-create-btn']) }}
+   {{ html()->submit('Update')->class('btn btn-primary edit-create-btn') }}
    @else
-   {{ Form::submit('Create', ['class' => 'btn btn-primary edit-create-btn']) }}
+   {{ html()->submit('Create')->class('btn btn-primary edit-create-btn') }}
    @endif
    <a href="{{route("admin.categories.index")}}" class="btn btn-primary cancel-btn">Cancel</a>
 </div>
-{{ Form::close() }}
+{{ html()->closeModelForm() }}
 
 @endsection
 
 @section('after-scripts')
-{{ Html::script("ckeditor/ckeditor.js") }}
+<script src="{{ asset("ckeditor/ckeditor.js") }}"></script>
 
 <script>
    $(function () {

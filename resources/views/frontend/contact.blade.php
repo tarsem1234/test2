@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section ('title', ('Contact Us'))
 @section('after-styles')
-{{ Html::style(mix('css/contact.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/contact.css')) }}" media="all">
 @endsection  
 @section('content')
 <style>
@@ -33,43 +33,43 @@
                     </br>
 
                     <div class="">
-                        {{ Form::open(['route' => 'frontend.contact.send', 'class' => 'form-horizontal']) }}
+                        {{ html()->form('POST', route('frontend.contact.send'))->class('form-horizontal')->open() }}
                         <div class="form-group">
                             <div class="col-md-4">
-                                {{ Form::text('name', null, ['class' => 'form-control', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.frontend.name')]) }}
+                                {{ html()->text('name')->class('form-control')->required()->autofocus('autofocus')->placeholder(trans('validation.attributes.frontend.name')) }}
                             </div><!--col-md-4-->
                             <div class="col-md-4">
-                                {{ Form::email('email', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
+                                {{ html()->email('email')->class('form-control')->attribute('required', 'required')->attribute('placeholder', trans('validation.attributes.frontend.email')) }}
                             </div><!--col-md-4-->
                             <div class="col-md-4">
-                                {{ Form::number('phone', '', ['class' => 'form-control',  'min="0"', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.phone')]) }}
+                                {{ html()->number('phone', '')->class('form-control')->attribute('min="0"', )->attribute('required', 'required')->attribute('placeholder', trans('validation.attributes.frontend.phone')) }}
                             </div><!--col-md-4-->
                         </div><!--form-group-->
                         <div class="form-group address">               
                             <div class="col-md-12">
-                                {{ Form::text('address', null, ['class' => 'form-control text-height', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.address')]) }}
+                                {{ html()->text('address')->class('form-control text-height')->required()->placeholder(trans('validation.attributes.frontend.address')) }}
                             </div><!--col-md-12-->
                         </div><!--form-group--> 
                         <div class="form-group">               
                             <div class="col-md-12">
-                                {{ Form::textarea('comment', null, ['class' => 'form-control text-height', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.comment')]) }}
+                                {{ html()->textarea('comment')->class('form-control text-height')->required()->placeholder(trans('validation.attributes.frontend.comment')) }}
                             </div><!--col-md-12-->
                         </div><!--form-group-->
                         @if (config('access.captcha.registration'))
                         <div class="form-group contact-captcha">
                             <div class="col-md-4 col-md-offset-0">
                                 {!! NoCaptcha::display() !!}
-                                {{ Form::hidden('captcha_status', 'true') }}
+                                {{ html()->hidden('captcha_status', 'true') }}
                             </div><!--col-md-6-->
                             <div id="captchaError"></div>
                         </div><!--form-group-->
                         @endif
                         <div class="form-group">
                             <div class="col-md-12">
-                                {{ Form::submit(trans('labels.frontend.contact.button'), ['class' => 'contact-button']) }}
+                                {{ html()->submit(trans('labels.frontend.contact.button'))->class('contact-button') }}
                             </div><!--col-md-12-->
                         </div><!--form-group-->
-                        {{ Form::close() }}
+                        {{ html()->form()->close() }}
                     </div><!-- panel body -->
                 </div><!-- panel -->
             </div><!-- col-md-12 -->

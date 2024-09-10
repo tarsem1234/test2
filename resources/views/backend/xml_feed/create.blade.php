@@ -14,17 +14,17 @@
    <div class="box-body">
       <div class="container">
           @if(isset($xmlUser))
-         {{ Form::open(['url' => route('admin.xmlFeedUpdate') ,'method' => 'POST','class' => 'form-horizontal','files' => 'true']) }}
+         {{ html()->form('POST', route('admin.xmlFeedUpdate'))->class('form-horizontal')->acceptsFiles()->open() }}
          <input type="hidden" value="{{encrypt($xmlUser->id)}}" name="xml_user_id">
          @else
-         {{ Form::open(['route' => 'admin.xmlFeedStore' ,'method' => 'POST','class' => 'form-horizontal','files' => 'true']) }}
+         {{ html()->form('POST', route('admin.xmlFeedStore'))->class('form-horizontal')->acceptsFiles()->open() }}
          @endif
          <div class="row form-group">
             <div class="col-sm-2">
-               {{ Form::label('username', 'Username:') }}
+               {{ html()->label('Username:', 'username') }}
             </div>
             <div class="col-sm-5">
-               {{ Form::text('username', isset($xmlUser)? $xmlUser['username']:null,  ['class' => 'form-control title-input','required'=>'required',    'maxlength' => '191', 'placeholder' => 'Username']) }}
+               {{ html()->text('username', isset($xmlUser) ? $xmlUser['username'] : null)->class('form-control title-input')->required()->maxlength('191')->placeholder('Username') }}
                @if(count($errors->get('username')) > 0)
                <span class="backend-errors alert-danger">{{ $errors->first('username') }}</span>
                @endif
@@ -32,7 +32,7 @@
          </div>
          <div class="row form-group">
             <div class="col-sm-2">
-               {{ Form::label('Password', 'Password:') }}
+               {{ html()->label('Password:', 'Password') }}
             </div>
             <div class="col-sm-5">
                 <input type="password" name="password" class="form-control title-input" required maxlength="191" placeholder="Password">
@@ -46,13 +46,13 @@
 </div>
 <div class="box box-info  create-edit-cancel-btn">
    @if( isset($xmlUser) )
-   {{ Form::submit('Update', ['class' => 'btn btn-primary edit-create-btn']) }}
+   {{ html()->submit('Update')->class('btn btn-primary edit-create-btn') }}
    @else
-   {{ Form::submit('Create', ['class' => 'btn btn-primary edit-create-btn']) }}
+   {{ html()->submit('Create')->class('btn btn-primary edit-create-btn') }}
    @endif
    <a href="{{route("admin.xmlFeedIndex")}}" class="btn btn-primary cancel-btn">Cancel</a>
 </div>
-{{ Form::close() }}
+{{ html()->form()->close() }}
 
 @endsection
 

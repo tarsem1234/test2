@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Lead-Based Paint Hazards'))
 @section('after-styles')
-{{ Html::style(mix('css/contract-tools-buyer.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/contract-tools-buyer.css')) }}" media="all">
 @endsection
 @section('content')
 <div class="container purchase-sale-agreement-review contract-tools-seller-common register-page ">
@@ -137,7 +137,7 @@ if (isset($offer->epa) && $offer->epa) {
 </div><!--</contract-tools-seller-common>-->
 @endsection
 @section('after-scripts')
-{{ Html::script(asset('js/moment.min.js')) }}
+<script src="{{ asset(asset('js/moment.min.js')) }}"></script>
 <script>
     $("#ad_seller_submit").click(function (e) {
         if ($(".signature-button").parent().parent().find('.seller-frst-sign').val() === '') {

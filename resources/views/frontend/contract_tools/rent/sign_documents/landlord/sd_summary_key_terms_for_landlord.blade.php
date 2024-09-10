@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Summary Key Terms For Buyer'))
 @section('after-styles')
-{{ Html::style(mix('css/dashboard.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/dashboard.css')) }}" media="all">
 @endsection
 @section('content')
 <div class="offers-page summary">
@@ -111,7 +111,7 @@
 
                         </tbody>
                     </table>
-                    {{ Form::open(['route'=>'frontend.sdThankyouForReviewSummaryKeyTermsLandlord','class'=>'', 'role' => 'form']) }}
+                    {{ html()->form('POST', route('frontend.sdThankyouForReviewSummaryKeyTermsLandlord'))->class('')->attribute('role', 'form')->open() }}
                     <div class="form-group">
                         <div class="checkbox">
                             <p class="align-left"><strong>I have reviewed the above (summary) terms and agree this information is correct to the best of my knowledge. Further, I understand that Freezyist.com is not providing legal guidance and recommends I consult with an attorney regarding these and other relevant legal matters.</strong>
@@ -126,7 +126,7 @@
                             <button type="submit" id="proceed-review" class="button btn btn-blue">Proceed To Review Documents</button>
                         </div>
                     </div>
-                    {{Form::close()}}
+                    {{ html()->form()->close() }}
                 </div>
             </div>
         </div><!--</row>-->

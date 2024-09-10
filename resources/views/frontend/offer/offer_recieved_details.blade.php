@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Recieved Offers'))
 @section('after-styles')  
-{{ Html::style(mix('css/dashboard.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/dashboard.css')) }}" media="all">
 <style>#Offer{ font-weight: bold; color: #000;}</style>
 @endsection
 @section('content')
@@ -52,13 +52,13 @@
                                                                 <td>{{date("d F Y", strtotime($offer->created_at))}}</td>
                                                                 <td>{{ ucwords(str_replace('_',' ',config('constant.offer_status.'.$offer->status)))}}</td>
                                                                 <td>
-                                                                    {{ Form::open(['route' => 'frontend.recieved.view.offer.rent', 'method'=>'get', 'class' => 'form-horizontal']) }}
+                                                                    {{ html()->form('GET', route('frontend.recieved.view.offer.rent'))->class('form-horizontal')->open() }}
                                                                     <input type="hidden" name="offer_id" value="{{ $offer->id }}">
                                                                     <input type="hidden" name="type" value="{{ (isset($offer->property) && $offer->property) ? config('constant.property_type.'.$offer->property->property_type) :"" }}">
                                                                     <input type="hidden" name="property_id" value="{{ $offer->property->id??"" }}">
                                                                     <input type="hidden" name="owner_id" value="{{ $offer->property_owner_user->id }}">
                                                                     <button class="single-btn-offer view" type="submit">View &amp; Reply </button>
-                                                                    {{ Form::close() }}
+                                                                    {{ html()->form()->close() }}
                                                                 </td>
                                                             </tr>
                                                             @endforeach
@@ -100,13 +100,13 @@
                                                                 <td>{{date("d F Y", strtotime($offer->created_at))}}</td>
                                                                 <td>{{ ucwords(str_replace('_',' ',config('constant.offer_status.'.$offer->status)))}}</td>
                                                                 <td>
-                                                                    {{ Form::open(['route' => 'frontend.recieved.view.offer', 'method'=>'get', 'class' => 'form-horizontal']) }}
+                                                                    {{ html()->form('GET', route('frontend.recieved.view.offer'))->class('form-horizontal')->open() }}
                                                                     <input type="hidden" name="offer_id" value="{{ $offer->id }}">
                                                                     <input type="hidden" name="type" value="{{ config('constant.property_type.'.$offer->property->property_type) }}">
                                                                     <input type="hidden" name="property_id" value="{{ $offer->property->id }}">
                                                                     <input type="hidden" name="owner_id" value="{{ $offer->property_owner_user->id }}">
                                                                     <button class="single-btn-offer view" type="submit">View &amp; Reply </button>
-                                                                    {{ Form::close() }}
+                                                                    {{ html()->form()->close() }}
                                                                 </td>
                                                             </tr>
                                                             @endforeach

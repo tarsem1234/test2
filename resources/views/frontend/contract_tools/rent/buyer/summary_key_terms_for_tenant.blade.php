@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Summary Key Terms For Buyer'))
 @section('after-styles')
-{{ Html::style(mix('css/dashboard.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/dashboard.css')) }}" media="all">
 @endsection
 @section('content')
 <div class="offers-page summary"> 
@@ -115,9 +115,9 @@
                         </tbody>
                     </table>
                     @if(\Session::get('OFFER')['type'] == config('constant.inverse_property_type.Rent'))
-                    {{ Form::open(['route'=>'frontend.thankYouForReviewSummaryKeyTerms','class'=>'', 'role' => 'form']) }}
+                    {{ html()->form('POST', route('frontend.thankYouForReviewSummaryKeyTerms'))->class('')->attribute('role', 'form')->open() }}
                     @else
-                    {{ Form::open(['route'=>'frontend.thankYouForReviewSummaryKeyTerms','class'=>'', 'role' => 'form']) }}
+                    {{ html()->form('POST', route('frontend.thankYouForReviewSummaryKeyTerms'))->class('')->attribute('role', 'form')->open() }}
                     @endif
                     <div class="form-group">
                         <div class="checkbox">
@@ -133,7 +133,7 @@
                             <button type="submit"  class="button btn btn-blue" id="proceed-review" >Proceed To Review Documents</button>
                         </div>
                     </div>
-                    {{Form::close()}}
+                    {{ html()->form()->close() }}
                 </div>
             </div>
         </div><!--</row>-->

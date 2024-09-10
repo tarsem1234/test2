@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section ('title', ('Replies'))
 @section('after-styles')
-{{ Html::style(mix('css/forum.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/forum.css')) }}" media="all">
 @section('content')
 <div class="register-page comment-page contract-tools-seller-common nested-div">
     <div class="container"> 
@@ -56,7 +56,7 @@
 
                         <div id="form_text_main">
                             <div class="col-md-12">
-                                {{ Form::open(['route' => ['frontend.saveForumReply'], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
+                                {{ html()->form('POST', route('frontend.saveForumReply', ))->class('form-horizontal')->attribute('role', 'form')->open() }}
                                 <div class="form-group">
                                     <label for="" class=" control-label">Your Answer</label>
                                     <div class="">
@@ -72,7 +72,7 @@
                                         </div>
                                     </div><!--col-md-12-->
                                 </div><!--form-group-->
-                                {{Form::close()}}
+                                {{ html()->form()->close() }}
                             </div><!-- panel body -->
                         </div><!-- panel -->
                     </div><!-- col-md-12 -->

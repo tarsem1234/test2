@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('title', app_name() . ' | Reset Password')
 @section('after-styles')
-{{ Html::style(mix('css/login.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/login.css')) }}" media="all">
 @endsection
 @section('content')
 <div class="login-page reset-pswd">
@@ -17,35 +17,35 @@
                     <div class="panel panel-default1">
                         <div class="panel-heading"><span class="black-text"> Reset </span> Password</div> 
                         <div class="">
-                            {{ Form::open(['route' => 'frontend.auth.password.reset', 'class' => 'form-horizontal']) }}
+                            {{ html()->form('POST', route('frontend.auth.password.reset'))->class('form-horizontal')->open() }}
                             <input type="hidden" name="token" value="{{ $token }}">
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <h4>E-MAIL ADDRESS</h4>
                                     <p class="form-control-static form-control">{{ $email }}</p>
-                                    {{ Form::hidden('email', $email, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
+                                    {{ html()->hidden('email', $email)->class('form-control')->attribute('placeholder', trans('validation.attributes.frontend.email')) }}
                                 </div><!--col-md-6-->
                             </div><!--form-group-->
 
                             <div class="form-group">                         
                                 <div class="col-md-12">
                                     <h4>PASSWORD</h4>
-                                    {{ Form::password('password', ['class' => 'form-control', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.frontend.password')]) }}
+                                    {{ html()->password('password')->class('form-control')->attribute('required', 'required')->attribute('autofocus', 'autofocus')->attribute('placeholder', trans('validation.attributes.frontend.password')) }}
                                 </div><!--col-md-6-->
                             </div><!--form-group-->
 
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <h4>PASSWORD CONFIRMATION</h4>
-                                    {{ Form::password('password_confirmation', ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.password_confirmation')]) }}
+                                    {{ html()->password('password_confirmation')->class('form-control')->attribute('required', 'required')->attribute('placeholder', trans('validation.attributes.frontend.password_confirmation')) }}
                                 </div><!--col-md-6-->
                             </div><!--form-group-->
                             <div class="form-group">
                                 <div class="col-md-12 mr-top">
-                                    {{ Form::submit(trans('labels.frontend.passwords.reset_password_button'), ['class' => 'btn btn-primary log-in-button']) }}
+                                    {{ html()->submit(trans('labels.frontend.passwords.reset_password_button'))->class('btn btn-primary log-in-button') }}
                                 </div><!--col-md-6-->
                             </div><!--form-group-->
-                            {{ Form::close() }}
+                            {{ html()->form()->close() }}
 
                         </div><!-- panel body -->
                     </div><!-- panel -->

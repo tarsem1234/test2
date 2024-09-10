@@ -7,7 +7,7 @@
 <div id="del-success-msg" class="alert alert-success"></div>
 <div class="box box-success">
     <div class="box-body" class="top"> 
-        {{Form::open(['route'=>'admin.exportAutoLogs', 'method'=>'POST'])}}
+        {{ html()->form('POST', route('admin.exportAutoLogs'))->open() }}
         <div class="form-group">
             <div class="col-sm-4">
                 <h5> Date Range: </h5> 
@@ -22,7 +22,7 @@
                 <button class="btn btn-success" id="range_download" type="submit">Download By Range</button>
             </div>
         </div>        
-        {{Form::close()}}
+        {{ html()->form()->close() }}
         <div class="col-sm-12">                        
             <div class="button"> 
                 <a href="{{route('admin.exportAutoLogs', 'all')}}" class="btn btn-info download_bttns">Download All Logs</a>
@@ -33,9 +33,9 @@
 @endsection
 
 @section('after-scripts') 
-{{ Html::style("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css") }}  
-{{ Html::script("https://cdn.jsdelivr.net/momentjs/latest/moment.min.js") }}
-{{ Html::script("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js") }}
+<link type="text/css" rel="stylesheet" href="{{ asset("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css") }}" media="all">  
+<script src="{{ asset("https://cdn.jsdelivr.net/momentjs/latest/moment.min.js") }}"></script>
+<script src="{{ asset("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js") }}"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('#datetimepicker').datepicker({

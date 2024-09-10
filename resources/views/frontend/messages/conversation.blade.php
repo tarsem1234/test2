@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('title', app_name() . ' | Conversation')
 @section('after-styles')
-{{ Html::style(mix('css/dashboard.css')) }}  
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/dashboard.css')) }}" media="all">  
 <style>#messages{ font-weight: bold;color: #000;}</style>
 @endsection 
 @section('content')
@@ -15,7 +15,7 @@
                         <div class="row">  
                             <div class="col-md-12">
                                     <h4>Conversation with {{getFullName($fromUser)}}</h4>
-                                {{Form::open(['route' => ['frontend.messages.conversation', encrypt($fromUser->id)],'id'=>'conversation_form'])}}
+                                {{ html()->form('POST', route('frontend.messages.conversation', [encrypt($fromUser->id)]))->id('conversation_form')->open() }}
                                 <div class="panel panel-default chat-widget">
                                     <!--                                    <div class="panel-heading">
                                                                             <h3 class="panel-title"><i class="fa fa-comments"></i> </h3>
@@ -61,7 +61,7 @@
                                     </div>
                                     @endif
                                 </div>
-                                {{Form::close()}}
+                                {{ html()->form()->close() }}
                             </div>
                         </div>
                     </div>

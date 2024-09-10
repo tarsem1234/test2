@@ -3,13 +3,13 @@
 @section ('title', ('Sale Search Map-List View'))
 
 @section('after-styles')
-{{ Html::style(mix('css/sale-rent-search.css')) }}
-{{ Html::style(mix('css/vacation-search.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/sale-rent-search.css')) }}" media="all">
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/vacation-search.css')) }}" media="all">
 @endsection
 @section('content')
 
 <div class="sale-listings">
-    {{ Form::open(['route' => 'frontend.searchedSale', 'class' => 'form-horizontal', 'method'=>'get','id'=>'searchAction']) }}
+    {{ html()->form('GET', route('frontend.searchedSale'))->class('form-horizontal')->id('searchAction')->open() }}
     <div class="search-property-row">
         <div class="container nested-div">
             <div class="row bg-white">
@@ -316,7 +316,7 @@
             </div>
         </div>
     </div>
-    {{ Form::close() }}
+    {{ html()->form()->close() }}
 </div>
 @if(isset($search))
 <div class="container">
@@ -520,7 +520,7 @@
 <!--<script src='http://maps.googleapis.com/maps/api/js?key=AIzaSyC11rgDxrNC5An9e2ez7Exq1v93PMjRSH0&libraries=places&sensor=false&amp;libraries=places&key=xxx'></script>-->
 <!--<script src="https://cdn.rawgit.com/googlemaps/v3-utility-library/master/infobox/src/infobox.js" type="text/javascript"></script>-->
 <!--<script src="https://googlemaps.github.io/js-marker-clusterer/examples/data.json"></script>-->
-<!--{{ Html::script('js/infobox.js')}}-->
+<!--<script src="{{ asset('js/infobox.js') }}"></script>-->
 <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 <!--<script src="https://googlemaps.github.io/js-marker-clusterer/src/markerclusterer.js"></script>-->
 <script>

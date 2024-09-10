@@ -19,7 +19,7 @@
 @endsection
 
 @section('content')
-{{ Form::open(['route' => ['admin.access.user.change-password.post', $user], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'patch']) }}
+{{ html()->form('PATCH', route('admin.access.user.change-password.post', [$user]))->class('form-horizontal')->attribute('role', 'form')->open() }}
 
 <div class="box box-success">
    <div class="box-header with-border">
@@ -32,9 +32,9 @@
 
    <div class="box-body">
       <div class="form-group">
-         {{ Form::label('password', trans('validation.attributes.backend.access.users.password'), ['class' => 'col-lg-2 control-label', 'placeholder' => trans('validation.attributes.backend.access.users.password')]) }}
+         {{ html()->label(trans('validation.attributes.backend.access.users.password'), 'password')->class('col-lg-2 control-label')->attribute('placeholder', trans('validation.attributes.backend.access.users.password')) }}
          <div class="col-lg-10">
-            {{ Form::password('password', ['class' => 'form-control', 'required' => 'required', 'autofocus' => 'autofocus']) }}
+            {{ html()->password('password')->class('form-control')->attribute('required', 'required')->attribute('autofocus', 'autofocus') }}
             @if(count($errors->get('password')) > 0)
             <span class="backend-errors alert-danger">{{ $errors->first('password') }}</span>
             @endif
@@ -42,9 +42,9 @@
       </div><!--form control-->
 
       <div class="form-group">
-         {{ Form::label('password_confirmation', trans('validation.attributes.backend.access.users.password_confirmation'), ['class' => 'col-lg-2 control-label', 'placeholder' => trans('validation.attributes.backend.access.users.password_confirmation')]) }}
+         {{ html()->label(trans('validation.attributes.backend.access.users.password_confirmation'), 'password_confirmation')->class('col-lg-2 control-label')->attribute('placeholder', trans('validation.attributes.backend.access.users.password_confirmation')) }}
          <div class="col-lg-10">
-            {{ Form::password('password_confirmation', ['class' => 'form-control', 'required' => 'required']) }}
+            {{ html()->password('password_confirmation')->class('form-control')->attribute('required', 'required') }}
             @if(count($errors->get('password_confirmation')) > 0)
             <span class="backend-errors alert-danger">{{ $errors->first('password_confirmation') }}</span>
             @endif
@@ -60,12 +60,12 @@
       </div><!--pull-left-->
 
       <div class="pull-right">
-         {{ Form::submit(trans('buttons.general.crud.update'), ['class' => 'btn btn-success btn-xs']) }}
+         {{ html()->submit(trans('buttons.general.crud.update'))->class('btn btn-success btn-xs') }}
       </div><!--pull-right-->
 
       <div class="clearfix"></div>
    </div><!-- /.box-body -->
 </div><!--box-->
 
-{{ Form::close() }}
+{{ html()->form()->close() }}
 @endsection

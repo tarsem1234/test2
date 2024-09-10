@@ -3,7 +3,7 @@
 @section ('title', ('Vacations'))
 
 @section('after-styles')
-{{ Html::style(mix('css/home.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/home.css')) }}" media="all">
 @endsection 
 
 @section('content') 

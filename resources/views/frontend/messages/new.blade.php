@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('title', app_name() . ' | Learning Center')
 @section('after-styles')
-{{ Html::style(mix('css/dashboard.css')) }}  
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/dashboard.css')) }}" media="all">  
 <style>
     #messages{ font-weight: bold;color: #000;}
     .select2-container {
@@ -25,17 +25,17 @@
                             </div>
                             @else
                             <div class="message-box">
-                                {{Form::open(['route' => 'frontend.messages.new', 'method' => 'POST'])}}
+                                {{ html()->form('POST', route('frontend.messages.new'))->open() }}
                                 <div class="form-group col-md-12">
-                                    {{Form::select('id', $allAssociates, null, ['class'=>'form-control'])}}
+                                    {{ html()->select('id', $allAssociates)->class('form-control') }}
                                 </div>
                                 <div class="form-group col-md-12">
-                                    {{Form::textarea('message', null, ['class'=>'form-control text-height', 'row'=>'2', 'placeholder'=>'Type A Message'])}}
+                                    {{ html()->textarea('message')->class('form-control text-height')->attribute('row', '2')->placeholder('Type A Message') }}
                                 </div>
                                 <div class="form-group col-md-12 btns-green-blue pull-right">
                                     <input type="submit" class="button btn btn-blue" name="submit" id="inputbutton" value="Send">
                                 </div>
-                                {{Form::close()}} 
+                                {{ html()->form()->close() }} 
                             </div>
                             @endif
                         </div> 

@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('About Us'))
 @section('after-styles')
-{{ Html::style(mix('css/about-us.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/about-us.css')) }}" media="all">
 @endsection 
 @section('content') 
 <div class="contact-page about-style"> 

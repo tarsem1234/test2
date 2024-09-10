@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Update Sale Agreement Byseller Contract'))
 @section('after-styles')
-{{ Html::style(mix('css/contract-tools-buyer.css')) }} 
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/contract-tools-buyer.css')) }}" media="all"> 
 @endsection
 @section('content')
 <div class="container purchase-sale-agreement-review contract-tools-seller-common">
@@ -15,7 +15,7 @@
                <div class="heading-text">
                   <h2>PURCHASE AND SALE AGREEMENT</h2>
                </div>
-               {{ Form::open(['route' => 'frontend.saveUpdateSaleAgreementBysellerContract','role' => 'form', 'method' => 'post']) }}
+               {{ html()->form('POST', route('frontend.saveUpdateSaleAgreementBysellerContract'))->attribute('role', 'form')->open() }}
                <div class="para-text row">
                   <div class="form-group">
                      <div class="col-md-12">

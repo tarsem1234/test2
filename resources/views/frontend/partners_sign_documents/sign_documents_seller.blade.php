@@ -2,7 +2,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Sign Documents Seller')) 
 @section('after-styles')
-{{ Html::style(mix('css/dashboard.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/dashboard.css')) }}" media="all">
 <style>#sign-documents{ font-weight: bold;color: #000;}</style>
 @endsection 
 @section('content')
@@ -37,13 +37,13 @@
                                             <td>{{getFirstLastName($seller->saleOffer->seller)}}</td>
                                             <td>Sale</td>
                                             @if($seller->saleOffer->owner_id == Auth::id())
-                                                {{ Form::open(['route' => 'frontend.recieved.view.offer', 'method'=>'get', 'class' => 'form-horizontal', 'id'=>'contractToolPageForm']) }}
+                                                {{ html()->form('GET', route('frontend.recieved.view.offer'))->class('form-horizontal')->id('contractToolPageForm')->open() }}
                                                 <input type="hidden" name="offer_id" value="{{ $seller->saleOffer->id }}">
                                                 <input type="hidden" name="type" value="{{ config('constant.property_type.'.$seller->saleOffer->property->property_type) }}">
                                                 <input type="hidden" name="property_id" value="{{ $seller->saleOffer->property->id }}">
                                                 <input type="hidden" name="owner_id" value="{{ $seller->saleOffer->property_owner_user->id??'NA' }}">
                                                 <td class="blue-text"><a style="cursor:pointer;" class="" type="submit" onclick="signDocumentPage()">View &amp; Sign Documents</a></td>
-                                                {{ Form::close() }}
+                                                {{ html()->form()->close() }}
                                             @else
                                                 <td class="blue-text"><a href="{{route('frontend.signOffersSaleSellerPartner',$seller->id)}}">View &amp; Sign Documents</a></td>
                                             @endif

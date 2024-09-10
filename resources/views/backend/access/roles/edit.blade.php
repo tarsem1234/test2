@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    {{ Form::model($role, ['route' => ['admin.access.role.update', $role], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH', 'id' => 'edit-role']) }}
+    {{ html()->modelForm($role, 'PATCH', route('admin.access.role.update', [$role]))->class('form-horizontal')->attribute('role', 'form')->id('edit-role')->open() }}
 
         <div class="box box-success">
             <div class="box-header with-border">
@@ -22,20 +22,20 @@
 
             <div class="box-body">
                 <div class="form-group">
-                    {{ Form::label('name', trans('validation.attributes.backend.access.roles.name'), ['class' => 'col-lg-2 control-label']) }}
+                    {{ html()->label(trans('validation.attributes.backend.access.roles.name'), 'name')->class('col-lg-2 control-label') }}
 
                     <div class="col-lg-10">
-                        {{ Form::text('name', null, ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.access.roles.name')]) }}
+                        {{ html()->text('name')->class('form-control')->maxlength('191')->required()->autofocus('autofocus')->placeholder(trans('validation.attributes.backend.access.roles.name')) }}
                     </div><!--col-lg-10-->
                 </div><!--form control-->
 
                 <div class="form-group">
-                    {{ Form::label('associated-permissions', trans('validation.attributes.backend.access.roles.associated_permissions'), ['class' => 'col-lg-2 control-label']) }}
+                    {{ html()->label(trans('validation.attributes.backend.access.roles.associated_permissions'), 'associated-permissions')->class('col-lg-2 control-label') }}
 
                     <div class="col-lg-10">
                         @if ($role->id != 1)
                             {{-- Administrator has to be set to all --}}
-                            {{ Form::select('associated-permissions', ['all' => 'All', 'custom' => 'Custom'], $role->all ? 'all' : 'custom', ['class' => 'form-control']) }}
+                            {{ html()->select('associated-permissions', ['all' => 'All', 'custom' => 'Custom'], $role->all ? 'all' : 'custom')->class('form-control') }}
                         @else
                             <span class="label label-success">{{ trans('labels.general.all') }}</span>
                         @endif
@@ -57,10 +57,10 @@
                 </div><!--form control-->
 
                 <div class="form-group">
-                    {{ Form::label('sort', trans('validation.attributes.backend.access.roles.sort'), ['class' => 'col-lg-2 control-label']) }}
+                    {{ html()->label(trans('validation.attributes.backend.access.roles.sort'), 'sort')->class('col-lg-2 control-label') }}
 
                     <div class="col-lg-10">
-                        {{ Form::text('sort', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.roles.sort')]) }}
+                        {{ html()->text('sort')->class('form-control')->placeholder(trans('validation.attributes.backend.access.roles.sort')) }}
                     </div><!--col-lg-10-->
                 </div><!--form control-->
             </div><!-- /.box-body -->
@@ -80,9 +80,9 @@
             </div><!-- /.box-body -->
         </div><!--box-->
 
-    {{ Form::close() }}
+    {{ html()->closeModelForm() }}
 @endsection
 
 @section('after-scripts')
-    {{ Html::script('js/backend/access/roles/script.js') }}
+    <script src="{{ asset('js/backend/access/roles/script.js') }}"></script>
 @endsection

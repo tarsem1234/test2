@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 @section('title', app_name() . ' | Profile')
-{{ Html::style(mix('css/dashboard.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/dashboard.css')) }}" media="all">
 @section('content')
 <div class="dashboard-page profile-view">    
     <div class="container">

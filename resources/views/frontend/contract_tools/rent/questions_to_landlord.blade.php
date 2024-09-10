@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Questions To Landlord'))
 @section('after-styles')
-{{ Html::style(mix('css/contract_tools.css')) }} 
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/contract_tools.css')) }}" media="all"> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
 @endsection
 @section('content')
@@ -23,9 +23,9 @@
             <div class="col-md-9 col-sm-8">
                 <div class="nested-div">
                     @if(isset($landlordQuestionnaire) && $landlordQuestionnaire)
-                    {{ Form::open(['url' => route('frontend.saveQuestionsToLandlord',$landlordQuestionnaire->id),'id'=>'question-signer-landlord-action','class'=>'', 'role' => 'form', 'method' => 'post']) }}
+                    {{ html()->form('POST', route('frontend.saveQuestionsToLandlord', $landlordQuestionnaire->id))->id('question-signer-landlord-action')->class('')->attribute('role', 'form')->open() }}
                     @else
-                    {{ Form::open(['route'=>'frontend.saveQuestionsToLandlord','id'=>'question-signer-landlord-action','class'=>'', 'role' => 'form', 'method' => 'post']) }}
+                    {{ html()->form('POST', route('frontend.saveQuestionsToLandlord'))->id('question-signer-landlord-action')->class('')->attribute('role', 'form')->open() }}
                     @endif
                     <div id="question-seller-step1">
                         <div class="form-group para-text">
@@ -200,14 +200,14 @@
                         </div>
                     </div>
 
-                    {{ Form::close() }}
+                    {{ html()->form()->close() }}
                     <div class="add-signers">
                         <div class="add-signers-form" style="display:none;">
                             <div class="panel panel-default panel-body">
                                 <div class="panel-heading"><span class="black-text">Add </span>New Signers</div>
                                 <div class="custom_errors"></div>
                                 <span>Be advised, it is recommended that the 'Co-signers confirm their account & information as soon as possible, to prevent inaccurate contract information.</span>
-                                {{ Form::open(['route' => 'frontend.signer.store','id'=>'addSigner', 'method'=>'post', 'class' => 'form-horizontal']) }}
+                                {{ html()->form('POST', route('frontend.signer.store'))->id('addSigner')->class('form-horizontal')->open() }}
                                 <div id="usersignup-form">
 
                                     <div class="form-group">
@@ -321,7 +321,7 @@
                                     <a class="btn btn-blue btn-cancel button">Cancel</a>
                                 </div>
                             </div>
-                            {{ Form::close() }}
+                            {{ html()->form()->close() }}
                         </div>
                     </div>
                 </div>

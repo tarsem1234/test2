@@ -2,7 +2,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Sign Documents Tenant')) 
 @section('after-styles')
-{{ Html::style(mix('css/dashboard.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/dashboard.css')) }}" media="all">
 <style>#sign-documents{ font-weight: bold;color: #000;}</style> 
 @endsection 
 @section('content')
@@ -41,13 +41,13 @@
                                                 <td>{{config('constant.property_type.'.$tenant->rentOffer->property->property_type)}}</td>
                                                  @if($tenant->rentOffer->buyer_id == Auth::id())
                                                 <td>
-                                                    {{ Form::open(['route' => 'frontend.sent.view.offer.rent', 'method'=>'get', 'class' => 'form-horizontal','id'=>'contractToolPageForm']) }}
+                                                    {{ html()->form('GET', route('frontend.sent.view.offer.rent'))->class('form-horizontal')->id('contractToolPageForm')->open() }}
                                                     <input type="hidden" name="offer_id" value="{{ $tenant->rentOffer->id }}">
                                                     <input type="hidden" name="type" value="{{ (isset($tenant->rentOffer->property) && $tenant->rentOffer->property) ? config('constant.property_type.'.$tenant->rentOffer->property->property_type) :"" }}">
                                                     <input type="hidden" name="property_id" value="{{ $tenant->rentOffer->property->id??"" }}">
                                                     <input type="hidden" name="owner_id" value="{{ $tenant->rentOffer->property_owner_user->id }}">
                                                     <a class="" style="cursor:pointer;" type="submit" onclick="signDocumentPage()">View &amp; Sign Documents </a>
-                                                    {{ Form::close() }}
+                                                    {{ html()->form()->close() }}
                                                 </td>
                                                 @else
                                                 <td class="blue-text"><a href="{{route('frontend.signOffersRentTenantPartner',$tenant->id)}}">View &amp; Sign Documents</a></td>

@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Document Portal'))
 @section('after-styles')
-{{ Html::style(mix('css/profile-edit.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/profile-edit.css')) }}" media="all">
 @endsection
 @section('content')
 <div class="login-page"> 

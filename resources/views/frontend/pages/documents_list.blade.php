@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Document Portal'))
 @section('after-styles')
-{{ Html::style(mix('css/forum.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/forum.css')) }}" media="all">
 <style>
     .back-button {
         position: absolute;

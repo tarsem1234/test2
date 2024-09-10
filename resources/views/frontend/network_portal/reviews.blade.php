@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Business Reviews'))
 @section('after-styles')
-{{ Html::style(mix('css/dashboard.css')) }}
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/dashboard.css')) }}" media="all">
 <style>#myassociates{ font-weight: bold;color: #000;}</style>
 @endsection 
 @section('content') 
@@ -77,7 +77,7 @@
 </div>
 @endsection
 @section('after-scripts')
-{{HTML::script('js/starr.min.js')}}
+<script src="{{ asset('js/starr.min.js') }}"></script>
 <script>
     $(function () {
         $('.table-user-rating').each(function () {

@@ -2,7 +2,7 @@
 
 @section('title', app_name() . ' | Sale Listings')
 @section('after-styles')
-{{ Html::style(mix('css/dashboard.css')) }} 
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/dashboard.css')) }}" media="all"> 
 <style>#rent-pages{ font-weight: bold;color: #000;}</style>   
 @endsection 
 @section('content')

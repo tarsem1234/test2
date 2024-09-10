@@ -1,7 +1,7 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Rent Lease Agreement'))
 @section('after-styles')
-{{ Html::style(mix('css/contract_tools.css')) }}  
+<link type="text/css" rel="stylesheet" href="{{ asset(mix('css/contract_tools.css')) }}" media="all">  
 @endsection
 @section('content')
 <style>
@@ -393,7 +393,7 @@
 					    </ul>
 					</div>
 				    </div>
-				    {{ Form::open(['route' => ['frontend.saveLeaseAgreement'],'role' => 'form']) }}
+				    {{ html()->form('POST', route('frontend.saveLeaseAgreement', ))->attribute('role', 'form')->open() }}
 				    <div class="form-group btns-green-blue">
 					<div class="col-sm-12">
 					    <div class="btns-green-blue">
@@ -401,7 +401,7 @@
 					    </div>
 					</div>
 				    </div>
-				    {{ Form::close() }}
+				    {{ html()->form()->close() }}
 				</div>
 			    </div>
 			</div>

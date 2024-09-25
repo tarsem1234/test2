@@ -970,7 +970,7 @@ class ContractToolBuyerController extends Controller
             ->where('signature_type', config('constant.inverse_signature_type.sale agreement'))
             ->first();
         if ($signature) {
-            return response(['success' => true, 'signature' => $signature], 200);
+            return response(['success' => true, 'signature' => $signature]);
         }
         $type = config('constant.inverse_signature_type.sale agreement');
 
@@ -1032,7 +1032,7 @@ class ContractToolBuyerController extends Controller
                 }
             }
 
-            return response(['success' => true, 'signature' => $signatureNew], 200);
+            return response(['success' => true, 'signature' => $signatureNew]);
         }
 
         return response(['success' => false], 500);
@@ -1376,7 +1376,7 @@ class ContractToolBuyerController extends Controller
             $getSignatureData = Signature::where('offer_id', '=', $offerArray['offer_id'])->where('user_id', '=', Auth::id())->where('signature_type', '=', $type1)->first();
 
             //            dd($getSignatureData);
-            return response(['success' => true, 'signature' => $getSignatureData], 200);
+            return response(['success' => true, 'signature' => $getSignatureData]);
         } else {
             return response(['success' => false], 500);
         }
@@ -1398,7 +1398,7 @@ class ContractToolBuyerController extends Controller
             ->first();
 
         if ($signature) {
-            return response(['success' => true, 'signature' => $signature], 200);
+            return response(['success' => true, 'signature' => $signature]);
         }
         $type = config('constant.inverse_signature_type.advisory to buyers and sellers');
 
@@ -1414,7 +1414,7 @@ class ContractToolBuyerController extends Controller
             ->where('signature_type', config('constant.inverse_signature_type.property disclaimer'))
             ->first();
         if ($signature) {
-            return response(['success' => true, 'signature' => $signature], 200);
+            return response(['success' => true, 'signature' => $signature]);
         }
         $type = config('constant.inverse_signature_type.property disclaimer');
 
@@ -1430,7 +1430,7 @@ class ContractToolBuyerController extends Controller
             ->where('signature_type', config('constant.inverse_signature_type.sale agreement'))
             ->first();
         if ($signature) {
-            return response(['success' => true, 'signature' => $signature], 200);
+            return response(['success' => true, 'signature' => $signature]);
         }
         $type = config('constant.inverse_signature_type.sale agreement');
 
@@ -1447,7 +1447,7 @@ class ContractToolBuyerController extends Controller
             ->where('signature_type', config('constant.inverse_signature_type.lead based'))
             ->first();
         if ($signature) {
-            return response(['success' => true, 'signature' => $signature], 200);
+            return response(['success' => true, 'signature' => $signature]);
         }
         $type = config('constant.inverse_signature_type.lead based');
 
@@ -1464,7 +1464,7 @@ class ContractToolBuyerController extends Controller
             ->where('signature_type', config('constant.inverse_signature_type.VA FHA loan addendum'))
             ->first();
         if ($signature) {
-            return response(['success' => true, 'signature' => $signature], 200);
+            return response(['success' => true, 'signature' => $signature]);
         }
         $type = config('constant.inverse_signature_type.VA FHA loan addendum');
 
@@ -1480,7 +1480,7 @@ class ContractToolBuyerController extends Controller
             ->where('signature_type', config('constant.inverse_signature_type.post closing occupancy agreement'))
             ->first();
         if ($signature) {
-            return response(['success' => true, 'signature' => $signature], 200);
+            return response(['success' => true, 'signature' => $signature]);
         }
         $type = config('constant.inverse_signature_type.post closing occupancy agreement');
 

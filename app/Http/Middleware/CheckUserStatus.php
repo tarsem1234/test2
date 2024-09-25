@@ -21,7 +21,7 @@ class CheckUserStatus
         if (empty($getUser->status)) {
             Auth::logout();
 
-            return redirect('/login');
+            return redirect()->to('/login');
         }
 
         return $next($request);

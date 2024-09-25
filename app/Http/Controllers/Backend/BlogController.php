@@ -33,7 +33,7 @@ class BlogController extends Controller
         $input = $request->all();
 
         if ((strpos($input['blog_title'], '"'))) {
-            return back()->withFlashDanger(trans('alerts.blog.createFailed'));
+            return redirect()->back()->withFlashDanger(trans('alerts.blog.createFailed'));
         }
 
         $slug = strtolower($input['blog_title']);
@@ -41,7 +41,7 @@ class BlogController extends Controller
         $slug = preg_replace('/[^A-Za-z0-9\-]/', '', $slug);
 
         if ($slug == '') {
-            return back()->withFlashDanger(trans('alerts.blog.createFailed'));
+            return redirect()->back()->withFlashDanger(trans('alerts.blog.createFailed'));
         } else {
             $timestamp = str_replace([' ', ':'], '-', Carbon::now()->toDateTimeString());
 

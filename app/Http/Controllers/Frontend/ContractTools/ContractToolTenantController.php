@@ -962,8 +962,7 @@ class ContractToolTenantController extends Controller
             }
             $getSignatureData = RentSignature::where('offer_id', '=', $offerArray['offer_id'])->where('user_id', '=', Auth::id())->where('signature_type', '=', $type1)->first();
 
-            return response(['success' => true, 'signature' => $getSignatureData],
-                200);
+            return response(['success' => true, 'signature' => $getSignatureData]);
         } else {
             return response(['success' => false], 500);
         }
@@ -994,7 +993,7 @@ class ContractToolTenantController extends Controller
                 config('constant.inverse_signature_type_rent.property disclaimer'))
             ->first();
         if ($signature) {
-            return response(['success' => true, 'signature' => $signature], 200);
+            return response(['success' => true, 'signature' => $signature]);
         }
         $type = config('constant.inverse_signature_type_rent.property disclaimer');
         $signature = User::where('id', Auth::id())->first();
@@ -1013,7 +1012,7 @@ class ContractToolTenantController extends Controller
                 config('constant.inverse_signature_type_rent.rent agreement'))
             ->first();
         if ($signature) {
-            return response(['success' => true, 'signature' => $signature], 200);
+            return response(['success' => true, 'signature' => $signature]);
         }
         $type = config('constant.inverse_signature_type_rent.rent agreement');
         $signature = User::where('id', Auth::id())->first();
@@ -1032,7 +1031,7 @@ class ContractToolTenantController extends Controller
                 config('constant.inverse_signature_type_rent.lead based'))
             ->first();
         if ($signature) {
-            return response(['success' => true, 'signature' => $signature], 200);
+            return response(['success' => true, 'signature' => $signature]);
         }
         $type = config('constant.inverse_signature_type_rent.lead based');
         $signature = User::where('id', Auth::id())->first();

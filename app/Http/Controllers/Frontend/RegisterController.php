@@ -89,7 +89,7 @@ class RegisterController extends Controller
     {
         $services = Service::where('industry_id', $request->industry_id)->pluck('service', 'id');
 
-        return response(['success' => true, 'services' => $services], 200);
+        return response(['success' => true, 'services' => $services]);
     }
 
     public function userstore(RegisterRequest $request): RedirectResponse
@@ -463,7 +463,7 @@ class RegisterController extends Controller
         if (Auth::check()) {
 
             if (! Hash::check($request->old_password, Auth::user()->password)) {
-                return back()->with('flash_danger', 'Please specify the good current password');
+                return redirect()->back()->with('flash_danger', 'Please specify the good current password');
             }
 
 

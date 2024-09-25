@@ -273,7 +273,7 @@ class NetworkController extends Controller
             $rate->rating = $request->rating;
 
             if ($rate->save()) {
-                return response(['success' => true, 'message' => 'Rated successfully.'], 200);
+                return response(['success' => true, 'message' => 'Rated successfully.']);
             }
 
             return response(['success' => false, 'message' => 'Rating failed.'], 500);
@@ -297,8 +297,7 @@ class NetworkController extends Controller
             $recommended = Recommendation::where(['user_id' => $userId, 'from_user_id' => Auth::id()])->first();
             $recommendations = Recommendation::where(['user_id' => $userId])->get()->count();
 
-            return response(['recommended' => $recommended, 'recommendations' => $recommendations,
-                'success' => true, 'message' => 'Recommended Successfully!!'], 200);
+            return response(['recommended' => $recommended, 'recommendations' => $recommendations, 'success' => true, 'message' => 'Recommended Successfully!!']);
         }
 
         return response(['success' => false, 'message' => 'Recommendation failed.'], 500);

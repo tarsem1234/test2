@@ -20,7 +20,7 @@ class XmlFeedController extends Controller
             if (! empty($existedXmlUser) && Hash::check($password, $existedXmlUser->password)) {
                 session()->put('xmlfeed_user', true);
 
-                return redirect('xmlfeed');
+                return redirect()->to('xmlfeed');
             } else {
                 return view('frontend.xmlfeed.login')->with('error', 'Invalid credential');
             }

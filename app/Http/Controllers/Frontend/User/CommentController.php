@@ -24,7 +24,7 @@ class CommentController extends Controller
         );
 
         if ($validator->fails()) {
-            return redirect()->back()->withInput($request->all())->withErrors($validator);
+            return redirect()->back()->withInput()->withErrors($validator);
         }
 
         $comment = new Comment;

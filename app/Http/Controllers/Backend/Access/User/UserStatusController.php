@@ -29,12 +29,18 @@ class UserStatusController extends Controller
 
     public function getDeactivated(ManageUserRequest $request): View
     {
-        return view('backend.access.deactivated');
+        $users = User::whereHas('roles', function ($query) {
+            $query->where('name', 'User');
+        })->with('user_profile')->where('status', 0)->get();
+        return view('backend.access.deactivated', compact('users'));
     }
 
     public function getDeleted(ManageUserRequest $request): View
     {
-        return view('backend.access.deleted');
+        $users = User::whereHas('roles', function ($query) {
+            $query->where('name', 'User');
+        })->with('user_profile')->onlyTrashed()->get();
+        return view('backend.access.deleted', compact('users'));
     }
 
     public function mark(User $user, $status, ManageUserRequest $request): RedirectResponse

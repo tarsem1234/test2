@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Response;
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Category;
 use App\Models\Backend\CategorySession;
 use App\Models\Backend\UserLearningPoint;
 use App\Models\UserLearningSession;
 use Carbon\Carbon;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;

@@ -25,30 +25,30 @@ class UpdateUserRequest extends Request
         if ($this->submit == 'Business') {
             return [
                 'email' => [
-                'required',
-                'email',
-                'max:191',
-            ],
+                    'required',
+                    'email',
+                    'max:191',
+                ],
                 'company_name' => [
-                'required',
-                'max:191',
-            ],
+                    'required',
+                    'max:191',
+                ],
                 'industry' => [
-                'required',
-            ],
+                    'required',
+                ],
                 //                'city' => 'required|max:15',
             ];
         }
         if ($this->submit == 'Administrator' || $this->submit == 'Support') {
             return [
                 'first_name' => [
-                'required',
-                'max:191',
-            ],
+                    'required',
+                    'max:191',
+                ],
                 'last_name' => [
-                'required',
-                'max:191',
-            ],
+                    'required',
+                    'max:191',
+                ],
             ];
         }
 

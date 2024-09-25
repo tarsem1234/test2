@@ -12,15 +12,15 @@ class StoreAdvertiseImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-'page_link'       => [
+            'page_link' => [
                 'required',
             ],
-'advertise_image' => [
+            'advertise_image' => [
                 'required',
                 'image',
                 'mimes:jpeg,jpg,png',
                 'max:1024',
             ],
-];
+        ];
     }
 }

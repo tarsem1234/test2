@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Requests\Backend\UpdateBlogRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Blog\StoreBlogPost;
+use App\Http\Requests\Backend\UpdateBlogRequest;
 use App\Models\Blog;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\File;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\View\View;
 
 class BlogController extends Controller
 {

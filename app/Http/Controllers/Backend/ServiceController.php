@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Requests\Backend\UpdateServiceRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\ServiceRequest;
+use App\Http\Requests\Backend\UpdateServiceRequest;
 use App\Models\Industry;
 use App\Models\Service;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ServiceController extends Controller

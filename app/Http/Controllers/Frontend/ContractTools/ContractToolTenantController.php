@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Frontend\ContractTools;
 
-use App\Http\Requests\Frontend\ContractTools\SdThankyouForReviewSummaryKeyTermsTenantContractToolTenantRequest;
-use App\Http\Requests\Frontend\ContractTools\SaveLeadBasedPaintHazardsTenantContractToolTenantRequest;
-use App\Http\Requests\Frontend\ContractTools\ThankYouForReviewSummaryKeyTermsContractToolTenantRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\ContractTools\SaveLeadBasedPaintHazardsTenantContractToolTenantRequest;
+use App\Http\Requests\Frontend\ContractTools\SdThankyouForReviewSummaryKeyTermsTenantContractToolTenantRequest;
+use App\Http\Requests\Frontend\ContractTools\ThankYouForReviewSummaryKeyTermsContractToolTenantRequest;
 use App\Http\Requests\Frontend\TenantQuestionnaireRequest;
 use App\Mail\Frontend\SaleAgreementLandlordMailing;
 use App\Models\Access\User\User;
@@ -18,14 +18,13 @@ use App\Models\Signer;
 use App\Models\TenantQuestionnaire;
 use App\Services\AgreementAddressService;
 use App\Services\EmailLogService;
-use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 class ContractToolTenantController extends Controller
 {

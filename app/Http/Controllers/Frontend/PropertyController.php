@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Requests\Frontend\SearchedRentPropertyRequest;
-use App\Http\Requests\Frontend\SearchedSalePropertyRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\PropertyRequest;
+use App\Http\Requests\Frontend\SearchedRentPropertyRequest;
+use App\Http\Requests\Frontend\SearchedSalePropertyRequest;
 use App\Mail\AvailabilityConfirmation;
 use App\Mail\Frontend\SendMessageToSeller;
 use App\Models\AdditionalInformation;
@@ -32,15 +32,15 @@ use App\Models\VacationImage;
 use App\Models\VacationProperty;
 use App\Models\ZipCode;
 use App\Services\EmailLogService;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\View\View;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 /**
  * Class LanguageController.

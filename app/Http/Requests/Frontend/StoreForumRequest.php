@@ -12,12 +12,12 @@ class StoreForumRequest extends FormRequest
     public function rules(): array
     {
         return [
-'forum_topic'  => [
+            'forum_topic' => [
                 'required',
             ],
-'forum_detail' => [
+            'forum_detail' => [
                 'required',
             ],
-];
+        ];
     }
 }

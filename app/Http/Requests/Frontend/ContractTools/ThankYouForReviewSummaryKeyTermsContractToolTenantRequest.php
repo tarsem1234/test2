@@ -12,7 +12,7 @@ class ThankYouForReviewSummaryKeyTermsContractToolTenantRequest extends FormRequ
     public function rules(): array
     {
         return ['agree' => [
-                'required',
-            ],];
+            'required',
+        ], ];
     }
 }

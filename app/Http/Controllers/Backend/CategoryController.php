@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Requests\Backend\UpdateCategoryRequest;
-use App\Http\Requests\Backend\StoreCategoryRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\StoreCategoryRequest;
+use App\Http\Requests\Backend\UpdateCategoryRequest;
 use App\Models\Backend\Category;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class CategoryController extends Controller

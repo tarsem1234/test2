@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Requests\Backend\UpdateXmlFeedRequest;
-use App\Http\Requests\Backend\StoreXmlFeedRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\StoreXmlFeedRequest;
+use App\Http\Requests\Backend\UpdateXmlFeedRequest;
 use App\Models\XmlfeedUser;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
 class XmlFeedController extends Controller

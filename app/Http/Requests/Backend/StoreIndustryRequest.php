@@ -12,7 +12,7 @@ class StoreIndustryRequest extends FormRequest
     public function rules(): array
     {
         return ['industry' => [
-                'required',
-            ],];
+            'required',
+        ], ];
     }
 }

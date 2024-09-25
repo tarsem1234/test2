@@ -12,14 +12,14 @@ class PasswordChangeRegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-'old_password' => [
+            'old_password' => [
                 'required',
             ],
-'password'     => [
+            'password' => [
                 'required',
                 'min:6',
                 'confirmed',
             ],
-];
+        ];
     }
 }

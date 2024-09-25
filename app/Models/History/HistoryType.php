@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class HistoryType extends Model
 {
-
     /**
      * The attributes that are mass assignable.
      *

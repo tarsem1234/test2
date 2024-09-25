@@ -13,10 +13,10 @@ class SaveLeadBasedPaintHazardsTenantContractToolTenantRequest extends FormReque
     public function rules(): array
     {
         return [
-'opportunity' => [
-'required',
-Rule::in($epa),
-],
-];
+            'opportunity' => [
+                'required',
+                Rule::in($epa),
+            ],
+        ];
     }
 }

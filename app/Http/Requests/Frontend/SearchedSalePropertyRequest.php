@@ -12,12 +12,12 @@ class SearchedSalePropertyRequest extends FormRequest
     public function rules(): array
     {
         return [
-'state' => [
+            'state' => [
                 'required',
             ],
-'type'  => [
+            'type' => [
                 'required',
             ],
-];
+        ];
     }
 }

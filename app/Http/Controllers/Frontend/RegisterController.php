@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\PasswordChangeRegisterRequest;
 use App\Http\Requests\Frontend\ProfileImageRegisterRequest;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\RegisterRequest;
 use App\Http\Requests\Frontend\UpdateRegisterRequest;
 use App\Models\Access\User\User;
@@ -18,12 +18,12 @@ use App\Models\SubscribeServices;
 use App\Models\UserInterest;
 use App\Models\UserProfile;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 //use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
@@ -465,7 +465,6 @@ class RegisterController extends Controller
             if (! Hash::check($request->old_password, Auth::user()->password)) {
                 return redirect()->back()->with('flash_danger', 'Please specify the good current password');
             }
-
 
             $input['password'] = Hash::make($request->password);
             if (User::where('id', Auth::id())->update($input)) {

@@ -12,15 +12,15 @@ class StoreXmlFeedRequest extends FormRequest
     public function rules(): array
     {
         return [
-'username' => [
+            'username' => [
                 'required',
                 'unique:xmlfeed_users',
                 'max:191',
             ],
-'password' => [
+            'password' => [
                 'required',
                 'max:191',
             ],
-];
+        ];
     }
 }

@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class SocialLogin extends Model
 {
-
     /**
      * The attributes that are mass assignable.
      *

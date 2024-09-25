@@ -13,10 +13,10 @@ class SaveLeadBasedPaintHazardsBuyerContractToolBuyerRequest extends FormRequest
     public function rules(): array
     {
         return [
-'opportunity' => [
-'required',
-Rule::in($epa),
-],
-];
+            'opportunity' => [
+                'required',
+                Rule::in($epa),
+            ],
+        ];
     }
 }

@@ -27,10 +27,10 @@ class StoreUserRequest extends Request
             return [
                 'email' => ['required', 'email', 'max:191', Rule::unique('users')],
                 'password' => [
-                'required',
-                'min:6',
-                'confirmed',
-            ],
+                    'required',
+                    'min:6',
+                    'confirmed',
+                ],
             ];
         }
 

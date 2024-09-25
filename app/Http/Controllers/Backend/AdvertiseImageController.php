@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Requests\Backend\StoreAdvertiseImageRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\StoreAdvertiseImageRequest;
 use App\Models\Backend\AdvertiseImage;
-use Illuminate\Support\Facades\File;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
 
 class AdvertiseImageController extends Controller

@@ -2,8 +2,8 @@
 
 namespace App\Listeners\Frontend\Auth;
 
-use Illuminate\Support\Facades\Log;
 use Illuminate\Events\Dispatcher;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class UserEventListener.

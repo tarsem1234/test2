@@ -12,14 +12,14 @@ class UpdateXmlFeedRequest extends FormRequest
     public function rules(): array
     {
         return [
-'username' => [
+            'username' => [
                 'required',
                 'max:191',
             ],
-'password' => [
+            'password' => [
                 'required',
                 'max:191',
             ],
-];
+        ];
     }
 }

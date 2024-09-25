@@ -12,9 +12,9 @@ class ProfileImageRegisterRequest extends FormRequest
     public function rules(): array
     {
         return ['profile_image' => [
-                'required',
-                'mimes:jpeg,jpg,png',
-                'max:1000',
-            ],];
+            'required',
+            'mimes:jpeg,jpg,png',
+            'max:1000',
+        ], ];
     }
 }

@@ -12,13 +12,13 @@ class StoreDocumentListingRequest extends FormRequest
     public function rules(): array
     {
         return [
-'state'    => [
+            'state' => [
                 'required',
             ],
-'document' => [
+            'document' => [
                 'required',
                 'mimes:pdf',
             ],
-];
+        ];
     }
 }

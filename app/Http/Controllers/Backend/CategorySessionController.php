@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\SaveSessionCategorySessionRequest;
 use App\Http\Requests\Backend\StoreCategorySessionRequest;
-use App\Http\Controllers\Controller;
 use App\Models\Backend\Category;
 use App\Models\Backend\CategorySession;
 use App\Models\Backend\CategorySessionQuestion;
 use App\Models\Backend\CategorySessionQuestionOption;
 use App\Models\Backend\UserLearningPoint;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class CategorySessionController extends Controller

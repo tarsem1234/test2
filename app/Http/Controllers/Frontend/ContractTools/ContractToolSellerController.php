@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Frontend\ContractTools;
 
-use App\Http\Requests\Frontend\ContractTools\SaveLeadBasedPaintHazardsContractToolSellerRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\ContractTools\SaveLeadBasedPaintHazardsContractToolSellerRequest;
 use App\Http\Requests\Frontend\PropertyConditionDisclaimerRequest;
 use App\Http\Requests\Frontend\QuestionsSellerPostClosingRequest;
 use App\Http\Requests\Frontend\SellerQuestionnaireRequest;
@@ -20,13 +20,13 @@ use App\Models\Signature;
 use App\Models\Signer;
 use App\Models\UpdateSaleAgreementBysellerContract;
 use App\Services\EmailLogService;
-use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 class ContractToolSellerController extends Controller
 {

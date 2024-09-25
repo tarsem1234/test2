@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Requests\Frontend\ConversationMessageRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\ConversationMessageRequest;
 use App\Mail\Frontend\SendMessageToSeller;
 use App\Models\Access\User\User;
 use App\Models\Message;
 use App\Models\Network;
 use App\Models\ProfileRating;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller

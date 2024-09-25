@@ -12,12 +12,12 @@ class SaveLeadBasedPaintHazardsContractToolSellerRequest extends FormRequest
     public function rules(): array
     {
         return [
-'lead_based'        => [
+            'lead_based' => [
                 'required',
             ],
-'lead_based_report' => [
+            'lead_based_report' => [
                 'required',
             ],
-];
+        ];
     }
 }

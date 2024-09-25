@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Frontend\ContractTools;
 
-use App\Http\Requests\Frontend\ContractTools\SdThankyouForReviewSummaryKeyTermsLandlordContractToolLandlordRequest;
-use App\Http\Requests\Frontend\ContractTools\SaveLeadBasedPaintHazardsLandlordContractToolLandlordRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\ContractTools\SaveLeadBasedPaintHazardsLandlordContractToolLandlordRequest;
+use App\Http\Requests\Frontend\ContractTools\SdThankyouForReviewSummaryKeyTermsLandlordContractToolLandlordRequest;
 use App\Http\Requests\Frontend\LandlordQuestionnaireRequest;
 use App\Mail\Frontend\SaleAgreementLandlordMailing;
 use App\Models\Access\User\User;
@@ -18,13 +18,13 @@ use App\Models\Signature;
 use App\Models\Signer;
 use App\Services\AgreementAddressService;
 use App\Services\EmailLogService;
-use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 class ContractToolLandlordController extends Controller
 {

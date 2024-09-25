@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Requests\Backend\UpdatePageRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\UpdatePageRequest;
 use App\Models\Page;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

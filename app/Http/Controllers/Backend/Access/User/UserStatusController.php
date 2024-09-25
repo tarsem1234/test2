@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 use App\Models\Access\User\User;
@@ -11,6 +10,7 @@ use App\Models\RentOffer;
 use App\Models\SaleOffer;
 use App\Repositories\Backend\Access\User\UserRepository;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 /**

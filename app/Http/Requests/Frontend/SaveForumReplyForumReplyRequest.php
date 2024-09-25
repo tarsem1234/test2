@@ -12,7 +12,7 @@ class SaveForumReplyForumReplyRequest extends FormRequest
     public function rules(): array
     {
         return ['forum_reply' => [
-                'required',
-            ],];
+            'required',
+        ], ];
     }
 }

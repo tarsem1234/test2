@@ -12,19 +12,19 @@ class SaveSessionCategorySessionRequest extends FormRequest
     public function rules(): array
     {
         return [
-'name'        => [
+            'name' => [
                 'required',
                 'max:150',
             ],
-'description' => [
+            'description' => [
                 'required',
             ],
-'points'      => [
+            'points' => [
                 'required',
             ],
-'questions'   => [
+            'questions' => [
                 'required',
             ],
-];
+        ];
     }
 }

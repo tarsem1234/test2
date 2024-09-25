@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ForumView extends Model
 {
-
     public function forum(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Forum::class);

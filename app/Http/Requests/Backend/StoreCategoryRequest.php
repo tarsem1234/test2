@@ -12,13 +12,13 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-'category'    => [
+            'category' => [
                 'required',
                 'max:150',
             ],
-'description' => [
+            'description' => [
                 'required',
             ],
-];
+        ];
     }
 }

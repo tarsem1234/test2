@@ -26,15 +26,29 @@ class StoreUserRequest extends Request
         if ($this->submit == 'Create') {
             return [
                 'email' => ['required', 'email', 'max:191', Rule::unique('users')],
-                'password' => 'required|min:6|confirmed',
+                'password' => [
+                'required',
+                'min:6',
+                'confirmed',
+            ],
             ];
         }
 
         return [
-            'first_name' => 'required|max:191',
-            'last_name' => 'required|max:191',
+            'first_name' => [
+                'required',
+                'max:191',
+            ],
+            'last_name' => [
+                'required',
+                'max:191',
+            ],
             'email' => ['required', 'email', 'max:191', Rule::unique('users')],
-            'password' => 'required|min:6|confirmed',
+            'password' => [
+                'required',
+                'min:6',
+                'confirmed',
+            ],
         ];
     }
 }

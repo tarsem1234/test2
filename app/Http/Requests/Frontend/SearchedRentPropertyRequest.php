@@ -14,8 +14,12 @@ class SearchedRentPropertyRequest extends FormRequest
     public function rules()
     {
         return [
-'state' => 'required',
-'type'  => 'required',
+'state' => [
+                'required',
+            ],
+'type'  => [
+                'required',
+            ],
 ];
     }
 }

@@ -23,14 +23,28 @@ class SendContactRequest extends Request
     public function rules(): array
     {
         return [
-            'name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'address' => 'required',
-            'comment' => 'required',
+            'name' => [
+                'required',
+            ],
+            'email' => [
+                'required',
+            ],
+            'phone' => [
+                'required',
+            ],
+            'address' => [
+                'required',
+            ],
+            'comment' => [
+                'required',
+            ],
             //'g-recaptcha-response' => 'required_if:captcha_status,true|captcha',
-            'g-recaptcha-response' => 'required',
-            'captcha_status' => 'required',
+            'g-recaptcha-response' => [
+                'required',
+            ],
+            'captcha_status' => [
+                'required',
+            ],
         ];
     }
 

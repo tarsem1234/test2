@@ -20,10 +20,20 @@ class StoreBlogPost extends FormRequest
     public function rules(): array
     {
         return [
-            'blog_title' => 'required|min:5|max:191',
-            'blog_description' => 'required',
-            'blog_content' => 'required',
-            'blog_image' => 'required',
+            'blog_title' => [
+                'required',
+                'min:5',
+                'max:191',
+            ],
+            'blog_description' => [
+                'required',
+            ],
+            'blog_content' => [
+                'required',
+            ],
+            'blog_image' => [
+                'required',
+            ],
         ];
     }
 }

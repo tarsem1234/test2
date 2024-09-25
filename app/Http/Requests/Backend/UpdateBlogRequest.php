@@ -14,9 +14,15 @@ class UpdateBlogRequest extends FormRequest
     public function rules()
     {
         return [
-'blog_title'       => 'required',
-'blog_description' => 'required',
-'blog_content'     => 'required',
+'blog_title'       => [
+                'required',
+            ],
+'blog_description' => [
+                'required',
+            ],
+'blog_content'     => [
+                'required',
+            ],
 ];
     }
 }

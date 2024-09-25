@@ -23,7 +23,11 @@ class UpdateUserPasswordRequest extends Request
     public function rules(): array
     {
         return [
-            'password' => 'required|min:6|confirmed',
+            'password' => [
+                'required',
+                'min:6',
+                'confirmed',
+            ],
         ];
     }
 }

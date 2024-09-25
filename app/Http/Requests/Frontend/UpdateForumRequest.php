@@ -14,8 +14,12 @@ class UpdateForumRequest extends FormRequest
     public function rules()
     {
         return [
-'forum_topic'  => 'required',
-'forum_detail' => 'required',
+'forum_topic'  => [
+                'required',
+            ],
+'forum_detail' => [
+                'required',
+            ],
 ];
     }
 }

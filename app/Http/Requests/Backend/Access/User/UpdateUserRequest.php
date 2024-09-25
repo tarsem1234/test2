@@ -24,24 +24,50 @@ class UpdateUserRequest extends Request
     {
         if ($this->submit == 'Business') {
             return [
-                'email' => 'required|email|max:191',
-                'company_name' => 'required|max:191',
-                'industry' => 'required',
+                'email' => [
+                'required',
+                'email',
+                'max:191',
+            ],
+                'company_name' => [
+                'required',
+                'max:191',
+            ],
+                'industry' => [
+                'required',
+            ],
                 //                'city' => 'required|max:15',
             ];
         }
         if ($this->submit == 'Administrator' || $this->submit == 'Support') {
             return [
-                'first_name' => 'required|max:191',
-                'last_name' => 'required|max:191',
+                'first_name' => [
+                'required',
+                'max:191',
+            ],
+                'last_name' => [
+                'required',
+                'max:191',
+            ],
             ];
         }
 
         return [
-            'email' => 'required|email|max:191',
-            'name' => 'required|max:191',
+            'email' => [
+                'required',
+                'email',
+                'max:191',
+            ],
+            'name' => [
+                'required',
+                'max:191',
+            ],
             //            'city' => 'required|max:191',
-            'phone_no' => 'required|numeric|regex:/^([0-9\s\-\+\(\)]*)$/',
+            'phone_no' => [
+                'required',
+                'numeric',
+                'regex:/^([0-9\s\-\+\(\)]*)$/',
+            ],
         ];
     }
 }

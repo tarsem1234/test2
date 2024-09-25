@@ -13,6 +13,8 @@ class UpdateIndustryRequest extends FormRequest
      */
     public function rules()
     {
-        return ['industry' => 'required'];
+        return ['industry' => [
+                'required',
+            ],];
     }
 }

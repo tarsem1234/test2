@@ -13,6 +13,8 @@ class SdThankyouForReviewSummaryKeyTermsLandlordContractToolLandlordRequest exte
      */
     public function rules()
     {
-        return ['agree' => 'required'];
+        return ['agree' => [
+                'required',
+            ],];
     }
 }

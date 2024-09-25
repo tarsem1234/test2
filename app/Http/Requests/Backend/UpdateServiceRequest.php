@@ -13,6 +13,8 @@ class UpdateServiceRequest extends FormRequest
      */
     public function rules()
     {
-        return ['service' => 'required'];
+        return ['service' => [
+                'required',
+            ],];
     }
 }

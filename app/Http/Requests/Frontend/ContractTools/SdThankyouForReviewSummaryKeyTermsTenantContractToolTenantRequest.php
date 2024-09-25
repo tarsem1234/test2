@@ -13,6 +13,8 @@ class SdThankyouForReviewSummaryKeyTermsTenantContractToolTenantRequest extends 
      */
     public function rules()
     {
-        return ['agree' => 'required'];
+        return ['agree' => [
+                'required',
+            ],];
     }
 }

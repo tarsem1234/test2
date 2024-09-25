@@ -13,6 +13,10 @@ class ProfileImageRegisterRequest extends FormRequest
      */
     public function rules()
     {
-        return ['profile_image' => 'required|mimes:jpeg,jpg,png|max:1000'];
+        return ['profile_image' => [
+                'required',
+                'mimes:jpeg,jpg,png',
+                'max:1000',
+            ],];
     }
 }

@@ -14,8 +14,13 @@ class UpdateCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-'category'    => 'required|max:150',
-'description' => 'required',
+'category'    => [
+                'required',
+                'max:150',
+            ],
+'description' => [
+                'required',
+            ],
 ];
     }
 }

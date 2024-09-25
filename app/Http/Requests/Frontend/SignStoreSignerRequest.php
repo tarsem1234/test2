@@ -14,15 +14,35 @@ class SignStoreSignerRequest extends FormRequest
     public function rules()
     {
         return [
-'first_name' => 'required',
-'last_name'  => 'required',
-'county'     => 'required',
-'zip_code'   => 'required',
-'city'       => 'required',
-'state'      => 'required',
-'address'    => 'required',
-'phone_no'   => 'required|max:10',
-'email'      => 'required|email',
+'first_name' => [
+                'required',
+            ],
+'last_name'  => [
+                'required',
+            ],
+'county'     => [
+                'required',
+            ],
+'zip_code'   => [
+                'required',
+            ],
+'city'       => [
+                'required',
+            ],
+'state'      => [
+                'required',
+            ],
+'address'    => [
+                'required',
+            ],
+'phone_no'   => [
+                'required',
+                'max:10',
+            ],
+'email'      => [
+                'required',
+                'email',
+            ],
 ];
     }
 }

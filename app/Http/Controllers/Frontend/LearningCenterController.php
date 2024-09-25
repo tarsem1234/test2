@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Response;
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Category;
@@ -68,7 +69,7 @@ class LearningCenterController extends Controller
         return redirect()->back()->with('flash_success', 'Session not found.');
     }
 
-    public function submitAnswer(Request $request)
+    public function submitAnswer(Request $request): JsonResponse
     {
         $session = CategorySession::find($request->get('s_id'));
         $isBonus = $request->get('isBonus') == '1' ? true : false;

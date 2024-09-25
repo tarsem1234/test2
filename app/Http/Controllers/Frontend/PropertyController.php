@@ -439,7 +439,7 @@ class PropertyController extends Controller
     }
 
     //Store property
-    public function propertyStore(PropertyRequest $request)
+    public function propertyStore(PropertyRequest $request): RedirectResponse
     {
         $data = $request->all();
         //Store Rent and Sale
@@ -663,7 +663,7 @@ class PropertyController extends Controller
     }
 
     // Updating a property sale/rent
-    public function propertyUpdate(PropertyRequest $request)
+    public function propertyUpdate(PropertyRequest $request): RedirectResponse
     {
         $data = $request->all();
         if ($request->images) {
@@ -863,7 +863,7 @@ class PropertyController extends Controller
         ];
     }
 
-    public function vacationUpdate(PropertyRequest $request)
+    public function vacationUpdate(PropertyRequest $request): RedirectResponse
     {
 
         $data = $request->all();
@@ -1032,7 +1032,7 @@ class PropertyController extends Controller
         return redirect()->back();
     }
 
-    public function salesHome()
+    public function salesHome(): View
     {
         $saleProperties = Property::where('property_type', config('constant.inverse_property_type.Sale'))
             ->whereIn('user_id', function ($query) {
@@ -1067,7 +1067,7 @@ class PropertyController extends Controller
         return view('frontend.property.sales_home', compact('vacationProperties', 'rentProperties', 'saleProperties'));
     }
 
-    public function rentsHome()
+    public function rentsHome(): View
     {
         $saleProperties = Property::where('property_type', config('constant.inverse_property_type.Sale'))
             ->whereIn('user_id', function ($query) {
@@ -1103,7 +1103,7 @@ class PropertyController extends Controller
         return view('frontend.property.rents_home', compact('vacationProperties', 'rentProperties', 'saleProperties'));
     }
 
-    public function vacationsHome()
+    public function vacationsHome(): View
     {
         $saleProperties = Property::where('property_type', config('constant.inverse_property_type.Sale'))
             ->whereIn('user_id', function ($query) {

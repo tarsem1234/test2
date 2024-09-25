@@ -12,7 +12,7 @@ class SaveLeadBasedPaintHazardsTenantContractToolTenantRequest extends FormReque
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
 'opportunity' => [

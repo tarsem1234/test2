@@ -458,7 +458,7 @@ class RegisterController extends Controller
         return view('frontend.user.password_change');
     }
 
-    public function passwordChange(PasswordChangeRegisterRequest $request)
+    public function passwordChange(PasswordChangeRegisterRequest $request): RedirectResponse
     {
         if (Auth::check()) {
 

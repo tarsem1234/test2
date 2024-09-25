@@ -11,7 +11,7 @@ class ProfileImageRegisterRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return ['profile_image' => [
                 'required',

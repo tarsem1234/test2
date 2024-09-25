@@ -11,7 +11,7 @@ class StoreAdvertiseImageRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
 'page_link'       => [

@@ -11,7 +11,7 @@ class AddPublicWalletAddressToUsersTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
             $table->longText('public_wallet_address')->after('remember_token')->nullable();
@@ -23,7 +23,7 @@ class AddPublicWalletAddressToUsersTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('public_wallet_address');

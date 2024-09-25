@@ -11,7 +11,7 @@ class SaveLeadBasedPaintHazardsLandlordContractToolLandlordRequest extends FormR
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
 'lead_based'        => [

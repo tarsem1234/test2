@@ -11,7 +11,7 @@ class SaveForumReplyForumReplyRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return ['forum_reply' => [
                 'required',

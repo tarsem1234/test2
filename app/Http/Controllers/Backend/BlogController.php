@@ -28,7 +28,7 @@ class BlogController extends Controller
         return view('backend.blog.create');
     }
 
-    public function store(StoreBlogPost $request)
+    public function store(StoreBlogPost $request): RedirectResponse
     {
         $input = $request->all();
 

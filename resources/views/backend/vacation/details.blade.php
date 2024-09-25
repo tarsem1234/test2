@@ -197,7 +197,7 @@
                                                     </tr>
                                                     <tr>
                                                         <th class="table-heading">Check-In Day : </th>
-                                                        @if(!empty($vacationDetails->availableWeeks))
+                                                        @if(count($vacationDetails->availableWeeks) > 0)
                                                         <td>{{ config('constant.available_weeks.'.$vacationDetails->availableWeeks->first()->checkin_day) }}</td>
                                                         @else
                                                         <td>{{ $notAvailable }}</td>

@@ -8,11 +8,11 @@ use App\Models\Access\User\User;
 use App\Models\Message;
 use App\Models\Network;
 use App\Models\ProfileRating;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller
 {

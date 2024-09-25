@@ -9,7 +9,7 @@ use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Repositories\Backend\Access\User\UserRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
-use Request;
+use Illuminate\Support\Facades\Request;
 
 class AdminController extends Controller
 {

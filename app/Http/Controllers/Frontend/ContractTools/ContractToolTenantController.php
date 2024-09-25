@@ -15,14 +15,14 @@ use App\Models\Signer;
 use App\Models\TenantQuestionnaire;
 use App\Services\AgreementAddressService;
 use App\Services\EmailLogService;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
-use Mail;
-use Session;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class ContractToolTenantController extends Controller
 {

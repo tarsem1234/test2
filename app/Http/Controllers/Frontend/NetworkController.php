@@ -8,7 +8,7 @@ use App\Models\Message;
 use App\Models\Network;
 use App\Models\Recommendation;
 use App\Models\State;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;

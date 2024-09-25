@@ -19,13 +19,13 @@ use App\Models\Signature;
 use App\Models\Signer;
 use App\Models\UpdateSaleAgreementBysellerContract;
 use App\Services\EmailLogService;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Mail;
-use Session;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class ContractToolSellerController extends Controller
 {

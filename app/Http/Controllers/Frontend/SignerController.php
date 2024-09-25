@@ -11,7 +11,7 @@ use App\Models\UserProfile;
 use App\Notifications\Frontend\Auth\RecieverNeedsLogin;
 use App\Notifications\Frontend\Auth\SenderNeedsConfirmation;
 use App\Notifications\Frontend\Auth\SenderNeedsRegistration;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

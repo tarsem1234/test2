@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Frontend\User;
 use App\Http\Controllers\Controller;
 use App\Models\Access\User\User;
 use App\Models\Backend\UserLearningPoint;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**

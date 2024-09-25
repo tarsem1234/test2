@@ -6,12 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Blog\StoreBlogPost;
 use App\Models\Blog;
 use Carbon\Carbon;
-use File;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {

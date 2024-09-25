@@ -11,11 +11,11 @@ use App\Models\RentSignature;
 use App\Models\SaleOffer;
 use App\Models\SellerQuestionnaire;
 use App\Models\Signature;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 /*
  * updated : Remove where condition as per requirement i.e  after contact tool(document creation it should show in listing)

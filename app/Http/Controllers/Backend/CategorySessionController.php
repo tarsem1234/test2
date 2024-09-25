@@ -8,7 +8,7 @@ use App\Models\Backend\CategorySession;
 use App\Models\Backend\CategorySessionQuestion;
 use App\Models\Backend\CategorySessionQuestionOption;
 use App\Models\Backend\UserLearningPoint;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

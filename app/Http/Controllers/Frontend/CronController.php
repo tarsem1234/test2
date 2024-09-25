@@ -8,7 +8,7 @@ use App\Models\RentOffer;
 use App\Models\SaleOffer;
 use App\Services\EmailLogService;
 use Carbon\Carbon;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 
 class CronController extends Controller
 {

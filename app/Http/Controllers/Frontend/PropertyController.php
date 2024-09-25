@@ -30,15 +30,15 @@ use App\Models\VacationImage;
 use App\Models\VacationProperty;
 use App\Models\ZipCode;
 use App\Services\EmailLogService;
-use Auth;
-use File;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 /**
  * Class LanguageController.

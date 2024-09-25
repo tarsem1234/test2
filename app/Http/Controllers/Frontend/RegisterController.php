@@ -16,13 +16,13 @@ use App\Models\SubscribeServices;
 use App\Models\UserInterest;
 use App\Models\UserProfile;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
-use Auth;
-use File;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-//use Hash;
+//use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 

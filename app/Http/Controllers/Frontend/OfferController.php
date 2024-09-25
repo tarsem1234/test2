@@ -14,14 +14,14 @@ use App\Models\SaleOffer;
 use App\Models\Signature;
 use App\Notifications\Frontend\Auth\OfferShowsAcceptance;
 use App\Services\EmailLogService;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Log;
-use Mail;
-use Session;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class OfferController extends Controller
 {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use Illuminate\Support\Facades\Response;
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Category;
 use App\Models\Backend\CategorySession;
@@ -91,9 +92,9 @@ class LearningCenterController extends Controller
             $userSession->status = $request->get('save') == 'save' ? 0 : 1;
             $userSession->save();
 
-            return \Response::json(['status' => 'success', 'message' => '']);
+            return Response::json(['status' => 'success', 'message' => '']);
         } else {
-            return \Response::json(['status' => 'failed', 'message' => 'Session not found. Please try again']);
+            return Response::json(['status' => 'failed', 'message' => 'Session not found. Please try again']);
         }
     }
 

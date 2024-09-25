@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 use App\Http\Requests\Backend\Access\User\StoreUserRequest;
@@ -250,7 +251,7 @@ class UserController extends Controller
             ->get();
 
         // Start transaction
-        \DB::beginTransaction();
+        DB::beginTransaction();
         try {
 
             if (! empty($saleOffer)) {
@@ -272,10 +273,10 @@ class UserController extends Controller
                 }
             }
             $this->users->delete($user);
-            \DB::commit();
+            DB::commit();
 
         } catch (\Exception $e) {
-            \DB::rollback();
+            DB::rollback();
 
             // dd($e->getMessage());
             return redirect()->back()->withFlashSuccess("Oops Something went wrong!!! Please try again later , user can't deleted");

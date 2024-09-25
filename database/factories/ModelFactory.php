@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Str;
 use App\Models\Access\Role\Role;
 use App\Models\Access\User\User;
 use Faker\Generator;
@@ -23,7 +24,7 @@ $factory->define(User::class, function (Generator $faker) {
         'last_name' => $faker->lastName,
         'email' => $faker->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'remember_token' => Str::random(10),
         'confirmation_code' => md5(uniqid(mt_rand(), true)),
     ];
 });

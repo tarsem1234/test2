@@ -460,7 +460,7 @@
 
 @endsection
 @section('after-scripts')
-<script src="https://maps.googleapis.com/maps/api/js?key=<?= env('GOOGLE_MAP_API_KEY') ?>"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?= config('settings.google_map_api_key') ?>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 <!--<script src="https://cdn.rawgit.com/googlemaps/v3-utility-library/master/infobox/src/infobox.js" type="text/javascript"></script>-->

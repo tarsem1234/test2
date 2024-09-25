@@ -65,7 +65,7 @@ class SaleAgreementLandlordMailing extends Mailable
      */
     public function build(): static
     {
-        return $this->from(env('MAIL_FROM_ADDRESS'), 'Freezylist')
+        return $this->from(config('mail.from.address'), 'Freezylist')
             ->to($this->email)
             ->subject($this->emailSubject)
             ->view($this->view,

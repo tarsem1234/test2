@@ -337,7 +337,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
 <script src="http://cdn.craig.is/js/rainbow-custom.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?region=usa&key=<?= env('GOOGLE_MAP_API_KEY') ?>&libraries=places" type="text/javascript"></script>
+<script src="https://maps.googleapis.com/maps/api/js?region=usa&key=<?= config('settings.google_map_api_key') ?>&libraries=places" type="text/javascript"></script>
 
 <script>
 

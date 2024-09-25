@@ -261,7 +261,7 @@
 </div><!-- row -->
 @endsection
 <script type="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<?= env('GOOGLE_MAP_API_KEY') ?>&libraries=places" type="text/javascript"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?= config('settings.google_map_api_key') ?>&libraries=places" type="text/javascript"></script>
 @section('after-scripts')
 <script>
 //var getIndustryService = "{{ route('frontend.businessCreate') }}";

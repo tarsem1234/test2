@@ -15,7 +15,7 @@ class CronController extends Controller
     public function checkBackToMarket($days = '')
     {
         //        \Log::info('cron set.');
-        $previousDate = ! empty($days) ? Carbon::now()->subDays($days) : Carbon::now()->subDays(env('BACK_TO_MARKET_DAYS'));
+        $previousDate = ! empty($days) ? Carbon::now()->subDays($days) : Carbon::now()->subDays(config('settings.back_to_market_days'));
         //	dd($previousDate);
         $properties = Property::where('created_at', '<', $previousDate)
             ->where('status', '!=', config('constant.inverse_property_status.Unavailable'))

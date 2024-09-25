@@ -237,7 +237,7 @@ select[multiple], select[size] {
 
 @endsection
 @section('after-scripts')
-<script src="https://maps.googleapis.com/maps/api/js?region=usa&key=<?= env('GOOGLE_MAP_API_KEY') ?>&libraries=places" type="text/javascript"></script>
+<script src="https://maps.googleapis.com/maps/api/js?region=usa&key=<?= config('settings.google_map_api_key') ?>&libraries=places" type="text/javascript"></script>
 <script> 
         $(document).ready(function () {
         $('#postal_code').keyup(function () {

@@ -2,8 +2,8 @@
 @section ('title', ('Property Details'))
 <?php list($width, $height) = getimagesize(public_path("storage/property_images/" . $vacation->id . '/' . $vacation->images->first()->image)); ?>
 <?php
-$fbAppId = env('FB_APP_ID');
-$fbAppVersion = env('FB_APP_VERSION');
+$fbAppId = config('settings.fb_app_id');
+$fbAppVersion = config('settings.fb_app_version');
 ?>
 <meta property="og:url" content="{{ route('frontend.vacationDetails',$vacation->id) }}" />
 <meta property="og:type" content="website" />

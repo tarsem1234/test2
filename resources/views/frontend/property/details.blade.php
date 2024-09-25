@@ -1,8 +1,8 @@
 @extends ('frontend.layouts.app')
 @section ('title', ('Property Details'))
 <?php list($width, $height) = getimagesize(public_path("storage/property_images/" . $property->id . '/' . $property->images->first()->image)); ?>
-<?php $fbAppId = env('FB_APP_ID');
-$fbAppVersion = env('FB_APP_VERSION');
+<?php $fbAppId = config('settings.fb_app_id');
+$fbAppVersion = config('settings.fb_app_version');
 ?>
 <meta property="og:url" content="{{ route('frontend.propertyDetails',$property->id) }}" />
 <meta property="og:type" content="website" />
@@ -219,7 +219,7 @@ $fbAppVersion = env('FB_APP_VERSION');
         <div class="col-sm-12 img-map">
             <!--<div id="map"></div>-->
             <iframe width="100%" height="100%" frameborder="0" style="border:0"
-                    src="https://www.google.com/maps/embed/v1/place?key=<?= env('GOOGLE_MAP_API_KEY') ?>&q={{$property->street_address . ', ' .getCityName($property->city_id).', '.findState($property->state_id)}}" allowfullscreen>
+                    src="https://www.google.com/maps/embed/v1/place?key=<?= config('settings.google_map_api_key') ?>&q={{$property->street_address . ', ' .getCityName($property->city_id).', '.findState($property->state_id)}}" allowfullscreen>
             </iframe>
         </div>
     </div>
@@ -741,7 +741,7 @@ $fbAppVersion = env('FB_APP_VERSION');
 <script src="{{ asset("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js") }}"></script>
 <script src="{{ asset("js/backend/plugin/datatables/dataTables-extend.js") }}"></script>
 <script src="{{ asset("js/jquery.mask.js") }}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<?= env('GOOGLE_MAP_API_KEY') ?>"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?= config('settings.google_map_api_key') ?>"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" rel="stylesheet" type="text/css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>

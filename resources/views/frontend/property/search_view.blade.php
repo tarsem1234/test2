@@ -449,7 +449,7 @@
 @endif
 @endsection
 @section('after-scripts')
-<script src="https://maps.googleapis.com/maps/api/js?key=<?= env('GOOGLE_MAP_API_KEY') ?>"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?= config('settings.google_map_api_key') ?>"></script>
 <script>
     $(document).ready(function () {
 

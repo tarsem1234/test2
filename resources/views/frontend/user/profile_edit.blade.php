@@ -373,7 +373,7 @@ if (in_array(config('constant.inverse_user_type.Business'), array_column($user->
 </div><!--container-->
 </div><!--dashboard-->
 
-<script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=true&key=<?= env('GOOGLE_MAP_API_KEY') ?>&libraries=places" type="text/javascript"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=true&key=<?= config('settings.google_map_api_key') ?>&libraries=places" type="text/javascript"></script>
 @endsection
 @section('after-scripts')
 <script>

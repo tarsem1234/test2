@@ -201,7 +201,7 @@ class XmlFeedController extends Controller
             $ListingDetailsNode->appendChild($ListingUrl);
             $MlsId = $dom->createElement('MlsId', $property->id);
             $ListingDetailsNode->appendChild($MlsId);
-            $MlsName = $dom->createElement('MlsName', env('APP_NAME').' Listings');
+            $MlsName = $dom->createElement('MlsName', config('app.name').' Listings');
             $ListingDetailsNode->appendChild($MlsName);
             $VirtualTourUrl = $dom->createElement('VirtualTourUrl', $property->virtual_tour_url);
             $ListingDetailsNode->appendChild($VirtualTourUrl);

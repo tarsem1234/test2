@@ -542,7 +542,7 @@
 @endif
 @endsection
 @section('after-scripts')
-<script src="https://maps.googleapis.com/maps/api/js?key=<?= env('GOOGLE_MAP_API_KEY') ?>"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?= config('settings.google_map_api_key') ?>"></script>
 <!--<script src="https://googlemaps.github.io/js-marker-clusterer/examples/data.json"></script>-->
 <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 

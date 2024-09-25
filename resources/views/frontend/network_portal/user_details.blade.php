@@ -201,7 +201,7 @@
             rating: {review: '{{$userRating->review ?? ""}}', rating: '{{$userRating->rating ?? 0}}'},
             overAllRating: "{{$user->rating}}",
             reviewTextInvalid: false,
-            userRating: <?= json_encode($userRating ?? [], JSON_FORCE_OBJECT) ?>,
+            userRating: @json($userRating ?? [], JSON_FORCE_OBJECT),
         },
         methods: {
             resetToDefault() {

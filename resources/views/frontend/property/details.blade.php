@@ -130,14 +130,14 @@ $fbAppVersion = env('FB_APP_VERSION');
             ?>
             @if(!Auth::check() || (Auth::check() && Auth::user()->id != $property->user_id))
             <div class="col-md-2 col-sm-4 col-xs-6 schedule-a-viewing particular-btn">
-                @if(!Auth::check())
+                @guest
                 <a href="{{route('frontend.auth.login')}}" class="btn">Schedule a Viewing</a>
                 @else
                 <a id="view_availabilites" class="btn">Schedule a Viewing</a>
-                @endif
+                @endguest
             </div>
 
-            @if(!Auth::check())
+            @guest
             <div class="col-md-2 col-sm-4 col-xs-6 get-directions particular-btn">
                 <a href="{{route('frontend.auth.login')}}" class="btn btn-primary btn-blue">Make an Offer</a>
             </div>
@@ -237,11 +237,11 @@ $fbAppVersion = env('FB_APP_VERSION');
                     @if(Auth::id() == $property->user->id)
                     <a href="#" class="btn btn-your-own-property">Your Own Property</a>
                     @else
-                    @if(Auth::check())
+                    @auth
                     <a id="view_seller_modal" class="btn btn-contact-seller">Contact Seller</a>
                     @else
                     <a href="{{ route('frontend.auth.login') }}" class="btn btn-contact-seller">Contact Seller</a>
-                    @endif
+                    @endauth
                     @endif
                 </div>
             </div>
@@ -648,7 +648,7 @@ $fbAppVersion = env('FB_APP_VERSION');
                 </div>
                 <div class="modal-body">
                     <form action="{{route('frontend.contactMessage')}}" method="POST" class="form-horizontal list-seller-form">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        @csrf
                         <input type="hidden" name="user_id" value="{{ encrypt($property->user_id) }}">
                         <input type="hidden" name="property_id" value="{{ encrypt($property->id) }}">
                         <div class="row form-group">

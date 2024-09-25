@@ -116,11 +116,11 @@ $fbAppVersion = env('FB_APP_VERSION');
 	<div class="col-sm-12 col-xs-12 all-buttons">
 	    @if(!Auth::check() || (Auth::check() && Auth::user()->id != $vacation->user_id))
 	    <div class="col-md-2 col-sm-4 col-xs-6 schedule-a-viewing particular-btn">
-		@if(!Auth::check())
+		@guest
 		<a href="{{route('frontend.auth.login')}}" class="btn">View Availability</a>
 		@else
 		<a class="btn" id="view_availabilites">View Availability</a>
-		@endif
+		@endguest
 	    </div>
 	    @endif
 	    <div class="col-md-2 col-sm-4 col-xs-6 last-div phone particular-btn">

@@ -36,6 +36,24 @@
                             <th>{{ trans('labels.general.actions') }}</th>
                         </tr>
                     </thead>
+			<tbody>
+	                    @foreach($users as $index=>$user)
+	                    <tr>
+	                        <td>{{ $index+1 }}</td>
+	                        <td>{{ getFullName($user) }}</td>
+	                        <td>{{ $user->email }}</td>
+	                        
+	                        <td>{{$user->roles->count() ?
+	                        implode('<br/>', $user->roles->pluck('name')->toArray())
+	                            :
+	                        trans('labels.general.none')}}</td>
+	                        <td>{{ $user->created_at }}</td>
+	                        <td>{{ $user->updated_at }}</td>
+	                        <td>{!!$user->action_buttons!!}</td>
+	                        <!--  -->
+	                    </tr>
+	                    @endforeach
+	                </tbody>
                 </table>
             </div><!--table-responsive-->
         </div><!-- /.box-body -->
@@ -51,36 +69,36 @@
             var userDel = $('#users-table').DataTable({
                 dom: 'lfrtip',
                 processing: false,
-                serverSide: true,
+                serverSide: false,
                 autoWidth: false,
-                ajax: {
-                    url: '{{ route("admin.access.user.get") }}',
-                    type: 'post',
-                    data: {status: false, trashed: true, role:3},
-                    error: function (xhr, err) {
-                        if (err === 'parsererror'){
-//                            location.reload();
-                        }
-                    }
-                },
-                columns: [
-                    {"defaultContent": ''},
-                    {data: 'full_name', name: 'full_name'},
-                    {data: 'email', name: '{{config('access.users_table')}}.email'},
-                    {data: 'roles', name: '{{config('access.roles_table')}}.name', sortable: false},
-                    {data: 'created_at', name: '{{config('access.users_table')}}.created_at'},
-                    {data: 'updated_at', name: '{{config('access.users_table')}}.updated_at'},
-                    {data: 'actions', name: 'actions', searchable: false, sortable: false}
-                ],
+//                 ajax: {
+//                     url: '{{ route("admin.access.user.get") }}',
+//                     type: 'post',
+//                     data: {status: false, trashed: true, role:3},
+//                     error: function (xhr, err) {
+//                         if (err === 'parsererror'){
+// //                            location.reload();
+//                         }
+//                     }
+//                 },
+//                 columns: [
+//                     {"defaultContent": ''},
+//                     {data: 'full_name', name: 'full_name'},
+//                     {data: 'email', name: '{{config('access.users_table')}}.email'},
+//                     {data: 'roles', name: '{{config('access.roles_table')}}.name', sortable: false},
+//                     {data: 'created_at', name: '{{config('access.users_table')}}.created_at'},
+//                     {data: 'updated_at', name: '{{config('access.users_table')}}.updated_at'},
+//                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
+//                 ],
                 order: [[0, "asc"]],
                 searchDelay: 500
             });
             
-            userDel.on( 'order.dt search.dt', function () {
-                userDel.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-                    cell.innerHTML = i+1;
-                } );
-            }).draw();
+            // userDel.on( 'order.dt search.dt', function () {
+            //     userDel.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            //         cell.innerHTML = i+1;
+            //     } );
+            // }).draw();
 
             $("body").on("click", "a[name='delete_user_perm']", function(e) {
                 e.preventDefault();

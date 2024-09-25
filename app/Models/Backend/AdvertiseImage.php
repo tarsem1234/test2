@@ -8,6 +8,4 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class AdvertiseImage extends Model
 {
     use SoftDeletes;
-
-    protected $table = 'advertise_images';
 }

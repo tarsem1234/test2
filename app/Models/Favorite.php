@@ -10,8 +10,6 @@ class Favorite extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'favorites';
-
     public function property(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Property::class);

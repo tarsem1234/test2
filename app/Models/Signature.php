@@ -9,8 +9,6 @@ class Signature extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'signatures';
-
     //    public function signer_user()
     //    {
     //        return $this->belongsTo('App\Models\Access\User\User','from_user_id');

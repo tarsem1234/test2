@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CategorySessionQuestionOption extends Model
 {
-    protected $table = 'category_session_question_options';
 
     public function sessionQuestion(): BelongsTo
     {

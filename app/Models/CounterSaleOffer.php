@@ -10,8 +10,6 @@ class CounterSaleOffer extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'counter_sale_offers';
-
     public function offer(): BelongsTo
     {
         return $this->belongsTo('App\Models\Offer');

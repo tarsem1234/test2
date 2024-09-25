@@ -11,8 +11,6 @@ class CategorySession extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'category_sessions';
-
     public function category(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Backend\Category::class);

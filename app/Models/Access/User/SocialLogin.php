@@ -9,12 +9,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class SocialLogin extends Model
 {
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'social_logins';
 
     /**
      * The attributes that are mass assignable.

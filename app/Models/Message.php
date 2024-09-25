@@ -12,8 +12,6 @@ class Message extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'messages';
-
     public function fromUser(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Access\User\User::class, $this->user_id === Auth::id() ? 'user_id' : 'to_user_id');

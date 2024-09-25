@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class School extends Model
 {
-    protected $table = 'schools';
 
     public function district(): BelongsTo
     {

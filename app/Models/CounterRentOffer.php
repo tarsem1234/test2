@@ -10,8 +10,6 @@ class CounterRentOffer extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'counter_rent_offers';
-
     public function offer(): BelongsTo
     {
         return $this->belongsTo('App\Models\Offer');

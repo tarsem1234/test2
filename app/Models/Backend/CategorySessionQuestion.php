@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CategorySessionQuestion extends Model
 {
-    protected $table = 'category_session_questions';
 
     public function session(): BelongsTo
     {

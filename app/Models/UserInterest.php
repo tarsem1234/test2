@@ -10,8 +10,6 @@ class UserInterest extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'user_interests';
-
     public function user(): BelongsTo
     {
         return $this->belongsTo(\App\Models\UserProfile::class);

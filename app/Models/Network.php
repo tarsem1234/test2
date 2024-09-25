@@ -11,8 +11,6 @@ class Network extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'networks';
-
     public function request_from_user(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Access\User\User::class, 'from_user_id');

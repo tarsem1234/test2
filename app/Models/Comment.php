@@ -10,8 +10,6 @@ class Comment extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'comments';
-
     public function blog(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Blog::class);

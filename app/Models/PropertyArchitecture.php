@@ -10,8 +10,6 @@ class PropertyArchitecture extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'property_architectures';
-
     public function property(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Property::class);

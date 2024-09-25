@@ -32,6 +32,7 @@ class UserStatusController extends Controller
         $users = User::whereHas('roles', function ($query) {
             $query->where('name', 'User');
         })->with('user_profile')->where('status', 0)->get();
+
         return view('backend.access.deactivated', compact('users'));
     }
 
@@ -40,6 +41,7 @@ class UserStatusController extends Controller
         $users = User::whereHas('roles', function ($query) {
             $query->where('name', 'User');
         })->with('user_profile')->onlyTrashed()->get();
+
         return view('backend.access.deleted', compact('users'));
     }
 

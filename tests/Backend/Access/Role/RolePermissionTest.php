@@ -1,5 +1,7 @@
 <?php
+
 namespace Tests\Backend\Access\Role;
+
 use App\Models\Access\Permission\Permission;
 use Tests\BrowserKitTestCase;
 

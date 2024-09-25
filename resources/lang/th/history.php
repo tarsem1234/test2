@@ -13,10 +13,10 @@ return [
     */
 
     'backend' => [
-        'none'            => 'ไม่มีประวัติล่าสุด',
-        'none_for_type'   => 'ไม่มีประวัติประเภทนี้',
+        'none' => 'ไม่มีประวัติล่าสุด',
+        'none_for_type' => 'ไม่มีประวัติประเภทนี้',
         'none_for_entity' => 'ไม่มีประวัติสำหรับ :entity นี้',
-        'recent_history'  => 'ประวัติล่าสุด',
+        'recent_history' => 'ประวัติล่าสุด',
 
         'roles' => [
             'created' => 'ได้สร้างบทบาท',
@@ -24,17 +24,17 @@ return [
             'updated' => 'ได้แก้ไขบทบาท',
         ],
         'users' => [
-            'changed_password'    => 'ได้เปลี่ยนรหัสผ่านของผู้ใช้',
+            'changed_password' => 'ได้เปลี่ยนรหัสผ่านของผู้ใช้',
             'confirmed' => 'confirmed user',
-            'created'             => 'ได้สร้างผู้ใช้',
-            'deactivated'         => 'ได้พักการใช้งานของผู้ใช้',
-            'deleted'             => 'ได้ลบผู้ใช้',
-            'deleted_social'      => 'deleted social account',
+            'created' => 'ได้สร้างผู้ใช้',
+            'deactivated' => 'ได้พักการใช้งานของผู้ใช้',
+            'deleted' => 'ได้ลบผู้ใช้',
+            'deleted_social' => 'deleted social account',
             'permanently_deleted' => 'ได้ลบผู้ใช้อย่างถาวร',
-            'updated'             => 'ได้แก้ไขผู้ใช้',
+            'updated' => 'ได้แก้ไขผู้ใช้',
             'unconfirmed' => 'un-confirmed user',
-            'reactivated'         => 'ได้เปิดการใช้งานของผู้ใช้',
-            'restored'            => 'ได้กู้คืนผู้ใช้',
+            'reactivated' => 'ได้เปิดการใช้งานของผู้ใช้',
+            'restored' => 'ได้กู้คืนผู้ใช้',
         ],
     ],
 ];

@@ -6,6 +6,7 @@ use App\Http\Requests\Request;
 use App\Models\PropertyImage;
 use App\Models\VacationImage;
 use Illuminate\Validation\Rule;
+
 class PropertyRequest extends Request
 {
     /**
@@ -37,14 +38,14 @@ class PropertyRequest extends Request
                 'beds' => 'required',
                 'baths' => 'required',
                 'home_size' => 'required',
-//                'plotsize' => 'required',
+                //                'plotsize' => 'required',
                 'description' => 'required',
                 'builtyear' => 'required',
                 'agree' => 'required',
             ];
             if (isset($this->total_rooms) && $this->total_rooms) {
                 $rules += [
-                    'total_rooms' => 'required|numeric'
+                    'total_rooms' => 'required|numeric',
                 ];
             }
         }
@@ -52,7 +53,7 @@ class PropertyRequest extends Request
             $sellerAware = ['Timeshare', 'Owner Property'];
             $rules += [
                 'vacation_property_type' => ['required',
-                 Rule::in($sellerAware)],
+                    Rule::in($sellerAware)],
                 'resort_name' => 'required|max:191',
                 'region' => 'required',
                 'subregion' => 'required',
@@ -60,23 +61,22 @@ class PropertyRequest extends Request
                 'bathrooms' => 'required',
                 'bedrooms' => 'required',
                 'sleeps' => 'required',
-//                'annual_maintenance_fees' => 'required',
-//                'property_description' => 'required',
+                //                'annual_maintenance_fees' => 'required',
+                //                'property_description' => 'required',
             ];
             if ($this->vacation_property_type == config('constant.inverse_vacation_property_type.Timeshare')) {
-                   $rules += [
-                'point_based_timeshare' => 'required',
-                'lock_out_unit' => 'required',
-                'variable' => 'required',
-                'available_weeks' => 'required',
-                'checkin_day' => 'required',
-            ];
-            }
-            elseif ($this->vacation_property_type == config('constant.inverse_vacation_property_type.Owner Property')) {
-                   $rules += [
-                'owner_address' => 'required',
-                'owner_zip' => 'required',
-            ];
+                $rules += [
+                    'point_based_timeshare' => 'required',
+                    'lock_out_unit' => 'required',
+                    'variable' => 'required',
+                    'available_weeks' => 'required',
+                    'checkin_day' => 'required',
+                ];
+            } elseif ($this->vacation_property_type == config('constant.inverse_vacation_property_type.Owner Property')) {
+                $rules += [
+                    'owner_address' => 'required',
+                    'owner_zip' => 'required',
+                ];
             }
         }
         if (((count($this->deletedImageIds) - $this->storedImageCount) == 0) && $this->commingImageCount == 0) {
@@ -85,13 +85,13 @@ class PropertyRequest extends Request
             ];
         }
         if ($this->property_submit == 'Update') {
-            if (isset($this->images) && !empty($this->images)) {
+            if (isset($this->images) && ! empty($this->images)) {
                 $rules += [
                     'images.*' => 'image|mimes:jpeg,jpg,png,pjpeg,gif|max:2048',
                 ];
             }
         } else {
-            if (isset($this->images) && !empty($this->images)) {
+            if (isset($this->images) && ! empty($this->images)) {
                 $rules += [
                     'images.*' => 'image|mimes:jpeg,jpg,png,pjpeg,gif|max:2048',
                 ];
@@ -101,6 +101,7 @@ class PropertyRequest extends Request
                 ];
             }
         }
+
         return $rules;
     }
 
@@ -114,7 +115,7 @@ class PropertyRequest extends Request
     public function all($keys = null)
     {
         $data = parent::all($keys);
-               // echo'<pre>';print_r($data);die;
+        // echo'<pre>';print_r($data);die;
         $data['limit'] = 0;
         $storedImageCount = 0;
         $commingImageCount = 0;
@@ -145,19 +146,16 @@ class PropertyRequest extends Request
 
             return parent::all();
         }
-        if(isset($data['images']))
-        {
-            $data['limit'] = count($data['images']?? 0);
-        }
-        else
-        {
+        if (isset($data['images'])) {
+            $data['limit'] = count($data['images'] ?? 0);
+        } else {
             $data['limit'] = 1;
         }
-        
+
         $data['storedImageCount'] = $storedImageCount;
         parent::merge(['limit' => $data['limit'], 'storedImageCount' => $storedImageCount,
             'commingImageCount' => $commingImageCount, 'deletedImageIds' => $deletedImageIds]);
-        
+
         return parent::all();
     }
 }

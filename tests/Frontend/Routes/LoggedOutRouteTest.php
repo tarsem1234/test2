@@ -1,5 +1,7 @@
 <?php
+
 namespace Tests\Frontend\Routes;
+
 use App\Events\Frontend\Auth\UserConfirmed;
 use App\Models\Access\User\User;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;

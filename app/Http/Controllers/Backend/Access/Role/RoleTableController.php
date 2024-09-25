@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Backend\Access\Role;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Access\Role\ManageRoleRequest;
 use App\Repositories\Backend\Access\Role\RoleRepository;
 use Yajra\DataTables\Facades\DataTables;
-use Illuminate\Http\Request;
+
 /**
  * Class RoleTableController.
  */

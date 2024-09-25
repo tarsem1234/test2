@@ -174,15 +174,12 @@ class UserRepository extends BaseRepository
         $user->status = isset($data['status']) ? 1 : 0;
         $user->city = $data['city'] ?? null;
         if (! ($user->hasRole(config('constant.inverse_user_type.Business')))) {
-            if($user->hasRole(config('constant.inverse_user_type.Support')))
-            {
+            if ($user->hasRole(config('constant.inverse_user_type.Support'))) {
 
-            }
-            else
-            {
+            } else {
                 $user->phone_no = $data['phone_no'];
             }
-            
+
         }
         DB::transaction(function () use ($user, $roles) {
             if ($user->save()) {

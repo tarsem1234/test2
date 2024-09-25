@@ -13,11 +13,11 @@ return [
     |
     */
 
-    'failed'        => 'Bu kimlik bilgileri kayıtlarımızla eşleşmiyor.',
+    'failed' => 'Bu kimlik bilgileri kayıtlarımızla eşleşmiyor.',
     'general_error' => 'Bunu yapmak için erişiminiz yok.',
-    'socialite'     => [
+    'socialite' => [
         'unacceptable' => ':provider kabul edilen bir oturum açma türü değil.',
     ],
     'throttle' => 'Çok fazla giriş denemesi. Lütfen :seconds saniye sonra yeniden deneyin.',
-    'unknown'  => 'Bilinmeyen bir hata oluştu',
+    'unknown' => 'Bilinmeyen bir hata oluştu',
 ];

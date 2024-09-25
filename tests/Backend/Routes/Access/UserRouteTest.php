@@ -1,5 +1,7 @@
 <?php
+
 namespace Tests\Backend\Routes\Access;
+
 use App\Events\Backend\Access\User\UserDeactivated;
 use App\Events\Backend\Access\User\UserPermanentlyDeleted;
 use App\Events\Backend\Access\User\UserReactivated;

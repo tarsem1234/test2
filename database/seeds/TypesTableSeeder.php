@@ -4,7 +4,6 @@ use Illuminate\Database\Seeder;
 
 class TypesTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -12,33 +11,27 @@ class TypesTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('types')->delete();
-        
-        \DB::table('types')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('types')->insert([
+            0 => [
                 'id' => 1,
                 'type' => 'MILITARY',
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 2,
                 'type' => 'PO BOX',
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 3,
                 'type' => 'STANDARD',
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 4,
                 'type' => 'UNIQUE',
-            ),
-        ));
-        
-        
+            ],
+        ]);
+
     }
 }

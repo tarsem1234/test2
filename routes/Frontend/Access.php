@@ -1,15 +1,15 @@
 <?php
 
 use App\Http\Controllers\Auth;
-use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\Frontend\Auth\LoginController;
 use App\Http\Controllers\Frontend\Auth\ChangePasswordController;
-use App\Http\Controllers\Frontend\Auth\SocialLoginController;
-use App\Http\Controllers\Frontend\Auth\RegisterController;
 use App\Http\Controllers\Frontend\Auth\ConfirmAccountController;
 use App\Http\Controllers\Frontend\Auth\ForgotPasswordController;
+use App\Http\Controllers\Frontend\Auth\LoginController;
+use App\Http\Controllers\Frontend\Auth\RegisterController;
 use App\Http\Controllers\Frontend\Auth\ResetPasswordController;
+use App\Http\Controllers\Frontend\Auth\SocialLoginController;
+use Illuminate\Support\Facades\Route;
+
 /**
  * Frontend Access Controllers
  * All route names are prefixed with 'frontend.auth'.

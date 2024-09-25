@@ -1,5 +1,7 @@
 <?php
+
 namespace Tests\Backend\Forms\Search;
+
 use Tests\BrowserKitTestCase;
 
 /**

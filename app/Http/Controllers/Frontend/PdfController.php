@@ -76,7 +76,8 @@ class PdfController extends Controller
             ->setOption('footer-html', $footerHtml)
             ->setOption('footer-right', 'Page [page] of [topage]')
             ->setOption('user-style-sheet', 'resources/assets/sass/frontend/common.scss');
-            // dd($pdf->stream('property_disclosure.pdf'));
+
+        // dd($pdf->stream('property_disclosure.pdf'));
         return $pdf->stream('property_disclosure.pdf');
     }
 

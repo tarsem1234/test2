@@ -1,5 +1,7 @@
 <?php
+
 namespace Tests\Frontend\Forms;
+
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserRegistered;
 use App\Mail\Frontend\Contact\SendContact;

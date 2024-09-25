@@ -36,6 +36,7 @@ class UserTableController extends Controller
                     return $query->where('role_id', $role);
                 });
         }
+
         // dd($users);
         return DataTables::of($users)
             ->escapeColumns(['first_name', 'last_name', 'email'])

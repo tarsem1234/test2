@@ -14,83 +14,83 @@ return [
     */
 
     'general' => [
-        'all'     => 'Semua',
-        'yes'     => 'Ya',
-        'no'      => 'Tidak',
-        'custom'  => 'Kustom',
+        'all' => 'Semua',
+        'yes' => 'Ya',
+        'no' => 'Tidak',
+        'custom' => 'Kustom',
         'actions' => 'Tindakan',
-        'active'  => 'Aktif',
+        'active' => 'Aktif',
         'buttons' => [
-            'save'   => 'Simpan',
+            'save' => 'Simpan',
             'update' => 'Perbarui',
         ],
-        'hide'              => 'Sembunyi',
-        'inactive'          => 'Non-aktif',
-        'none'              => 'Tidak ada',
-        'show'              => 'Tunjukkan',
+        'hide' => 'Sembunyi',
+        'inactive' => 'Non-aktif',
+        'none' => 'Tidak ada',
+        'show' => 'Tunjukkan',
         'toggle_navigation' => 'Alihkan Navigasi',
     ],
 
     'backend' => [
         'access' => [
             'roles' => [
-                'create'     => 'Buat Peran',
-                'edit'       => 'Edit Peran',
+                'create' => 'Buat Peran',
+                'edit' => 'Edit Peran',
                 'management' => 'Manajemen Peran',
 
                 'table' => [
                     'number_of_users' => 'Jumlah Pengguna',
-                    'permissions'     => 'Izin',
-                    'role'            => 'Peran',
-                    'sort'            => 'Sortir',
-                    'total'           => 'total peran|total peran',
+                    'permissions' => 'Izin',
+                    'role' => 'Peran',
+                    'sort' => 'Sortir',
+                    'total' => 'total peran|total peran',
                 ],
             ],
 
             'users' => [
-                'active'              => 'Pengguna Aktif',
-                'all_permissions'     => 'Semua Izin',
-                'change_password'     => 'Ubah Sandi',
+                'active' => 'Pengguna Aktif',
+                'all_permissions' => 'Semua Izin',
+                'change_password' => 'Ubah Sandi',
                 'change_password_for' => 'Ubah Sandi untuk :user',
-                'create'              => 'Buat Pengguna',
-                'deactivated'         => 'Pengguna Dinonaktifkan',
-                'deleted'             => 'Pengguna Dihapus',
-                'edit'                => 'Edit Pengguna',
-                'management'          => 'Manajemen Pengguna',
-                'no_permissions'      => 'Tidak Ada Izin',
-                'no_roles'            => 'Tidak Ada Peran untuk Ditetapkan.',
-                'permissions'         => 'Izin',
+                'create' => 'Buat Pengguna',
+                'deactivated' => 'Pengguna Dinonaktifkan',
+                'deleted' => 'Pengguna Dihapus',
+                'edit' => 'Edit Pengguna',
+                'management' => 'Manajemen Pengguna',
+                'no_permissions' => 'Tidak Ada Izin',
+                'no_roles' => 'Tidak Ada Peran untuk Ditetapkan.',
+                'permissions' => 'Izin',
 
                 'table' => [
-                    'confirmed'      => 'Dikonfirmasi',
-                    'created'        => 'Dibuat',
-                    'email'          => 'E-mail',
-                    'id'             => 'ID',
-                    'last_updated'   => 'Terakhir Diperbarui',
-                    'name'           => 'Nama',
+                    'confirmed' => 'Dikonfirmasi',
+                    'created' => 'Dibuat',
+                    'email' => 'E-mail',
+                    'id' => 'ID',
+                    'last_updated' => 'Terakhir Diperbarui',
+                    'name' => 'Nama',
                     'no_deactivated' => 'Tidak Ada Pengguna Dinonaktifkan',
-                    'no_deleted'     => 'Tidak Ada Pengguna Dihapus',
-                    'roles'          => 'Peran',
+                    'no_deleted' => 'Tidak Ada Pengguna Dihapus',
+                    'roles' => 'Peran',
                     'social' => 'Social',
-                    'total'          => 'total pengguna|total pengguna',
+                    'total' => 'total pengguna|total pengguna',
                 ],
 
                 'tabs' => [
                     'titles' => [
                         'overview' => 'Ikhtisar',
-                        'history'  => 'Riwayat',
+                        'history' => 'Riwayat',
                     ],
 
                     'content' => [
                         'overview' => [
-                            'avatar'       => 'Avatar',
-                            'confirmed'    => 'Dikonfirmasi',
-                            'created_at'   => 'Dibuat Pada',
-                            'deleted_at'   => 'Dihapus Pada',
-                            'email'        => 'E-mail',
+                            'avatar' => 'Avatar',
+                            'confirmed' => 'Dikonfirmasi',
+                            'created_at' => 'Dibuat Pada',
+                            'deleted_at' => 'Dihapus Pada',
+                            'email' => 'E-mail',
                             'last_updated' => 'Terakhir Diperbarui',
-                            'name'         => 'Nama',
-                            'status'       => 'Status',
+                            'name' => 'Nama',
+                            'status' => 'Status',
                         ],
                     ],
                 ],
@@ -103,12 +103,12 @@ return [
     'frontend' => [
 
         'auth' => [
-            'login_box_title'    => 'Login',
-            'login_button'       => 'Login',
-            'login_with'         => 'Login dengan :social_media',
+            'login_box_title' => 'Login',
+            'login_button' => 'Login',
+            'login_with' => 'Login dengan :social_media',
             'register_box_title' => 'Daftar',
-            'register_button'    => 'Daftar',
-            'remember_me'        => 'Ingat Saya',
+            'register_button' => 'Daftar',
+            'remember_me' => 'Ingat Saya',
         ],
 
         'contact' => [
@@ -117,17 +117,17 @@ return [
         ],
 
         'passwords' => [
-            'forgot_password'                 => 'Lupa Sandi Anda?',
-            'reset_password_box_title'        => 'Reset Sandi',
-            'reset_password_button'           => 'Reset Sandi',
+            'forgot_password' => 'Lupa Sandi Anda?',
+            'reset_password_box_title' => 'Reset Sandi',
+            'reset_password_button' => 'Reset Sandi',
             'send_password_reset_link_button' => 'Kirim Tautan Reset Sandi',
         ],
 
         'macros' => [
             'country' => [
-                'alpha'   => 'Kode Huruf Negara',
-                'alpha2'  => 'Kode Negara 2 Huruf',
-                'alpha3'  => 'Kode Negara 3 Huruf',
+                'alpha' => 'Kode Huruf Negara',
+                'alpha2' => 'Kode Negara 2 Huruf',
+                'alpha3' => 'Kode Negara 3 Huruf',
                 'numeric' => 'Kode Numerik Negara',
             ],
 
@@ -135,10 +135,10 @@ return [
 
             'state' => [
                 'mexico' => 'Daftar Negara Bagian Mexico',
-                'us'     => [
-                    'us'       => 'Negara Bagian AS',
+                'us' => [
+                    'us' => 'Negara Bagian AS',
                     'outlying' => 'Teritori Terluar AS',
-                    'armed'    => 'Angkatan Bersenjata AS',
+                    'armed' => 'Angkatan Bersenjata AS',
                 ],
             ],
 
@@ -155,12 +155,12 @@ return [
             ],
 
             'profile' => [
-                'avatar'             => 'Avatar',
-                'created_at'         => 'Dibuat Pada',
-                'edit_information'   => 'Edit Informasi',
-                'email'              => 'E-mail',
-                'last_updated'       => 'Terakhir diperbarui',
-                'name'               => 'Nama',
+                'avatar' => 'Avatar',
+                'created_at' => 'Dibuat Pada',
+                'edit_information' => 'Edit Informasi',
+                'email' => 'E-mail',
+                'last_updated' => 'Terakhir diperbarui',
+                'name' => 'Nama',
                 'update_information' => 'Perbarui Informasi',
             ],
         ],

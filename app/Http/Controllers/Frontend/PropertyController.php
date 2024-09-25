@@ -34,7 +34,6 @@ use Auth;
 use File;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\RedirectResponser;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Mail;
@@ -667,16 +666,17 @@ class PropertyController extends Controller
     }
 
     // Updating a property sale/rent
-    public function propertyUpdate(PropertyRequest $request) {
+    public function propertyUpdate(PropertyRequest $request)
+    {
         $data = $request->all();
         if ($request->images) {
             $storedImageCount = PropertyImage::where('property_id',
-                            $data['property_table_id'])->count();
+                $data['property_table_id'])->count();
             $commingImageCount = count($request->images);
             $totalImages = $storedImageCount + $commingImageCount;
             if ($totalImages >= 10) {
                 return redirect()->back()->with('flash_danger',
-                                'Images count is greater then 15.');
+                    'Images count is greater then 15.');
             }
         }
 
@@ -685,33 +685,33 @@ class PropertyController extends Controller
             $address = $this->_propertyAddress($data);
             if ($request->school_district) {
                 $isSchoolDistrict = SchoolDistrict::where('id',
-                                $data['school_district'])->first();
-                if (!$isSchoolDistrict) {
+                    $data['school_district'])->first();
+                if (! $isSchoolDistrict) {
                     return redirect()->back()->with('flash_danger',
-                                    'SchoolDistrict not found.');
+                        'SchoolDistrict not found.');
                 }
             }
             if ($request->school) {
                 $isSchool = School::whereIn('id', $data['school'])->first();
-                if (!$isSchool) {
+                if (! $isSchool) {
                     return redirect()->back()->with('flash_danger',
-                                    'School not found.');
+                        'School not found.');
                 }
             }
 
             //            if ($request->property_type == config('constant.property_type.1')) {
             //                $input['pets'] = config('constant.inverse_pets_welcome.' . $data['pets_welcome']);
-            $input['pets'] = !empty($data['pets_welcome']) ? $data['pets_welcome'] : 0;
+            $input['pets'] = ! empty($data['pets_welcome']) ? $data['pets_welcome'] : 0;
             //            }
             if ($request->property_type == config('constant.property_type.1')) {
-                $input['lease_term'] = !empty($data['lease_term']) ? implode(', ',
-                                $data['lease_term']) : '';
+                $input['lease_term'] = ! empty($data['lease_term']) ? implode(', ',
+                    $data['lease_term']) : '';
             }
 
-            $input['property_name'] = !empty($data['property_id']) ? $data['property_id'] : '';
+            $input['property_name'] = ! empty($data['property_id']) ? $data['property_id'] : '';
             $input['state_id'] = $address['state_id'];
             $input['user_id'] = Auth::id();
-            $input['property_type'] = config('constant.inverse_property_type.' . $data['property_type']);
+            $input['property_type'] = config('constant.inverse_property_type.'.$data['property_type']);
             $input['city_id'] = $address['city_id'];
             $input['county_id'] = $address['county_id'];
             $input['zip_code_id'] = $address['zip_code_id'];
@@ -720,21 +720,21 @@ class PropertyController extends Controller
             $input['price'] = $data['price'];
             $input['virtual_tour_url'] = $data['vturl'];
             if (isset($data['display_phone'])) {
-                $input['display_phone'] = config('constant.inverse_display_phone.' . $data['display_phone']);
+                $input['display_phone'] = config('constant.inverse_display_phone.'.$data['display_phone']);
             } else {
                 $input['display_phone'] = config('constant.inverse_display_phone.No');
             }
-            $input['agree'] = config('constant.inverse_agree.' . $data['agree']);
+            $input['agree'] = config('constant.inverse_agree.'.$data['agree']);
             // dd($input);
-            if (Property::where('id', $data['property_table_id'])->where('user_id',Auth::id())->update($input)) {
+            if (Property::where('id', $data['property_table_id'])->where('user_id', Auth::id())->update($input)) {
 
                 if (isset($request->image_ids) && $request->image_ids) {
                     $deletedImageIds = explode(',', $request->image_ids);
                     $deletedImages = PropertyImage::whereIn('id',
-                                    $deletedImageIds)->where('property_id',
-                                    $data['property_table_id'])->get();
+                        $deletedImageIds)->where('property_id',
+                            $data['property_table_id'])->get();
                     foreach ($deletedImages as $delete) {
-                        if (File::delete(storage_path(config('constant.property_image_path') . '/' . $data['property_table_id'] . '/' . $delete->image))) {
+                        if (File::delete(storage_path(config('constant.property_image_path').'/'.$data['property_table_id'].'/'.$delete->image))) {
                             PropertyImage::where('id', $delete->id)->forceDelete();
                         }
                     }
@@ -744,9 +744,9 @@ class PropertyController extends Controller
                     foreach ($request->images as $img) {
                         $imageWithRatio = fixImageRatio($img);
                         $imageName = image_store($img, $imageWithRatio,
-                                $data['property_table_id']);
+                            $data['property_table_id']);
 
-                        $propertyImage = new PropertyImage();
+                        $propertyImage = new PropertyImage;
                         $propertyImage->property_id = $data['property_table_id'];
                         $propertyImage->image = $imageName;
                         $propertyImage->save();
@@ -758,11 +758,11 @@ class PropertyController extends Controller
                 }
                 if ($request->school) {
                     $architectureInput['school_id'] = implode(',',
-                            $data['school']);
+                        $data['school']);
                 } else {
                     $architectureInput['school_id'] = $request->school;
                 }
-                $architectureInput['home_type'] = config('constant.inverse_home_type.' . $data['home_type']);
+                $architectureInput['home_type'] = config('constant.inverse_home_type.'.$data['home_type']);
                 $architectureInput['beds'] = $data['beds'];
                 $architectureInput['baths'] = $data['baths'];
                 $architectureInput['plot_size'] = $data['lotsizeacre'];
@@ -774,20 +774,20 @@ class PropertyController extends Controller
                 $architectureInput['total_rooms'] = $data['total_rooms'];
                 $architectureInput['stories'] = $data['no_of_stories'];
                 if (isset($data['basement'])) {
-                                       $architectureInput['basement'] = config('constant.inverse_basement.' . $data['basement']);
+                    $architectureInput['basement'] = config('constant.inverse_basement.'.$data['basement']);
                     // $architectureInput['basement'] = $data['basement'];
                 }
                 $architectureInput['garage_capacity'] = $data['capacity_of_garage'];
                 $architectureInput['additional_features'] = $data['additional_features'];
 
-                if (PropertyArchitecture::where('id',$data['property_architecture_table_id'])->where('property_id', $data['property_table_id'])->update($architectureInput)) {
+                if (PropertyArchitecture::where('id', $data['property_architecture_table_id'])->where('property_id', $data['property_table_id'])->update($architectureInput)) {
 
                     if (isset($data['additional_information'])) {
                         additionalInformationProperty::where('property_id',
-                                $data['property_table_id'])->forcedelete();
+                            $data['property_table_id'])->forcedelete();
 
                         foreach ($data['additional_information'] as $information) {
-                            $additionalInfo = new additionalInformationProperty();
+                            $additionalInfo = new additionalInformationProperty;
                             $additionalInfo->additional_information_id = $information;
                             $additionalInfo->property_id = $data['property_table_id'];
                             $additionalInfo->save();
@@ -797,16 +797,16 @@ class PropertyController extends Controller
                 if ($data['property_type'] == config('constant.property_type.1')) {
 
                     return redirect()->route('frontend.property.rentsList')->with('flash_success',
-                                    'Property updated successfully.');
+                        'Property updated successfully.');
                 }
                 if ($data['property_type'] == config('constant.property_type.2')) {
 
                     return redirect()->route('frontend.property.salesList')->with('flash_success',
-                                    'Property updated successfully.');
+                        'Property updated successfully.');
                 }
             } else {
                 return redirect()->route('frontend.saleCreate')->with('flash_danger',
-                                'property not updated.');
+                    'property not updated.');
             }
         }
     }
@@ -866,25 +866,26 @@ class PropertyController extends Controller
         ];
     }
 
-    public function vacationUpdate(PropertyRequest $request) {
+    public function vacationUpdate(PropertyRequest $request)
+    {
 
         $data = $request->all();
         //        dd($data);die;
         if ($request->images) {
             $storedImageCount = VacationImage::where('vacation_property_id',
-                            $request->property_id)->count();
+                $request->property_id)->count();
             $commingImageCount = count($request->images);
             $totalImages = $storedImageCount + $commingImageCount;
             if ($totalImages >= 15) {
                 return redirect()->back()->with('flash_danger',
-                                'Images count is greater then 15.');
+                    'Images count is greater then 15.');
             }
         }
         if ($request->state) {
             $isState = State::where('id', $data['state'])->first();
-            if (!$isState) {
+            if (! $isState) {
                 return redirect()->back()->with('flash_danger',
-                                'State not found.');
+                    'State not found.');
             }
         }
         if (isset($data['city']) && $data['city']) {
@@ -894,28 +895,28 @@ class PropertyController extends Controller
         $isCountry = Country::where('id', $data['country'])->first();
         $isRegion = Region::where('id', $data['region'])->first();
         $isSubRegion = SubRegion::where('id', $data['subregion'])->first();
-        if (isset($isUsCity) && !$isUsCity) {
+        if (isset($isUsCity) && ! $isUsCity) {
             return redirect()->route('frontend.vacationCreate')->with('flash_danger',
-                            'City not found.');
+                'City not found.');
         }
-        if (isset($isNonUsCity) && !$isNonUsCity) {
+        if (isset($isNonUsCity) && ! $isNonUsCity) {
             return redirect()->back()->with('flash_danger', 'City not found.');
         }
-        if (!$isCountry) {
+        if (! $isCountry) {
             return redirect()->back()->with('flash_danger', 'County not found.');
         }
-        if (!$isRegion) {
+        if (! $isRegion) {
             return redirect()->back()->with('flash_danger', 'Region not found.');
         }
-        if (!$isSubRegion) {
+        if (! $isSubRegion) {
             return redirect()->back()->with('flash_danger',
-                            'Subregion not found.');
+                'Subregion not found.');
         }
 
         //        dump($isUsCity);
         //        dump($isNonUsCity);die;
         $ifExists = VacationProperty::where('id', $data['property_id'])->where('user_id',
-                        Auth::id())->first();
+            Auth::id())->first();
 
         if ($data['property_submit'] && $data['property_id'] && $ifExists) {
             if (isset($isState)) {
@@ -926,12 +927,12 @@ class PropertyController extends Controller
             } elseif (isset($isNonUsCity)) {
                 $input['city'] = $isNonUsCity->id;
             } else {
-                $input['city'] = NULL;
+                $input['city'] = null;
             }
 
             $input['country_id'] = $isCountry->id;
             $input['property_name'] = $data['resort_name'];
-            $input['property_type'] = config('constant.inverse_vacation_property_type.' . $data['vacation_property_type']);
+            $input['property_type'] = config('constant.inverse_vacation_property_type.'.$data['vacation_property_type']);
             $input['region_id'] = $isRegion->id;
             $input['subregion_id'] = $isSubRegion->id;
             $input['zip_code'] = $data['owner_zip'];
@@ -941,34 +942,34 @@ class PropertyController extends Controller
             //Only update if timeshare property type  has selected
 
             if ($data['vacation_property_type'] != 'Owner Property') {
-                $input['zip_code'] = NULL;
-                $input['address'] = NULL;
-                $input['point_based_timeshare'] = !empty($data['point_based_timeshare']) ? config('constant.inverse_point_based_timeshare.' . $data['point_based_timeshare']) : '';
-                $input['lock_out_unit'] = !empty($data['lock_out_unit']) ? config('constant.inverse_lock_out_unit.' . $data['lock_out_unit']) : '';
-                $input['variable'] = !empty($data['variable']) ? config('constant.inverse_variable.' . $data['variable']) : '';
-                $input['exchange_timeshare'] = !empty($data['exchange_timeshare']) ? config('constant.inverse_exchange_timeshare.' . $data['exchange_timeshare']) : '';
+                $input['zip_code'] = null;
+                $input['address'] = null;
+                $input['point_based_timeshare'] = ! empty($data['point_based_timeshare']) ? config('constant.inverse_point_based_timeshare.'.$data['point_based_timeshare']) : '';
+                $input['lock_out_unit'] = ! empty($data['lock_out_unit']) ? config('constant.inverse_lock_out_unit.'.$data['lock_out_unit']) : '';
+                $input['variable'] = ! empty($data['variable']) ? config('constant.inverse_variable.'.$data['variable']) : '';
+                $input['exchange_timeshare'] = ! empty($data['exchange_timeshare']) ? config('constant.inverse_exchange_timeshare.'.$data['exchange_timeshare']) : '';
                 $input['locations'] = $data['locations'];
                 $input['points'] = $data['points'];
-                $input['is_available_for_sale'] = !empty($data['is_available_for_sale']) ? config('constant.inverse_is_available_for_sale.' . $data['is_available_for_sale']) : '';
-                $input['ownership_type'] = !empty($data['ownership_type']) ? $data['ownership_type'] : '';
+                $input['is_available_for_sale'] = ! empty($data['is_available_for_sale']) ? config('constant.inverse_is_available_for_sale.'.$data['is_available_for_sale']) : '';
+                $input['ownership_type'] = ! empty($data['ownership_type']) ? $data['ownership_type'] : '';
                 $input['sale_price'] = $data['sale_price'];
                 $input['lease_expire_year'] = $data['lease_expire_year'];
                 $input['how_many_points'] = $data['how_many_points'];
                 $input['annual_maintenance_fees'] = $data['annual_maintenance_fees'];
             } else {
-                $input['point_based_timeshare'] = NULL;
-                $input['lock_out_unit'] = NULL;
-                $input['variable'] = NULL;
-                $input['exchange_timeshare'] = NULL;
-                $input['locations'] = NULL;
-                $input['points'] = NULL;
-                $input['is_available_for_sale'] = NULL;
-                $input['ownership_type'] = NULL;
-                $input['sale_price'] = NULL;
+                $input['point_based_timeshare'] = null;
+                $input['lock_out_unit'] = null;
+                $input['variable'] = null;
+                $input['exchange_timeshare'] = null;
+                $input['locations'] = null;
+                $input['points'] = null;
+                $input['is_available_for_sale'] = null;
+                $input['ownership_type'] = null;
+                $input['sale_price'] = null;
 
-                $input['lease_expire_year'] = NULL;
-                $input['how_many_points'] = NULL;
-                $input['annual_maintenance_fees'] = NULL;
+                $input['lease_expire_year'] = null;
+                $input['how_many_points'] = null;
+                $input['annual_maintenance_fees'] = null;
             }
 
             $input['bathrooms'] = $data['bathrooms'];
@@ -976,19 +977,18 @@ class PropertyController extends Controller
             $input['sleeps'] = $data['sleeps'];
             $input['price'] = $data['price'];
 
-            $input['rental_price_negotiable'] = !empty($data['rental_price_negotiable']) ? config('constant.inverse_rental_price_negotiable.' . $data['rental_price_negotiable']) : '';
-            $input['property_description'] = !empty($data['property_description']) ? $data['property_description'] : '';
-
+            $input['rental_price_negotiable'] = ! empty($data['rental_price_negotiable']) ? config('constant.inverse_rental_price_negotiable.'.$data['rental_price_negotiable']) : '';
+            $input['property_description'] = ! empty($data['property_description']) ? $data['property_description'] : '';
 
             if (VacationProperty::where('id', $data['property_id'])->where('user_id',
-                            Auth::id())->update($input)) {
+                Auth::id())->update($input)) {
                 if (isset($request->image_ids) && $request->image_ids) {
                     $deletedImageIds = explode(',', $request->image_ids);
                     $deletedImages = VacationImage::whereIn('id',
-                                    $deletedImageIds)->where('vacation_property_id',
-                                    $data['property_table_id'])->get();
+                        $deletedImageIds)->where('vacation_property_id',
+                            $data['property_table_id'])->get();
                     foreach ($deletedImages as $delete) {
-                        if (File::delete(storage_path(config('constant.property_image_path') . '/' . $data['property_table_id'] . '/' . $delete->image))) {
+                        if (File::delete(storage_path(config('constant.property_image_path').'/'.$data['property_table_id'].'/'.$delete->image))) {
                             VacationImage::where('id', $delete->id)->forceDelete();
                         }
                     }
@@ -997,9 +997,9 @@ class PropertyController extends Controller
                     foreach ($request->images as $img) {
                         $imageWithRatio = fixImageRatio($img);
                         $imageName = image_store($img, $imageWithRatio,
-                                $request->property_id);
+                            $request->property_id);
 
-                        $vacationImage = new VacationImage();
+                        $vacationImage = new VacationImage;
                         $vacationImage->vacation_property_id = $data['property_id'];
                         $vacationImage->image = $imageName;
                         $vacationImage->save();
@@ -1007,30 +1007,31 @@ class PropertyController extends Controller
                 }
                 if ($data['vacation_property_type'] != 'Owner Property') {
                     VacationAvailableCheckin::where('vacation_property_id',
-                            $data['property_id'])->forcedelete();
+                        $data['property_id'])->forcedelete();
                     $available_weeks = $data['available_weeks'];
                     $weeks = explode(',', $available_weeks);
                     foreach ($weeks as $week) {
-                        $vacationCheckin = new VacationAvailableCheckin();
+                        $vacationCheckin = new VacationAvailableCheckin;
 
                         $vacationCheckin->vacation_property_id = $data['property_id'];
-                        $vacationCheckin->available_week = !empty($week) ? $week : '';
-                        $vacationCheckin->checkin_day = !empty($data['checkin_day']) ? $data['checkin_day'] : '';
+                        $vacationCheckin->available_week = ! empty($week) ? $week : '';
+                        $vacationCheckin->checkin_day = ! empty($data['checkin_day']) ? $data['checkin_day'] : '';
                         $vacationCheckin->save();
                     }
                 } else {
                     VacationAvailableCheckin::where('vacation_property_id',
-                            $data['property_id'])->forcedelete();
+                        $data['property_id'])->forcedelete();
                 }
 
                 return redirect()->route('frontend.property.vacationsList')->with('flash_success',
-                                'Vacation property saved successfully.');
+                    'Vacation property saved successfully.');
             }
         } else {
 
             return redirect()->route('frontend.vacationCreate')->with('flash_danger',
-                            'Vacation property not saved.');
+                'Vacation property not saved.');
         }
+
         return redirect()->back();
     }
 

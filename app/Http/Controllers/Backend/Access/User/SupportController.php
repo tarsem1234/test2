@@ -62,7 +62,8 @@ class SupportController extends Controller
             function ($query) {
                 $query->where('role_id', config('constant.inverse_user_type.Support'));
             })->where('status', 0)->get();
-        return view('backend.access.support_deactivated', compact('support','supportUsers'));
+
+        return view('backend.access.support_deactivated', compact('support', 'supportUsers'));
     }
 
     public function deleted(ManageUserRequest $request): View
@@ -72,6 +73,7 @@ class SupportController extends Controller
             function ($query) {
                 $query->where('role_id', config('constant.inverse_user_type.Support'));
             })->onlyTrashed()->get();
-        return view('backend.access.support_deleted', compact('support','supportUsers'));
+
+        return view('backend.access.support_deleted', compact('support', 'supportUsers'));
     }
 }

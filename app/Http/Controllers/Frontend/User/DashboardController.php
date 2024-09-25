@@ -23,15 +23,15 @@ class DashboardController extends Controller
                 $query->with('industry');
             }, 'subscribeServices'])->first();
 
-                       $categorySessions = UserLearningPoint::where('user_id', Auth::id())->get();
-                       // dd($categorySessions);
-                       $points = 0;
-                       foreach ($categorySessions as $value) {
-                           $points = ((int)$value->points + $points);
-                           
-                       }
+            $categorySessions = UserLearningPoint::where('user_id', Auth::id())->get();
+            // dd($categorySessions);
+            $points = 0;
+            foreach ($categorySessions as $value) {
+                $points = ((int) $value->points + $points);
+
+            }
         }
-        
+
         return view('frontend.user.dashboard')->with(compact('user', 'points'));
     }
 }

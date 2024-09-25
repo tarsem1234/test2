@@ -138,6 +138,7 @@ class UserController extends Controller
         if ($user->hasRole(config('constant.user_type.2')) && $user->hasRole(config('constant.user_type.3'))) {
             $admin = true;
         }
+
         // dd($userWithUser);
         return view('backend.access.edit', ['userWithUser' => $userWithUser, 'industries' => $industries,
             'businessIndustry' => $businessIndustry, 'business' => $business, 'admin' => $admin, 'support' => $support])

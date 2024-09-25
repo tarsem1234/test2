@@ -47,7 +47,7 @@ class SenderNeedsRegistration extends Notification
     public function toMail($notifiable): MailMessage
     {
         //        dump($this->property_id);
-               // dd($this->property_id);
+        // dd($this->property_id);
         return (new MailMessage)
             ->subject(app_name().': '.trans('exceptions.frontend.auth.confirmation.registraion'))
             ->greeting('Hello! '.$this->username)

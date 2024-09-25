@@ -1,5 +1,7 @@
 <?php
+
 namespace Tests\Backend\Routes;
+
 use Tests\BrowserKitTestCase;
 
 /**

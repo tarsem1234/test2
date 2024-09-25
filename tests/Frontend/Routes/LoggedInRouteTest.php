@@ -1,5 +1,7 @@
 <?php
+
 namespace Tests\Frontend\Routes;
+
 use App\Events\Frontend\Auth\UserLoggedOut;
 use Illuminate\Support\Facades\Event;
 use Tests\BrowserKitTestCase;

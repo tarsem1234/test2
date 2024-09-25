@@ -14,27 +14,27 @@ return [
     |
     */
 
-    'backend'   => [
-        'none'              => 'Нет записей истории.',
-        'none_for_entity'   => 'Нет записей истории для :entity.',
-        'none_for_type'     => 'Нет записей истории для этого типа.',
-        'recent_history'    => 'Последняя запись истории',
-        'roles'             => [
-            'created'   => 'создал роль',
-            'deleted'   => 'удалил роль',
-            'updated'   => 'обновил роль',
+    'backend' => [
+        'none' => 'Нет записей истории.',
+        'none_for_entity' => 'Нет записей истории для :entity.',
+        'none_for_type' => 'Нет записей истории для этого типа.',
+        'recent_history' => 'Последняя запись истории',
+        'roles' => [
+            'created' => 'создал роль',
+            'deleted' => 'удалил роль',
+            'updated' => 'обновил роль',
         ],
-        'users'             => [
-            'changed_password'      => 'изменил пароль пользователя',
+        'users' => [
+            'changed_password' => 'изменил пароль пользователя',
             'confirmed' => 'confirmed user',
-            'created'               => 'создал учётную запись',
-            'deactivated'           => 'заблокировал учётную запись',
-            'deleted'               => 'удалил учётную запись',
-            'deleted_social'      => 'deleted social account',
-            'permanently_deleted'   => 'удалил навсегда учётную запись',
-            'reactivated'           => 'разблокировал учётную запись',
-            'restored'              => 'восстановил учётную запись',
-            'updated'               => 'обновил учётную запись',
+            'created' => 'создал учётную запись',
+            'deactivated' => 'заблокировал учётную запись',
+            'deleted' => 'удалил учётную запись',
+            'deleted_social' => 'deleted social account',
+            'permanently_deleted' => 'удалил навсегда учётную запись',
+            'reactivated' => 'разблокировал учётную запись',
+            'restored' => 'восстановил учётную запись',
+            'updated' => 'обновил учётную запись',
             'unconfirmed' => 'un-confirmed user',
         ],
     ],

@@ -60,6 +60,7 @@ class LoginController extends Controller
             throw new GeneralException(trans('exceptions.frontend.auth.confirmation.resend', ['user_id' => $user->id]));
         } elseif (! $user->isActive()) {
             access()->logout();
+
             return redirect()->back()->withFlashDanger(trans('exceptions.frontend.auth.deactivated'));
             // throw new GeneralException(trans('exceptions.frontend.auth.deactivated'));
         }

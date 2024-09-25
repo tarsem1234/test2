@@ -58,6 +58,7 @@ class OfferController extends Controller
             // dd('id');
             return redirect()->route('frontend.sales-home')->withFlashDanger('Property is Deleted by Seller.');
         }
+
         return view('frontend.offer.make_sale_offer', compact('id'));
     }
 
@@ -70,6 +71,7 @@ class OfferController extends Controller
             // dd('id');
             return redirect()->route('frontend.rents-home')->withFlashDanger('Property is Deleted by Seller.');
         }
+
         return view('frontend.offer.make_rent_offer', compact('id'));
     }
 

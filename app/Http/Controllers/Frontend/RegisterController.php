@@ -311,15 +311,11 @@ class RegisterController extends Controller
         if ($user->business_profile || in_array(config('constant.inverse_user_type.Business'), array_column($user->roles->toArray(), 'id'))) {
             if ($user->business_profile) {
                 $industry = Industry::where('id', $user->business_profile->industry_id)->whereHas('services')->with('services')->first();
-            }
-            else
-            {
+            } else {
                 $industry = null;
             }
-            
-        }
-        else
-        {
+
+        } else {
             $industry = null;
         }
 

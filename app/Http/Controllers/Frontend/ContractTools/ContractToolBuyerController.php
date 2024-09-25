@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend\ContractTools;
 
+use App\Http\Requests\Frontend\ContractTools\SaveLeadBasedPaintHazardsBuyerContractToolBuyerRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\BuyerQuestionnaireRequest;
 use App\Mail\Frontend\SaleAgreementLandlordMailing;
@@ -232,15 +233,9 @@ class ContractToolBuyerController extends Controller
         return redirect()->back()->with(['flash_danger' => 'Something went wrong']);
     }
 
-    public function saveLeadBasedPaintHazardsBuyer(Request $request): RedirectResponse
+    public function saveLeadBasedPaintHazardsBuyer(SaveLeadBasedPaintHazardsBuyerContractToolBuyerRequest $request): RedirectResponse
     {
         $epa = [1, 2];
-        $this->validate($request, [
-            'opportunity' => [
-                'required',
-                Rule::in($epa),
-            ],
-        ]);
 
         $data = $request->all();
         if (isset($data['epa']) && $data['epa']) {

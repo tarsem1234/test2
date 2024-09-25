@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Frontend\ContractTools;
 
+use App\Http\Requests\Frontend\ContractTools\SdThankyouForReviewSummaryKeyTermsTenantContractToolTenantRequest;
+use App\Http\Requests\Frontend\ContractTools\SaveLeadBasedPaintHazardsTenantContractToolTenantRequest;
+use App\Http\Requests\Frontend\ContractTools\ThankYouForReviewSummaryKeyTermsContractToolTenantRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\TenantQuestionnaireRequest;
 use App\Mail\Frontend\SaleAgreementLandlordMailing;
@@ -134,11 +137,8 @@ class ContractToolTenantController extends Controller
             compact('offer'));
     }
 
-    public function thankYouForReviewSummaryKeyTerms(Request $request): View
+    public function thankYouForReviewSummaryKeyTerms(ThankYouForReviewSummaryKeyTermsContractToolTenantRequest $request): View
     {
-        $this->validate($request, [
-            'agree' => 'required',
-        ]);
         $lead = false;
         $property = Property::where('id', Session::get('PROPERTY'))->with('architechture')->withTrashed()->first();
         if ($property->architechture->year_built < config('constant.year_built')) {
@@ -190,16 +190,9 @@ class ContractToolTenantController extends Controller
         return view('frontend.contract_tools.rent.tenant.thank-you-lead-based-disclosure-for-rent-tenant');
     }
 
-    public function saveLeadBasedPaintHazardsTenant(Request $request): RedirectResponse
+    public function saveLeadBasedPaintHazardsTenant(SaveLeadBasedPaintHazardsTenantContractToolTenantRequest $request): RedirectResponse
     {
         $epa = [1, 2];
-        $this->validate($request,
-            [
-                'opportunity' => [
-                    'required',
-                    Rule::in($epa),
-                ],
-            ]);
         $data = $request->all();
         if (isset($data['epa']) && $data['epa']) {
             $input['epa'] = implode(',', $data['epa']);
@@ -308,11 +301,8 @@ class ContractToolTenantController extends Controller
     }
 
     //sign documents
-    public function sdThankyouForReviewSummaryKeyTermsTenant(Request $request): View
+    public function sdThankyouForReviewSummaryKeyTermsTenant(SdThankyouForReviewSummaryKeyTermsTenantContractToolTenantRequest $request): View
     {
-        $this->validate($request, [
-            'agree' => 'required',
-        ]);
         $lead = false;
         $property = Property::where('id', Session::get('PROPERTY'))->with('architechture')->withTrashed()->first();
         if ($property->architechture->year_built < config('constant.year_built')) {

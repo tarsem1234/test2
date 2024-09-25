@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Http\Requests\Frontend\UpdateForumRequest;
+use App\Http\Requests\Frontend\StoreForumRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Forum;
 use App\Models\ForumView;
@@ -27,13 +29,8 @@ class ForumController extends Controller
         return view('frontend.forum.create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(StoreForumRequest $request): RedirectResponse
     {
-        $this->validate($request,
-            [
-                'forum_topic' => 'required',
-                'forum_detail' => 'required',
-            ]);
 
         $input = $request->all();
 
@@ -69,13 +66,8 @@ class ForumController extends Controller
         return view('frontend.forum.create', compact('forumDetails'));
     }
 
-    public function update(Request $request, Forum $forum): RedirectResponse
+    public function update(UpdateForumRequest $request, Forum $forum): RedirectResponse
     {
-        $this->validate($request,
-            [
-                'forum_topic' => 'required',
-                'forum_detail' => 'required',
-            ]);
         $input = $request->all();
         Forum::where('id', $forum->id)->update(['topic' => $input['forum_topic'],
             'detail' => $input['forum_detail']]);

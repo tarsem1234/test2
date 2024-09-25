@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\Backend\UpdateServiceRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\ServiceRequest;
 use App\Models\Industry;
@@ -89,12 +90,8 @@ class ServiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, int $id): RedirectResponse
+    public function update(UpdateServiceRequest $request, int $id): RedirectResponse
     {
-        $this->validate($request,
-            [
-                'service' => 'required',
-            ]);
         //        dd($request->all());
         if ($request->industry) {
             $input['industry_id'] = $request->industry;

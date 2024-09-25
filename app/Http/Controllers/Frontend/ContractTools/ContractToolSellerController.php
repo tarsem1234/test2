@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend\ContractTools;
 
+use App\Http\Requests\Frontend\ContractTools\SaveLeadBasedPaintHazardsContractToolSellerRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\PropertyConditionDisclaimerRequest;
 use App\Http\Requests\Frontend\QuestionsSellerPostClosingRequest;
@@ -736,12 +737,8 @@ class ContractToolSellerController extends Controller
         return redirect()->back()->with(['flash_danger' => 'Something went wrong']);
     }
 
-    public function saveLeadBasedPaintHazards(Request $request): RedirectResponse
+    public function saveLeadBasedPaintHazards(SaveLeadBasedPaintHazardsContractToolSellerRequest $request): RedirectResponse
     {
-        $this->validate($request, [
-            'lead_based' => 'required',
-            'lead_based_report' => 'required',
-        ]);
 
         $data = $request->all();
         if (isset($request->id) && $request->id) {

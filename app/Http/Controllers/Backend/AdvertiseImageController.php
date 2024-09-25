@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\Backend\StoreAdvertiseImageRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Backend\AdvertiseImage;
 use Illuminate\Support\Facades\File;
@@ -33,12 +34,8 @@ class AdvertiseImageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(StoreAdvertiseImageRequest $request): RedirectResponse
     {
-        $this->validate($request, [
-            'page_link' => 'required',
-            'advertise_image' => 'required|image|mimes:jpeg,jpg,png|max:1024',
-        ]);
 
         // Removing App name
         $reducedLink = str_replace(asset('/'), '', $request->page_link);

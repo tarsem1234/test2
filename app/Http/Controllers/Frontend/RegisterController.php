@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Http\Requests\Frontend\PasswordChangeRegisterRequest;
+use App\Http\Requests\Frontend\ProfileImageRegisterRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\RegisterRequest;
 use App\Http\Requests\Frontend\UpdateRegisterRequest;
@@ -430,11 +432,8 @@ class RegisterController extends Controller
         $userProfile->save();
     }
 
-    public function profileImage(Request $request): JsonResponse
+    public function profileImage(ProfileImageRegisterRequest $request): JsonResponse
     {
-        $this->validate($request, [
-            'profile_image' => 'required|mimes:jpeg,jpg,png|max:1000',
-        ]);
         if ($request->hasFile('profile_image')) {
 
             $user = User::where('id', Auth::id())->first();
@@ -459,7 +458,7 @@ class RegisterController extends Controller
         return view('frontend.user.password_change');
     }
 
-    public function passwordChange(Request $request)
+    public function passwordChange(PasswordChangeRegisterRequest $request)
     {
         if (Auth::check()) {
 
@@ -467,10 +466,6 @@ class RegisterController extends Controller
                 return back()->with('flash_danger', 'Please specify the good current password');
             }
 
-            $this->validate($request, [
-                'old_password' => 'required',
-                'password' => 'required|min:6|confirmed',
-            ]);
 
             $input['password'] = Hash::make($request->password);
             if (User::where('id', Auth::id())->update($input)) {

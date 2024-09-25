@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\Backend\UpdatePageRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use Illuminate\Http\RedirectResponse;
@@ -69,11 +70,8 @@ class PageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, int $id): RedirectResponse
+    public function update(UpdatePageRequest $request, int $id): RedirectResponse
     {
-        $this->validate($request, [
-            'title' => 'required',
-        ]);
         //        dd($request->all());
         $input['title'] = $request->title;
         $input['content'] = $request->content;

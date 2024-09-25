@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\Backend\SaveSessionCategorySessionRequest;
+use App\Http\Requests\Backend\StoreCategorySessionRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Category;
 use App\Models\Backend\CategorySession;
@@ -47,14 +49,8 @@ class CategorySessionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(StoreCategorySessionRequest $request): RedirectResponse
     {
-        $this->validate($request, [
-            'name' => 'required|max:150',
-            'description' => 'required',
-            'points' => 'required',
-            'questions' => 'required',
-        ]);
         $data = $request->all();
         $catIdExist = Category::find($data['category_id']);
         if ($catIdExist) {
@@ -160,14 +156,8 @@ class CategorySessionController extends Controller
         }
     }
 
-    public function saveSession(Request $request)
+    public function saveSession(SaveSessionCategorySessionRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required|max:150',
-            'description' => 'required',
-            'points' => 'required',
-            'questions' => 'required',
-        ]);
         $data = $request->all();
         $catIdExist = Category::find($data['category_id']);
         if ($catIdExist) {

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Http\Requests\Frontend\ContractToolSignerSignerRequest;
+use App\Http\Requests\Frontend\SignStoreSignerRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Access\User\User;
 use App\Models\Network;
@@ -36,19 +38,8 @@ class SignerController extends Controller
         return view('frontend.signer.create');
     }
 
-    public function signStore(Request $request): RedirectResponse
+    public function signStore(SignStoreSignerRequest $request): RedirectResponse
     {
-        $this->validate($request, [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'county' => 'required',
-            'zip_code' => 'required',
-            'city' => 'required',
-            'state' => 'required',
-            'address' => 'required',
-            'phone_no' => 'required|max:10',
-            'email' => 'required|email',
-        ]);
         $exists = User::where('email', $request->email)->with('roles')->first();
         $ifNewUser = true;
         $ifSignerExists = null;
@@ -219,21 +210,9 @@ class SignerController extends Controller
         //                500);
     }
 
-    public function contractToolSigner(Request $request): JsonResponse
+    public function contractToolSigner(ContractToolSignerSignerRequest $request): JsonResponse
     {
         if (! empty($request->type) && $request->type == 'rent') {
-            $this->validate($request, [
-                'name' => 'required',
-                'email' => 'required|email',
-                'first_name' => 'required',
-                'last_name' => 'required',
-                'county' => 'required',
-                'zip_code' => 'required',
-                'city' => 'required',
-                'state' => 'required',
-                'address' => 'required',
-                'phone_no' => 'required|max:10',
-            ]);
         } else {
             $this->validate($request, [
                 'name' => 'required',

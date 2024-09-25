@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Http\Requests\Frontend\SearchedRentPropertyRequest;
+use App\Http\Requests\Frontend\SearchedSalePropertyRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\PropertyRequest;
 use App\Mail\AvailabilityConfirmation;
@@ -1155,22 +1157,14 @@ class PropertyController extends Controller
         return view('frontend.property.sale_search_view', compact('states'));
     }
 
-    public function searchedSale(Request $request)
+    public function searchedSale(SearchedSalePropertyRequest $request)
     {
-        $this->validate($request, [
-            'state' => 'required',
-            'type' => 'required',
-        ]);
 
         return $this->_searchedProperty($request);
     }
 
-    public function searchedRent(Request $request)
+    public function searchedRent(SearchedRentPropertyRequest $request)
     {
-        $this->validate($request, [
-            'state' => 'required',
-            'type' => 'required',
-        ]);
 
         return $this->_searchedProperty($request);
     }

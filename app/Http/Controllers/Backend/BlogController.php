@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\Backend\UpdateBlogRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Blog\StoreBlogPost;
 use App\Models\Blog;
@@ -74,13 +75,8 @@ class BlogController extends Controller
         return view('backend.blog.create', compact('blog'));
     }
 
-    public function update(Request $request, Blog $blog): RedirectResponse
+    public function update(UpdateBlogRequest $request, Blog $blog): RedirectResponse
     {
-        $this->validate($request, [
-            'blog_title' => 'required',
-            'blog_description' => 'required',
-            'blog_content' => 'required',
-        ]);
         $input['title'] = $request->blog_title;
         $input['description'] = $request->blog_description;
         $input['content'] = $request->blog_content;

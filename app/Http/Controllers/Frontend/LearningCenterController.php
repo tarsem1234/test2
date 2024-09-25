@@ -92,9 +92,9 @@ class LearningCenterController extends Controller
             $userSession->status = $request->get('save') == 'save' ? 0 : 1;
             $userSession->save();
 
-            return Response::json(['status' => 'success', 'message' => '']);
+            return response()->json(['status' => 'success', 'message' => '']);
         } else {
-            return Response::json(['status' => 'failed', 'message' => 'Session not found. Please try again']);
+            return response()->json(['status' => 'failed', 'message' => 'Session not found. Please try again']);
         }
     }
 

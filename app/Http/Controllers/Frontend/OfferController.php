@@ -54,7 +54,10 @@ class OfferController extends Controller
         if (Property::where('id', $id)->where('status', '=', config('constant.inverse_property_status.Unavailable'))->exists()) {
             return redirect()->route('frontend.sales-home')->withFlashDanger('Property is Deleted or Inactive by Seller.');
         }
-
+        if (Property::where('id', $id)->get()->first() == null) {
+            // dd('id');
+            return redirect()->route('frontend.sales-home')->withFlashDanger('Property is Deleted by Seller.');
+        }
         return view('frontend.offer.make_sale_offer', compact('id'));
     }
 
@@ -63,7 +66,10 @@ class OfferController extends Controller
         if (Property::where('id', $id)->where('status', '=', config('constant.inverse_property_status.Unavailable'))->exists()) {
             return redirect()->route('frontend.rents-home')->withFlashDanger('Property is Deleted or Inactived by Landlord.');
         }
-
+        if (Property::where('id', $id)->get()->first() == null) {
+            // dd('id');
+            return redirect()->route('frontend.rents-home')->withFlashDanger('Property is Deleted by Seller.');
+        }
         return view('frontend.offer.make_rent_offer', compact('id'));
     }
 

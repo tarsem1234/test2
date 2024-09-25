@@ -1284,7 +1284,7 @@ class OfferController extends Controller
             })
             ->whereHas('rent_counter_offers')
             ->with(['rent_counter_offers' => function ($query) {
-                $query->orderBy('created_at', 'desc')->first();
+                $query->orderByDesc('created_at')->first();
             }])
             ->first();
     }
@@ -1297,7 +1297,7 @@ class OfferController extends Controller
                 $query->withTrashed();
             })->whereHas('sale_counter_offers')
             ->with(['sale_counter_offers' => function ($query) {
-                $query->orderBy('created_at', 'desc')->first();
+                $query->orderByDesc('created_at')->first();
             }])
             ->first();
     }

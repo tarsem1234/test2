@@ -240,7 +240,7 @@ class PropertyController extends Controller
                 $newCounty->county = $request->county;
                 $newCounty->save();
             }
-            $counties = County::where('state_id', $state->id)->orderBy('county', 'asc')->pluck('id', 'county');
+            $counties = County::where('state_id', $state->id)->orderBy('county')->pluck('id', 'county');
 
             return response(['counties' => $counties, 'success' => true], 200);
         }
@@ -259,7 +259,7 @@ class PropertyController extends Controller
             //                $newCounty->county = $request->county;
             //                $newCounty->save();
             //            }
-            $zipcodes = ZipCode::where('state_id', $state->id)->orderBy('zipcode', 'asc')->pluck('id', 'zipcode');
+            $zipcodes = ZipCode::where('state_id', $state->id)->orderBy('zipcode')->pluck('id', 'zipcode');
 
             return response(['zipcodes' => $zipcodes, 'success' => true], 200);
         }
@@ -278,7 +278,7 @@ class PropertyController extends Controller
             //                $newCounty->county = $request->county;
             //                $newCounty->save();
             //            }
-            $cities = City::where('state_id', $state->id)->orderBy('id', 'asc')->pluck('id', 'city');
+            $cities = City::where('state_id', $state->id)->orderBy('id')->pluck('id', 'city');
 
             return response(['cities' => $cities, 'success' => true], 200);
         }
@@ -291,11 +291,11 @@ class PropertyController extends Controller
         if ($request->state_id) {
             $findCitiesForZipCode = City::where('state_id', $request->state_id)->pluck('id');
 
-            $cities = City::where('state_id', $request->state_id)->orderBy('city', 'asc')->pluck('id', 'city');
+            $cities = City::where('state_id', $request->state_id)->orderBy('city')->pluck('id', 'city');
 
             $zipCodes = ZipCode::whereIn('city_id', $findCitiesForZipCode)->pluck('zipcode', 'id');
-            $militarylocations = MilitaryLocation::where('state_id', $request->state_id)->orderBy('base', 'asc')->pluck('id', 'base');
-            $counties = County::where('state_id', $request->state_id)->orderBy('county', 'asc')->pluck('id', 'county');
+            $militarylocations = MilitaryLocation::where('state_id', $request->state_id)->orderBy('base')->pluck('id', 'base');
+            $counties = County::where('state_id', $request->state_id)->orderBy('county')->pluck('id', 'county');
             if ($militarylocations) {
                 return response(['militarylocations' => $militarylocations, 'zipCodes' => $zipCodes,
                     'cities' => $cities, 'counties' => $counties, 'success' => true], 200);
@@ -358,7 +358,7 @@ class PropertyController extends Controller
 
                 $state = State::where('id', $property->state_id)->first();
                 $county = County::where('id', $property->county_id)->first();
-                $counties = County::where('state_id', $property->state_id)->orderBy('county', 'asc')->get();
+                $counties = County::where('state_id', $property->state_id)->orderBy('county')->get();
                 $city = City::where('id', $property->city_id)->first();
                 $zipCode = ZipCode::where('id', $property->zip_code_id)->first();
                 $schools = School::whereIn('id', explode(',', $property->architechture->school_id))->get();
@@ -397,7 +397,7 @@ class PropertyController extends Controller
 
                 $state = State::where('id', $property->state_id)->first();
                 $county = County::where('id', $property->county_id)->first();
-                $counties = County::where('state_id', $property->state_id)->orderBy('county', 'asc')->get();
+                $counties = County::where('state_id', $property->state_id)->orderBy('county')->get();
                 $city = City::where('id', $property->city_id)->first();
                 $zipCode = ZipCode::where('id', $property->zip_code_id)->first();
                 $school = School::where('id', $property->architechture->school_id)->first();

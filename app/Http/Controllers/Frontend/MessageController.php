@@ -47,7 +47,7 @@ class MessageController extends Controller
                 return $q->where('user_id', $userID)->where('to_user_id', Auth::id());
             })->orWhere(function ($q) use ($userID) {
                 return $q->where('user_id', Auth::id())->where('to_user_id', $userID);
-            })->orderBy('created_at', 'DESC')->first();
+            })->orderByDesc('created_at')->first();
             $otherUser = $latestMessage->user_id == Auth::id() ? $latestMessage->to_user_id : $latestMessage->user_id;
             $messages[] = (object) [
                 'created_at' => $latestMessage->created_at,

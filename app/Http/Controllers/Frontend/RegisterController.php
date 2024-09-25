@@ -306,7 +306,7 @@ class RegisterController extends Controller
         }])->with(['business_profile', 'subscribeServices'])->first();
         $state = State::where('id', $user->state_id)->first();
         $city = City::where('id', $user->city)->first();
-        $counties = County::where('state_id', $user->state_id)->orderBy('county', 'asc')->get();
+        $counties = County::where('state_id', $user->state_id)->orderBy('county')->get();
         $allIndustries = Industry::get();
         if ($user->business_profile || in_array(config('constant.inverse_user_type.Business'), array_column($user->roles->toArray(), 'id'))) {
             if ($user->business_profile) {

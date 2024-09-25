@@ -20,9 +20,9 @@ class CronController extends Controller
         $properties = Property::where('created_at', '<', $previousDate)
             ->where('status', '!=', config('constant.inverse_property_status.Unavailable'))
             ->with(['rentOffer' => function ($rentQuery) {
-                $rentQuery->orderBy('created_at', 'desc')->first();
+                $rentQuery->orderByDesc('created_at')->first();
             }, 'saleOffer' => function ($saleQuery) {
-                $saleQuery->orderBy('created_at', 'desc')->first();
+                $saleQuery->orderByDesc('created_at')->first();
             }, 'user'])
             ->get();
         //		    dd($properties);

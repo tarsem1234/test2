@@ -104,7 +104,7 @@ class OfferRequest extends Request
         return $messages;
     }
 
-    public function all()
+    public function all($keys = null)
     {
         $data = parent::all();
 

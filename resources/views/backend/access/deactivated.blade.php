@@ -37,6 +37,24 @@
                             <th>{{ trans('labels.general.actions') }}</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        @foreach($users as $index=>$user)
+                        <tr>
+                            <td>{{ $index+1 }}</td>
+                            <td>{{ getFullName($user) }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{!! $user->confirmed_label !!}</td>
+                            <td>{{$user->roles->count() ?
+                            implode('<br/>', $user->roles->pluck('name')->toArray())
+                                :
+                            trans('labels.general.none')}}</td>
+                            <td>{{ $user->created_at }}</td>
+                            <td>{{ $user->updated_at }}</td>
+                            <td>{!!$user->action_buttons!!}</td>
+                            <!--  -->
+                        </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             </div><!--table-responsive-->
         </div><!-- /.box-body -->
@@ -52,37 +70,37 @@
             var userDeact = $('#users-table').DataTable({
                 dom: 'lfrtip',
                 processing: false,
-                serverSide: true,
+                serverSide: false,
                 autoWidth: false,
-                ajax: {
-                    url: '{{ route("admin.access.user.get") }}',
-                    type: 'post',
-                    data: {status: 0, trashed: false, role:3},
-                    error: function (xhr, err) {
-                        if (err === 'parsererror'){
-//                            location.reload();
-                        }
-                    }
-                },
-                columns: [
-                    {"defaultContent": ''},
-                    {data: 'full_name', name: 'full_name'},
-                    {data: 'email', name: '{{config('access.users_table')}}.email'},
-                    {data: 'confirmed', name: '{{config('access.users_table')}}.confirmed'},
-                    {data: 'roles', name: '{{config('access.roles_table')}}.name', sortable: false},
-                    {data: 'created_at', name: '{{config('access.users_table')}}.created_at'},
-                    {data: 'updated_at', name: '{{config('access.users_table')}}.updated_at'},
-                    {data: 'actions', name: 'actions', searchable: false, sortable: false}
-                ],
+//                 ajax: {
+//                     url: '{{ route("admin.access.user.get") }}',
+//                     type: 'post',
+//                     data: {status: 0, trashed: false, role:3},
+//                     error: function (xhr, err) {
+//                         if (err === 'parsererror'){
+// //                            location.reload();
+//                         }
+//                     }
+//                 },
+//                 columns: [
+//                     {"defaultContent": ''},
+//                     {data: 'full_name', name: 'full_name'},
+//                     {data: 'email', name: '{{config('access.users_table')}}.email'},
+//                     {data: 'confirmed', name: '{{config('access.users_table')}}.confirmed'},
+//                     {data: 'roles', name: '{{config('access.roles_table')}}.name', sortable: false},
+//                     {data: 'created_at', name: '{{config('access.users_table')}}.created_at'},
+//                     {data: 'updated_at', name: '{{config('access.users_table')}}.updated_at'},
+//                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
+//                 ],
                 order: [[0, "asc"]],
                 searchDelay: 500
             });
             
-            userDeact.on( 'order.dt search.dt', function () {
-                userDeact.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-                    cell.innerHTML = i+1;
-                } );
-            } ).draw();
+            // userDeact.on( 'order.dt search.dt', function () {
+            //     userDeact.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            //         cell.innerHTML = i+1;
+            //     } );
+            // } ).draw();
         });
     </script>
 @endsection

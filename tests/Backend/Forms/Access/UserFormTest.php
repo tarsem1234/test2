@@ -1,5 +1,7 @@
 <?php
+
 namespace Tests\Backend\Forms\Access;
+
 use App\Events\Backend\Access\User\UserCreated;
 use App\Events\Backend\Access\User\UserDeleted;
 use App\Events\Backend\Access\User\UserPasswordChanged;

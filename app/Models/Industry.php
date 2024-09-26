@@ -11,8 +11,6 @@ class Industry extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'industries';
-
     public function services(): HasMany
     {
         return $this->hasMany(\App\Models\Service::class);

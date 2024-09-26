@@ -9,8 +9,6 @@ class RentSignature extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'rent_signatures';
-
     //    public function signer_user()
     //    {
     //        return $this->belongsTo('App\Models\Access\User\User','from_user_id');

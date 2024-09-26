@@ -32,7 +32,7 @@ class SendContact extends Mailable
      */
     public function build(): static
     {
-        return $this->to(env('CONTACT_MAIL_ADDRESS'), config('mail.from.name'))
+        return $this->to(config('settings.contact_mail_address'), config('mail.from.name'))
             ->view('frontend.mail.contact')
             ->text('frontend.mail.contact-text')
             ->subject(trans('strings.emails.contact.subject', ['app_name' => app_name()]))

@@ -198,7 +198,7 @@
 <?php } ?>
 @endsection
 @section('after-scripts')
-<script src="https://maps.googleapis.com/maps/api/js?key=<?= env('GOOGLE_MAP_API_KEY') ?>" type="text/javascript"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?= config('settings.google_map_api_key') ?>" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
         $('form').validate({

@@ -4,7 +4,6 @@ use Illuminate\Database\Seeder;
 
 class MilitaryBasesTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -12,13 +11,11 @@ class MilitaryBasesTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('military_bases')->delete();
-        
-        \DB::table('military_bases')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('military_bases')->insert([
+            0 => [
                 'id' => 1,
                 'base' => 'Maxwell AFB',
                 'city_id' => 14737,
@@ -27,9 +24,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Montgomery, AL',
                 'zipcode_id' => 21006,
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 2,
                 'base' => 'Barter Island Dew Station Bar',
                 'city_id' => 38862,
@@ -38,9 +34,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Fairbanks, AK',
                 'zipcode_id' => 55339,
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 3,
                 'base' => 'Big Mountain Radio Relay Site',
                 'city_id' => 38775,
@@ -49,9 +44,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Iliamna, AK',
                 'zipcode_id' => 55227,
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 4,
                 'base' => 'Birch Lake Recreation Annex',
                 'city_id' => 38862,
@@ -60,9 +54,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Fairbanks, AK',
                 'zipcode_id' => 55339,
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 5,
                 'base' => 'Blair Lake AF Range',
                 'city_id' => 38862,
@@ -71,9 +64,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Fairbanks, AK',
                 'zipcode_id' => 55339,
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 6,
                 'base' => 'Cape Lisburne Long Range Radar Site',
                 'city_id' => 38928,
@@ -82,9 +74,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Point Hope, AK',
                 'zipcode_id' => 55421,
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 7,
                 'base' => 'Cape Newenham Long Range Radar Site',
                 'city_id' => 38820,
@@ -93,9 +84,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Platinum, AK',
                 'zipcode_id' => 55279,
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 8,
                 'base' => 'Cape Romanzof Long Range Radar Site',
                 'city_id' => 38773,
@@ -104,9 +94,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Hooper Bay, AK',
                 'zipcode_id' => 55225,
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 9,
                 'base' => 'Chena River Research Site',
                 'city_id' => 38862,
@@ -115,9 +104,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Fairbanks, AK',
                 'zipcode_id' => 55339,
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 10,
                 'base' => 'Clear AFS',
                 'city_id' => 38900,
@@ -126,9 +114,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Anderson, AK',
                 'zipcode_id' => 55390,
-            ),
-            10 => 
-            array (
+            ],
+            10 => [
                 'id' => 11,
                 'base' => 'Cold Bay Long Range Radar Site',
                 'city_id' => 38736,
@@ -137,9 +124,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Cold Bay, AK',
                 'zipcode_id' => 55186,
-            ),
-            11 => 
-            array (
+            ],
+            11 => [
                 'id' => 12,
                 'base' => 'Eareckson Air Station',
                 'city_id' => 38707,
@@ -148,9 +134,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Atka, AK',
                 'zipcode_id' => 55156,
-            ),
-            12 => 
-            array (
+            ],
+            12 => [
                 'id' => 13,
                 'base' => 'Eielson AFB',
                 'city_id' => 38869,
@@ -159,9 +144,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'North Pole, AK',
                 'zipcode_id' => 55347,
-            ),
-            13 => 
-            array (
+            ],
+            13 => [
                 'id' => 14,
                 'base' => 'Elmendorf AFB',
                 'city_id' => 38699,
@@ -170,9 +154,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Anchorage, AK',
                 'zipcode_id' => 55122,
-            ),
-            14 => 
-            array (
+            ],
+            14 => [
                 'id' => 15,
                 'base' => 'Flaxman Island Range Radar Site',
                 'city_id' => 38862,
@@ -181,9 +164,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Fairbanks, AK',
                 'zipcode_id' => 55339,
-            ),
-            15 => 
-            array (
+            ],
+            15 => [
                 'id' => 16,
                 'base' => 'Fort Yukon Long Range Radar Site',
                 'city_id' => 38896,
@@ -192,9 +174,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Fort Yukon, AK',
                 'zipcode_id' => 55386,
-            ),
-            16 => 
-            array (
+            ],
+            16 => [
                 'id' => 17,
                 'base' => 'Galena Airport',
                 'city_id' => 38897,
@@ -203,9 +184,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Galena, AK',
                 'zipcode_id' => 55387,
-            ),
-            17 => 
-            array (
+            ],
+            17 => [
                 'id' => 18,
                 'base' => 'Haarp Research Station',
                 'city_id' => 38754,
@@ -214,9 +194,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Gakona, AK',
                 'zipcode_id' => 55205,
-            ),
-            18 => 
-            array (
+            ],
+            18 => [
                 'id' => 19,
                 'base' => 'Indian Mountain Long Range Radar Site',
                 'city_id' => 38901,
@@ -225,9 +204,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Hughes, AK',
                 'zipcode_id' => 55392,
-            ),
-            19 => 
-            array (
+            ],
+            19 => [
                 'id' => 20,
                 'base' => 'King Salmon Airport',
                 'city_id' => 38805,
@@ -236,9 +214,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Naknek, AK',
                 'zipcode_id' => 55260,
-            ),
-            20 => 
-            array (
+            ],
+            20 => [
                 'id' => 21,
                 'base' => 'Lonely Short Range Radar Site',
                 'city_id' => 38862,
@@ -247,9 +224,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Fairbanks, AK',
                 'zipcode_id' => 55339,
-            ),
-            21 => 
-            array (
+            ],
+            21 => [
                 'id' => 22,
                 'base' => 'Oliktok Long Range Radar Site',
                 'city_id' => 38862,
@@ -258,9 +234,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Fairbanks, AK',
                 'zipcode_id' => 55339,
-            ),
-            22 => 
-            array (
+            ],
+            22 => [
                 'id' => 23,
                 'base' => 'Point Barrow Long Range Radar Site',
                 'city_id' => 38862,
@@ -269,9 +244,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Fairbanks, AK',
                 'zipcode_id' => 55339,
-            ),
-            23 => 
-            array (
+            ],
+            23 => [
                 'id' => 24,
                 'base' => 'Point Lay Long Range Radar Site',
                 'city_id' => 38862,
@@ -280,9 +254,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Fairbanks, AK',
                 'zipcode_id' => 55339,
-            ),
-            24 => 
-            array (
+            ],
+            24 => [
                 'id' => 25,
                 'base' => 'Sparrevohn Long Range Radar Site',
                 'city_id' => 38775,
@@ -291,9 +264,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Iliamna, AK',
                 'zipcode_id' => 55227,
-            ),
-            25 => 
-            array (
+            ],
+            25 => [
                 'id' => 26,
                 'base' => 'Tatalina Long Range Radar Site',
                 'city_id' => 38799,
@@ -302,9 +274,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Mc Grath, AK',
                 'zipcode_id' => 55253,
-            ),
-            26 => 
-            array (
+            ],
+            26 => [
                 'id' => 27,
                 'base' => 'Tin City Long Range Radar Site',
                 'city_id' => 38945,
@@ -313,9 +284,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Wales, AK',
                 'zipcode_id' => 55442,
-            ),
-            27 => 
-            array (
+            ],
+            27 => [
                 'id' => 28,
                 'base' => 'Wainwright Short Range Radar Site',
                 'city_id' => 38862,
@@ -324,9 +294,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Fairbanks, AK',
                 'zipcode_id' => 55339,
-            ),
-            28 => 
-            array (
+            ],
+            28 => [
                 'id' => 29,
                 'base' => 'Air Force Plant No 44',
                 'city_id' => 35110,
@@ -335,9 +304,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Tucson, AZ',
                 'zipcode_id' => 48625,
-            ),
-            29 => 
-            array (
+            ],
+            29 => [
                 'id' => 30,
                 'base' => 'Davis-Monthan AFB',
                 'city_id' => 35110,
@@ -346,9 +314,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Tucson, AZ',
                 'zipcode_id' => 48625,
-            ),
-            30 => 
-            array (
+            ],
+            30 => [
                 'id' => 31,
                 'base' => 'Gila Bend AF Auxiliary Field',
                 'city_id' => 35000,
@@ -357,9 +324,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Gila Bend, AZ',
                 'zipcode_id' => 48471,
-            ),
-            31 => 
-            array (
+            ],
+            31 => [
                 'id' => 32,
                 'base' => 'Luke AF Auxiliary Field No 1',
                 'city_id' => 35024,
@@ -368,9 +334,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Wittmann, AZ',
                 'zipcode_id' => 48496,
-            ),
-            32 => 
-            array (
+            ],
+            32 => [
                 'id' => 33,
                 'base' => 'Luke AFB',
                 'city_id' => 35003,
@@ -379,9 +344,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Litchfield Park, AZ',
                 'zipcode_id' => 48474,
-            ),
-            33 => 
-            array (
+            ],
+            33 => [
                 'id' => 34,
                 'base' => 'Luke Waste Annex',
                 'city_id' => 35003,
@@ -390,9 +354,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Litchfield Park, AZ',
                 'zipcode_id' => 48474,
-            ),
-            34 => 
-            array (
+            ],
+            34 => [
                 'id' => 35,
                 'base' => 'The Barry M Goldwater AF Range',
                 'city_id' => 35000,
@@ -401,9 +364,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Gila Bend, AZ',
                 'zipcode_id' => 48471,
-            ),
-            35 => 
-            array (
+            ],
+            35 => [
                 'id' => 36,
                 'base' => 'Little Rock AFB',
                 'city_id' => 30317,
@@ -412,9 +374,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Jacksonville, AR',
                 'zipcode_id' => 40982,
-            ),
-            36 => 
-            array (
+            ],
+            36 => [
                 'id' => 37,
                 'base' => 'Beale AFB',
                 'city_id' => 37331,
@@ -423,9 +384,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Marysville, CA',
                 'zipcode_id' => 53152,
-            ),
-            37 => 
-            array (
+            ],
+            37 => [
                 'id' => 38,
                 'base' => 'Davis Communications Annex',
                 'city_id' => 37220,
@@ -434,9 +394,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Davis, CA',
                 'zipcode_id' => 52963,
-            ),
-            38 => 
-            array (
+            ],
+            38 => [
                 'id' => 39,
                 'base' => 'Edwards AFB',
                 'city_id' => 36635,
@@ -445,9 +404,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Rosamond, CA',
                 'zipcode_id' => 51819,
-            ),
-            39 => 
-            array (
+            ],
+            39 => [
                 'id' => 40,
                 'base' => 'Fort MacArthur Family Hsg Annex',
                 'city_id' => 35969,
@@ -456,9 +414,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'San Pedro, CA',
                 'zipcode_id' => 50219,
-            ),
-            40 => 
-            array (
+            ],
+            40 => [
                 'id' => 41,
                 'base' => 'Lincoln Communications Annex',
                 'city_id' => 37250,
@@ -467,9 +424,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Lincoln, CA',
                 'zipcode_id' => 52999,
-            ),
-            41 => 
-            array (
+            ],
+            41 => [
                 'id' => 42,
                 'base' => 'Los Angeles AF Annex No 3',
                 'city_id' => 35911,
@@ -478,9 +434,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Manhattan Beach, CA',
                 'zipcode_id' => 50071,
-            ),
-            42 => 
-            array (
+            ],
+            42 => [
                 'id' => 43,
                 'base' => 'Los Angeles AFB',
                 'city_id' => 35899,
@@ -489,9 +444,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'El Segundo, CA',
                 'zipcode_id' => 50053,
-            ),
-            43 => 
-            array (
+            ],
+            43 => [
                 'id' => 44,
                 'base' => 'Onizuka AFS',
                 'city_id' => 36780,
@@ -500,9 +454,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Sunnyvale, CA',
                 'zipcode_id' => 52086,
-            ),
-            44 => 
-            array (
+            ],
+            44 => [
                 'id' => 45,
                 'base' => 'Ozol Defense Fuel Support Point',
                 'city_id' => 36825,
@@ -511,9 +464,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Martinez, CA',
                 'zipcode_id' => 52297,
-            ),
-            45 => 
-            array (
+            ],
+            45 => [
                 'id' => 46,
                 'base' => 'Pillar Point AFS',
                 'city_id' => 36753,
@@ -522,9 +474,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Half Moon Bay, CA',
                 'zipcode_id' => 52041,
-            ),
-            46 => 
-            array (
+            ],
+            46 => [
                 'id' => 47,
                 'base' => 'Production Flight Test Instl AF Plant 42',
                 'city_id' => 36628,
@@ -533,9 +484,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Palmdale, CA',
                 'zipcode_id' => 51804,
-            ),
-            47 => 
-            array (
+            ],
+            47 => [
                 'id' => 48,
                 'base' => 'Travis AFB',
                 'city_id' => 36814,
@@ -544,9 +494,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Fairfield, CA',
                 'zipcode_id' => 52272,
-            ),
-            48 => 
-            array (
+            ],
+            48 => [
                 'id' => 49,
                 'base' => 'Travis Water System Annex No 2',
                 'city_id' => 37228,
@@ -555,9 +504,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Elmira, CA',
                 'zipcode_id' => 52975,
-            ),
-            49 => 
-            array (
+            ],
+            49 => [
                 'id' => 50,
                 'base' => 'Tulelake Radar Site',
                 'city_id' => 37545,
@@ -566,9 +514,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Tulelake, CA',
                 'zipcode_id' => 53394,
-            ),
-            50 => 
-            array (
+            ],
+            50 => [
                 'id' => 51,
                 'base' => 'Vandenberg AFB',
                 'city_id' => 36547,
@@ -577,9 +524,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Lompoc, CA',
                 'zipcode_id' => 51699,
-            ),
-            51 => 
-            array (
+            ],
+            51 => [
                 'id' => 52,
                 'base' => 'Buckley AFB',
                 'city_id' => 33400,
@@ -588,9 +534,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Aurora, CO',
                 'zipcode_id' => 45782,
-            ),
-            52 => 
-            array (
+            ],
+            52 => [
                 'id' => 53,
                 'base' => 'Buckley Annex',
                 'city_id' => 33403,
@@ -599,9 +544,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Denver, CO',
                 'zipcode_id' => 45787,
-            ),
-            53 => 
-            array (
+            ],
+            53 => [
                 'id' => 54,
                 'base' => 'Cheyenne Mountain AFS',
                 'city_id' => 33670,
@@ -610,9 +554,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Colorado Springs, CO',
                 'zipcode_id' => 46309,
-            ),
-            54 => 
-            array (
+            ],
+            54 => [
                 'id' => 55,
                 'base' => 'Peterson AFB',
                 'city_id' => 33670,
@@ -621,9 +564,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Colorado Springs, CO',
                 'zipcode_id' => 46309,
-            ),
-            55 => 
-            array (
+            ],
+            55 => [
                 'id' => 56,
                 'base' => 'Schriever AFB',
                 'city_id' => 33626,
@@ -632,9 +574,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Calhan, CO',
                 'zipcode_id' => 46261,
-            ),
-            56 => 
-            array (
+            ],
+            56 => [
                 'id' => 57,
                 'base' => 'The Farish Memorial Recreational Annex',
                 'city_id' => 33668,
@@ -643,9 +584,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Woodland Park, CO',
                 'zipcode_id' => 46306,
-            ),
-            57 => 
-            array (
+            ],
+            57 => [
                 'id' => 58,
                 'base' => 'USAF Academy',
                 'city_id' => 33670,
@@ -654,9 +594,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Colorado Springs, CO',
                 'zipcode_id' => 46309,
-            ),
-            58 => 
-            array (
+            ],
+            58 => [
                 'id' => 59,
                 'base' => 'Dover AFB',
                 'city_id' => 8176,
@@ -665,9 +604,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Dover, DE',
                 'zipcode_id' => 10491,
-            ),
-            59 => 
-            array (
+            ],
+            59 => [
                 'id' => 60,
                 'base' => 'Dover Family Hsg Annex',
                 'city_id' => 8176,
@@ -676,9 +614,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Dover, DE',
                 'zipcode_id' => 10491,
-            ),
-            60 => 
-            array (
+            ],
+            60 => [
                 'id' => 61,
                 'base' => 'Bolling AFB',
                 'city_id' => 8229,
@@ -687,9 +624,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Washington, DC',
                 'zipcode_id' => 10552,
-            ),
-            61 => 
-            array (
+            ],
+            61 => [
                 'id' => 62,
                 'base' => 'Arbuckle Airfield',
                 'city_id' => 14059,
@@ -698,9 +634,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Avon Park, FL',
                 'zipcode_id' => 19788,
-            ),
-            62 => 
-            array (
+            ],
+            62 => [
                 'id' => 63,
                 'base' => 'Avon Park AF Range',
                 'city_id' => 14059,
@@ -709,9 +644,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Avon Park, FL',
                 'zipcode_id' => 19788,
-            ),
-            63 => 
-            array (
+            ],
+            63 => [
                 'id' => 64,
                 'base' => 'Cape Canaveral AFS',
                 'city_id' => 13707,
@@ -720,9 +654,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Cape Canaveral, FL',
                 'zipcode_id' => 18615,
-            ),
-            64 => 
-            array (
+            ],
+            64 => [
                 'id' => 65,
                 'base' => 'Cape San Blas Missile Tracking Annex D-3',
                 'city_id' => 13528,
@@ -731,9 +664,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Port Saint Joe, FL',
                 'zipcode_id' => 18228,
-            ),
-            65 => 
-            array (
+            ],
+            65 => [
                 'id' => 66,
                 'base' => 'Cove Gardens Family Hsg Annex',
                 'city_id' => 13481,
@@ -742,9 +674,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Panama City, FL',
                 'zipcode_id' => 18153,
-            ),
-            66 => 
-            array (
+            ],
+            66 => [
                 'id' => 67,
                 'base' => 'Cudjoe Key AFS',
                 'city_id' => 13784,
@@ -753,9 +684,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Summerland Key, FL',
                 'zipcode_id' => 18778,
-            ),
-            67 => 
-            array (
+            ],
+            67 => [
                 'id' => 68,
                 'base' => 'Eglin AF Auxiliary Field #3',
                 'city_id' => 13545,
@@ -764,9 +694,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Crestview, FL',
                 'zipcode_id' => 18273,
-            ),
-            68 => 
-            array (
+            ],
+            68 => [
                 'id' => 69,
                 'base' => 'Eglin AF Auxiliary Field #6',
                 'city_id' => 13574,
@@ -775,9 +704,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Milton, FL',
                 'zipcode_id' => 18315,
-            ),
-            69 => 
-            array (
+            ],
+            69 => [
                 'id' => 70,
                 'base' => 'Eglin AF Auxiliary Field #9',
                 'city_id' => 13573,
@@ -786,9 +714,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Mary Esther, FL',
                 'zipcode_id' => 18314,
-            ),
-            70 => 
-            array (
+            ],
+            70 => [
                 'id' => 71,
                 'base' => 'Eglin AFB',
                 'city_id' => 13580,
@@ -797,9 +724,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Valparaiso, FL',
                 'zipcode_id' => 18323,
-            ),
-            71 => 
-            array (
+            ],
+            71 => [
                 'id' => 72,
                 'base' => 'Homestead AFB',
                 'city_id' => 13766,
@@ -808,9 +734,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Homestead, FL',
                 'zipcode_id' => 18752,
-            ),
-            72 => 
-            array (
+            ],
+            72 => [
                 'id' => 73,
                 'base' => 'Jonathan Dickinson Missile Tracking Anx',
                 'city_id' => 13929,
@@ -819,9 +744,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Hobe Sound, FL',
                 'zipcode_id' => 19410,
-            ),
-            73 => 
-            array (
+            ],
+            73 => [
                 'id' => 74,
                 'base' => 'Lynn Haven Defense Fuel Support Point',
                 'city_id' => 13518,
@@ -830,9 +754,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Lynn Haven, FL',
                 'zipcode_id' => 18215,
-            ),
-            74 => 
-            array (
+            ],
+            74 => [
                 'id' => 75,
                 'base' => 'MacDill AFB',
                 'city_id' => 13993,
@@ -841,9 +764,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Tampa, FL',
                 'zipcode_id' => 19546,
-            ),
-            75 => 
-            array (
+            ],
+            75 => [
                 'id' => 76,
                 'base' => 'Malabar Transmitter Annex',
                 'city_id' => 13729,
@@ -852,9 +774,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Malabar, FL',
                 'zipcode_id' => 18651,
-            ),
-            76 => 
-            array (
+            ],
+            76 => [
                 'id' => 77,
                 'base' => 'Patrick AFB',
                 'city_id' => 13718,
@@ -863,9 +784,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Cocoa Beach, FL',
                 'zipcode_id' => 18630,
-            ),
-            77 => 
-            array (
+            ],
+            77 => [
                 'id' => 78,
                 'base' => 'Tyndall AFB',
                 'city_id' => 13481,
@@ -874,9 +794,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Panama City, FL',
                 'zipcode_id' => 18153,
-            ),
-            78 => 
-            array (
+            ],
+            78 => [
                 'id' => 79,
                 'base' => 'Air Force Plant No 6',
                 'city_id' => 12593,
@@ -885,9 +804,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Marietta, GA',
                 'zipcode_id' => 16697,
-            ),
-            79 => 
-            array (
+            ],
+            79 => [
                 'id' => 80,
                 'base' => 'Moody AFB',
                 'city_id' => 13184,
@@ -896,9 +814,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Valdosta, GA',
                 'zipcode_id' => 17655,
-            ),
-            80 => 
-            array (
+            ],
+            80 => [
                 'id' => 81,
                 'base' => 'Robins AFB',
                 'city_id' => 13083,
@@ -907,9 +824,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Warner Robins, GA',
                 'zipcode_id' => 17458,
-            ),
-            81 => 
-            array (
+            ],
+            81 => [
                 'id' => 82,
                 'base' => 'Bellows AFS',
                 'city_id' => 37649,
@@ -918,9 +834,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Waimanalo, HI',
                 'zipcode_id' => 53523,
-            ),
-            82 => 
-            array (
+            ],
+            82 => [
                 'id' => 83,
                 'base' => 'Hickam AFB',
                 'city_id' => 37652,
@@ -929,9 +844,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Honolulu, HI',
                 'zipcode_id' => 53526,
-            ),
-            83 => 
-            array (
+            ],
+            83 => [
                 'id' => 84,
                 'base' => 'Hickam Petroleum Products Storage Anx',
                 'city_id' => 37642,
@@ -940,9 +854,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Wahiawa, HI',
                 'zipcode_id' => 53516,
-            ),
-            84 => 
-            array (
+            ],
+            84 => [
                 'id' => 85,
                 'base' => 'Kaena Point Sattelite Tracking Station',
                 'city_id' => 37646,
@@ -951,9 +864,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Waialua, HI',
                 'zipcode_id' => 53520,
-            ),
-            85 => 
-            array (
+            ],
+            85 => [
                 'id' => 86,
                 'base' => 'Kokee AFS',
                 'city_id' => 37610,
@@ -962,9 +874,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Kekaha, HI',
                 'zipcode_id' => 53483,
-            ),
-            86 => 
-            array (
+            ],
+            86 => [
                 'id' => 87,
                 'base' => 'Mountain Home AFB',
                 'city_id' => 34421,
@@ -973,9 +884,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Mountain Home, ID',
                 'zipcode_id' => 47364,
-            ),
-            87 => 
-            array (
+            ],
+            87 => [
                 'id' => 88,
                 'base' => 'Saylor Creek AF Range',
                 'city_id' => 34379,
@@ -984,9 +894,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Bruneau, ID',
                 'zipcode_id' => 47318,
-            ),
-            88 => 
-            array (
+            ],
+            88 => [
                 'id' => 89,
                 'base' => 'Scott AFB',
                 'city_id' => 26427,
@@ -995,9 +904,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Belleville, IL',
                 'zipcode_id' => 36052,
-            ),
-            89 => 
-            array (
+            ],
+            89 => [
                 'id' => 90,
                 'base' => 'Scott Radio Relay Annex',
                 'city_id' => 26427,
@@ -1006,9 +914,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Belleville, IL',
                 'zipcode_id' => 36052,
-            ),
-            90 => 
-            array (
+            ],
+            90 => [
                 'id' => 91,
                 'base' => 'Grissom AFB',
                 'city_id' => 19386,
@@ -1017,9 +924,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Bunker Hill, IN',
                 'zipcode_id' => 27174,
-            ),
-            91 => 
-            array (
+            ],
+            91 => [
                 'id' => 92,
                 'base' => 'McConnell AFB',
                 'city_id' => 28609,
@@ -1028,9 +934,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Wichita, KS',
                 'zipcode_id' => 38823,
-            ),
-            92 => 
-            array (
+            ],
+            92 => [
                 'id' => 93,
                 'base' => 'Barksdale AFB',
                 'city_id' => 29890,
@@ -1039,9 +944,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Bossier City, LA',
                 'zipcode_id' => 40450,
-            ),
-            93 => 
-            array (
+            ],
+            93 => [
                 'id' => 94,
                 'base' => 'Columbia Falls Radar Site',
                 'city_id' => 1562,
@@ -1050,9 +954,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Columbia Falls, ME',
                 'zipcode_id' => 1956,
-            ),
-            94 => 
-            array (
+            ],
+            94 => [
                 'id' => 95,
                 'base' => 'Searsport Defense Fuel Support Point',
                 'city_id' => 1871,
@@ -1061,9 +964,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Searsport, ME',
                 'zipcode_id' => 2275,
-            ),
-            95 => 
-            array (
+            ],
+            95 => [
                 'id' => 96,
                 'base' => 'Andrews AFB',
                 'city_id' => 8450,
@@ -1072,9 +974,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Camp Springs, MD',
                 'zipcode_id' => 11150,
-            ),
-            96 => 
-            array (
+            ],
+            96 => [
                 'id' => 97,
                 'base' => 'Brandywine Globecom Annex',
                 'city_id' => 8327,
@@ -1083,9 +984,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Brandywine, MD',
                 'zipcode_id' => 11003,
-            ),
-            97 => 
-            array (
+            ],
+            97 => [
                 'id' => 98,
                 'base' => 'Governors Bridge Globecom Annex',
                 'city_id' => 8576,
@@ -1094,9 +994,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Davidsonville, MD',
                 'zipcode_id' => 11384,
-            ),
-            98 => 
-            array (
+            ],
+            98 => [
                 'id' => 99,
                 'base' => 'Summerfield Family Hsg',
                 'city_id' => 8443,
@@ -1105,9 +1004,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Seat Pleasant, MD',
                 'zipcode_id' => 11143,
-            ),
-            99 => 
-            array (
+            ],
+            99 => [
                 'id' => 100,
                 'base' => 'Cape Cod AFS',
                 'city_id' => 543,
@@ -1116,9 +1014,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Bourne, MA',
                 'zipcode_id' => 785,
-            ),
-            100 => 
-            array (
+            ],
+            100 => [
                 'id' => 101,
                 'base' => 'Hanscom AFB',
                 'city_id' => 265,
@@ -1127,9 +1024,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Bedford, MA',
                 'zipcode_id' => 349,
-            ),
-            101 => 
-            array (
+            ],
+            101 => [
                 'id' => 102,
                 'base' => 'Escanaba Defence Fuel Support Point',
                 'city_id' => 20913,
@@ -1138,9 +1034,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Escanaba, MI',
                 'zipcode_id' => 29261,
-            ),
-            102 => 
-            array (
+            ],
+            102 => [
                 'id' => 103,
                 'base' => 'Columbus AFB',
                 'city_id' => 16173,
@@ -1149,9 +1044,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Columbus, MS',
                 'zipcode_id' => 22961,
-            ),
-            103 => 
-            array (
+            ],
+            103 => [
                 'id' => 104,
                 'base' => 'Columbus Auxiliary Airfield',
                 'city_id' => 16066,
@@ -1160,9 +1054,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Shuqualak, MS',
                 'zipcode_id' => 22811,
-            ),
-            104 => 
-            array (
+            ],
+            104 => [
                 'id' => 105,
                 'base' => 'Keesler AFB',
                 'city_id' => 16121,
@@ -1171,9 +1064,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Biloxi, MS',
                 'zipcode_id' => 22892,
-            ),
-            105 => 
-            array (
+            ],
+            105 => [
                 'id' => 106,
                 'base' => 'Keesler Training Annex No 1',
                 'city_id' => 16121,
@@ -1182,9 +1074,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Biloxi, MS',
                 'zipcode_id' => 22892,
-            ),
-            106 => 
-            array (
+            ],
+            106 => [
                 'id' => 107,
                 'base' => 'St Louis AFS',
                 'city_id' => 27097,
@@ -1193,9 +1084,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Saint Louis, MO',
                 'zipcode_id' => 36813,
-            ),
-            107 => 
-            array (
+            ],
+            107 => [
                 'id' => 108,
                 'base' => 'St Louis AFS Storage Annex',
                 'city_id' => 27097,
@@ -1204,9 +1094,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Saint Louis, MO',
                 'zipcode_id' => 36813,
-            ),
-            108 => 
-            array (
+            ],
+            108 => [
                 'id' => 109,
                 'base' => 'Whiteman AFB',
                 'city_id' => 27907,
@@ -1215,9 +1104,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Knob Noster, MO',
                 'zipcode_id' => 37896,
-            ),
-            109 => 
-            array (
+            ],
+            109 => [
                 'id' => 110,
                 'base' => 'Malmstrom AFB',
                 'city_id' => 25159,
@@ -1226,9 +1114,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Augusta, MT',
                 'zipcode_id' => 34373,
-            ),
-            110 => 
-            array (
+            ],
+            110 => [
                 'id' => 111,
                 'base' => 'Malmstrom AFB',
                 'city_id' => 25224,
@@ -1237,9 +1124,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Valier, MT',
                 'zipcode_id' => 34439,
-            ),
-            111 => 
-            array (
+            ],
+            111 => [
                 'id' => 112,
                 'base' => 'Malmstrom AFB',
                 'city_id' => 25172,
@@ -1248,9 +1134,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Conrad, MT',
                 'zipcode_id' => 34386,
-            ),
-            112 => 
-            array (
+            ],
+            112 => [
                 'id' => 113,
                 'base' => 'Malmstrom AFB',
                 'city_id' => 25156,
@@ -1259,9 +1144,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Great Falls, MT',
                 'zipcode_id' => 34365,
-            ),
-            113 => 
-            array (
+            ],
+            113 => [
                 'id' => 114,
                 'base' => 'Malmstrom AFB',
                 'city_id' => 25200,
@@ -1270,9 +1154,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Ledger, MT',
                 'zipcode_id' => 34414,
-            ),
-            114 => 
-            array (
+            ],
+            114 => [
                 'id' => 115,
                 'base' => 'Offutt AFB',
                 'city_id' => 28925,
@@ -1281,9 +1164,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Bellevue, NE',
                 'zipcode_id' => 39187,
-            ),
-            115 => 
-            array (
+            ],
+            115 => [
                 'id' => 116,
                 'base' => 'Offutt Communications Anx No 2 Globecom',
                 'city_id' => 28937,
@@ -1292,9 +1174,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Elkhorn, NE',
                 'zipcode_id' => 39200,
-            ),
-            116 => 
-            array (
+            ],
+            116 => [
                 'id' => 117,
                 'base' => 'Offutt Family Hsg Annex',
                 'city_id' => 28925,
@@ -1303,9 +1184,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Bellevue, NE',
                 'zipcode_id' => 39187,
-            ),
-            117 => 
-            array (
+            ],
+            117 => [
                 'id' => 118,
                 'base' => 'Indian Springs AF Auxiliary Field',
                 'city_id' => 35709,
@@ -1314,9 +1194,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Indian Springs, NV',
                 'zipcode_id' => 49555,
-            ),
-            118 => 
-            array (
+            ],
+            118 => [
                 'id' => 119,
                 'base' => 'Nellis AF Range',
                 'city_id' => 35709,
@@ -1325,9 +1204,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Indian Springs, NV',
                 'zipcode_id' => 49555,
-            ),
-            119 => 
-            array (
+            ],
+            119 => [
                 'id' => 120,
                 'base' => 'Nellis AFB',
                 'city_id' => 35735,
@@ -1336,9 +1214,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Las Vegas, NV',
                 'zipcode_id' => 49596,
-            ),
-            120 => 
-            array (
+            ],
+            120 => [
                 'id' => 121,
                 'base' => 'Nellis Water System Annex',
                 'city_id' => 35735,
@@ -1347,9 +1224,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Las Vegas, NV',
                 'zipcode_id' => 49596,
-            ),
-            121 => 
-            array (
+            ],
+            121 => [
                 'id' => 122,
                 'base' => 'Tonopah Auxiliary Airfield Annex',
                 'city_id' => 35740,
@@ -1358,9 +1234,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Tonopah, NV',
                 'zipcode_id' => 49603,
-            ),
-            122 => 
-            array (
+            ],
+            122 => [
                 'id' => 123,
                 'base' => 'Tonopah Auxiliary Airfield Annex #2',
                 'city_id' => 35740,
@@ -1369,9 +1244,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Tonopah, NV',
                 'zipcode_id' => 49603,
-            ),
-            123 => 
-            array (
+            ],
+            123 => [
                 'id' => 124,
                 'base' => 'New Boston AFS',
                 'city_id' => 789,
@@ -1380,9 +1254,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Mont Vernon, NH',
                 'zipcode_id' => 1103,
-            ),
-            124 => 
-            array (
+            ],
+            124 => [
                 'id' => 125,
                 'base' => 'Pease AFB',
                 'city_id' => 1009,
@@ -1391,9 +1264,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Portsmouth, NH',
                 'zipcode_id' => 1345,
-            ),
-            125 => 
-            array (
+            ],
+            125 => [
                 'id' => 126,
                 'base' => 'Air Mobility Warfare Center',
                 'city_id' => 3367,
@@ -1402,9 +1274,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Wrightstown, NJ',
                 'zipcode_id' => 4185,
-            ),
-            126 => 
-            array (
+            ],
+            126 => [
                 'id' => 127,
                 'base' => 'Fort Dix Family Hsg',
                 'city_id' => 3368,
@@ -1413,9 +1284,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Trenton, NJ',
                 'zipcode_id' => 4186,
-            ),
-            127 => 
-            array (
+            ],
+            127 => [
                 'id' => 128,
                 'base' => 'McGuire AFB',
                 'city_id' => 3367,
@@ -1424,9 +1294,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Wrightstown, NJ',
                 'zipcode_id' => 4185,
-            ),
-            128 => 
-            array (
+            ],
+            128 => [
                 'id' => 129,
                 'base' => 'McGuire AFB',
                 'city_id' => 3347,
@@ -1435,9 +1304,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'New Egypt, NJ',
                 'zipcode_id' => 4159,
-            ),
-            129 => 
-            array (
+            ],
+            129 => [
                 'id' => 130,
                 'base' => 'Boles Wells Water System Annex',
                 'city_id' => 35633,
@@ -1446,9 +1314,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Alamogordo, NM',
                 'zipcode_id' => 49389,
-            ),
-            130 => 
-            array (
+            ],
+            130 => [
                 'id' => 131,
                 'base' => 'Bonito Lake Water System Annex',
                 'city_id' => 35628,
@@ -1457,9 +1324,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Carrizozo, NM',
                 'zipcode_id' => 49384,
-            ),
-            131 => 
-            array (
+            ],
+            131 => [
                 'id' => 132,
                 'base' => 'Cannon AFB',
                 'city_id' => 35579,
@@ -1468,9 +1334,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Clovis, NM',
                 'zipcode_id' => 49323,
-            ),
-            132 => 
-            array (
+            ],
+            132 => [
                 'id' => 133,
                 'base' => 'Cannon Meadows Hsg Area',
                 'city_id' => 35594,
@@ -1479,9 +1344,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Portales, NM',
                 'zipcode_id' => 49341,
-            ),
-            133 => 
-            array (
+            ],
+            133 => [
                 'id' => 134,
                 'base' => 'Cannon Place Hsg Area',
                 'city_id' => 35579,
@@ -1490,9 +1354,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Clovis, NM',
                 'zipcode_id' => 49323,
-            ),
-            134 => 
-            array (
+            ],
+            134 => [
                 'id' => 135,
                 'base' => 'Holloman AFB',
                 'city_id' => 35633,
@@ -1501,9 +1364,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Alamogordo, NM',
                 'zipcode_id' => 49389,
-            ),
-            135 => 
-            array (
+            ],
+            135 => [
                 'id' => 136,
                 'base' => 'Kirtland AFB',
                 'city_id' => 35337,
@@ -1512,9 +1374,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Albuquerque, NM',
                 'zipcode_id' => 48978,
-            ),
-            136 => 
-            array (
+            ],
+            136 => [
                 'id' => 137,
                 'base' => 'Melrose AF Range',
                 'city_id' => 35595,
@@ -1523,9 +1384,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Melrose, NM',
                 'zipcode_id' => 49342,
-            ),
-            137 => 
-            array (
+            ],
+            137 => [
                 'id' => 138,
                 'base' => 'Dare County Range',
                 'city_id' => 11556,
@@ -1534,9 +1394,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Stumpy Point, NC',
                 'zipcode_id' => 15276,
-            ),
-            138 => 
-            array (
+            ],
+            138 => [
                 'id' => 139,
                 'base' => 'Fort Fisher Recreation Site',
                 'city_id' => 11784,
@@ -1545,9 +1404,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Kure Beach, NC',
                 'zipcode_id' => 15633,
-            ),
-            139 => 
-            array (
+            ],
+            139 => [
                 'id' => 140,
                 'base' => 'Pope AFB',
                 'city_id' => 11742,
@@ -1556,9 +1414,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Spring Lake, NC',
                 'zipcode_id' => 15580,
-            ),
-            140 => 
-            array (
+            ],
+            140 => [
                 'id' => 141,
                 'base' => 'Seymour Johnson AFB',
                 'city_id' => 11346,
@@ -1567,9 +1424,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Goldsboro, NC',
                 'zipcode_id' => 14977,
-            ),
-            141 => 
-            array (
+            ],
+            141 => [
                 'id' => 142,
                 'base' => 'Cavalier AFS',
                 'city_id' => 24603,
@@ -1578,9 +1434,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Mountain, ND',
                 'zipcode_id' => 33768,
-            ),
-            142 => 
-            array (
+            ],
+            142 => [
                 'id' => 143,
                 'base' => 'Grand Forks AFB',
                 'city_id' => 24568,
@@ -1589,9 +1444,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Emerado, ND',
                 'zipcode_id' => 33733,
-            ),
-            143 => 
-            array (
+            ],
+            143 => [
                 'id' => 144,
                 'base' => 'Grand Forks Defense Fuel Support Point',
                 'city_id' => 24548,
@@ -1600,9 +1454,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Grand Forks, ND',
                 'zipcode_id' => 33704,
-            ),
-            144 => 
-            array (
+            ],
+            144 => [
                 'id' => 145,
                 'base' => 'Minot AFB',
                 'city_id' => 24889,
@@ -1611,9 +1464,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Minot, ND',
                 'zipcode_id' => 34068,
-            ),
-            145 => 
-            array (
+            ],
+            145 => [
                 'id' => 146,
                 'base' => 'Cincinnati Defense Fuel Support Point',
                 'city_id' => 18653,
@@ -1622,9 +1474,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Cincinnati, OH',
                 'zipcode_id' => 26041,
-            ),
-            146 => 
-            array (
+            ],
+            146 => [
                 'id' => 147,
                 'base' => 'Wright Patterson AFB',
                 'city_id' => 18729,
@@ -1633,9 +1484,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Fairborn, OH',
                 'zipcode_id' => 26213,
-            ),
-            147 => 
-            array (
+            ],
+            147 => [
                 'id' => 148,
                 'base' => 'Altus AFB',
                 'city_id' => 30940,
@@ -1644,9 +1494,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Altus, OK',
                 'zipcode_id' => 41830,
-            ),
-            148 => 
-            array (
+            ],
+            148 => [
                 'id' => 149,
                 'base' => 'Kegelman AF Auxiliary Field',
                 'city_id' => 31058,
@@ -1655,9 +1504,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Jet, OK',
                 'zipcode_id' => 41959,
-            ),
-            149 => 
-            array (
+            ],
+            149 => [
                 'id' => 150,
                 'base' => 'Tinker AFB',
                 'city_id' => 30885,
@@ -1666,9 +1514,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Midwest City, OK',
                 'zipcode_id' => 41686,
-            ),
-            150 => 
-            array (
+            ],
+            150 => [
                 'id' => 151,
                 'base' => 'Tinker Support Annex',
                 'city_id' => 30885,
@@ -1677,9 +1524,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Midwest City, OK',
                 'zipcode_id' => 41686,
-            ),
-            151 => 
-            array (
+            ],
+            151 => [
                 'id' => 152,
                 'base' => 'Vance AFB',
                 'city_id' => 31025,
@@ -1688,9 +1534,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Enid, OK',
                 'zipcode_id' => 41922,
-            ),
-            152 => 
-            array (
+            ],
+            152 => [
                 'id' => 153,
                 'base' => 'Christmas Valley Radar Site',
                 'city_id' => 38003,
@@ -1699,9 +1544,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Christmas Valley, OR',
                 'zipcode_id' => 54063,
-            ),
-            153 => 
-            array (
+            ],
+            153 => [
                 'id' => 154,
                 'base' => 'Charleston AFB',
                 'city_id' => 12280,
@@ -1710,9 +1554,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Charleston, SC',
                 'zipcode_id' => 16246,
-            ),
-            154 => 
-            array (
+            ],
+            154 => [
                 'id' => 155,
                 'base' => 'Charleston Defense Fuel Support Point',
                 'city_id' => 12285,
@@ -1721,9 +1564,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'North Charleston, SC',
                 'zipcode_id' => 16254,
-            ),
-            155 => 
-            array (
+            ],
+            155 => [
                 'id' => 156,
                 'base' => 'Hunley Park Military Family Hsg',
                 'city_id' => 12285,
@@ -1732,9 +1574,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'North Charleston, SC',
                 'zipcode_id' => 16254,
-            ),
-            156 => 
-            array (
+            ],
+            156 => [
                 'id' => 157,
                 'base' => 'North AF Auxiliary Field',
                 'city_id' => 12188,
@@ -1743,9 +1584,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'North, SC',
                 'zipcode_id' => 16094,
-            ),
-            157 => 
-            array (
+            ],
+            157 => [
                 'id' => 158,
                 'base' => 'Shaw AFB',
                 'city_id' => 12216,
@@ -1754,9 +1594,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Sumter, SC',
                 'zipcode_id' => 16125,
-            ),
-            158 => 
-            array (
+            ],
+            158 => [
                 'id' => 159,
                 'base' => 'Dakota Ridge Family Hsg Annex',
                 'city_id' => 24384,
@@ -1765,9 +1604,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Rapid City, SD',
                 'zipcode_id' => 33521,
-            ),
-            159 => 
-            array (
+            ],
+            159 => [
                 'id' => 160,
                 'base' => 'Ellsworth AFB',
                 'city_id' => 24395,
@@ -1776,9 +1614,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Box Elder, SD',
                 'zipcode_id' => 33535,
-            ),
-            160 => 
-            array (
+            ],
+            160 => [
                 'id' => 161,
                 'base' => 'Arnold Air Station',
                 'city_id' => 15237,
@@ -1787,9 +1624,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Manchester, TN',
                 'zipcode_id' => 21707,
-            ),
-            161 => 
-            array (
+            ],
+            161 => [
                 'id' => 162,
                 'base' => 'Air Force Plant No 4',
                 'city_id' => 31955,
@@ -1798,9 +1634,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Fort Worth, TX',
                 'zipcode_id' => 43254,
-            ),
-            162 => 
-            array (
+            ],
+            162 => [
                 'id' => 163,
                 'base' => 'Brooks City Base',
                 'city_id' => 32767,
@@ -1809,9 +1644,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'San Antonio, TX',
                 'zipcode_id' => 44671,
-            ),
-            163 => 
-            array (
+            ],
+            163 => [
                 'id' => 164,
                 'base' => 'Camp Bullis Training Annex',
                 'city_id' => 32767,
@@ -1820,9 +1654,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'San Antonio, TX',
                 'zipcode_id' => 44671,
-            ),
-            164 => 
-            array (
+            ],
+            164 => [
                 'id' => 165,
                 'base' => 'Dyess AFB',
                 'city_id' => 33316,
@@ -1831,9 +1664,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Abilene, TX',
                 'zipcode_id' => 45590,
-            ),
-            165 => 
-            array (
+            ],
+            165 => [
                 'id' => 166,
                 'base' => 'Goodfellow 801 Leased Hsg Annex',
                 'city_id' => 32299,
@@ -1842,9 +1674,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'San Angelo, TX',
                 'zipcode_id' => 43809,
-            ),
-            166 => 
-            array (
+            ],
+            166 => [
                 'id' => 167,
                 'base' => 'Goodfellow AFB',
                 'city_id' => 32299,
@@ -1853,9 +1684,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'San Angelo, TX',
                 'zipcode_id' => 43809,
-            ),
-            167 => 
-            array (
+            ],
+            167 => [
                 'id' => 168,
                 'base' => 'Hondo Municipal Airport',
                 'city_id' => 32767,
@@ -1864,9 +1694,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'San Antonio, TX',
                 'zipcode_id' => 44671,
-            ),
-            168 => 
-            array (
+            ],
+            168 => [
                 'id' => 169,
                 'base' => 'Kelly Field Annex',
                 'city_id' => 32767,
@@ -1875,9 +1704,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'San Antonio, TX',
                 'zipcode_id' => 44671,
-            ),
-            169 => 
-            array (
+            ],
+            169 => [
                 'id' => 170,
                 'base' => 'Lackland AFB',
                 'city_id' => 32767,
@@ -1886,9 +1714,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'San Antonio, TX',
                 'zipcode_id' => 44671,
-            ),
-            170 => 
-            array (
+            ],
+            170 => [
                 'id' => 171,
                 'base' => 'Lackland Training Annex',
                 'city_id' => 32767,
@@ -1897,9 +1724,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'San Antonio, TX',
                 'zipcode_id' => 44671,
-            ),
-            171 => 
-            array (
+            ],
+            171 => [
                 'id' => 172,
                 'base' => 'Laughlin AFB',
                 'city_id' => 33044,
@@ -1908,9 +1734,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Del Rio, TX',
                 'zipcode_id' => 45248,
-            ),
-            172 => 
-            array (
+            ],
+            172 => [
                 'id' => 173,
                 'base' => 'Laughlin AFB Aux 1',
                 'city_id' => 33058,
@@ -1919,9 +1744,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Spofford, TX',
                 'zipcode_id' => 45269,
-            ),
-            173 => 
-            array (
+            ],
+            173 => [
                 'id' => 174,
                 'base' => 'Randolph AFB',
                 'city_id' => 32748,
@@ -1930,9 +1754,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Universal City, TX',
                 'zipcode_id' => 44649,
-            ),
-            174 => 
-            array (
+            ],
+            174 => [
                 'id' => 175,
                 'base' => 'Seguin AF Auxiliary Field',
                 'city_id' => 32758,
@@ -1941,9 +1764,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Seguin, TX',
                 'zipcode_id' => 44661,
-            ),
-            175 => 
-            array (
+            ],
+            175 => [
                 'id' => 176,
                 'base' => 'Sheppard AFB',
                 'city_id' => 32030,
@@ -1952,9 +1774,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Wichita Falls, TX',
                 'zipcode_id' => 43489,
-            ),
-            176 => 
-            array (
+            ],
+            176 => [
                 'id' => 177,
                 'base' => 'Hill AFB',
                 'city_id' => 34546,
@@ -1963,9 +1784,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Clearfield, UT',
                 'zipcode_id' => 47535,
-            ),
-            177 => 
-            array (
+            ],
+            177 => [
                 'id' => 178,
                 'base' => 'Little Mountain Test Annex',
                 'city_id' => 34671,
@@ -1974,9 +1794,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Ogden, UT',
                 'zipcode_id' => 47873,
-            ),
-            178 => 
-            array (
+            ],
+            178 => [
                 'id' => 179,
                 'base' => 'Utah Test and Training Range North',
                 'city_id' => 34643,
@@ -1985,9 +1804,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Wendover, UT',
                 'zipcode_id' => 47645,
-            ),
-            179 => 
-            array (
+            ],
+            179 => [
                 'id' => 180,
                 'base' => 'Utah Test and Training Range South Utah',
                 'city_id' => 34643,
@@ -1996,9 +1814,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Wendover, UT',
                 'zipcode_id' => 47645,
-            ),
-            180 => 
-            array (
+            ],
+            180 => [
                 'id' => 181,
                 'base' => 'Langley AFB',
                 'city_id' => 9558,
@@ -2007,9 +1824,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Hampton, VA',
                 'zipcode_id' => 12850,
-            ),
-            181 => 
-            array (
+            ],
+            181 => [
                 'id' => 182,
                 'base' => 'Langley Family Hsg Annex',
                 'city_id' => 9560,
@@ -2018,9 +1834,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Poquoson, VA',
                 'zipcode_id' => 12861,
-            ),
-            182 => 
-            array (
+            ],
+            182 => [
                 'id' => 183,
                 'base' => 'Fairchild AFB',
                 'city_id' => 38547,
@@ -2029,9 +1844,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Airway Heights, WA',
                 'zipcode_id' => 54903,
-            ),
-            183 => 
-            array (
+            ],
+            183 => [
                 'id' => 184,
                 'base' => 'McChord AFB',
                 'city_id' => 38331,
@@ -2040,9 +1854,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Tacoma, WA',
                 'zipcode_id' => 54568,
-            ),
-            184 => 
-            array (
+            ],
+            184 => [
                 'id' => 185,
                 'base' => 'Mukilteo Defense Fuel Support Point',
                 'city_id' => 38186,
@@ -2051,9 +1864,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Everett, WA',
                 'zipcode_id' => 54382,
-            ),
-            185 => 
-            array (
+            ],
+            185 => [
                 'id' => 186,
                 'base' => 'Spokane Family Hsg Annex',
                 'city_id' => 38657,
@@ -2062,9 +1874,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Spokane, WA',
                 'zipcode_id' => 55031,
-            ),
-            186 => 
-            array (
+            ],
+            186 => [
                 'id' => 187,
                 'base' => 'Francis E Warren AFB',
                 'city_id' => 33932,
@@ -2073,9 +1884,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Active',
                 'map_value' => 'Cheyenne, WY',
                 'zipcode_id' => 46792,
-            ),
-            187 => 
-            array (
+            ],
+            187 => [
                 'id' => 188,
                 'base' => 'Norwalk Defense Fuel Support Point',
                 'city_id' => 35953,
@@ -2084,9 +1894,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Reserve',
                 'map_value' => 'Norwalk, CA',
                 'zipcode_id' => 50184,
-            ),
-            188 => 
-            array (
+            ],
+            188 => [
                 'id' => 189,
                 'base' => 'Homestead ARS',
                 'city_id' => 13766,
@@ -2095,9 +1904,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Reserve',
                 'map_value' => 'Homestead, FL',
                 'zipcode_id' => 18752,
-            ),
-            189 => 
-            array (
+            ],
+            189 => [
                 'id' => 190,
                 'base' => 'Dobbins ARB',
                 'city_id' => 12593,
@@ -2106,9 +1914,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Reserve',
                 'map_value' => 'Marietta, GA',
                 'zipcode_id' => 16697,
-            ),
-            190 => 
-            array (
+            ],
+            190 => [
                 'id' => 191,
                 'base' => 'Westover ARB',
                 'city_id' => 13,
@@ -2117,9 +1924,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Reserve',
                 'map_value' => 'Chicopee, MA',
                 'zipcode_id' => 15,
-            ),
-            191 => 
-            array (
+            ],
+            191 => [
                 'id' => 192,
                 'base' => 'Minneapolis-St Paul IAP-ARS',
                 'city_id' => 23214,
@@ -2128,9 +1934,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Reserve',
                 'map_value' => 'Minneapolis, MN',
                 'zipcode_id' => 32071,
-            ),
-            192 => 
-            array (
+            ],
+            192 => [
                 'id' => 193,
                 'base' => 'Youngstown-Warren Regional Airport ARS',
                 'city_id' => 18359,
@@ -2139,9 +1944,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Reserve',
                 'map_value' => 'Vienna, OH',
                 'zipcode_id' => 25665,
-            ),
-            193 => 
-            array (
+            ],
+            193 => [
                 'id' => 194,
                 'base' => 'Pittsburgh IAP-ARS',
                 'city_id' => 5756,
@@ -2150,9 +1954,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Reserve',
                 'map_value' => 'Coraopolis, PA',
                 'zipcode_id' => 7404,
-            ),
-            194 => 
-            array (
+            ],
+            194 => [
                 'id' => 195,
                 'base' => 'Willow Grove ARS',
                 'city_id' => 7848,
@@ -2161,9 +1964,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Reserve',
                 'map_value' => 'Hatboro, PA',
                 'zipcode_id' => 9870,
-            ),
-            195 => 
-            array (
+            ],
+            195 => [
                 'id' => 196,
                 'base' => 'Gen Mitchell IAP-ARS',
                 'city_id' => 22218,
@@ -2172,9 +1974,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'AF Reserve',
                 'map_value' => 'Milwaukee, WI',
                 'zipcode_id' => 30753,
-            ),
-            196 => 
-            array (
+            ],
+            196 => [
                 'id' => 197,
                 'base' => 'Abston ANGS',
                 'city_id' => 14737,
@@ -2183,9 +1984,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Montgomery, AL',
                 'zipcode_id' => 21006,
-            ),
-            197 => 
-            array (
+            ],
+            197 => [
                 'id' => 198,
                 'base' => 'Birmingham IAP',
                 'city_id' => 14446,
@@ -2194,9 +1994,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Birmingham, AL',
                 'zipcode_id' => 20538,
-            ),
-            198 => 
-            array (
+            ],
+            198 => [
                 'id' => 199,
                 'base' => 'Dannelly Field ANG',
                 'city_id' => 14737,
@@ -2205,9 +2004,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Montgomery, AL',
                 'zipcode_id' => 21006,
-            ),
-            199 => 
-            array (
+            ],
+            199 => [
                 'id' => 200,
                 'base' => 'Martin ANGS',
                 'city_id' => 14628,
@@ -2216,20 +2014,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Gadsden, AL',
                 'zipcode_id' => 20876,
-            ),
-            200 => 
-            array (
+            ],
+            200 => [
                 'id' => 201,
-            'base' => 'Anchorage IAP (ANGB)',
+                'base' => 'Anchorage IAP (ANGB)',
                 'city_id' => 38699,
                 'state_id' => 2,
                 'branch' => 'AIR FORCE',
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Anchorage, AK',
                 'zipcode_id' => 55122,
-            ),
-            201 => 
-            array (
+            ],
+            201 => [
                 'id' => 202,
                 'base' => 'Sky Harbor IAP',
                 'city_id' => 34922,
@@ -2238,9 +2034,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Phoenix, AZ',
                 'zipcode_id' => 48167,
-            ),
-            202 => 
-            array (
+            ],
+            202 => [
                 'id' => 203,
                 'base' => 'Tucson IAP',
                 'city_id' => 35110,
@@ -2249,9 +2044,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Tucson, AZ',
                 'zipcode_id' => 48625,
-            ),
-            203 => 
-            array (
+            ],
+            203 => [
                 'id' => 204,
                 'base' => 'Fort Smith Municipal Airport ANG',
                 'city_id' => 30761,
@@ -2260,9 +2054,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Fort Smith, AR',
                 'zipcode_id' => 41526,
-            ),
-            204 => 
-            array (
+            ],
+            204 => [
                 'id' => 205,
                 'base' => 'Channel Islands ANGS',
                 'city_id' => 36431,
@@ -2271,9 +2064,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Oxnard, CA',
                 'zipcode_id' => 51481,
-            ),
-            205 => 
-            array (
+            ],
+            205 => [
                 'id' => 206,
                 'base' => 'Fresno Yosemite Intl',
                 'city_id' => 36696,
@@ -2282,9 +2074,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Fresno, CA',
                 'zipcode_id' => 51902,
-            ),
-            206 => 
-            array (
+            ],
+            206 => [
                 'id' => 207,
                 'base' => 'Hayward Municipal Airport ANG',
                 'city_id' => 36818,
@@ -2293,9 +2084,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Hayward, CA',
                 'zipcode_id' => 52281,
-            ),
-            207 => 
-            array (
+            ],
+            207 => [
                 'id' => 208,
                 'base' => 'Moffett Fld ANG',
                 'city_id' => 36780,
@@ -2304,9 +2094,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Sunnyvale, CA',
                 'zipcode_id' => 52086,
-            ),
-            208 => 
-            array (
+            ],
+            208 => [
                 'id' => 209,
                 'base' => 'San Diego ANGS',
                 'city_id' => 36177,
@@ -2315,9 +2104,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-            209 => 
-            array (
+            ],
+            209 => [
                 'id' => 210,
                 'base' => 'Sepulveda National Guard Station',
                 'city_id' => 36022,
@@ -2326,9 +2114,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Van Nuys, CA',
                 'zipcode_id' => 50391,
-            ),
-            210 => 
-            array (
+            ],
+            210 => [
                 'id' => 211,
                 'base' => 'Fort Carson Weapons Range',
                 'city_id' => 33680,
@@ -2337,9 +2124,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Pueblo, CO',
                 'zipcode_id' => 46485,
-            ),
-            211 => 
-            array (
+            ],
+            211 => [
                 'id' => 212,
                 'base' => 'Greeley ANGS',
                 'city_id' => 33567,
@@ -2348,20 +2134,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Greeley, CO',
                 'zipcode_id' => 46194,
-            ),
-            212 => 
-            array (
+            ],
+            212 => [
                 'id' => 213,
-            'base' => 'Bradley IAP (ANG)',
+                'base' => 'Bradley IAP (ANG)',
                 'city_id' => 2409,
                 'state_id' => 7,
                 'branch' => 'AIR FORCE',
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Windsor Locks, CT',
                 'zipcode_id' => 2865,
-            ),
-            213 => 
-            array (
+            ],
+            213 => [
                 'id' => 214,
                 'base' => 'New Castle County Airport',
                 'city_id' => 8169,
@@ -2370,20 +2154,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Newport, DE',
                 'zipcode_id' => 10459,
-            ),
-            214 => 
-            array (
+            ],
+            214 => [
                 'id' => 215,
-            'base' => 'Camp Blanding Military Reservation (ANG)',
+                'base' => 'Camp Blanding Military Reservation (ANG)',
                 'city_id' => 13351,
                 'state_id' => 9,
                 'branch' => 'AIR FORCE',
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Starke, FL',
                 'zipcode_id' => 17891,
-            ),
-            215 => 
-            array (
+            ],
+            215 => [
                 'id' => 216,
                 'base' => 'Jacksonville IAP ANG',
                 'city_id' => 13307,
@@ -2392,9 +2174,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Callahan, FL',
                 'zipcode_id' => 17819,
-            ),
-            216 => 
-            array (
+            ],
+            216 => [
                 'id' => 217,
                 'base' => 'Glynco ANGS',
                 'city_id' => 13147,
@@ -2403,9 +2184,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Brunswick, GA',
                 'zipcode_id' => 17606,
-            ),
-            217 => 
-            array (
+            ],
+            217 => [
                 'id' => 218,
                 'base' => 'Savannah/Hilton Head IAP',
                 'city_id' => 13132,
@@ -2414,9 +2194,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Savannah, GA',
                 'zipcode_id' => 17563,
-            ),
-            218 => 
-            array (
+            ],
+            218 => [
                 'id' => 219,
                 'base' => 'Barking Sands Communication Station',
                 'city_id' => 37610,
@@ -2425,20 +2204,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Kekaha, HI',
                 'zipcode_id' => 53483,
-            ),
-            219 => 
-            array (
+            ],
+            219 => [
                 'id' => 220,
-            'base' => 'Boise Air Terminal (ANG)',
+                'base' => 'Boise Air Terminal (ANG)',
                 'city_id' => 34448,
                 'state_id' => 12,
                 'branch' => 'AIR FORCE',
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Boise, ID',
                 'zipcode_id' => 47396,
-            ),
-            220 => 
-            array (
+            ],
+            220 => [
                 'id' => 221,
                 'base' => 'Capital Municipal Airport ANG',
                 'city_id' => 26823,
@@ -2447,9 +2224,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Springfield, IL',
                 'zipcode_id' => 36469,
-            ),
-            221 => 
-            array (
+            ],
+            221 => [
                 'id' => 222,
                 'base' => 'Greater Peoria Regional Airport ANG',
                 'city_id' => 26169,
@@ -2458,9 +2234,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Bartonville, IL',
                 'zipcode_id' => 35730,
-            ),
-            222 => 
-            array (
+            ],
+            222 => [
                 'id' => 223,
                 'base' => 'Fort Wayne IAP',
                 'city_id' => 19380,
@@ -2469,9 +2244,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Fort Wayne, IN',
                 'zipcode_id' => 27123,
-            ),
-            223 => 
-            array (
+            ],
+            223 => [
                 'id' => 224,
                 'base' => 'Hulman Regional Airport',
                 'city_id' => 19807,
@@ -2480,9 +2254,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Terre Haute, IN',
                 'zipcode_id' => 27676,
-            ),
-            224 => 
-            array (
+            ],
+            224 => [
                 'id' => 225,
                 'base' => 'Des Moines IAP ANG',
                 'city_id' => 21236,
@@ -2491,20 +2264,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Des Moines, IA',
                 'zipcode_id' => 29606,
-            ),
-            225 => 
-            array (
+            ],
+            225 => [
                 'id' => 226,
-            'base' => 'Sioux Gateway Airport/Col Bud Day Field (ANG)',
+                'base' => 'Sioux Gateway Airport/Col Bud Day Field (ANG)',
                 'city_id' => 21540,
                 'state_id' => 15,
                 'branch' => 'AIR FORCE',
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Sergeant Bluff, IA',
                 'zipcode_id' => 29991,
-            ),
-            226 => 
-            array (
+            ],
+            226 => [
                 'id' => 227,
                 'base' => 'Forbes Field ANG',
                 'city_id' => 28351,
@@ -2513,9 +2284,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Topeka, KS',
                 'zipcode_id' => 38524,
-            ),
-            227 => 
-            array (
+            ],
+            227 => [
                 'id' => 228,
                 'base' => 'Smoky Hill ANG Range',
                 'city_id' => 28653,
@@ -2524,9 +2294,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Brookville, KS',
                 'zipcode_id' => 38905,
-            ),
-            228 => 
-            array (
+            ],
+            228 => [
                 'id' => 229,
                 'base' => 'Standiford Field ANG',
                 'city_id' => 16367,
@@ -2535,9 +2304,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Louisville, KY',
                 'zipcode_id' => 23173,
-            ),
-            229 => 
-            array (
+            ],
+            229 => [
                 'id' => 230,
                 'base' => 'New Orleans NAS ANG',
                 'city_id' => 29505,
@@ -2546,20 +2314,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Belle Chasse, LA',
                 'zipcode_id' => 39881,
-            ),
-            230 => 
-            array (
+            ],
+            230 => [
                 'id' => 231,
-            'base' => 'Bangor IAP (ANG)',
+                'base' => 'Bangor IAP (ANG)',
                 'city_id' => 1345,
                 'state_id' => 19,
                 'branch' => 'ARMY',
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Bangor, ME',
                 'zipcode_id' => 1728,
-            ),
-            231 => 
-            array (
+            ],
+            231 => [
                 'id' => 232,
                 'base' => 'South Portland ANGS',
                 'city_id' => 1219,
@@ -2568,9 +2334,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'South Portland, ME',
                 'zipcode_id' => 1581,
-            ),
-            232 => 
-            array (
+            ],
+            232 => [
                 'id' => 233,
                 'base' => 'Martin State Airport ANG',
                 'city_id' => 8667,
@@ -2579,9 +2344,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Baltimore, MD',
                 'zipcode_id' => 11497,
-            ),
-            233 => 
-            array (
+            ],
+            233 => [
                 'id' => 234,
                 'base' => 'Barnes Municipal Airport ANG',
                 'city_id' => 63,
@@ -2590,9 +2354,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Westfield, MA',
                 'zipcode_id' => 74,
-            ),
-            234 => 
-            array (
+            ],
+            234 => [
                 'id' => 235,
                 'base' => 'Otis ANGB',
                 'city_id' => 559,
@@ -2601,9 +2364,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Falmouth, MA',
                 'zipcode_id' => 801,
-            ),
-            235 => 
-            array (
+            ],
+            235 => [
                 'id' => 236,
                 'base' => 'Alpena County Regional Airport',
                 'city_id' => 20804,
@@ -2612,9 +2374,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Alpena, MI',
                 'zipcode_id' => 29131,
-            ),
-            236 => 
-            array (
+            ],
+            236 => [
                 'id' => 237,
                 'base' => 'Selfridge ANG Base',
                 'city_id' => 19983,
@@ -2623,9 +2384,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Mount Clemens, MI',
                 'zipcode_id' => 27903,
-            ),
-            237 => 
-            array (
+            ],
+            237 => [
                 'id' => 238,
                 'base' => 'W K Kellogg Airport',
                 'city_id' => 20449,
@@ -2634,31 +2394,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Battle Creek, MI',
                 'zipcode_id' => 28698,
-            ),
-            238 => 
-            array (
+            ],
+            238 => [
                 'id' => 239,
-            'base' => 'Duluth IAP (ANG)',
+                'base' => 'Duluth IAP (ANG)',
                 'city_id' => 23257,
                 'state_id' => 23,
                 'branch' => 'AIR FORCE',
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Duluth, MN',
                 'zipcode_id' => 32279,
-            ),
-            239 => 
-            array (
+            ],
+            239 => [
                 'id' => 240,
-            'base' => 'Gulfport-Biloxi Regional Airport (ANG)',
+                'base' => 'Gulfport-Biloxi Regional Airport (ANG)',
                 'city_id' => 16114,
                 'state_id' => 24,
                 'branch' => 'AIR FORCE',
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Gulfport, MS',
                 'zipcode_id' => 22867,
-            ),
-            240 => 
-            array (
+            ],
+            240 => [
                 'id' => 241,
                 'base' => 'Jackson IAP',
                 'city_id' => 16029,
@@ -2667,9 +2424,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Flowood, MS',
                 'zipcode_id' => 22752,
-            ),
-            241 => 
-            array (
+            ],
+            241 => [
                 'id' => 242,
                 'base' => 'Key Field ANG',
                 'city_id' => 16031,
@@ -2678,9 +2434,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Meridian, MS',
                 'zipcode_id' => 22770,
-            ),
-            242 => 
-            array (
+            ],
+            242 => [
                 'id' => 243,
                 'base' => 'Fort Leonard Wood Range',
                 'city_id' => 27949,
@@ -2689,9 +2444,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Fort Leonard Wood, MO',
                 'zipcode_id' => 37940,
-            ),
-            243 => 
-            array (
+            ],
+            243 => [
                 'id' => 244,
                 'base' => 'Jefferson Barracks ANGS',
                 'city_id' => 27097,
@@ -2700,9 +2454,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Saint Louis, MO',
                 'zipcode_id' => 36813,
-            ),
-            244 => 
-            array (
+            ],
+            244 => [
                 'id' => 245,
                 'base' => 'Lambert St Louis IAP ANG',
                 'city_id' => 27084,
@@ -2711,9 +2464,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Saint Ann, MO',
                 'zipcode_id' => 36798,
-            ),
-            245 => 
-            array (
+            ],
+            245 => [
                 'id' => 246,
                 'base' => 'Rosecrans Memorial Airport',
                 'city_id' => 27617,
@@ -2722,9 +2474,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Saint Joseph, MO',
                 'zipcode_id' => 37549,
-            ),
-            246 => 
-            array (
+            ],
+            246 => [
                 'id' => 247,
                 'base' => 'Great Falls IAP ANG',
                 'city_id' => 25156,
@@ -2733,20 +2484,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Great Falls, MT',
                 'zipcode_id' => 34365,
-            ),
-            247 => 
-            array (
+            ],
+            247 => [
                 'id' => 248,
-            'base' => 'Lincoln Municipal Airport (ANG)',
+                'base' => 'Lincoln Municipal Airport (ANG)',
                 'city_id' => 29121,
                 'state_id' => 27,
                 'branch' => 'AIR FORCE',
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Lincoln, NE',
                 'zipcode_id' => 39446,
-            ),
-            248 => 
-            array (
+            ],
+            248 => [
                 'id' => 249,
                 'base' => 'Reno Tahoe IAP',
                 'city_id' => 35812,
@@ -2755,9 +2504,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Reno, NV',
                 'zipcode_id' => 49794,
-            ),
-            249 => 
-            array (
+            ],
+            249 => [
                 'id' => 250,
                 'base' => 'Pease Intl Tradeport',
                 'city_id' => 1009,
@@ -2766,9 +2514,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Portsmouth, NH',
                 'zipcode_id' => 1345,
-            ),
-            250 => 
-            array (
+            ],
+            250 => [
                 'id' => 251,
                 'base' => 'Atlantic City IAP',
                 'city_id' => 3253,
@@ -2777,20 +2524,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Pleasantville, NJ',
                 'zipcode_id' => 4060,
-            ),
-            251 => 
-            array (
+            ],
+            251 => [
                 'id' => 252,
-            'base' => 'Charlotte/Douglas IAP (ANG)',
+                'base' => 'Charlotte/Douglas IAP (ANG)',
                 'city_id' => 11670,
                 'state_id' => 33,
                 'branch' => 'AIR FORCE',
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Charlotte, NC',
                 'zipcode_id' => 15414,
-            ),
-            252 => 
-            array (
+            ],
+            252 => [
                 'id' => 253,
                 'base' => 'Stanly County Airport',
                 'city_id' => 11565,
@@ -2799,20 +2544,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Albemarle, NC',
                 'zipcode_id' => 15285,
-            ),
-            253 => 
-            array (
+            ],
+            253 => [
                 'id' => 254,
-            'base' => 'Hector IAP (ANG)',
+                'base' => 'Hector IAP (ANG)',
                 'city_id' => 24542,
                 'state_id' => 34,
                 'branch' => 'AIR FORCE',
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Fargo, ND',
                 'zipcode_id' => 33686,
-            ),
-            254 => 
-            array (
+            ],
+            254 => [
                 'id' => 255,
                 'base' => 'Blue Ash ANGS',
                 'city_id' => 18680,
@@ -2821,9 +2564,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Blue Ash, OH',
                 'zipcode_id' => 26107,
-            ),
-            255 => 
-            array (
+            ],
+            255 => [
                 'id' => 256,
                 'base' => 'Camp Perry ANGS',
                 'city_id' => 17847,
@@ -2832,9 +2574,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Port Clinton, OH',
                 'zipcode_id' => 24933,
-            ),
-            256 => 
-            array (
+            ],
+            256 => [
                 'id' => 257,
                 'base' => 'Mansfield Lahm Airport ANG',
                 'city_id' => 18533,
@@ -2843,20 +2584,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Mansfield, OH',
                 'zipcode_id' => 25887,
-            ),
-            257 => 
-            array (
+            ],
+            257 => [
                 'id' => 258,
-            'base' => 'Rickenbacker IAP (ANG)',
+                'base' => 'Rickenbacker IAP (ANG)',
                 'city_id' => 17715,
                 'state_id' => 35,
                 'branch' => 'AIR FORCE',
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Lockbourne, OH',
                 'zipcode_id' => 24738,
-            ),
-            258 => 
-            array (
+            ],
+            258 => [
                 'id' => 259,
                 'base' => 'Springfield Beckley Municipal Airport',
                 'city_id' => 18812,
@@ -2865,9 +2604,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Springfield, OH',
                 'zipcode_id' => 26389,
-            ),
-            259 => 
-            array (
+            ],
+            259 => [
                 'id' => 260,
                 'base' => 'Toledo Express Airport ANG',
                 'city_id' => 17911,
@@ -2876,9 +2614,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Swanton, OH',
                 'zipcode_id' => 25005,
-            ),
-            260 => 
-            array (
+            ],
+            260 => [
                 'id' => 261,
                 'base' => 'Tulsa IAP',
                 'city_id' => 31193,
@@ -2887,9 +2624,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Tulsa, OK',
                 'zipcode_id' => 42108,
-            ),
-            261 => 
-            array (
+            ],
+            261 => [
                 'id' => 262,
                 'base' => 'Will Rogers World Airport',
                 'city_id' => 30884,
@@ -2898,9 +2634,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Oklahoma City, OK',
                 'zipcode_id' => 41676,
-            ),
-            262 => 
-            array (
+            ],
+            262 => [
                 'id' => 263,
                 'base' => 'Coos Head ANGS',
                 'city_id' => 37880,
@@ -2909,9 +2644,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Charleston, OR',
                 'zipcode_id' => 53919,
-            ),
-            263 => 
-            array (
+            ],
+            263 => [
                 'id' => 264,
                 'base' => 'Klamath Falls Airport-Kingsley Field',
                 'city_id' => 37981,
@@ -2920,9 +2654,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Klamath Falls, OR',
                 'zipcode_id' => 54037,
-            ),
-            264 => 
-            array (
+            ],
+            264 => [
                 'id' => 265,
                 'base' => 'Portland IAP',
                 'city_id' => 37746,
@@ -2931,9 +2664,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Portland, OR',
                 'zipcode_id' => 53680,
-            ),
-            265 => 
-            array (
+            ],
+            265 => [
                 'id' => 266,
                 'base' => 'Fort Indiantown Gap ANGS',
                 'city_id' => 6778,
@@ -2942,9 +2674,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Lebanon, PA',
                 'zipcode_id' => 8597,
-            ),
-            266 => 
-            array (
+            ],
+            266 => [
                 'id' => 267,
                 'base' => 'Harrisburg IAP',
                 'city_id' => 6804,
@@ -2953,20 +2684,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Middletown, PA',
                 'zipcode_id' => 8626,
-            ),
-            267 => 
-            array (
+            ],
+            267 => [
                 'id' => 268,
-            'base' => 'Pittsburgh IAP (ANG)',
+                'base' => 'Pittsburgh IAP (ANG)',
                 'city_id' => 5756,
                 'state_id' => 38,
                 'branch' => 'AIR FORCE',
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Coraopolis, PA',
                 'zipcode_id' => 7404,
-            ),
-            268 => 
-            array (
+            ],
+            268 => [
                 'id' => 269,
                 'base' => 'State College ANGS',
                 'city_id' => 6617,
@@ -2975,9 +2704,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'State College, PA',
                 'zipcode_id' => 8425,
-            ),
-            269 => 
-            array (
+            ],
+            269 => [
                 'id' => 270,
                 'base' => 'Coventry ANGS',
                 'city_id' => 689,
@@ -2986,9 +2714,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Coventry, RI',
                 'zipcode_id' => 961,
-            ),
-            270 => 
-            array (
+            ],
+            270 => [
                 'id' => 271,
                 'base' => 'North Smithfield ANGS',
                 'city_id' => 733,
@@ -2997,9 +2724,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Slatersville, RI',
                 'zipcode_id' => 1014,
-            ),
-            271 => 
-            array (
+            ],
+            271 => [
                 'id' => 272,
                 'base' => 'Quonset State Airport ANG',
                 'city_id' => 716,
@@ -3008,9 +2734,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'North Kingstown, RI',
                 'zipcode_id' => 992,
-            ),
-            272 => 
-            array (
+            ],
+            272 => [
                 'id' => 273,
                 'base' => 'McEntire Air Guard Stn',
                 'city_id' => 12148,
@@ -3019,9 +2744,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Eastover, SC',
                 'zipcode_id' => 16050,
-            ),
-            273 => 
-            array (
+            ],
+            273 => [
                 'id' => 274,
                 'base' => 'Joe Foss Field ANG',
                 'city_id' => 24089,
@@ -3030,9 +2754,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Sioux Falls, SD',
                 'zipcode_id' => 33201,
-            ),
-            274 => 
-            array (
+            ],
+            274 => [
                 'id' => 275,
                 'base' => 'McGhee Tyson Airport',
                 'city_id' => 15328,
@@ -3041,9 +2764,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Alcoa, TN',
                 'zipcode_id' => 21841,
-            ),
-            275 => 
-            array (
+            ],
+            275 => [
                 'id' => 276,
                 'base' => 'Memphis IAP',
                 'city_id' => 15291,
@@ -3052,9 +2774,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Memphis, TN',
                 'zipcode_id' => 21788,
-            ),
-            276 => 
-            array (
+            ],
+            276 => [
                 'id' => 277,
                 'base' => 'Nashville IAP',
                 'city_id' => 15177,
@@ -3063,9 +2784,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Nashville, TN',
                 'zipcode_id' => 21595,
-            ),
-            277 => 
-            array (
+            ],
+            277 => [
                 'id' => 278,
                 'base' => 'Ellington Field',
                 'city_id' => 32325,
@@ -3074,9 +2794,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Houston, TX',
                 'zipcode_id' => 43843,
-            ),
-            278 => 
-            array (
+            ],
+            278 => [
                 'id' => 279,
                 'base' => 'Salt Lake City IAP ANG',
                 'city_id' => 34653,
@@ -3085,42 +2804,38 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Salt Lake City, UT',
                 'zipcode_id' => 47673,
-            ),
-            279 => 
-            array (
+            ],
+            279 => [
                 'id' => 280,
-            'base' => 'Burlington IAP (ANG)',
+                'base' => 'Burlington IAP (ANG)',
                 'city_id' => 2060,
                 'state_id' => 45,
                 'branch' => 'AIR FORCE',
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'S Burlington, VT',
                 'zipcode_id' => 2473,
-            ),
-            280 => 
-            array (
+            ],
+            280 => [
                 'id' => 281,
-            'base' => 'Camp Pendleton Military Reservation (ANG)',
+                'base' => 'Camp Pendleton Military Reservation (ANG)',
                 'city_id' => 9544,
                 'state_id' => 46,
                 'branch' => 'AIR FORCE',
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Virginia Beach, VA',
                 'zipcode_id' => 12771,
-            ),
-            281 => 
-            array (
+            ],
+            281 => [
                 'id' => 282,
-            'base' => 'Richmond IAP (Byrd Field)',
+                'base' => 'Richmond IAP (Byrd Field)',
                 'city_id' => 9437,
                 'state_id' => 46,
                 'branch' => 'AIR FORCE',
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Sandston, VA',
                 'zipcode_id' => 12571,
-            ),
-            282 => 
-            array (
+            ],
+            282 => [
                 'id' => 283,
                 'base' => 'Camp Murray ANGS',
                 'city_id' => 38331,
@@ -3129,20 +2844,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Tacoma, WA',
                 'zipcode_id' => 54568,
-            ),
-            283 => 
-            array (
+            ],
+            283 => [
                 'id' => 284,
-            'base' => 'Four Lakes Communications Station (ANG)',
+                'base' => 'Four Lakes Communications Station (ANG)',
                 'city_id' => 38550,
                 'state_id' => 47,
                 'branch' => 'AIR FORCE',
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Cheney, WA',
                 'zipcode_id' => 54906,
-            ),
-            284 => 
-            array (
+            ],
+            284 => [
                 'id' => 285,
                 'base' => 'Spokane IAP ANG',
                 'city_id' => 38657,
@@ -3151,9 +2864,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Spokane, WA',
                 'zipcode_id' => 55031,
-            ),
-            285 => 
-            array (
+            ],
+            285 => [
                 'id' => 286,
                 'base' => 'EWVRA Shepherd Field ANG',
                 'city_id' => 10433,
@@ -3162,9 +2874,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Martinsburg, WV',
                 'zipcode_id' => 13897,
-            ),
-            286 => 
-            array (
+            ],
+            286 => [
                 'id' => 287,
                 'base' => 'Yeager Airport ANG',
                 'city_id' => 10424,
@@ -3173,31 +2884,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Charleston, WV',
                 'zipcode_id' => 13840,
-            ),
-            287 => 
-            array (
+            ],
+            287 => [
                 'id' => 288,
-            'base' => 'General Mitchell IAP (ANG)',
+                'base' => 'General Mitchell IAP (ANG)',
                 'city_id' => 22218,
                 'state_id' => 49,
                 'branch' => 'AIR FORCE',
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Milwaukee, WI',
                 'zipcode_id' => 30753,
-            ),
-            288 => 
-            array (
+            ],
+            288 => [
                 'id' => 289,
-            'base' => 'Hardwood Weapons Range (ANG)',
+                'base' => 'Hardwood Weapons Range (ANG)',
                 'city_id' => 38988,
                 'state_id' => 49,
                 'branch' => 'AIR FORCE',
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Finley, WI',
                 'zipcode_id' => 55503,
-            ),
-            289 => 
-            array (
+            ],
+            289 => [
                 'id' => 290,
                 'base' => 'Truax Field',
                 'city_id' => 22322,
@@ -3206,9 +2914,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Madison, WI',
                 'zipcode_id' => 30944,
-            ),
-            290 => 
-            array (
+            ],
+            290 => [
                 'id' => 291,
                 'base' => 'Volk Field',
                 'city_id' => 22697,
@@ -3217,9 +2924,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Camp Douglas, WI',
                 'zipcode_id' => 31399,
-            ),
-            291 => 
-            array (
+            ],
+            291 => [
                 'id' => 292,
                 'base' => 'Cheyenne Municipal Airport ANG',
                 'city_id' => 33932,
@@ -3228,9 +2934,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Air Natl Guard',
                 'map_value' => 'Cheyenne, WY',
                 'zipcode_id' => 46792,
-            ),
-            292 => 
-            array (
+            ],
+            292 => [
                 'id' => 293,
                 'base' => '10C Stagefield',
                 'city_id' => 14807,
@@ -3239,9 +2944,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'New Brockton, AL',
                 'zipcode_id' => 21124,
-            ),
-            293 => 
-            array (
+            ],
+            293 => [
                 'id' => 294,
                 'base' => 'Allen Stagefield',
                 'city_id' => 14779,
@@ -3250,9 +2954,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Dothan, AL',
                 'zipcode_id' => 21090,
-            ),
-            294 => 
-            array (
+            ],
+            294 => [
                 'id' => 295,
                 'base' => 'Anniston Army Depot',
                 'city_id' => 14741,
@@ -3261,20 +2964,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Anniston, AL',
                 'zipcode_id' => 21045,
-            ),
-            295 => 
-            array (
+            ],
+            295 => [
                 'id' => 296,
-            'base' => 'Brown (4B) Stagefield',
+                'base' => 'Brown (4B) Stagefield',
                 'city_id' => 14807,
                 'state_id' => 1,
                 'branch' => 'ARMY',
                 'sub_branch' => 'Army Active',
                 'map_value' => 'New Brockton, AL',
                 'zipcode_id' => 21124,
-            ),
-            296 => 
-            array (
+            ],
+            296 => [
                 'id' => 297,
                 'base' => 'Cairns Basefield',
                 'city_id' => 14796,
@@ -3283,9 +2984,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Daleville, AL',
                 'zipcode_id' => 21112,
-            ),
-            297 => 
-            array (
+            ],
+            297 => [
                 'id' => 298,
                 'base' => 'Fort Benning',
                 'city_id' => 13292,
@@ -3294,9 +2994,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Columbus, GA',
                 'zipcode_id' => 17784,
-            ),
-            298 => 
-            array (
+            ],
+            298 => [
                 'id' => 299,
                 'base' => 'Fort McClellan',
                 'city_id' => 14741,
@@ -3305,9 +3004,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Anniston, AL',
                 'zipcode_id' => 21045,
-            ),
-            299 => 
-            array (
+            ],
+            299 => [
                 'id' => 300,
                 'base' => 'Fort Rucker',
                 'city_id' => 14796,
@@ -3316,9 +3014,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Daleville, AL',
                 'zipcode_id' => 21112,
-            ),
-            300 => 
-            array (
+            ],
+            300 => [
                 'id' => 301,
                 'base' => 'Goldberg Stagefield',
                 'city_id' => 14806,
@@ -3327,9 +3024,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Midland City, AL',
                 'zipcode_id' => 21123,
-            ),
-            301 => 
-            array (
+            ],
+            301 => [
                 'id' => 302,
                 'base' => 'Highbluff Stagefield',
                 'city_id' => 14802,
@@ -3338,9 +3034,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Hartford, AL',
                 'zipcode_id' => 21119,
-            ),
-            302 => 
-            array (
+            ],
+            302 => [
                 'id' => 303,
                 'base' => 'Hunt Stagefield',
                 'city_id' => 14810,
@@ -3349,9 +3044,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Ozark, AL',
                 'zipcode_id' => 21127,
-            ),
-            303 => 
-            array (
+            ],
+            303 => [
                 'id' => 304,
                 'base' => 'Phosphate Dev Wks',
                 'city_id' => 14579,
@@ -3360,9 +3054,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Sheffield, AL',
                 'zipcode_id' => 20799,
-            ),
-            304 => 
-            array (
+            ],
+            304 => [
                 'id' => 305,
                 'base' => 'Redstone Arsenal',
                 'city_id' => 14627,
@@ -3371,9 +3064,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Huntsville, AL',
                 'zipcode_id' => 20852,
-            ),
-            305 => 
-            array (
+            ],
+            305 => [
                 'id' => 306,
                 'base' => 'Runkle Stagefield',
                 'city_id' => 14798,
@@ -3382,9 +3074,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Elba, AL',
                 'zipcode_id' => 21114,
-            ),
-            306 => 
-            array (
+            ],
+            306 => [
                 'id' => 307,
                 'base' => 'Shell Stagefield',
                 'city_id' => 14799,
@@ -3393,9 +3084,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Enterprise, AL',
                 'zipcode_id' => 21115,
-            ),
-            307 => 
-            array (
+            ],
+            307 => [
                 'id' => 308,
                 'base' => 'Skelly Stagefield',
                 'city_id' => 14798,
@@ -3404,20 +3094,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Elba, AL',
                 'zipcode_id' => 21114,
-            ),
-            308 => 
-            array (
+            ],
+            308 => [
                 'id' => 309,
-            'base' => 'Stinson (5AB) Stagefield',
+                'base' => 'Stinson (5AB) Stagefield',
                 'city_id' => 14807,
                 'state_id' => 1,
                 'branch' => 'ARMY',
                 'sub_branch' => 'Army Active',
                 'map_value' => 'New Brockton, AL',
                 'zipcode_id' => 21124,
-            ),
-            309 => 
-            array (
+            ],
+            309 => [
                 'id' => 310,
                 'base' => 'Toth Stagefield',
                 'city_id' => 14779,
@@ -3426,9 +3114,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Dothan, AL',
                 'zipcode_id' => 21090,
-            ),
-            310 => 
-            array (
+            ],
+            310 => [
                 'id' => 311,
                 'base' => 'Black Rapids Training Area',
                 'city_id' => 38888,
@@ -3437,9 +3124,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Delta Junction, AK',
                 'zipcode_id' => 55376,
-            ),
-            311 => 
-            array (
+            ],
+            311 => [
                 'id' => 312,
                 'base' => 'Donnelly Training Area',
                 'city_id' => 38862,
@@ -3448,9 +3134,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Fairbanks, AK',
                 'zipcode_id' => 55339,
-            ),
-            312 => 
-            array (
+            ],
+            312 => [
                 'id' => 313,
                 'base' => 'Fairbanks Eielson Pipeline',
                 'city_id' => 38862,
@@ -3459,9 +3144,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Fairbanks, AK',
                 'zipcode_id' => 55339,
-            ),
-            313 => 
-            array (
+            ],
+            313 => [
                 'id' => 314,
                 'base' => 'Fort Greely',
                 'city_id' => 38862,
@@ -3470,9 +3154,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Fairbanks, AK',
                 'zipcode_id' => 55339,
-            ),
-            314 => 
-            array (
+            ],
+            314 => [
                 'id' => 315,
                 'base' => 'Fort Richardson',
                 'city_id' => 38699,
@@ -3481,9 +3164,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Anchorage, AK',
                 'zipcode_id' => 55122,
-            ),
-            315 => 
-            array (
+            ],
+            315 => [
                 'id' => 316,
                 'base' => 'Fort Wainwright',
                 'city_id' => 38862,
@@ -3492,9 +3174,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Fairbanks, AK',
                 'zipcode_id' => 55339,
-            ),
-            316 => 
-            array (
+            ],
+            316 => [
                 'id' => 317,
                 'base' => 'Haines Terminal',
                 'city_id' => 38960,
@@ -3503,9 +3184,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Haines, AK',
                 'zipcode_id' => 55467,
-            ),
-            317 => 
-            array (
+            ],
+            317 => [
                 'id' => 318,
                 'base' => 'Pd Tok Junction',
                 'city_id' => 38939,
@@ -3514,9 +3194,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Tok, AK',
                 'zipcode_id' => 55434,
-            ),
-            318 => 
-            array (
+            ],
+            318 => [
                 'id' => 319,
                 'base' => 'Seward Recreation Area',
                 'city_id' => 38833,
@@ -3525,9 +3204,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Seward, AK',
                 'zipcode_id' => 55297,
-            ),
-            319 => 
-            array (
+            ],
+            319 => [
                 'id' => 320,
                 'base' => 'Whittier Anchorage Pipeline',
                 'city_id' => 38861,
@@ -3536,9 +3214,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Whittier, AK',
                 'zipcode_id' => 55334,
-            ),
-            320 => 
-            array (
+            ],
+            320 => [
                 'id' => 321,
                 'base' => 'Yukon Command Training Site',
                 'city_id' => 38862,
@@ -3547,9 +3224,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Fairbanks, AK',
                 'zipcode_id' => 55339,
-            ),
-            321 => 
-            array (
+            ],
+            321 => [
                 'id' => 322,
                 'base' => 'Fort Huachuca',
                 'city_id' => 35068,
@@ -3558,9 +3234,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Sierra Vista, AZ',
                 'zipcode_id' => 48569,
-            ),
-            322 => 
-            array (
+            ],
+            322 => [
                 'id' => 323,
                 'base' => 'Yuma Proving Ground',
                 'city_id' => 35027,
@@ -3569,9 +3244,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Yuma, AZ',
                 'zipcode_id' => 48499,
-            ),
-            323 => 
-            array (
+            ],
+            323 => [
                 'id' => 324,
                 'base' => 'Fort Chaffee',
                 'city_id' => 30761,
@@ -3580,9 +3254,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Fort Smith, AR',
                 'zipcode_id' => 41526,
-            ),
-            324 => 
-            array (
+            ],
+            324 => [
                 'id' => 325,
                 'base' => 'Pine Bluff Arsenal',
                 'city_id' => 30089,
@@ -3591,9 +3264,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Pine Bluff, AR',
                 'zipcode_id' => 40710,
-            ),
-            325 => 
-            array (
+            ],
+            325 => [
                 'id' => 326,
                 'base' => 'Concord-CA-0696A',
                 'city_id' => 38989,
@@ -3602,9 +3274,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Clyde, CA',
                 'zipcode_id' => 55504,
-            ),
-            326 => 
-            array (
+            ],
+            326 => [
                 'id' => 327,
                 'base' => 'Def Distr Reg West Sharpe Site',
                 'city_id' => 36957,
@@ -3613,9 +3284,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Stockton, CA',
                 'zipcode_id' => 52624,
-            ),
-            327 => 
-            array (
+            ],
+            327 => [
                 'id' => 328,
                 'base' => 'Def Distr Reg West Tracy',
                 'city_id' => 37000,
@@ -3624,9 +3294,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Tracy, CA',
                 'zipcode_id' => 52693,
-            ),
-            328 => 
-            array (
+            ],
+            328 => [
                 'id' => 329,
                 'base' => 'Fort Ord',
                 'city_id' => 36740,
@@ -3635,9 +3304,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Seaside, CA',
                 'zipcode_id' => 52022,
-            ),
-            329 => 
-            array (
+            ],
+            329 => [
                 'id' => 330,
                 'base' => 'Hamilton Army Airfield',
                 'city_id' => 36892,
@@ -3646,9 +3314,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Novato, CA',
                 'zipcode_id' => 52458,
-            ),
-            330 => 
-            array (
+            ],
+            330 => [
                 'id' => 331,
                 'base' => 'NTC and Fort Irwin',
                 'city_id' => 36257,
@@ -3657,9 +3324,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Barstow, CA',
                 'zipcode_id' => 51053,
-            ),
-            331 => 
-            array (
+            ],
+            331 => [
                 'id' => 332,
                 'base' => 'Oakland Army Base',
                 'city_id' => 36855,
@@ -3668,9 +3334,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Oakland, CA',
                 'zipcode_id' => 52350,
-            ),
-            332 => 
-            array (
+            ],
+            332 => [
                 'id' => 333,
                 'base' => 'Ord Military Community',
                 'city_id' => 36740,
@@ -3679,9 +3344,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Seaside, CA',
                 'zipcode_id' => 52022,
-            ),
-            333 => 
-            array (
+            ],
+            333 => [
                 'id' => 334,
                 'base' => 'Presidio Of Monterey',
                 'city_id' => 36733,
@@ -3690,9 +3354,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Monterey, CA',
                 'zipcode_id' => 52012,
-            ),
-            334 => 
-            array (
+            ],
+            334 => [
                 'id' => 335,
                 'base' => 'Riverbank AAP',
                 'city_id' => 37049,
@@ -3701,9 +3364,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Riverbank, CA',
                 'zipcode_id' => 52757,
-            ),
-            335 => 
-            array (
+            ],
+            335 => [
                 'id' => 336,
                 'base' => 'Sacramento Army Depot',
                 'city_id' => 36784,
@@ -3712,9 +3374,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Sacramento, CA',
                 'zipcode_id' => 52159,
-            ),
-            336 => 
-            array (
+            ],
+            336 => [
                 'id' => 337,
                 'base' => 'SAT COM',
                 'city_id' => 36556,
@@ -3723,9 +3384,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Paso Robles, CA',
                 'zipcode_id' => 51711,
-            ),
-            337 => 
-            array (
+            ],
+            337 => [
                 'id' => 338,
                 'base' => 'Sierra Army Depot',
                 'city_id' => 37524,
@@ -3734,9 +3394,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Herlong, CA',
                 'zipcode_id' => 53371,
-            ),
-            338 => 
-            array (
+            ],
+            338 => [
                 'id' => 339,
                 'base' => 'Silas B. Hays',
                 'city_id' => 36740,
@@ -3745,9 +3404,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Seaside, CA',
                 'zipcode_id' => 52022,
-            ),
-            339 => 
-            array (
+            ],
+            339 => [
                 'id' => 340,
                 'base' => 'Fort Carson',
                 'city_id' => 33670,
@@ -3756,9 +3414,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Colorado Springs, CO',
                 'zipcode_id' => 46309,
-            ),
-            340 => 
-            array (
+            ],
+            340 => [
                 'id' => 341,
                 'base' => 'Pinon Canyon',
                 'city_id' => 33740,
@@ -3767,9 +3424,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Trinidad, CO',
                 'zipcode_id' => 46558,
-            ),
-            341 => 
-            array (
+            ],
+            341 => [
                 'id' => 342,
                 'base' => 'Pueblo Chemical Depot',
                 'city_id' => 33680,
@@ -3778,9 +3434,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Pueblo, CO',
                 'zipcode_id' => 46485,
-            ),
-            342 => 
-            array (
+            ],
+            342 => [
                 'id' => 343,
                 'base' => 'Rocky Mountain Arsenal',
                 'city_id' => 33407,
@@ -3789,9 +3444,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Commerce City, CO',
                 'zipcode_id' => 45803,
-            ),
-            343 => 
-            array (
+            ],
+            343 => [
                 'id' => 344,
                 'base' => 'Stratford Army Engine Plant ',
                 'city_id' => 2581,
@@ -3800,9 +3454,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Stratford, CT',
                 'zipcode_id' => 3132,
-            ),
-            344 => 
-            array (
+            ],
+            344 => [
                 'id' => 345,
                 'base' => 'Fort Lesley J McNair',
                 'city_id' => 8229,
@@ -3811,9 +3464,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Washington, DC',
                 'zipcode_id' => 10552,
-            ),
-            345 => 
-            array (
+            ],
+            345 => [
                 'id' => 346,
                 'base' => 'Walter Reed AMC Main Post',
                 'city_id' => 8229,
@@ -3822,9 +3474,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Washington, DC',
                 'zipcode_id' => 10552,
-            ),
-            346 => 
-            array (
+            ],
+            346 => [
                 'id' => 347,
                 'base' => 'Destin Moreno Point',
                 'city_id' => 13550,
@@ -3833,9 +3484,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Destin, FL',
                 'zipcode_id' => 18281,
-            ),
-            347 => 
-            array (
+            ],
+            347 => [
                 'id' => 348,
                 'base' => 'Sp Forces Site-Key West',
                 'city_id' => 13777,
@@ -3844,9 +3494,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Key West, FL',
                 'zipcode_id' => 18770,
-            ),
-            348 => 
-            array (
+            ],
+            348 => [
                 'id' => 349,
                 'base' => 'U.S. Army Garrison-Miami',
                 'city_id' => 13818,
@@ -3855,9 +3504,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Miami, FL',
                 'zipcode_id' => 18871,
-            ),
-            349 => 
-            array (
+            ],
+            349 => [
                 'id' => 350,
                 'base' => 'Dahlonega',
                 'city_id' => 12837,
@@ -3866,9 +3514,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Dahlonega, GA',
                 'zipcode_id' => 17168,
-            ),
-            350 => 
-            array (
+            ],
+            350 => [
                 'id' => 351,
                 'base' => 'Fort Gillem',
                 'city_id' => 12752,
@@ -3877,9 +3524,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Forest Park, GA',
                 'zipcode_id' => 16965,
-            ),
-            351 => 
-            array (
+            ],
+            351 => [
                 'id' => 352,
                 'base' => 'Fort Gordon',
                 'city_id' => 12994,
@@ -3888,9 +3534,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Augusta, GA',
                 'zipcode_id' => 17349,
-            ),
-            352 => 
-            array (
+            ],
+            352 => [
                 'id' => 353,
                 'base' => 'Fort Gordon Recreation Area',
                 'city_id' => 12994,
@@ -3899,9 +3544,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Augusta, GA',
                 'zipcode_id' => 17349,
-            ),
-            353 => 
-            array (
+            ],
+            353 => [
                 'id' => 354,
                 'base' => 'Fort McPherson',
                 'city_id' => 12754,
@@ -3910,9 +3554,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Atlanta, GA',
                 'zipcode_id' => 16968,
-            ),
-            354 => 
-            array (
+            ],
+            354 => [
                 'id' => 355,
                 'base' => 'Fort Stewart',
                 'city_id' => 13110,
@@ -3921,9 +3564,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Hinesville, GA',
                 'zipcode_id' => 17537,
-            ),
-            355 => 
-            array (
+            ],
+            355 => [
                 'id' => 356,
                 'base' => 'Hunter Army Airfield',
                 'city_id' => 13132,
@@ -3932,9 +3574,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Savannah, GA',
                 'zipcode_id' => 17563,
-            ),
-            356 => 
-            array (
+            ],
+            356 => [
                 'id' => 357,
                 'base' => 'Aliamanu Military Reservation',
                 'city_id' => 37652,
@@ -3943,9 +3584,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Honolulu, HI',
                 'zipcode_id' => 53526,
-            ),
-            357 => 
-            array (
+            ],
+            357 => [
                 'id' => 358,
                 'base' => 'Dillingham Mil Res',
                 'city_id' => 37646,
@@ -3954,9 +3594,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Waialua, HI',
                 'zipcode_id' => 53520,
-            ),
-            358 => 
-            array (
+            ],
+            358 => [
                 'id' => 359,
                 'base' => 'Fort De Russy',
                 'city_id' => 37652,
@@ -3965,9 +3604,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Honolulu, HI',
                 'zipcode_id' => 53526,
-            ),
-            359 => 
-            array (
+            ],
+            359 => [
                 'id' => 360,
                 'base' => 'Fort Shafter',
                 'city_id' => 37652,
@@ -3976,9 +3614,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Honolulu, HI',
                 'zipcode_id' => 53526,
-            ),
-            360 => 
-            array (
+            ],
+            360 => [
                 'id' => 361,
                 'base' => 'Helemano Military Reservation',
                 'city_id' => 37642,
@@ -3987,9 +3624,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Wahiawa, HI',
                 'zipcode_id' => 53516,
-            ),
-            361 => 
-            array (
+            ],
+            361 => [
                 'id' => 362,
                 'base' => 'Kahuku Tng Area',
                 'city_id' => 37594,
@@ -3998,9 +3634,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Kahuku, HI',
                 'zipcode_id' => 53464,
-            ),
-            362 => 
-            array (
+            ],
+            362 => [
                 'id' => 363,
                 'base' => 'Kilauea Mil Reserve',
                 'city_id' => 37585,
@@ -4009,9 +3644,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Hilo, HI',
                 'zipcode_id' => 53454,
-            ),
-            363 => 
-            array (
+            ],
+            363 => [
                 'id' => 364,
                 'base' => 'Kipapa Ammo Storage Site',
                 'city_id' => 37651,
@@ -4020,9 +3654,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Waipahu, HI',
                 'zipcode_id' => 53525,
-            ),
-            364 => 
-            array (
+            ],
+            364 => [
                 'id' => 365,
                 'base' => 'Makua Mil Reserve',
                 'city_id' => 37647,
@@ -4031,9 +3664,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Waianae, HI',
                 'zipcode_id' => 53521,
-            ),
-            365 => 
-            array (
+            ],
+            365 => [
                 'id' => 366,
                 'base' => 'Pohakuloa Training Area',
                 'city_id' => 37585,
@@ -4042,9 +3674,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Hilo, HI',
                 'zipcode_id' => 53454,
-            ),
-            366 => 
-            array (
+            ],
+            366 => [
                 'id' => 367,
                 'base' => 'Pupukea Paalaa Uka Mil Road',
                 'city_id' => 37642,
@@ -4053,9 +3684,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Wahiawa, HI',
                 'zipcode_id' => 53516,
-            ),
-            367 => 
-            array (
+            ],
+            367 => [
                 'id' => 368,
                 'base' => 'Schofield Bks Mil Reserve',
                 'city_id' => 37642,
@@ -4064,9 +3694,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Wahiawa, HI',
                 'zipcode_id' => 53516,
-            ),
-            368 => 
-            array (
+            ],
+            368 => [
                 'id' => 369,
                 'base' => 'Signal Cable Trunking System',
                 'city_id' => 37642,
@@ -4075,9 +3704,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Wahiawa, HI',
                 'zipcode_id' => 53516,
-            ),
-            369 => 
-            array (
+            ],
+            369 => [
                 'id' => 370,
                 'base' => 'Tripler AMC',
                 'city_id' => 37652,
@@ -4086,9 +3714,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Honolulu, HI',
                 'zipcode_id' => 53526,
-            ),
-            370 => 
-            array (
+            ],
+            370 => [
                 'id' => 371,
                 'base' => 'USA Field Station Kunia',
                 'city_id' => 37617,
@@ -4097,9 +3724,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Kunia, HI',
                 'zipcode_id' => 53490,
-            ),
-            371 => 
-            array (
+            ],
+            371 => [
                 'id' => 372,
                 'base' => 'Waianae',
                 'city_id' => 37647,
@@ -4108,9 +3734,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Waianae, HI',
                 'zipcode_id' => 53521,
-            ),
-            372 => 
-            array (
+            ],
+            372 => [
                 'id' => 373,
                 'base' => 'Waikakalaua Ammo Stor Tunnels',
                 'city_id' => 37644,
@@ -4119,9 +3744,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Mililani, HI',
                 'zipcode_id' => 53518,
-            ),
-            373 => 
-            array (
+            ],
+            373 => [
                 'id' => 374,
                 'base' => 'Wheeler Army Airfield',
                 'city_id' => 37642,
@@ -4130,9 +3754,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Wahiawa, HI',
                 'zipcode_id' => 53516,
-            ),
-            374 => 
-            array (
+            ],
+            374 => [
                 'id' => 375,
                 'base' => 'Idaho Launch Complex',
                 'city_id' => 34421,
@@ -4141,9 +3764,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Mountain Home, ID',
                 'zipcode_id' => 47364,
-            ),
-            375 => 
-            array (
+            ],
+            375 => [
                 'id' => 376,
                 'base' => 'Charles Melvin Price Spt Ctr',
                 'city_id' => 26355,
@@ -4152,9 +3774,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Granite City, IL',
                 'zipcode_id' => 35963,
-            ),
-            376 => 
-            array (
+            ],
+            376 => [
                 'id' => 377,
                 'base' => 'Joliet AAP Elwood',
                 'city_id' => 25602,
@@ -4163,9 +3784,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Joliet, IL',
                 'zipcode_id' => 34963,
-            ),
-            377 => 
-            array (
+            ],
+            377 => [
                 'id' => 378,
                 'base' => 'Joliet AAP Kankakee',
                 'city_id' => 25602,
@@ -4174,9 +3794,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Joliet, IL',
                 'zipcode_id' => 34963,
-            ),
-            378 => 
-            array (
+            ],
+            378 => [
                 'id' => 379,
                 'base' => 'Rock Island Arsenal',
                 'city_id' => 25921,
@@ -4185,9 +3804,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Rock Island, IL',
                 'zipcode_id' => 35469,
-            ),
-            379 => 
-            array (
+            ],
+            379 => [
                 'id' => 380,
                 'base' => 'Savanna Depot Act',
                 'city_id' => 26185,
@@ -4196,9 +3814,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Clinton, IL',
                 'zipcode_id' => 35779,
-            ),
-            380 => 
-            array (
+            ],
+            380 => [
                 'id' => 381,
                 'base' => 'Fort Benjamin Harrison',
                 'city_id' => 19163,
@@ -4207,9 +3824,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Indianapolis, IN',
                 'zipcode_id' => 26781,
-            ),
-            381 => 
-            array (
+            ],
+            381 => [
                 'id' => 382,
                 'base' => 'Indiana AAP',
                 'city_id' => 19498,
@@ -4218,9 +3834,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Charlestown, IN',
                 'zipcode_id' => 27289,
-            ),
-            382 => 
-            array (
+            ],
+            382 => [
                 'id' => 383,
                 'base' => 'Jefferson Proving Ground',
                 'city_id' => 19584,
@@ -4229,9 +3844,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Madison, IN',
                 'zipcode_id' => 27399,
-            ),
-            383 => 
-            array (
+            ],
+            383 => [
                 'id' => 384,
                 'base' => 'Newport Chem Depot',
                 'city_id' => 19807,
@@ -4240,9 +3854,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Terre Haute, IN',
                 'zipcode_id' => 27676,
-            ),
-            384 => 
-            array (
+            ],
+            384 => [
                 'id' => 385,
                 'base' => 'Iowa AAP',
                 'city_id' => 21972,
@@ -4251,9 +3864,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Burlington, IA',
                 'zipcode_id' => 30469,
-            ),
-            385 => 
-            array (
+            ],
+            385 => [
                 'id' => 386,
                 'base' => 'Def Ind Plt Eqp Fac',
                 'city_id' => 28164,
@@ -4262,9 +3874,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Atchison, KS',
                 'zipcode_id' => 38179,
-            ),
-            386 => 
-            array (
+            ],
+            386 => [
                 'id' => 387,
                 'base' => 'Fort Leavenworth',
                 'city_id' => 28203,
@@ -4273,9 +3884,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Leavenworth, KS',
                 'zipcode_id' => 38220,
-            ),
-            387 => 
-            array (
+            ],
+            387 => [
                 'id' => 388,
                 'base' => 'Fort Riley',
                 'city_id' => 28297,
@@ -4284,9 +3894,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Junction City, KS',
                 'zipcode_id' => 38464,
-            ),
-            388 => 
-            array (
+            ],
+            388 => [
                 'id' => 389,
                 'base' => 'Kansas AAP',
                 'city_id' => 28635,
@@ -4295,9 +3904,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Parsons, KS',
                 'zipcode_id' => 38886,
-            ),
-            389 => 
-            array (
+            ],
+            389 => [
                 'id' => 390,
                 'base' => 'Sunflower AAP',
                 'city_id' => 28179,
@@ -4306,9 +3914,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'De soto, KS',
                 'zipcode_id' => 38195,
-            ),
-            390 => 
-            array (
+            ],
+            390 => [
                 'id' => 391,
                 'base' => 'Blue Grass Army Depot',
                 'city_id' => 16564,
@@ -4317,9 +3924,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Richmond, KY',
                 'zipcode_id' => 23459,
-            ),
-            391 => 
-            array (
+            ],
+            391 => [
                 'id' => 392,
                 'base' => 'Fort Campbell - TN',
                 'city_id' => 15074,
@@ -4328,9 +3934,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Clarksville, TN',
                 'zipcode_id' => 21464,
-            ),
-            392 => 
-            array (
+            ],
+            392 => [
                 'id' => 393,
                 'base' => 'Fort Knox',
                 'city_id' => 16347,
@@ -4339,9 +3944,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Radcliff, KY',
                 'zipcode_id' => 23152,
-            ),
-            393 => 
-            array (
+            ],
+            393 => [
                 'id' => 394,
                 'base' => 'Lexington Facility',
                 'city_id' => 16574,
@@ -4350,9 +3954,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Lexington, KY',
                 'zipcode_id' => 23471,
-            ),
-            394 => 
-            array (
+            ],
+            394 => [
                 'id' => 395,
                 'base' => 'England Authority',
                 'city_id' => 29954,
@@ -4361,9 +3964,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Alexandria, LA',
                 'zipcode_id' => 40560,
-            ),
-            395 => 
-            array (
+            ],
+            395 => [
                 'id' => 396,
                 'base' => 'Fort Polk',
                 'city_id' => 30053,
@@ -4372,9 +3974,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Leesville, LA',
                 'zipcode_id' => 40669,
-            ),
-            396 => 
-            array (
+            ],
+            396 => [
                 'id' => 397,
                 'base' => 'Louisiana AAP',
                 'city_id' => 29886,
@@ -4383,9 +3984,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Shreveport, LA',
                 'zipcode_id' => 40438,
-            ),
-            397 => 
-            array (
+            ],
+            397 => [
                 'id' => 398,
                 'base' => 'Aberdeen Proving Ground',
                 'city_id' => 8554,
@@ -4394,9 +3994,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Aberdeen, MD',
                 'zipcode_id' => 11358,
-            ),
-            398 => 
-            array (
+            ],
+            398 => [
                 'id' => 399,
                 'base' => 'Blossom Pt Research Facility',
                 'city_id' => 8491,
@@ -4405,9 +4004,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Adelphi, MD',
                 'zipcode_id' => 11211,
-            ),
-            399 => 
-            array (
+            ],
+            399 => [
                 'id' => 400,
                 'base' => 'Federal Support Center',
                 'city_id' => 8514,
@@ -4416,9 +4014,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Olney, MD',
                 'zipcode_id' => 11262,
-            ),
-            400 => 
-            array (
+            ],
+            400 => [
                 'id' => 401,
                 'base' => 'Fort Detrick',
                 'city_id' => 8831,
@@ -4427,9 +4024,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Frederick, MD',
                 'zipcode_id' => 11758,
-            ),
-            401 => 
-            array (
+            ],
+            401 => [
                 'id' => 402,
                 'base' => 'Fort George G Meade',
                 'city_id' => 8667,
@@ -4438,9 +4034,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Baltimore, MD',
                 'zipcode_id' => 11497,
-            ),
-            402 => 
-            array (
+            ],
+            402 => [
                 'id' => 403,
                 'base' => 'Fort Ritchie',
                 'city_id' => 8845,
@@ -4449,9 +4044,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Cascade, MD',
                 'zipcode_id' => 11777,
-            ),
-            403 => 
-            array (
+            ],
+            403 => [
                 'id' => 404,
                 'base' => 'National Imagery & Mapping Agency',
                 'city_id' => 8502,
@@ -4460,9 +4054,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Bethesda, MD',
                 'zipcode_id' => 11239,
-            ),
-            404 => 
-            array (
+            ],
+            404 => [
                 'id' => 405,
                 'base' => 'U.S.A. Adelphi Laboratory Ctr',
                 'city_id' => 8491,
@@ -4471,9 +4064,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Adelphi, MD',
                 'zipcode_id' => 11211,
-            ),
-            405 => 
-            array (
+            ],
+            405 => [
                 'id' => 406,
                 'base' => 'Walter Reed AMC Forest Glen',
                 'city_id' => 8549,
@@ -4482,9 +4074,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Silver Spring, MD',
                 'zipcode_id' => 11330,
-            ),
-            406 => 
-            array (
+            ],
+            406 => [
                 'id' => 407,
                 'base' => 'Walter Reed AMC Glen Haven',
                 'city_id' => 8549,
@@ -4493,9 +4084,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Silver Spring, MD',
                 'zipcode_id' => 11330,
-            ),
-            407 => 
-            array (
+            ],
+            407 => [
                 'id' => 408,
                 'base' => 'Soldier Systems Center',
                 'city_id' => 280,
@@ -4504,9 +4094,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Natick, MA',
                 'zipcode_id' => 365,
-            ),
-            408 => 
-            array (
+            ],
+            408 => [
                 'id' => 409,
                 'base' => 'SSC Hudson HOUSING',
                 'city_id' => 275,
@@ -4515,9 +4104,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Hudson, MA',
                 'zipcode_id' => 360,
-            ),
-            409 => 
-            array (
+            ],
+            409 => [
                 'id' => 410,
                 'base' => 'Detroit Arsenal',
                 'city_id' => 20112,
@@ -4526,9 +4114,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Detroit, MI',
                 'zipcode_id' => 28111,
-            ),
-            410 => 
-            array (
+            ],
+            410 => [
                 'id' => 411,
                 'base' => 'Sebille Manor FH Michigan',
                 'city_id' => 19983,
@@ -4537,9 +4124,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Mount Clemens, MI',
                 'zipcode_id' => 27903,
-            ),
-            411 => 
-            array (
+            ],
+            411 => [
                 'id' => 412,
                 'base' => 'US Army Garrison Selfridge',
                 'city_id' => 19983,
@@ -4548,9 +4134,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Mount Clemens, MI',
                 'zipcode_id' => 27903,
-            ),
-            412 => 
-            array (
+            ],
+            412 => [
                 'id' => 413,
                 'base' => 'Twin Cities AAP',
                 'city_id' => 23084,
@@ -4559,9 +4144,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'New Brighton, MN',
                 'zipcode_id' => 31842,
-            ),
-            413 => 
-            array (
+            ],
+            413 => [
                 'id' => 414,
                 'base' => 'Mississippi AAP',
                 'city_id' => 16101,
@@ -4570,9 +4154,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Picayune, MS',
                 'zipcode_id' => 22854,
-            ),
-            414 => 
-            array (
+            ],
+            414 => [
                 'id' => 415,
                 'base' => 'Fort Leonard Wood',
                 'city_id' => 27984,
@@ -4581,9 +4164,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Waynesville, MO',
                 'zipcode_id' => 37976,
-            ),
-            415 => 
-            array (
+            ],
+            415 => [
                 'id' => 416,
                 'base' => 'Lake City AAP',
                 'city_id' => 27484,
@@ -4592,9 +4174,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Independence, MO',
                 'zipcode_id' => 37307,
-            ),
-            416 => 
-            array (
+            ],
+            416 => [
                 'id' => 417,
                 'base' => 'Lake Of the Ozarks Recreation',
                 'city_id' => 27785,
@@ -4603,9 +4184,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Camdenton, MO',
                 'zipcode_id' => 37735,
-            ),
-            417 => 
-            array (
+            ],
+            417 => [
                 'id' => 418,
                 'base' => 'St Louis AAP',
                 'city_id' => 27097,
@@ -4614,9 +4194,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Saint Louis, MO',
                 'zipcode_id' => 36813,
-            ),
-            418 => 
-            array (
+            ],
+            418 => [
                 'id' => 419,
                 'base' => 'St. Charles USARC',
                 'city_id' => 27126,
@@ -4625,9 +4204,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Saint Charles, MO',
                 'zipcode_id' => 36917,
-            ),
-            419 => 
-            array (
+            ],
+            419 => [
                 'id' => 420,
                 'base' => 'Cornhusker AAP',
                 'city_id' => 29255,
@@ -4636,9 +4214,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Grand Island, NE',
                 'zipcode_id' => 39611,
-            ),
-            420 => 
-            array (
+            ],
+            420 => [
                 'id' => 421,
                 'base' => 'Hawthorne Army Depot',
                 'city_id' => 35812,
@@ -4647,9 +4224,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Reno, NV',
                 'zipcode_id' => 49794,
-            ),
-            421 => 
-            array (
+            ],
+            421 => [
                 'id' => 422,
                 'base' => 'Lake Mead Base',
                 'city_id' => 35735,
@@ -4658,9 +4234,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Las Vegas, NV',
                 'zipcode_id' => 49596,
-            ),
-            422 => 
-            array (
+            ],
+            422 => [
                 'id' => 423,
                 'base' => 'Fort Monmouth Evans',
                 'city_id' => 2880,
@@ -4669,9 +4244,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Asbury Park, NJ',
                 'zipcode_id' => 3640,
-            ),
-            423 => 
-            array (
+            ],
+            423 => [
                 'id' => 424,
                 'base' => 'Fort Monmouth Main Post',
                 'city_id' => 2870,
@@ -4680,9 +4254,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Red Bank, NJ',
                 'zipcode_id' => 3626,
-            ),
-            424 => 
-            array (
+            ],
+            424 => [
                 'id' => 425,
                 'base' => 'Military Ocean Tml Bayonne',
                 'city_id' => 2661,
@@ -4691,9 +4264,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Bayonne, NJ',
                 'zipcode_id' => 3329,
-            ),
-            425 => 
-            array (
+            ],
+            425 => [
                 'id' => 426,
                 'base' => 'Picatinny Arsenal',
                 'city_id' => 2938,
@@ -4702,9 +4274,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Dover, NJ',
                 'zipcode_id' => 3708,
-            ),
-            426 => 
-            array (
+            ],
+            426 => [
                 'id' => 427,
                 'base' => 'Fort Bliss Aaa Ranges',
                 'city_id' => 33391,
@@ -4713,9 +4284,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'El Paso, TX',
                 'zipcode_id' => 45698,
-            ),
-            427 => 
-            array (
+            ],
+            427 => [
                 'id' => 428,
                 'base' => 'Fort Wingate Depot Activity',
                 'city_id' => 35349,
@@ -4724,9 +4294,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Gallup, NM',
                 'zipcode_id' => 49044,
-            ),
-            428 => 
-            array (
+            ],
+            428 => [
                 'id' => 429,
                 'base' => 'White Sands Missile Range',
                 'city_id' => 35528,
@@ -4735,9 +4304,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Las Cruces, NM',
                 'zipcode_id' => 49253,
-            ),
-            429 => 
-            array (
+            ],
+            429 => [
                 'id' => 430,
                 'base' => 'Bellmore',
                 'city_id' => 3499,
@@ -4746,9 +4314,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'New York, NY',
                 'zipcode_id' => 4381,
-            ),
-            430 => 
-            array (
+            ],
+            430 => [
                 'id' => 431,
                 'base' => 'Fort Drum',
                 'city_id' => 4967,
@@ -4757,9 +4324,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Watertown, NY',
                 'zipcode_id' => 6461,
-            ),
-            431 => 
-            array (
+            ],
+            431 => [
                 'id' => 432,
                 'base' => 'Fort Hamilton',
                 'city_id' => 3499,
@@ -4768,9 +4334,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'New York, NY',
                 'zipcode_id' => 4381,
-            ),
-            432 => 
-            array (
+            ],
+            432 => [
                 'id' => 433,
                 'base' => 'Fort Totten',
                 'city_id' => 3499,
@@ -4779,9 +4344,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'New York, NY',
                 'zipcode_id' => 4381,
-            ),
-            433 => 
-            array (
+            ],
+            433 => [
                 'id' => 434,
                 'base' => 'Hancock Army Complex',
                 'city_id' => 4807,
@@ -4790,9 +4354,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Syracuse, NY',
                 'zipcode_id' => 6265,
-            ),
-            434 => 
-            array (
+            ],
+            434 => [
                 'id' => 435,
                 'base' => 'Seneca Army Depot Activity',
                 'city_id' => 5355,
@@ -4801,9 +4364,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Geneva, NY',
                 'zipcode_id' => 6937,
-            ),
-            435 => 
-            array (
+            ],
+            435 => [
                 'id' => 436,
                 'base' => 'Stewart Annex',
                 'city_id' => 3517,
@@ -4812,9 +4374,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'New York City, NY',
                 'zipcode_id' => 4543,
-            ),
-            436 => 
-            array (
+            ],
+            436 => [
                 'id' => 437,
                 'base' => 'Watervliet Arsenal',
                 'city_id' => 4227,
@@ -4823,9 +4384,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Watervliet, NY',
                 'zipcode_id' => 5595,
-            ),
-            437 => 
-            array (
+            ],
+            437 => [
                 'id' => 438,
                 'base' => 'West Point Mil Reservation',
                 'city_id' => 3517,
@@ -4834,9 +4394,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'New York City, NY',
                 'zipcode_id' => 4543,
-            ),
-            438 => 
-            array (
+            ],
+            438 => [
                 'id' => 439,
                 'base' => 'Camp Mackall',
                 'city_id' => 11706,
@@ -4845,9 +4404,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Hoffman, NC',
                 'zipcode_id' => 15537,
-            ),
-            439 => 
-            array (
+            ],
+            439 => [
                 'id' => 440,
                 'base' => 'Fort Bragg',
                 'city_id' => 11672,
@@ -4856,9 +4414,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Fayetteville, NC',
                 'zipcode_id' => 15489,
-            ),
-            440 => 
-            array (
+            ],
+            440 => [
                 'id' => 441,
                 'base' => 'Military Ocean Tml Sunny Point',
                 'city_id' => 11752,
@@ -4867,9 +4424,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Wilmington, NC',
                 'zipcode_id' => 15590,
-            ),
-            441 => 
-            array (
+            ],
+            441 => [
                 'id' => 442,
                 'base' => 'Tarheel Army Missile Plt',
                 'city_id' => 11239,
@@ -4878,9 +4434,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Burlington, NC',
                 'zipcode_id' => 14810,
-            ),
-            442 => 
-            array (
+            ],
+            442 => [
                 'id' => 443,
                 'base' => 'Mickelsen Stanley R Sfg Msr',
                 'city_id' => 24668,
@@ -4889,9 +4444,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Nekoma, ND',
                 'zipcode_id' => 33834,
-            ),
-            443 => 
-            array (
+            ],
+            443 => [
                 'id' => 444,
                 'base' => 'Mickelsen Stanley R Sfg Par',
                 'city_id' => 24603,
@@ -4900,9 +4454,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Mountain, ND',
                 'zipcode_id' => 33768,
-            ),
-            444 => 
-            array (
+            ],
+            444 => [
                 'id' => 445,
                 'base' => 'Mickelsen Stanley R Sfg Rsl 1',
                 'city_id' => 24647,
@@ -4911,9 +4464,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Hampden, ND',
                 'zipcode_id' => 33813,
-            ),
-            445 => 
-            array (
+            ],
+            445 => [
                 'id' => 446,
                 'base' => 'Mickelsen Stanley R Sfg Rsl 2',
                 'city_id' => 24586,
@@ -4922,9 +4474,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Langdon, ND',
                 'zipcode_id' => 33751,
-            ),
-            446 => 
-            array (
+            ],
+            446 => [
                 'id' => 447,
                 'base' => 'Mickelsen Stanley R Sfg Rsl 3',
                 'city_id' => 24603,
@@ -4933,9 +4484,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Mountain, ND',
                 'zipcode_id' => 33768,
-            ),
-            447 => 
-            array (
+            ],
+            447 => [
                 'id' => 448,
                 'base' => 'Mickelsen Stanley R Sfg Rsl 4',
                 'city_id' => 24569,
@@ -4944,9 +4494,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Fairdale, ND',
                 'zipcode_id' => 33734,
-            ),
-            448 => 
-            array (
+            ],
+            448 => [
                 'id' => 449,
                 'base' => 'Mickelsen Stanley R Sfg Wtrlin',
                 'city_id' => 24571,
@@ -4955,9 +4504,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Fordville, ND',
                 'zipcode_id' => 33736,
-            ),
-            449 => 
-            array (
+            ],
+            449 => [
                 'id' => 450,
                 'base' => 'Defense Supply Center Columbus',
                 'city_id' => 17680,
@@ -4966,9 +4514,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Columbus, OH',
                 'zipcode_id' => 24699,
-            ),
-            450 => 
-            array (
+            ],
+            450 => [
                 'id' => 451,
                 'base' => 'Lima Army Tank Plt',
                 'city_id' => 18954,
@@ -4977,9 +4524,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Lima, OH',
                 'zipcode_id' => 26539,
-            ),
-            451 => 
-            array (
+            ],
+            451 => [
                 'id' => 452,
                 'base' => 'Ravenna AAP',
                 'city_id' => 18289,
@@ -4988,9 +4534,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Ravenna, OH',
                 'zipcode_id' => 25562,
-            ),
-            452 => 
-            array (
+            ],
+            452 => [
                 'id' => 453,
                 'base' => 'Fort Sill',
                 'city_id' => 30937,
@@ -4999,9 +4544,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Lawton, OK',
                 'zipcode_id' => 41822,
-            ),
-            453 => 
-            array (
+            ],
+            453 => [
                 'id' => 454,
                 'base' => 'McAlester AAP',
                 'city_id' => 31288,
@@ -5010,9 +4554,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Mcalester, OK',
                 'zipcode_id' => 42267,
-            ),
-            454 => 
-            array (
+            ],
+            454 => [
                 'id' => 455,
                 'base' => 'Umatilla Chem Depot',
                 'city_id' => 38067,
@@ -5021,9 +4564,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Hermiston, OR',
                 'zipcode_id' => 54132,
-            ),
-            455 => 
-            array (
+            ],
+            455 => [
                 'id' => 456,
                 'base' => 'Carlisle Barracks',
                 'city_id' => 6738,
@@ -5032,9 +4574,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Carlisle, PA',
                 'zipcode_id' => 8556,
-            ),
-            456 => 
-            array (
+            ],
+            456 => [
                 'id' => 457,
                 'base' => 'Defense Distribution Depot Susq',
                 'city_id' => 6819,
@@ -5043,9 +4584,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'New Cumberland, PA',
                 'zipcode_id' => 8641,
-            ),
-            457 => 
-            array (
+            ],
+            457 => [
                 'id' => 458,
                 'base' => 'Fort Ritchie Raven Rock Site',
                 'city_id' => 6916,
@@ -5054,9 +4594,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Waynesboro, PA',
                 'zipcode_id' => 8769,
-            ),
-            458 => 
-            array (
+            ],
+            458 => [
                 'id' => 459,
                 'base' => 'Letterkenny Army Depot',
                 'city_id' => 6859,
@@ -5065,9 +4604,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Chambersburg, PA',
                 'zipcode_id' => 8710,
-            ),
-            459 => 
-            array (
+            ],
+            459 => [
                 'id' => 460,
                 'base' => 'Scranton AAP',
                 'city_id' => 7546,
@@ -5076,9 +4614,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Scranton, PA',
                 'zipcode_id' => 9497,
-            ),
-            460 => 
-            array (
+            ],
+            460 => [
                 'id' => 461,
                 'base' => 'Tobyhanna Army Depot',
                 'city_id' => 7546,
@@ -5087,9 +4624,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Scranton, PA',
                 'zipcode_id' => 9497,
-            ),
-            461 => 
-            array (
+            ],
+            461 => [
                 'id' => 462,
                 'base' => 'Fort Jackson',
                 'city_id' => 12232,
@@ -5098,9 +4634,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Columbia, SC',
                 'zipcode_id' => 16150,
-            ),
-            462 => 
-            array (
+            ],
+            462 => [
                 'id' => 463,
                 'base' => 'Def Depot Memphis',
                 'city_id' => 15291,
@@ -5109,9 +4644,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Memphis, TN',
                 'zipcode_id' => 21788,
-            ),
-            463 => 
-            array (
+            ],
+            463 => [
                 'id' => 464,
                 'base' => 'Fort Campbell',
                 'city_id' => 15074,
@@ -5120,9 +4654,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Clarksville, TN',
                 'zipcode_id' => 21464,
-            ),
-            464 => 
-            array (
+            ],
+            464 => [
                 'id' => 465,
                 'base' => 'Holston AAP',
                 'city_id' => 15309,
@@ -5131,9 +4664,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Kingsport, TN',
                 'zipcode_id' => 21816,
-            ),
-            465 => 
-            array (
+            ],
+            465 => [
                 'id' => 466,
                 'base' => 'Milan AAP',
                 'city_id' => 15594,
@@ -5142,9 +4674,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Milan, TN',
                 'zipcode_id' => 22256,
-            ),
-            466 => 
-            array (
+            ],
+            466 => [
                 'id' => 467,
                 'base' => 'Volunteer AAP',
                 'city_id' => 15287,
@@ -5153,9 +4684,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Chattanooga, TN',
                 'zipcode_id' => 21765,
-            ),
-            467 => 
-            array (
+            ],
+            467 => [
                 'id' => 468,
                 'base' => 'Camp Bullis',
                 'city_id' => 38990,
@@ -5164,9 +4694,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Leon Springs, TX',
                 'zipcode_id' => 55505,
-            ),
-            468 => 
-            array (
+            ],
+            468 => [
                 'id' => 469,
                 'base' => 'Fort Bliss',
                 'city_id' => 33391,
@@ -5175,9 +4704,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'El Paso, TX',
                 'zipcode_id' => 45698,
-            ),
-            469 => 
-            array (
+            ],
+            469 => [
                 'id' => 470,
                 'base' => 'Fort Hood',
                 'city_id' => 32147,
@@ -5186,9 +4714,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Killeen, TX',
                 'zipcode_id' => 43621,
-            ),
-            470 => 
-            array (
+            ],
+            470 => [
                 'id' => 471,
                 'base' => 'Fort Sam Houston',
                 'city_id' => 32767,
@@ -5197,9 +4724,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'San Antonio, TX',
                 'zipcode_id' => 44671,
-            ),
-            471 => 
-            array (
+            ],
+            471 => [
                 'id' => 472,
                 'base' => 'Lone Star AAP',
                 'city_id' => 31698,
@@ -5208,9 +4734,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Texarkana, TX',
                 'zipcode_id' => 42905,
-            ),
-            472 => 
-            array (
+            ],
+            472 => [
                 'id' => 473,
                 'base' => 'Longhorn AAP',
                 'city_id' => 31757,
@@ -5219,9 +4744,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Marshall, TX',
                 'zipcode_id' => 42981,
-            ),
-            473 => 
-            array (
+            ],
+            473 => [
                 'id' => 474,
                 'base' => 'Red River Army Depot',
                 'city_id' => 31698,
@@ -5230,9 +4754,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Texarkana, TX',
                 'zipcode_id' => 42905,
-            ),
-            474 => 
-            array (
+            ],
+            474 => [
                 'id' => 475,
                 'base' => 'Stanley Camp Stor Actv',
                 'city_id' => 32767,
@@ -5241,9 +4764,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'San Antonio, TX',
                 'zipcode_id' => 44671,
-            ),
-            475 => 
-            array (
+            ],
+            475 => [
                 'id' => 476,
                 'base' => 'Defense Dist Depot Ogden Utah',
                 'city_id' => 34671,
@@ -5252,9 +4774,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Ogden, UT',
                 'zipcode_id' => 47873,
-            ),
-            476 => 
-            array (
+            ],
+            476 => [
                 'id' => 477,
                 'base' => 'Deseret Chemical Depot',
                 'city_id' => 34628,
@@ -5263,9 +4784,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Tooele, UT',
                 'zipcode_id' => 47629,
-            ),
-            477 => 
-            array (
+            ],
+            477 => [
                 'id' => 478,
                 'base' => 'Dugway Proving Ground',
                 'city_id' => 34653,
@@ -5274,9 +4794,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Salt Lake City, UT',
                 'zipcode_id' => 47673,
-            ),
-            478 => 
-            array (
+            ],
+            478 => [
                 'id' => 479,
                 'base' => 'Green River Test Complex',
                 'city_id' => 34752,
@@ -5285,9 +4804,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Green River, UT',
                 'zipcode_id' => 47980,
-            ),
-            479 => 
-            array (
+            ],
+            479 => [
                 'id' => 480,
                 'base' => 'Tooele Army Depot',
                 'city_id' => 34628,
@@ -5296,9 +4814,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Tooele, UT',
                 'zipcode_id' => 47629,
-            ),
-            480 => 
-            array (
+            ],
+            480 => [
                 'id' => 481,
                 'base' => 'Big Bethel Reservoir',
                 'city_id' => 9558,
@@ -5307,9 +4824,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Hampton, VA',
                 'zipcode_id' => 12850,
-            ),
-            481 => 
-            array (
+            ],
+            481 => [
                 'id' => 482,
                 'base' => 'Def Gen Supply Center',
                 'city_id' => 9453,
@@ -5318,9 +4834,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Richmond, VA',
                 'zipcode_id' => 12587,
-            ),
-            482 => 
-            array (
+            ],
+            482 => [
                 'id' => 483,
                 'base' => 'Fort A P Hill',
                 'city_id' => 9036,
@@ -5329,9 +4844,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Bowling Green, VA',
                 'zipcode_id' => 12123,
-            ),
-            483 => 
-            array (
+            ],
+            483 => [
                 'id' => 484,
                 'base' => 'Fort Belvoir',
                 'city_id' => 8312,
@@ -5340,9 +4854,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Alexandria, VA',
                 'zipcode_id' => 10980,
-            ),
-            484 => 
-            array (
+            ],
+            484 => [
                 'id' => 485,
                 'base' => 'Fort Eustis',
                 'city_id' => 9556,
@@ -5351,9 +4864,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Newport News, VA',
                 'zipcode_id' => 12844,
-            ),
-            485 => 
-            array (
+            ],
+            485 => [
                 'id' => 486,
                 'base' => 'Fort Lee',
                 'city_id' => 9571,
@@ -5362,9 +4874,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Petersburg, VA',
                 'zipcode_id' => 12892,
-            ),
-            486 => 
-            array (
+            ],
+            486 => [
                 'id' => 487,
                 'base' => 'Fort Monroe',
                 'city_id' => 9558,
@@ -5373,9 +4884,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Hampton, VA',
                 'zipcode_id' => 12850,
-            ),
-            487 => 
-            array (
+            ],
+            487 => [
                 'id' => 488,
                 'base' => 'Fort Myer',
                 'city_id' => 8313,
@@ -5384,9 +4894,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Arlington, VA',
                 'zipcode_id' => 10981,
-            ),
-            488 => 
-            array (
+            ],
+            488 => [
                 'id' => 489,
                 'base' => 'Fort Story',
                 'city_id' => 9553,
@@ -5395,9 +4904,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Norfolk, VA',
                 'zipcode_id' => 12818,
-            ),
-            489 => 
-            array (
+            ],
+            489 => [
                 'id' => 490,
                 'base' => 'Radford AAP',
                 'city_id' => 9741,
@@ -5406,9 +4914,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Radford, VA',
                 'zipcode_id' => 13127,
-            ),
-            490 => 
-            array (
+            ],
+            490 => [
                 'id' => 491,
                 'base' => 'Bonneville Camp',
                 'city_id' => 38462,
@@ -5417,9 +4924,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Vancouver, WA',
                 'zipcode_id' => 54790,
-            ),
-            491 => 
-            array (
+            ],
+            491 => [
                 'id' => 492,
                 'base' => 'Fort Lewis',
                 'city_id' => 38331,
@@ -5428,9 +4934,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Tacoma, WA',
                 'zipcode_id' => 54568,
-            ),
-            492 => 
-            array (
+            ],
+            492 => [
                 'id' => 493,
                 'base' => 'Yakima Training Center',
                 'city_id' => 38515,
@@ -5439,9 +4944,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Yakima, WA',
                 'zipcode_id' => 54861,
-            ),
-            493 => 
-            array (
+            ],
+            493 => [
                 'id' => 494,
                 'base' => 'Badger AAP',
                 'city_id' => 22350,
@@ -5450,9 +4954,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Baraboo, WI',
                 'zipcode_id' => 31011,
-            ),
-            494 => 
-            array (
+            ],
+            494 => [
                 'id' => 495,
                 'base' => 'Camp Navajo',
                 'city_id' => 35143,
@@ -5461,9 +4964,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Bellemont, AZ',
                 'zipcode_id' => 48724,
-            ),
-            495 => 
-            array (
+            ],
+            495 => [
                 'id' => 496,
                 'base' => 'Papago Military Reservation',
                 'city_id' => 34922,
@@ -5472,9 +4974,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Phoenix, AZ',
                 'zipcode_id' => 48167,
-            ),
-            496 => 
-            array (
+            ],
+            496 => [
                 'id' => 497,
                 'base' => 'Fort Chaffee MTC',
                 'city_id' => 30761,
@@ -5483,9 +4984,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Fort Smith, AR',
                 'zipcode_id' => 41526,
-            ),
-            497 => 
-            array (
+            ],
+            497 => [
                 'id' => 498,
                 'base' => 'MTA Camp Roberts',
                 'city_id' => 36563,
@@ -5494,9 +4994,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'San Miguel, CA',
                 'zipcode_id' => 51721,
-            ),
-            498 => 
-            array (
+            ],
+            498 => [
                 'id' => 499,
                 'base' => 'Sacramento Depot Activity',
                 'city_id' => 36784,
@@ -5505,9 +5004,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Sacramento, CA',
                 'zipcode_id' => 52159,
-            ),
-            499 => 
-            array (
+            ],
+            499 => [
                 'id' => 500,
                 'base' => 'TS AFRC Los Alamitos',
                 'city_id' => 35966,
@@ -5516,11 +5014,10 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Los Alamitos, CA',
                 'zipcode_id' => 50214,
-            ),
-        ));
-        \DB::table('military_bases')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('military_bases')->insert([
+            0 => [
                 'id' => 501,
                 'base' => 'Flatiron',
                 'city_id' => 33525,
@@ -5529,9 +5026,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Longmont, CO',
                 'zipcode_id' => 46122,
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 502,
                 'base' => 'AASF',
                 'city_id' => 2409,
@@ -5540,9 +5036,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Windsor Locks, CT',
                 'zipcode_id' => 2865,
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 503,
                 'base' => 'NG New Castle TS Rifle Range',
                 'city_id' => 8158,
@@ -5551,9 +5046,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'New Castle, DE',
                 'zipcode_id' => 10442,
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 504,
                 'base' => 'VTS Catoosa',
                 'city_id' => 12965,
@@ -5562,9 +5056,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Tunnel Hill, GA',
                 'zipcode_id' => 17319,
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 505,
                 'base' => 'Kalaeloa',
                 'city_id' => 37573,
@@ -5573,9 +5066,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Kapolei, HI',
                 'zipcode_id' => 53441,
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 506,
                 'base' => 'TS Waiawa Gulch',
                 'city_id' => 37638,
@@ -5584,9 +5076,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Pearl City, HI',
                 'zipcode_id' => 53512,
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 507,
                 'base' => 'Edgemeade TS Mtn Home',
                 'city_id' => 34421,
@@ -5595,20 +5086,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Mountain Home, ID',
                 'zipcode_id' => 47364,
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 508,
-            'base' => 'N Riverside (Ng Maint Center)',
+                'base' => 'N Riverside (Ng Maint Center)',
                 'city_id' => 25744,
                 'state_id' => 13,
                 'branch' => 'ARMY',
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'North Riverside, IL',
                 'zipcode_id' => 35156,
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 509,
                 'base' => 'Camp Atterbury',
                 'city_id' => 19107,
@@ -5617,9 +5106,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Edinburgh, IN',
                 'zipcode_id' => 26724,
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 510,
                 'base' => 'Camp Dodge Johnston TS',
                 'city_id' => 21125,
@@ -5628,9 +5116,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Johnston, IA',
                 'zipcode_id' => 29488,
-            ),
-            10 => 
-            array (
+            ],
+            10 => [
                 'id' => 511,
                 'base' => 'Camp Minden',
                 'city_id' => 29863,
@@ -5639,9 +5126,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Minden, LA',
                 'zipcode_id' => 40414,
-            ),
-            11 => 
-            array (
+            ],
+            11 => [
                 'id' => 512,
                 'base' => 'Pvt Henry Costin',
                 'city_id' => 8407,
@@ -5650,9 +5136,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Laurel, MD',
                 'zipcode_id' => 11087,
-            ),
-            12 => 
-            array (
+            ],
+            12 => [
                 'id' => 513,
                 'base' => 'MTA Camp Edwards',
                 'city_id' => 543,
@@ -5661,9 +5146,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Bourne, MA',
                 'zipcode_id' => 785,
-            ),
-            13 => 
-            array (
+            ],
+            13 => [
                 'id' => 514,
                 'base' => 'CTC Fort Custer Trng Center',
                 'city_id' => 20449,
@@ -5672,9 +5156,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Battle Creek, MI',
                 'zipcode_id' => 28698,
-            ),
-            14 => 
-            array (
+            ],
+            14 => [
                 'id' => 515,
                 'base' => 'Grayling Airfield',
                 'city_id' => 20839,
@@ -5683,9 +5166,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Grayling, MI',
                 'zipcode_id' => 29168,
-            ),
-            15 => 
-            array (
+            ],
+            15 => [
                 'id' => 516,
                 'base' => 'Arden Hills Army Training Site',
                 'city_id' => 23082,
@@ -5694,9 +5176,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Arden Hills, MN',
                 'zipcode_id' => 31840,
-            ),
-            16 => 
-            array (
+            ],
+            16 => [
                 'id' => 517,
                 'base' => 'CTA Camp McCain',
                 'city_id' => 15896,
@@ -5705,31 +5186,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Elliott, MS',
                 'zipcode_id' => 22586,
-            ),
-            17 => 
-            array (
+            ],
+            17 => [
                 'id' => 518,
-            'base' => 'MTA Camp Clark (Nevada)',
+                'base' => 'MTA Camp Clark (Nevada)',
                 'city_id' => 27725,
                 'state_id' => 25,
                 'branch' => 'ARMY',
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Nevada, MO',
                 'zipcode_id' => 37667,
-            ),
-            18 => 
-            array (
+            ],
+            18 => [
                 'id' => 519,
-            'base' => 'MTA Camp Crowder (Neosho)',
+                'base' => 'MTA Camp Crowder (Neosho)',
                 'city_id' => 27754,
                 'state_id' => 25,
                 'branch' => 'ARMY',
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Neosho, MO',
                 'zipcode_id' => 37701,
-            ),
-            19 => 
-            array (
+            ],
+            19 => [
                 'id' => 520,
                 'base' => 'Fort Missoula',
                 'city_id' => 25314,
@@ -5738,9 +5216,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Missoula, MT',
                 'zipcode_id' => 34546,
-            ),
-            20 => 
-            array (
+            ],
+            20 => [
                 'id' => 521,
                 'base' => 'MTA Fort Wm Henry Harrison',
                 'city_id' => 25250,
@@ -5749,9 +5226,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Helena, MT',
                 'zipcode_id' => 34465,
-            ),
-            21 => 
-            array (
+            ],
+            21 => [
                 'id' => 522,
                 'base' => 'Camp Ashland',
                 'city_id' => 28923,
@@ -5760,9 +5236,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Ashland, NE',
                 'zipcode_id' => 39185,
-            ),
-            22 => 
-            array (
+            ],
+            22 => [
                 'id' => 523,
                 'base' => 'Greenlief TS',
                 'city_id' => 29322,
@@ -5771,9 +5246,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Hastings, NE',
                 'zipcode_id' => 39683,
-            ),
-            23 => 
-            array (
+            ],
+            23 => [
                 'id' => 524,
                 'base' => 'Lincoln Airbase',
                 'city_id' => 29121,
@@ -5782,9 +5256,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Lincoln, NE',
                 'zipcode_id' => 39446,
-            ),
-            24 => 
-            array (
+            ],
+            24 => [
                 'id' => 525,
                 'base' => 'Mead TS',
                 'city_id' => 28952,
@@ -5793,9 +5266,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Mead, NE',
                 'zipcode_id' => 39216,
-            ),
-            25 => 
-            array (
+            ],
+            25 => [
                 'id' => 526,
                 'base' => 'NG Youngstown Tng Site',
                 'city_id' => 5302,
@@ -5804,9 +5276,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Youngstown, NY',
                 'zipcode_id' => 6819,
-            ),
-            26 => 
-            array (
+            ],
+            26 => [
                 'id' => 527,
                 'base' => 'Minot AFRC',
                 'city_id' => 24889,
@@ -5815,9 +5286,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Minot, ND',
                 'zipcode_id' => 34068,
-            ),
-            27 => 
-            array (
+            ],
+            27 => [
                 'id' => 528,
                 'base' => 'McConnelsville Training Site',
                 'city_id' => 17971,
@@ -5826,9 +5296,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Mcconnelsville, OH',
                 'zipcode_id' => 25108,
-            ),
-            28 => 
-            array (
+            ],
+            28 => [
                 'id' => 529,
                 'base' => 'Ravenna Tng and Logistics Site',
                 'city_id' => 18345,
@@ -5837,20 +5306,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Newton Falls, OH',
                 'zipcode_id' => 25651,
-            ),
-            29 => 
-            array (
+            ],
+            29 => [
                 'id' => 530,
-            'base' => 'Rickenbacker (MTA)',
+                'base' => 'Rickenbacker (MTA)',
                 'city_id' => 17680,
                 'state_id' => 35,
                 'branch' => 'ARMY',
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Columbus, OH',
                 'zipcode_id' => 24699,
-            ),
-            30 => 
-            array (
+            ],
+            30 => [
                 'id' => 531,
                 'base' => 'Camp Gruber Training Center',
                 'city_id' => 31244,
@@ -5859,9 +5326,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Braggs, OK',
                 'zipcode_id' => 42219,
-            ),
-            31 => 
-            array (
+            ],
+            31 => [
                 'id' => 532,
                 'base' => 'Oklahoma Regional Trng Inst',
                 'city_id' => 30884,
@@ -5870,9 +5336,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Oklahoma City, OK',
                 'zipcode_id' => 41676,
-            ),
-            32 => 
-            array (
+            ],
+            32 => [
                 'id' => 533,
                 'base' => 'Bend Cotef',
                 'city_id' => 38005,
@@ -5881,9 +5346,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Bend, OR',
                 'zipcode_id' => 54065,
-            ),
-            33 => 
-            array (
+            ],
+            33 => [
                 'id' => 534,
                 'base' => 'Fort Indiantown Gap',
                 'city_id' => 6728,
@@ -5892,9 +5356,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Annville, PA',
                 'zipcode_id' => 8544,
-            ),
-            34 => 
-            array (
+            ],
+            34 => [
                 'id' => 535,
                 'base' => 'Fort Mifflin',
                 'city_id' => 7808,
@@ -5903,9 +5366,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Philadelphia, PA',
                 'zipcode_id' => 9827,
-            ),
-            35 => 
-            array (
+            ],
+            35 => [
                 'id' => 536,
                 'base' => 'Camp Fogarty Tng Site',
                 'city_id' => 692,
@@ -5914,9 +5376,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'East Greenwich, RI',
                 'zipcode_id' => 964,
-            ),
-            36 => 
-            array (
+            ],
+            36 => [
                 'id' => 537,
                 'base' => 'MTA Clarks Hill Reservation',
                 'city_id' => 12542,
@@ -5925,9 +5386,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Plum Branch, SC',
                 'zipcode_id' => 16627,
-            ),
-            37 => 
-            array (
+            ],
+            37 => [
                 'id' => 538,
                 'base' => 'VTS Symrna',
                 'city_id' => 15157,
@@ -5936,20 +5396,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Smyrna, TN',
                 'zipcode_id' => 21575,
-            ),
-            38 => 
-            array (
+            ],
+            38 => [
                 'id' => 539,
-            'base' => 'Addicks (New)',
+                'base' => 'Addicks (New)',
                 'city_id' => 32325,
                 'state_id' => 43,
                 'branch' => 'ARMY',
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Houston, TX',
                 'zipcode_id' => 43843,
-            ),
-            39 => 
-            array (
+            ],
+            39 => [
                 'id' => 540,
                 'base' => 'Camp Swift',
                 'city_id' => 32926,
@@ -5958,9 +5416,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Bastrop, TX',
                 'zipcode_id' => 45027,
-            ),
-            40 => 
-            array (
+            ],
+            40 => [
                 'id' => 541,
                 'base' => 'Fort Wolters',
                 'city_id' => 31940,
@@ -5969,9 +5426,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Mineral Wells, TX',
                 'zipcode_id' => 43227,
-            ),
-            41 => 
-            array (
+            ],
+            41 => [
                 'id' => 542,
                 'base' => 'Saginaw',
                 'city_id' => 31974,
@@ -5980,9 +5436,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Saginaw, TX',
                 'zipcode_id' => 43335,
-            ),
-            42 => 
-            array (
+            ],
+            42 => [
                 'id' => 543,
                 'base' => 'Temple',
                 'city_id' => 32118,
@@ -5991,20 +5446,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Temple, TX',
                 'zipcode_id' => 43587,
-            ),
-            43 => 
-            array (
+            ],
+            43 => [
                 'id' => 544,
-            'base' => 'NG Ethan Allen AFB (MTA)',
+                'base' => 'NG Ethan Allen AFB (MTA)',
                 'city_id' => 2062,
                 'state_id' => 45,
                 'branch' => 'ARMY',
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Colchester, VT',
                 'zipcode_id' => 2480,
-            ),
-            44 => 
-            array (
+            ],
+            44 => [
                 'id' => 545,
                 'base' => 'So Burlington',
                 'city_id' => 2060,
@@ -6013,9 +5466,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'S Burlington, VT',
                 'zipcode_id' => 2473,
-            ),
-            45 => 
-            array (
+            ],
+            45 => [
                 'id' => 546,
                 'base' => 'TS Ethan Allen Range',
                 'city_id' => 2098,
@@ -6024,9 +5476,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Jericho, VT',
                 'zipcode_id' => 2520,
-            ),
-            46 => 
-            array (
+            ],
+            46 => [
                 'id' => 547,
                 'base' => 'AASF Byrd Field',
                 'city_id' => 9437,
@@ -6035,9 +5486,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Sandston, VA',
                 'zipcode_id' => 12571,
-            ),
-            47 => 
-            array (
+            ],
+            47 => [
                 'id' => 548,
                 'base' => 'Army Guard Readiness Center',
                 'city_id' => 8313,
@@ -6046,9 +5496,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Arlington, VA',
                 'zipcode_id' => 10981,
-            ),
-            48 => 
-            array (
+            ],
+            48 => [
                 'id' => 549,
                 'base' => 'Fort Pickett ARNG-MTC',
                 'city_id' => 9578,
@@ -6057,9 +5506,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Blackstone, VA',
                 'zipcode_id' => 12903,
-            ),
-            49 => 
-            array (
+            ],
+            49 => [
                 'id' => 550,
                 'base' => 'Kent',
                 'city_id' => 38148,
@@ -6068,9 +5516,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Kent, WA',
                 'zipcode_id' => 54231,
-            ),
-            50 => 
-            array (
+            ],
+            50 => [
                 'id' => 551,
                 'base' => 'Eleanor Maintenance Complex',
                 'city_id' => 10341,
@@ -6079,9 +5526,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Guard',
                 'map_value' => 'Red House, WV',
                 'zipcode_id' => 13757,
-            ),
-            51 => 
-            array (
+            ],
+            51 => [
                 'id' => 552,
                 'base' => '310th Chem USARC',
                 'city_id' => 14741,
@@ -6090,9 +5536,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Anniston, AL',
                 'zipcode_id' => 21045,
-            ),
-            52 => 
-            array (
+            ],
+            52 => [
                 'id' => 553,
                 'base' => 'Bill Nichols USARC/ECS #158',
                 'city_id' => 14741,
@@ -6101,9 +5546,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Anniston, AL',
                 'zipcode_id' => 21045,
-            ),
-            53 => 
-            array (
+            ],
+            53 => [
                 'id' => 554,
                 'base' => 'Horace B Hanson USARC',
                 'city_id' => 14446,
@@ -6112,9 +5556,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Birmingham, AL',
                 'zipcode_id' => 20538,
-            ),
-            54 => 
-            array (
+            ],
+            54 => [
                 'id' => 555,
                 'base' => 'Barnes Hall USARC',
                 'city_id' => 34922,
@@ -6123,9 +5566,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Phoenix, AZ',
                 'zipcode_id' => 48167,
-            ),
-            55 => 
-            array (
+            ],
+            55 => [
                 'id' => 556,
                 'base' => 'ECS 15',
                 'city_id' => 30765,
@@ -6134,9 +5576,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Barling, AR',
                 'zipcode_id' => 41542,
-            ),
-            56 => 
-            array (
+            ],
+            56 => [
                 'id' => 557,
                 'base' => 'Maurice Britt USARC',
                 'city_id' => 30404,
@@ -6145,20 +5586,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Little Rock, AR',
                 'zipcode_id' => 41104,
-            ),
-            57 => 
-            array (
+            ],
+            57 => [
                 'id' => 558,
-            'base' => 'BT Collins USARC/OMS/AMSA (G)',
+                'base' => 'BT Collins USARC/OMS/AMSA (G)',
                 'city_id' => 36784,
                 'state_id' => 5,
                 'branch' => 'ARMY',
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Sacramento, CA',
                 'zipcode_id' => 52159,
-            ),
-            58 => 
-            array (
+            ],
+            58 => [
                 'id' => 559,
                 'base' => 'El Monte USARC',
                 'city_id' => 36087,
@@ -6167,9 +5606,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'El Monte, CA',
                 'zipcode_id' => 50645,
-            ),
-            59 => 
-            array (
+            ],
+            59 => [
                 'id' => 560,
                 'base' => 'Fort Hunter Liggett',
                 'city_id' => 36730,
@@ -6178,9 +5616,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'King City, CA',
                 'zipcode_id' => 52009,
-            ),
-            60 => 
-            array (
+            ],
+            60 => [
                 'id' => 561,
                 'base' => 'Hwd Of Oakland USARC/AMSA 85 G',
                 'city_id' => 36855,
@@ -6189,9 +5626,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Oakland, CA',
                 'zipcode_id' => 52350,
-            ),
-            61 => 
-            array (
+            ],
+            61 => [
                 'id' => 562,
                 'base' => 'March USARC',
                 'city_id' => 36340,
@@ -6200,9 +5636,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Moreno Valley, CA',
                 'zipcode_id' => 51214,
-            ),
-            62 => 
-            array (
+            ],
+            62 => [
                 'id' => 563,
                 'base' => 'Mare Is. USARC OMS Marine AMSA',
                 'city_id' => 36794,
@@ -6211,9 +5646,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Vallejo, CA',
                 'zipcode_id' => 52240,
-            ),
-            63 => 
-            array (
+            ],
+            63 => [
                 'id' => 564,
                 'base' => 'Moffett Community Hsg',
                 'city_id' => 36765,
@@ -6222,9 +5656,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Mountain View, CA',
                 'zipcode_id' => 52059,
-            ),
-            64 => 
-            array (
+            ],
+            64 => [
                 'id' => 565,
                 'base' => 'Parks Reserve Forces Tng Area',
                 'city_id' => 36862,
@@ -6233,9 +5666,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Richmond, CA',
                 'zipcode_id' => 52406,
-            ),
-            65 => 
-            array (
+            ],
+            65 => [
                 'id' => 566,
                 'base' => 'Patton Hall USARC',
                 'city_id' => 35887,
@@ -6244,9 +5676,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Bell, CA',
                 'zipcode_id' => 50022,
-            ),
-            66 => 
-            array (
+            ],
+            66 => [
                 'id' => 567,
                 'base' => 'Tustin USARC',
                 'city_id' => 36405,
@@ -6255,9 +5686,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Santa Ana, CA',
                 'zipcode_id' => 51370,
-            ),
-            67 => 
-            array (
+            ],
+            67 => [
                 'id' => 568,
                 'base' => 'Joe P Martinez USARC/AMSA #100',
                 'city_id' => 33403,
@@ -6266,9 +5696,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Denver, CO',
                 'zipcode_id' => 45787,
-            ),
-            68 => 
-            array (
+            ],
+            68 => [
                 'id' => 569,
                 'base' => 'William T. Fitzsimons USARC',
                 'city_id' => 33400,
@@ -6277,9 +5706,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Aurora, CO',
                 'zipcode_id' => 45782,
-            ),
-            69 => 
-            array (
+            ],
+            69 => [
                 'id' => 570,
                 'base' => 'Berry-Rosenblatt AFRC',
                 'city_id' => 2411,
@@ -6288,9 +5716,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'West Hartford, CT',
                 'zipcode_id' => 2875,
-            ),
-            70 => 
-            array (
+            ],
+            70 => [
                 'id' => 571,
                 'base' => 'BG John W Middleton USARC',
                 'city_id' => 2336,
@@ -6299,9 +5726,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Windsor, CT',
                 'zipcode_id' => 2777,
-            ),
-            71 => 
-            array (
+            ],
+            71 => [
                 'id' => 572,
                 'base' => 'LTC Luis E. Martinez USARC',
                 'city_id' => 13818,
@@ -6310,9 +5736,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Miami, FL',
                 'zipcode_id' => 18871,
-            ),
-            72 => 
-            array (
+            ],
+            72 => [
                 'id' => 573,
                 'base' => 'Orlando ASF 49',
                 'city_id' => 13680,
@@ -6321,9 +5746,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Orlando, FL',
                 'zipcode_id' => 18493,
-            ),
-            73 => 
-            array (
+            ],
+            73 => [
                 'id' => 574,
                 'base' => 'Decatur USARC',
                 'city_id' => 12607,
@@ -6332,9 +5756,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Decatur, GA',
                 'zipcode_id' => 16726,
-            ),
-            74 => 
-            array (
+            ],
+            74 => [
                 'id' => 575,
                 'base' => 'Dobbins USARC/ASF',
                 'city_id' => 12593,
@@ -6343,9 +5766,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Marietta, GA',
                 'zipcode_id' => 16697,
-            ),
-            75 => 
-            array (
+            ],
+            75 => [
                 'id' => 576,
                 'base' => 'Col P. Schulstad USARC',
                 'city_id' => 25403,
@@ -6354,9 +5776,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Arlington Heights, IL',
                 'zipcode_id' => 34647,
-            ),
-            76 => 
-            array (
+            ],
+            76 => [
                 'id' => 577,
                 'base' => 'Granite City OMS/Storage',
                 'city_id' => 26355,
@@ -6365,9 +5786,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Granite City, IL',
                 'zipcode_id' => 35963,
-            ),
-            77 => 
-            array (
+            ],
+            77 => [
                 'id' => 578,
                 'base' => 'North Shore Memorial USARC',
                 'city_id' => 25451,
@@ -6376,9 +5796,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Lake Forest, IL',
                 'zipcode_id' => 34712,
-            ),
-            78 => 
-            array (
+            ],
+            78 => [
                 'id' => 579,
                 'base' => 'Parkhurst USARC/OMS/Ds',
                 'city_id' => 25759,
@@ -6387,9 +5806,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Darien, IL',
                 'zipcode_id' => 35171,
-            ),
-            79 => 
-            array (
+            ],
+            79 => [
                 'id' => 580,
                 'base' => 'Sheridan Reserve Complex',
                 'city_id' => 25443,
@@ -6398,20 +5816,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Highland Park, IL',
                 'zipcode_id' => 34701,
-            ),
-            80 => 
-            array (
+            ],
+            80 => [
                 'id' => 581,
-            'base' => 'USAR Joliet Outdr Tng (Elwood)',
+                'base' => 'USAR Joliet Outdr Tng (Elwood)',
                 'city_id' => 25602,
                 'state_id' => 13,
                 'branch' => 'ARMY',
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Joliet, IL',
                 'zipcode_id' => 34963,
-            ),
-            81 => 
-            array (
+            ],
+            81 => [
                 'id' => 582,
                 'base' => 'Vietnam Vet Memorial USARC',
                 'city_id' => 25627,
@@ -6420,9 +5836,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Homewood, IL',
                 'zipcode_id' => 34991,
-            ),
-            82 => 
-            array (
+            ],
+            82 => [
                 'id' => 583,
                 'base' => 'Fort Ben Harrison USARC',
                 'city_id' => 19169,
@@ -6431,9 +5846,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Lawrence, IN',
                 'zipcode_id' => 26808,
-            ),
-            83 => 
-            array (
+            ],
+            83 => [
                 'id' => 584,
                 'base' => 'Lyle J. Thompson USARC',
                 'city_id' => 19305,
@@ -6442,9 +5856,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'South Bend, IN',
                 'zipcode_id' => 27029,
-            ),
-            84 => 
-            array (
+            ],
+            84 => [
                 'id' => 585,
                 'base' => 'Des Moines Reserve Complex',
                 'city_id' => 21236,
@@ -6453,9 +5866,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Des Moines, IA',
                 'zipcode_id' => 29606,
-            ),
-            85 => 
-            array (
+            ],
+            85 => [
                 'id' => 586,
                 'base' => 'New Century USARC/ASF # 37',
                 'city_id' => 28206,
@@ -6464,9 +5876,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Olathe, KS',
                 'zipcode_id' => 38228,
-            ),
-            86 => 
-            array (
+            ],
+            86 => [
                 'id' => 587,
                 'base' => 'Topeka Future',
                 'city_id' => 28351,
@@ -6475,9 +5886,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Topeka, KS',
                 'zipcode_id' => 38524,
-            ),
-            87 => 
-            array (
+            ],
+            87 => [
                 'id' => 588,
                 'base' => 'Wichita USARC',
                 'city_id' => 28609,
@@ -6486,9 +5896,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Wichita, KS',
                 'zipcode_id' => 38823,
-            ),
-            88 => 
-            array (
+            ],
+            88 => [
                 'id' => 589,
                 'base' => 'Brooks-Lawler USARC/AMSA #71',
                 'city_id' => 16786,
@@ -6497,9 +5906,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Newport, KY',
                 'zipcode_id' => 23750,
-            ),
-            89 => 
-            array (
+            ],
+            89 => [
                 'id' => 590,
                 'base' => 'Louisville Kentucky',
                 'city_id' => 16367,
@@ -6508,9 +5916,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Louisville, KY',
                 'zipcode_id' => 23173,
-            ),
-            90 => 
-            array (
+            ],
+            90 => [
                 'id' => 591,
                 'base' => '1Sg Adam S Brandt USARC',
                 'city_id' => 8667,
@@ -6519,9 +5926,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Baltimore, MD',
                 'zipcode_id' => 11497,
-            ),
-            91 => 
-            array (
+            ],
+            91 => [
                 'id' => 592,
                 'base' => 'Curtis Bay - Baltimore',
                 'city_id' => 8667,
@@ -6530,9 +5936,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Baltimore, MD',
                 'zipcode_id' => 11497,
-            ),
-            92 => 
-            array (
+            ],
+            92 => [
                 'id' => 593,
                 'base' => '94th RRC HQ USARC',
                 'city_id' => 173,
@@ -6541,9 +5946,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Ayer, MA',
                 'zipcode_id' => 223,
-            ),
-            93 => 
-            array (
+            ],
+            93 => [
                 'id' => 594,
                 'base' => 'Cpl G M Craig USARC/AMSA 163',
                 'city_id' => 459,
@@ -6552,9 +5956,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Brockton, MA',
                 'zipcode_id' => 664,
-            ),
-            94 => 
-            array (
+            ],
+            94 => [
                 'id' => 595,
                 'base' => 'Devens Reserve Forces Tng Area',
                 'city_id' => 173,
@@ -6563,9 +5966,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Ayer, MA',
                 'zipcode_id' => 223,
-            ),
-            95 => 
-            array (
+            ],
+            95 => [
                 'id' => 596,
                 'base' => 'Fort Devens Trng Annex Sudbury',
                 'city_id' => 173,
@@ -6574,9 +5976,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Ayer, MA',
                 'zipcode_id' => 223,
-            ),
-            96 => 
-            array (
+            ],
+            96 => [
                 'id' => 597,
                 'base' => 'South Boston Support Activity',
                 'city_id' => 401,
@@ -6585,9 +5986,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Boston, MA',
                 'zipcode_id' => 527,
-            ),
-            97 => 
-            array (
+            ],
+            97 => [
                 'id' => 598,
                 'base' => 'USARC Hingham Cohasset',
                 'city_id' => 360,
@@ -6596,9 +5996,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Hingham, MA',
                 'zipcode_id' => 478,
-            ),
-            98 => 
-            array (
+            ],
+            98 => [
                 'id' => 599,
                 'base' => 'Westover AFRC',
                 'city_id' => 13,
@@ -6607,9 +6006,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Chicopee, MA',
                 'zipcode_id' => 15,
-            ),
-            99 => 
-            array (
+            ],
+            99 => [
                 'id' => 600,
                 'base' => 'Dr Mary E Walker Memorial USARC',
                 'city_id' => 20726,
@@ -6618,9 +6016,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Walker, MI',
                 'zipcode_id' => 29038,
-            ),
-            100 => 
-            array (
+            ],
+            100 => [
                 'id' => 601,
                 'base' => 'Southfield USARC',
                 'city_id' => 19974,
@@ -6629,9 +6026,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Southfield, MI',
                 'zipcode_id' => 27888,
-            ),
-            101 => 
-            array (
+            ],
+            101 => [
                 'id' => 602,
                 'base' => 'Arden Hills USARC',
                 'city_id' => 23084,
@@ -6640,9 +6036,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'New Brighton, MN',
                 'zipcode_id' => 31842,
-            ),
-            102 => 
-            array (
+            ],
+            102 => [
                 'id' => 603,
                 'base' => 'Fort Snelling USARC/AMSA',
                 'city_id' => 23214,
@@ -6651,9 +6046,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Minneapolis, MN',
                 'zipcode_id' => 32071,
-            ),
-            103 => 
-            array (
+            ],
+            103 => [
                 'id' => 604,
                 'base' => 'BG George A Morris USARC',
                 'city_id' => 16019,
@@ -6662,9 +6056,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Vicksburg, MS',
                 'zipcode_id' => 22722,
-            ),
-            104 => 
-            array (
+            ],
+            104 => [
                 'id' => 605,
                 'base' => 'Springfield AFRC/AMSA #54',
                 'city_id' => 28163,
@@ -6673,9 +6066,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Springfield, MO',
                 'zipcode_id' => 38163,
-            ),
-            105 => 
-            array (
+            ],
+            105 => [
                 'id' => 606,
                 'base' => 'St Louis #3/Sverdrup USAR',
                 'city_id' => 27097,
@@ -6684,9 +6076,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Saint Louis, MO',
                 'zipcode_id' => 36813,
-            ),
-            106 => 
-            array (
+            ],
+            106 => [
                 'id' => 607,
                 'base' => 'St Louis #4/Ord Plant',
                 'city_id' => 27097,
@@ -6695,9 +6086,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Saint Louis, MO',
                 'zipcode_id' => 36813,
-            ),
-            107 => 
-            array (
+            ],
+            107 => [
                 'id' => 608,
                 'base' => 'Sgt Ernest Veuve Hall/AMSA #74',
                 'city_id' => 25314,
@@ -6706,9 +6096,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Missoula, MT',
                 'zipcode_id' => 34546,
-            ),
-            108 => 
-            array (
+            ],
+            108 => [
                 'id' => 609,
                 'base' => 'AFRC, Londonderry',
                 'city_id' => 801,
@@ -6717,9 +6106,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Manchester, NH',
                 'zipcode_id' => 1119,
-            ),
-            109 => 
-            array (
+            ],
+            109 => [
                 'id' => 610,
                 'base' => 'Caven Point USARC',
                 'city_id' => 2750,
@@ -6728,9 +6116,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Jersey City, NJ',
                 'zipcode_id' => 3438,
-            ),
-            110 => 
-            array (
+            ],
+            110 => [
                 'id' => 611,
                 'base' => 'Fort Dix',
                 'city_id' => 3368,
@@ -6739,9 +6126,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Trenton, NJ',
                 'zipcode_id' => 4186,
-            ),
-            111 => 
-            array (
+            ],
+            111 => [
                 'id' => 612,
                 'base' => 'Pedricktown Support Facility',
                 'city_id' => 3154,
@@ -6750,9 +6136,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Penns Grove, NJ',
                 'zipcode_id' => 3944,
-            ),
-            112 => 
-            array (
+            ],
+            112 => [
                 'id' => 613,
                 'base' => 'Sgt J.W. Joyce Kilmer USARC',
                 'city_id' => 3495,
@@ -6761,9 +6146,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'New Brunswick, NJ',
                 'zipcode_id' => 4368,
-            ),
-            113 => 
-            array (
+            ],
+            113 => [
                 'id' => 614,
                 'base' => 'USARC and CFMS Kilmer',
                 'city_id' => 3495,
@@ -6772,9 +6156,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'New Brunswick, NJ',
                 'zipcode_id' => 4368,
-            ),
-            114 => 
-            array (
+            ],
+            114 => [
                 'id' => 615,
                 'base' => 'Jenkins AFRC',
                 'city_id' => 35337,
@@ -6783,9 +6166,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Albuquerque, NM',
                 'zipcode_id' => 48978,
-            ),
-            115 => 
-            array (
+            ],
+            115 => [
                 'id' => 616,
                 'base' => 'Amityville AFRC',
                 'city_id' => 3499,
@@ -6794,9 +6176,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'New York, NY',
                 'zipcode_id' => 4381,
-            ),
-            116 => 
-            array (
+            ],
+            116 => [
                 'id' => 617,
                 'base' => 'CW2 Kerry P. Hein USARC',
                 'city_id' => 3499,
@@ -6805,9 +6186,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'New York, NY',
                 'zipcode_id' => 4381,
-            ),
-            117 => 
-            array (
+            ],
+            117 => [
                 'id' => 618,
                 'base' => 'Ernie Pyle USARC/AMSA #12',
                 'city_id' => 3499,
@@ -6816,9 +6196,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'New York, NY',
                 'zipcode_id' => 4381,
-            ),
-            118 => 
-            array (
+            ],
+            118 => [
                 'id' => 619,
                 'base' => 'Floyd Wet Site',
                 'city_id' => 4919,
@@ -6827,9 +6206,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Rome, NY',
                 'zipcode_id' => 6405,
-            ),
-            119 => 
-            array (
+            ],
+            119 => [
                 'id' => 620,
                 'base' => 'Maj D W Holleder USARC',
                 'city_id' => 5452,
@@ -6838,9 +6216,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Webster, NY',
                 'zipcode_id' => 7035,
-            ),
-            120 => 
-            array (
+            ],
+            120 => [
                 'id' => 621,
                 'base' => '83D Div Memorial USARC/AMSA',
                 'city_id' => 17680,
@@ -6849,9 +6226,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Columbus, OH',
                 'zipcode_id' => 24699,
-            ),
-            121 => 
-            array (
+            ],
+            121 => [
                 'id' => 622,
                 'base' => 'Cooney USARC/AMSA #165 S-S',
                 'city_id' => 18520,
@@ -6860,9 +6236,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Sandusky, OH',
                 'zipcode_id' => 25872,
-            ),
-            122 => 
-            array (
+            ],
+            122 => [
                 'id' => 623,
                 'base' => 'Fort Hayes Memorial USARC',
                 'city_id' => 17680,
@@ -6871,9 +6246,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Columbus, OH',
                 'zipcode_id' => 24699,
-            ),
-            123 => 
-            array (
+            ],
+            123 => [
                 'id' => 624,
                 'base' => 'Kings Mills Memorial USARC',
                 'city_id' => 18554,
@@ -6882,9 +6256,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Kings Mills, OH',
                 'zipcode_id' => 25933,
-            ),
-            124 => 
-            array (
+            ],
+            124 => [
                 'id' => 625,
                 'base' => 'Rickenbacker USARC',
                 'city_id' => 17680,
@@ -6893,9 +6266,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Columbus, OH',
                 'zipcode_id' => 24699,
-            ),
-            125 => 
-            array (
+            ],
+            125 => [
                 'id' => 626,
                 'base' => 'Toledo Area USAR',
                 'city_id' => 17919,
@@ -6904,9 +6276,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Toledo, OH',
                 'zipcode_id' => 25014,
-            ),
-            126 => 
-            array (
+            ],
+            126 => [
                 'id' => 627,
                 'base' => 'Twaddle AFRC',
                 'city_id' => 30884,
@@ -6915,9 +6286,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Oklahoma City, OK',
                 'zipcode_id' => 41676,
-            ),
-            127 => 
-            array (
+            ],
+            127 => [
                 'id' => 628,
                 'base' => 'Charles E. Kelly Spt Facility',
                 'city_id' => 5769,
@@ -6926,31 +6296,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Pittsburgh, PA',
                 'zipcode_id' => 7417,
-            ),
-            128 => 
-            array (
+            ],
+            128 => [
                 'id' => 629,
-            'base' => 'ECS / AMSA #103 (G)',
+                'base' => 'ECS / AMSA #103 (G)',
                 'city_id' => 6441,
                 'state_id' => 38,
                 'branch' => 'ARMY',
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Meadville, PA',
                 'zipcode_id' => 8209,
-            ),
-            129 => 
-            array (
+            ],
+            129 => [
                 'id' => 630,
-            'base' => 'Edgemont USARC / AMSA #31 (G)',
+                'base' => 'Edgemont USARC / AMSA #31 (G)',
                 'city_id' => 7808,
                 'state_id' => 38,
                 'branch' => 'ARMY',
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Philadelphia, PA',
                 'zipcode_id' => 9827,
-            ),
-            130 => 
-            array (
+            ],
+            130 => [
                 'id' => 631,
                 'base' => 'Finleyville NIKE-PI-43',
                 'city_id' => 5696,
@@ -6959,9 +6326,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Elrama, PA',
                 'zipcode_id' => 7340,
-            ),
-            131 => 
-            array (
+            ],
+            131 => [
                 'id' => 632,
                 'base' => 'Johnstown Aviation Support Fac',
                 'city_id' => 6240,
@@ -6970,9 +6336,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Johnstown, PA',
                 'zipcode_id' => 7984,
-            ),
-            132 => 
-            array (
+            ],
+            132 => [
                 'id' => 633,
                 'base' => 'Neville Island Mnt Sup Fac',
                 'city_id' => 5769,
@@ -6981,9 +6346,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Pittsburgh, PA',
                 'zipcode_id' => 7417,
-            ),
-            133 => 
-            array (
+            ],
+            133 => [
                 'id' => 634,
                 'base' => 'North Penn USARC',
                 'city_id' => 8001,
@@ -6992,9 +6356,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Norristown, PA',
                 'zipcode_id' => 10228,
-            ),
-            134 => 
-            array (
+            ],
+            134 => [
                 'id' => 635,
                 'base' => 'Tacony Warehouse Site',
                 'city_id' => 7808,
@@ -7003,9 +6366,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Philadelphia, PA',
                 'zipcode_id' => 9827,
-            ),
-            135 => 
-            array (
+            ],
+            135 => [
                 'id' => 636,
                 'base' => 'TSgt Vernon McGarity USARC',
                 'city_id' => 5769,
@@ -7014,9 +6376,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Pittsburgh, PA',
                 'zipcode_id' => 7417,
-            ),
-            136 => 
-            array (
+            ],
+            136 => [
                 'id' => 637,
                 'base' => 'N Charleston USARC/AMSA #121',
                 'city_id' => 12305,
@@ -7025,20 +6386,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Goose Creek, SC',
                 'zipcode_id' => 16305,
-            ),
-            137 => 
-            array (
+            ],
+            137 => [
                 'id' => 638,
-            'base' => 'Lyell AFRC/AMSA #153(G)',
+                'base' => 'Lyell AFRC/AMSA #153(G)',
                 'city_id' => 15177,
                 'state_id' => 42,
                 'branch' => 'ARMY',
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Nashville, TN',
                 'zipcode_id' => 21595,
-            ),
-            138 => 
-            array (
+            ],
+            138 => [
                 'id' => 639,
                 'base' => 'NSA Memphis USARC',
                 'city_id' => 15291,
@@ -7047,9 +6406,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Memphis, TN',
                 'zipcode_id' => 21788,
-            ),
-            139 => 
-            array (
+            ],
+            139 => [
                 'id' => 640,
                 'base' => 'Austin Memorial AFRC',
                 'city_id' => 30896,
@@ -7058,9 +6416,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Austin, TX',
                 'zipcode_id' => 41776,
-            ),
-            140 => 
-            array (
+            ],
+            140 => [
                 'id' => 641,
                 'base' => 'Conroe USARC/ASF 62',
                 'city_id' => 32336,
@@ -7069,9 +6426,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Conroe, TX',
                 'zipcode_id' => 44049,
-            ),
-            141 => 
-            array (
+            ],
+            141 => [
                 'id' => 642,
                 'base' => 'Grand Prairie Reserve Complex',
                 'city_id' => 31524,
@@ -7080,9 +6436,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Grand Prairie, TX',
                 'zipcode_id' => 42545,
-            ),
-            142 => 
-            array (
+            ],
+            142 => [
                 'id' => 643,
                 'base' => 'Seagoville USARC',
                 'city_id' => 31594,
@@ -7091,9 +6446,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Seagoville, TX',
                 'zipcode_id' => 42660,
-            ),
-            143 => 
-            array (
+            ],
+            143 => [
                 'id' => 644,
                 'base' => 'Fort Douglas AFRC Complex',
                 'city_id' => 34653,
@@ -7102,9 +6456,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Salt Lake City, UT',
                 'zipcode_id' => 47673,
-            ),
-            144 => 
-            array (
+            ],
+            144 => [
                 'id' => 645,
                 'base' => 'Ogden Maintenance Center 269',
                 'city_id' => 34671,
@@ -7113,9 +6466,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Ogden, UT',
                 'zipcode_id' => 47873,
-            ),
-            145 => 
-            array (
+            ],
+            145 => [
                 'id' => 646,
                 'base' => 'Ogden Storage Facility 11-C',
                 'city_id' => 34671,
@@ -7124,9 +6476,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Ogden, UT',
                 'zipcode_id' => 47873,
-            ),
-            146 => 
-            array (
+            ],
+            146 => [
                 'id' => 647,
                 'base' => 'Fort Pickett',
                 'city_id' => 9571,
@@ -7135,9 +6486,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Petersburg, VA',
                 'zipcode_id' => 12892,
-            ),
-            147 => 
-            array (
+            ],
+            147 => [
                 'id' => 648,
                 'base' => 'Marcella / Butler Farms USARC',
                 'city_id' => 9558,
@@ -7146,20 +6496,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Hampton, VA',
                 'zipcode_id' => 12850,
-            ),
-            148 => 
-            array (
+            ],
+            148 => [
                 'id' => 649,
-            'base' => 'AMSA 137 (Marine)',
+                'base' => 'AMSA 137 (Marine)',
                 'city_id' => 38331,
                 'state_id' => 47,
                 'branch' => 'ARMY',
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Tacoma, WA',
                 'zipcode_id' => 54568,
-            ),
-            149 => 
-            array (
+            ],
+            149 => [
                 'id' => 650,
                 'base' => 'Fort Lawton USAR Complex',
                 'city_id' => 38173,
@@ -7168,9 +6516,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Seattle, WA',
                 'zipcode_id' => 54289,
-            ),
-            150 => 
-            array (
+            ],
+            150 => [
                 'id' => 651,
                 'base' => 'SSG Joe R Hooper USARC',
                 'city_id' => 38136,
@@ -7179,9 +6526,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Bothell, WA',
                 'zipcode_id' => 54210,
-            ),
-            151 => 
-            array (
+            ],
+            151 => [
                 'id' => 652,
                 'base' => 'Vancouver Barracks',
                 'city_id' => 38462,
@@ -7190,9 +6536,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Vancouver, WA',
                 'zipcode_id' => 54790,
-            ),
-            152 => 
-            array (
+            ],
+            152 => [
                 'id' => 653,
                 'base' => 'Big Bend USARC / OMS',
                 'city_id' => 10793,
@@ -7201,9 +6546,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Grantsville, WV',
                 'zipcode_id' => 14315,
-            ),
-            153 => 
-            array (
+            ],
+            153 => [
                 'id' => 654,
                 'base' => 'Charleston AFRC / AMSA #107',
                 'city_id' => 10427,
@@ -7212,9 +6556,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'South Charleston, WV',
                 'zipcode_id' => 13845,
-            ),
-            154 => 
-            array (
+            ],
+            154 => [
                 'id' => 655,
                 'base' => 'Denis J. Murphy USARC/AMSA/OMS',
                 'city_id' => 22519,
@@ -7223,9 +6566,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Green Bay, WI',
                 'zipcode_id' => 31192,
-            ),
-            155 => 
-            array (
+            ],
+            155 => [
                 'id' => 656,
                 'base' => 'Fort McCoy',
                 'city_id' => 22743,
@@ -7234,9 +6576,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Sparta, WI',
                 'zipcode_id' => 31447,
-            ),
-            156 => 
-            array (
+            ],
+            156 => [
                 'id' => 657,
                 'base' => 'W. Silver Spring Complex',
                 'city_id' => 22218,
@@ -7245,9 +6586,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Reserve',
                 'map_value' => 'Milwaukee, WI',
                 'zipcode_id' => 30753,
-            ),
-            157 => 
-            array (
+            ],
+            157 => [
                 'id' => 658,
                 'base' => 'NAF Adak CSO',
                 'city_id' => 38706,
@@ -7256,20 +6596,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Adak, AK',
                 'zipcode_id' => 55155,
-            ),
-            158 => 
-            array (
+            ],
+            158 => [
                 'id' => 659,
-            'base' => 'NAF Adak CSO (NSGA AdakN63886)',
+                'base' => 'NAF Adak CSO (NSGA AdakN63886)',
                 'city_id' => 38706,
                 'state_id' => 2,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Adak, AK',
                 'zipcode_id' => 55155,
-            ),
-            159 => 
-            array (
+            ],
+            159 => [
                 'id' => 660,
                 'base' => 'MCAS El Toro Santa Ana',
                 'city_id' => 36359,
@@ -7278,42 +6616,38 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Irvine, CA',
                 'zipcode_id' => 51257,
-            ),
-            160 => 
-            array (
+            ],
+            160 => [
                 'id' => 661,
-            'base' => 'FISC Oakland Ca CSO (Alameda Annex)',
+                'base' => 'FISC Oakland Ca CSO (Alameda Annex)',
                 'city_id' => 36791,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Alameda, CA',
                 'zipcode_id' => 52236,
-            ),
-            161 => 
-            array (
+            ],
+            161 => [
                 'id' => 662,
-            'base' => 'FISC Oakland Ca CSO (Alameda Facility)',
+                'base' => 'FISC Oakland Ca CSO (Alameda Facility)',
                 'city_id' => 36791,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Alameda, CA',
                 'zipcode_id' => 52236,
-            ),
-            162 => 
-            array (
+            ],
+            162 => [
                 'id' => 663,
-            'base' => 'FISC Oakland Ca CSO (Richmond Pt Molate)',
+                'base' => 'FISC Oakland Ca CSO (Richmond Pt Molate)',
                 'city_id' => 36862,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Richmond, CA',
                 'zipcode_id' => 52406,
-            ),
-            163 => 
-            array (
+            ],
+            163 => [
                 'id' => 664,
                 'base' => 'FISC Oakland CSO',
                 'city_id' => 36855,
@@ -7322,9 +6656,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Oakland, CA',
                 'zipcode_id' => 52350,
-            ),
-            164 => 
-            array (
+            ],
+            164 => [
                 'id' => 665,
                 'base' => 'Hunters Point Annex CSO',
                 'city_id' => 36782,
@@ -7333,9 +6666,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'San Francisco, CA',
                 'zipcode_id' => 52092,
-            ),
-            165 => 
-            array (
+            ],
+            165 => [
                 'id' => 666,
                 'base' => 'NAS Alameda CSO',
                 'city_id' => 36791,
@@ -7344,31 +6676,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Alameda, CA',
                 'zipcode_id' => 52236,
-            ),
-            166 => 
-            array (
+            ],
+            166 => [
                 'id' => 667,
-            'base' => 'NAS Alameda CSO (Marina Village/SF)',
+                'base' => 'NAS Alameda CSO (Marina Village/SF)',
                 'city_id' => 36782,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'San Francisco, CA',
                 'zipcode_id' => 52092,
-            ),
-            167 => 
-            array (
+            ],
+            167 => [
                 'id' => 668,
-            'base' => 'NAS Alameda CSO (NAS Alameda/SF)',
+                'base' => 'NAS Alameda CSO (NAS Alameda/SF)',
                 'city_id' => 36791,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Alameda, CA',
                 'zipcode_id' => 52236,
-            ),
-            168 => 
-            array (
+            ],
+            168 => [
                 'id' => 669,
                 'base' => 'NCEL Port Hueneme CSO',
                 'city_id' => 36433,
@@ -7377,9 +6706,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Port Hueneme, CA',
                 'zipcode_id' => 51489,
-            ),
-            169 => 
-            array (
+            ],
+            169 => [
                 'id' => 670,
                 'base' => 'NH Oakland CSO',
                 'city_id' => 36855,
@@ -7388,31 +6716,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Oakland, CA',
                 'zipcode_id' => 52350,
-            ),
-            170 => 
-            array (
+            ],
+            170 => [
                 'id' => 671,
-            'base' => 'NS Long Beach CSO (Cabrillo Hsg Long Bch)',
+                'base' => 'NS Long Beach CSO (Cabrillo Hsg Long Bch)',
                 'city_id' => 35975,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Long Beach, CA',
                 'zipcode_id' => 50228,
-            ),
-            171 => 
-            array (
+            ],
+            171 => [
                 'id' => 672,
-            'base' => 'NS Long Beach CSO (Long Beach NAVSTA)',
+                'base' => 'NS Long Beach CSO (Long Beach NAVSTA)',
                 'city_id' => 35975,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Long Beach, CA',
                 'zipcode_id' => 50228,
-            ),
-            172 => 
-            array (
+            ],
+            172 => [
                 'id' => 673,
                 'base' => 'NS Treasure Island CSO',
                 'city_id' => 36782,
@@ -7421,9 +6746,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'San Francisco, CA',
                 'zipcode_id' => 52092,
-            ),
-            173 => 
-            array (
+            ],
+            173 => [
                 'id' => 674,
                 'base' => 'NSY Long Beach CSO',
                 'city_id' => 35975,
@@ -7432,31 +6756,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Long Beach, CA',
                 'zipcode_id' => 50228,
-            ),
-            174 => 
-            array (
+            ],
+            174 => [
                 'id' => 675,
-            'base' => 'NSY Long Beach CSO (Palos Verdes Hsg)',
+                'base' => 'NSY Long Beach CSO (Palos Verdes Hsg)',
                 'city_id' => 35975,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Long Beach, CA',
                 'zipcode_id' => 50228,
-            ),
-            175 => 
-            array (
+            ],
+            175 => [
                 'id' => 676,
-            'base' => 'NSY Long Beach CSO (San Pedro Mont Hsg)',
+                'base' => 'NSY Long Beach CSO (San Pedro Mont Hsg)',
                 'city_id' => 35975,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Long Beach, CA',
                 'zipcode_id' => 50228,
-            ),
-            176 => 
-            array (
+            ],
+            176 => [
                 'id' => 677,
                 'base' => 'NSY Mare Island CSO',
                 'city_id' => 36794,
@@ -7465,20 +6786,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Vallejo, CA',
                 'zipcode_id' => 52240,
-            ),
-            177 => 
-            array (
+            ],
+            177 => [
                 'id' => 678,
-            'base' => 'NSY Mare Island CSO (Roosevelt Terrace)',
+                'base' => 'NSY Mare Island CSO (Roosevelt Terrace)',
                 'city_id' => 36794,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Vallejo, CA',
                 'zipcode_id' => 52240,
-            ),
-            178 => 
-            array (
+            ],
+            178 => [
                 'id' => 679,
                 'base' => 'NTC San Diego CSO',
                 'city_id' => 36177,
@@ -7487,20 +6806,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-            179 => 
-            array (
+            ],
+            179 => [
                 'id' => 680,
-            'base' => 'PWC San Francisco CSO (Treasure Island)',
+                'base' => 'PWC San Francisco CSO (Treasure Island)',
                 'city_id' => 36782,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'San Francisco, CA',
                 'zipcode_id' => 52092,
-            ),
-            180 => 
-            array (
+            ],
+            180 => [
                 'id' => 681,
                 'base' => 'NUWC New London CSO',
                 'city_id' => 2473,
@@ -7509,9 +6826,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'New London, CT',
                 'zipcode_id' => 3006,
-            ),
-            181 => 
-            array (
+            ],
+            181 => [
                 'id' => 682,
                 'base' => 'NAS Cecil Field CSO',
                 'city_id' => 13356,
@@ -7520,9 +6836,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Jacksonville, FL',
                 'zipcode_id' => 17901,
-            ),
-            182 => 
-            array (
+            ],
+            182 => [
                 'id' => 683,
                 'base' => 'NTC Orlando CSO',
                 'city_id' => 13680,
@@ -7531,42 +6846,38 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Orlando, FL',
                 'zipcode_id' => 18493,
-            ),
-            183 => 
-            array (
+            ],
+            183 => [
                 'id' => 684,
-            'base' => 'NTC Orlando CSO (Area C)',
+                'base' => 'NTC Orlando CSO (Area C)',
                 'city_id' => 13680,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Orlando, FL',
                 'zipcode_id' => 18493,
-            ),
-            184 => 
-            array (
+            ],
+            184 => [
                 'id' => 685,
-            'base' => 'NTC Orlando CSO (Herndon Annex)',
+                'base' => 'NTC Orlando CSO (Herndon Annex)',
                 'city_id' => 13680,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Orlando, FL',
                 'zipcode_id' => 18493,
-            ),
-            185 => 
-            array (
+            ],
+            185 => [
                 'id' => 686,
-            'base' => 'NTC Orlando CSO (NTC Annex)',
+                'base' => 'NTC Orlando CSO (NTC Annex)',
                 'city_id' => 13680,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Orlando, FL',
                 'zipcode_id' => 18493,
-            ),
-            186 => 
-            array (
+            ],
+            186 => [
                 'id' => 687,
                 'base' => 'Barbers Point CSO',
                 'city_id' => 37573,
@@ -7575,9 +6886,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Kapolei, HI',
                 'zipcode_id' => 53441,
-            ),
-            187 => 
-            array (
+            ],
+            187 => [
                 'id' => 688,
                 'base' => 'NAWC-AD Indianapolis CSO',
                 'city_id' => 19163,
@@ -7586,9 +6896,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Indianapolis, IN',
                 'zipcode_id' => 26781,
-            ),
-            188 => 
-            array (
+            ],
+            188 => [
                 'id' => 689,
                 'base' => 'NSWC Louisville CSO',
                 'city_id' => 16367,
@@ -7597,9 +6906,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Louisville, KY',
                 'zipcode_id' => 23173,
-            ),
-            189 => 
-            array (
+            ],
+            189 => [
                 'id' => 690,
                 'base' => 'NSWC Carderock CSO',
                 'city_id' => 8714,
@@ -7608,9 +6916,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Annapolis, MD',
                 'zipcode_id' => 11616,
-            ),
-            190 => 
-            array (
+            ],
+            190 => [
                 'id' => 691,
                 'base' => 'NAS South Weymouth CSO',
                 'city_id' => 450,
@@ -7619,20 +6926,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Weymouth, MA',
                 'zipcode_id' => 624,
-            ),
-            191 => 
-            array (
+            ],
+            191 => [
                 'id' => 692,
-            'base' => 'NAS South Weymouth CSO (Squantum Housing)',
+                'base' => 'NAS South Weymouth CSO (Squantum Housing)',
                 'city_id' => 450,
                 'state_id' => 21,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Weymouth, MA',
                 'zipcode_id' => 624,
-            ),
-            192 => 
-            array (
+            ],
+            192 => [
                 'id' => 693,
                 'base' => 'NAWCACDIV Trenton CSO',
                 'city_id' => 4870,
@@ -7641,9 +6946,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Trenton, NY',
                 'zipcode_id' => 6356,
-            ),
-            193 => 
-            array (
+            ],
+            193 => [
                 'id' => 694,
                 'base' => 'NAWC-AD Warminster CSO',
                 'city_id' => 7760,
@@ -7652,9 +6956,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Warminster, PA',
                 'zipcode_id' => 9773,
-            ),
-            194 => 
-            array (
+            ],
+            194 => [
                 'id' => 695,
                 'base' => 'NH Philadelphia CSO',
                 'city_id' => 7808,
@@ -7663,9 +6966,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Philadelphia, PA',
                 'zipcode_id' => 9827,
-            ),
-            195 => 
-            array (
+            ],
+            195 => [
                 'id' => 696,
                 'base' => 'CBC Davisville CSO',
                 'city_id' => 716,
@@ -7674,9 +6976,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'North Kingstown, RI',
                 'zipcode_id' => 992,
-            ),
-            196 => 
-            array (
+            ],
+            196 => [
                 'id' => 697,
                 'base' => 'NSY Charleston CSO',
                 'city_id' => 12285,
@@ -7685,9 +6986,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'North Charleston, SC',
                 'zipcode_id' => 16254,
-            ),
-            197 => 
-            array (
+            ],
+            197 => [
                 'id' => 698,
                 'base' => 'NAS Dallas CSO',
                 'city_id' => 31607,
@@ -7696,9 +6996,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Dallas, TX',
                 'zipcode_id' => 42682,
-            ),
-            198 => 
-            array (
+            ],
+            198 => [
                 'id' => 699,
                 'base' => 'NS Puget Sound CSO',
                 'city_id' => 38173,
@@ -7707,97 +7006,88 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Caretaker',
                 'map_value' => 'Seattle, WA',
                 'zipcode_id' => 54289,
-            ),
-            199 => 
-            array (
+            ],
+            199 => [
                 'id' => 700,
-            'base' => 'NSWC Div Carderock (Back Island)',
+                'base' => 'NSWC Div Carderock (Back Island)',
                 'city_id' => 38972,
                 'state_id' => 2,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Ketchikan, AK',
                 'zipcode_id' => 55481,
-            ),
-            200 => 
-            array (
+            ],
+            200 => [
                 'id' => 701,
-            'base' => 'COMNAVREG SW San Diego (Admiral Hartman Hsg)',
+                'base' => 'COMNAVREG SW San Diego (Admiral Hartman Hsg)',
                 'city_id' => 36177,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-            201 => 
-            array (
+            ],
+            201 => [
                 'id' => 702,
-            'base' => 'COMNAVREG SW San Diego (Bayview Hills Housing)',
+                'base' => 'COMNAVREG SW San Diego (Bayview Hills Housing)',
                 'city_id' => 36177,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-            202 => 
-            array (
+            ],
+            202 => [
                 'id' => 703,
-            'base' => 'COMNAVREG SW San Diego (Chesterton Housing)',
+                'base' => 'COMNAVREG SW San Diego (Chesterton Housing)',
                 'city_id' => 36177,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-            203 => 
-            array (
+            ],
+            203 => [
                 'id' => 704,
-            'base' => 'COMNAVREG SW San Diego (Chollas Heights Hsg)',
+                'base' => 'COMNAVREG SW San Diego (Chollas Heights Hsg)',
                 'city_id' => 36177,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-            204 => 
-            array (
+            ],
+            204 => [
                 'id' => 705,
-            'base' => 'COMNAVREG SW San Diego (Eucalyptus Hills Hsg)',
+                'base' => 'COMNAVREG SW San Diego (Eucalyptus Hills Hsg)',
                 'city_id' => 36177,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-            205 => 
-            array (
+            ],
+            205 => [
                 'id' => 706,
-            'base' => 'COMNAVREG SW San Diego (Gateway Village Hsg)',
+                'base' => 'COMNAVREG SW San Diego (Gateway Village Hsg)',
                 'city_id' => 36177,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-            206 => 
-            array (
+            ],
+            206 => [
                 'id' => 707,
-            'base' => 'COMNAVREG SW San Diego (Murphy Canyon Housing)',
+                'base' => 'COMNAVREG SW San Diego (Murphy Canyon Housing)',
                 'city_id' => 36177,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-            207 => 
-            array (
+            ],
+            207 => [
                 'id' => 708,
                 'base' => 'FCTCPAC San Diego',
                 'city_id' => 36177,
@@ -7806,9 +7096,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-            208 => 
-            array (
+            ],
+            208 => [
                 'id' => 709,
                 'base' => 'FISC San Diego',
                 'city_id' => 36177,
@@ -7817,31 +7106,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-            209 => 
-            array (
+            ],
+            209 => [
                 'id' => 710,
-            'base' => 'FISC San Diego (National City Annex)',
+                'base' => 'FISC San Diego (National City Annex)',
                 'city_id' => 36135,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'National City, CA',
                 'zipcode_id' => 50768,
-            ),
-            210 => 
-            array (
+            ],
+            210 => [
                 'id' => 711,
-            'base' => 'FISC San Diego (Pt Loma Annex)',
+                'base' => 'FISC San Diego (Pt Loma Annex)',
                 'city_id' => 36177,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-            211 => 
-            array (
+            ],
+            211 => [
                 'id' => 712,
                 'base' => 'FLEASWTRACEN',
                 'city_id' => 36177,
@@ -7850,9 +7136,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-            212 => 
-            array (
+            ],
+            212 => [
                 'id' => 713,
                 'base' => 'NAF El Centro',
                 'city_id' => 36209,
@@ -7861,31 +7146,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'El Centro, CA',
                 'zipcode_id' => 50987,
-            ),
-            213 => 
-            array (
+            ],
+            213 => [
                 'id' => 714,
-            'base' => 'NAF El Centro (Desert Range)',
+                'base' => 'NAF El Centro (Desert Range)',
                 'city_id' => 36209,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'El Centro, CA',
                 'zipcode_id' => 50987,
-            ),
-            214 => 
-            array (
+            ],
+            214 => [
                 'id' => 715,
-            'base' => 'NAF El Centro (Holtville Carrier Ls)',
+                'base' => 'NAF El Centro (Holtville Carrier Ls)',
                 'city_id' => 36209,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'El Centro, CA',
                 'zipcode_id' => 50987,
-            ),
-            215 => 
-            array (
+            ],
+            215 => [
                 'id' => 716,
                 'base' => 'NAS Lemoore',
                 'city_id' => 36492,
@@ -7894,9 +7176,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Lemoore NAS, CA',
                 'zipcode_id' => 51589,
-            ),
-            216 => 
-            array (
+            ],
+            216 => [
                 'id' => 717,
                 'base' => 'NAS North Island San Diego',
                 'city_id' => 36177,
@@ -7905,64 +7186,58 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-            217 => 
-            array (
+            ],
+            217 => [
                 'id' => 718,
-            'base' => 'NAS North Island San Diego (Clev NF Survival Tra)',
+                'base' => 'NAS North Island San Diego (Clev NF Survival Tra)',
                 'city_id' => 36167,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Warner Springs, CA',
                 'zipcode_id' => 50834,
-            ),
-            218 => 
-            array (
+            ],
+            218 => [
                 'id' => 719,
-            'base' => 'NAS North Island San Diego (Dol Area Imp Bch)',
+                'base' => 'NAS North Island San Diego (Dol Area Imp Bch)',
                 'city_id' => 36127,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Imperial Beach, CA',
                 'zipcode_id' => 50754,
-            ),
-            219 => 
-            array (
+            ],
+            219 => [
                 'id' => 720,
-            'base' => 'NAS North Island San Diego (Former Phibase Coronado)',
+                'base' => 'NAS North Island San Diego (Former Phibase Coronado)',
                 'city_id' => 36178,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Coronado, CA',
                 'zipcode_id' => 50877,
-            ),
-            220 => 
-            array (
+            ],
+            220 => [
                 'id' => 721,
-            'base' => 'NAS North Island San Diego (Imperial Beach)',
+                'base' => 'NAS North Island San Diego (Imperial Beach)',
                 'city_id' => 36127,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Imperial Beach, CA',
                 'zipcode_id' => 50754,
-            ),
-            221 => 
-            array (
+            ],
+            221 => [
                 'id' => 722,
-            'base' => 'NAS North Island San Diego (San Clemente Island)',
+                'base' => 'NAS North Island San Diego (San Clemente Island)',
                 'city_id' => 36385,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'San Clemente, CA',
                 'zipcode_id' => 51328,
-            ),
-            222 => 
-            array (
+            ],
+            222 => [
                 'id' => 723,
                 'base' => 'Naval Postgraduate School',
                 'city_id' => 36733,
@@ -7971,42 +7246,38 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Monterey, CA',
                 'zipcode_id' => 52012,
-            ),
-            223 => 
-            array (
+            ],
+            223 => [
                 'id' => 724,
-            'base' => 'Naval Postgraduate School (La Mesa Village)',
+                'base' => 'Naval Postgraduate School (La Mesa Village)',
                 'city_id' => 36733,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Monterey, CA',
                 'zipcode_id' => 52012,
-            ),
-            224 => 
-            array (
+            ],
+            224 => [
                 'id' => 725,
-            'base' => 'Naval Postgraduate School (Lab-Recreation)',
+                'base' => 'Naval Postgraduate School (Lab-Recreation)',
                 'city_id' => 36733,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Monterey, CA',
                 'zipcode_id' => 52012,
-            ),
-            225 => 
-            array (
+            ],
+            225 => [
                 'id' => 726,
-            'base' => 'Naval Postgraduate School (Navy School Annex)',
+                'base' => 'Naval Postgraduate School (Navy School Annex)',
                 'city_id' => 36733,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Monterey, CA',
                 'zipcode_id' => 52012,
-            ),
-            226 => 
-            array (
+            ],
+            226 => [
                 'id' => 727,
                 'base' => 'NAVBASE Ventura City',
                 'city_id' => 36435,
@@ -8015,75 +7286,68 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Point Mugu, CA',
                 'zipcode_id' => 51491,
-            ),
-            227 => 
-            array (
+            ],
+            227 => [
                 'id' => 728,
-            'base' => 'NAVBASE Ventura City (Capehart Hsg 3 Mugu)',
+                'base' => 'NAVBASE Ventura City (Capehart Hsg 3 Mugu)',
                 'city_id' => 36423,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Camarillo, CA',
                 'zipcode_id' => 51467,
-            ),
-            228 => 
-            array (
+            ],
+            228 => [
                 'id' => 729,
-            'base' => 'NAVBASE Ventura City (Laguna Peak CA)',
+                'base' => 'NAVBASE Ventura City (Laguna Peak CA)',
                 'city_id' => 36435,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Point Mugu, CA',
                 'zipcode_id' => 51491,
-            ),
-            229 => 
-            array (
+            ],
+            229 => [
                 'id' => 730,
-            'base' => 'NAVBASE Ventura City (Port Hueneme)',
+                'base' => 'NAVBASE Ventura City (Port Hueneme)',
                 'city_id' => 36433,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Port Hueneme, CA',
                 'zipcode_id' => 51489,
-            ),
-            230 => 
-            array (
+            ],
+            230 => [
                 'id' => 731,
-            'base' => 'NAVCOMTELSTA San Diego (Coronado)',
+                'base' => 'NAVCOMTELSTA San Diego (Coronado)',
                 'city_id' => 36178,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Coronado, CA',
                 'zipcode_id' => 50877,
-            ),
-            231 => 
-            array (
+            ],
+            231 => [
                 'id' => 732,
-            'base' => 'NAVCOMTELSTA San Diego (Dixon Transmitter Facy)',
+                'base' => 'NAVCOMTELSTA San Diego (Dixon Transmitter Facy)',
                 'city_id' => 37224,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Dixon, CA',
                 'zipcode_id' => 52969,
-            ),
-            232 => 
-            array (
+            ],
+            232 => [
                 'id' => 733,
-            'base' => 'NAVCOMTELSTA San Diego (Stockton CA)',
+                'base' => 'NAVCOMTELSTA San Diego (Stockton CA)',
                 'city_id' => 36957,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Stockton, CA',
                 'zipcode_id' => 52624,
-            ),
-            233 => 
-            array (
+            ],
+            233 => [
                 'id' => 734,
                 'base' => 'NAVMEDCEN San Diego',
                 'city_id' => 36177,
@@ -8092,53 +7356,48 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-            234 => 
-            array (
+            ],
+            234 => [
                 'id' => 735,
-            'base' => 'NAVPETOFF Alexandria (Estero Bay Branch)',
+                'base' => 'NAVPETOFF Alexandria (Estero Bay Branch)',
                 'city_id' => 36553,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Morro Bay, CA',
                 'zipcode_id' => 51707,
-            ),
-            235 => 
-            array (
+            ],
+            235 => [
                 'id' => 736,
-            'base' => 'NAVPETOFF Alexandria (Fuel Complx Long Beach)',
+                'base' => 'NAVPETOFF Alexandria (Fuel Complx Long Beach)',
                 'city_id' => 35975,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Long Beach, CA',
                 'zipcode_id' => 50228,
-            ),
-            236 => 
-            array (
+            ],
+            236 => [
                 'id' => 737,
-            'base' => 'NAVPETOFF Alexandria (Fuel Farm San Pedro)',
+                'base' => 'NAVPETOFF Alexandria (Fuel Farm San Pedro)',
                 'city_id' => 35844,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Los Angeles, CA',
                 'zipcode_id' => 49863,
-            ),
-            237 => 
-            array (
+            ],
+            237 => [
                 'id' => 738,
-            'base' => 'NAVPETOFF Alexandria (Norwalk Branch)',
+                'base' => 'NAVPETOFF Alexandria (Norwalk Branch)',
                 'city_id' => 35953,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Norwalk, CA',
                 'zipcode_id' => 50184,
-            ),
-            238 => 
-            array (
+            ],
+            238 => [
                 'id' => 739,
                 'base' => 'Navpmossp Sunnyvale',
                 'city_id' => 36780,
@@ -8147,20 +7406,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Sunnyvale, CA',
                 'zipcode_id' => 52086,
-            ),
-            239 => 
-            array (
+            ],
+            239 => [
                 'id' => 740,
-            'base' => 'Navpmossp Sunnyvale (Det Santa Cruz CA)',
+                'base' => 'Navpmossp Sunnyvale (Det Santa Cruz CA)',
                 'city_id' => 36941,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Santa Cruz, CA',
                 'zipcode_id' => 52540,
-            ),
-            240 => 
-            array (
+            ],
+            240 => [
                 'id' => 741,
                 'base' => 'NAWS China Lake',
                 'city_id' => 36633,
@@ -8169,42 +7426,38 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Ridgecrest, CA',
                 'zipcode_id' => 51815,
-            ),
-            241 => 
-            array (
+            ],
+            241 => [
                 'id' => 742,
-            'base' => 'NAWS China Lake (Mojave B Ranges)',
+                'base' => 'NAWS China Lake (Mojave B Ranges)',
                 'city_id' => 36645,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Trona, CA',
                 'zipcode_id' => 51829,
-            ),
-            242 => 
-            array (
+            ],
+            242 => [
                 'id' => 743,
-            'base' => 'NAWS China Lake (Randsburg Wash Area)',
+                'base' => 'NAWS China Lake (Randsburg Wash Area)',
                 'city_id' => 36645,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Trona, CA',
                 'zipcode_id' => 51829,
-            ),
-            243 => 
-            array (
+            ],
+            243 => [
                 'id' => 744,
-            'base' => 'NAWS China Lake (Santa Cruz Island)',
+                'base' => 'NAWS China Lake (Santa Cruz Island)',
                 'city_id' => 36449,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Goleta, CA',
                 'zipcode_id' => 51524,
-            ),
-            244 => 
-            array (
+            ],
+            244 => [
                 'id' => 745,
                 'base' => 'NH Camp Pendleton',
                 'city_id' => 36157,
@@ -8213,9 +7466,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Camp Pendleton, CA',
                 'zipcode_id' => 50817,
-            ),
-            245 => 
-            array (
+            ],
+            245 => [
                 'id' => 746,
                 'base' => 'NS San Diego',
                 'city_id' => 36177,
@@ -8224,20 +7476,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-            246 => 
-            array (
+            ],
+            246 => [
                 'id' => 747,
-            'base' => 'NS San Diego (Nav Rec Cen Mis Gorge)',
+                'base' => 'NS San Diego (Nav Rec Cen Mis Gorge)',
                 'city_id' => 36177,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-            247 => 
-            array (
+            ],
+            247 => [
                 'id' => 748,
                 'base' => 'NSWC Corona',
                 'city_id' => 36420,
@@ -8246,9 +7496,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Corona, CA',
                 'zipcode_id' => 51447,
-            ),
-            248 => 
-            array (
+            ],
+            248 => [
                 'id' => 749,
                 'base' => 'NWS Seal Beach',
                 'city_id' => 35970,
@@ -8257,42 +7506,38 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Seal Beach, CA',
                 'zipcode_id' => 50223,
-            ),
-            249 => 
-            array (
+            ],
+            249 => [
                 'id' => 750,
-            'base' => 'NWS Seal Beach (Det Concord CA)',
+                'base' => 'NWS Seal Beach (Det Concord CA)',
                 'city_id' => 36809,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Concord, CA',
                 'zipcode_id' => 52257,
-            ),
-            250 => 
-            array (
+            ],
+            250 => [
                 'id' => 751,
-            'base' => 'NWS Seal Beach (Fallbrook CA)',
+                'base' => 'NWS Seal Beach (Fallbrook CA)',
                 'city_id' => 36152,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Fallbrook, CA',
                 'zipcode_id' => 50803,
-            ),
-            251 => 
-            array (
+            ],
+            251 => [
                 'id' => 752,
-            'base' => 'NWS Seal Beach (Long Beach Golf Course)',
+                'base' => 'NWS Seal Beach (Long Beach Golf Course)',
                 'city_id' => 35966,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Los Alamitos, CA',
                 'zipcode_id' => 50214,
-            ),
-            252 => 
-            array (
+            ],
+            252 => [
                 'id' => 753,
                 'base' => 'SPAWARSYSCEN San Diego',
                 'city_id' => 36177,
@@ -8301,20 +7546,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-            253 => 
-            array (
+            ],
+            253 => [
                 'id' => 754,
-            'base' => 'SPAWARSYSCEN San Diego (Old Town)',
+                'base' => 'SPAWARSYSCEN San Diego (Old Town)',
                 'city_id' => 36177,
                 'state_id' => 5,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-            254 => 
-            array (
+            ],
+            254 => [
                 'id' => 755,
                 'base' => 'SUBASE San Diego',
                 'city_id' => 36177,
@@ -8323,9 +7566,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-            255 => 
-            array (
+            ],
+            255 => [
                 'id' => 756,
                 'base' => 'NAVSUBASE New London',
                 'city_id' => 2484,
@@ -8334,75 +7576,68 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Groton, CT',
                 'zipcode_id' => 3019,
-            ),
-            256 => 
-            array (
+            ],
+            256 => [
                 'id' => 757,
-            'base' => 'NAVSUBASE New London (Conning Towers)',
+                'base' => 'NAVSUBASE New London (Conning Towers)',
                 'city_id' => 2484,
                 'state_id' => 7,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Groton, CT',
                 'zipcode_id' => 3019,
-            ),
-            257 => 
-            array (
+            ],
+            257 => [
                 'id' => 758,
-            'base' => 'NAVSUBASE New London (Nautilus Park 1St Inc)',
+                'base' => 'NAVSUBASE New London (Nautilus Park 1St Inc)',
                 'city_id' => 2484,
                 'state_id' => 7,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Groton, CT',
                 'zipcode_id' => 3019,
-            ),
-            258 => 
-            array (
+            ],
+            258 => [
                 'id' => 759,
-            'base' => 'NAVSUBASE New London (Nautilus Park 2nd Inc)',
+                'base' => 'NAVSUBASE New London (Nautilus Park 2nd Inc)',
                 'city_id' => 2484,
                 'state_id' => 7,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Groton, CT',
                 'zipcode_id' => 3019,
-            ),
-            259 => 
-            array (
+            ],
+            259 => [
                 'id' => 760,
-            'base' => 'NAVSUBASE New London (Nautilus Park 3rd Inc)',
+                'base' => 'NAVSUBASE New London (Nautilus Park 3rd Inc)',
                 'city_id' => 2484,
                 'state_id' => 7,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Groton, CT',
                 'zipcode_id' => 3019,
-            ),
-            260 => 
-            array (
+            ],
+            260 => [
                 'id' => 761,
-            'base' => 'NAVSUBASE New London (Polaris Park)',
+                'base' => 'NAVSUBASE New London (Polaris Park)',
                 'city_id' => 2484,
                 'state_id' => 7,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Groton, CT',
                 'zipcode_id' => 3019,
-            ),
-            261 => 
-            array (
+            ],
+            261 => [
                 'id' => 762,
-            'base' => 'NAVSUBASE New London (Trident Park)',
+                'base' => 'NAVSUBASE New London (Trident Park)',
                 'city_id' => 2484,
                 'state_id' => 7,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Groton, CT',
                 'zipcode_id' => 3019,
-            ),
-            262 => 
-            array (
+            ],
+            262 => [
                 'id' => 763,
                 'base' => 'NWIRP Bloomfield',
                 'city_id' => 2335,
@@ -8411,9 +7646,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Bloomfield, CT',
                 'zipcode_id' => 2776,
-            ),
-            263 => 
-            array (
+            ],
+            263 => [
                 'id' => 764,
                 'base' => 'COMNAVDIST Washington DC',
                 'city_id' => 8229,
@@ -8422,64 +7656,58 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Washington, DC',
                 'zipcode_id' => 10552,
-            ),
-            264 => 
-            array (
+            ],
+            264 => [
                 'id' => 765,
-            'base' => 'COMNAVDIST Washington DC (Bellevue)',
+                'base' => 'COMNAVDIST Washington DC (Bellevue)',
                 'city_id' => 8229,
                 'state_id' => 51,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Washington, DC',
                 'zipcode_id' => 10552,
-            ),
-            265 => 
-            array (
+            ],
+            265 => [
                 'id' => 766,
-            'base' => 'COMNAVDIST Washington DC (Naval Observatory)',
+                'base' => 'COMNAVDIST Washington DC (Naval Observatory)',
                 'city_id' => 8229,
                 'state_id' => 51,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Washington, DC',
                 'zipcode_id' => 10552,
-            ),
-            266 => 
-            array (
+            ],
+            266 => [
                 'id' => 767,
-            'base' => 'COMNAVDIST Washington DC (NAVSTA Anacostia)',
+                'base' => 'COMNAVDIST Washington DC (NAVSTA Anacostia)',
                 'city_id' => 8229,
                 'state_id' => 51,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Washington, DC',
                 'zipcode_id' => 10552,
-            ),
-            267 => 
-            array (
+            ],
+            267 => [
                 'id' => 768,
-            'base' => 'COMNAVDIST Washington DC (Ndept Potomac Anx)',
+                'base' => 'COMNAVDIST Washington DC (Ndept Potomac Anx)',
                 'city_id' => 8229,
                 'state_id' => 51,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Washington, DC',
                 'zipcode_id' => 10552,
-            ),
-            268 => 
-            array (
+            ],
+            268 => [
                 'id' => 769,
-            'base' => 'COMNAVDIST Washington DC (Nebraska Ave Comp)',
+                'base' => 'COMNAVDIST Washington DC (Nebraska Ave Comp)',
                 'city_id' => 8229,
                 'state_id' => 51,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Washington, DC',
                 'zipcode_id' => 10552,
-            ),
-            269 => 
-            array (
+            ],
+            269 => [
                 'id' => 770,
                 'base' => 'NRL Washington DC',
                 'city_id' => 8229,
@@ -8488,9 +7716,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Washington, DC',
                 'zipcode_id' => 10552,
-            ),
-            270 => 
-            array (
+            ],
+            270 => [
                 'id' => 771,
                 'base' => 'NAF Key West',
                 'city_id' => 13777,
@@ -8499,75 +7726,68 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Key West, FL',
                 'zipcode_id' => 18770,
-            ),
-            271 => 
-            array (
+            ],
+            271 => [
                 'id' => 772,
-            'base' => 'NAF Key West (Dredgers Key-Sigsbee)',
+                'base' => 'NAF Key West (Dredgers Key-Sigsbee)',
                 'city_id' => 13777,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Key West, FL',
                 'zipcode_id' => 18770,
-            ),
-            272 => 
-            array (
+            ],
+            272 => [
                 'id' => 773,
-            'base' => 'NAF Key West (Fleming Key Magazine)',
+                'base' => 'NAF Key West (Fleming Key Magazine)',
                 'city_id' => 13777,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Key West, FL',
                 'zipcode_id' => 18770,
-            ),
-            273 => 
-            array (
+            ],
+            273 => [
                 'id' => 774,
-            'base' => 'NAF Key West (Peary Court)',
+                'base' => 'NAF Key West (Peary Court)',
                 'city_id' => 13777,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Key West, FL',
                 'zipcode_id' => 18770,
-            ),
-            274 => 
-            array (
+            ],
+            274 => [
                 'id' => 775,
-            'base' => 'NAF Key West (Poinciana)',
+                'base' => 'NAF Key West (Poinciana)',
                 'city_id' => 13777,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Key West, FL',
                 'zipcode_id' => 18770,
-            ),
-            275 => 
-            array (
+            ],
+            275 => [
                 'id' => 776,
-            'base' => 'NAF Key West (Truman Annex)',
+                'base' => 'NAF Key West (Truman Annex)',
                 'city_id' => 13777,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Key West, FL',
                 'zipcode_id' => 18770,
-            ),
-            276 => 
-            array (
+            ],
+            276 => [
                 'id' => 777,
-            'base' => 'NAF Key West (Trumbo Point Annex)',
+                'base' => 'NAF Key West (Trumbo Point Annex)',
                 'city_id' => 13777,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Key West, FL',
                 'zipcode_id' => 18770,
-            ),
-            277 => 
-            array (
+            ],
+            277 => [
                 'id' => 778,
                 'base' => 'NAS Jacksonville',
                 'city_id' => 13356,
@@ -8576,42 +7796,38 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Jacksonville, FL',
                 'zipcode_id' => 17901,
-            ),
-            278 => 
-            array (
+            ],
+            278 => [
                 'id' => 779,
-            'base' => 'NAS Jacksonville (OLF Whitehouse)',
+                'base' => 'NAS Jacksonville (OLF Whitehouse)',
                 'city_id' => 13356,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Jacksonville, FL',
                 'zipcode_id' => 17901,
-            ),
-            279 => 
-            array (
+            ],
+            279 => [
                 'id' => 780,
-            'base' => 'NAS Jacksonville (Pinecastle E.W. Range)',
+                'base' => 'NAS Jacksonville (Pinecastle E.W. Range)',
                 'city_id' => 13382,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Salt Springs, FL',
                 'zipcode_id' => 17949,
-            ),
-            280 => 
-            array (
+            ],
+            280 => [
                 'id' => 781,
-            'base' => 'NAS Jacksonville (Yellow Water Housing)',
+                'base' => 'NAS Jacksonville (Yellow Water Housing)',
                 'city_id' => 13356,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Jacksonville, FL',
                 'zipcode_id' => 17901,
-            ),
-            281 => 
-            array (
+            ],
+            281 => [
                 'id' => 782,
                 'base' => 'NAS Pensacola',
                 'city_id' => 13541,
@@ -8620,75 +7836,68 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pensacola, FL',
                 'zipcode_id' => 18250,
-            ),
-            282 => 
-            array (
+            ],
+            282 => [
                 'id' => 783,
-            'base' => 'NAS Pensacola (Corry Housing)',
+                'base' => 'NAS Pensacola (Corry Housing)',
                 'city_id' => 13541,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pensacola, FL',
                 'zipcode_id' => 18250,
-            ),
-            283 => 
-            array (
+            ],
+            283 => [
                 'id' => 784,
-            'base' => 'NAS Pensacola (Corry Station)',
+                'base' => 'NAS Pensacola (Corry Station)',
                 'city_id' => 13541,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pensacola, FL',
                 'zipcode_id' => 18250,
-            ),
-            284 => 
-            array (
+            ],
+            284 => [
                 'id' => 785,
-            'base' => 'NAS Pensacola (Lexington Terrace Hsg)',
+                'base' => 'NAS Pensacola (Lexington Terrace Hsg)',
                 'city_id' => 13541,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pensacola, FL',
                 'zipcode_id' => 18250,
-            ),
-            285 => 
-            array (
+            ],
+            285 => [
                 'id' => 786,
-            'base' => 'NAS Pensacola (Mariner Housing)',
+                'base' => 'NAS Pensacola (Mariner Housing)',
                 'city_id' => 13541,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pensacola, FL',
                 'zipcode_id' => 18250,
-            ),
-            286 => 
-            array (
+            ],
+            286 => [
                 'id' => 787,
-            'base' => 'NAS Pensacola (OLF Bronson)',
+                'base' => 'NAS Pensacola (OLF Bronson)',
                 'city_id' => 13541,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pensacola, FL',
                 'zipcode_id' => 18250,
-            ),
-            287 => 
-            array (
+            ],
+            287 => [
                 'id' => 788,
-            'base' => 'NAS Pensacola (Saufly Fields)',
+                'base' => 'NAS Pensacola (Saufly Fields)',
                 'city_id' => 13541,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pensacola, FL',
                 'zipcode_id' => 18250,
-            ),
-            288 => 
-            array (
+            ],
+            288 => [
                 'id' => 789,
                 'base' => 'NAS Whiting Field Milton',
                 'city_id' => 13574,
@@ -8697,64 +7906,58 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Milton, FL',
                 'zipcode_id' => 18315,
-            ),
-            289 => 
-            array (
+            ],
+            289 => [
                 'id' => 790,
-            'base' => 'NAS Whiting Fld Milton (NOLF Choctaw)',
+                'base' => 'NAS Whiting Fld Milton (NOLF Choctaw)',
                 'city_id' => 13574,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Milton, FL',
                 'zipcode_id' => 18315,
-            ),
-            290 => 
-            array (
+            ],
+            290 => [
                 'id' => 791,
-            'base' => 'NAS Whiting Fld Milton (NOLF Holley)',
+                'base' => 'NAS Whiting Fld Milton (NOLF Holley)',
                 'city_id' => 13574,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Milton, FL',
                 'zipcode_id' => 18315,
-            ),
-            291 => 
-            array (
+            ],
+            291 => [
                 'id' => 792,
-            'base' => 'NAS Whiting Fld Milton (NOLF Santa Rosa)',
+                'base' => 'NAS Whiting Fld Milton (NOLF Santa Rosa)',
                 'city_id' => 13574,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Milton, FL',
                 'zipcode_id' => 18315,
-            ),
-            292 => 
-            array (
+            ],
+            292 => [
                 'id' => 793,
-            'base' => 'NAS Whiting Fld Milton (NOLF Spencer)',
+                'base' => 'NAS Whiting Fld Milton (NOLF Spencer)',
                 'city_id' => 13574,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Milton, FL',
                 'zipcode_id' => 18315,
-            ),
-            293 => 
-            array (
+            ],
+            293 => [
                 'id' => 794,
-            'base' => 'NAS Whiting Fld Milton (Whiting Pines)',
+                'base' => 'NAS Whiting Fld Milton (Whiting Pines)',
                 'city_id' => 13574,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Milton, FL',
                 'zipcode_id' => 18315,
-            ),
-            294 => 
-            array (
+            ],
+            294 => [
                 'id' => 795,
                 'base' => 'NAWC Orlando',
                 'city_id' => 13680,
@@ -8763,20 +7966,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Orlando, FL',
                 'zipcode_id' => 18493,
-            ),
-            295 => 
-            array (
+            ],
+            295 => [
                 'id' => 796,
-            'base' => 'NH Jacksonville (MEDCLINIC Key West)',
+                'base' => 'NH Jacksonville (MEDCLINIC Key West)',
                 'city_id' => 13777,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Key West, FL',
                 'zipcode_id' => 18770,
-            ),
-            296 => 
-            array (
+            ],
+            296 => [
                 'id' => 797,
                 'base' => 'NH Pensacola',
                 'city_id' => 13541,
@@ -8785,9 +7986,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pensacola, FL',
                 'zipcode_id' => 18250,
-            ),
-            297 => 
-            array (
+            ],
+            297 => [
                 'id' => 798,
                 'base' => 'NS Mayport',
                 'city_id' => 13420,
@@ -8796,31 +7996,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Mayport, FL',
                 'zipcode_id' => 18039,
-            ),
-            298 => 
-            array (
+            ],
+            298 => [
                 'id' => 799,
-            'base' => 'NS Mayport (FISC)',
+                'base' => 'NS Mayport (FISC)',
                 'city_id' => 13356,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Jacksonville, FL',
                 'zipcode_id' => 17901,
-            ),
-            299 => 
-            array (
+            ],
+            299 => [
                 'id' => 800,
-            'base' => 'NS Mayport (Ribault Bay Village)',
+                'base' => 'NS Mayport (Ribault Bay Village)',
                 'city_id' => 13418,
                 'state_id' => 9,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Atlantic Beach, FL',
                 'zipcode_id' => 18036,
-            ),
-            300 => 
-            array (
+            ],
+            300 => [
                 'id' => 801,
                 'base' => 'NSWC COASTSYSTA',
                 'city_id' => 13481,
@@ -8829,9 +8026,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Panama City, FL',
                 'zipcode_id' => 18153,
-            ),
-            301 => 
-            array (
+            ],
+            301 => [
                 'id' => 802,
                 'base' => 'NAVSCSCOL Athens',
                 'city_id' => 12884,
@@ -8840,9 +8036,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Athens, GA',
                 'zipcode_id' => 17222,
-            ),
-            302 => 
-            array (
+            ],
+            302 => [
                 'id' => 803,
                 'base' => 'SUBASE Kings Bay',
                 'city_id' => 13162,
@@ -8851,20 +8046,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Kings Bay, GA',
                 'zipcode_id' => 17630,
-            ),
-            303 => 
-            array (
+            ],
+            303 => [
                 'id' => 804,
-            'base' => 'COMNAVREG Pearl Harbor (Barbers Point)',
+                'base' => 'COMNAVREG Pearl Harbor (Barbers Point)',
                 'city_id' => 37573,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Kapolei, HI',
                 'zipcode_id' => 53441,
-            ),
-            304 => 
-            array (
+            ],
+            304 => [
                 'id' => 805,
                 'base' => 'FISC Pearl Harbor',
                 'city_id' => 37666,
@@ -8873,64 +8066,58 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pearl Harbor, HI',
                 'zipcode_id' => 53587,
-            ),
-            305 => 
-            array (
+            ],
+            305 => [
                 'id' => 806,
-            'base' => 'FISC Pearl Harbor (P C Peninsula Storage)',
+                'base' => 'FISC Pearl Harbor (P C Peninsula Storage)',
                 'city_id' => 37638,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pearl City, HI',
                 'zipcode_id' => 53512,
-            ),
-            306 => 
-            array (
+            ],
+            306 => [
                 'id' => 807,
-            'base' => 'FISC Pearl Harbor (Red Hill Area)',
+                'base' => 'FISC Pearl Harbor (Red Hill Area)',
                 'city_id' => 37652,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Honolulu, HI',
                 'zipcode_id' => 53526,
-            ),
-            307 => 
-            array (
+            ],
+            307 => [
                 'id' => 808,
-            'base' => 'NAVMAG Pearl Harbor (Lualualei)',
+                'base' => 'NAVMAG Pearl Harbor (Lualualei)',
                 'city_id' => 37647,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Waianae, HI',
                 'zipcode_id' => 53521,
-            ),
-            308 => 
-            array (
+            ],
+            308 => [
                 'id' => 809,
-            'base' => 'NAVMAG Pearl Harbor (Waikele)',
+                'base' => 'NAVMAG Pearl Harbor (Waikele)',
                 'city_id' => 37651,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Waipahu, HI',
                 'zipcode_id' => 53525,
-            ),
-            309 => 
-            array (
+            ],
+            309 => [
                 'id' => 810,
-            'base' => 'NAVMAG Pearl Harbor (West Loch)',
+                'base' => 'NAVMAG Pearl Harbor (West Loch)',
                 'city_id' => 37572,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Ewa Beach, HI',
                 'zipcode_id' => 53440,
-            ),
-            310 => 
-            array (
+            ],
+            310 => [
                 'id' => 811,
                 'base' => 'NCTAMS Pac Honolulu',
                 'city_id' => 37642,
@@ -8939,20 +8126,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Wahiawa, HI',
                 'zipcode_id' => 53516,
-            ),
-            311 => 
-            array (
+            ],
+            311 => [
                 'id' => 812,
-            'base' => 'NCTAMS PAC Honolulu (Lualualei)',
+                'base' => 'NCTAMS PAC Honolulu (Lualualei)',
                 'city_id' => 37652,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Honolulu, HI',
                 'zipcode_id' => 53526,
-            ),
-            312 => 
-            array (
+            ],
+            312 => [
                 'id' => 813,
                 'base' => 'NS Pearl Harbor',
                 'city_id' => 37666,
@@ -8961,64 +8146,58 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pearl Harbor, HI',
                 'zipcode_id' => 53587,
-            ),
-            313 => 
-            array (
+            ],
+            313 => [
                 'id' => 814,
-            'base' => 'NS Pearl Harbor (Common Use Road)',
+                'base' => 'NS Pearl Harbor (Common Use Road)',
                 'city_id' => 37666,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pearl Harbor, HI',
                 'zipcode_id' => 53587,
-            ),
-            314 => 
-            array (
+            ],
+            314 => [
                 'id' => 815,
-            'base' => 'NS Pearl Harbor (Ford Island)',
+                'base' => 'NS Pearl Harbor (Ford Island)',
                 'city_id' => 37652,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Honolulu, HI',
                 'zipcode_id' => 53526,
-            ),
-            315 => 
-            array (
+            ],
+            315 => [
                 'id' => 816,
-            'base' => 'NS Pearl Harbor (Moanalua)',
+                'base' => 'NS Pearl Harbor (Moanalua)',
                 'city_id' => 37666,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pearl Harbor, HI',
                 'zipcode_id' => 53587,
-            ),
-            316 => 
-            array (
+            ],
+            316 => [
                 'id' => 817,
-            'base' => 'NS Pearl Harbor (Pearl City)',
+                'base' => 'NS Pearl Harbor (Pearl City)',
                 'city_id' => 37638,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pearl City, HI',
                 'zipcode_id' => 53512,
-            ),
-            317 => 
-            array (
+            ],
+            317 => [
                 'id' => 818,
-            'base' => 'NS Pearl Harbor (SUBASE)',
+                'base' => 'NS Pearl Harbor (SUBASE)',
                 'city_id' => 37666,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pearl Harbor, HI',
                 'zipcode_id' => 53587,
-            ),
-            318 => 
-            array (
+            ],
+            318 => [
                 'id' => 819,
                 'base' => 'NSY AND IMF Pearl Harbor',
                 'city_id' => 37666,
@@ -9027,9 +8206,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pearl Harbor, HI',
                 'zipcode_id' => 53587,
-            ),
-            319 => 
-            array (
+            ],
+            319 => [
                 'id' => 820,
                 'base' => 'PACMISRANFAC Hawaiian Area',
                 'city_id' => 37610,
@@ -9038,31 +8216,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Kekaha, HI',
                 'zipcode_id' => 53483,
-            ),
-            320 => 
-            array (
+            ],
+            320 => [
                 'id' => 821,
-            'base' => 'PACMISRANFAC Hawaiian Area (Kamokala Ridge)',
+                'base' => 'PACMISRANFAC Hawaiian Area (Kamokala Ridge)',
                 'city_id' => 37610,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Kekaha, HI',
                 'zipcode_id' => 53483,
-            ),
-            321 => 
-            array (
+            ],
+            321 => [
                 'id' => 822,
-            'base' => 'PACMISRANFAC Hawaiian Area (Makaha Ridge)',
+                'base' => 'PACMISRANFAC Hawaiian Area (Makaha Ridge)',
                 'city_id' => 37610,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Kekaha, HI',
                 'zipcode_id' => 53483,
-            ),
-            322 => 
-            array (
+            ],
+            322 => [
                 'id' => 823,
                 'base' => 'PWC Pearl Harbor',
                 'city_id' => 37666,
@@ -9071,130 +8246,118 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pearl Harbor, HI',
                 'zipcode_id' => 53587,
-            ),
-            323 => 
-            array (
+            ],
+            323 => [
                 'id' => 824,
-            'base' => 'PWC Pearl Harbor (Barbers Point)',
+                'base' => 'PWC Pearl Harbor (Barbers Point)',
                 'city_id' => 37573,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Kapolei, HI',
                 'zipcode_id' => 53441,
-            ),
-            324 => 
-            array (
+            ],
+            324 => [
                 'id' => 825,
-            'base' => 'PWC Pearl Harbor (Camp Stover)',
+                'base' => 'PWC Pearl Harbor (Camp Stover)',
                 'city_id' => 37642,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Wahiawa, HI',
                 'zipcode_id' => 53516,
-            ),
-            325 => 
-            array (
+            ],
+            325 => [
                 'id' => 826,
-            'base' => 'PWC Pearl Harbor (Doris Miller Park Hsg)',
+                'base' => 'PWC Pearl Harbor (Doris Miller Park Hsg)',
                 'city_id' => 37652,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Honolulu, HI',
                 'zipcode_id' => 53526,
-            ),
-            326 => 
-            array (
+            ],
+            326 => [
                 'id' => 827,
-            'base' => 'PWC Pearl Harbor (Ford Island)',
+                'base' => 'PWC Pearl Harbor (Ford Island)',
                 'city_id' => 37652,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Honolulu, HI',
                 'zipcode_id' => 53526,
-            ),
-            327 => 
-            array (
+            ],
+            327 => [
                 'id' => 828,
-            'base' => 'PWC Pearl Harbor (Halawa Housing)',
+                'base' => 'PWC Pearl Harbor (Halawa Housing)',
                 'city_id' => 37567,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'aiea, HI',
                 'zipcode_id' => 53435,
-            ),
-            328 => 
-            array (
+            ],
+            328 => [
                 'id' => 829,
-            'base' => 'PWC Pearl Harbor (Hickam AFB)',
+                'base' => 'PWC Pearl Harbor (Hickam AFB)',
                 'city_id' => 37656,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Hickam AFB, HI',
                 'zipcode_id' => 53574,
-            ),
-            329 => 
-            array (
+            ],
+            329 => [
                 'id' => 830,
-            'base' => 'PWC Pearl Harbor (Iroquois Point)',
+                'base' => 'PWC Pearl Harbor (Iroquois Point)',
                 'city_id' => 37572,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Ewa Beach, HI',
                 'zipcode_id' => 53440,
-            ),
-            330 => 
-            array (
+            ],
+            330 => [
                 'id' => 831,
-            'base' => 'PWC Pearl Harbor (Manana Housing)',
+                'base' => 'PWC Pearl Harbor (Manana Housing)',
                 'city_id' => 37638,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pearl City, HI',
                 'zipcode_id' => 53512,
-            ),
-            331 => 
-            array (
+            ],
+            331 => [
                 'id' => 832,
-            'base' => 'PWC Pearl Harbor (Pearl City Housing)',
+                'base' => 'PWC Pearl Harbor (Pearl City Housing)',
                 'city_id' => 37638,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pearl City, HI',
                 'zipcode_id' => 53512,
-            ),
-            332 => 
-            array (
+            ],
+            332 => [
                 'id' => 833,
-            'base' => 'PWC Pearl Harbor (Puuloa)',
+                'base' => 'PWC Pearl Harbor (Puuloa)',
                 'city_id' => 37572,
                 'state_id' => 11,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Ewa Beach, HI',
                 'zipcode_id' => 53440,
-            ),
-            333 => 
-            array (
+            ],
+            333 => [
                 'id' => 834,
-            'base' => 'NSWC Div Carderock (Bayview ID)',
+                'base' => 'NSWC Div Carderock (Bayview ID)',
                 'city_id' => 34454,
                 'state_id' => 12,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Bayview, ID',
                 'zipcode_id' => 47437,
-            ),
-            334 => 
-            array (
+            ],
+            334 => [
                 'id' => 835,
                 'base' => 'NH Great Lakes',
                 'city_id' => 25502,
@@ -9203,9 +8366,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Great Lakes, IL',
                 'zipcode_id' => 34792,
-            ),
-            335 => 
-            array (
+            ],
+            335 => [
                 'id' => 836,
                 'base' => 'NTC Great Lakes',
                 'city_id' => 25502,
@@ -9214,42 +8376,38 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Great Lakes, IL',
                 'zipcode_id' => 34792,
-            ),
-            336 => 
-            array (
+            ],
+            336 => [
                 'id' => 837,
-            'base' => 'NTC Great Lakes (Fort Sheridan Housing)',
+                'base' => 'NTC Great Lakes (Fort Sheridan Housing)',
                 'city_id' => 25444,
                 'state_id' => 13,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Fort Sheridan, IL',
                 'zipcode_id' => 34702,
-            ),
-            337 => 
-            array (
+            ],
+            337 => [
                 'id' => 838,
-            'base' => 'NTC Great Lakes (Glenview Housing)',
+                'base' => 'NTC Great Lakes (Glenview Housing)',
                 'city_id' => 25434,
                 'state_id' => 13,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Glenview, IL',
                 'zipcode_id' => 34690,
-            ),
-            338 => 
-            array (
+            ],
+            338 => [
                 'id' => 839,
-            'base' => 'NTC Great Lakes (NTC Housing)',
+                'base' => 'NTC Great Lakes (NTC Housing)',
                 'city_id' => 25502,
                 'state_id' => 13,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Great Lakes, IL',
                 'zipcode_id' => 34792,
-            ),
-            339 => 
-            array (
+            ],
+            339 => [
                 'id' => 840,
                 'base' => 'PWC Great Lakes',
                 'city_id' => 25502,
@@ -9258,9 +8416,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Great Lakes, IL',
                 'zipcode_id' => 34792,
-            ),
-            340 => 
-            array (
+            ],
+            340 => [
                 'id' => 841,
                 'base' => 'NSWC Crane',
                 'city_id' => 19721,
@@ -9269,9 +8426,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Crane, IN',
                 'zipcode_id' => 27552,
-            ),
-            341 => 
-            array (
+            ],
+            341 => [
                 'id' => 842,
                 'base' => 'NAS Brunswick',
                 'city_id' => 1122,
@@ -9280,53 +8436,48 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Brunswick, ME',
                 'zipcode_id' => 1471,
-            ),
-            342 => 
-            array (
+            ],
+            342 => [
                 'id' => 843,
-            'base' => 'NAS Brunswick (Mckeen Street)',
+                'base' => 'NAS Brunswick (Mckeen Street)',
                 'city_id' => 1122,
                 'state_id' => 19,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Brunswick, ME',
                 'zipcode_id' => 1471,
-            ),
-            343 => 
-            array (
+            ],
+            343 => [
                 'id' => 844,
-            'base' => 'NAS Brunswick (Topsham)',
+                'base' => 'NAS Brunswick (Topsham)',
                 'city_id' => 1203,
                 'state_id' => 19,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Topsham, ME',
                 'zipcode_id' => 1560,
-            ),
-            344 => 
-            array (
+            ],
+            344 => [
                 'id' => 845,
-            'base' => 'NAVSECGRUACT Winter Harbor (Corea Maine)',
+                'base' => 'NAVSECGRUACT Winter Harbor (Corea Maine)',
                 'city_id' => 1566,
                 'state_id' => 19,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Corea, ME',
                 'zipcode_id' => 1960,
-            ),
-            345 => 
-            array (
+            ],
+            345 => [
                 'id' => 846,
-            'base' => 'NAVSECGRUACT (Winter Harbor)',
+                'base' => 'NAVSECGRUACT (Winter Harbor)',
                 'city_id' => 1641,
                 'state_id' => 19,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Winter Harbor, ME',
                 'zipcode_id' => 2038,
-            ),
-            346 => 
-            array (
+            ],
+            346 => [
                 'id' => 847,
                 'base' => 'NAVSPTACT Portsmouth Shipyard',
                 'city_id' => 1102,
@@ -9335,9 +8486,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Kittery, ME',
                 'zipcode_id' => 1450,
-            ),
-            347 => 
-            array (
+            ],
+            347 => [
                 'id' => 848,
                 'base' => 'NCTS Cutler',
                 'city_id' => 1569,
@@ -9346,31 +8496,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Cutler, ME',
                 'zipcode_id' => 1963,
-            ),
-            348 => 
-            array (
+            ],
+            348 => [
                 'id' => 849,
-            'base' => 'NCTS Cutler (HF Area)',
+                'base' => 'NCTS Cutler (HF Area)',
                 'city_id' => 1569,
                 'state_id' => 19,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Cutler, ME',
                 'zipcode_id' => 1963,
-            ),
-            349 => 
-            array (
+            ],
+            349 => [
                 'id' => 850,
-            'base' => 'NCTS Cutler (VLF Area)',
+                'base' => 'NCTS Cutler (VLF Area)',
                 'city_id' => 1569,
                 'state_id' => 19,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Cutler, ME',
                 'zipcode_id' => 1963,
-            ),
-            350 => 
-            array (
+            ],
+            350 => [
                 'id' => 851,
                 'base' => 'NSY Portsmouth',
                 'city_id' => 1102,
@@ -9379,42 +8526,38 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Kittery, ME',
                 'zipcode_id' => 1450,
-            ),
-            351 => 
-            array (
+            ],
+            351 => [
                 'id' => 852,
-            'base' => 'COMNAVDIST Washington DC (Navy Air Facility)',
+                'base' => 'COMNAVDIST Washington DC (Navy Air Facility)',
                 'city_id' => 8468,
                 'state_id' => 20,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Andrews AFB, MD',
                 'zipcode_id' => 11177,
-            ),
-            352 => 
-            array (
+            ],
+            352 => [
                 'id' => 853,
-            'base' => 'COMNAVDIST Washington DC (Oni Washington)',
+                'base' => 'COMNAVDIST Washington DC (Oni Washington)',
                 'city_id' => 8449,
                 'state_id' => 20,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Suitland, MD',
                 'zipcode_id' => 11149,
-            ),
-            353 => 
-            array (
+            ],
+            353 => [
                 'id' => 854,
-            'base' => 'COMNAVDIST Washington DC (Solomons Island) ',
+                'base' => 'COMNAVDIST Washington DC (Solomons Island) ',
                 'city_id' => 8391,
                 'state_id' => 20,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Solomons, MD',
                 'zipcode_id' => 11068,
-            ),
-            354 => 
-            array (
+            ],
+            354 => [
                 'id' => 855,
                 'base' => 'NATNAVMEDCEN Bethesda',
                 'city_id' => 8502,
@@ -9423,9 +8566,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Bethesda, MD',
                 'zipcode_id' => 11239,
-            ),
-            355 => 
-            array (
+            ],
+            355 => [
                 'id' => 856,
                 'base' => 'NAVMEDCLINIC Annapolis',
                 'city_id' => 8714,
@@ -9434,9 +8576,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Annapolis, MD',
                 'zipcode_id' => 11616,
-            ),
-            356 => 
-            array (
+            ],
+            356 => [
                 'id' => 857,
                 'base' => 'NAWC Patuxent',
                 'city_id' => 8374,
@@ -9445,53 +8586,48 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Patuxent River, MD',
                 'zipcode_id' => 11051,
-            ),
-            357 => 
-            array (
+            ],
+            357 => [
                 'id' => 858,
-            'base' => 'NAWC Patuxent (Glenn Forest)',
+                'base' => 'NAWC Patuxent (Glenn Forest)',
                 'city_id' => 8360,
                 'state_id' => 20,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Lexington Park, MD',
                 'zipcode_id' => 11037,
-            ),
-            358 => 
-            array (
+            ],
+            358 => [
                 'id' => 859,
-            'base' => 'NAWC Patuxent (Webster Field)',
+                'base' => 'NAWC Patuxent (Webster Field)',
                 'city_id' => 8385,
                 'state_id' => 20,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Saint Inigoes, MD',
                 'zipcode_id' => 11062,
-            ),
-            359 => 
-            array (
+            ],
+            359 => [
                 'id' => 860,
-            'base' => 'NRL Washington DC (Blossom Point MD) ',
+                'base' => 'NRL Washington DC (Blossom Point MD) ',
                 'city_id' => 8357,
                 'state_id' => 20,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'La Plata, MD',
                 'zipcode_id' => 11034,
-            ),
-            360 => 
-            array (
+            ],
+            360 => [
                 'id' => 861,
-            'base' => 'NRL Washington DC (Chesapeake Bay Detach)',
+                'base' => 'NRL Washington DC (Chesapeake Bay Detach)',
                 'city_id' => 8430,
                 'state_id' => 20,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Chesapeake Beach, MD',
                 'zipcode_id' => 11125,
-            ),
-            361 => 
-            array (
+            ],
+            361 => [
                 'id' => 862,
                 'base' => 'NSWC DIV Carderock',
                 'city_id' => 8502,
@@ -9500,9 +8636,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Bethesda, MD',
                 'zipcode_id' => 11239,
-            ),
-            362 => 
-            array (
+            ],
+            362 => [
                 'id' => 863,
                 'base' => 'NSWC DIV Indian Head',
                 'city_id' => 8352,
@@ -9511,31 +8646,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Indian Head, MD',
                 'zipcode_id' => 11029,
-            ),
-            363 => 
-            array (
+            ],
+            363 => [
                 'id' => 864,
-            'base' => 'NSWC Div Indian Head (Stump Neck Area)',
+                'base' => 'NSWC Div Indian Head (Stump Neck Area)',
                 'city_id' => 8352,
                 'state_id' => 20,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Indian Head, MD',
                 'zipcode_id' => 11029,
-            ),
-            364 => 
-            array (
+            ],
+            364 => [
                 'id' => 865,
-            'base' => 'NSWC Div Indian Head (White Plains RR)',
+                'base' => 'NSWC Div Indian Head (White Plains RR)',
                 'city_id' => 8352,
                 'state_id' => 20,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Indian Head, MD',
                 'zipcode_id' => 11029,
-            ),
-            365 => 
-            array (
+            ],
+            365 => [
                 'id' => 866,
                 'base' => 'USNA Annapolis',
                 'city_id' => 8714,
@@ -9544,42 +8676,38 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Annapolis, MD',
                 'zipcode_id' => 11616,
-            ),
-            366 => 
-            array (
+            ],
+            366 => [
                 'id' => 867,
-            'base' => 'USNA Annapolis (Gambrills Md)',
+                'base' => 'USNA Annapolis (Gambrills Md)',
                 'city_id' => 8714,
                 'state_id' => 20,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Annapolis, MD',
                 'zipcode_id' => 11616,
-            ),
-            367 => 
-            array (
+            ],
+            367 => [
                 'id' => 868,
-            'base' => 'USNA Annapolis (Navacad North Severn)',
+                'base' => 'USNA Annapolis (Navacad North Severn)',
                 'city_id' => 8714,
                 'state_id' => 20,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Annapolis, MD',
                 'zipcode_id' => 11616,
-            ),
-            368 => 
-            array (
+            ],
+            368 => [
                 'id' => 869,
-            'base' => 'USNA Annapolis (Naval Station)',
+                'base' => 'USNA Annapolis (Naval Station)',
                 'city_id' => 8714,
                 'state_id' => 20,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Annapolis, MD',
                 'zipcode_id' => 11616,
-            ),
-            369 => 
-            array (
+            ],
+            369 => [
                 'id' => 870,
                 'base' => 'NAVPRO Pittsfield',
                 'city_id' => 77,
@@ -9588,9 +8716,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pittsfield, MA',
                 'zipcode_id' => 115,
-            ),
-            370 => 
-            array (
+            ],
+            370 => [
                 'id' => 871,
                 'base' => 'NWIRP Bedford',
                 'city_id' => 265,
@@ -9599,9 +8726,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Bedford, MA',
                 'zipcode_id' => 349,
-            ),
-            371 => 
-            array (
+            ],
+            371 => [
                 'id' => 872,
                 'base' => 'NIROP Minneapolis',
                 'city_id' => 23226,
@@ -9610,9 +8736,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Fridley, MN',
                 'zipcode_id' => 32104,
-            ),
-            372 => 
-            array (
+            ],
+            372 => [
                 'id' => 873,
                 'base' => 'CBC Gulfport',
                 'city_id' => 16114,
@@ -9621,9 +8746,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Gulfport, MS',
                 'zipcode_id' => 22867,
-            ),
-            373 => 
-            array (
+            ],
+            373 => [
                 'id' => 874,
                 'base' => 'NAS Meridian',
                 'city_id' => 16031,
@@ -9632,20 +8756,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Meridian, MS',
                 'zipcode_id' => 22770,
-            ),
-            374 => 
-            array (
+            ],
+            374 => [
                 'id' => 875,
-            'base' => 'NAS Meridian (OLF Bravo)',
+                'base' => 'NAS Meridian (OLF Bravo)',
                 'city_id' => 16059,
                 'state_id' => 24,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Preston, MS',
                 'zipcode_id' => 22804,
-            ),
-            375 => 
-            array (
+            ],
+            375 => [
                 'id' => 876,
                 'base' => 'NS Pascagoula',
                 'city_id' => 16135,
@@ -9654,20 +8776,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pascagoula, MS',
                 'zipcode_id' => 22913,
-            ),
-            376 => 
-            array (
+            ],
+            376 => [
                 'id' => 877,
-            'base' => 'NS Pascagoula (Supshp)',
+                'base' => 'NS Pascagoula (Supshp)',
                 'city_id' => 16135,
                 'state_id' => 24,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pascagoula, MS',
                 'zipcode_id' => 22913,
-            ),
-            377 => 
-            array (
+            ],
+            377 => [
                 'id' => 878,
                 'base' => 'NAS Fallon',
                 'city_id' => 35766,
@@ -9676,64 +8796,58 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Fallon, NV',
                 'zipcode_id' => 49733,
-            ),
-            378 => 
-            array (
+            ],
+            378 => [
                 'id' => 879,
-            'base' => 'NAS Fallon (EW Range Fac)',
+                'base' => 'NAS Fallon (EW Range Fac)',
                 'city_id' => 35766,
                 'state_id' => 28,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Fallon, NV',
                 'zipcode_id' => 49733,
-            ),
-            379 => 
-            array (
+            ],
+            379 => [
                 'id' => 880,
-            'base' => 'NAS Fallon (Target B-16)',
+                'base' => 'NAS Fallon (Target B-16)',
                 'city_id' => 35766,
                 'state_id' => 28,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Fallon, NV',
                 'zipcode_id' => 49733,
-            ),
-            380 => 
-            array (
+            ],
+            380 => [
                 'id' => 881,
-            'base' => 'NAS Fallon (Target B-17)',
+                'base' => 'NAS Fallon (Target B-17)',
                 'city_id' => 35766,
                 'state_id' => 28,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Fallon, NV',
                 'zipcode_id' => 49733,
-            ),
-            381 => 
-            array (
+            ],
+            381 => [
                 'id' => 882,
-            'base' => 'NAS Fallon (Target B-20)',
+                'base' => 'NAS Fallon (Target B-20)',
                 'city_id' => 35766,
                 'state_id' => 28,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Fallon, NV',
                 'zipcode_id' => 49733,
-            ),
-            382 => 
-            array (
+            ],
+            382 => [
                 'id' => 883,
-            'base' => 'NUSWC Div Keyport (Hawthorne Nevada AAD)',
+                'base' => 'NUSWC Div Keyport (Hawthorne Nevada AAD)',
                 'city_id' => 35775,
                 'state_id' => 28,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Hawthorne, NV',
                 'zipcode_id' => 49743,
-            ),
-            383 => 
-            array (
+            ],
+            383 => [
                 'id' => 884,
                 'base' => 'NAES Lakehurst',
                 'city_id' => 3391,
@@ -9742,31 +8856,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Lakehurst, NJ',
                 'zipcode_id' => 4249,
-            ),
-            384 => 
-            array (
+            ],
+            384 => [
                 'id' => 885,
-            'base' => 'NSWC Div Port Hueneme (White Sands)',
+                'base' => 'NSWC Div Port Hueneme (White Sands)',
                 'city_id' => 35530,
                 'state_id' => 31,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'White Sands, NM',
                 'zipcode_id' => 49256,
-            ),
-            385 => 
-            array (
+            ],
+            385 => [
                 'id' => 886,
-            'base' => 'NAES Lakehurst (Pinehurst Estates)',
+                'base' => 'NAES Lakehurst (Pinehurst Estates)',
                 'city_id' => 3391,
                 'state_id' => 30,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Lakehurst, NJ',
                 'zipcode_id' => 4249,
-            ),
-            386 => 
-            array (
+            ],
+            386 => [
                 'id' => 887,
                 'base' => 'NWS Earle',
                 'city_id' => 2894,
@@ -9775,20 +8886,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Colts Neck, NJ',
                 'zipcode_id' => 3656,
-            ),
-            387 => 
-            array (
+            ],
+            387 => [
                 'id' => 888,
-            'base' => 'NWS Earle (Waterfront Earle)',
+                'base' => 'NWS Earle (Waterfront Earle)',
                 'city_id' => 2894,
                 'state_id' => 30,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Colts Neck, NJ',
                 'zipcode_id' => 3656,
-            ),
-            388 => 
-            array (
+            ],
+            388 => [
                 'id' => 889,
                 'base' => 'NH Camp Lejeune',
                 'city_id' => 11868,
@@ -9797,42 +8906,38 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Camp Lejeune, NC',
                 'zipcode_id' => 15725,
-            ),
-            389 => 
-            array (
+            ],
+            389 => [
                 'id' => 890,
-            'base' => 'NS Norfolk (Harvey Pt NC)',
+                'base' => 'NS Norfolk (Harvey Pt NC)',
                 'city_id' => 11517,
                 'state_id' => 33,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Hertford, NC',
                 'zipcode_id' => 15235,
-            ),
-            390 => 
-            array (
+            ],
+            390 => [
                 'id' => 891,
-            'base' => 'NTC Great Lakes (Bratenahl)',
+                'base' => 'NTC Great Lakes (Bratenahl)',
                 'city_id' => 18188,
                 'state_id' => 35,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Cleveland, OH',
                 'zipcode_id' => 25356,
-            ),
-            391 => 
-            array (
+            ],
+            391 => [
                 'id' => 892,
-            'base' => 'NAS Whidbey Island (Navwpnsystrafac Brdman)',
+                'base' => 'NAS Whidbey Island (Navwpnsystrafac Brdman)',
                 'city_id' => 38049,
                 'state_id' => 37,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Boardman, OR',
                 'zipcode_id' => 54114,
-            ),
-            392 => 
-            array (
+            ],
+            392 => [
                 'id' => 893,
                 'base' => 'NAVSUPPACT Mechanicsburg',
                 'city_id' => 6793,
@@ -9841,20 +8946,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Mechanicsburg, PA',
                 'zipcode_id' => 8613,
-            ),
-            393 => 
-            array (
+            ],
+            393 => [
                 'id' => 894,
-            'base' => 'NAVSUPPACT Mechanicsburg (NSA Philadelphia PA)',
+                'base' => 'NAVSUPPACT Mechanicsburg (NSA Philadelphia PA)',
                 'city_id' => 7808,
                 'state_id' => 38,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Philadelphia, PA',
                 'zipcode_id' => 9827,
-            ),
-            394 => 
-            array (
+            ],
+            394 => [
                 'id' => 895,
                 'base' => 'NSWC SHIPSYSENGSTA',
                 'city_id' => 7808,
@@ -9863,9 +8966,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Philadelphia, PA',
                 'zipcode_id' => 9827,
-            ),
-            395 => 
-            array (
+            ],
+            395 => [
                 'id' => 896,
                 'base' => 'NAVAMBCARECEN Newport',
                 'city_id' => 714,
@@ -9874,9 +8976,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Newport, RI',
                 'zipcode_id' => 989,
-            ),
-            396 => 
-            array (
+            ],
+            396 => [
                 'id' => 897,
                 'base' => 'NS Newport',
                 'city_id' => 714,
@@ -9885,31 +8986,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Newport, RI',
                 'zipcode_id' => 989,
-            ),
-            397 => 
-            array (
+            ],
+            397 => [
                 'id' => 898,
-            'base' => 'NS Newport (Fort Adams RI)',
+                'base' => 'NS Newport (Fort Adams RI)',
                 'city_id' => 714,
                 'state_id' => 39,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Newport, RI',
                 'zipcode_id' => 989,
-            ),
-            398 => 
-            array (
+            ],
+            398 => [
                 'id' => 899,
-            'base' => 'NS Newport (Melville)',
+                'base' => 'NS Newport (Melville)',
                 'city_id' => 714,
                 'state_id' => 39,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Newport, RI',
                 'zipcode_id' => 989,
-            ),
-            399 => 
-            array (
+            ],
+            399 => [
                 'id' => 900,
                 'base' => 'NUSWC DIV Newport',
                 'city_id' => 715,
@@ -9918,9 +9016,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Middletown, RI',
                 'zipcode_id' => 991,
-            ),
-            400 => 
-            array (
+            ],
+            400 => [
                 'id' => 901,
                 'base' => 'NH Beaufort',
                 'city_id' => 12551,
@@ -9929,9 +9026,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Beaufort, SC',
                 'zipcode_id' => 16640,
-            ),
-            401 => 
-            array (
+            ],
+            401 => [
                 'id' => 902,
                 'base' => 'NH Charleston',
                 'city_id' => 12280,
@@ -9940,9 +9036,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Charleston, SC',
                 'zipcode_id' => 16246,
-            ),
-            402 => 
-            array (
+            ],
+            402 => [
                 'id' => 903,
                 'base' => 'NWS Charleston',
                 'city_id' => 12305,
@@ -9951,42 +9046,38 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Goose Creek, SC',
                 'zipcode_id' => 16305,
-            ),
-            403 => 
-            array (
+            ],
+            403 => [
                 'id' => 904,
-            'base' => 'NWS Charleston (Old Army Depot)',
+                'base' => 'NWS Charleston (Old Army Depot)',
                 'city_id' => 12305,
                 'state_id' => 40,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Goose Creek, SC',
                 'zipcode_id' => 16305,
-            ),
-            404 => 
-            array (
+            ],
+            404 => [
                 'id' => 905,
-            'base' => 'NWS Charleston (Short Stay)',
+                'base' => 'NWS Charleston (Short Stay)',
                 'city_id' => 12293,
                 'state_id' => 40,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Moncks Corner, SC',
                 'zipcode_id' => 16292,
-            ),
-            405 => 
-            array (
+            ],
+            405 => [
                 'id' => 906,
-            'base' => 'SPAWARSYSCEN Charleston (North Yard)',
+                'base' => 'SPAWARSYSCEN Charleston (North Yard)',
                 'city_id' => 12285,
                 'state_id' => 40,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'North Charleston, SC',
                 'zipcode_id' => 16254,
-            ),
-            406 => 
-            array (
+            ],
+            406 => [
                 'id' => 907,
                 'base' => 'NAVSUPPACT MIDSOUTH Memphis',
                 'city_id' => 15499,
@@ -9995,20 +9086,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Millington, TN',
                 'zipcode_id' => 22071,
-            ),
-            407 => 
-            array (
+            ],
+            407 => [
                 'id' => 908,
-            'base' => 'NSWC Div Carderock (Memphis TN)',
+                'base' => 'NSWC Div Carderock (Memphis TN)',
                 'city_id' => 15291,
                 'state_id' => 42,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Memphis, TN',
                 'zipcode_id' => 21788,
-            ),
-            408 => 
-            array (
+            ],
+            408 => [
                 'id' => 909,
                 'base' => 'NAS Corpus Christi',
                 'city_id' => 32853,
@@ -10017,31 +9106,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Corpus Christi, TX',
                 'zipcode_id' => 44857,
-            ),
-            409 => 
-            array (
+            ],
+            409 => [
                 'id' => 910,
-            'base' => 'NAS Corpus Christi (ALF Cabaniss)',
+                'base' => 'NAS Corpus Christi (ALF Cabaniss)',
                 'city_id' => 32853,
                 'state_id' => 43,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Corpus Christi, TX',
                 'zipcode_id' => 44857,
-            ),
-            410 => 
-            array (
+            ],
+            410 => [
                 'id' => 911,
-            'base' => 'NAS Corpus Christi (ALF Waldron)',
+                'base' => 'NAS Corpus Christi (ALF Waldron)',
                 'city_id' => 32853,
                 'state_id' => 43,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Corpus Christi, TX',
                 'zipcode_id' => 44857,
-            ),
-            411 => 
-            array (
+            ],
+            411 => [
                 'id' => 912,
                 'base' => 'NAS Kingsville',
                 'city_id' => 32825,
@@ -10050,31 +9136,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Kingsville, TX',
                 'zipcode_id' => 44827,
-            ),
-            412 => 
-            array (
+            ],
+            412 => [
                 'id' => 913,
-            'base' => 'NAS Kingsville (ALF Orange)',
+                'base' => 'NAS Kingsville (ALF Orange)',
                 'city_id' => 32836,
                 'state_id' => 43,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Orange Grove, TX',
                 'zipcode_id' => 44839,
-            ),
-            413 => 
-            array (
+            ],
+            413 => [
                 'id' => 914,
-            'base' => 'NAS Kingsville (Dixie Target Range)',
+                'base' => 'NAS Kingsville (Dixie Target Range)',
                 'city_id' => 32709,
                 'state_id' => 43,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Tilden, TX',
                 'zipcode_id' => 44601,
-            ),
-            414 => 
-            array (
+            ],
+            414 => [
                 'id' => 915,
                 'base' => 'NH Corpus Christi',
                 'city_id' => 32853,
@@ -10083,9 +9166,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Corpus Christi, TX',
                 'zipcode_id' => 44857,
-            ),
-            415 => 
-            array (
+            ],
+            415 => [
                 'id' => 916,
                 'base' => 'NS Ingleside',
                 'city_id' => 32824,
@@ -10094,9 +9176,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Ingleside, TX',
                 'zipcode_id' => 44826,
-            ),
-            416 => 
-            array (
+            ],
+            416 => [
                 'id' => 917,
                 'base' => 'NWIRP Dallas',
                 'city_id' => 31607,
@@ -10105,20 +9186,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Dallas, TX',
                 'zipcode_id' => 42682,
-            ),
-            417 => 
-            array (
+            ],
+            417 => [
                 'id' => 918,
-            'base' => 'Navpmossp Sunnyvale (Det Magna Utah)',
+                'base' => 'Navpmossp Sunnyvale (Det Magna Utah)',
                 'city_id' => 34588,
                 'state_id' => 44,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Magna, UT',
                 'zipcode_id' => 47582,
-            ),
-            418 => 
-            array (
+            ],
+            418 => [
                 'id' => 919,
                 'base' => 'AFEXPTRAACT Camp Peary',
                 'city_id' => 9381,
@@ -10127,20 +9206,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Williamsburg, VA',
                 'zipcode_id' => 12510,
-            ),
-            419 => 
-            array (
+            ],
+            419 => [
                 'id' => 920,
-            'base' => 'COMNAVDIST Washington DC (Arlington Service Ctr)',
+                'base' => 'COMNAVDIST Washington DC (Arlington Service Ctr)',
                 'city_id' => 8313,
                 'state_id' => 46,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Arlington, VA',
                 'zipcode_id' => 10981,
-            ),
-            420 => 
-            array (
+            ],
+            420 => [
                 'id' => 921,
                 'base' => 'COMNAVREG MIDLANT',
                 'city_id' => 9553,
@@ -10149,42 +9226,38 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Norfolk, VA',
                 'zipcode_id' => 12818,
-            ),
-            421 => 
-            array (
+            ],
+            421 => [
                 'id' => 922,
-            'base' => 'COMNAVREG Midlant (CLF Norfolk NSY)',
+                'base' => 'COMNAVREG Midlant (CLF Norfolk NSY)',
                 'city_id' => 9569,
                 'state_id' => 46,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Portsmouth, VA',
                 'zipcode_id' => 12883,
-            ),
-            422 => 
-            array (
+            ],
+            422 => [
                 'id' => 923,
-            'base' => 'COMNAVREG Midlant (South Gate)',
+                'base' => 'COMNAVREG Midlant (South Gate)',
                 'city_id' => 9569,
                 'state_id' => 46,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Portsmouth, VA',
                 'zipcode_id' => 12883,
-            ),
-            423 => 
-            array (
+            ],
+            423 => [
                 'id' => 924,
-            'base' => 'FISC Norfolk (Craney Island)',
+                'base' => 'FISC Norfolk (Craney Island)',
                 'city_id' => 9569,
                 'state_id' => 46,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Portsmouth, VA',
                 'zipcode_id' => 12883,
-            ),
-            424 => 
-            array (
+            ],
+            424 => [
                 'id' => 925,
                 'base' => 'NAS Oceana',
                 'city_id' => 9544,
@@ -10193,31 +9266,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Virginia Beach, VA',
                 'zipcode_id' => 12771,
-            ),
-            425 => 
-            array (
+            ],
+            425 => [
                 'id' => 926,
-            'base' => 'NAS Oceana (ALF Fentress Chesapke)',
+                'base' => 'NAS Oceana (ALF Fentress Chesapke)',
                 'city_id' => 9544,
                 'state_id' => 46,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Virginia Beach, VA',
                 'zipcode_id' => 12771,
-            ),
-            426 => 
-            array (
+            ],
+            426 => [
                 'id' => 927,
-            'base' => 'NAS Oceana (Dam Neck)',
+                'base' => 'NAS Oceana (Dam Neck)',
                 'city_id' => 9544,
                 'state_id' => 46,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Virginia Beach, VA',
                 'zipcode_id' => 12771,
-            ),
-            427 => 
-            array (
+            ],
+            427 => [
                 'id' => 928,
                 'base' => 'NAVMEDCEN Portsmouth',
                 'city_id' => 9569,
@@ -10226,9 +9296,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Portsmouth, VA',
                 'zipcode_id' => 12883,
-            ),
-            428 => 
-            array (
+            ],
+            428 => [
                 'id' => 929,
                 'base' => 'NAVPHIBASE Little Creek',
                 'city_id' => 9553,
@@ -10237,20 +9306,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Norfolk, VA',
                 'zipcode_id' => 12818,
-            ),
-            429 => 
-            array (
+            ],
+            429 => [
                 'id' => 930,
-            'base' => 'NAVPHIBASE Little Creek (Fort Story)',
+                'base' => 'NAVPHIBASE Little Creek (Fort Story)',
                 'city_id' => 9553,
                 'state_id' => 46,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Norfolk, VA',
                 'zipcode_id' => 12818,
-            ),
-            430 => 
-            array (
+            ],
+            430 => [
                 'id' => 931,
                 'base' => 'NAVSUPPACT Norfolk',
                 'city_id' => 9553,
@@ -10259,31 +9326,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Norfolk, VA',
                 'zipcode_id' => 12818,
-            ),
-            431 => 
-            array (
+            ],
+            431 => [
                 'id' => 932,
-            'base' => 'NAVSUPPACT Norfolk (Lafayette River Annex)',
+                'base' => 'NAVSUPPACT Norfolk (Lafayette River Annex)',
                 'city_id' => 9553,
                 'state_id' => 46,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Norfolk, VA',
                 'zipcode_id' => 12818,
-            ),
-            432 => 
-            array (
+            ],
+            432 => [
                 'id' => 933,
-            'base' => 'NAVSUPPACT Norfolk (Northwest Chesapke VA)',
+                'base' => 'NAVSUPPACT Norfolk (Northwest Chesapke VA)',
                 'city_id' => 9489,
                 'state_id' => 46,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Chesapeake, VA',
                 'zipcode_id' => 12697,
-            ),
-            433 => 
-            array (
+            ],
+            433 => [
                 'id' => 934,
                 'base' => 'NS Norfolk',
                 'city_id' => 9553,
@@ -10292,42 +9356,38 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Norfolk, VA',
                 'zipcode_id' => 12818,
-            ),
-            434 => 
-            array (
+            ],
+            434 => [
                 'id' => 935,
-            'base' => 'NS Norfolk (Elizabeth Rvr Channel)',
+                'base' => 'NS Norfolk (Elizabeth Rvr Channel)',
                 'city_id' => 9553,
                 'state_id' => 46,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Norfolk, VA',
                 'zipcode_id' => 12818,
-            ),
-            435 => 
-            array (
+            ],
+            435 => [
                 'id' => 936,
-            'base' => 'NS Norfolk (St.Helena Norfolk)',
+                'base' => 'NS Norfolk (St.Helena Norfolk)',
                 'city_id' => 9553,
                 'state_id' => 46,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Norfolk, VA',
                 'zipcode_id' => 12818,
-            ),
-            436 => 
-            array (
+            ],
+            436 => [
                 'id' => 937,
-            'base' => 'NS Norfolk (St.Juliens Creek Annex)',
+                'base' => 'NS Norfolk (St.Juliens Creek Annex)',
                 'city_id' => 9489,
                 'state_id' => 46,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Chesapeake, VA',
                 'zipcode_id' => 12697,
-            ),
-            437 => 
-            array (
+            ],
+            437 => [
                 'id' => 938,
                 'base' => 'NSWC DIV Dahlgren',
                 'city_id' => 9054,
@@ -10336,9 +9396,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Dahlgren, VA',
                 'zipcode_id' => 12142,
-            ),
-            438 => 
-            array (
+            ],
+            438 => [
                 'id' => 939,
                 'base' => 'NSY Norfolk',
                 'city_id' => 9569,
@@ -10347,31 +9406,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Portsmouth, VA',
                 'zipcode_id' => 12883,
-            ),
-            439 => 
-            array (
+            ],
+            439 => [
                 'id' => 940,
-            'base' => 'PWC Norfolk (Stanley Court/NNSY)',
+                'base' => 'PWC Norfolk (Stanley Court/NNSY)',
                 'city_id' => 9553,
                 'state_id' => 46,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Norfolk, VA',
                 'zipcode_id' => 12818,
-            ),
-            440 => 
-            array (
+            ],
+            440 => [
                 'id' => 941,
-            'base' => 'PWC Norfolk (Wadsworth Housing Trac)',
+                'base' => 'PWC Norfolk (Wadsworth Housing Trac)',
                 'city_id' => 9553,
                 'state_id' => 46,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Norfolk, VA',
                 'zipcode_id' => 12818,
-            ),
-            441 => 
-            array (
+            ],
+            441 => [
                 'id' => 942,
                 'base' => 'Surface Combat Systems Center',
                 'city_id' => 9493,
@@ -10380,9 +9436,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Wallops Island, VA',
                 'zipcode_id' => 12709,
-            ),
-            442 => 
-            array (
+            ],
+            442 => [
                 'id' => 943,
                 'base' => 'WPNSUPPFAC Yorktown',
                 'city_id' => 9562,
@@ -10391,31 +9446,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Yorktown, VA',
                 'zipcode_id' => 12873,
-            ),
-            443 => 
-            array (
+            ],
+            443 => [
                 'id' => 944,
-            'base' => 'WPNSUPPFAC Yorktown (Cheatham Annex)',
+                'base' => 'WPNSUPPFAC Yorktown (Cheatham Annex)',
                 'city_id' => 9381,
                 'state_id' => 46,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Williamsburg, VA',
                 'zipcode_id' => 12510,
-            ),
-            444 => 
-            array (
+            ],
+            444 => [
                 'id' => 945,
-            'base' => 'WPNSUPPFAC Yorktown (Yorktown Fuel Depot)',
+                'base' => 'WPNSUPPFAC Yorktown (Yorktown Fuel Depot)',
                 'city_id' => 9562,
                 'state_id' => 46,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Yorktown, VA',
                 'zipcode_id' => 12873,
-            ),
-            445 => 
-            array (
+            ],
+            445 => [
                 'id' => 946,
                 'base' => 'FISC Puget Sound Bremerton',
                 'city_id' => 38257,
@@ -10424,20 +9476,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Bremerton, WA',
                 'zipcode_id' => 54474,
-            ),
-            446 => 
-            array (
+            ],
+            446 => [
                 'id' => 947,
-            'base' => 'FISC Puget Sound Bremerton (Manchester Wash)',
+                'base' => 'FISC Puget Sound Bremerton (Manchester Wash)',
                 'city_id' => 38289,
                 'state_id' => 47,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Manchester, WA',
                 'zipcode_id' => 54513,
-            ),
-            447 => 
-            array (
+            ],
+            447 => [
                 'id' => 948,
                 'base' => 'NAS Whidbey Island',
                 'city_id' => 38235,
@@ -10446,31 +9496,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Oak Harbor, WA',
                 'zipcode_id' => 54448,
-            ),
-            448 => 
-            array (
+            ],
+            448 => [
                 'id' => 949,
-            'base' => 'NAS Whidbey Island (OLF Coupeville)',
+                'base' => 'NAS Whidbey Island (OLF Coupeville)',
                 'city_id' => 38202,
                 'state_id' => 47,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Coupeville, WA',
                 'zipcode_id' => 54411,
-            ),
-            449 => 
-            array (
+            ],
+            449 => [
                 'id' => 950,
-            'base' => 'NAS Whidbey Island (Sea Plane Base)',
+                'base' => 'NAS Whidbey Island (Sea Plane Base)',
                 'city_id' => 38235,
                 'state_id' => 47,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Oak Harbor, WA',
                 'zipcode_id' => 54448,
-            ),
-            450 => 
-            array (
+            ],
+            450 => [
                 'id' => 951,
                 'base' => 'NAVMAG Indian Island',
                 'city_id' => 38304,
@@ -10479,9 +9526,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Port Townsend, WA',
                 'zipcode_id' => 54531,
-            ),
-            451 => 
-            array (
+            ],
+            451 => [
                 'id' => 952,
                 'base' => 'NAVRADSTA /T/ Jim Creek',
                 'city_id' => 38192,
@@ -10490,9 +9536,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Oso, WA',
                 'zipcode_id' => 54396,
-            ),
-            452 => 
-            array (
+            ],
+            452 => [
                 'id' => 953,
                 'base' => 'NH Bremerton',
                 'city_id' => 38257,
@@ -10501,9 +9546,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Bremerton, WA',
                 'zipcode_id' => 54474,
-            ),
-            453 => 
-            array (
+            ],
+            453 => [
                 'id' => 954,
                 'base' => 'NS Bremerton',
                 'city_id' => 38257,
@@ -10512,9 +9556,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Bremerton, WA',
                 'zipcode_id' => 54474,
-            ),
-            454 => 
-            array (
+            ],
+            454 => [
                 'id' => 955,
                 'base' => 'NS Everett',
                 'city_id' => 38186,
@@ -10523,42 +9566,38 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Everett, WA',
                 'zipcode_id' => 54382,
-            ),
-            455 => 
-            array (
+            ],
+            455 => [
                 'id' => 956,
-            'base' => 'NS Everett (Fort Lawton Magnolia)',
+                'base' => 'NS Everett (Fort Lawton Magnolia)',
                 'city_id' => 38173,
                 'state_id' => 47,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Seattle, WA',
                 'zipcode_id' => 54289,
-            ),
-            456 => 
-            array (
+            ],
+            456 => [
                 'id' => 957,
-            'base' => 'NS Everett (Marysville WA)',
+                'base' => 'NS Everett (Marysville WA)',
                 'city_id' => 38230,
                 'state_id' => 47,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Marysville, WA',
                 'zipcode_id' => 54439,
-            ),
-            457 => 
-            array (
+            ],
+            457 => [
                 'id' => 958,
-            'base' => 'NS Everett (Pacific Beach)',
+                'base' => 'NS Everett (Pacific Beach)',
                 'city_id' => 38393,
                 'state_id' => 47,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Pacific Beach, WA',
                 'zipcode_id' => 54720,
-            ),
-            458 => 
-            array (
+            ],
+            458 => [
                 'id' => 959,
                 'base' => 'NSY Puget Sound',
                 'city_id' => 38257,
@@ -10567,20 +9606,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Bremerton, WA',
                 'zipcode_id' => 54474,
-            ),
-            459 => 
-            array (
+            ],
+            459 => [
                 'id' => 960,
-            'base' => 'NSY Puget Sound (Bremerton R R)',
+                'base' => 'NSY Puget Sound (Bremerton R R)',
                 'city_id' => 38257,
                 'state_id' => 47,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Bremerton, WA',
                 'zipcode_id' => 54474,
-            ),
-            460 => 
-            array (
+            ],
+            460 => [
                 'id' => 961,
                 'base' => 'NUSWC DIV Keyport',
                 'city_id' => 38281,
@@ -10589,20 +9626,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Keyport, WA',
                 'zipcode_id' => 54504,
-            ),
-            461 => 
-            array (
+            ],
+            461 => [
                 'id' => 962,
-            'base' => 'NUSWC Div Keyport (Undersea Warfare Annex)',
+                'base' => 'NUSWC Div Keyport (Undersea Warfare Annex)',
                 'city_id' => 38281,
                 'state_id' => 47,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Keyport, WA',
                 'zipcode_id' => 54504,
-            ),
-            462 => 
-            array (
+            ],
+            462 => [
                 'id' => 963,
                 'base' => 'SUBASE Bangor',
                 'city_id' => 38259,
@@ -10611,9 +9646,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Bangor, WA',
                 'zipcode_id' => 54479,
-            ),
-            463 => 
-            array (
+            ],
+            463 => [
                 'id' => 964,
                 'base' => 'Allegany Ballistics Lab',
                 'city_id' => 11133,
@@ -10622,9 +9656,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Keyser, WV',
                 'zipcode_id' => 14671,
-            ),
-            464 => 
-            array (
+            ],
+            464 => [
                 'id' => 965,
                 'base' => 'NAVSECGRUACT Sugar Grove',
                 'city_id' => 11165,
@@ -10633,20 +9666,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Sugar Grove, WV',
                 'zipcode_id' => 14703,
-            ),
-            465 => 
-            array (
+            ],
+            465 => [
                 'id' => 966,
-            'base' => 'NCTAMS LANT Norfolk (NRTF Clam Lake WI)',
+                'base' => 'NCTAMS LANT Norfolk (NRTF Clam Lake WI)',
                 'city_id' => 22816,
                 'state_id' => 49,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Active',
                 'map_value' => 'Ashland, WI',
                 'zipcode_id' => 31525,
-            ),
-            466 => 
-            array (
+            ],
+            466 => [
                 'id' => 967,
                 'base' => 'NMCRC Alameda Navy',
                 'city_id' => 36791,
@@ -10655,9 +9686,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'Alameda, CA',
                 'zipcode_id' => 52236,
-            ),
-            467 => 
-            array (
+            ],
+            467 => [
                 'id' => 968,
                 'base' => 'NMCRC Los Angeles Navy',
                 'city_id' => 35844,
@@ -10666,9 +9696,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'Los Angeles, CA',
                 'zipcode_id' => 49863,
-            ),
-            468 => 
-            array (
+            ],
+            468 => [
                 'id' => 969,
                 'base' => 'NMCRC Moreno Valley Navy',
                 'city_id' => 36340,
@@ -10677,9 +9706,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'Moreno Valley, CA',
                 'zipcode_id' => 51214,
-            ),
-            469 => 
-            array (
+            ],
+            469 => [
                 'id' => 970,
                 'base' => 'NMCRC Sacramento Navy',
                 'city_id' => 36784,
@@ -10688,9 +9716,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'Sacramento, CA',
                 'zipcode_id' => 52159,
-            ),
-            470 => 
-            array (
+            ],
+            470 => [
                 'id' => 971,
                 'base' => 'NMCRC Denver',
                 'city_id' => 33438,
@@ -10699,9 +9726,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'Lakewood, CO',
                 'zipcode_id' => 45880,
-            ),
-            471 => 
-            array (
+            ],
+            471 => [
                 'id' => 972,
                 'base' => 'NAS Atlanta',
                 'city_id' => 12593,
@@ -10710,9 +9736,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'Marietta, GA',
                 'zipcode_id' => 16697,
-            ),
-            472 => 
-            array (
+            ],
+            472 => [
                 'id' => 973,
                 'base' => 'NMCRC Atlanta',
                 'city_id' => 12593,
@@ -10721,9 +9746,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'Marietta, GA',
                 'zipcode_id' => 16697,
-            ),
-            473 => 
-            array (
+            ],
+            473 => [
                 'id' => 974,
                 'base' => 'NAS JRB New Orleans',
                 'city_id' => 29505,
@@ -10732,9 +9756,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'Belle Chasse, LA',
                 'zipcode_id' => 39881,
-            ),
-            474 => 
-            array (
+            ],
+            474 => [
                 'id' => 975,
                 'base' => 'NRC New Orleans',
                 'city_id' => 29551,
@@ -10743,9 +9766,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'New Orleans, LA',
                 'zipcode_id' => 39941,
-            ),
-            475 => 
-            array (
+            ],
+            475 => [
                 'id' => 976,
                 'base' => 'NSA New Orleans',
                 'city_id' => 29551,
@@ -10754,20 +9776,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'New Orleans, LA',
                 'zipcode_id' => 39941,
-            ),
-            476 => 
-            array (
+            ],
+            476 => [
                 'id' => 977,
-            'base' => 'NSA New Orleans (East Bank)',
+                'base' => 'NSA New Orleans (East Bank)',
                 'city_id' => 29551,
                 'state_id' => 18,
                 'branch' => 'ARMY',
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'New Orleans, LA',
                 'zipcode_id' => 39941,
-            ),
-            477 => 
-            array (
+            ],
+            477 => [
                 'id' => 978,
                 'base' => 'NMCRC FTCSTR Battle Creek',
                 'city_id' => 20449,
@@ -10776,9 +9796,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'Battle Creek, MI',
                 'zipcode_id' => 28698,
-            ),
-            478 => 
-            array (
+            ],
+            478 => [
                 'id' => 979,
                 'base' => 'NARC Minneapolis',
                 'city_id' => 23214,
@@ -10787,9 +9806,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'Minneapolis, MN',
                 'zipcode_id' => 32071,
-            ),
-            479 => 
-            array (
+            ],
+            479 => [
                 'id' => 980,
                 'base' => 'NRC Fort Dix',
                 'city_id' => 3372,
@@ -10798,9 +9816,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'Fort Dix, NJ',
                 'zipcode_id' => 4215,
-            ),
-            480 => 
-            array (
+            ],
+            480 => [
                 'id' => 981,
                 'base' => 'NARC Columbus',
                 'city_id' => 17680,
@@ -10809,9 +9826,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'Columbus, OH',
                 'zipcode_id' => 24699,
-            ),
-            481 => 
-            array (
+            ],
+            481 => [
                 'id' => 982,
                 'base' => 'NMCRC Tulsa',
                 'city_id' => 31126,
@@ -10820,9 +9836,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'Broken Arrow, OK',
                 'zipcode_id' => 42031,
-            ),
-            482 => 
-            array (
+            ],
+            482 => [
                 'id' => 983,
                 'base' => 'NMCRC Portland',
                 'city_id' => 37746,
@@ -10831,9 +9846,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'Portland, OR',
                 'zipcode_id' => 53680,
-            ),
-            483 => 
-            array (
+            ],
+            483 => [
                 'id' => 984,
                 'base' => 'NAS Willow Grove',
                 'city_id' => 7919,
@@ -10842,9 +9856,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'Willow Grove, PA',
                 'zipcode_id' => 9966,
-            ),
-            484 => 
-            array (
+            ],
+            484 => [
                 'id' => 985,
                 'base' => 'NMCRC Pittsburgh',
                 'city_id' => 5769,
@@ -10853,20 +9866,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'Pittsburgh, PA',
                 'zipcode_id' => 7417,
-            ),
-            485 => 
-            array (
+            ],
+            485 => [
                 'id' => 986,
-            'base' => 'NS Newport (NMCRC Providence RI)',
+                'base' => 'NS Newport (NMCRC Providence RI)',
                 'city_id' => 754,
                 'state_id' => 39,
                 'branch' => 'NAVY',
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'Providence, RI',
                 'zipcode_id' => 1045,
-            ),
-            486 => 
-            array (
+            ],
+            486 => [
                 'id' => 987,
                 'base' => 'NAS JRB Fort Worth',
                 'city_id' => 31955,
@@ -10875,9 +9886,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'Fort Worth, TX',
                 'zipcode_id' => 43254,
-            ),
-            487 => 
-            array (
+            ],
+            487 => [
                 'id' => 988,
                 'base' => 'NMCRC Spokane',
                 'city_id' => 38657,
@@ -10886,9 +9896,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Navy Reserve',
                 'map_value' => 'Spokane, WA',
                 'zipcode_id' => 55031,
-            ),
-            488 => 
-            array (
+            ],
+            488 => [
                 'id' => 989,
                 'base' => 'MCAS Yuma',
                 'city_id' => 35027,
@@ -10897,42 +9906,38 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Yuma, AZ',
                 'zipcode_id' => 48499,
-            ),
-            489 => 
-            array (
+            ],
+            489 => [
                 'id' => 990,
-            'base' => 'MCAS Yuma (Housing)',
+                'base' => 'MCAS Yuma (Housing)',
                 'city_id' => 35027,
                 'state_id' => 3,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Yuma, AZ',
                 'zipcode_id' => 48499,
-            ),
-            490 => 
-            array (
+            ],
+            490 => [
                 'id' => 991,
-            'base' => 'MCAS Yuma (Hsg-Off Base Fy 81)',
+                'base' => 'MCAS Yuma (Hsg-Off Base Fy 81)',
                 'city_id' => 35027,
                 'state_id' => 3,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Yuma, AZ',
                 'zipcode_id' => 48499,
-            ),
-            491 => 
-            array (
+            ],
+            491 => [
                 'id' => 992,
-            'base' => 'MCAGCC 29 Palms (Vista Del Sol)',
+                'base' => 'MCAGCC 29 Palms (Vista Del Sol)',
                 'city_id' => 36234,
                 'state_id' => 5,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Twentynine Palms, CA',
                 'zipcode_id' => 51021,
-            ),
-            492 => 
-            array (
+            ],
+            492 => [
                 'id' => 993,
                 'base' => 'MCAGCC Twentynine Palms',
                 'city_id' => 36234,
@@ -10941,9 +9946,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Twentynine Palms, CA',
                 'zipcode_id' => 51021,
-            ),
-            493 => 
-            array (
+            ],
+            493 => [
                 'id' => 994,
                 'base' => 'MCAS Camp Pendleton',
                 'city_id' => 36157,
@@ -10952,9 +9956,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Camp Pendleton, CA',
                 'zipcode_id' => 50817,
-            ),
-            494 => 
-            array (
+            ],
+            494 => [
                 'id' => 995,
                 'base' => 'MCAS Miramar',
                 'city_id' => 36177,
@@ -10963,53 +9966,48 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-            495 => 
-            array (
+            ],
+            495 => [
                 'id' => 996,
-            'base' => 'MCAS Yuma (Choc Mt Arial Gnry Rng)',
+                'base' => 'MCAS Yuma (Choc Mt Arial Gnry Rng)',
                 'city_id' => 36218,
                 'state_id' => 5,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Niland, CA',
                 'zipcode_id' => 51000,
-            ),
-            496 => 
-            array (
+            ],
+            496 => [
                 'id' => 997,
-            'base' => 'MCB Camp Pendleton (Mwtc Bridgeport)',
+                'base' => 'MCB Camp Pendleton (Mwtc Bridgeport)',
                 'city_id' => 36590,
                 'state_id' => 5,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Bridgeport, CA',
                 'zipcode_id' => 51761,
-            ),
-            497 => 
-            array (
+            ],
+            497 => [
                 'id' => 998,
-            'base' => 'MCLB Barstow (Nebo Area)',
+                'base' => 'MCLB Barstow (Nebo Area)',
                 'city_id' => 36257,
                 'state_id' => 5,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Barstow, CA',
                 'zipcode_id' => 51053,
-            ),
-            498 => 
-            array (
+            ],
+            498 => [
                 'id' => 999,
-            'base' => 'MCLB Barstow (Yermo Area)',
+                'base' => 'MCLB Barstow (Yermo Area)',
                 'city_id' => 36257,
                 'state_id' => 5,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Barstow, CA',
                 'zipcode_id' => 51053,
-            ),
-            499 => 
-            array (
+            ],
+            499 => [
                 'id' => 1000,
                 'base' => 'MCRD San Diego',
                 'city_id' => 36177,
@@ -11018,22 +10016,20 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'San Diego, CA',
                 'zipcode_id' => 50860,
-            ),
-        ));
-        \DB::table('military_bases')->insert(array (
-            0 => 
-            array (
+            ],
+        ]);
+        \DB::table('military_bases')->insert([
+            0 => [
                 'id' => 1001,
-            'base' => 'MCLB Albany (Blount Island Jax FL)',
+                'base' => 'MCLB Albany (Blount Island Jax FL)',
                 'city_id' => 13356,
                 'state_id' => 9,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Jacksonville, FL',
                 'zipcode_id' => 17901,
-            ),
-            1 => 
-            array (
+            ],
+            1 => [
                 'id' => 1002,
                 'base' => 'MCLB Albany',
                 'city_id' => 13214,
@@ -11042,31 +10038,28 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Albany, GA',
                 'zipcode_id' => 17691,
-            ),
-            2 => 
-            array (
+            ],
+            2 => [
                 'id' => 1003,
-            'base' => 'MCLB Albany (Hospital Site)',
+                'base' => 'MCLB Albany (Hospital Site)',
                 'city_id' => 13214,
                 'state_id' => 10,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Albany, GA',
                 'zipcode_id' => 17691,
-            ),
-            3 => 
-            array (
+            ],
+            3 => [
                 'id' => 1004,
-            'base' => 'MCLB Albany (Housing Area No 1)',
+                'base' => 'MCLB Albany (Housing Area No 1)',
                 'city_id' => 13214,
                 'state_id' => 10,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Albany, GA',
                 'zipcode_id' => 17691,
-            ),
-            4 => 
-            array (
+            ],
+            4 => [
                 'id' => 1005,
                 'base' => 'MCB HAWAII Kaneohe',
                 'city_id' => 37603,
@@ -11075,86 +10068,78 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Kaneohe, HI',
                 'zipcode_id' => 53475,
-            ),
-            5 => 
-            array (
+            ],
+            5 => [
                 'id' => 1006,
-            'base' => 'MCB Hawaii Kaneohe (Housing)',
+                'base' => 'MCB Hawaii Kaneohe (Housing)',
                 'city_id' => 37603,
                 'state_id' => 11,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Kaneohe, HI',
                 'zipcode_id' => 53475,
-            ),
-            6 => 
-            array (
+            ],
+            6 => [
                 'id' => 1007,
-            'base' => 'MCB Hawaii Kaneohe (Manana Capehart)',
+                'base' => 'MCB Hawaii Kaneohe (Manana Capehart)',
                 'city_id' => 37638,
                 'state_id' => 11,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Pearl City, HI',
                 'zipcode_id' => 53512,
-            ),
-            7 => 
-            array (
+            ],
+            7 => [
                 'id' => 1008,
-            'base' => 'MCB Hawaii Kaneohe (Oahu)',
+                'base' => 'MCB Hawaii Kaneohe (Oahu)',
                 'city_id' => 37669,
                 'state_id' => 11,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'M C B H Kaneohe Bay, HI',
                 'zipcode_id' => 53590,
-            ),
-            8 => 
-            array (
+            ],
+            8 => [
                 'id' => 1009,
-            'base' => 'MCB Hawaii Kaneohe (Pearl City Annex)',
+                'base' => 'MCB Hawaii Kaneohe (Pearl City Annex)',
                 'city_id' => 37638,
                 'state_id' => 11,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Pearl City, HI',
                 'zipcode_id' => 53512,
-            ),
-            9 => 
-            array (
+            ],
+            9 => [
                 'id' => 1010,
-            'base' => 'MCB Hawaii Kaneohe (Puuloa-Oahu)',
+                'base' => 'MCB Hawaii Kaneohe (Puuloa-Oahu)',
                 'city_id' => 37572,
                 'state_id' => 11,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Ewa Beach, HI',
                 'zipcode_id' => 53440,
-            ),
-            10 => 
-            array (
+            ],
+            10 => [
                 'id' => 1011,
-            'base' => 'MCSPTACT Kansas City (Family Housing)',
+                'base' => 'MCSPTACT Kansas City (Family Housing)',
                 'city_id' => 27452,
                 'state_id' => 25,
                 'branch' => 'NAVY',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Belton, MO',
                 'zipcode_id' => 37272,
-            ),
-            11 => 
-            array (
+            ],
+            11 => [
                 'id' => 1012,
-            'base' => 'MCSPTACT Kansas City (Richards Gebaur ARS)',
+                'base' => 'MCSPTACT Kansas City (Richards Gebaur ARS)',
                 'city_id' => 27518,
                 'state_id' => 25,
                 'branch' => 'NAVY',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Kansas City, MO',
                 'zipcode_id' => 37364,
-            ),
-            12 => 
-            array (
+            ],
+            12 => [
                 'id' => 1013,
                 'base' => 'MCAS Cherry Point',
                 'city_id' => 11863,
@@ -11163,86 +10148,78 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Cherry Point, NC',
                 'zipcode_id' => 15718,
-            ),
-            13 => 
-            array (
+            ],
+            13 => [
                 'id' => 1014,
-            'base' => 'MCAS Cherry Point (ALF Bogue)',
+                'base' => 'MCAS Cherry Point (ALF Bogue)',
                 'city_id' => 11884,
                 'state_id' => 33,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Bogue, NC',
                 'zipcode_id' => 15751,
-            ),
-            14 => 
-            array (
+            ],
+            14 => [
                 'id' => 1015,
-            'base' => 'MCAS Cherry Point (Housing)',
+                'base' => 'MCAS Cherry Point (Housing)',
                 'city_id' => 11863,
                 'state_id' => 33,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Cherry Point, NC',
                 'zipcode_id' => 15718,
-            ),
-            15 => 
-            array (
+            ],
+            15 => [
                 'id' => 1016,
-            'base' => 'MCAS Cherry Point (MCAS-H Oak Grove)',
+                'base' => 'MCAS Cherry Point (MCAS-H Oak Grove)',
                 'city_id' => 11887,
                 'state_id' => 33,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Pollocksville, NC',
                 'zipcode_id' => 15754,
-            ),
-            16 => 
-            array (
+            ],
+            16 => [
                 'id' => 1017,
-            'base' => 'MCAS Cherry Point (OLF Atlantic)',
+                'base' => 'MCAS Cherry Point (OLF Atlantic)',
                 'city_id' => 11837,
                 'state_id' => 33,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Atlantic, NC',
                 'zipcode_id' => 15692,
-            ),
-            17 => 
-            array (
+            ],
+            17 => [
                 'id' => 1018,
-            'base' => 'MCAS Cherry Point (Point Of Marsh Target)',
+                'base' => 'MCAS Cherry Point (Point Of Marsh Target)',
                 'city_id' => 11837,
                 'state_id' => 33,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Atlantic, NC',
                 'zipcode_id' => 15692,
-            ),
-            18 => 
-            array (
+            ],
+            18 => [
                 'id' => 1019,
-            'base' => 'MCB Camp Lejeune (Greater Sandy Run Area)',
+                'base' => 'MCB Camp Lejeune (Greater Sandy Run Area)',
                 'city_id' => 11868,
                 'state_id' => 33,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Camp Lejeune, NC',
                 'zipcode_id' => 15725,
-            ),
-            19 => 
-            array (
+            ],
+            19 => [
                 'id' => 1020,
-            'base' => 'MCB Camp Lejeune (MCAS New River)',
+                'base' => 'MCB Camp Lejeune (MCAS New River)',
                 'city_id' => 11868,
                 'state_id' => 33,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Camp Lejeune, NC',
                 'zipcode_id' => 15725,
-            ),
-            20 => 
-            array (
+            ],
+            20 => [
                 'id' => 1021,
                 'base' => 'MCAS Beaufort',
                 'city_id' => 12551,
@@ -11251,20 +10228,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Beaufort, SC',
                 'zipcode_id' => 16640,
-            ),
-            21 => 
-            array (
+            ],
+            21 => [
                 'id' => 1022,
-            'base' => 'MCAS Beaufort (L B Housing)',
+                'base' => 'MCAS Beaufort (L B Housing)',
                 'city_id' => 12551,
                 'state_id' => 40,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Beaufort, SC',
                 'zipcode_id' => 16640,
-            ),
-            22 => 
-            array (
+            ],
+            22 => [
                 'id' => 1023,
                 'base' => 'MCRD Beaufort Parris Island',
                 'city_id' => 12552,
@@ -11273,9 +10248,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Parris Island, SC',
                 'zipcode_id' => 16645,
-            ),
-            23 => 
-            array (
+            ],
+            23 => [
                 'id' => 1024,
                 'base' => 'HQBN HQMC Arlington',
                 'city_id' => 8313,
@@ -11284,9 +10258,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Arlington, VA',
                 'zipcode_id' => 10981,
-            ),
-            24 => 
-            array (
+            ],
+            24 => [
                 'id' => 1025,
                 'base' => 'MCB Quantico',
                 'city_id' => 9006,
@@ -11295,20 +10268,18 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Quantico, VA',
                 'zipcode_id' => 11995,
-            ),
-            25 => 
-            array (
+            ],
+            25 => [
                 'id' => 1026,
-            'base' => 'MCB Quantico (Camp Upshur)',
+                'base' => 'MCB Quantico (Camp Upshur)',
                 'city_id' => 9006,
                 'state_id' => 46,
                 'branch' => 'MARINES',
                 'sub_branch' => 'USMC Active',
                 'map_value' => 'Quantico, VA',
                 'zipcode_id' => 11995,
-            ),
-            26 => 
-            array (
+            ],
+            26 => [
                 'id' => 1027,
                 'base' => 'MCRC Chicopee Hsng',
                 'city_id' => 13,
@@ -11317,9 +10288,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'USMC Reserve',
                 'map_value' => 'Chicopee, MA',
                 'zipcode_id' => 15,
-            ),
-            27 => 
-            array (
+            ],
+            27 => [
                 'id' => 1028,
                 'base' => 'PENTAGON RESERVATION',
                 'city_id' => 8229,
@@ -11328,9 +10298,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'WHS',
                 'map_value' => 'WASHINGTON, DC',
                 'zipcode_id' => 10552,
-            ),
-            28 => 
-            array (
+            ],
+            28 => [
                 'id' => 1029,
                 'base' => 'Fort Campbell - KY',
                 'city_id' => 17364,
@@ -11339,9 +10308,8 @@ class MilitaryBasesTableSeeder extends Seeder
                 'sub_branch' => 'Army Active',
                 'map_value' => 'Hopkinsville, KY',
                 'zipcode_id' => 24357,
-            ),
-        ));
-        
-        
+            ],
+        ]);
+
     }
 }

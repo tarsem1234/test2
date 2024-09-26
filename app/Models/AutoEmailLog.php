@@ -11,8 +11,6 @@ class AutoEmailLog extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'auto_email_logs';
-
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'from_user_id');

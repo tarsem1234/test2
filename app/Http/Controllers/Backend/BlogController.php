@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Blog\StoreBlogPost;
+use App\Http\Requests\Backend\UpdateBlogRequest;
 use App\Models\Blog;
 use Carbon\Carbon;
-use File;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
-use Storage;
 
 class BlogController extends Controller
 {
@@ -27,12 +27,12 @@ class BlogController extends Controller
         return view('backend.blog.create');
     }
 
-    public function store(StoreBlogPost $request)
+    public function store(StoreBlogPost $request): RedirectResponse
     {
         $input = $request->all();
 
         if ((strpos($input['blog_title'], '"'))) {
-            return back()->withFlashDanger(trans('alerts.blog.createFailed'));
+            return redirect()->back()->withFlashDanger(trans('alerts.blog.createFailed'));
         }
 
         $slug = strtolower($input['blog_title']);
@@ -40,7 +40,7 @@ class BlogController extends Controller
         $slug = preg_replace('/[^A-Za-z0-9\-]/', '', $slug);
 
         if ($slug == '') {
-            return back()->withFlashDanger(trans('alerts.blog.createFailed'));
+            return redirect()->back()->withFlashDanger(trans('alerts.blog.createFailed'));
         } else {
             $timestamp = str_replace([' ', ':'], '-', Carbon::now()->toDateTimeString());
 
@@ -74,13 +74,8 @@ class BlogController extends Controller
         return view('backend.blog.create', compact('blog'));
     }
 
-    public function update(Request $request, Blog $blog): RedirectResponse
+    public function update(UpdateBlogRequest $request, Blog $blog): RedirectResponse
     {
-        $this->validate($request, [
-            'blog_title' => 'required',
-            'blog_description' => 'required',
-            'blog_content' => 'required',
-        ]);
         $input['title'] = $request->blog_title;
         $input['description'] = $request->blog_description;
         $input['content'] = $request->blog_content;

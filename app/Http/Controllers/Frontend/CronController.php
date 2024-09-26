@@ -8,21 +8,21 @@ use App\Models\RentOffer;
 use App\Models\SaleOffer;
 use App\Services\EmailLogService;
 use Carbon\Carbon;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 
 class CronController extends Controller
 {
     public function checkBackToMarket($days = '')
     {
         //        \Log::info('cron set.');
-        $previousDate = ! empty($days) ? Carbon::now()->subDays($days) : Carbon::now()->subDays(env('BACK_TO_MARKET_DAYS'));
+        $previousDate = ! empty($days) ? Carbon::now()->subDays($days) : Carbon::now()->subDays(config('settings.back_to_market_days'));
         //	dd($previousDate);
         $properties = Property::where('created_at', '<', $previousDate)
             ->where('status', '!=', config('constant.inverse_property_status.Unavailable'))
             ->with(['rentOffer' => function ($rentQuery) {
-                $rentQuery->orderBy('created_at', 'desc')->first();
+                $rentQuery->orderByDesc('created_at')->first();
             }, 'saleOffer' => function ($saleQuery) {
-                $saleQuery->orderBy('created_at', 'desc')->first();
+                $saleQuery->orderByDesc('created_at')->first();
             }, 'user'])
             ->get();
         //		    dd($properties);

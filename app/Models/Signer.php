@@ -11,8 +11,6 @@ class Signer extends Model
 {
     use Notifiable, SoftDeletes;
 
-    protected $table = 'signers';
-
     public function signer_user(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Access\User\User::class, 'from_user_id');

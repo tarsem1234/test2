@@ -10,8 +10,6 @@ class VacationImage extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'vacation_images';
-
     public function vacation_property(): BelongsTo
     {
         return $this->belongsTo(\App\Models\VacationProperty::class);

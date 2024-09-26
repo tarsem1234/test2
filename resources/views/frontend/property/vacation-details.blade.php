@@ -2,8 +2,8 @@
 @section ('title', ('Property Details'))
 <?php list($width, $height) = getimagesize(public_path("storage/property_images/" . $vacation->id . '/' . $vacation->images->first()->image)); ?>
 <?php
-$fbAppId = env('FB_APP_ID');
-$fbAppVersion = env('FB_APP_VERSION');
+$fbAppId = config('settings.fb_app_id');
+$fbAppVersion = config('settings.fb_app_version');
 ?>
 <meta property="og:url" content="{{ route('frontend.vacationDetails',$vacation->id) }}" />
 <meta property="og:type" content="website" />
@@ -116,11 +116,11 @@ $fbAppVersion = env('FB_APP_VERSION');
 	<div class="col-sm-12 col-xs-12 all-buttons">
 	    @if(!Auth::check() || (Auth::check() && Auth::user()->id != $vacation->user_id))
 	    <div class="col-md-2 col-sm-4 col-xs-6 schedule-a-viewing particular-btn">
-		@if(!Auth::check())
+		@guest
 		<a href="{{route('frontend.auth.login')}}" class="btn">View Availability</a>
 		@else
 		<a class="btn" id="view_availabilites">View Availability</a>
-		@endif
+		@endguest
 	    </div>
 	    @endif
 	    <div class="col-md-2 col-sm-4 col-xs-6 last-div phone particular-btn">

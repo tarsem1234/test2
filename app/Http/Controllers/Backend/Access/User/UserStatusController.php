@@ -10,6 +10,7 @@ use App\Models\RentOffer;
 use App\Models\SaleOffer;
 use App\Repositories\Backend\Access\User\UserRepository;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 /**
@@ -32,6 +33,7 @@ class UserStatusController extends Controller
         $users = User::whereHas('roles', function ($query) {
             $query->where('name', 'User');
         })->with('user_profile')->where('status', 0)->get();
+
         return view('backend.access.deactivated', compact('users'));
     }
 
@@ -40,6 +42,7 @@ class UserStatusController extends Controller
         $users = User::whereHas('roles', function ($query) {
             $query->where('name', 'User');
         })->with('user_profile')->onlyTrashed()->get();
+
         return view('backend.access.deleted', compact('users'));
     }
 
@@ -80,7 +83,7 @@ class UserStatusController extends Controller
             ->get();
 
         // Start transaction
-        \DB::beginTransaction();
+        DB::beginTransaction();
         try {
 
             if (! empty($saleOffer)) {
@@ -103,10 +106,10 @@ class UserStatusController extends Controller
             }
 
             $this->users->mark($user, $status);
-            \DB::commit();
+            DB::commit();
 
         } catch (\Exception $e) {
-            \DB::rollback();
+            DB::rollback();
 
             return redirect()->back()->withFlashSuccess("Oops Something went wrong!!! Please try again later , user can't deleted");
         }

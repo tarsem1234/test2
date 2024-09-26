@@ -8,6 +8,7 @@ use App\Models\Backend\CategorySession;
 use App\Models\Backend\UserLearningPoint;
 use App\Models\UserLearningSession;
 use Carbon\Carbon;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
@@ -67,7 +68,7 @@ class LearningCenterController extends Controller
         return redirect()->back()->with('flash_success', 'Session not found.');
     }
 
-    public function submitAnswer(Request $request)
+    public function submitAnswer(Request $request): JsonResponse
     {
         $session = CategorySession::find($request->get('s_id'));
         $isBonus = $request->get('isBonus') == '1' ? true : false;
@@ -91,9 +92,9 @@ class LearningCenterController extends Controller
             $userSession->status = $request->get('save') == 'save' ? 0 : 1;
             $userSession->save();
 
-            return \Response::json(['status' => 'success', 'message' => '']);
+            return response()->json(['status' => 'success', 'message' => '']);
         } else {
-            return \Response::json(['status' => 'failed', 'message' => 'Session not found. Please try again']);
+            return response()->json(['status' => 'failed', 'message' => 'Session not found. Please try again']);
         }
     }
 

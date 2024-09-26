@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\StoreCategoryRequest;
+use App\Http\Requests\Backend\UpdateCategoryRequest;
 use App\Models\Backend\Category;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class CategoryController extends Controller
@@ -33,14 +34,9 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(StoreCategoryRequest $request): RedirectResponse
     {
         //        dd($request->all());
-        $this->validate($request,
-            [
-                'category' => 'required|max:150',
-                'description' => 'required',
-            ]);
 
         //        $checkIfIndustry = Industry::where('industry', $request->industry)->first();
         //        if (count($checkIfIndustry) > 0) {
@@ -110,13 +106,8 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, int $id): RedirectResponse
+    public function update(UpdateCategoryRequest $request, int $id): RedirectResponse
     {
-        $this->validate($request,
-            [
-                'category' => 'required|max:150',
-                'description' => 'required',
-            ]);
         //        dd($request->all());
         $input['category'] = $request->category;
         $input['description'] = $request->description;

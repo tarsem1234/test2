@@ -8,8 +8,8 @@ use App\Models\Access\User\User;
 use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Repositories\Backend\Access\User\UserRepository;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Request;
 use Illuminate\View\View;
-use Request;
 
 class AdminController extends Controller
 {
@@ -64,7 +64,8 @@ class AdminController extends Controller
                 $query->where('name', 'Administrator');
             })
             ->with('business_profile', 'user_profile')->where('status', 0)->get();
-        return view('backend.access.admin_deactivated', compact('admin','adminUsers'));
+
+        return view('backend.access.admin_deactivated', compact('admin', 'adminUsers'));
     }
 
     public function deleted(ManageUserRequest $request): View
@@ -75,6 +76,7 @@ class AdminController extends Controller
                 $query->where('name', 'Administrator');
             })
             ->with('business_profile', 'user_profile')->onlyTrashed()->get();
-        return view('backend.access.admin_deleted', compact('admin','adminUsers'));
+
+        return view('backend.access.admin_deleted', compact('admin', 'adminUsers'));
     }
 }

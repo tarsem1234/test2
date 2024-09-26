@@ -11,8 +11,6 @@ class Forum extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'forums';
-
     public function replies(): HasMany
     {
         return $this->hasMany(\App\Models\ForumReply::class);

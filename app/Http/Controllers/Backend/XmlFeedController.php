@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\StoreXmlFeedRequest;
+use App\Http\Requests\Backend\UpdateXmlFeedRequest;
 use App\Models\XmlfeedUser;
-use Hash;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
 class XmlFeedController extends Controller
@@ -35,13 +36,8 @@ class XmlFeedController extends Controller
         return redirect()->back()->withFlashDanger('Something went wrong.');
     }
 
-    public function store(Request $request, $id = null): RedirectResponse
+    public function store(StoreXmlFeedRequest $request, $id = null): RedirectResponse
     {
-        $this->validate($request,
-            [
-                'username' => 'required|unique:xmlfeed_users|max:191',
-                'password' => 'required|max:191',
-            ]);
         $data = $request->all();
         unset($data['_token']);
         $data['password'] = Hash::make($data['password']);
@@ -56,14 +52,9 @@ class XmlFeedController extends Controller
         return redirect()->back()->withFlashDanger('Something went wrong.');
     }
 
-    public function update(Request $request): RedirectResponse
+    public function update(UpdateXmlFeedRequest $request): RedirectResponse
     {
         if ($request->xml_user_id) {
-            $this->validate($request,
-                [
-                    'username' => 'required|max:191',
-                    'password' => 'required|max:191',
-                ]);
             $xmlUserId = decrypt($request->xml_user_id);
             $data = [
                 'username' => $request->username,

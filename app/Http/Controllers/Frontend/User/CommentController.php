@@ -7,7 +7,7 @@ use App\Models\Comment;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class CommentController extends Controller
 {
@@ -24,7 +24,7 @@ class CommentController extends Controller
         );
 
         if ($validator->fails()) {
-            return redirect()->back()->withInput($request->all())->withErrors($validator);
+            return redirect()->back()->withInput()->withErrors($validator);
         }
 
         $comment = new Comment;

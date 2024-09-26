@@ -10,8 +10,6 @@ class Category extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'categories';
-
     public function sessions(): HasMany
     {
         return $this->hasMany(\App\Models\Backend\CategorySession::class);

@@ -1,4 +1,5 @@
 <?php
+
 namespace Tests\Backend\Access;
 
 use Tests\BrowserKitTestCase;

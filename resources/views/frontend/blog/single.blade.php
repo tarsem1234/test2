@@ -59,11 +59,11 @@
                                     </div>
                                     @endforeach
                                 <?php } ?>
-                                @if(!Auth::check())
+                                @guest
                                 <a class="click-button" href="{{route('frontend.auth.login')}}">What's on your mind<span class="text">must be signed in to comment. <span class="blue-text">Click Here to Login/Create a Free Account.</span></span></a>
-                                @endif
+                                @endguest
                             </div>
-                            @if(Auth::check())
+                            @auth
                             <div id="form_text_main">                   
                                 <div class="form-group">                                         
                                     <h4 class="chat-text">What's on your mind?</h4>
@@ -80,7 +80,7 @@
                                     {{ html()->form()->close() }}
                                 </div>                           
                             </div>
-                            @endif 
+                            @endauth 
                         </div><!--blog-text-->    
                     </div><!--blog-box-->
                 </div><!--col-6-->

@@ -11,8 +11,6 @@ class VacationProperty extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'vacation_properties';
-
     public function images(): HasMany
     {
         return $this->hasMany(\App\Models\VacationImage::class);

@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\StoreDocumentListingRequest;
 use App\Models\DocumentListing;
 use App\Models\State;
-use File;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
 
 class DocumentListingController extends Controller
@@ -27,12 +28,8 @@ class DocumentListingController extends Controller
         return view('backend.document-listing.create', ['states' => $states]);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(StoreDocumentListingRequest $request): RedirectResponse
     {
-        $this->validate($request, [
-            'state' => 'required',
-            'document' => 'required|mimes:pdf',
-        ]);
         if (isset($request->timeshare_calender) && ($request->timeshare_calender == 1)
             && DocumentListing::where('state_id', config('constant.instructions'))->where('status', 1)->exists()) {
             return redirect()->back()->with('flash_danger', 'You have already uploaded timeshare document. If you want to add a new, please remove previous timeshare document first.');

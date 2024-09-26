@@ -1,9 +1,9 @@
 <?php
 
-use Database\TruncateTable;
-use Illuminate\Database\Seeder;
 use App\Models\Access\Role\Role;
 use Database\DisableForeignKeys;
+use Database\TruncateTable;
+use Illuminate\Database\Seeder;
 
 /**
  * Class PermissionRoleSeeder.

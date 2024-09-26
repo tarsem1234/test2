@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\ConversationMessageRequest;
 use App\Mail\Frontend\SendMessageToSeller;
 use App\Models\Access\User\User;
 use App\Models\Message;
 use App\Models\Network;
 use App\Models\ProfileRating;
-use Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Mail;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller
 {
@@ -47,7 +48,7 @@ class MessageController extends Controller
                 return $q->where('user_id', $userID)->where('to_user_id', Auth::id());
             })->orWhere(function ($q) use ($userID) {
                 return $q->where('user_id', Auth::id())->where('to_user_id', $userID);
-            })->orderBy('created_at', 'DESC')->first();
+            })->orderByDesc('created_at')->first();
             $otherUser = $latestMessage->user_id == Auth::id() ? $latestMessage->to_user_id : $latestMessage->user_id;
             $messages[] = (object) [
                 'created_at' => $latestMessage->created_at,
@@ -61,16 +62,13 @@ class MessageController extends Controller
         return view('frontend.messages.index', compact('messages'));
     }
 
-    public function conversation(Request $request, $id)
+    public function conversation(ConversationMessageRequest $request, $id)
     {
         $id = decrypt($id);
         if (User::where('id', $id)->withTrashed()->exists()) {
             $fromUser = User::withTrashed()->find($id);
             if ($request->isMethod('post')) {
                 if ($request->isMethod('post')) {
-                    $this->validate($request, [
-                        'message' => 'required',
-                    ]);
                     $message = new Message;
                     $message->user_id = Auth::id();
                     $message->to_user_id = $id;

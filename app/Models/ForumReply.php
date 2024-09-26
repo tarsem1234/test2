@@ -10,8 +10,6 @@ class ForumReply extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'forum_replies';
-
     public function forum(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Forum::class);

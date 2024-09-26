@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\StoreIndustryRequest;
+use App\Http\Requests\Backend\UpdateIndustryRequest;
 use App\Models\Industry;
 use App\Models\Service;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class IndustryController extends Controller
@@ -33,12 +34,8 @@ class IndustryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(StoreIndustryRequest $request): RedirectResponse
     {
-        $this->validate($request,
-            [
-                'industry' => 'required',
-            ]);
 
         $checkIfIndustry = Industry::where('industry', $request->industry)->first();
         if ($checkIfIndustry != null) {
@@ -82,12 +79,8 @@ class IndustryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, int $id): RedirectResponse
+    public function update(UpdateIndustryRequest $request, int $id): RedirectResponse
     {
-        $this->validate($request,
-            [
-                'industry' => 'required',
-            ]);
         //        dd($request->all());
         $input['industry'] = $request->industry;
         if (Industry::where('id', $id)->update($input)) {

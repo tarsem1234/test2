@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Models\PropertyContractUserAddresses;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class AgreementAddressService
 {

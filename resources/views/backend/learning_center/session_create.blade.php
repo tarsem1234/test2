@@ -208,12 +208,12 @@ $emptySession = [
         el: '#add_edit_session',
         data: {
             errors: [], saveClick: false, save_session_route: save_session_route, successbox: {show: false, message: ''},
-            session: <?= json_encode($categorySession ?? $emptySession) ?>
+            session: @json($categorySession ?? $emptySession)
         },
         methods: {
             addRemoveQuestions(index) {
                 if (index === -1) {
-                    this.session.questions.push(<?= json_encode($emptyQuestions[0]) ?>)
+                    this.session.questions.push(@json($emptyQuestions[0]))
                 } else {
                     if (this.session.questions.length > 1)
                         this.session.questions.splice(index, 1);
@@ -221,7 +221,7 @@ $emptySession = [
             },
             addRemoveOptions(question, index) {
                 if (index === -1) {
-                    question.options.push(<?= json_encode($emptyOption[0]) ?>)
+                    question.options.push(@json($emptyOption[0]))
                 } else {
                     if (question.options.length > 1)
                         question.options.splice(index, 1);

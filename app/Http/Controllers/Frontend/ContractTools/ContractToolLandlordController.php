@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend\ContractTools;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\ContractTools\SaveLeadBasedPaintHazardsLandlordContractToolLandlordRequest;
+use App\Http\Requests\Frontend\ContractTools\SdThankyouForReviewSummaryKeyTermsLandlordContractToolLandlordRequest;
 use App\Http\Requests\Frontend\LandlordQuestionnaireRequest;
 use App\Mail\Frontend\SaleAgreementLandlordMailing;
 use App\Models\Access\User\User;
@@ -16,13 +18,13 @@ use App\Models\Signature;
 use App\Models\Signer;
 use App\Services\AgreementAddressService;
 use App\Services\EmailLogService;
-use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
-use Mail;
-use Session;
 
 class ContractToolLandlordController extends Controller
 {
@@ -347,13 +349,8 @@ class ContractToolLandlordController extends Controller
         return redirect()->back()->with(['flash_danger' => 'Something went wrong']);
     }
 
-    public function saveLeadBasedPaintHazardsLandlord(Request $request): RedirectResponse
+    public function saveLeadBasedPaintHazardsLandlord(SaveLeadBasedPaintHazardsLandlordContractToolLandlordRequest $request): RedirectResponse
     {
-        $this->validate($request,
-            [
-                'lead_based' => 'required',
-                'lead_based_report' => 'required',
-            ]);
 
         $data = $request->all();
         if (isset($request->id) && $request->id) {
@@ -402,11 +399,8 @@ class ContractToolLandlordController extends Controller
             compact('offer'));
     }
 
-    public function sdThankyouForReviewSummaryKeyTermsLandlord(Request $request): View
+    public function sdThankyouForReviewSummaryKeyTermsLandlord(SdThankyouForReviewSummaryKeyTermsLandlordContractToolLandlordRequest $request): View
     {
-        $this->validate($request, [
-            'agree' => 'required',
-        ]);
         $lead = false;
         $property = Property::where('id', Session::get('PROPERTY'))->with('architechture')->withTrashed()->first();
         if ($property->architechture->year_built < config('constant.year_built')) {

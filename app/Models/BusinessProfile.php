@@ -10,8 +10,6 @@ class BusinessProfile extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'business_profiles';
-
     protected $fillable = ['industry_id', 'company_name', 'user_id'];
 
     public function user(): BelongsTo

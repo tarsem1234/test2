@@ -36,6 +36,7 @@ class RoleController extends Controller
     public function index(ManageRoleRequest $request): View
     {
         $roles = Role::latest()->get();
+
         return view('backend.access.roles.index', ['roles' => $roles]);
     }
 

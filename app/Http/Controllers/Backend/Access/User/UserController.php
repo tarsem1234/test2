@@ -16,6 +16,7 @@ use App\Models\UserProfile;
 use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Repositories\Backend\Access\User\UserRepository;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 /**
@@ -138,6 +139,7 @@ class UserController extends Controller
         if ($user->hasRole(config('constant.user_type.2')) && $user->hasRole(config('constant.user_type.3'))) {
             $admin = true;
         }
+
         // dd($userWithUser);
         return view('backend.access.edit', ['userWithUser' => $userWithUser, 'industries' => $industries,
             'businessIndustry' => $businessIndustry, 'business' => $business, 'admin' => $admin, 'support' => $support])
@@ -249,7 +251,7 @@ class UserController extends Controller
             ->get();
 
         // Start transaction
-        \DB::beginTransaction();
+        DB::beginTransaction();
         try {
 
             if (! empty($saleOffer)) {
@@ -271,10 +273,10 @@ class UserController extends Controller
                 }
             }
             $this->users->delete($user);
-            \DB::commit();
+            DB::commit();
 
         } catch (\Exception $e) {
-            \DB::rollback();
+            DB::rollback();
 
             // dd($e->getMessage());
             return redirect()->back()->withFlashSuccess("Oops Something went wrong!!! Please try again later , user can't deleted");

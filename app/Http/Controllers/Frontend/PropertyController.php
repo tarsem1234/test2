@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\PropertyRequest;
+use App\Http\Requests\Frontend\SearchedRentPropertyRequest;
+use App\Http\Requests\Frontend\SearchedSalePropertyRequest;
 use App\Mail\AvailabilityConfirmation;
 use App\Mail\Frontend\SendMessageToSeller;
 use App\Models\AdditionalInformation;
@@ -30,16 +32,15 @@ use App\Models\VacationImage;
 use App\Models\VacationProperty;
 use App\Models\ZipCode;
 use App\Services\EmailLogService;
-use Auth;
-use File;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\RedirectResponser;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
-use Session;
 
 /**
  * Class LanguageController.
@@ -107,7 +108,7 @@ class PropertyController extends Controller
         if ($schools) {
             $schools = view('properties.append_schools', compact('schools', 'school_ids'))->render();
 
-            return response(['schools' => $schools, 'success' => true], 200);
+            return response(['schools' => $schools, 'success' => true]);
         }
 
         return response(['schools' => '', 'success' => false], 500);
@@ -127,8 +128,7 @@ class PropertyController extends Controller
                 $countries = view('properties.append_countries', compact('countries', 'country_id'))->render();
                 $subregions = view('properties.append_subregions', compact('subregions', 'subregion_id'))->render();
 
-                return response(['countries' => $countries, 'subregions' => $subregions,
-                    'success' => true], 200);
+                return response(['countries' => $countries, 'subregions' => $subregions, 'success' => true]);
             }
         }
 
@@ -144,8 +144,7 @@ class PropertyController extends Controller
             if ($states) {
                 $states = view('properties.append_us_states', compact('states', 'state_id'))->render();
 
-                return response(['states' => $states,
-                    'success' => true], 200);
+                return response(['states' => $states, 'success' => true]);
             }
         }
 
@@ -162,28 +161,26 @@ class PropertyController extends Controller
                 $city_id = $request->city_id;
                 $cities = view('properties.append_cities', compact('cities', 'city_id', 'usCities'))->render();
 
-                return response(['cities' => $cities, 'city_id' => $city_id, 'usCities' => $cities,
-                    'success' => true], 200);
+                return response(['cities' => $cities, 'city_id' => $city_id, 'usCities' => $cities, 'success' => true]);
             } else {
                 $cities = NonUsCity::where('city_code', $country->city_code)->get();
                 $nonUsCities = true;
                 $cityName = $request->city_id;
                 $cities = view('properties.append_cities', compact('cities', 'cityName', 'nonUsCities'))->render();
 
-                return response(['cities' => $cities, 'nonUsCities' => $nonUsCities,
-                    'success' => true], 200);
+                return response(['cities' => $cities, 'nonUsCities' => $nonUsCities, 'success' => true]);
             }
         } elseif ($request->state_id && isset($request->search) && State::where('id', $request->state_id)->exists()) {
             $usCities = true;
             $cities = City::where('state_id', $request->state_id)->pluck('city', 'id');
             $zipCodes = ZipCode::whereIn('city_id', array_keys($cities->toArray()))->pluck('zipcode', 'id');
 
-            return response(['cities' => $cities, 'zipCodes' => $zipCodes, 'success' => true], 200);
+            return response(['cities' => $cities, 'zipCodes' => $zipCodes, 'success' => true]);
         } elseif ($request->state_id && ! $request->search && State::where('id', $request->state_id)->exists()) {
             $cities = City::where('state_id', $request->state_id)->pluck('city', 'id');
             $zipCodes = ZipCode::whereIn('city_id', array_keys($cities->toArray()))->pluck('zipcode', 'id');
 
-            return response(['zipCodes' => $zipCodes, 'success' => true], 200);
+            return response(['zipCodes' => $zipCodes, 'success' => true]);
         } else {
             return response(['message' => 'Something went wrong.', 'success' => false], 500);
         }
@@ -200,7 +197,7 @@ class PropertyController extends Controller
             $cities = view('properties.append_cities', compact('cities', 'city_id'))->render();
             $counties = view('properties.append_counties', compact('counties', 'county_id'))->render();
 
-            return response(['cities' => $cities, 'counties' => $counties, 'success' => true], 200);
+            return response(['cities' => $cities, 'counties' => $counties, 'success' => true]);
         } else {
 
             return response(['message' => 'Something went wrong.', 'success' => false], 500);
@@ -212,7 +209,7 @@ class PropertyController extends Controller
         if ($request->city_id) {
             $zipCodes = ZipCode::where('city_id', $request->city_id)->pluck('zipcode', 'id');
             if ($zipCodes) {
-                return response(['zipCodes' => $zipCodes, 'success' => true], 200);
+                return response(['zipCodes' => $zipCodes, 'success' => true]);
             }
         }
 
@@ -224,7 +221,7 @@ class PropertyController extends Controller
         if ($request->state_id) {
             $militarylocations = MilitaryLocation::where('state', $request->state)->pluck('base', 'id');
             if ($militarylocations) {
-                return response(['militarylocations' => $militarylocations, 'success' => true], 200);
+                return response(['militarylocations' => $militarylocations, 'success' => true]);
             }
         }
 
@@ -241,9 +238,9 @@ class PropertyController extends Controller
                 $newCounty->county = $request->county;
                 $newCounty->save();
             }
-            $counties = County::where('state_id', $state->id)->orderBy('county', 'asc')->pluck('id', 'county');
+            $counties = County::where('state_id', $state->id)->orderBy('county')->pluck('id', 'county');
 
-            return response(['counties' => $counties, 'success' => true], 200);
+            return response(['counties' => $counties, 'success' => true]);
         }
 
         return response(['message' => 'Something went wrong.', 'success' => false], 500);
@@ -260,9 +257,9 @@ class PropertyController extends Controller
             //                $newCounty->county = $request->county;
             //                $newCounty->save();
             //            }
-            $zipcodes = ZipCode::where('state_id', $state->id)->orderBy('zipcode', 'asc')->pluck('id', 'zipcode');
+            $zipcodes = ZipCode::where('state_id', $state->id)->orderBy('zipcode')->pluck('id', 'zipcode');
 
-            return response(['zipcodes' => $zipcodes, 'success' => true], 200);
+            return response(['zipcodes' => $zipcodes, 'success' => true]);
         }
 
         return response(['message' => 'Something went wrong.', 'success' => false], 500);
@@ -279,9 +276,9 @@ class PropertyController extends Controller
             //                $newCounty->county = $request->county;
             //                $newCounty->save();
             //            }
-            $cities = City::where('state_id', $state->id)->orderBy('id', 'asc')->pluck('id', 'city');
+            $cities = City::where('state_id', $state->id)->orderBy('id')->pluck('id', 'city');
 
-            return response(['cities' => $cities, 'success' => true], 200);
+            return response(['cities' => $cities, 'success' => true]);
         }
 
         return response(['message' => 'Something went wrong.', 'success' => false], 500);
@@ -292,14 +289,13 @@ class PropertyController extends Controller
         if ($request->state_id) {
             $findCitiesForZipCode = City::where('state_id', $request->state_id)->pluck('id');
 
-            $cities = City::where('state_id', $request->state_id)->orderBy('city', 'asc')->pluck('id', 'city');
+            $cities = City::where('state_id', $request->state_id)->orderBy('city')->pluck('id', 'city');
 
             $zipCodes = ZipCode::whereIn('city_id', $findCitiesForZipCode)->pluck('zipcode', 'id');
-            $militarylocations = MilitaryLocation::where('state_id', $request->state_id)->orderBy('base', 'asc')->pluck('id', 'base');
-            $counties = County::where('state_id', $request->state_id)->orderBy('county', 'asc')->pluck('id', 'county');
+            $militarylocations = MilitaryLocation::where('state_id', $request->state_id)->orderBy('base')->pluck('id', 'base');
+            $counties = County::where('state_id', $request->state_id)->orderBy('county')->pluck('id', 'county');
             if ($militarylocations) {
-                return response(['militarylocations' => $militarylocations, 'zipCodes' => $zipCodes,
-                    'cities' => $cities, 'counties' => $counties, 'success' => true], 200);
+                return response(['militarylocations' => $militarylocations, 'zipCodes' => $zipCodes, 'cities' => $cities, 'counties' => $counties, 'success' => true]);
             }
         }
 
@@ -316,7 +312,7 @@ class PropertyController extends Controller
                 if (count($schoolDistricts) > 0) {
                     $schoolDistrict = view('properties.append_schoolDistrict', compact('schoolDistricts', 'districtId'))->render();
 
-                    return response(['schoolDistrict' => $schoolDistrict, 'success' => true], 200);
+                    return response(['schoolDistrict' => $schoolDistrict, 'success' => true]);
                 }
 
                 return response(['message' => 'School District not found.', 'success' => false], 500);
@@ -359,7 +355,7 @@ class PropertyController extends Controller
 
                 $state = State::where('id', $property->state_id)->first();
                 $county = County::where('id', $property->county_id)->first();
-                $counties = County::where('state_id', $property->state_id)->orderBy('county', 'asc')->get();
+                $counties = County::where('state_id', $property->state_id)->orderBy('county')->get();
                 $city = City::where('id', $property->city_id)->first();
                 $zipCode = ZipCode::where('id', $property->zip_code_id)->first();
                 $schools = School::whereIn('id', explode(',', $property->architechture->school_id))->get();
@@ -398,7 +394,7 @@ class PropertyController extends Controller
 
                 $state = State::where('id', $property->state_id)->first();
                 $county = County::where('id', $property->county_id)->first();
-                $counties = County::where('state_id', $property->state_id)->orderBy('county', 'asc')->get();
+                $counties = County::where('state_id', $property->state_id)->orderBy('county')->get();
                 $city = City::where('id', $property->city_id)->first();
                 $zipCode = ZipCode::where('id', $property->zip_code_id)->first();
                 $school = School::where('id', $property->architechture->school_id)->first();
@@ -443,7 +439,7 @@ class PropertyController extends Controller
     }
 
     //Store property
-    public function propertyStore(PropertyRequest $request)
+    public function propertyStore(PropertyRequest $request): RedirectResponse
     {
         $data = $request->all();
         //Store Rent and Sale
@@ -667,16 +663,17 @@ class PropertyController extends Controller
     }
 
     // Updating a property sale/rent
-    public function propertyUpdate(PropertyRequest $request) {
+    public function propertyUpdate(PropertyRequest $request): RedirectResponse
+    {
         $data = $request->all();
         if ($request->images) {
             $storedImageCount = PropertyImage::where('property_id',
-                            $data['property_table_id'])->count();
+                $data['property_table_id'])->count();
             $commingImageCount = count($request->images);
             $totalImages = $storedImageCount + $commingImageCount;
             if ($totalImages >= 10) {
                 return redirect()->back()->with('flash_danger',
-                                'Images count is greater then 15.');
+                    'Images count is greater then 15.');
             }
         }
 
@@ -685,33 +682,33 @@ class PropertyController extends Controller
             $address = $this->_propertyAddress($data);
             if ($request->school_district) {
                 $isSchoolDistrict = SchoolDistrict::where('id',
-                                $data['school_district'])->first();
-                if (!$isSchoolDistrict) {
+                    $data['school_district'])->first();
+                if (! $isSchoolDistrict) {
                     return redirect()->back()->with('flash_danger',
-                                    'SchoolDistrict not found.');
+                        'SchoolDistrict not found.');
                 }
             }
             if ($request->school) {
                 $isSchool = School::whereIn('id', $data['school'])->first();
-                if (!$isSchool) {
+                if (! $isSchool) {
                     return redirect()->back()->with('flash_danger',
-                                    'School not found.');
+                        'School not found.');
                 }
             }
 
             //            if ($request->property_type == config('constant.property_type.1')) {
             //                $input['pets'] = config('constant.inverse_pets_welcome.' . $data['pets_welcome']);
-            $input['pets'] = !empty($data['pets_welcome']) ? $data['pets_welcome'] : 0;
+            $input['pets'] = ! empty($data['pets_welcome']) ? $data['pets_welcome'] : 0;
             //            }
             if ($request->property_type == config('constant.property_type.1')) {
-                $input['lease_term'] = !empty($data['lease_term']) ? implode(', ',
-                                $data['lease_term']) : '';
+                $input['lease_term'] = ! empty($data['lease_term']) ? implode(', ',
+                    $data['lease_term']) : '';
             }
 
-            $input['property_name'] = !empty($data['property_id']) ? $data['property_id'] : '';
+            $input['property_name'] = ! empty($data['property_id']) ? $data['property_id'] : '';
             $input['state_id'] = $address['state_id'];
             $input['user_id'] = Auth::id();
-            $input['property_type'] = config('constant.inverse_property_type.' . $data['property_type']);
+            $input['property_type'] = config('constant.inverse_property_type.'.$data['property_type']);
             $input['city_id'] = $address['city_id'];
             $input['county_id'] = $address['county_id'];
             $input['zip_code_id'] = $address['zip_code_id'];
@@ -720,21 +717,21 @@ class PropertyController extends Controller
             $input['price'] = $data['price'];
             $input['virtual_tour_url'] = $data['vturl'];
             if (isset($data['display_phone'])) {
-                $input['display_phone'] = config('constant.inverse_display_phone.' . $data['display_phone']);
+                $input['display_phone'] = config('constant.inverse_display_phone.'.$data['display_phone']);
             } else {
                 $input['display_phone'] = config('constant.inverse_display_phone.No');
             }
-            $input['agree'] = config('constant.inverse_agree.' . $data['agree']);
+            $input['agree'] = config('constant.inverse_agree.'.$data['agree']);
             // dd($input);
-            if (Property::where('id', $data['property_table_id'])->where('user_id',Auth::id())->update($input)) {
+            if (Property::where('id', $data['property_table_id'])->where('user_id', Auth::id())->update($input)) {
 
                 if (isset($request->image_ids) && $request->image_ids) {
                     $deletedImageIds = explode(',', $request->image_ids);
                     $deletedImages = PropertyImage::whereIn('id',
-                                    $deletedImageIds)->where('property_id',
-                                    $data['property_table_id'])->get();
+                        $deletedImageIds)->where('property_id',
+                            $data['property_table_id'])->get();
                     foreach ($deletedImages as $delete) {
-                        if (File::delete(storage_path(config('constant.property_image_path') . '/' . $data['property_table_id'] . '/' . $delete->image))) {
+                        if (File::delete(storage_path(config('constant.property_image_path').'/'.$data['property_table_id'].'/'.$delete->image))) {
                             PropertyImage::where('id', $delete->id)->forceDelete();
                         }
                     }
@@ -744,9 +741,9 @@ class PropertyController extends Controller
                     foreach ($request->images as $img) {
                         $imageWithRatio = fixImageRatio($img);
                         $imageName = image_store($img, $imageWithRatio,
-                                $data['property_table_id']);
+                            $data['property_table_id']);
 
-                        $propertyImage = new PropertyImage();
+                        $propertyImage = new PropertyImage;
                         $propertyImage->property_id = $data['property_table_id'];
                         $propertyImage->image = $imageName;
                         $propertyImage->save();
@@ -758,11 +755,11 @@ class PropertyController extends Controller
                 }
                 if ($request->school) {
                     $architectureInput['school_id'] = implode(',',
-                            $data['school']);
+                        $data['school']);
                 } else {
                     $architectureInput['school_id'] = $request->school;
                 }
-                $architectureInput['home_type'] = config('constant.inverse_home_type.' . $data['home_type']);
+                $architectureInput['home_type'] = config('constant.inverse_home_type.'.$data['home_type']);
                 $architectureInput['beds'] = $data['beds'];
                 $architectureInput['baths'] = $data['baths'];
                 $architectureInput['plot_size'] = $data['lotsizeacre'];
@@ -774,20 +771,20 @@ class PropertyController extends Controller
                 $architectureInput['total_rooms'] = $data['total_rooms'];
                 $architectureInput['stories'] = $data['no_of_stories'];
                 if (isset($data['basement'])) {
-                                       $architectureInput['basement'] = config('constant.inverse_basement.' . $data['basement']);
+                    $architectureInput['basement'] = config('constant.inverse_basement.'.$data['basement']);
                     // $architectureInput['basement'] = $data['basement'];
                 }
                 $architectureInput['garage_capacity'] = $data['capacity_of_garage'];
                 $architectureInput['additional_features'] = $data['additional_features'];
 
-                if (PropertyArchitecture::where('id',$data['property_architecture_table_id'])->where('property_id', $data['property_table_id'])->update($architectureInput)) {
+                if (PropertyArchitecture::where('id', $data['property_architecture_table_id'])->where('property_id', $data['property_table_id'])->update($architectureInput)) {
 
                     if (isset($data['additional_information'])) {
                         additionalInformationProperty::where('property_id',
-                                $data['property_table_id'])->forcedelete();
+                            $data['property_table_id'])->forcedelete();
 
                         foreach ($data['additional_information'] as $information) {
-                            $additionalInfo = new additionalInformationProperty();
+                            $additionalInfo = new additionalInformationProperty;
                             $additionalInfo->additional_information_id = $information;
                             $additionalInfo->property_id = $data['property_table_id'];
                             $additionalInfo->save();
@@ -797,16 +794,16 @@ class PropertyController extends Controller
                 if ($data['property_type'] == config('constant.property_type.1')) {
 
                     return redirect()->route('frontend.property.rentsList')->with('flash_success',
-                                    'Property updated successfully.');
+                        'Property updated successfully.');
                 }
                 if ($data['property_type'] == config('constant.property_type.2')) {
 
                     return redirect()->route('frontend.property.salesList')->with('flash_success',
-                                    'Property updated successfully.');
+                        'Property updated successfully.');
                 }
             } else {
                 return redirect()->route('frontend.saleCreate')->with('flash_danger',
-                                'property not updated.');
+                    'property not updated.');
             }
         }
     }
@@ -866,25 +863,26 @@ class PropertyController extends Controller
         ];
     }
 
-    public function vacationUpdate(PropertyRequest $request) {
+    public function vacationUpdate(PropertyRequest $request): RedirectResponse
+    {
 
         $data = $request->all();
         //        dd($data);die;
         if ($request->images) {
             $storedImageCount = VacationImage::where('vacation_property_id',
-                            $request->property_id)->count();
+                $request->property_id)->count();
             $commingImageCount = count($request->images);
             $totalImages = $storedImageCount + $commingImageCount;
             if ($totalImages >= 15) {
                 return redirect()->back()->with('flash_danger',
-                                'Images count is greater then 15.');
+                    'Images count is greater then 15.');
             }
         }
         if ($request->state) {
             $isState = State::where('id', $data['state'])->first();
-            if (!$isState) {
+            if (! $isState) {
                 return redirect()->back()->with('flash_danger',
-                                'State not found.');
+                    'State not found.');
             }
         }
         if (isset($data['city']) && $data['city']) {
@@ -894,28 +892,28 @@ class PropertyController extends Controller
         $isCountry = Country::where('id', $data['country'])->first();
         $isRegion = Region::where('id', $data['region'])->first();
         $isSubRegion = SubRegion::where('id', $data['subregion'])->first();
-        if (isset($isUsCity) && !$isUsCity) {
+        if (isset($isUsCity) && ! $isUsCity) {
             return redirect()->route('frontend.vacationCreate')->with('flash_danger',
-                            'City not found.');
+                'City not found.');
         }
-        if (isset($isNonUsCity) && !$isNonUsCity) {
+        if (isset($isNonUsCity) && ! $isNonUsCity) {
             return redirect()->back()->with('flash_danger', 'City not found.');
         }
-        if (!$isCountry) {
+        if (! $isCountry) {
             return redirect()->back()->with('flash_danger', 'County not found.');
         }
-        if (!$isRegion) {
+        if (! $isRegion) {
             return redirect()->back()->with('flash_danger', 'Region not found.');
         }
-        if (!$isSubRegion) {
+        if (! $isSubRegion) {
             return redirect()->back()->with('flash_danger',
-                            'Subregion not found.');
+                'Subregion not found.');
         }
 
         //        dump($isUsCity);
         //        dump($isNonUsCity);die;
         $ifExists = VacationProperty::where('id', $data['property_id'])->where('user_id',
-                        Auth::id())->first();
+            Auth::id())->first();
 
         if ($data['property_submit'] && $data['property_id'] && $ifExists) {
             if (isset($isState)) {
@@ -926,12 +924,12 @@ class PropertyController extends Controller
             } elseif (isset($isNonUsCity)) {
                 $input['city'] = $isNonUsCity->id;
             } else {
-                $input['city'] = NULL;
+                $input['city'] = null;
             }
 
             $input['country_id'] = $isCountry->id;
             $input['property_name'] = $data['resort_name'];
-            $input['property_type'] = config('constant.inverse_vacation_property_type.' . $data['vacation_property_type']);
+            $input['property_type'] = config('constant.inverse_vacation_property_type.'.$data['vacation_property_type']);
             $input['region_id'] = $isRegion->id;
             $input['subregion_id'] = $isSubRegion->id;
             $input['zip_code'] = $data['owner_zip'];
@@ -941,34 +939,34 @@ class PropertyController extends Controller
             //Only update if timeshare property type  has selected
 
             if ($data['vacation_property_type'] != 'Owner Property') {
-                $input['zip_code'] = NULL;
-                $input['address'] = NULL;
-                $input['point_based_timeshare'] = !empty($data['point_based_timeshare']) ? config('constant.inverse_point_based_timeshare.' . $data['point_based_timeshare']) : '';
-                $input['lock_out_unit'] = !empty($data['lock_out_unit']) ? config('constant.inverse_lock_out_unit.' . $data['lock_out_unit']) : '';
-                $input['variable'] = !empty($data['variable']) ? config('constant.inverse_variable.' . $data['variable']) : '';
-                $input['exchange_timeshare'] = !empty($data['exchange_timeshare']) ? config('constant.inverse_exchange_timeshare.' . $data['exchange_timeshare']) : '';
+                $input['zip_code'] = null;
+                $input['address'] = null;
+                $input['point_based_timeshare'] = ! empty($data['point_based_timeshare']) ? config('constant.inverse_point_based_timeshare.'.$data['point_based_timeshare']) : '';
+                $input['lock_out_unit'] = ! empty($data['lock_out_unit']) ? config('constant.inverse_lock_out_unit.'.$data['lock_out_unit']) : '';
+                $input['variable'] = ! empty($data['variable']) ? config('constant.inverse_variable.'.$data['variable']) : '';
+                $input['exchange_timeshare'] = ! empty($data['exchange_timeshare']) ? config('constant.inverse_exchange_timeshare.'.$data['exchange_timeshare']) : '';
                 $input['locations'] = $data['locations'];
                 $input['points'] = $data['points'];
-                $input['is_available_for_sale'] = !empty($data['is_available_for_sale']) ? config('constant.inverse_is_available_for_sale.' . $data['is_available_for_sale']) : '';
-                $input['ownership_type'] = !empty($data['ownership_type']) ? $data['ownership_type'] : '';
+                $input['is_available_for_sale'] = ! empty($data['is_available_for_sale']) ? config('constant.inverse_is_available_for_sale.'.$data['is_available_for_sale']) : '';
+                $input['ownership_type'] = ! empty($data['ownership_type']) ? $data['ownership_type'] : '';
                 $input['sale_price'] = $data['sale_price'];
                 $input['lease_expire_year'] = $data['lease_expire_year'];
                 $input['how_many_points'] = $data['how_many_points'];
                 $input['annual_maintenance_fees'] = $data['annual_maintenance_fees'];
             } else {
-                $input['point_based_timeshare'] = NULL;
-                $input['lock_out_unit'] = NULL;
-                $input['variable'] = NULL;
-                $input['exchange_timeshare'] = NULL;
-                $input['locations'] = NULL;
-                $input['points'] = NULL;
-                $input['is_available_for_sale'] = NULL;
-                $input['ownership_type'] = NULL;
-                $input['sale_price'] = NULL;
+                $input['point_based_timeshare'] = null;
+                $input['lock_out_unit'] = null;
+                $input['variable'] = null;
+                $input['exchange_timeshare'] = null;
+                $input['locations'] = null;
+                $input['points'] = null;
+                $input['is_available_for_sale'] = null;
+                $input['ownership_type'] = null;
+                $input['sale_price'] = null;
 
-                $input['lease_expire_year'] = NULL;
-                $input['how_many_points'] = NULL;
-                $input['annual_maintenance_fees'] = NULL;
+                $input['lease_expire_year'] = null;
+                $input['how_many_points'] = null;
+                $input['annual_maintenance_fees'] = null;
             }
 
             $input['bathrooms'] = $data['bathrooms'];
@@ -976,19 +974,18 @@ class PropertyController extends Controller
             $input['sleeps'] = $data['sleeps'];
             $input['price'] = $data['price'];
 
-            $input['rental_price_negotiable'] = !empty($data['rental_price_negotiable']) ? config('constant.inverse_rental_price_negotiable.' . $data['rental_price_negotiable']) : '';
-            $input['property_description'] = !empty($data['property_description']) ? $data['property_description'] : '';
-
+            $input['rental_price_negotiable'] = ! empty($data['rental_price_negotiable']) ? config('constant.inverse_rental_price_negotiable.'.$data['rental_price_negotiable']) : '';
+            $input['property_description'] = ! empty($data['property_description']) ? $data['property_description'] : '';
 
             if (VacationProperty::where('id', $data['property_id'])->where('user_id',
-                            Auth::id())->update($input)) {
+                Auth::id())->update($input)) {
                 if (isset($request->image_ids) && $request->image_ids) {
                     $deletedImageIds = explode(',', $request->image_ids);
                     $deletedImages = VacationImage::whereIn('id',
-                                    $deletedImageIds)->where('vacation_property_id',
-                                    $data['property_table_id'])->get();
+                        $deletedImageIds)->where('vacation_property_id',
+                            $data['property_table_id'])->get();
                     foreach ($deletedImages as $delete) {
-                        if (File::delete(storage_path(config('constant.property_image_path') . '/' . $data['property_table_id'] . '/' . $delete->image))) {
+                        if (File::delete(storage_path(config('constant.property_image_path').'/'.$data['property_table_id'].'/'.$delete->image))) {
                             VacationImage::where('id', $delete->id)->forceDelete();
                         }
                     }
@@ -997,9 +994,9 @@ class PropertyController extends Controller
                     foreach ($request->images as $img) {
                         $imageWithRatio = fixImageRatio($img);
                         $imageName = image_store($img, $imageWithRatio,
-                                $request->property_id);
+                            $request->property_id);
 
-                        $vacationImage = new VacationImage();
+                        $vacationImage = new VacationImage;
                         $vacationImage->vacation_property_id = $data['property_id'];
                         $vacationImage->image = $imageName;
                         $vacationImage->save();
@@ -1007,34 +1004,35 @@ class PropertyController extends Controller
                 }
                 if ($data['vacation_property_type'] != 'Owner Property') {
                     VacationAvailableCheckin::where('vacation_property_id',
-                            $data['property_id'])->forcedelete();
+                        $data['property_id'])->forcedelete();
                     $available_weeks = $data['available_weeks'];
                     $weeks = explode(',', $available_weeks);
                     foreach ($weeks as $week) {
-                        $vacationCheckin = new VacationAvailableCheckin();
+                        $vacationCheckin = new VacationAvailableCheckin;
 
                         $vacationCheckin->vacation_property_id = $data['property_id'];
-                        $vacationCheckin->available_week = !empty($week) ? $week : '';
-                        $vacationCheckin->checkin_day = !empty($data['checkin_day']) ? $data['checkin_day'] : '';
+                        $vacationCheckin->available_week = ! empty($week) ? $week : '';
+                        $vacationCheckin->checkin_day = ! empty($data['checkin_day']) ? $data['checkin_day'] : '';
                         $vacationCheckin->save();
                     }
                 } else {
                     VacationAvailableCheckin::where('vacation_property_id',
-                            $data['property_id'])->forcedelete();
+                        $data['property_id'])->forcedelete();
                 }
 
                 return redirect()->route('frontend.property.vacationsList')->with('flash_success',
-                                'Vacation property saved successfully.');
+                    'Vacation property saved successfully.');
             }
         } else {
 
             return redirect()->route('frontend.vacationCreate')->with('flash_danger',
-                            'Vacation property not saved.');
+                'Vacation property not saved.');
         }
+
         return redirect()->back();
     }
 
-    public function salesHome()
+    public function salesHome(): View
     {
         $saleProperties = Property::where('property_type', config('constant.inverse_property_type.Sale'))
             ->whereIn('user_id', function ($query) {
@@ -1069,7 +1067,7 @@ class PropertyController extends Controller
         return view('frontend.property.sales_home', compact('vacationProperties', 'rentProperties', 'saleProperties'));
     }
 
-    public function rentsHome()
+    public function rentsHome(): View
     {
         $saleProperties = Property::where('property_type', config('constant.inverse_property_type.Sale'))
             ->whereIn('user_id', function ($query) {
@@ -1105,7 +1103,7 @@ class PropertyController extends Controller
         return view('frontend.property.rents_home', compact('vacationProperties', 'rentProperties', 'saleProperties'));
     }
 
-    public function vacationsHome()
+    public function vacationsHome(): View
     {
         $saleProperties = Property::where('property_type', config('constant.inverse_property_type.Sale'))
             ->whereIn('user_id', function ($query) {
@@ -1154,22 +1152,14 @@ class PropertyController extends Controller
         return view('frontend.property.sale_search_view', compact('states'));
     }
 
-    public function searchedSale(Request $request)
+    public function searchedSale(SearchedSalePropertyRequest $request)
     {
-        $this->validate($request, [
-            'state' => 'required',
-            'type' => 'required',
-        ]);
 
         return $this->_searchedProperty($request);
     }
 
-    public function searchedRent(Request $request)
+    public function searchedRent(SearchedRentPropertyRequest $request)
     {
-        $this->validate($request, [
-            'state' => 'required',
-            'type' => 'required',
-        ]);
 
         return $this->_searchedProperty($request);
     }
@@ -1498,7 +1488,7 @@ class PropertyController extends Controller
             return ['id' => $item->id, 'text' => $item->district];
         });
 
-        return response(['results' => $schoolDistricts], 200);
+        return response(['results' => $schoolDistricts]);
     }
 
     public function propertyDetails($id, $type = '')
@@ -1692,7 +1682,7 @@ class PropertyController extends Controller
                 $property->availabilities()->where($data)->delete();
             }
 
-            return response(['status' => true], 200);
+            return response(['status' => true]);
         }
     }
 

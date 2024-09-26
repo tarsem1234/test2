@@ -7,7 +7,7 @@ use App\Models\BuyerQuestionnaire;
 use App\Models\LandlordQuestionnaire;
 use App\Models\SellerQuestionnaire;
 use App\Models\TenantQuestionnaire;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class SignDocumentsController extends Controller

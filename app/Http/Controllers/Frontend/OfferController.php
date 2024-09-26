@@ -14,14 +14,14 @@ use App\Models\SaleOffer;
 use App\Models\Signature;
 use App\Notifications\Frontend\Auth\OfferShowsAcceptance;
 use App\Services\EmailLogService;
-use Auth;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
-use Log;
-use Mail;
-use Session;
 
 class OfferController extends Controller
 {
@@ -58,6 +58,7 @@ class OfferController extends Controller
             // dd('id');
             return redirect()->route('frontend.sales-home')->withFlashDanger('Property is Deleted by Seller.');
         }
+
         return view('frontend.offer.make_sale_offer', compact('id'));
     }
 
@@ -70,6 +71,7 @@ class OfferController extends Controller
             // dd('id');
             return redirect()->route('frontend.rents-home')->withFlashDanger('Property is Deleted by Seller.');
         }
+
         return view('frontend.offer.make_rent_offer', compact('id'));
     }
 
@@ -1282,7 +1284,7 @@ class OfferController extends Controller
             })
             ->whereHas('rent_counter_offers')
             ->with(['rent_counter_offers' => function ($query) {
-                $query->orderBy('created_at', 'desc')->first();
+                $query->orderByDesc('created_at')->first();
             }])
             ->first();
     }
@@ -1295,7 +1297,7 @@ class OfferController extends Controller
                 $query->withTrashed();
             })->whereHas('sale_counter_offers')
             ->with(['sale_counter_offers' => function ($query) {
-                $query->orderBy('created_at', 'desc')->first();
+                $query->orderByDesc('created_at')->first();
             }])
             ->first();
     }

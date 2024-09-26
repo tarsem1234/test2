@@ -50,7 +50,7 @@
                             <h2 class="reply-text">No Replies.</h2> 
                         </div>
                     <?php } ?>
-                    @if(Auth::check())
+                    @auth
                     <div class="panel-heading border-text"><span class="black-text">Leave</span> Reply</div>
                     <div class="">
 
@@ -76,7 +76,7 @@
                             </div><!-- panel body -->
                         </div><!-- panel -->
                     </div><!-- col-md-12 -->
-                    @endif
+                    @endauth
                 </div><!-- con-md-12 -->
             </div><!-- row -->
         </div>

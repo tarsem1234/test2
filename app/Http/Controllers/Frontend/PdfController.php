@@ -10,9 +10,9 @@ use App\Models\RentOffer;
 use App\Models\RentSignature;
 use App\Models\SaleOffer;
 use App\Models\SellerQuestionnaire;
-use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PDF;
 
 class PdfController extends Controller
@@ -76,7 +76,8 @@ class PdfController extends Controller
             ->setOption('footer-html', $footerHtml)
             ->setOption('footer-right', 'Page [page] of [topage]')
             ->setOption('user-style-sheet', 'resources/assets/sass/frontend/common.scss');
-            // dd($pdf->stream('property_disclosure.pdf'));
+
+        // dd($pdf->stream('property_disclosure.pdf'));
         return $pdf->stream('property_disclosure.pdf');
     }
 

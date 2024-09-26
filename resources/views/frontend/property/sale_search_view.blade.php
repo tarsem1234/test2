@@ -515,7 +515,7 @@
 <?php } ?>
 @endsection
 @section('after-scripts')
-<script src="https://maps.googleapis.com/maps/api/js?key=<?= env('GOOGLE_MAP_API_KEY') ?>" type="text/javascript"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?= config('settings.google_map_api_key') ?>" type="text/javascript"></script>
 <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeWkFkWq9GPY7zfmiozWCnNTYMZ0isyWs"></script>-->
 <!--<script src='http://maps.googleapis.com/maps/api/js?key=AIzaSyC11rgDxrNC5An9e2ez7Exq1v93PMjRSH0&libraries=places&sensor=false&amp;libraries=places&key=xxx'></script>-->
 <!--<script src="https://cdn.rawgit.com/googlemaps/v3-utility-library/master/infobox/src/infobox.js" type="text/javascript"></script>-->

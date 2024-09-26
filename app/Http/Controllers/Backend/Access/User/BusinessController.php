@@ -9,8 +9,8 @@ use App\Models\Access\User\User;
 use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Repositories\Backend\Access\User\UserRepository;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Request;
 use Illuminate\View\View;
-use Request;
 
 class BusinessController extends Controller
 {
@@ -66,9 +66,10 @@ class BusinessController extends Controller
             function ($query) {
                 $query->where('name', 'Business');
             })
-            ->with('business_profile')->where('status',0)->get();
-            // dd($businessUsers);
-        return view('backend.access.business_deactivated', compact('business','businessUsers'));
+            ->with('business_profile')->where('status', 0)->get();
+
+        // dd($businessUsers);
+        return view('backend.access.business_deactivated', compact('business', 'businessUsers'));
     }
 
     public function deleted(ManageUserRequest $request): View
@@ -79,7 +80,8 @@ class BusinessController extends Controller
                 $query->where('name', 'Business');
             })
             ->with('business_profile')->onlyTrashed()->get();
+
         // dd($businessUsers);
-        return view('backend.access.business_deleted', compact('business','businessUsers'));
+        return view('backend.access.business_deleted', compact('business', 'businessUsers'));
     }
 }

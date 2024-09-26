@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Property;
 use App\Models\XmlfeedUser;
-use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class XmlFeedController extends Controller
 {
@@ -20,7 +20,7 @@ class XmlFeedController extends Controller
             if (! empty($existedXmlUser) && Hash::check($password, $existedXmlUser->password)) {
                 session()->put('xmlfeed_user', true);
 
-                return redirect('xmlfeed');
+                return redirect()->to('xmlfeed');
             } else {
                 return view('frontend.xmlfeed.login')->with('error', 'Invalid credential');
             }
@@ -201,7 +201,7 @@ class XmlFeedController extends Controller
             $ListingDetailsNode->appendChild($ListingUrl);
             $MlsId = $dom->createElement('MlsId', $property->id);
             $ListingDetailsNode->appendChild($MlsId);
-            $MlsName = $dom->createElement('MlsName', env('APP_NAME').' Listings');
+            $MlsName = $dom->createElement('MlsName', config('app.name').' Listings');
             $ListingDetailsNode->appendChild($MlsName);
             $VirtualTourUrl = $dom->createElement('VirtualTourUrl', $property->virtual_tour_url);
             $ListingDetailsNode->appendChild($VirtualTourUrl);

@@ -14,83 +14,83 @@ return [
     */
 
     'general' => [
-        'all'     => 'Alle',
-        'yes'     => 'Ja',
-        'no'      => 'Nee',
-        'custom'  => 'Aangepast',
+        'all' => 'Alle',
+        'yes' => 'Ja',
+        'no' => 'Nee',
+        'custom' => 'Aangepast',
         'actions' => 'Acties',
-        'active'  => 'Active',
+        'active' => 'Active',
         'buttons' => [
-            'save'   => 'Bewaar',
+            'save' => 'Bewaar',
             'update' => 'Bijwerken',
         ],
-        'hide'              => 'Verberg',
-        'inactive'          => 'Inactive',
-        'none'              => 'Geen',
-        'show'              => 'Toon',
+        'hide' => 'Verberg',
+        'inactive' => 'Inactive',
+        'none' => 'Geen',
+        'show' => 'Toon',
         'toggle_navigation' => 'Navigatie omschakelen',
     ],
 
     'backend' => [
         'access' => [
             'roles' => [
-                'create'     => 'Rol Creëren',
-                'edit'       => 'Rol Aanpassen',
+                'create' => 'Rol Creëren',
+                'edit' => 'Rol Aanpassen',
                 'management' => 'Rol Beheer',
 
                 'table' => [
                     'number_of_users' => 'Aantal Gebruikers',
-                    'permissions'     => 'Permissies',
-                    'role'            => 'Rol',
-                    'sort'            => 'Sorteer',
-                    'total'           => 'rol|rollen',
+                    'permissions' => 'Permissies',
+                    'role' => 'Rol',
+                    'sort' => 'Sorteer',
+                    'total' => 'rol|rollen',
                 ],
             ],
 
             'users' => [
-                'active'              => 'Actieve Gebruikers',
-                'all_permissions'     => 'Alle Permissies',
-                'change_password'     => 'Wachtwoord veranderen',
+                'active' => 'Actieve Gebruikers',
+                'all_permissions' => 'Alle Permissies',
+                'change_password' => 'Wachtwoord veranderen',
                 'change_password_for' => 'Wachtwoord veranderen voor :user',
-                'create'              => 'Gebruiker Aanmaken',
-                'deactivated'         => 'Gedeactiveerde Gebruikers',
-                'deleted'             => 'Verwijderde Gebruikers',
-                'edit'                => 'Gebruiker aanpassen',
-                'management'          => 'Gebruikers Beheer',
-                'no_permissions'      => 'Geen Permissie',
-                'no_roles'            => 'Geen rollen beschikbaar.',
-                'permissions'         => 'Permissies',
+                'create' => 'Gebruiker Aanmaken',
+                'deactivated' => 'Gedeactiveerde Gebruikers',
+                'deleted' => 'Verwijderde Gebruikers',
+                'edit' => 'Gebruiker aanpassen',
+                'management' => 'Gebruikers Beheer',
+                'no_permissions' => 'Geen Permissie',
+                'no_roles' => 'Geen rollen beschikbaar.',
+                'permissions' => 'Permissies',
 
                 'table' => [
-                    'confirmed'      => 'Bevestigd',
-                    'created'        => 'Gecreëerd',
-                    'email'          => 'E-mail',
-                    'id'             => 'ID',
-                    'last_updated'   => 'Laatst Bijgewerkt',
-                    'name'           => 'Naam',
+                    'confirmed' => 'Bevestigd',
+                    'created' => 'Gecreëerd',
+                    'email' => 'E-mail',
+                    'id' => 'ID',
+                    'last_updated' => 'Laatst Bijgewerkt',
+                    'name' => 'Naam',
                     'no_deactivated' => 'Geen gedeactiveerde Gebruikers',
-                    'no_deleted'     => 'Geen Verwijderde Gebruikers',
-                    'roles'          => 'Rollen',
+                    'no_deleted' => 'Geen Verwijderde Gebruikers',
+                    'roles' => 'Rollen',
                     'social' => 'Social',
-                    'total'          => 'gebruiker|gebruikers',
+                    'total' => 'gebruiker|gebruikers',
                 ],
 
                 'tabs' => [
                     'titles' => [
                         'overview' => 'Overzicht',
-                        'history'  => 'Geschiedenis',
+                        'history' => 'Geschiedenis',
                     ],
 
                     'content' => [
                         'overview' => [
-                            'avatar'       => 'Avatar',
-                            'confirmed'    => 'Bevesstigd',
-                            'created_at'   => 'Gecreëerd',
-                            'deleted_at'   => 'Verwijdert',
-                            'email'        => 'E-mail',
+                            'avatar' => 'Avatar',
+                            'confirmed' => 'Bevesstigd',
+                            'created_at' => 'Gecreëerd',
+                            'deleted_at' => 'Verwijdert',
+                            'email' => 'E-mail',
                             'last_updated' => 'Laatst bijgewerkt',
-                            'name'         => 'Naam',
-                            'status'       => 'Status',
+                            'name' => 'Naam',
+                            'status' => 'Status',
                         ],
                     ],
                 ],
@@ -103,12 +103,12 @@ return [
     'frontend' => [
 
         'auth' => [
-            'login_box_title'    => 'Inloggen',
-            'login_button'       => 'Inloggen',
-            'login_with'         => 'Inloggen via :social_media',
+            'login_box_title' => 'Inloggen',
+            'login_button' => 'Inloggen',
+            'login_with' => 'Inloggen via :social_media',
             'register_box_title' => 'Registreer',
-            'register_button'    => 'Registreer',
-            'remember_me'        => 'Onthoud Mij',
+            'register_button' => 'Registreer',
+            'remember_me' => 'Onthoud Mij',
         ],
 
         'contact' => [
@@ -117,17 +117,17 @@ return [
         ],
 
         'passwords' => [
-            'forgot_password'                 => 'Wachtwoord Vergeten?',
-            'reset_password_box_title'        => 'Wachtwoord Resetten',
-            'reset_password_button'           => 'Reset Wachtwoord',
+            'forgot_password' => 'Wachtwoord Vergeten?',
+            'reset_password_box_title' => 'Wachtwoord Resetten',
+            'reset_password_button' => 'Reset Wachtwoord',
             'send_password_reset_link_button' => 'Stuur Wachtwoord Reset Link',
         ],
 
         'macros' => [
             'country' => [
-                'alpha'   => 'Land Alpha Codes',
-                'alpha2'  => 'Land Alpha 2 Codes',
-                'alpha3'  => 'Land Alpha 3 Codes',
+                'alpha' => 'Land Alpha Codes',
+                'alpha2' => 'Land Alpha 2 Codes',
+                'alpha3' => 'Land Alpha 3 Codes',
                 'numeric' => 'Land Numerieke Codes',
             ],
 
@@ -135,10 +135,10 @@ return [
 
             'state' => [
                 'mexico' => 'Mexico Staten Lijst',
-                'us'     => [
-                    'us'       => 'Verenigde Staten',
+                'us' => [
+                    'us' => 'Verenigde Staten',
                     'outlying' => 'VS afgelegen gebieden',
-                    'armed'    => 'VS Krijgsmacht',
+                    'armed' => 'VS Krijgsmacht',
                 ],
             ],
 
@@ -155,12 +155,12 @@ return [
             ],
 
             'profile' => [
-                'avatar'             => 'Avatar',
-                'created_at'         => 'Gecreëerd',
-                'edit_information'   => 'Informatie aanpassen',
-                'email'              => 'E-mail',
-                'last_updated'       => 'Voor het laatst aangepast',
-                'name'               => 'Naam',
+                'avatar' => 'Avatar',
+                'created_at' => 'Gecreëerd',
+                'edit_information' => 'Informatie aanpassen',
+                'email' => 'E-mail',
+                'last_updated' => 'Voor het laatst aangepast',
+                'name' => 'Naam',
                 'update_information' => 'Informatie bijwerken',
             ],
         ],

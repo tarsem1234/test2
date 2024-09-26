@@ -3,15 +3,17 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\SaveSessionCategorySessionRequest;
+use App\Http\Requests\Backend\StoreCategorySessionRequest;
 use App\Models\Backend\Category;
 use App\Models\Backend\CategorySession;
 use App\Models\Backend\CategorySessionQuestion;
 use App\Models\Backend\CategorySessionQuestionOption;
 use App\Models\Backend\UserLearningPoint;
-use Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class CategorySessionController extends Controller
@@ -47,14 +49,8 @@ class CategorySessionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(StoreCategorySessionRequest $request): RedirectResponse
     {
-        $this->validate($request, [
-            'name' => 'required|max:150',
-            'description' => 'required',
-            'points' => 'required',
-            'questions' => 'required',
-        ]);
         $data = $request->all();
         $catIdExist = Category::find($data['category_id']);
         if ($catIdExist) {
@@ -160,14 +156,8 @@ class CategorySessionController extends Controller
         }
     }
 
-    public function saveSession(Request $request)
+    public function saveSession(SaveSessionCategorySessionRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required|max:150',
-            'description' => 'required',
-            'points' => 'required',
-            'questions' => 'required',
-        ]);
         $data = $request->all();
         $catIdExist = Category::find($data['category_id']);
         if ($catIdExist) {

@@ -4,7 +4,4 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class County extends Model
-{
-    protected $table = 'counties';
-}
+class County extends Model {}

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\PasswordChangeRegisterRequest;
+use App\Http\Requests\Frontend\ProfileImageRegisterRequest;
 use App\Http\Requests\Frontend\RegisterRequest;
 use App\Http\Requests\Frontend\UpdateRegisterRequest;
 use App\Models\Access\User\User;
@@ -16,13 +18,13 @@ use App\Models\SubscribeServices;
 use App\Models\UserInterest;
 use App\Models\UserProfile;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
-use Auth;
-use File;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-//use Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+//use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
@@ -87,7 +89,7 @@ class RegisterController extends Controller
     {
         $services = Service::where('industry_id', $request->industry_id)->pluck('service', 'id');
 
-        return response(['success' => true, 'services' => $services], 200);
+        return response(['success' => true, 'services' => $services]);
     }
 
     public function userstore(RegisterRequest $request): RedirectResponse
@@ -306,20 +308,16 @@ class RegisterController extends Controller
         }])->with(['business_profile', 'subscribeServices'])->first();
         $state = State::where('id', $user->state_id)->first();
         $city = City::where('id', $user->city)->first();
-        $counties = County::where('state_id', $user->state_id)->orderBy('county', 'asc')->get();
+        $counties = County::where('state_id', $user->state_id)->orderBy('county')->get();
         $allIndustries = Industry::get();
         if ($user->business_profile || in_array(config('constant.inverse_user_type.Business'), array_column($user->roles->toArray(), 'id'))) {
             if ($user->business_profile) {
                 $industry = Industry::where('id', $user->business_profile->industry_id)->whereHas('services')->with('services')->first();
-            }
-            else
-            {
+            } else {
                 $industry = null;
             }
-            
-        }
-        else
-        {
+
+        } else {
             $industry = null;
         }
 
@@ -434,11 +432,8 @@ class RegisterController extends Controller
         $userProfile->save();
     }
 
-    public function profileImage(Request $request): JsonResponse
+    public function profileImage(ProfileImageRegisterRequest $request): JsonResponse
     {
-        $this->validate($request, [
-            'profile_image' => 'required|mimes:jpeg,jpg,png|max:1000',
-        ]);
         if ($request->hasFile('profile_image')) {
 
             $user = User::where('id', Auth::id())->first();
@@ -463,18 +458,13 @@ class RegisterController extends Controller
         return view('frontend.user.password_change');
     }
 
-    public function passwordChange(Request $request)
+    public function passwordChange(PasswordChangeRegisterRequest $request): RedirectResponse
     {
         if (Auth::check()) {
 
             if (! Hash::check($request->old_password, Auth::user()->password)) {
-                return back()->with('flash_danger', 'Please specify the good current password');
+                return redirect()->back()->with('flash_danger', 'Please specify the good current password');
             }
-
-            $this->validate($request, [
-                'old_password' => 'required',
-                'password' => 'required|min:6|confirmed',
-            ]);
 
             $input['password'] = Hash::make($request->password);
             if (User::where('id', Auth::id())->update($input)) {

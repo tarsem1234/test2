@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class VacationPropertyAvailability extends Model
 {
-    protected $table = 'vacation_property_availabilities';
-
     protected $fillable = ['start_date'];
 
     public function property(): BelongsTo

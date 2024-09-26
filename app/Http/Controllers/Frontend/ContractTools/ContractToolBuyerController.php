@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\ContractTools;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\BuyerQuestionnaireRequest;
+use App\Http\Requests\Frontend\ContractTools\SaveLeadBasedPaintHazardsBuyerContractToolBuyerRequest;
 use App\Mail\Frontend\SaleAgreementLandlordMailing;
 use App\Models\Access\User\User;
 use App\Models\BuyerQuestionnaire;
@@ -16,15 +17,14 @@ use App\Models\Signature;
 use App\Models\Signer;
 use App\Models\UpdateSaleAgreementBysellerContract;
 use App\Services\EmailLogService;
-use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
-use Mail;
-use Session;
 
 class ContractToolBuyerController extends Controller
 {
@@ -232,15 +232,9 @@ class ContractToolBuyerController extends Controller
         return redirect()->back()->with(['flash_danger' => 'Something went wrong']);
     }
 
-    public function saveLeadBasedPaintHazardsBuyer(Request $request): RedirectResponse
+    public function saveLeadBasedPaintHazardsBuyer(SaveLeadBasedPaintHazardsBuyerContractToolBuyerRequest $request): RedirectResponse
     {
         $epa = [1, 2];
-        $this->validate($request, [
-            'opportunity' => [
-                'required',
-                Rule::in($epa),
-            ],
-        ]);
 
         $data = $request->all();
         if (isset($data['epa']) && $data['epa']) {
@@ -975,7 +969,7 @@ class ContractToolBuyerController extends Controller
             ->where('signature_type', config('constant.inverse_signature_type.sale agreement'))
             ->first();
         if ($signature) {
-            return response(['success' => true, 'signature' => $signature], 200);
+            return response(['success' => true, 'signature' => $signature]);
         }
         $type = config('constant.inverse_signature_type.sale agreement');
 
@@ -1037,7 +1031,7 @@ class ContractToolBuyerController extends Controller
                 }
             }
 
-            return response(['success' => true, 'signature' => $signatureNew], 200);
+            return response(['success' => true, 'signature' => $signatureNew]);
         }
 
         return response(['success' => false], 500);
@@ -1381,7 +1375,7 @@ class ContractToolBuyerController extends Controller
             $getSignatureData = Signature::where('offer_id', '=', $offerArray['offer_id'])->where('user_id', '=', Auth::id())->where('signature_type', '=', $type1)->first();
 
             //            dd($getSignatureData);
-            return response(['success' => true, 'signature' => $getSignatureData], 200);
+            return response(['success' => true, 'signature' => $getSignatureData]);
         } else {
             return response(['success' => false], 500);
         }
@@ -1403,7 +1397,7 @@ class ContractToolBuyerController extends Controller
             ->first();
 
         if ($signature) {
-            return response(['success' => true, 'signature' => $signature], 200);
+            return response(['success' => true, 'signature' => $signature]);
         }
         $type = config('constant.inverse_signature_type.advisory to buyers and sellers');
 
@@ -1419,7 +1413,7 @@ class ContractToolBuyerController extends Controller
             ->where('signature_type', config('constant.inverse_signature_type.property disclaimer'))
             ->first();
         if ($signature) {
-            return response(['success' => true, 'signature' => $signature], 200);
+            return response(['success' => true, 'signature' => $signature]);
         }
         $type = config('constant.inverse_signature_type.property disclaimer');
 
@@ -1435,7 +1429,7 @@ class ContractToolBuyerController extends Controller
             ->where('signature_type', config('constant.inverse_signature_type.sale agreement'))
             ->first();
         if ($signature) {
-            return response(['success' => true, 'signature' => $signature], 200);
+            return response(['success' => true, 'signature' => $signature]);
         }
         $type = config('constant.inverse_signature_type.sale agreement');
 
@@ -1452,7 +1446,7 @@ class ContractToolBuyerController extends Controller
             ->where('signature_type', config('constant.inverse_signature_type.lead based'))
             ->first();
         if ($signature) {
-            return response(['success' => true, 'signature' => $signature], 200);
+            return response(['success' => true, 'signature' => $signature]);
         }
         $type = config('constant.inverse_signature_type.lead based');
 
@@ -1469,7 +1463,7 @@ class ContractToolBuyerController extends Controller
             ->where('signature_type', config('constant.inverse_signature_type.VA FHA loan addendum'))
             ->first();
         if ($signature) {
-            return response(['success' => true, 'signature' => $signature], 200);
+            return response(['success' => true, 'signature' => $signature]);
         }
         $type = config('constant.inverse_signature_type.VA FHA loan addendum');
 
@@ -1485,7 +1479,7 @@ class ContractToolBuyerController extends Controller
             ->where('signature_type', config('constant.inverse_signature_type.post closing occupancy agreement'))
             ->first();
         if ($signature) {
-            return response(['success' => true, 'signature' => $signature], 200);
+            return response(['success' => true, 'signature' => $signature]);
         }
         $type = config('constant.inverse_signature_type.post closing occupancy agreement');
 

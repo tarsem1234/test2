@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\ContractTools;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\ContractTools\SaveLeadBasedPaintHazardsContractToolSellerRequest;
 use App\Http\Requests\Frontend\PropertyConditionDisclaimerRequest;
 use App\Http\Requests\Frontend\QuestionsSellerPostClosingRequest;
 use App\Http\Requests\Frontend\SellerQuestionnaireRequest;
@@ -19,13 +20,13 @@ use App\Models\Signature;
 use App\Models\Signer;
 use App\Models\UpdateSaleAgreementBysellerContract;
 use App\Services\EmailLogService;
-use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
-use Mail;
-use Session;
 
 class ContractToolSellerController extends Controller
 {
@@ -736,12 +737,8 @@ class ContractToolSellerController extends Controller
         return redirect()->back()->with(['flash_danger' => 'Something went wrong']);
     }
 
-    public function saveLeadBasedPaintHazards(Request $request): RedirectResponse
+    public function saveLeadBasedPaintHazards(SaveLeadBasedPaintHazardsContractToolSellerRequest $request): RedirectResponse
     {
-        $this->validate($request, [
-            'lead_based' => 'required',
-            'lead_based_report' => 'required',
-        ]);
 
         $data = $request->all();
         if (isset($request->id) && $request->id) {

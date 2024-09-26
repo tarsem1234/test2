@@ -30,16 +30,16 @@ use App\Models\VacationImage;
 use App\Models\VacationProperty;
 use App\Models\ZipCode;
 use App\Services\EmailLogService;
-use Auth;
-use File;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\RedirectResponser;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
-use Session;
 
 /**
  * Class LanguageController.
@@ -107,7 +107,7 @@ class PropertyController extends Controller
         if ($schools) {
             $schools = view('properties.append_schools', compact('schools', 'school_ids'))->render();
 
-            return response(['schools' => $schools, 'success' => true], 200);
+            return response(['schools' => $schools, 'success' => true]);
         }
 
         return response(['schools' => '', 'success' => false], 500);
@@ -127,8 +127,7 @@ class PropertyController extends Controller
                 $countries = view('properties.append_countries', compact('countries', 'country_id'))->render();
                 $subregions = view('properties.append_subregions', compact('subregions', 'subregion_id'))->render();
 
-                return response(['countries' => $countries, 'subregions' => $subregions,
-                    'success' => true], 200);
+                return response(['countries' => $countries, 'subregions' => $subregions, 'success' => true]);
             }
         }
 
@@ -144,8 +143,7 @@ class PropertyController extends Controller
             if ($states) {
                 $states = view('properties.append_us_states', compact('states', 'state_id'))->render();
 
-                return response(['states' => $states,
-                    'success' => true], 200);
+                return response(['states' => $states, 'success' => true]);
             }
         }
 
@@ -162,28 +160,26 @@ class PropertyController extends Controller
                 $city_id = $request->city_id;
                 $cities = view('properties.append_cities', compact('cities', 'city_id', 'usCities'))->render();
 
-                return response(['cities' => $cities, 'city_id' => $city_id, 'usCities' => $cities,
-                    'success' => true], 200);
+                return response(['cities' => $cities, 'city_id' => $city_id, 'usCities' => $cities, 'success' => true]);
             } else {
                 $cities = NonUsCity::where('city_code', $country->city_code)->get();
                 $nonUsCities = true;
                 $cityName = $request->city_id;
                 $cities = view('properties.append_cities', compact('cities', 'cityName', 'nonUsCities'))->render();
 
-                return response(['cities' => $cities, 'nonUsCities' => $nonUsCities,
-                    'success' => true], 200);
+                return response(['cities' => $cities, 'nonUsCities' => $nonUsCities, 'success' => true]);
             }
         } elseif ($request->state_id && isset($request->search) && State::where('id', $request->state_id)->exists()) {
             $usCities = true;
             $cities = City::where('state_id', $request->state_id)->pluck('city', 'id');
             $zipCodes = ZipCode::whereIn('city_id', array_keys($cities->toArray()))->pluck('zipcode', 'id');
 
-            return response(['cities' => $cities, 'zipCodes' => $zipCodes, 'success' => true], 200);
+            return response(['cities' => $cities, 'zipCodes' => $zipCodes, 'success' => true]);
         } elseif ($request->state_id && ! $request->search && State::where('id', $request->state_id)->exists()) {
             $cities = City::where('state_id', $request->state_id)->pluck('city', 'id');
             $zipCodes = ZipCode::whereIn('city_id', array_keys($cities->toArray()))->pluck('zipcode', 'id');
 
-            return response(['zipCodes' => $zipCodes, 'success' => true], 200);
+            return response(['zipCodes' => $zipCodes, 'success' => true]);
         } else {
             return response(['message' => 'Something went wrong.', 'success' => false], 500);
         }
@@ -200,7 +196,7 @@ class PropertyController extends Controller
             $cities = view('properties.append_cities', compact('cities', 'city_id'))->render();
             $counties = view('properties.append_counties', compact('counties', 'county_id'))->render();
 
-            return response(['cities' => $cities, 'counties' => $counties, 'success' => true], 200);
+            return response(['cities' => $cities, 'counties' => $counties, 'success' => true]);
         } else {
 
             return response(['message' => 'Something went wrong.', 'success' => false], 500);
@@ -212,7 +208,7 @@ class PropertyController extends Controller
         if ($request->city_id) {
             $zipCodes = ZipCode::where('city_id', $request->city_id)->pluck('zipcode', 'id');
             if ($zipCodes) {
-                return response(['zipCodes' => $zipCodes, 'success' => true], 200);
+                return response(['zipCodes' => $zipCodes, 'success' => true]);
             }
         }
 
@@ -224,7 +220,7 @@ class PropertyController extends Controller
         if ($request->state_id) {
             $militarylocations = MilitaryLocation::where('state', $request->state)->pluck('base', 'id');
             if ($militarylocations) {
-                return response(['militarylocations' => $militarylocations, 'success' => true], 200);
+                return response(['militarylocations' => $militarylocations, 'success' => true]);
             }
         }
 
@@ -241,9 +237,9 @@ class PropertyController extends Controller
                 $newCounty->county = $request->county;
                 $newCounty->save();
             }
-            $counties = County::where('state_id', $state->id)->orderBy('county', 'asc')->pluck('id', 'county');
+            $counties = County::where('state_id', $state->id)->orderBy('county')->pluck('id', 'county');
 
-            return response(['counties' => $counties, 'success' => true], 200);
+            return response(['counties' => $counties, 'success' => true]);
         }
 
         return response(['message' => 'Something went wrong.', 'success' => false], 500);
@@ -260,9 +256,9 @@ class PropertyController extends Controller
             //                $newCounty->county = $request->county;
             //                $newCounty->save();
             //            }
-            $zipcodes = ZipCode::where('state_id', $state->id)->orderBy('zipcode', 'asc')->pluck('id', 'zipcode');
+            $zipcodes = ZipCode::where('state_id', $state->id)->orderBy('zipcode')->pluck('id', 'zipcode');
 
-            return response(['zipcodes' => $zipcodes, 'success' => true], 200);
+            return response(['zipcodes' => $zipcodes, 'success' => true]);
         }
 
         return response(['message' => 'Something went wrong.', 'success' => false], 500);
@@ -279,9 +275,9 @@ class PropertyController extends Controller
             //                $newCounty->county = $request->county;
             //                $newCounty->save();
             //            }
-            $cities = City::where('state_id', $state->id)->orderBy('id', 'asc')->pluck('id', 'city');
+            $cities = City::where('state_id', $state->id)->orderBy('id')->pluck('id', 'city');
 
-            return response(['cities' => $cities, 'success' => true], 200);
+            return response(['cities' => $cities, 'success' => true]);
         }
 
         return response(['message' => 'Something went wrong.', 'success' => false], 500);
@@ -292,14 +288,13 @@ class PropertyController extends Controller
         if ($request->state_id) {
             $findCitiesForZipCode = City::where('state_id', $request->state_id)->pluck('id');
 
-            $cities = City::where('state_id', $request->state_id)->orderBy('city', 'asc')->pluck('id', 'city');
+            $cities = City::where('state_id', $request->state_id)->orderBy('city')->pluck('id', 'city');
 
             $zipCodes = ZipCode::whereIn('city_id', $findCitiesForZipCode)->pluck('zipcode', 'id');
-            $militarylocations = MilitaryLocation::where('state_id', $request->state_id)->orderBy('base', 'asc')->pluck('id', 'base');
-            $counties = County::where('state_id', $request->state_id)->orderBy('county', 'asc')->pluck('id', 'county');
+            $militarylocations = MilitaryLocation::where('state_id', $request->state_id)->orderBy('base')->pluck('id', 'base');
+            $counties = County::where('state_id', $request->state_id)->orderBy('county')->pluck('id', 'county');
             if ($militarylocations) {
-                return response(['militarylocations' => $militarylocations, 'zipCodes' => $zipCodes,
-                    'cities' => $cities, 'counties' => $counties, 'success' => true], 200);
+                return response(['militarylocations' => $militarylocations, 'zipCodes' => $zipCodes, 'cities' => $cities, 'counties' => $counties, 'success' => true]);
             }
         }
 
@@ -316,7 +311,7 @@ class PropertyController extends Controller
                 if (count($schoolDistricts) > 0) {
                     $schoolDistrict = view('properties.append_schoolDistrict', compact('schoolDistricts', 'districtId'))->render();
 
-                    return response(['schoolDistrict' => $schoolDistrict, 'success' => true], 200);
+                    return response(['schoolDistrict' => $schoolDistrict, 'success' => true]);
                 }
 
                 return response(['message' => 'School District not found.', 'success' => false], 500);
@@ -359,7 +354,7 @@ class PropertyController extends Controller
 
                 $state = State::where('id', $property->state_id)->first();
                 $county = County::where('id', $property->county_id)->first();
-                $counties = County::where('state_id', $property->state_id)->orderBy('county', 'asc')->get();
+                $counties = County::where('state_id', $property->state_id)->orderBy('county')->get();
                 $city = City::where('id', $property->city_id)->first();
                 $zipCode = ZipCode::where('id', $property->zip_code_id)->first();
                 $schools = School::whereIn('id', explode(',', $property->architechture->school_id))->get();
@@ -398,7 +393,7 @@ class PropertyController extends Controller
 
                 $state = State::where('id', $property->state_id)->first();
                 $county = County::where('id', $property->county_id)->first();
-                $counties = County::where('state_id', $property->state_id)->orderBy('county', 'asc')->get();
+                $counties = County::where('state_id', $property->state_id)->orderBy('county')->get();
                 $city = City::where('id', $property->city_id)->first();
                 $zipCode = ZipCode::where('id', $property->zip_code_id)->first();
                 $school = School::where('id', $property->architechture->school_id)->first();
@@ -1435,7 +1430,7 @@ class PropertyController extends Controller
             return ['id' => $item->id, 'text' => $item->district];
         });
 
-        return response(['results' => $schoolDistricts], 200);
+        return response(['results' => $schoolDistricts]);
     }
 
     public function propertyDetails($id, $type = '')
@@ -1629,7 +1624,7 @@ class PropertyController extends Controller
                 $property->availabilities()->where($data)->delete();
             }
 
-            return response(['status' => true], 200);
+            return response(['status' => true]);
         }
     }
 

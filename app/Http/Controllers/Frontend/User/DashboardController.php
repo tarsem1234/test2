@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Frontend\User;
 use App\Http\Controllers\Controller;
 use App\Models\Access\User\User;
 use App\Models\Backend\UserLearningPoint;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**
@@ -23,15 +23,15 @@ class DashboardController extends Controller
                 $query->with('industry');
             }, 'subscribeServices'])->first();
 
-                       $categorySessions = UserLearningPoint::where('user_id', Auth::id())->get();
-                       // dd($categorySessions);
-                       $points = 0;
-                       foreach ($categorySessions as $value) {
-                           $points = ((int)$value->points + $points);
-                           
-                       }
+            $categorySessions = UserLearningPoint::where('user_id', Auth::id())->get();
+            // dd($categorySessions);
+            $points = 0;
+            foreach ($categorySessions as $value) {
+                $points = ((int) $value->points + $points);
+
+            }
         }
-        
+
         return view('frontend.user.dashboard')->with(compact('user', 'points'));
     }
 }

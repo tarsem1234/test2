@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Frontend\ContractTools;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\ContractTools\SaveLeadBasedPaintHazardsTenantContractToolTenantRequest;
+use App\Http\Requests\Frontend\ContractTools\SdThankyouForReviewSummaryKeyTermsTenantContractToolTenantRequest;
+use App\Http\Requests\Frontend\ContractTools\ThankYouForReviewSummaryKeyTermsContractToolTenantRequest;
 use App\Http\Requests\Frontend\TenantQuestionnaireRequest;
 use App\Mail\Frontend\SaleAgreementLandlordMailing;
 use App\Models\Access\User\User;
@@ -15,14 +18,13 @@ use App\Models\Signer;
 use App\Models\TenantQuestionnaire;
 use App\Services\AgreementAddressService;
 use App\Services\EmailLogService;
-use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
-use Mail;
-use Session;
 
 class ContractToolTenantController extends Controller
 {
@@ -134,11 +136,8 @@ class ContractToolTenantController extends Controller
             compact('offer'));
     }
 
-    public function thankYouForReviewSummaryKeyTerms(Request $request): View
+    public function thankYouForReviewSummaryKeyTerms(ThankYouForReviewSummaryKeyTermsContractToolTenantRequest $request): View
     {
-        $this->validate($request, [
-            'agree' => 'required',
-        ]);
         $lead = false;
         $property = Property::where('id', Session::get('PROPERTY'))->with('architechture')->withTrashed()->first();
         if ($property->architechture->year_built < config('constant.year_built')) {
@@ -190,16 +189,9 @@ class ContractToolTenantController extends Controller
         return view('frontend.contract_tools.rent.tenant.thank-you-lead-based-disclosure-for-rent-tenant');
     }
 
-    public function saveLeadBasedPaintHazardsTenant(Request $request): RedirectResponse
+    public function saveLeadBasedPaintHazardsTenant(SaveLeadBasedPaintHazardsTenantContractToolTenantRequest $request): RedirectResponse
     {
         $epa = [1, 2];
-        $this->validate($request,
-            [
-                'opportunity' => [
-                    'required',
-                    Rule::in($epa),
-                ],
-            ]);
         $data = $request->all();
         if (isset($data['epa']) && $data['epa']) {
             $input['epa'] = implode(',', $data['epa']);
@@ -308,11 +300,8 @@ class ContractToolTenantController extends Controller
     }
 
     //sign documents
-    public function sdThankyouForReviewSummaryKeyTermsTenant(Request $request): View
+    public function sdThankyouForReviewSummaryKeyTermsTenant(SdThankyouForReviewSummaryKeyTermsTenantContractToolTenantRequest $request): View
     {
-        $this->validate($request, [
-            'agree' => 'required',
-        ]);
         $lead = false;
         $property = Property::where('id', Session::get('PROPERTY'))->with('architechture')->withTrashed()->first();
         if ($property->architechture->year_built < config('constant.year_built')) {
@@ -972,8 +961,7 @@ class ContractToolTenantController extends Controller
             }
             $getSignatureData = RentSignature::where('offer_id', '=', $offerArray['offer_id'])->where('user_id', '=', Auth::id())->where('signature_type', '=', $type1)->first();
 
-            return response(['success' => true, 'signature' => $getSignatureData],
-                200);
+            return response(['success' => true, 'signature' => $getSignatureData]);
         } else {
             return response(['success' => false], 500);
         }
@@ -1004,7 +992,7 @@ class ContractToolTenantController extends Controller
                 config('constant.inverse_signature_type_rent.property disclaimer'))
             ->first();
         if ($signature) {
-            return response(['success' => true, 'signature' => $signature], 200);
+            return response(['success' => true, 'signature' => $signature]);
         }
         $type = config('constant.inverse_signature_type_rent.property disclaimer');
         $signature = User::where('id', Auth::id())->first();
@@ -1023,7 +1011,7 @@ class ContractToolTenantController extends Controller
                 config('constant.inverse_signature_type_rent.rent agreement'))
             ->first();
         if ($signature) {
-            return response(['success' => true, 'signature' => $signature], 200);
+            return response(['success' => true, 'signature' => $signature]);
         }
         $type = config('constant.inverse_signature_type_rent.rent agreement');
         $signature = User::where('id', Auth::id())->first();
@@ -1042,7 +1030,7 @@ class ContractToolTenantController extends Controller
                 config('constant.inverse_signature_type_rent.lead based'))
             ->first();
         if ($signature) {
-            return response(['success' => true, 'signature' => $signature], 200);
+            return response(['success' => true, 'signature' => $signature]);
         }
         $type = config('constant.inverse_signature_type_rent.lead based');
         $signature = User::where('id', Auth::id())->first();

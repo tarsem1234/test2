@@ -3,19 +3,17 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\SaveForumReplyForumReplyRequest;
 use App\Models\ForumReply;
-use Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class ForumReplyController extends Controller
 {
-    public function saveForumReply(Request $request): RedirectResponse
+    public function saveForumReply(SaveForumReplyForumReplyRequest $request): RedirectResponse
     {
-        $this->validate($request, [
-            'forum_reply' => 'required',
-        ]);
 
         $input = $request->all();
         $forumReply = new ForumReply;

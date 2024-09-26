@@ -9,7 +9,7 @@ return Application::configure(basePath: dirname(__DIR__))
         \Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         \Arcanedev\LogViewer\LogViewerServiceProvider::class,
         \Spatie\Html\HtmlServiceProvider::class,
-         \Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        \Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         \Creativeorange\Gravatar\GravatarServiceProvider::class,
         \Laravel\Socialite\SocialiteServiceProvider::class,
         \Yajra\Datatables\DatatablesServiceProvider::class,

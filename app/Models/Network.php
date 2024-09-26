@@ -2,16 +2,14 @@
 
 namespace App\Models;
 
-use Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Network extends Model
 {
     use SoftDeletes;
-
-    protected $table = 'networks';
 
     public function request_from_user(): BelongsTo
     {

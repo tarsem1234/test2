@@ -23,7 +23,10 @@ class StoreRoleRequest extends Request
     public function rules(): array
     {
         return [
-            'name' => 'required|max:191',
+            'name' => [
+                'required',
+                'max:191',
+            ],
         ];
     }
 }

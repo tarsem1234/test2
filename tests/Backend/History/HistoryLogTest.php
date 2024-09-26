@@ -1,5 +1,7 @@
 <?php
+
 namespace Tests\Backend\History;
+
 use Tests\BrowserKitTestCase;
 
 /**

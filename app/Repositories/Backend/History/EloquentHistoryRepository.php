@@ -137,7 +137,7 @@ class EloquentHistoryRepository implements HistoryContract
      * @param  null  $limit
      * @return string|\Symfony\Component\Translation\TranslatorInterface
      */
-    public function render($limit = null, $paginate = true,$pagination = 10)
+    public function render($limit = null, $paginate = true, $pagination = 10)
     {
         $history = History::with('user')->latest();
         $history = $this->buildPagination($history, $limit, $paginate, $pagination);
@@ -152,7 +152,7 @@ class EloquentHistoryRepository implements HistoryContract
      * @param  null  $limit
      * @return string|\Symfony\Component\Translation\TranslatorInterface
      */
-    public function renderType($type, $limit = null, $paginate = true,$pagination = 10)
+    public function renderType($type, $limit = null, $paginate = true, $pagination = 10)
     {
         $history = History::with('user');
         $history = $this->checkType($history, $type);
@@ -168,7 +168,7 @@ class EloquentHistoryRepository implements HistoryContract
      * @param  null  $limit
      * @return string|\Symfony\Component\Translation\TranslatorInterface
      */
-    public function renderEntity($type, $entity_id, $limit = null,$paginate = true,$pagination = 10)
+    public function renderEntity($type, $entity_id, $limit = null, $paginate = true, $pagination = 10)
     {
         $history = History::with('user', 'type')->where('entity_id', $entity_id);
         $history = $this->checkType($history, $type);
@@ -183,13 +183,12 @@ class EloquentHistoryRepository implements HistoryContract
     /**
      * @return mixed|string
      */
-    public function renderDescription($text,$assets = false)
+    public function renderDescription($text, $assets = false)
     {
         $assets = json_decode($assets, true);
         $count = 1;
-        
-        if($assets != null)
-        {
+
+        if ($assets != null) {
             $asset_count = count($assets) + 1;
             if (count($assets)) {
                 foreach ($assets as $name => $values) {
@@ -209,7 +208,7 @@ class EloquentHistoryRepository implements HistoryContract
                                         break;
 
                                     case 3:
-                                    // dd($values[2]);
+                                        // dd($values[2]);
                                         $text = str_replace('{'.$key.'}', route($values[0], $values[2]), $text);
                                         break;
 
@@ -241,12 +240,11 @@ class EloquentHistoryRepository implements HistoryContract
                 }, $text);
             }
         }
-        
 
         return '';
     }
 
-    public function buildList($history,$paginate = true): string
+    public function buildList($history, $paginate = true): string
     {
         return view('backend.history.partials.list', ['history' => $history, 'paginate' => $paginate])
             ->render();

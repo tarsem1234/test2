@@ -86,7 +86,7 @@ trait UserAttribute
 
     public function getFullNameAttribute(): string
     {
-        return($this->last_name ? ($this->first_name ?? '') . ' ' . ($this->last_name ?? '') : ($this->first_name ?? ''));
+        return $this->last_name ? ($this->first_name ?? '').' '.($this->last_name ?? '') : ($this->first_name ?? '');
     }
 
     public function getNameAttribute(): string
@@ -182,7 +182,7 @@ trait UserAttribute
 
     public function getDeletePermanentlyButtonAttribute(): string
     {
-        return '<a href="' . route('admin.access.user.delete-permanently', $this) . '" name="delete_user_perm" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.delete_permanently') . '"></i></a> ';
+        return '<a href="'.route('admin.access.user.delete-permanently', $this).'" name="delete_user_perm" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.delete_permanently').'"></i></a> ';
     }
 
     public function getLoginAsButtonAttribute(): string

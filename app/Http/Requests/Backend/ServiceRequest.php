@@ -20,8 +20,12 @@ class ServiceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'industry' => 'required',
-            'service' => 'required',
+            'industry' => [
+                'required',
+            ],
+            'service' => [
+                'required',
+            ],
         ];
     }
 

@@ -1,9 +1,9 @@
 <?php
 
-use Database\TruncateTable;
 use Carbon\Carbon as Carbon;
-use Illuminate\Database\Seeder;
 use Database\DisableForeignKeys;
+use Database\TruncateTable;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -25,30 +25,30 @@ class RoleTableSeeder extends Seeder
 
         $roles = [
             [
-                'name'       => 'Administrator',
-                'all'        => true,
-                'sort'       => 1,
+                'name' => 'Administrator',
+                'all' => true,
+                'sort' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name'       => 'Business',
-                'all'        => false,
-                'sort'       => 2,
+                'name' => 'Business',
+                'all' => false,
+                'sort' => 2,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name'       => 'User',
-                'all'        => false,
-                'sort'       => 3,
+                'name' => 'User',
+                'all' => false,
+                'sort' => 3,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name'       => 'Support',
-                'all'        => false,
-                'sort'       => 4,
+                'name' => 'Support',
+                'all' => false,
+                'sort' => 4,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
